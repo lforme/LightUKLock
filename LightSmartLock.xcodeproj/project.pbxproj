@@ -1,0 +1,373 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD27212382801D006A9B97 /* AppDelegate.swift */; };
+		9CDD27292382801D006A9B97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD27272382801D006A9B97 /* Main.storyboard */; };
+		9CDD272B2382801E006A9B97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD272A2382801E006A9B97 /* Assets.xcassets */; };
+		9CDD272E2382801E006A9B97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD272C2382801E006A9B97 /* LaunchScreen.storyboard */; };
+		9CDD274423829363006A9B97 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD274323829363006A9B97 /* RootViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9CDD271E2382801D006A9B97 /* LightSmartLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LightSmartLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CDD27212382801D006A9B97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9CDD27282382801D006A9B97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9CDD272A2382801E006A9B97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9CDD272D2382801E006A9B97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9CDD272F2382801E006A9B97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CDD274323829363006A9B97 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9CDD271B2382801D006A9B97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9CDD27152382801C006A9B97 = {
+			isa = PBXGroup;
+			children = (
+				9CDD27202382801D006A9B97 /* LightSmartLock */,
+				9CDD271F2382801D006A9B97 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9CDD271F2382801D006A9B97 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9CDD271E2382801D006A9B97 /* LightSmartLock.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9CDD27202382801D006A9B97 /* LightSmartLock */ = {
+			isa = PBXGroup;
+			children = (
+				9CDD2739238283D8006A9B97 /* Controllers */,
+				9CDD27212382801D006A9B97 /* AppDelegate.swift */,
+				9CDD274323829363006A9B97 /* RootViewController.swift */,
+				9CDD27272382801D006A9B97 /* Main.storyboard */,
+				9CDD272A2382801E006A9B97 /* Assets.xcassets */,
+				9CDD272C2382801E006A9B97 /* LaunchScreen.storyboard */,
+				9CDD272F2382801E006A9B97 /* Info.plist */,
+			);
+			path = LightSmartLock;
+			sourceTree = "<group>";
+		};
+		9CDD2739238283D8006A9B97 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9CDD273E23828639006A9B97 /* OpenDoor */,
+				9CDD273B23828599006A9B97 /* Lock */,
+				9CDD273A238283EA006A9B97 /* My */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9CDD273A238283EA006A9B97 /* My */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = My;
+			sourceTree = "<group>";
+		};
+		9CDD273B23828599006A9B97 /* Lock */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Lock;
+			sourceTree = "<group>";
+		};
+		9CDD273E23828639006A9B97 /* OpenDoor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OpenDoor;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9CDD271D2382801D006A9B97 /* LightSmartLock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CDD27322382801E006A9B97 /* Build configuration list for PBXNativeTarget "LightSmartLock" */;
+			buildPhases = (
+				9CDD271A2382801D006A9B97 /* Sources */,
+				9CDD271B2382801D006A9B97 /* Frameworks */,
+				9CDD271C2382801D006A9B97 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LightSmartLock;
+			productName = LightSmartLock;
+			productReference = 9CDD271E2382801D006A9B97 /* LightSmartLock.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9CDD27162382801C006A9B97 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = mugua;
+				TargetAttributes = {
+					9CDD271D2382801D006A9B97 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 9CDD27192382801C006A9B97 /* Build configuration list for PBXProject "LightSmartLock" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9CDD27152382801C006A9B97;
+			productRefGroup = 9CDD271F2382801D006A9B97 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9CDD271D2382801D006A9B97 /* LightSmartLock */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9CDD271C2382801D006A9B97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CDD272E2382801E006A9B97 /* LaunchScreen.storyboard in Resources */,
+				9CDD272B2382801E006A9B97 /* Assets.xcassets in Resources */,
+				9CDD27292382801D006A9B97 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9CDD271A2382801D006A9B97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CDD274423829363006A9B97 /* RootViewController.swift in Sources */,
+				9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9CDD27272382801D006A9B97 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9CDD27282382801D006A9B97 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9CDD272C2382801E006A9B97 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9CDD272D2382801E006A9B97 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9CDD27302382801E006A9B97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9CDD27312382801E006A9B97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9CDD27332382801E006A9B97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 23CVKL3DB9;
+				INFOPLIST_FILE = LightSmartLock/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.LightSmartLock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9CDD27342382801E006A9B97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 23CVKL3DB9;
+				INFOPLIST_FILE = LightSmartLock/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.LightSmartLock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9CDD27192382801C006A9B97 /* Build configuration list for PBXProject "LightSmartLock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CDD27302382801E006A9B97 /* Debug */,
+				9CDD27312382801E006A9B97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9CDD27322382801E006A9B97 /* Build configuration list for PBXNativeTarget "LightSmartLock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CDD27332382801E006A9B97 /* Debug */,
+				9CDD27342382801E006A9B97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9CDD27162382801C006A9B97 /* Project object */;
+}
