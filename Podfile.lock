@@ -1,0 +1,141 @@
+PODS:
+  - Action (3.11.0):
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - Alamofire (4.9.1)
+  - AlignedCollectionViewFlowLayout (1.1.2)
+  - ChameleonFramework (2.1.0):
+    - ChameleonFramework/Default (= 2.1.0)
+  - ChameleonFramework/Default (2.1.0)
+  - CryptoSwift (1.1.3)
+  - Differentiator (3.1.0)
+  - DZNEmptyDataSet (1.8.1)
+  - ESTabBarController-swift (2.7)
+  - HandyJSON (5.0.1)
+  - IQKeyboardManager (6.5.4)
+  - Kingfisher (5.10.0):
+    - Kingfisher/Core (= 5.10.0)
+  - Kingfisher/Core (5.10.0)
+  - MJRefresh (3.2.2)
+  - Moya/Core (13.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.1)
+  - Moya/RxSwift (13.0.1):
+    - Moya/Core
+    - RxSwift (~> 4.0)
+  - "NSObject+Rx (4.4.1)":
+    - RxSwift (~> 4.3)
+  - PKHUD (5.3.0)
+  - PPBadgeViewSwift (3.1.0)
+  - QuickLayout (3.0.0)
+  - ReachabilitySwift (5.0.0)
+  - Result (4.1.0)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxDataSources (3.1.0):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxSwift (4.5.0)
+  - SnapKit (5.0.1)
+  - SQLite.swift (0.12.2):
+    - SQLite.swift/standard (= 0.12.2)
+  - SQLite.swift/standard (0.12.2)
+  - SwiftDate (6.1.0)
+  - SwiftEntryKit (1.2.3):
+    - QuickLayout (= 3.0.0)
+  - Then (2.6.0)
+  - TZImagePickerController (3.2.7)
+  - "UITextView+Placeholder (1.3.3)"
+
+DEPENDENCIES:
+  - Action
+  - AlignedCollectionViewFlowLayout
+  - ChameleonFramework
+  - CryptoSwift
+  - DZNEmptyDataSet
+  - ESTabBarController-swift
+  - HandyJSON
+  - IQKeyboardManager
+  - Kingfisher
+  - MJRefresh
+  - Moya/RxSwift
+  - "NSObject+Rx"
+  - PKHUD
+  - PPBadgeViewSwift
+  - ReachabilitySwift
+  - RxDataSources
+  - SnapKit
+  - SQLite.swift
+  - SwiftDate
+  - SwiftEntryKit
+  - Then
+  - TZImagePickerController
+  - "UITextView+Placeholder"
+
+SPEC REPOS:
+  trunk:
+    - Action
+    - Alamofire
+    - AlignedCollectionViewFlowLayout
+    - ChameleonFramework
+    - CryptoSwift
+    - Differentiator
+    - DZNEmptyDataSet
+    - ESTabBarController-swift
+    - HandyJSON
+    - IQKeyboardManager
+    - Kingfisher
+    - MJRefresh
+    - Moya
+    - "NSObject+Rx"
+    - PKHUD
+    - PPBadgeViewSwift
+    - QuickLayout
+    - ReachabilitySwift
+    - Result
+    - RxCocoa
+    - RxDataSources
+    - RxSwift
+    - SnapKit
+    - SQLite.swift
+    - SwiftDate
+    - SwiftEntryKit
+    - Then
+    - TZImagePickerController
+    - "UITextView+Placeholder"
+
+SPEC CHECKSUMS:
+  Action: 689181e4c3f6566844178d8a7da6fef39a9597fc
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AlignedCollectionViewFlowLayout: ee2ef451e741ec08f8e0967d828001e2f051c20a
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  CryptoSwift: 6b6e488df0598b3e9fa49254ed1a65e8c1b1e10b
+  Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  ESTabBarController-swift: 4fb52ad03d94d0717ef97bc9eb09a5abfdded0a2
+  HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
+  IQKeyboardManager: 72b359cd7e777e3a984cedbe05f8da45320cbb63
+  Kingfisher: 0bf6eae7c2193f15719915fecb7c2c1c03855f3d
+  MJRefresh: 72a46ecaa2a0feaf48fc5198dff95f25f8bb27c6
+  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  "NSObject+Rx": 9884a92f19b610795c431e10b4e601913b59c9e9
+  PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
+  PPBadgeViewSwift: 18a219a9897f418342c22dd1a54f7b18ac56546b
+  QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
+  SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
+  SwiftEntryKit: 340713c2e4a6662c5149629990bf1088bf5f0389
+  Then: 90cd104fd951cec1980a03f57704ad8f784d4d79
+  TZImagePickerController: 821b81f83594a736e831a018f2a2ce31822ddf0b
+  "UITextView+Placeholder": c407b27599ea23cca425946fee3cf1db5d547008
+
+PODFILE CHECKSUM: 1e312c544c6ca378a3bb90459c4efe23f037cd94
+
+COCOAPODS: 1.8.3

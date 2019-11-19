@@ -3,10 +3,38 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F64F18F4FD1BF62618F8397 /* Pods_LightSmartLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */; };
+		9C24AC1423838C80005EBF95 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1323838C80005EBF95 /* BaseNavigationController.swift */; };
+		9C24AC1623838CD1005EBF95 /* NavigationSettingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1523838CD1005EBF95 /* NavigationSettingStyle.swift */; };
+		9C24AC1923838E56005EBF95 /* UIFont+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1823838E56005EBF95 /* UIFont+extension.swift */; };
+		9C24AC1B23839D75005EBF95 /* Swizzling+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1A23839D74005EBF95 /* Swizzling+UIViewController.swift */; };
+		9C24AC1D23839EB9005EBF95 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1C23839EB9005EBF95 /* UIImage+Extension.swift */; };
+		9C24AC1F2383A2C7005EBF95 /* ColorClassification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1E2383A2C7005EBF95 /* ColorClassification.swift */; };
+		9C24AC212383C1C6005EBF95 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C24AC202383C1C6005EBF95 /* Login.storyboard */; };
+		9C24AC232383C206005EBF95 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC222383C206005EBF95 /* LoginViewController.swift */; };
+		9C24AC252383C9CB005EBF95 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC242383C9CB005EBF95 /* UIView+Extension.swift */; };
+		9C24AC272383CB78005EBF95 /* ObjectAssociation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC262383CB78005EBF95 /* ObjectAssociation.swift */; };
+		9C24AC292383CB92005EBF95 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC282383CB92005EBF95 /* UITextField+Extension.swift */; };
+		9C24AC2B2383CD94005EBF95 /* StaticConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC2A2383CD94005EBF95 /* StaticConst.swift */; };
+		9C24AC2E2383D5D9005EBF95 /* LSLUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC2D2383D5D9005EBF95 /* LSLUser.swift */; };
+		9C24AC302383D89A005EBF95 /* LocalArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC2F2383D89A005EBF95 /* LocalArchiver.swift */; };
+		9C24AC332383D91B005EBF95 /* AccessTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC322383D91B005EBF95 /* AccessTokenModel.swift */; };
+		9C24AC352383DCB0005EBF95 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC342383DCB0005EBF95 /* UserModel.swift */; };
+		9C24AC372383DE6E005EBF95 /* SceneModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC362383DE6E005EBF95 /* SceneModels.swift */; };
+		9C24AC392383E00C005EBF95 /* LockModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC382383E00C005EBF95 /* LockModels.swift */; };
+		9C24AC3B2383E736005EBF95 /* ViewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC3A2383E736005EBF95 /* ViewLoader.swift */; };
+		9C24AC3F2383EB55005EBF95 /* OpenDoorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC3D2383EB55005EBF95 /* OpenDoorViewController.swift */; };
+		9C24AC402383EB55005EBF95 /* OpenDoorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C24AC3E2383EB55005EBF95 /* OpenDoorViewController.xib */; };
+		9C24AC422383EB88005EBF95 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C24AC412383EB88005EBF95 /* Home.storyboard */; };
+		9C24AC442383EB96005EBF95 /* My.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C24AC432383EB96005EBF95 /* My.storyboard */; };
+		9C24AC462383EBB1005EBF95 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC452383EBB1005EBF95 /* MyViewController.swift */; };
+		9C24AC482383EBE5005EBF95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC472383EBE5005EBF95 /* HomeViewController.swift */; };
+		9C24AC4A2383F344005EBF95 /* CustomizedTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC492383F344005EBF95 /* CustomizedTabbarItem.swift */; };
+		9C24AC4C2383F639005EBF95 /* CustomizedOpenDoorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC4B2383F639005EBF95 /* CustomizedOpenDoorItem.swift */; };
 		9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD27212382801D006A9B97 /* AppDelegate.swift */; };
 		9CDD27292382801D006A9B97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD27272382801D006A9B97 /* Main.storyboard */; };
 		9CDD272B2382801E006A9B97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD272A2382801E006A9B97 /* Assets.xcassets */; };
@@ -15,6 +43,36 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2CC741DB4C59065DD926D509 /* Pods-LightSmartLock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightSmartLock.release.xcconfig"; path = "Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock.release.xcconfig"; sourceTree = "<group>"; };
+		56B15D3085FA9EFD559AB2C2 /* Pods-LightSmartLock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightSmartLock.debug.xcconfig"; path = "Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock.debug.xcconfig"; sourceTree = "<group>"; };
+		5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LightSmartLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C24AC1323838C80005EBF95 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		9C24AC1523838CD1005EBF95 /* NavigationSettingStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSettingStyle.swift; sourceTree = "<group>"; };
+		9C24AC1823838E56005EBF95 /* UIFont+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+extension.swift"; sourceTree = "<group>"; };
+		9C24AC1A23839D74005EBF95 /* Swizzling+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swizzling+UIViewController.swift"; sourceTree = "<group>"; };
+		9C24AC1C23839EB9005EBF95 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		9C24AC1E2383A2C7005EBF95 /* ColorClassification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorClassification.swift; sourceTree = "<group>"; };
+		9C24AC202383C1C6005EBF95 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		9C24AC222383C206005EBF95 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9C24AC242383C9CB005EBF95 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		9C24AC262383CB78005EBF95 /* ObjectAssociation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociation.swift; sourceTree = "<group>"; };
+		9C24AC282383CB92005EBF95 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		9C24AC2A2383CD94005EBF95 /* StaticConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticConst.swift; sourceTree = "<group>"; };
+		9C24AC2D2383D5D9005EBF95 /* LSLUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLUser.swift; sourceTree = "<group>"; };
+		9C24AC2F2383D89A005EBF95 /* LocalArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalArchiver.swift; sourceTree = "<group>"; };
+		9C24AC322383D91B005EBF95 /* AccessTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenModel.swift; sourceTree = "<group>"; };
+		9C24AC342383DCB0005EBF95 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		9C24AC362383DE6E005EBF95 /* SceneModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneModels.swift; sourceTree = "<group>"; };
+		9C24AC382383E00C005EBF95 /* LockModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockModels.swift; sourceTree = "<group>"; };
+		9C24AC3A2383E736005EBF95 /* ViewLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewLoader.swift; sourceTree = "<group>"; };
+		9C24AC3D2383EB55005EBF95 /* OpenDoorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDoorViewController.swift; sourceTree = "<group>"; };
+		9C24AC3E2383EB55005EBF95 /* OpenDoorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenDoorViewController.xib; sourceTree = "<group>"; };
+		9C24AC412383EB88005EBF95 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		9C24AC432383EB96005EBF95 /* My.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = My.storyboard; sourceTree = "<group>"; };
+		9C24AC452383EBB1005EBF95 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		9C24AC472383EBE5005EBF95 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9C24AC492383F344005EBF95 /* CustomizedTabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedTabbarItem.swift; sourceTree = "<group>"; };
+		9C24AC4B2383F639005EBF95 /* CustomizedOpenDoorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedOpenDoorItem.swift; sourceTree = "<group>"; };
 		9CDD271E2382801D006A9B97 /* LightSmartLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LightSmartLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CDD27212382801D006A9B97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CDD27282382801D006A9B97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -29,17 +87,91 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F64F18F4FD1BF62618F8397 /* Pods_LightSmartLock.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		101921C344D776C9AFC98337 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				56B15D3085FA9EFD559AB2C2 /* Pods-LightSmartLock.debug.xcconfig */,
+				2CC741DB4C59065DD926D509 /* Pods-LightSmartLock.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		4564EFD573D1492540C35AF0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9C24AC1023838417005EBF95 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				9C24AC1323838C80005EBF95 /* BaseNavigationController.swift */,
+				9C24AC1523838CD1005EBF95 /* NavigationSettingStyle.swift */,
+				9C24AC1E2383A2C7005EBF95 /* ColorClassification.swift */,
+				9C24AC2A2383CD94005EBF95 /* StaticConst.swift */,
+				9C24AC492383F344005EBF95 /* CustomizedTabbarItem.swift */,
+				9C24AC4B2383F639005EBF95 /* CustomizedOpenDoorItem.swift */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		9C24AC1723838E42005EBF95 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9C24AC262383CB78005EBF95 /* ObjectAssociation.swift */,
+				9C24AC242383C9CB005EBF95 /* UIView+Extension.swift */,
+				9C24AC1823838E56005EBF95 /* UIFont+extension.swift */,
+				9C24AC1C23839EB9005EBF95 /* UIImage+Extension.swift */,
+				9C24AC282383CB92005EBF95 /* UITextField+Extension.swift */,
+				9C24AC1A23839D74005EBF95 /* Swizzling+UIViewController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9C24AC2C2383D4E7005EBF95 /* GlobalSingle */ = {
+			isa = PBXGroup;
+			children = (
+				9C24AC2D2383D5D9005EBF95 /* LSLUser.swift */,
+			);
+			path = GlobalSingle;
+			sourceTree = "<group>";
+		};
+		9C24AC312383D8F4005EBF95 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9C24AC322383D91B005EBF95 /* AccessTokenModel.swift */,
+				9C24AC342383DCB0005EBF95 /* UserModel.swift */,
+				9C24AC362383DE6E005EBF95 /* SceneModels.swift */,
+				9C24AC382383E00C005EBF95 /* LockModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9C24AC3C2383E758005EBF95 /* ToolBox */ = {
+			isa = PBXGroup;
+			children = (
+				9C24AC2F2383D89A005EBF95 /* LocalArchiver.swift */,
+				9C24AC3A2383E736005EBF95 /* ViewLoader.swift */,
+			);
+			path = ToolBox;
+			sourceTree = "<group>";
+		};
 		9CDD27152382801C006A9B97 = {
 			isa = PBXGroup;
 			children = (
 				9CDD27202382801D006A9B97 /* LightSmartLock */,
 				9CDD271F2382801D006A9B97 /* Products */,
+				101921C344D776C9AFC98337 /* Pods */,
+				4564EFD573D1492540C35AF0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +186,11 @@
 		9CDD27202382801D006A9B97 /* LightSmartLock */ = {
 			isa = PBXGroup;
 			children = (
+				9C24AC3C2383E758005EBF95 /* ToolBox */,
+				9C24AC312383D8F4005EBF95 /* Models */,
+				9C24AC2C2383D4E7005EBF95 /* GlobalSingle */,
+				9C24AC1723838E42005EBF95 /* Extensions */,
+				9C24AC1023838417005EBF95 /* Infrastructure */,
 				9CDD2739238283D8006A9B97 /* Controllers */,
 				9CDD27212382801D006A9B97 /* AppDelegate.swift */,
 				9CDD274323829363006A9B97 /* RootViewController.swift */,
@@ -68,6 +205,7 @@
 		9CDD2739238283D8006A9B97 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9CDD27452382AD4E006A9B97 /* Login */,
 				9CDD273E23828639006A9B97 /* OpenDoor */,
 				9CDD273B23828599006A9B97 /* Lock */,
 				9CDD273A238283EA006A9B97 /* My */,
@@ -78,6 +216,8 @@
 		9CDD273A238283EA006A9B97 /* My */ = {
 			isa = PBXGroup;
 			children = (
+				9C24AC452383EBB1005EBF95 /* MyViewController.swift */,
+				9C24AC432383EB96005EBF95 /* My.storyboard */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -85,6 +225,8 @@
 		9CDD273B23828599006A9B97 /* Lock */ = {
 			isa = PBXGroup;
 			children = (
+				9C24AC472383EBE5005EBF95 /* HomeViewController.swift */,
+				9C24AC412383EB88005EBF95 /* Home.storyboard */,
 			);
 			path = Lock;
 			sourceTree = "<group>";
@@ -92,8 +234,19 @@
 		9CDD273E23828639006A9B97 /* OpenDoor */ = {
 			isa = PBXGroup;
 			children = (
+				9C24AC3D2383EB55005EBF95 /* OpenDoorViewController.swift */,
+				9C24AC3E2383EB55005EBF95 /* OpenDoorViewController.xib */,
 			);
 			path = OpenDoor;
+			sourceTree = "<group>";
+		};
+		9CDD27452382AD4E006A9B97 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9C24AC222383C206005EBF95 /* LoginViewController.swift */,
+				9C24AC202383C1C6005EBF95 /* Login.storyboard */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -103,9 +256,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9CDD27322382801E006A9B97 /* Build configuration list for PBXNativeTarget "LightSmartLock" */;
 			buildPhases = (
+				2C563FE540223424BF222EE8 /* [CP] Check Pods Manifest.lock */,
 				9CDD271A2382801D006A9B97 /* Sources */,
 				9CDD271B2382801D006A9B97 /* Frameworks */,
 				9CDD271C2382801D006A9B97 /* Resources */,
+				1CF9CF37DF08EFBB844E8A99 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -154,21 +309,90 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C24AC402383EB55005EBF95 /* OpenDoorViewController.xib in Resources */,
+				9C24AC212383C1C6005EBF95 /* Login.storyboard in Resources */,
 				9CDD272E2382801E006A9B97 /* LaunchScreen.storyboard in Resources */,
+				9C24AC422383EB88005EBF95 /* Home.storyboard in Resources */,
 				9CDD272B2382801E006A9B97 /* Assets.xcassets in Resources */,
 				9CDD27292382801D006A9B97 /* Main.storyboard in Resources */,
+				9C24AC442383EB96005EBF95 /* My.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1CF9CF37DF08EFBB844E8A99 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2C563FE540223424BF222EE8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LightSmartLock-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9CDD271A2382801D006A9B97 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C24AC232383C206005EBF95 /* LoginViewController.swift in Sources */,
+				9C24AC272383CB78005EBF95 /* ObjectAssociation.swift in Sources */,
+				9C24AC1B23839D75005EBF95 /* Swizzling+UIViewController.swift in Sources */,
+				9C24AC2B2383CD94005EBF95 /* StaticConst.swift in Sources */,
+				9C24AC1D23839EB9005EBF95 /* UIImage+Extension.swift in Sources */,
+				9C24AC3B2383E736005EBF95 /* ViewLoader.swift in Sources */,
+				9C24AC482383EBE5005EBF95 /* HomeViewController.swift in Sources */,
+				9C24AC462383EBB1005EBF95 /* MyViewController.swift in Sources */,
+				9C24AC332383D91B005EBF95 /* AccessTokenModel.swift in Sources */,
+				9C24AC302383D89A005EBF95 /* LocalArchiver.swift in Sources */,
 				9CDD274423829363006A9B97 /* RootViewController.swift in Sources */,
+				9C24AC4C2383F639005EBF95 /* CustomizedOpenDoorItem.swift in Sources */,
+				9C24AC3F2383EB55005EBF95 /* OpenDoorViewController.swift in Sources */,
+				9C24AC372383DE6E005EBF95 /* SceneModels.swift in Sources */,
+				9C24AC352383DCB0005EBF95 /* UserModel.swift in Sources */,
+				9C24AC1923838E56005EBF95 /* UIFont+extension.swift in Sources */,
 				9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */,
+				9C24AC1623838CD1005EBF95 /* NavigationSettingStyle.swift in Sources */,
+				9C24AC1423838C80005EBF95 /* BaseNavigationController.swift in Sources */,
+				9C24AC292383CB92005EBF95 /* UITextField+Extension.swift in Sources */,
+				9C24AC392383E00C005EBF95 /* LockModels.swift in Sources */,
+				9C24AC252383C9CB005EBF95 /* UIView+Extension.swift in Sources */,
+				9C24AC2E2383D5D9005EBF95 /* LSLUser.swift in Sources */,
+				9C24AC1F2383A2C7005EBF95 /* ColorClassification.swift in Sources */,
+				9C24AC4A2383F344005EBF95 /* CustomizedTabbarItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +534,7 @@
 		};
 		9CDD27332382801E006A9B97 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56B15D3085FA9EFD559AB2C2 /* Pods-LightSmartLock.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -329,6 +554,7 @@
 		};
 		9CDD27342382801E006A9B97 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CC741DB4C59065DD926D509 /* Pods-LightSmartLock.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,9 +15,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        setupKeyborad()
         return true
     }
 
 }
 
+extension AppDelegate {
+    
+    static func changeStatusBarStyle(_ style: UIStatusBarStyle) {
+        NotificationCenter.default.post(name: .statuBarDidChange, object: style)
+    }
+}
+
+extension AppDelegate {
+    
+    func setupKeyborad() {
+        IQKeyboardManager.shared().isEnabled = true
+        IQKeyboardManager.shared().shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared().shouldShowToolbarPlaceholder = false
+        IQKeyboardManager.shared().isEnableAutoToolbar = false
+    }
+}
