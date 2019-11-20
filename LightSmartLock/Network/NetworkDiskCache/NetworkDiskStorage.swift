@@ -38,7 +38,7 @@ final class NetworkDiskStorage {
     
     private func removeExpiredValues() {
         if !autoCleanTrash { return }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
             DispatchQueue.global(qos: .background).async {[weak self] in
                 self?.db.deleteExpiredData()
             }
