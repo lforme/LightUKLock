@@ -37,6 +37,7 @@ target 'LightSmartLock' do
   pod 'PKHUD'
   pod 'ESTabBarController-swift'
 
- 
+  # 动画
+  pod 'lottie-ios'
 
 end

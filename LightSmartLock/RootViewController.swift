@@ -33,9 +33,9 @@ class RootViewController: UIViewController {
         super.viewDidLoad()
         observeStatusBarChanged()
         observerLoginStatus()
-        //        checkLoginStatus()
+        checkLoginStatus()
         
-        showHomeTabbar()
+//        showHomeTabbar()
     }
     
     func checkLoginStatus() {
@@ -75,9 +75,10 @@ class RootViewController: UIViewController {
         let open = UIViewController()
         let my: MyViewController = ViewLoader.Storyboard.controller(from: "My")
         
-        home.tabBarItem = ESTabBarItem(CustomizedTabbarItem(), title: "门锁助手", image: UIImage(named: "tabbar_home_select"), selectedImage: UIImage(named: "tabbar_home_select"), tag: 0)
-        open.tabBarItem = ESTabBarItem(CustomizedOpenDoorItem(), title: nil, image: UIImage(named: "tabbar_home_select"), selectedImage: UIImage(named: "tabbar_home_select"), tag: 1)
-        my.tabBarItem = ESTabBarItem(CustomizedTabbarItem(), title: "个人中心", image: UIImage(named: "tabbar_my_normal"), selectedImage: UIImage(named: "tabbar_my_normal"), tag: 2)
+        home.tabBarItem = ESTabBarItem(CustomizedTabbarItem(), title: "门锁助手", image: UIImage(named: "tabbar_home"), selectedImage: UIImage(named: "tabbar_home"), tag: 0)
+        open.tabBarItem = ESTabBarItem(CustomizedOpenDoorItem(), title: nil, image: UIImage(named: "tabbar_open_door"), selectedImage: UIImage(named: "tabbar_open_door"), tag: 1)
+        my.tabBarItem = ESTabBarItem(CustomizedTabbarItem(), title: "个人中心", image: UIImage(named: "tabbar_my"), selectedImage: UIImage(named: "tabbar_my"), tag: 2)
+       
         
         let vcs = [home, open, my].map { BaseNavigationController(rootViewController: $0) }
         homeTabBarVC?.viewControllers = vcs

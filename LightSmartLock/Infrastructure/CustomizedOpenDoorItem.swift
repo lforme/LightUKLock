@@ -14,9 +14,9 @@ class CustomizedOpenDoorItem: ESTabBarItemContentView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.imageView.contentMode = .scaleAspectFit
+        self.imageView.contentMode = .scaleToFill
         self.imageView.backgroundColor = ColorClassification.viewBackground.value
-        self.insets = UIEdgeInsets.init(top: -32, left: 0, bottom: 0, right: 0)
+        self.insets = UIEdgeInsets(top: -40, left: 0, bottom: 0, right: 0)
         let transform = CGAffineTransform.identity
         self.imageView.transform = transform
         self.superview?.bringSubviewToFront(self)

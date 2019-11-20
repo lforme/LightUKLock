@@ -24,10 +24,10 @@ class CustomizedTabbarItem: ESTabBarItemContentView {
     }
     
     private func commonInit() {
-        textColor = ColorClassification.textOpaque78.value
-        highlightTextColor = ColorClassification.textPrimary.value.withAlphaComponent(0.6)
-        iconColor = ColorClassification.textOpaque78.value
-        highlightIconColor = ColorClassification.textOpaque78.value.withAlphaComponent(0.6)
+        textColor = ColorClassification.textDescription.value
+        highlightTextColor = ColorClassification.primary.value
+        iconColor = ColorClassification.textDescription.value
+        highlightIconColor = ColorClassification.primary.value
         imageView.contentMode = .scaleAspectFit
     }
     

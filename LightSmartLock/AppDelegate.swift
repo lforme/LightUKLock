@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManager
+import PKHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         setupKeyborad()
+        setupHUD()
         return true
     }
 
@@ -36,5 +38,10 @@ extension AppDelegate {
         IQKeyboardManager.shared().shouldResignOnTouchOutside = true
         IQKeyboardManager.shared().shouldShowToolbarPlaceholder = false
         IQKeyboardManager.shared().isEnableAutoToolbar = false
+    }
+    
+    func setupHUD() {
+        HUD.dimsBackground = false
+        HUD.allowsInteraction = true
     }
 }

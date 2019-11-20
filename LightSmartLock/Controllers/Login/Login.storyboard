@@ -113,7 +113,7 @@
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGZ-jd-JLp">
                                                     <rect key="frame" x="16" y="144" width="382" height="56"/>
-                                                    <color key="backgroundColor" red="0.3895500898" green="0.5771039724" blue="0.89023464919999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="backgroundColor" red="1" green="0.67843137254901964" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="56" id="G7x-wb-VLw"/>
                                                     </constraints>
@@ -126,14 +126,14 @@
                                                     <rect key="frame" x="16" y="216" width="30" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" title="注册">
-                                                        <color key="titleColor" red="0.3895500898" green="0.5771039724" blue="0.89023464919999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="titleColor" red="1" green="0.67843137254901964" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3AD-nv-tRd">
                                                     <rect key="frame" x="340" y="216" width="58" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" title="忘记密码">
-                                                        <color key="titleColor" red="0.3895500898" green="0.5771039724" blue="0.89023464919999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="titleColor" red="1" green="0.67843137254901964" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </state>
                                                 </button>
                                             </subviews>

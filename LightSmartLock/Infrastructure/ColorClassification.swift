@@ -173,14 +173,14 @@ enum ColorClassification {
             if #available(iOS 13.0, *) {
                 let color = UIColor { (collection) -> UIColor in
                     if collection.userInterfaceStyle == .dark {
-                        return #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+                        return #colorLiteral(red: 0.9982913136, green: 0.6771650314, blue: 0.05553042889, alpha: 1)
                     } else {
-                        return #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+                        return #colorLiteral(red: 0.9982913136, green: 0.6771650314, blue: 0.05553042889, alpha: 1)
                     }
                 }
                 return color
             } else {
-                return #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+                return #colorLiteral(red: 0.9982913136, green: 0.6771650314, blue: 0.05553042889, alpha: 1)
             }
         }
     }
