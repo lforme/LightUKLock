@@ -130,12 +130,12 @@ enum ColorClassification {
                     if collection.userInterfaceStyle == .dark {
                         return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.6)
                     } else {
-                        return #colorLiteral(red: 0.6509803922, green: 0.6823529412, blue: 0.737254902, alpha: 0.6)
+                        return #colorLiteral(red: 0.6509803922, green: 0.6823529412, blue: 0.737254902, alpha: 0.78)
                     }
                 }
                 return color
             } else {
-                return #colorLiteral(red: 0.6509803922, green: 0.6823529412, blue: 0.737254902, alpha: 0.6)
+                return #colorLiteral(red: 0.6509803922, green: 0.6823529412, blue: 0.737254902, alpha: 0.78)
             }
             
         case .textPlaceholder:
@@ -144,12 +144,12 @@ enum ColorClassification {
                     if collection.userInterfaceStyle == .dark {
                         return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.68)
                     } else {
-                        return #colorLiteral(red: 0.6509803922, green: 0.6823529412, blue: 0.737254902, alpha: 0.4)
+                        return #colorLiteral(red: 0.6509803922, green: 0.6823529412, blue: 0.737254902, alpha: 0.68)
                     }
                 }
                 return color
             } else {
-                return #colorLiteral(red: 0.6509803922, green: 0.6823529412, blue: 0.737254902, alpha: 0.4)
+                return #colorLiteral(red: 0.6509803922, green: 0.6823529412, blue: 0.737254902, alpha: 0.68)
             }
             
         case .lightBackground:

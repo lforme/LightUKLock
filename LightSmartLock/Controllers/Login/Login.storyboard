@@ -172,6 +172,8 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="cell1" destination="axg-P8-kc4" id="BzR-Jn-6t1"/>
+                        <outlet property="cell2" destination="BRv-Pt-tNt" id="G8R-r1-djX"/>
                         <outlet property="companyLabel" destination="sZS-Li-gFf" id="O03-5n-Yes"/>
                         <outlet property="eyeButton" destination="S5a-EQ-XeR" id="xYT-bv-plt"/>
                         <outlet property="loginButton" destination="EGZ-jd-JLp" id="B0D-jq-nZU"/>

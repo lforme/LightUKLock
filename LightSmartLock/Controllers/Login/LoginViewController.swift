@@ -25,6 +25,8 @@ class LoginViewController: UITableViewController, StoryboardView {
     @IBOutlet weak var pwdTextField: UITextField!
     @IBOutlet weak var eyeButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var cell1: UITableViewCell!
+    @IBOutlet weak var cell2: UITableViewCell!
     
     var disposeBag: DisposeBag = DisposeBag()
     
@@ -105,10 +107,15 @@ class LoginViewController: UITableViewController, StoryboardView {
         eyeButton.setImage(UIImage(named: "logig_eys_open"), for: .selected)
         eyeButton.setImage(UIImage(named: "login_eys_close"), for: .normal)
         
-        pwdTextField.placeholderColor = ColorClassification.textPlaceholder.value
-        phoneTextField.placeholderColor = ColorClassification.textPlaceholder.value
-        phoneTextField.textColor = ColorClassification.textOpaque78.value
-        pwdTextField.textColor = ColorClassification.textOpaque78.value
+        pwdTextField.placeholderColor = #colorLiteral(red: 0.6509803922, green: 0.6823529412, blue: 0.737254902, alpha: 0.68)
+        phoneTextField.placeholderColor = #colorLiteral(red: 0.6509803922, green: 0.6823529412, blue: 0.737254902, alpha: 0.68)
+        
+        phoneTextField.textColor = #colorLiteral(red: 0.03921568627, green: 0.1215686275, blue: 0.2666666667, alpha: 0.78)
+        pwdTextField.textColor = #colorLiteral(red: 0.03921568627, green: 0.1215686275, blue: 0.2666666667, alpha: 0.78)
+        
+        cell1.backgroundColor = ColorClassification.viewBackground.value
+        cell2.backgroundColor = ColorClassification.viewBackground.value
+
     }
     
 }
