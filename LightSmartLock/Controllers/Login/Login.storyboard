@@ -10,7 +10,7 @@
         <!--Login View Controller-->
         <scene sceneID="D3q-My-6mI">
             <objects>
-                <tableViewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IUv-HC-SZi" customClass="LoginViewController" customModule="LightSmartLock" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IUv-HC-SZi" customClass="LoginViewController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IOn-Yo-e2B">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,12 +86,16 @@
                                                                     <rect key="frame" x="16" y="19.5" width="12" height="17"/>
                                                                 </imageView>
                                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zto-RN-7kP">
-                                                                    <rect key="frame" x="36" y="0.0" width="266" height="56"/>
+                                                                    <rect key="frame" x="36" y="0.0" width="290" height="56"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5a-EQ-XeR">
-                                                                    <rect key="frame" x="344" y="17" width="22" height="22"/>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5a-EQ-XeR">
+                                                                    <rect key="frame" x="334" y="12" width="32" height="32"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="32" id="I2s-GP-T7T"/>
+                                                                        <constraint firstAttribute="height" constant="32" id="tn3-Ob-eYp"/>
+                                                                    </constraints>
                                                                     <state key="normal" image="login_eys_close"/>
                                                                 </button>
                                                             </subviews>
@@ -102,7 +106,7 @@
                                                                 <constraint firstItem="0bK-hZ-gZi" firstAttribute="centerY" secondItem="H2t-b5-nVB" secondAttribute="centerY" id="Ek2-Zf-1WP"/>
                                                                 <constraint firstItem="zto-RN-7kP" firstAttribute="centerY" secondItem="H2t-b5-nVB" secondAttribute="centerY" id="K5e-fU-kUx"/>
                                                                 <constraint firstAttribute="trailing" secondItem="S5a-EQ-XeR" secondAttribute="trailing" constant="16" id="Oui-vy-2rT"/>
-                                                                <constraint firstAttribute="trailing" secondItem="zto-RN-7kP" secondAttribute="trailing" constant="80" id="cQo-rg-CVl"/>
+                                                                <constraint firstItem="S5a-EQ-XeR" firstAttribute="leading" secondItem="zto-RN-7kP" secondAttribute="trailing" constant="8" id="T2A-m5-R3C"/>
                                                                 <constraint firstAttribute="height" constant="56" id="gca-hp-8Hj"/>
                                                                 <constraint firstItem="zto-RN-7kP" firstAttribute="leading" secondItem="0bK-hZ-gZi" secondAttribute="trailing" constant="8" id="nTQ-wh-ShC"/>
                                                                 <constraint firstItem="zto-RN-7kP" firstAttribute="top" secondItem="H2t-b5-nVB" secondAttribute="top" id="ngU-Sf-EWC"/>
@@ -122,18 +126,26 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gsm-1l-KFA">
-                                                    <rect key="frame" x="16" y="216" width="30" height="29"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gsm-1l-KFA">
+                                                    <rect key="frame" x="16" y="216" width="60" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="CZ1-TO-yGM"/>
+                                                        <constraint firstAttribute="height" constant="32" id="cwX-BA-c2Z"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
                                                     <state key="normal" title="注册">
-                                                        <color key="titleColor" red="1" green="0.67843137254901964" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="titleColor" red="0.97154873610000003" green="0.70268177990000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3AD-nv-tRd">
-                                                    <rect key="frame" x="340" y="216" width="58" height="29"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3AD-nv-tRd">
+                                                    <rect key="frame" x="338" y="216" width="60" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="NJx-eK-vXy"/>
+                                                        <constraint firstAttribute="width" constant="60" id="sAH-fK-bAs"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
                                                     <state key="normal" title="忘记密码">
-                                                        <color key="titleColor" red="1" green="0.67843137254901964" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="titleColor" red="0.97154873610000003" green="0.70268177990000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                 </button>
                                             </subviews>

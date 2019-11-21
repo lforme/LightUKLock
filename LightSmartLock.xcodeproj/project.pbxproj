@@ -35,6 +35,11 @@
 		9C24AC482383EBE5005EBF95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC472383EBE5005EBF95 /* HomeViewController.swift */; };
 		9C24AC4A2383F344005EBF95 /* CustomizedTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC492383F344005EBF95 /* CustomizedTabbarItem.swift */; };
 		9C24AC4C2383F639005EBF95 /* CustomizedOpenDoorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC4B2383F639005EBF95 /* CustomizedOpenDoorItem.swift */; };
+		9C429767238637E3004CB999 /* LoginViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C429766238637E3004CB999 /* LoginViewReactor.swift */; };
+		9C42976B2386389B004CB999 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42976A2386389B004CB999 /* LoginService.swift */; };
+		9C42976D23866026004CB999 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42976C23866026004CB999 /* UIButton+Extension.swift */; };
+		9C42976F23866088004CB999 /* PKHud+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42976E23866088004CB999 /* PKHud+Rx.swift */; };
+		9C42977223867622004CB999 /* MessageNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42977123867622004CB999 /* MessageNotificationHelper.swift */; };
 		9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD27212382801D006A9B97 /* AppDelegate.swift */; };
 		9CDD27292382801D006A9B97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD27272382801D006A9B97 /* Main.storyboard */; };
 		9CDD272B2382801E006A9B97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD272A2382801E006A9B97 /* Assets.xcassets */; };
@@ -85,6 +90,11 @@
 		9C24AC472383EBE5005EBF95 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9C24AC492383F344005EBF95 /* CustomizedTabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedTabbarItem.swift; sourceTree = "<group>"; };
 		9C24AC4B2383F639005EBF95 /* CustomizedOpenDoorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedOpenDoorItem.swift; sourceTree = "<group>"; };
+		9C429766238637E3004CB999 /* LoginViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewReactor.swift; sourceTree = "<group>"; };
+		9C42976A2386389B004CB999 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		9C42976C23866026004CB999 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		9C42976E23866088004CB999 /* PKHud+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PKHud+Rx.swift"; sourceTree = "<group>"; };
+		9C42977123867622004CB999 /* MessageNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageNotificationHelper.swift; sourceTree = "<group>"; };
 		9CDD271E2382801D006A9B97 /* 门锁助手-极速版.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "门锁助手-极速版.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CDD27212382801D006A9B97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CDD27282382801D006A9B97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -157,6 +167,8 @@
 				9C24AC1C23839EB9005EBF95 /* UIImage+Extension.swift */,
 				9C24AC282383CB92005EBF95 /* UITextField+Extension.swift */,
 				9C24AC1A23839D74005EBF95 /* Swizzling+UIViewController.swift */,
+				9C42976C23866026004CB999 /* UIButton+Extension.swift */,
+				9C42976E23866088004CB999 /* PKHud+Rx.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -185,8 +197,18 @@
 			children = (
 				9C24AC2F2383D89A005EBF95 /* LocalArchiver.swift */,
 				9C24AC3A2383E736005EBF95 /* ViewLoader.swift */,
+				9C42977123867622004CB999 /* MessageNotificationHelper.swift */,
 			);
 			path = ToolBox;
+			sourceTree = "<group>";
+		};
+		9C429763238635C1004CB999 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C429766238637E3004CB999 /* LoginViewReactor.swift */,
+				9C42976A2386389B004CB999 /* LoginService.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9CDD27152382801C006A9B97 = {
@@ -269,6 +291,7 @@
 		9CDD27452382AD4E006A9B97 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				9C429763238635C1004CB999 /* ViewModel */,
 				9C24AC222383C206005EBF95 /* LoginViewController.swift */,
 				9C24AC202383C1C6005EBF95 /* Login.storyboard */,
 			);
@@ -435,6 +458,7 @@
 				9C24AC272383CB78005EBF95 /* ObjectAssociation.swift in Sources */,
 				9C24AC1B23839D75005EBF95 /* Swizzling+UIViewController.swift in Sources */,
 				9C24AC2B2383CD94005EBF95 /* StaticConst.swift in Sources */,
+				9C42977223867622004CB999 /* MessageNotificationHelper.swift in Sources */,
 				9C24AC1D23839EB9005EBF95 /* UIImage+Extension.swift in Sources */,
 				9C24AC3B2383E736005EBF95 /* ViewLoader.swift in Sources */,
 				9CFDE21423853C170062522E /* NetworkMetaDb.swift in Sources */,
@@ -451,6 +475,8 @@
 				9CFDE21623853DE60062522E /* NetworkDiskStorage.swift in Sources */,
 				9C24AC3F2383EB55005EBF95 /* OpenDoorViewController.swift in Sources */,
 				9C24AC372383DE6E005EBF95 /* SceneModels.swift in Sources */,
+				9C429767238637E3004CB999 /* LoginViewReactor.swift in Sources */,
+				9C42976D23866026004CB999 /* UIButton+Extension.swift in Sources */,
 				9C24AC352383DCB0005EBF95 /* UserModel.swift in Sources */,
 				9C24AC1923838E56005EBF95 /* UIFont+extension.swift in Sources */,
 				9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */,
@@ -461,7 +487,9 @@
 				9C24AC392383E00C005EBF95 /* LockModels.swift in Sources */,
 				9C24AC252383C9CB005EBF95 /* UIView+Extension.swift in Sources */,
 				9C24AC2E2383D5D9005EBF95 /* LSLUser.swift in Sources */,
+				9C42976B2386389B004CB999 /* LoginService.swift in Sources */,
 				9C24AC1F2383A2C7005EBF95 /* ColorClassification.swift in Sources */,
+				9C42976F23866088004CB999 /* PKHud+Rx.swift in Sources */,
 				9C24AC4A2383F344005EBF95 /* CustomizedTabbarItem.swift in Sources */,
 				9CFDE2052385219F0062522E /* RxMoyaProvider.swift in Sources */,
 				9CFDE1FF23851E310062522E /* NetworkingEnvironment.swift in Sources */,

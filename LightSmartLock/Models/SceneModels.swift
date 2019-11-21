@@ -18,7 +18,7 @@ struct UserInSceneModel: HandyJSON {
     }
     
     var customerID: String!
-    var accountID: String!
+    var accountID: String?
     var sceneID: String!
     var customerNickName: String?
     var phone: String?

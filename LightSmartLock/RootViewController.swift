@@ -34,8 +34,8 @@ class RootViewController: UIViewController {
         observeStatusBarChanged()
         observerLoginStatus()
         checkLoginStatus()
-        
-//        showHomeTabbar()
+        // 测试
+//        showLoginVC()
     }
     
     func checkLoginStatus() {
@@ -53,7 +53,7 @@ class RootViewController: UIViewController {
         
         homeTabBarVC = ESTabBarController()
         homeTabBarVC?.title = "主页"
-        homeTabBarVC?.tabBar.shadowImage = UIImage.from(color: #colorLiteral(red: 0.8293034434, green: 0.8432188034, blue: 0.8690776229, alpha: 1))
+        homeTabBarVC?.tabBar.shadowImage = UIImage.from(color: #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1))
         homeTabBarVC?.tabBar.backgroundImage = UIImage.from(color: ColorClassification.viewBackground.value)
         
         homeTabBarVC?.shouldHijackHandler = { tabVC, vc, index in
