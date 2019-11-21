@@ -30,6 +30,8 @@ PODS:
   - PPBadgeViewSwift (3.1.0)
   - QuickLayout (3.0.0)
   - ReachabilitySwift (5.0.0)
+  - ReactorKit (1.2.1):
+    - RxSwift (>= 4.0.0)
   - Result (4.1.0)
   - RxCocoa (4.5.0):
     - RxSwift (>= 4.4.2, ~> 4.4)
@@ -66,6 +68,7 @@ DEPENDENCIES:
   - PKHUD
   - PPBadgeViewSwift
   - ReachabilitySwift
+  - ReactorKit
   - RxDataSources
   - SnapKit
   - SQLite.swift
@@ -96,6 +99,7 @@ SPEC REPOS:
     - PPBadgeViewSwift
     - QuickLayout
     - ReachabilitySwift
+    - ReactorKit
     - Result
     - RxCocoa
     - RxDataSources
@@ -128,6 +132,7 @@ SPEC CHECKSUMS:
   PPBadgeViewSwift: 18a219a9897f418342c22dd1a54f7b18ac56546b
   QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  ReactorKit: 8be57f0527ad1ac2963cd5c338274a46a01e57a3
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
@@ -140,6 +145,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 821b81f83594a736e831a018f2a2ce31822ddf0b
   "UITextView+Placeholder": c407b27599ea23cca425946fee3cf1db5d547008
 
-PODFILE CHECKSUM: e39518c15cb64a69d48951c31e7677b92d2b9431
+PODFILE CHECKSUM: 69197747e029b9217885352d4453c9d3bc92fdec
 
 COCOAPODS: 1.8.3

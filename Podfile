@@ -12,6 +12,9 @@ target 'LightSmartLock' do
   pod 'Moya/RxSwift'
   pod 'NSObject+Rx'
   
+  # 架构
+  pod 'ReactorKit'
+  
   # DB
   pod 'SQLite.swift'
 
