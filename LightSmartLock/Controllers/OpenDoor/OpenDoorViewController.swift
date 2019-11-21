@@ -45,6 +45,7 @@ class OpenDoorViewController: UIViewController {
         animation = Animation.named("bluetooth", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)
         animationView.loopMode = .loop
         animationView.animation = animation
+        animationView.animationSpeed = 1
         animationView.play()
     }
     
@@ -56,6 +57,7 @@ class OpenDoorViewController: UIViewController {
         animation = Animation.named("opendoor", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)
         animationView.loopMode = .playOnce
         animationView.animation = animation
+        animationView.animationSpeed = 2
         animationView.play {[weak self] (finish) in
             if finish {
                 self?.dismiss(animated: true, completion: nil)
