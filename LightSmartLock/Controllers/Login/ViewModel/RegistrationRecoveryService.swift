@@ -10,7 +10,6 @@ import Foundation
 import RxSwift
 
 
-
 final class RegisAndRecoveryValidationService {
     
     let minimumSMSCount = 6
@@ -55,7 +54,7 @@ final class RegisAndRecoveryValidationService {
         }
         
         if pwd.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) != nil {
-            return .just(.failed(error: AppError.reason("短信验证码只能输入数字")))
+            return .just(.failed(error: AppError.reason("密码只能输入数字")))
         }
         
         if pwd.count >= minimumPwdCount {

@@ -91,7 +91,7 @@ final class RegisViewReactor: Reactor {
                         return Mutation.setRegisterResult(true, nil)
                     }
                 } else {
-                    return .just(Mutation.setRegisterResult(false, AppError.reason("注册失败")))
+                    return .just(Mutation.setRegisterResult(false, AppError.reason("失败")))
                 }
             }.catchError { (error) -> Observable<Mutation> in
                 if let e = error as? AppError {
