@@ -22,8 +22,14 @@ final class NetworkDiskStorage {
         if documentsDirectory.last! != "/" {
             documentsDirectory.append("/")
         }
-        let _path = path ?? documentsDirectory
-        db = NetworkMetaDb(path: _path)
+        var p = documentsDirectory
+        
+        if let customPath = path {
+            p += "/"
+            p += customPath
+        }
+        
+        db = NetworkMetaDb(path: p)
         removeExpiredValues()
     }
     

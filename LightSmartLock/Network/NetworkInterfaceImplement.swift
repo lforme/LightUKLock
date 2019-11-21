@@ -59,7 +59,7 @@ extension AuthenticationInterface: TargetType {
         case .login(let phone, let password):
             return [
                 "Phone": phone,
-                "LoginPassword": password
+                "LoginPassword": password.md5()
             ]
             
         case .token:

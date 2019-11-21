@@ -34,7 +34,7 @@ final class RxMoyaProvider<Target>: MoyaProvider<Target> where Target: TargetTyp
     init(endpointClosure: @escaping EndpointClosure = MoyaProvider.defaultEndpointMapping,
          requestClosure: @escaping RequestClosure = MoyaProvider<Target>.defaultRequestMapping,
          stubClosure: @escaping StubClosure = MoyaProvider.neverStub,
-         plugins: [PluginType] = [NetworkLoggerPlugin(verbose: true, responseDataFormatter: { (data) -> (Data) in
+         plugins: [PluginType] = [LoadingPlugin(), NetworkLoggerPlugin(verbose: true, responseDataFormatter: { (data) -> (Data) in
         do {
             let dataAsJSON = try JSONSerialization.jsonObject(with: data)
             let prettyData =  try JSONSerialization.data(withJSONObject: dataAsJSON, options: .prettyPrinted)
@@ -43,14 +43,14 @@ final class RxMoyaProvider<Target>: MoyaProvider<Target> where Target: TargetTyp
             return data
         }
         
-    }), LoadingPlugin()],
+    })],
          stubScheduler: SchedulerType? = nil,
          trackInflights: Bool = false) {
         
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = Manager.defaultHTTPHeaders
-        configuration.timeoutIntervalForRequest = 20
-        configuration.timeoutIntervalForResource = 20
+        configuration.timeoutIntervalForRequest = 15
+        configuration.timeoutIntervalForResource = 15
         let manager = Manager(configuration: configuration)
         manager.startRequestsImmediately = false
         self.stubScheduler = stubScheduler
@@ -155,7 +155,7 @@ extension RxMoyaProvider {
         
         return _request(token).flatMap({ (response) -> Observable<Bool> in
             guard let json = try? response.mapJSON(failsOnEmptyData: true), let dict = json as? [String: Any] else {
-                throw AppError.reason(response.description)
+                return .error(AppError.reason(response.description))
             }
             if let code = dict["Code"] as? Int, code == 1 {
                 return .just(true)
@@ -170,7 +170,7 @@ extension RxMoyaProvider {
         if useCache {
             return useCacheWhenErrorOccurred(token).flatMap({ (response) -> Observable<Any> in
                 guard let json = try? response.mapJSON(failsOnEmptyData: true) else {
-                    throw AppError.reason(response.description)
+                    return .error(AppError.reason(response.description))
                 }
                 return Observable.just(json)
             })
@@ -178,7 +178,7 @@ extension RxMoyaProvider {
         
         return _request(token).flatMap({ (response) -> Observable<Any> in
             guard let json = try? response.mapJSON(failsOnEmptyData: true) else {
-                throw AppError.reason(response.description)
+                return .error(AppError.reason(response.description))
             }
             return Observable.just(json)
         })
@@ -191,14 +191,14 @@ extension RxMoyaProvider {
             return useCacheWhenErrorOccurred(token).flatMap({ (response) -> Observable<E> in
                 
                 guard let json = try? response.mapJSON() else {
-                    throw AppError.reason("服务器出错啦")
+                    return .error(AppError.reason("服务器出错啦"))
                 }
                 
                 guard let dic = json as? [String: Any], let status = dic["Code"] as? Int else {
-                    throw AppError.reason("服务器出错啦")
+                    return .error(AppError.reason("服务器出错啦"))
                 }
                 
-                if status == 200  {
+                if status == 1  {
                     let value = dic["Data"] as? [String: Any]
                     if let object = E.deserialize(from: value) {
                         return Observable.just(object)
@@ -215,14 +215,14 @@ extension RxMoyaProvider {
         return _request(token).flatMap({ (response) -> Observable<E> in
             
             guard let json = try? response.mapJSON() else {
-                throw AppError.reason("服务器出错啦")
+                return .error(AppError.reason("服务器出错啦"))
             }
             
             guard let dic = json as? [String: Any], let status = dic["Code"] as? Int else {
-                throw AppError.reason("服务器出错啦")
+                return .error(AppError.reason("服务器出错啦"))
             }
             
-            if status == 200  {
+            if status == 1 {
                 let value = dic["Data"] as? [String: Any]
                 if let object = E.deserialize(from: value) {
                     return Observable.just(object)
@@ -243,11 +243,11 @@ extension RxMoyaProvider {
             return useCacheWhenErrorOccurred(token).flatMap({ (response) -> Observable<[E?]> in
                 
                 guard let json = try? response.mapJSON() else {
-                    throw AppError.reason("服务器出错啦")
+                    return .error(AppError.reason("服务器出错啦"))
                 }
                 
                 guard let dic = json as? [String: Any], let code = dic["Code"] as? Int else {
-                    throw AppError.reason("服务器出错啦")
+                    return .error(AppError.reason("服务器出错啦"))
                 }
                 
                 if code == 1 {
@@ -258,7 +258,7 @@ extension RxMoyaProvider {
                         
                         return Observable.just(objects)
                     } else {
-                        throw AppError.reason("服务器出错啦")
+                        return .error(AppError.reason("服务器出错啦"))
                     }
                 } else {
                     let e = dic["Msg"] as? String
@@ -270,11 +270,11 @@ extension RxMoyaProvider {
         return _request(token).flatMap({ (response) -> Observable<[E?]> in
             
             guard let json = try? response.mapJSON() else {
-                throw AppError.reason("服务器出错啦")
+                return .error(AppError.reason("服务器出错啦"))
             }
             
             guard let dic = json as? [String: Any], let code = dic["Code"] as? Int else {
-                throw AppError.reason("服务器出错啦")
+                return .error(AppError.reason("服务器出错啦"))
             }
             
             if code == 1 {
@@ -285,7 +285,7 @@ extension RxMoyaProvider {
                     
                     return Observable.just(objects)
                 } else {
-                    throw AppError.reason("服务器出错啦")
+                    return .error(AppError.reason("服务器出错啦"))
                 }
             } else {
                 let e = dic["Msg"] as? String

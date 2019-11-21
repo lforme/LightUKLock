@@ -10,6 +10,7 @@ import Foundation
 import Moya
 import PKHUD
 import Lottie
+import Result
 
 final class LoadingPlugin: PluginType {
     
@@ -33,18 +34,23 @@ final class LoadingPlugin: PluginType {
     }
     
     func willSend(_ request: RequestType, target: TargetType) {
-        
         DispatchQueue.main.async {[weak self] in
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
             guard let this = self else { return }
+            this.animationView.alpha = 1
             HUD.show(.customView(view: this.view))
         }
     }
     
     func didReceive(_ result: Result<Moya.Response, MoyaError>, target: TargetType) {
-        DispatchQueue.main.async {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            HUD.hide(afterDelay: 0.5)
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.animationView.alpha = 0
+        }) { (finish) in
+            if finish {
+                HUD.hide(animated: true)
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
         }
     }
     
