@@ -11,7 +11,7 @@ import RxSwift
 
 enum LoginValidationResult {
     case empty
-    case success(message: String?)
+    case success
     case failed(error: AppError?)
     
     var isValid: Bool {
@@ -24,10 +24,9 @@ enum LoginValidationResult {
     }
 }
 
-class LoginValidationService {
+final class LoginValidationService {
     
     let minimumPhoneCount = 11
-    
     
     func validatePhone(_ phone: String, password: String) -> Observable<LoginValidationResult> {
         if phone.isEmpty || password.isEmpty {
@@ -42,12 +41,8 @@ class LoginValidationService {
             return .just(.failed(error: AppError.reason("手机号码必须是11位")))
         }
         
-        if password.isEmpty {
-            return .just(.failed(error: AppError.reason("请输入密码")))
-        }
-        
-        return .just(.success(message: nil))
+        return .just(.success)
     }
     
-    
+
 }
