@@ -11,7 +11,7 @@ import ReactorKit
 import PKHUD
 import RxCocoa
 import RxSwift
-import Moya
+
 
 class LoginViewController: UITableViewController, StoryboardView {
     
@@ -29,6 +29,10 @@ class LoginViewController: UITableViewController, StoryboardView {
     @IBOutlet weak var cell2: UITableViewCell!
     
     var disposeBag: DisposeBag = DisposeBag()
+    
+    deinit {
+        print("\(self) deinit")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +91,7 @@ class LoginViewController: UITableViewController, StoryboardView {
             }
             if success {
                 NotificationCenter.default
-                .post(name: .loginStateDidChange, object: true)
+                    .post(name: .loginStateDidChange, object: true)
             }
             
         }).disposed(by: disposeBag)
@@ -115,7 +119,25 @@ class LoginViewController: UITableViewController, StoryboardView {
         
         cell1.backgroundColor = ColorClassification.viewBackground.value
         cell2.backgroundColor = ColorClassification.viewBackground.value
-
+        
+    }
+    
+    @IBAction func registerTap(_ sender: UIButton) {
+        let registerVC: RegisterForgetController = ViewLoader.Storyboard.controller(from: "Login")
+        registerVC.styleType = .register
+        registerVC.operateSuccessPhoneCall = {[weak self] (phoneNum) in
+            self?.phoneTextField.text = phoneNum
+        }
+        self.navigationController?.pushViewController(registerVC, animated: true)
+    }
+    
+    @IBAction func forgetPwdTap(_ sender: UIButton) {
+        let forgetPwdVC: RegisterForgetController = ViewLoader.Storyboard.controller(from: "Login")
+        forgetPwdVC.styleType = .forget
+        forgetPwdVC.operateSuccessPhoneCall = {[weak self] (phoneNum) in
+            self?.phoneTextField.text = phoneNum
+        }
+        self.navigationController?.pushViewController(forgetPwdVC, animated: true)
     }
     
 }

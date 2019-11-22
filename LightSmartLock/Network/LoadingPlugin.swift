@@ -44,11 +44,11 @@ final class LoadingPlugin: PluginType {
     
     func didReceive(_ result: Result<Moya.Response, MoyaError>, target: TargetType) {
         
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 2, animations: {
             self.animationView.alpha = 0
+            HUD.hide(animated: true)
         }) { (finish) in
             if finish {
-                HUD.hide(animated: true)
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
         }

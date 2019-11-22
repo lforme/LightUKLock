@@ -10,6 +10,8 @@ import UIKit
 
 class BaseNavigationController: UINavigationController {
     
+    var clearBackTitle: Bool = true
+    
     @available(iOS 13.0, *)
     private lazy var navBarAppearance: UINavigationBarAppearance = {
         let appearance = UINavigationBarAppearance()
@@ -36,7 +38,7 @@ class BaseNavigationController: UINavigationController {
     }
     
     override open func pushViewController(_ viewController: UIViewController, animated: Bool) {
-        
+        controlClearBackTitle()
         if self.viewControllers.count == 1 {
             viewController.hidesBottomBarWhenPushed = true
         }
@@ -49,7 +51,7 @@ class BaseNavigationController: UINavigationController {
     }
     
     override open func show(_ vc: UIViewController, sender: Any?) {
-        
+        controlClearBackTitle()
         if let style = vc as? NavigationSettingStyle {
             self.setNavigationStyle(style)
         }
@@ -127,6 +129,13 @@ extension BaseNavigationController {
                     [.foregroundColor: itemColor]
                 navigationBar.largeTitleTextAttributes = [.foregroundColor: itemColor, .font: style.titleFont]
             }
+        }
+    }
+    
+   fileprivate func controlClearBackTitle() {
+        if clearBackTitle {
+            topViewController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+            topViewController?.navigationItem.backBarButtonItem?.tintColor = UIColor(contrastingBlackOrWhiteColorOn: self.navigationBar.backgroundColor, isFlat: true)
         }
     }
 }

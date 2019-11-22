@@ -41,7 +41,9 @@
 		9C42976F23866088004CB999 /* PKHud+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42976E23866088004CB999 /* PKHud+Rx.swift */; };
 		9C42977223867622004CB999 /* MessageNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42977123867622004CB999 /* MessageNotificationHelper.swift */; };
 		9C4297782386A64C004CB999 /* RegistrationRecoveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4297772386A64C004CB999 /* RegistrationRecoveryService.swift */; };
-		9C42977A2386A80F004CB999 /* RegisViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4297792386A80F004CB999 /* RegisViewReactor.swift */; };
+		9C752FCD238774A9000FEA73 /* RegisterForgetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C752FCC238774A9000FEA73 /* RegisterForgetController.swift */; };
+		9C752FD0238794BE000FEA73 /* CountdownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C752FCF238794BE000FEA73 /* CountdownButton.swift */; };
+		9C752FD223879546000FEA73 /* RegisPwdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C752FD123879546000FEA73 /* RegisPwdViewModel.swift */; };
 		9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD27212382801D006A9B97 /* AppDelegate.swift */; };
 		9CDD27292382801D006A9B97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD27272382801D006A9B97 /* Main.storyboard */; };
 		9CDD272B2382801E006A9B97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD272A2382801E006A9B97 /* Assets.xcassets */; };
@@ -98,7 +100,9 @@
 		9C42976E23866088004CB999 /* PKHud+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PKHud+Rx.swift"; sourceTree = "<group>"; };
 		9C42977123867622004CB999 /* MessageNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageNotificationHelper.swift; sourceTree = "<group>"; };
 		9C4297772386A64C004CB999 /* RegistrationRecoveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRecoveryService.swift; sourceTree = "<group>"; };
-		9C4297792386A80F004CB999 /* RegisViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisViewReactor.swift; sourceTree = "<group>"; };
+		9C752FCC238774A9000FEA73 /* RegisterForgetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterForgetController.swift; sourceTree = "<group>"; };
+		9C752FCF238794BE000FEA73 /* CountdownButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownButton.swift; sourceTree = "<group>"; };
+		9C752FD123879546000FEA73 /* RegisPwdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisPwdViewModel.swift; sourceTree = "<group>"; };
 		9CDD271E2382801D006A9B97 /* 门锁助手-极速版.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "门锁助手-极速版.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CDD27212382801D006A9B97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CDD27282382801D006A9B97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -212,9 +216,17 @@
 				9C429766238637E3004CB999 /* LoginViewReactor.swift */,
 				9C42976A2386389B004CB999 /* LoginService.swift */,
 				9C4297772386A64C004CB999 /* RegistrationRecoveryService.swift */,
-				9C4297792386A80F004CB999 /* RegisViewReactor.swift */,
+				9C752FD123879546000FEA73 /* RegisPwdViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C752FCE238794AB000FEA73 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9C752FCF238794BE000FEA73 /* CountdownButton.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		9CDD27152382801C006A9B97 = {
@@ -297,8 +309,10 @@
 		9CDD27452382AD4E006A9B97 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				9C752FCE238794AB000FEA73 /* View */,
 				9C429763238635C1004CB999 /* ViewModel */,
 				9C24AC222383C206005EBF95 /* LoginViewController.swift */,
+				9C752FCC238774A9000FEA73 /* RegisterForgetController.swift */,
 				9C24AC202383C1C6005EBF95 /* Login.storyboard */,
 			);
 			path = Login;
@@ -465,6 +479,7 @@
 				9C24AC1B23839D75005EBF95 /* Swizzling+UIViewController.swift in Sources */,
 				9C24AC2B2383CD94005EBF95 /* StaticConst.swift in Sources */,
 				9C42977223867622004CB999 /* MessageNotificationHelper.swift in Sources */,
+				9C752FCD238774A9000FEA73 /* RegisterForgetController.swift in Sources */,
 				9C24AC1D23839EB9005EBF95 /* UIImage+Extension.swift in Sources */,
 				9C24AC3B2383E736005EBF95 /* ViewLoader.swift in Sources */,
 				9CFDE21423853C170062522E /* NetworkMetaDb.swift in Sources */,
@@ -475,13 +490,13 @@
 				9C24AC332383D91B005EBF95 /* AccessTokenModel.swift in Sources */,
 				9C4297782386A64C004CB999 /* RegistrationRecoveryService.swift in Sources */,
 				9C24AC302383D89A005EBF95 /* LocalArchiver.swift in Sources */,
-				9C42977A2386A80F004CB999 /* RegisViewReactor.swift in Sources */,
 				9CDD274423829363006A9B97 /* RootViewController.swift in Sources */,
 				9CFDE207238523A80062522E /* LoadingPlugin.swift in Sources */,
 				9C24AC4C2383F639005EBF95 /* CustomizedOpenDoorItem.swift in Sources */,
 				9CFDE211238537A30062522E /* NetworkAPI.swift in Sources */,
 				9CFDE21623853DE60062522E /* NetworkDiskStorage.swift in Sources */,
 				9C24AC3F2383EB55005EBF95 /* OpenDoorViewController.swift in Sources */,
+				9C752FD0238794BE000FEA73 /* CountdownButton.swift in Sources */,
 				9C24AC372383DE6E005EBF95 /* SceneModels.swift in Sources */,
 				9C429767238637E3004CB999 /* LoginViewReactor.swift in Sources */,
 				9C42976D23866026004CB999 /* UIButton+Extension.swift in Sources */,
@@ -497,6 +512,7 @@
 				9C24AC2E2383D5D9005EBF95 /* LSLUser.swift in Sources */,
 				9C42976B2386389B004CB999 /* LoginService.swift in Sources */,
 				9C24AC1F2383A2C7005EBF95 /* ColorClassification.swift in Sources */,
+				9C752FD223879546000FEA73 /* RegisPwdViewModel.swift in Sources */,
 				9C42976F23866088004CB999 /* PKHud+Rx.swift in Sources */,
 				9C24AC4A2383F344005EBF95 /* CustomizedTabbarItem.swift in Sources */,
 				9CFDE2052385219F0062522E /* RxMoyaProvider.swift in Sources */,

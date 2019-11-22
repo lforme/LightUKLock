@@ -33,9 +33,7 @@ class RootViewController: UIViewController {
         super.viewDidLoad()
         observeStatusBarChanged()
         observerLoginStatus()
-//        checkLoginStatus()
-        // 测试
-        showLoginVC()
+        checkLoginStatus()
     }
     
     func checkLoginStatus() {

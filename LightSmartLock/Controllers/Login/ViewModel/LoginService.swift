@@ -22,6 +22,15 @@ enum LoginValidationResult {
             return false
         }
     }
+    
+    var errorMessage: String? {
+        switch self {
+        case let .failed(error):
+            return error?.message
+        default:
+            return nil
+        }
+    }
 }
 
 final class LoginValidationService {
