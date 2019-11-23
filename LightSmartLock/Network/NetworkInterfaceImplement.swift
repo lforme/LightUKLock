@@ -11,6 +11,7 @@ import Moya
 import HandyJSON
 import Alamofire
 import CryptoSwift
+import PKHUD
 
 extension AuthenticationInterface: TargetType {
     
@@ -141,6 +142,104 @@ extension AuthenticationInterface: TargetType {
         switch self {
         default:
             return Data(base64Encoded: "业务测试数据") ?? Data()
+        }
+    }
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+extension BusinessInterface: TargetType {
+    
+    var baseURL: URL {
+        return URL(string: ServerHost.shared.environment.host)!
+    }
+    
+    var headers: [String : String]? {
+        guard let entiy = LSLUser.current().token else { return nil }
+        
+        guard let type = entiy.token_type, let token = entiy.access_token else {
+            return nil
+        }
+        return  ["Authorization": type + " " + token]
+    }
+    
+    var method: Moya.Method {
+        switch self {
+        default:
+            return .post
+        }
+    }
+    
+    var path: String {
+        switch self {
+        case .uploadImage:
+            return "api/File/UploadImage"
+        case .getCustomerSceneList:
+            return "api/Scene/GetCustomerSceneList"
+        }
+    }
+    
+    var sampleData: Data {
+        switch self {
+        default:
+            return Data()
+        }
+    }
+    
+    var task: Task {
+        
+        let requestParameters = parameters ?? [:]
+        var encoding: ParameterEncoding = JSONEncoding.default
+        
+        switch self {
+        case .uploadImage(let img, let description):
+            
+            let dateString = Date().description
+            let index = dateString.index(dateString.startIndex, offsetBy: 10)
+            
+            if let data = img.jpegData(compressionQuality: 0.7) {
+                let imgData = MultipartFormData(provider: .data(data), name: "file", fileName: String(dateString[..<index]), mimeType: "image/jpeg")
+                let descriptionData = MultipartFormData(provider: .data(description.data(using: .utf8)!), name: description)
+                let multipartData = [imgData, descriptionData]
+                return .uploadMultipart(multipartData)
+                
+            } else if let data = img.pngData() {
+                let imgData = MultipartFormData(provider: .data(data), name: "file", fileName: String(dateString[..<index]), mimeType: "image/png")
+                let descriptionData = MultipartFormData(provider: .data(description.data(using: .utf8)!), name: description)
+                let multipartData = [imgData, descriptionData]
+                return .uploadMultipart(multipartData)
+            }
+            
+            return .requestParameters(parameters: requestParameters, encoding: encoding)
+            
+        default:
+            if self.method == .get {
+                encoding = URLEncoding.default
+                return .requestParameters(parameters: requestParameters, encoding: encoding)
+            }
+            return .requestParameters(parameters: requestParameters, encoding: encoding)
+        }
+    }
+    
+    var parameters: [String: Any]? {
+        
+        switch self {
+        case let .getCustomerSceneList(pageIndex, pageSize, Sort):
+            guard let accountId = LSLUser.current().user?.accountID else {
+                HUD.flash(.label("无法获取 accountID"), delay: 2)
+                return nil
+            }
+            
+            return  ["AccountID": accountId,
+                    "PageIndex": pageIndex,
+                    "PageSize": pageSize ?? 5,
+                    "Sort": Sort ?? 1]
+            
+        default:
+            return nil
         }
     }
 }

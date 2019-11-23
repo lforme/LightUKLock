@@ -16,6 +16,7 @@ class BaseNavigationController: UINavigationController {
     private lazy var navBarAppearance: UINavigationBarAppearance = {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
+        appearance.shadowColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
         return appearance
     }()
     
@@ -38,7 +39,7 @@ class BaseNavigationController: UINavigationController {
     }
     
     override open func pushViewController(_ viewController: UIViewController, animated: Bool) {
-        controlClearBackTitle()
+        controlClearBackTitle(vc: viewController)
         if self.viewControllers.count == 1 {
             viewController.hidesBottomBarWhenPushed = true
         }
@@ -51,7 +52,7 @@ class BaseNavigationController: UINavigationController {
     }
     
     override open func show(_ vc: UIViewController, sender: Any?) {
-        controlClearBackTitle()
+        controlClearBackTitle(vc: vc)
         if let style = vc as? NavigationSettingStyle {
             self.setNavigationStyle(style)
         }
@@ -70,11 +71,10 @@ extension BaseNavigationController {
     
     fileprivate func commonInit() {
         
-        navigationBar.shadowImage = UIImage()
-        navigationBar.layer.shadowColor  = UIColor.clear.cgColor
+        navigationBar.shadowImage = UIImage(color: #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1), size: CGSize(width: UIScreen.main.bounds.width, height: 0.5))
+        navigationBar.layer.shadowColor  = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1).cgColor
         navigationBar.isTranslucent = false
         self.interactivePopGestureRecognizer?.delegate = self
-        
         
         guard let style = topViewController as? NavigationSettingStyle else {
             return
@@ -132,10 +132,15 @@ extension BaseNavigationController {
         }
     }
     
-   fileprivate func controlClearBackTitle() {
+    fileprivate func controlClearBackTitle(vc: UIViewController) {
         if clearBackTitle {
             topViewController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-            topViewController?.navigationItem.backBarButtonItem?.tintColor = UIColor(contrastingBlackOrWhiteColorOn: self.navigationBar.backgroundColor, isFlat: true)
+            
+            guard let style = vc as? NavigationSettingStyle, let naviBkColor = style.backgroundColor else {
+                return
+            }
+            
+            topViewController?.navigationItem.backBarButtonItem?.tintColor = UIColor(contrastingBlackOrWhiteColorOn: naviBkColor, isFlat: true)
         }
     }
 }

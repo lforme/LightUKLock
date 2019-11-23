@@ -14,7 +14,7 @@ import Action
 
 extension Reactive where Base: PKHUD {
     
-    var showError: Binder<AppError?> {
+    var showAppError: Binder<AppError?> {
         return Binder(self.base, scheduler: MainScheduler.instance, binding: { (_, error) in
             if let e = error {
                 HUD.flash(.label(e.message), delay: 2)
@@ -33,5 +33,16 @@ extension Reactive where Base: PKHUD {
             }
         })
     }
+    
+    var showError: Binder<Error?> {
+        return Binder(self.base, scheduler: MainScheduler.instance, binding: { (_, error) in
+            if let e = error as? AppError {
+                HUD.flash(.label(e.message), delay: 2)
+            } else {
+                HUD.flash(.label(error.debugDescription), delay: 2)
+            }
+        })
+    }
+    
 }
 

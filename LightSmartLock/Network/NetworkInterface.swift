@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum AuthenticationInterface {
     
@@ -19,4 +20,10 @@ enum AuthenticationInterface {
     case userToken(userName: String, pwd: String) // 登录成功之后获取用户token
     case refreshPlatformToken // 401刷新token
     case refreshUserToken // 401刷新token
+}
+
+
+enum BusinessInterface {
+    case uploadImage(UIImage, description: String) // 图片上传
+    case getCustomerSceneList(pageIndex: Int, pageSize: Int?, Sort: Int?) // 获取场景列表
 }

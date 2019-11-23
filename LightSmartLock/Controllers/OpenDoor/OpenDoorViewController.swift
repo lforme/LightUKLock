@@ -19,6 +19,10 @@ class OpenDoorViewController: UIViewController {
     @IBOutlet weak var animationViewWidth: NSLayoutConstraint!
     @IBOutlet weak var animationViewTopOffset: NSLayoutConstraint!
     
+    deinit {
+        print("\(self) deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -77,7 +77,7 @@ class LoginViewController: UITableViewController, StoryboardView {
         }).disposed(by: disposeBag)
         
         reactor.state.map { $0.loginError }
-            .bind(to: PKHUD.sharedHUD.rx.showError)
+            .bind(to: PKHUD.sharedHUD.rx.showAppError)
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.showPassword }.subscribe(onNext: {[weak self] (show) in

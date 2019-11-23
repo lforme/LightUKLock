@@ -33,6 +33,6 @@ extension NavigationSettingStyle {
     }
     
     var itemColor: UIColor? {
-       return UIColor(contrastingBlackOrWhiteColorOn: backgroundColor, isFlat: true)
+       return UIColor(contrastingBlackOrWhiteColorOn: backgroundColor, isFlat: false)
     }
 }
