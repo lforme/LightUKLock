@@ -46,7 +46,7 @@ final class NetworkMetaDb {
     }
     
     fileprivate func createTable() {
-        try! self.db?.run(self.table.create(ifNotExists: true) { t in
+        try! self.checkDb().run(self.table.create(ifNotExists: true) { t in
             t.column(id, primaryKey: .autoincrement)
             t.column(key, unique: true)
             t.column(value)
@@ -70,28 +70,28 @@ extension NetworkMetaDb {
     func save(_ value: Data, key: String) -> Bool {
         var result = false
         do {
-           try db?.transaction {
-            let filterTable = table.filter(self.key == key)
-               if try db?.run(filterTable.update(
-                   self.key <- key,
-                   self.value <- value,
-                   self.accessTime <- Date(),
-                   self.accountId <- LSLUser.current().user?.accountID
-               )) ?? -1 > 0 {
-                   result = true
-               } else {
-                   let rowid = try db?.run(table.insert(
-                       self.key <- key,
-                       self.value <- value,
-                       self.accessTime <- Date(),
-                       self.expirationTime <- Date() + 7.days,
-                       self.accountId <- LSLUser.current().user?.accountID
-                   ))
-                   
-                   result = (rowid ?? -1 > Int64(0)) ? true : false
-               }
-           }
-           return result
+            try db?.transaction {
+                let filterTable = table.filter(self.key == key)
+                if try checkDb().run(filterTable.update(
+                    self.key <- key,
+                    self.value <- value,
+                    self.accessTime <- Date(),
+                    self.accountId <- LSLUser.current().user?.accountID
+                )) > 0 {
+                    result = true
+                } else {
+                    let rowid = try checkDb().run(table.insert(
+                        self.key <- key,
+                        self.value <- value,
+                        self.accessTime <- Date(),
+                        self.expirationTime <- Date() + 7.days,
+                        self.accountId <- LSLUser.current().user?.accountID
+                    ))
+                    
+                    result = (rowid > Int64(0)) ? true : false
+                }
+            }
+            return result
             
         } catch {
             print(error.localizedDescription)
@@ -130,8 +130,33 @@ extension NetworkMetaDb {
             .filter(self.accessTime > self.expirationTime)
         do {
             lock.lock()
-            let result = try self.db?.run(expired.delete()) ?? -1
+            let result = try checkDb().run(expired.delete())
             lock.unlock()
+            return result > 0
+        } catch {
+            print("delete expiredData failed: \(error)")
+            return false
+        }
+    }
+    
+    @discardableResult
+    func deleteValueBy(_ userId: String?) -> Bool {
+        let value = self.table.filter(self.accountId == userId)
+        do {
+            lock.lock()
+            let result = try self.checkDb().run(value.delete())
+            lock.unlock()
+            return result > 0
+        } catch {
+            print("delete expiredData failed: \(error)")
+            return false
+        }
+    }
+    
+    @discardableResult
+    func deleteAll() -> Bool {
+        do {
+            let result = try self.checkDb().run(self.table.delete())
             return result > 0
         } catch {
             print("delete expiredData failed: \(error)")

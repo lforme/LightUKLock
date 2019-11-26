@@ -57,6 +57,10 @@ class BaseNavigationController: UINavigationController {
             self.setNavigationStyle(style)
         }
         
+        if self.viewControllers.count == 1 {
+            vc.hidesBottomBarWhenPushed = true
+        }
+        
         super.show(vc, sender: sender)
     }
     

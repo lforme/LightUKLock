@@ -39,7 +39,8 @@ target 'LightSmartLock' do
   pod 'ChameleonFramework'
   pod 'PKHUD'
   pod 'ESTabBarController-swift'
-
+  pod 'LTMorphingLabel'
+  
   # 动画
   pod 'lottie-ios'
 

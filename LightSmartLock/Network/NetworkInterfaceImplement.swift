@@ -179,6 +179,12 @@ extension BusinessInterface: TargetType {
             return "api/File/UploadImage"
         case .getCustomerSceneList:
             return "api/Scene/GetCustomerSceneList"
+        case .getCurrentCustomerInfo:
+            return "api/Scene/GetCurrentCustomerInfo"
+        case .getLockInfoBySceneID:
+            return "api/Lock/GetLockInfoBySceneID"
+        case .getLockCurrentInfoFromIOTPlatform:
+            return "api/Lock/GetLockCurrentInfoFromIOTPlatform"
         }
     }
     
@@ -234,10 +240,28 @@ extension BusinessInterface: TargetType {
             }
             
             return  ["AccountID": accountId,
-                    "PageIndex": pageIndex,
-                    "PageSize": pageSize ?? 5,
-                    "Sort": Sort ?? 1]
+                     "PageIndex": pageIndex,
+                     "PageSize": pageSize ?? 5,
+                     "Sort": Sort ?? 1]
             
+        case .getCurrentCustomerInfo(let sceneID):
+            guard let accountID = LSLUser.current().user?.accountID else { return nil }
+            var param: [String: Any] = ["AccountID": accountID]
+            
+            if let sID = LSLUser.current().scene?.sceneID {
+                param.updateValue(sID, forKey: "SceneID")
+            } else {
+                param.updateValue(sceneID, forKey: "SceneID")
+            }
+            return param
+            
+        case .getLockInfoBySceneID:
+            guard let sceneId = LSLUser.current().scene?.sceneID else { return nil }
+            return ["SceneID": sceneId]
+            
+        case .getLockCurrentInfoFromIOTPlatform:
+            guard let sceneId = LSLUser.current().scene?.sceneID else { return  nil }
+            return ["SceneID": sceneId]
         default:
             return nil
         }

@@ -11,7 +11,7 @@
         <!--Home View Controller-->
         <scene sceneID="cQJ-Qe-o5J">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WPg-Ta-5La" customClass="HomeViewController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WPg-Ta-5La" customClass="HomeViewController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ne8-re-Hzu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

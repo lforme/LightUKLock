@@ -113,7 +113,9 @@ class RegisterForgetController: UITableViewController, NavigationSettingStyle {
         }
         
         let shareGetCodeErroe = vm.getCodeAction.errors.share(replay: 1, scope: .forever)
-        shareGetCodeErroe.bind(to: PKHUD.sharedHUD.rx.showActionError).disposed(by: rx.disposeBag)
+        shareGetCodeErroe.subscribe(onNext: { (error) in
+            PKHUD.sharedHUD.rx.showActionError(error)
+        }).disposed(by: rx.disposeBag)
         shareGetCodeErroe.subscribe(onNext: {[weak self] (_) in
             self?.getCodeButton.reset()
         }).disposed(by: rx.disposeBag)
@@ -128,6 +130,8 @@ class RegisterForgetController: UITableViewController, NavigationSettingStyle {
             }
         }).disposed(by: rx.disposeBag)
         
-        vm.regisForgetAction.errors.bind(to: PKHUD.sharedHUD.rx.showActionError).disposed(by: rx.disposeBag)
+        vm.regisForgetAction.errors.subscribe(onNext: { (error) in
+            PKHUD.sharedHUD.rx.showActionError(error)
+        }).disposed(by: rx.disposeBag)
     }
 }

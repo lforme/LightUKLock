@@ -14,35 +14,32 @@ import Action
 
 extension Reactive where Base: PKHUD {
     
-    var showAppError: Binder<AppError?> {
-        return Binder(self.base, scheduler: MainScheduler.instance, binding: { (_, error) in
-            if let e = error {
-                HUD.flash(.label(e.message), delay: 2)
-            }
-        })
+    func showAppError(_ error: AppError?) {
+        if let e = error {
+            HUD.flash(.label(e.message), delay: 2)
+        }
     }
     
-    var showActionError: Binder<ActionError> {
-        return Binder(self.base, scheduler: MainScheduler.instance, binding: { (_, error) in
-            switch error {
-            case let .underlyingError(appError):
-                if let e = appError as? AppError {
-                    HUD.flash(.label(e.message), delay: 2)
-                }
-            default: break
-            }
-        })
-    }
-    
-    var showError: Binder<Error?> {
-        return Binder(self.base, scheduler: MainScheduler.instance, binding: { (_, error) in
-            if let e = error as? AppError {
+    func showActionError(_ error: ActionError) {
+        switch error {
+        case let .underlyingError(appError):
+            if let e = appError as? AppError {
                 HUD.flash(.label(e.message), delay: 2)
             } else {
-                HUD.flash(.label(error.debugDescription), delay: 2)
+                HUD.flash(.label(appError.localizedDescription), delay: 2)
             }
-        })
+        default:
+            break
+        }
     }
     
+    
+    func showError(_ error: Error?) {
+        if let e = error as? AppError {
+            HUD.flash(.label(e.message), delay: 2)
+        } else {
+            HUD.flash(.label(error.debugDescription), delay: 2)
+        }
+    }
 }
 

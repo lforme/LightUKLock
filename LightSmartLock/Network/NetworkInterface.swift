@@ -26,4 +26,7 @@ enum AuthenticationInterface {
 enum BusinessInterface {
     case uploadImage(UIImage, description: String) // 图片上传
     case getCustomerSceneList(pageIndex: Int, pageSize: Int?, Sort: Int?) // 获取场景列表
+    case getCurrentCustomerInfo(sceneID: String) //获取用户在一个场景下的身份
+    case getLockInfoBySceneID // 根据场景ID获取门锁绑定信息
+    case getLockCurrentInfoFromIOTPlatform // 从物联网平台获取门锁信息
 }

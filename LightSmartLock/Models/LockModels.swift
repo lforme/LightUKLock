@@ -29,3 +29,32 @@ struct SmartLockInfoModel: HandyJSON {
     var IMSI: String!
     var lockType: String!
 }
+
+struct IOTLockInfoModel: HandyJSON {
+    
+    enum LockStateType: Int, HandyJSONEnum {
+        case locked = 0
+        case unlocked = 1
+    }
+    
+    var customerLockID: String?
+    var sceneID: String?
+    var LockNum: String?
+    var LastOpenDoorDate: String?
+    var LastOpenDoorUserCode: String?
+    var LastOpenDoorNikeName: String?
+    var LastOpenDoorCustomerID: String?
+    var CustomerHeadPic: String?
+    var PowerPercent: Float?
+    var DaysInt: Int!
+    var LockState: LockStateType!
+    var NBSignal: String?
+    var OnLineState: Int! // 1 开启 0 关闭
+    
+    func getPower() -> String? {
+        guard let p = PowerPercent else {
+            return nil
+        }
+        return String(format: "%.0f", (p * Float(100))) + "%"
+    }
+}

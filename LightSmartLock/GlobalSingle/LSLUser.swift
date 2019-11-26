@@ -27,6 +27,10 @@ class LSLUser: NSObject {
     }
     
     func logout() {
+        
+        let diskCache = NetworkDiskStorage(autoCleanTrash: true, path: "network")
+        diskCache.deleteValueBy(user?.accountID)
+        
         Keys.allCases.forEach {
             LocalArchiver.remove(key: $0.rawValue)
         }
@@ -104,6 +108,7 @@ class LSLUser: NSObject {
     var scene: SceneListModel? {
         set {
             guard let value = newValue, let json = value.toJSON() else { return }
+            changeableScene.accept(value)
             lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.scene.rawValue, value: json)
             lock.unlock()
@@ -131,8 +136,27 @@ class LSLUser: NSObject {
         }
     }
     
+    var lockIOTInfo: IOTLockInfoModel? {
+        set {
+            guard let value = newValue, let json = value.toJSON() else { return }
+            lock.lock()
+            LocalArchiver.save(key: LSLUser.Keys.lockIOTInfo.rawValue, value: json)
+            lock.unlock()
+        }
+        
+        get {
+            let json = LocalArchiver.load(key: LSLUser.Keys.lockIOTInfo.rawValue) as? [String: Any]
+            let value = IOTLockInfoModel.deserialize(from: json)
+            return value
+        }
+    }
+    
     var obUserInfo: Observable<UserModel?> {
         return changeableUserInfo.asObservable()
+    }
+    
+    var obScene: Observable<SceneListModel?> {
+        return changeableScene.asObservable()
     }
     
     var isLogin: Bool {
@@ -147,7 +171,7 @@ class LSLUser: NSObject {
     }
     
     private let changeableUserInfo = BehaviorRelay<UserModel?>(value: nil)
-    
+    private let changeableScene = BehaviorRelay<SceneListModel?>(value: nil)
 }
 
 /// 归档的Key
@@ -159,6 +183,7 @@ extension LSLUser {
         case scene = "currentSceneModel"
         case userInfo = "userInfoModel"
         case smartLockInfo = "smartLockInfo"
+        case lockIOTInfo = "lockIOTInfo"
     }
 }
 

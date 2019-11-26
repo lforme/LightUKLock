@@ -31,7 +31,7 @@ class NoLockViewController: UIViewController {
         
         mustRead.textColor = ColorClassification.textPrimary.value
         
-        addButton.set(image: UIImage(named: "lock_add_icon"), title: "添加门锁", titlePosition: UIButton.Position.bottom, additionalSpacing: 20, state: UIControl.State())
+        addButton.set(image: UIImage(named: "lock_add_icon"), title: "添加门锁", titlePosition: UIButton.Position.bottom, additionalSpacing: 30, state: UIControl.State())
         addButton.setTitleColor(ColorClassification.textPrimary.value, for: UIControl.State())
     }
     

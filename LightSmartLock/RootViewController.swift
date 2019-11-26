@@ -34,6 +34,8 @@ class RootViewController: UIViewController {
         observeStatusBarChanged()
         observerLoginStatus()
         checkLoginStatus()
+//        showHomeTabbar()
+//        showLoginVC()
     }
     
     func checkLoginStatus() {
@@ -147,3 +149,4 @@ extension RootViewController {
             }).disposed(by: rx.disposeBag)
     }
 }
+

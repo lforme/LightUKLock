@@ -17,6 +17,7 @@ PODS:
     - Kingfisher/Core (= 5.10.0)
   - Kingfisher/Core (5.10.0)
   - lottie-ios (3.1.5)
+  - LTMorphingLabel (0.7.0)
   - MJRefresh (3.2.2)
   - Moya/Core (13.0.1):
     - Alamofire (~> 4.1)
@@ -62,6 +63,7 @@ DEPENDENCIES:
   - IQKeyboardManager
   - Kingfisher
   - lottie-ios
+  - LTMorphingLabel
   - MJRefresh
   - Moya/RxSwift
   - "NSObject+Rx"
@@ -92,6 +94,7 @@ SPEC REPOS:
     - IQKeyboardManager
     - Kingfisher
     - lottie-ios
+    - LTMorphingLabel
     - MJRefresh
     - Moya
     - "NSObject+Rx"
@@ -125,6 +128,7 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 72b359cd7e777e3a984cedbe05f8da45320cbb63
   Kingfisher: 0bf6eae7c2193f15719915fecb7c2c1c03855f3d
   lottie-ios: 32bf84389337d86fbc8b12266e88452e0abf1dee
+  LTMorphingLabel: 22147fb1ec2b0306537ccc348b36ea8617179b03
   MJRefresh: 72a46ecaa2a0feaf48fc5198dff95f25f8bb27c6
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   "NSObject+Rx": 9884a92f19b610795c431e10b4e601913b59c9e9
@@ -145,6 +149,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 821b81f83594a736e831a018f2a2ce31822ddf0b
   "UITextView+Placeholder": c407b27599ea23cca425946fee3cf1db5d547008
 
-PODFILE CHECKSUM: 69197747e029b9217885352d4453c9d3bc92fdec
+PODFILE CHECKSUM: 4e52f70490efbd1104a171698ae7004a6c8cb342
 
 COCOAPODS: 1.8.3

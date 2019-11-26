@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		1F64F18F4FD1BF62618F8397 /* Pods_LightSmartLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */; };
+		9C1A4BBE238D092200626DB4 /* normal.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A4BBB238D092200626DB4 /* normal.json */; };
+		9C1A4BBF238D092200626DB4 /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A4BBC238D092200626DB4 /* error.json */; };
+		9C1A4BC0238D092200626DB4 /* lowpower.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A4BBD238D092200626DB4 /* lowpower.json */; };
+		9C1A4BC4238D0A1A00626DB4 /* AnimationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC2238D0A1A00626DB4 /* AnimationHeaderView.swift */; };
+		9C1A4BC5238D0A1A00626DB4 /* AnimationHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC3238D0A1A00626DB4 /* AnimationHeaderView.xib */; };
+		9C1A4BC8238D2E7C00626DB4 /* HomeControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC6238D2E7C00626DB4 /* HomeControlCell.swift */; };
+		9C1A4BC9238D2E7C00626DB4 /* HomeControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC7238D2E7C00626DB4 /* HomeControlCell.xib */; };
+		9C1A4BCC238D35BA00626DB4 /* HomeUnlockRecordHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A4BCA238D35BA00626DB4 /* HomeUnlockRecordHeader.swift */; };
+		9C1A4BCD238D35BA00626DB4 /* HomeUnlockRecordHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A4BCB238D35BA00626DB4 /* HomeUnlockRecordHeader.xib */; };
 		9C1C838E23892C83005BB17C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C838D23892C83005BB17C /* HomeViewModel.swift */; };
 		9C24AC1423838C80005EBF95 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1323838C80005EBF95 /* BaseNavigationController.swift */; };
 		9C24AC1623838CD1005EBF95 /* NavigationSettingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1523838CD1005EBF95 /* NavigationSettingStyle.swift */; };
@@ -69,6 +78,15 @@
 		2CC741DB4C59065DD926D509 /* Pods-LightSmartLock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightSmartLock.release.xcconfig"; path = "Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock.release.xcconfig"; sourceTree = "<group>"; };
 		56B15D3085FA9EFD559AB2C2 /* Pods-LightSmartLock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightSmartLock.debug.xcconfig"; path = "Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock.debug.xcconfig"; sourceTree = "<group>"; };
 		5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LightSmartLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C1A4BBB238D092200626DB4 /* normal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = normal.json; sourceTree = "<group>"; };
+		9C1A4BBC238D092200626DB4 /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
+		9C1A4BBD238D092200626DB4 /* lowpower.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lowpower.json; sourceTree = "<group>"; };
+		9C1A4BC2238D0A1A00626DB4 /* AnimationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHeaderView.swift; sourceTree = "<group>"; };
+		9C1A4BC3238D0A1A00626DB4 /* AnimationHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimationHeaderView.xib; sourceTree = "<group>"; };
+		9C1A4BC6238D2E7C00626DB4 /* HomeControlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeControlCell.swift; sourceTree = "<group>"; };
+		9C1A4BC7238D2E7C00626DB4 /* HomeControlCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeControlCell.xib; sourceTree = "<group>"; };
+		9C1A4BCA238D35BA00626DB4 /* HomeUnlockRecordHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUnlockRecordHeader.swift; sourceTree = "<group>"; };
+		9C1A4BCB238D35BA00626DB4 /* HomeUnlockRecordHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeUnlockRecordHeader.xib; sourceTree = "<group>"; };
 		9C1C838D23892C83005BB17C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9C24AC1323838C80005EBF95 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		9C24AC1523838CD1005EBF95 /* NavigationSettingStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSettingStyle.swift; sourceTree = "<group>"; };
@@ -155,6 +173,19 @@
 				5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9C1A4BC1238D09CB00626DB4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9C1A4BC2238D0A1A00626DB4 /* AnimationHeaderView.swift */,
+				9C1A4BC3238D0A1A00626DB4 /* AnimationHeaderView.xib */,
+				9C1A4BC6238D2E7C00626DB4 /* HomeControlCell.swift */,
+				9C1A4BC7238D2E7C00626DB4 /* HomeControlCell.xib */,
+				9C1A4BCA238D35BA00626DB4 /* HomeUnlockRecordHeader.swift */,
+				9C1A4BCB238D35BA00626DB4 /* HomeUnlockRecordHeader.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		9C1C838C23892C66005BB17C /* ViewModel */ = {
@@ -303,6 +334,7 @@
 		9CDD273B23828599006A9B97 /* Lock */ = {
 			isa = PBXGroup;
 			children = (
+				9C1A4BC1238D09CB00626DB4 /* View */,
 				9C1C838C23892C66005BB17C /* ViewModel */,
 				9C24AC472383EBE5005EBF95 /* HomeViewController.swift */,
 				9C752FD32388080A000FEA73 /* NoLockViewController.swift */,
@@ -335,6 +367,9 @@
 		9CFDE1F62384E9FD0062522E /* AnimationSource */ = {
 			isa = PBXGroup;
 			children = (
+				9C1A4BBC238D092200626DB4 /* error.json */,
+				9C1A4BBD238D092200626DB4 /* lowpower.json */,
+				9C1A4BBB238D092200626DB4 /* normal.json */,
 				9CFDE20A238531CB0062522E /* loading.json */,
 				9CFDE1FB238513D40062522E /* bluetooth.json */,
 				9CFDE1F82384EA2A0062522E /* opendoor.json */,
@@ -426,9 +461,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C1A4BBF238D092200626DB4 /* error.json in Resources */,
+				9C1A4BC0238D092200626DB4 /* lowpower.json in Resources */,
+				9C1A4BC5238D0A1A00626DB4 /* AnimationHeaderView.xib in Resources */,
+				9C1A4BC9238D2E7C00626DB4 /* HomeControlCell.xib in Resources */,
 				9CFDE1FC238513D40062522E /* bluetooth.json in Resources */,
+				9C1A4BBE238D092200626DB4 /* normal.json in Resources */,
 				9CFDE1FA2384EA2A0062522E /* opendoor.json in Resources */,
 				9C24AC402383EB55005EBF95 /* OpenDoorViewController.xib in Resources */,
+				9C1A4BCD238D35BA00626DB4 /* HomeUnlockRecordHeader.xib in Resources */,
 				9C24AC212383C1C6005EBF95 /* Login.storyboard in Resources */,
 				9CFDE20B238531CB0062522E /* loading.json in Resources */,
 				9CDD272E2382801E006A9B97 /* LaunchScreen.storyboard in Resources */,
@@ -498,6 +539,7 @@
 				9C24AC3B2383E736005EBF95 /* ViewLoader.swift in Sources */,
 				9CFDE21423853C170062522E /* NetworkMetaDb.swift in Sources */,
 				9C24AC482383EBE5005EBF95 /* HomeViewController.swift in Sources */,
+				9C1A4BC8238D2E7C00626DB4 /* HomeControlCell.swift in Sources */,
 				9CFDE20123851EE80062522E /* NetworkInterface.swift in Sources */,
 				9CFDE20323851F660062522E /* NetworkInterfaceImplement.swift in Sources */,
 				9C24AC462383EBB1005EBF95 /* MyViewController.swift in Sources */,
@@ -507,6 +549,7 @@
 				9CDD274423829363006A9B97 /* RootViewController.swift in Sources */,
 				9CFDE207238523A80062522E /* LoadingPlugin.swift in Sources */,
 				9C24AC4C2383F639005EBF95 /* CustomizedOpenDoorItem.swift in Sources */,
+				9C1A4BCC238D35BA00626DB4 /* HomeUnlockRecordHeader.swift in Sources */,
 				9CFDE211238537A30062522E /* NetworkAPI.swift in Sources */,
 				9CFDE21623853DE60062522E /* NetworkDiskStorage.swift in Sources */,
 				9C24AC3F2383EB55005EBF95 /* OpenDoorViewController.swift in Sources */,
@@ -516,6 +559,7 @@
 				9C42976D23866026004CB999 /* UIButton+Extension.swift in Sources */,
 				9C752FD42388080A000FEA73 /* NoLockViewController.swift in Sources */,
 				9C24AC352383DCB0005EBF95 /* UserModel.swift in Sources */,
+				9C1A4BC4238D0A1A00626DB4 /* AnimationHeaderView.swift in Sources */,
 				9C1C838E23892C83005BB17C /* HomeViewModel.swift in Sources */,
 				9C24AC1923838E56005EBF95 /* UIFont+extension.swift in Sources */,
 				9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */,
