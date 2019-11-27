@@ -40,6 +40,36 @@
             </objects>
             <point key="canvasLocation" x="-1232" y="-207"/>
         </scene>
+        <!--Record Unlock Controller-->
+        <scene sceneID="qEc-ui-8bu">
+            <objects>
+                <viewController storyboardIdentifier="RecordUnlockController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dvJ-72-VG2" customClass="RecordUnlockController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U99-7K-EKi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="boa-vW-W6d">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="rx5-ym-a7h" firstAttribute="bottom" secondItem="boa-vW-W6d" secondAttribute="bottom" id="6IH-k6-Pq8"/>
+                            <constraint firstItem="boa-vW-W6d" firstAttribute="top" secondItem="rx5-ym-a7h" secondAttribute="top" id="7jk-Th-MbU"/>
+                            <constraint firstItem="rx5-ym-a7h" firstAttribute="trailing" secondItem="boa-vW-W6d" secondAttribute="trailing" id="pTc-fn-uNU"/>
+                            <constraint firstItem="boa-vW-W6d" firstAttribute="leading" secondItem="rx5-ym-a7h" secondAttribute="leading" id="xCK-WT-H2K"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rx5-ym-a7h"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="boa-vW-W6d" id="KWL-b6-s4B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wyc-Of-G3u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1069" y="494"/>
+        </scene>
         <!--No Lock View Controller-->
         <scene sceneID="dN2-tr-zwy">
             <objects>

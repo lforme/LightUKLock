@@ -14,6 +14,7 @@ class OpenDoorViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var desLabel: UILabel!
     var animation: Animation!
     @IBOutlet weak var animationViewHeight: NSLayoutConstraint!
     @IBOutlet weak var animationViewWidth: NSLayoutConstraint!
@@ -34,7 +35,9 @@ class OpenDoorViewController: UIViewController {
     }
     
     func setupUI() {
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = ColorClassification.tableViewBackground.value
+        label.textColor = ColorClassification.textPrimary.value
+        desLabel.textColor = ColorClassification.textOpaque78.value
     }
     
     @IBAction func backTap(_ sender: UIButton) {

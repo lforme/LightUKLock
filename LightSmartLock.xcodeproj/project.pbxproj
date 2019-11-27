@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1F64F18F4FD1BF62618F8397 /* Pods_LightSmartLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */; };
-		9C1A4BBE238D092200626DB4 /* normal.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A4BBB238D092200626DB4 /* normal.json */; };
-		9C1A4BBF238D092200626DB4 /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A4BBC238D092200626DB4 /* error.json */; };
-		9C1A4BC0238D092200626DB4 /* lowpower.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A4BBD238D092200626DB4 /* lowpower.json */; };
 		9C1A4BC4238D0A1A00626DB4 /* AnimationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC2238D0A1A00626DB4 /* AnimationHeaderView.swift */; };
 		9C1A4BC5238D0A1A00626DB4 /* AnimationHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC3238D0A1A00626DB4 /* AnimationHeaderView.xib */; };
 		9C1A4BC8238D2E7C00626DB4 /* HomeControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC6238D2E7C00626DB4 /* HomeControlCell.swift */; };
@@ -51,6 +48,16 @@
 		9C42976F23866088004CB999 /* PKHud+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42976E23866088004CB999 /* PKHud+Rx.swift */; };
 		9C42977223867622004CB999 /* MessageNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42977123867622004CB999 /* MessageNotificationHelper.swift */; };
 		9C4297782386A64C004CB999 /* RegistrationRecoveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4297772386A64C004CB999 /* RegistrationRecoveryService.swift */; };
+		9C524021238E0E3100308AC4 /* normal.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C524020238E0E3100308AC4 /* normal.json */; };
+		9C524023238E0E3F00308AC4 /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C524022238E0E3F00308AC4 /* error.json */; };
+		9C524025238E0E5500308AC4 /* warning.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C524024238E0E5500308AC4 /* warning.json */; };
+		9C524028238E12E300308AC4 /* UIApplicationProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C524027238E12E300308AC4 /* UIApplicationProxy.swift */; };
+		9C52402A238E132900308AC4 /* UIApplication+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C524029238E132900308AC4 /* UIApplication+Rx.swift */; };
+		9C52402D238E163D00308AC4 /* UnlockRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52402B238E163D00308AC4 /* UnlockRecordCell.swift */; };
+		9C52402E238E163D00308AC4 /* UnlockRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C52402C238E163D00308AC4 /* UnlockRecordCell.xib */; };
+		9C524030238E56A700308AC4 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52402F238E56A700308AC4 /* UIViewController+Extension.swift */; };
+		9C524034238E64C000308AC4 /* RecordUnlockController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C524033238E64C000308AC4 /* RecordUnlockController.swift */; };
+		9C524038238E66B500308AC4 /* RecordUnlockReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C524037238E66B500308AC4 /* RecordUnlockReactor.swift */; };
 		9C752FCD238774A9000FEA73 /* RegisterForgetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C752FCC238774A9000FEA73 /* RegisterForgetController.swift */; };
 		9C752FD0238794BE000FEA73 /* CountdownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C752FCF238794BE000FEA73 /* CountdownButton.swift */; };
 		9C752FD223879546000FEA73 /* RegisPwdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C752FD123879546000FEA73 /* RegisPwdViewModel.swift */; };
@@ -78,9 +85,6 @@
 		2CC741DB4C59065DD926D509 /* Pods-LightSmartLock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightSmartLock.release.xcconfig"; path = "Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock.release.xcconfig"; sourceTree = "<group>"; };
 		56B15D3085FA9EFD559AB2C2 /* Pods-LightSmartLock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightSmartLock.debug.xcconfig"; path = "Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock.debug.xcconfig"; sourceTree = "<group>"; };
 		5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LightSmartLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C1A4BBB238D092200626DB4 /* normal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = normal.json; sourceTree = "<group>"; };
-		9C1A4BBC238D092200626DB4 /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
-		9C1A4BBD238D092200626DB4 /* lowpower.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lowpower.json; sourceTree = "<group>"; };
 		9C1A4BC2238D0A1A00626DB4 /* AnimationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHeaderView.swift; sourceTree = "<group>"; };
 		9C1A4BC3238D0A1A00626DB4 /* AnimationHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimationHeaderView.xib; sourceTree = "<group>"; };
 		9C1A4BC6238D2E7C00626DB4 /* HomeControlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeControlCell.swift; sourceTree = "<group>"; };
@@ -121,6 +125,16 @@
 		9C42976E23866088004CB999 /* PKHud+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PKHud+Rx.swift"; sourceTree = "<group>"; };
 		9C42977123867622004CB999 /* MessageNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageNotificationHelper.swift; sourceTree = "<group>"; };
 		9C4297772386A64C004CB999 /* RegistrationRecoveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRecoveryService.swift; sourceTree = "<group>"; };
+		9C524020238E0E3100308AC4 /* normal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = normal.json; sourceTree = "<group>"; };
+		9C524022238E0E3F00308AC4 /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
+		9C524024238E0E5500308AC4 /* warning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = warning.json; sourceTree = "<group>"; };
+		9C524027238E12E300308AC4 /* UIApplicationProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationProxy.swift; sourceTree = "<group>"; };
+		9C524029238E132900308AC4 /* UIApplication+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Rx.swift"; sourceTree = "<group>"; };
+		9C52402B238E163D00308AC4 /* UnlockRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockRecordCell.swift; sourceTree = "<group>"; };
+		9C52402C238E163D00308AC4 /* UnlockRecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnlockRecordCell.xib; sourceTree = "<group>"; };
+		9C52402F238E56A700308AC4 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		9C524033238E64C000308AC4 /* RecordUnlockController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordUnlockController.swift; sourceTree = "<group>"; };
+		9C524037238E66B500308AC4 /* RecordUnlockReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordUnlockReactor.swift; sourceTree = "<group>"; };
 		9C752FCC238774A9000FEA73 /* RegisterForgetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterForgetController.swift; sourceTree = "<group>"; };
 		9C752FCF238794BE000FEA73 /* CountdownButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownButton.swift; sourceTree = "<group>"; };
 		9C752FD123879546000FEA73 /* RegisPwdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisPwdViewModel.swift; sourceTree = "<group>"; };
@@ -184,6 +198,8 @@
 				9C1A4BC7238D2E7C00626DB4 /* HomeControlCell.xib */,
 				9C1A4BCA238D35BA00626DB4 /* HomeUnlockRecordHeader.swift */,
 				9C1A4BCB238D35BA00626DB4 /* HomeUnlockRecordHeader.xib */,
+				9C52402B238E163D00308AC4 /* UnlockRecordCell.swift */,
+				9C52402C238E163D00308AC4 /* UnlockRecordCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -192,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				9C1C838D23892C83005BB17C /* HomeViewModel.swift */,
+				9C524037238E66B500308AC4 /* RecordUnlockReactor.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -220,6 +237,8 @@
 				9C24AC1A23839D74005EBF95 /* Swizzling+UIViewController.swift */,
 				9C42976C23866026004CB999 /* UIButton+Extension.swift */,
 				9C42976E23866088004CB999 /* PKHud+Rx.swift */,
+				9C524029238E132900308AC4 /* UIApplication+Rx.swift */,
+				9C52402F238E56A700308AC4 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -264,6 +283,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		9C524026238E12AF00308AC4 /* InvokedProxy */ = {
+			isa = PBXGroup;
+			children = (
+				9C524027238E12E300308AC4 /* UIApplicationProxy.swift */,
+			);
+			path = InvokedProxy;
+			sourceTree = "<group>";
+		};
 		9C752FCE238794AB000FEA73 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +320,7 @@
 		9CDD27202382801D006A9B97 /* LightSmartLock */ = {
 			isa = PBXGroup;
 			children = (
+				9C524026238E12AF00308AC4 /* InvokedProxy */,
 				9CFDE1FD23851CC40062522E /* Network */,
 				9CFDE1F62384E9FD0062522E /* AnimationSource */,
 				9C24AC3C2383E758005EBF95 /* ToolBox */,
@@ -338,6 +366,7 @@
 				9C1C838C23892C66005BB17C /* ViewModel */,
 				9C24AC472383EBE5005EBF95 /* HomeViewController.swift */,
 				9C752FD32388080A000FEA73 /* NoLockViewController.swift */,
+				9C524033238E64C000308AC4 /* RecordUnlockController.swift */,
 				9C24AC412383EB88005EBF95 /* Home.storyboard */,
 			);
 			path = Lock;
@@ -367,9 +396,9 @@
 		9CFDE1F62384E9FD0062522E /* AnimationSource */ = {
 			isa = PBXGroup;
 			children = (
-				9C1A4BBC238D092200626DB4 /* error.json */,
-				9C1A4BBD238D092200626DB4 /* lowpower.json */,
-				9C1A4BBB238D092200626DB4 /* normal.json */,
+				9C524022238E0E3F00308AC4 /* error.json */,
+				9C524024238E0E5500308AC4 /* warning.json */,
+				9C524020238E0E3100308AC4 /* normal.json */,
 				9CFDE20A238531CB0062522E /* loading.json */,
 				9CFDE1FB238513D40062522E /* bluetooth.json */,
 				9CFDE1F82384EA2A0062522E /* opendoor.json */,
@@ -461,19 +490,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C1A4BBF238D092200626DB4 /* error.json in Resources */,
-				9C1A4BC0238D092200626DB4 /* lowpower.json in Resources */,
 				9C1A4BC5238D0A1A00626DB4 /* AnimationHeaderView.xib in Resources */,
 				9C1A4BC9238D2E7C00626DB4 /* HomeControlCell.xib in Resources */,
 				9CFDE1FC238513D40062522E /* bluetooth.json in Resources */,
-				9C1A4BBE238D092200626DB4 /* normal.json in Resources */,
 				9CFDE1FA2384EA2A0062522E /* opendoor.json in Resources */,
 				9C24AC402383EB55005EBF95 /* OpenDoorViewController.xib in Resources */,
 				9C1A4BCD238D35BA00626DB4 /* HomeUnlockRecordHeader.xib in Resources */,
 				9C24AC212383C1C6005EBF95 /* Login.storyboard in Resources */,
+				9C52402E238E163D00308AC4 /* UnlockRecordCell.xib in Resources */,
 				9CFDE20B238531CB0062522E /* loading.json in Resources */,
 				9CDD272E2382801E006A9B97 /* LaunchScreen.storyboard in Resources */,
 				9C24AC422383EB88005EBF95 /* Home.storyboard in Resources */,
+				9C524025238E0E5500308AC4 /* warning.json in Resources */,
+				9C524021238E0E3100308AC4 /* normal.json in Resources */,
+				9C524023238E0E3F00308AC4 /* error.json in Resources */,
 				9CDD272B2382801E006A9B97 /* Assets.xcassets in Resources */,
 				9CDD27292382801D006A9B97 /* Main.storyboard in Resources */,
 				9C24AC442383EB96005EBF95 /* My.storyboard in Resources */,
@@ -549,6 +579,7 @@
 				9CDD274423829363006A9B97 /* RootViewController.swift in Sources */,
 				9CFDE207238523A80062522E /* LoadingPlugin.swift in Sources */,
 				9C24AC4C2383F639005EBF95 /* CustomizedOpenDoorItem.swift in Sources */,
+				9C524038238E66B500308AC4 /* RecordUnlockReactor.swift in Sources */,
 				9C1A4BCC238D35BA00626DB4 /* HomeUnlockRecordHeader.swift in Sources */,
 				9CFDE211238537A30062522E /* NetworkAPI.swift in Sources */,
 				9CFDE21623853DE60062522E /* NetworkDiskStorage.swift in Sources */,
@@ -556,22 +587,27 @@
 				9C752FD0238794BE000FEA73 /* CountdownButton.swift in Sources */,
 				9C24AC372383DE6E005EBF95 /* SceneModels.swift in Sources */,
 				9C429767238637E3004CB999 /* LoginViewReactor.swift in Sources */,
+				9C524028238E12E300308AC4 /* UIApplicationProxy.swift in Sources */,
 				9C42976D23866026004CB999 /* UIButton+Extension.swift in Sources */,
 				9C752FD42388080A000FEA73 /* NoLockViewController.swift in Sources */,
 				9C24AC352383DCB0005EBF95 /* UserModel.swift in Sources */,
 				9C1A4BC4238D0A1A00626DB4 /* AnimationHeaderView.swift in Sources */,
 				9C1C838E23892C83005BB17C /* HomeViewModel.swift in Sources */,
 				9C24AC1923838E56005EBF95 /* UIFont+extension.swift in Sources */,
+				9C52402A238E132900308AC4 /* UIApplication+Rx.swift in Sources */,
 				9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */,
+				9C524034238E64C000308AC4 /* RecordUnlockController.swift in Sources */,
 				9C24AC1623838CD1005EBF95 /* NavigationSettingStyle.swift in Sources */,
 				9C24AC1423838C80005EBF95 /* BaseNavigationController.swift in Sources */,
 				9C24AC292383CB92005EBF95 /* UITextField+Extension.swift in Sources */,
 				9CFDE20F2385346E0062522E /* AppErrorDomain.swift in Sources */,
+				9C524030238E56A700308AC4 /* UIViewController+Extension.swift in Sources */,
 				9C24AC392383E00C005EBF95 /* LockModels.swift in Sources */,
 				9C24AC252383C9CB005EBF95 /* UIView+Extension.swift in Sources */,
 				9C24AC2E2383D5D9005EBF95 /* LSLUser.swift in Sources */,
 				9C42976B2386389B004CB999 /* LoginService.swift in Sources */,
 				9C24AC1F2383A2C7005EBF95 /* ColorClassification.swift in Sources */,
+				9C52402D238E163D00308AC4 /* UnlockRecordCell.swift in Sources */,
 				9C752FD223879546000FEA73 /* RegisPwdViewModel.swift in Sources */,
 				9C42976F23866088004CB999 /* PKHud+Rx.swift in Sources */,
 				9C24AC4A2383F344005EBF95 /* CustomizedTabbarItem.swift in Sources */,

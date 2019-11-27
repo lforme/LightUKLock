@@ -185,6 +185,8 @@ extension BusinessInterface: TargetType {
             return "api/Lock/GetLockInfoBySceneID"
         case .getLockCurrentInfoFromIOTPlatform:
             return "api/Lock/GetLockCurrentInfoFromIOTPlatform"
+        case .getUnlockLog:
+            return "api/Lock/GetUnlockLog"
         }
     }
     
@@ -244,7 +246,7 @@ extension BusinessInterface: TargetType {
                      "PageSize": pageSize ?? 5,
                      "Sort": Sort ?? 1]
             
-        case .getCurrentCustomerInfo(let sceneID):
+        case let .getCurrentCustomerInfo(sceneID):
             guard let accountID = LSLUser.current().user?.accountID else { return nil }
             var param: [String: Any] = ["AccountID": accountID]
             
@@ -262,6 +264,23 @@ extension BusinessInterface: TargetType {
         case .getLockCurrentInfoFromIOTPlatform:
             guard let sceneId = LSLUser.current().scene?.sceneID else { return  nil }
             return ["SceneID": sceneId]
+            
+        case let .getUnlockLog(userCodes, beginTime, endTime, index, pageSize):
+            guard let sceneId = LSLUser.current().scene?.sceneID else { return nil }
+            var dict: [String: Any] = ["SceneID": sceneId, "UserCode": userCodes, "PageIndex": index]
+            
+            if let begin = beginTime {
+                dict.updateValue(begin, forKey: "BeginTime")
+            }
+            if let end = endTime {
+                dict.updateValue(end, forKey: "EndTime")
+            }
+            if let size = pageSize {
+                dict.updateValue(size, forKey: "PageSize")
+            }
+            
+            return dict
+            
         default:
             return nil
         }

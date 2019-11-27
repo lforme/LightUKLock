@@ -34,8 +34,6 @@ class RootViewController: UIViewController {
         observeStatusBarChanged()
         observerLoginStatus()
         checkLoginStatus()
-//        showHomeTabbar()
-//        showLoginVC()
     }
     
     func checkLoginStatus() {

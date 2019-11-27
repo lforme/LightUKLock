@@ -78,6 +78,8 @@ final class LoginViewReactor: Reactor {
                     if token?.access_token == nil {
                         return Mutation.setLoginResult(false, AppError.reason("无法获取登录令牌"))
                     }
+                    LSLUser.current().token = token
+                    LSLUser.current().refreshToken = token
                     return Mutation.setLoginResult(true, nil)
                 }).catchError({ (error) -> Observable<Mutation> in
                     if let e = error as? AppError {

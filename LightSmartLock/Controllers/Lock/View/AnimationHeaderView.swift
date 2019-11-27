@@ -30,24 +30,35 @@ class AnimationHeaderView: UITableViewCell {
         disposeBag = DisposeBag()
     }
     
-    private let timer = Observable<Int>.timer(1, period: 5, scheduler: MainScheduler.instance)
+    private let timer = Observable<Int>.timer(1, period: 3, scheduler: MainScheduler.instance)
     private var count = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         animationError = Animation.named("error", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)
-        animationLowpower = Animation.named("lowpower", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)
+        animationLowpower = Animation.named("warning", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)
         animationNormal = Animation.named("normal", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)
         animationView.loopMode = .loop
-        animationView.contentMode = .scaleAspectFill
+        animationView.contentMode = .scaleAspectFit
         animationView.animation = animationNormal
         animationView.play()
         
-        contentLabel.morphingEffect = .evaporate
+        contentLabel.morphingEffect = .pixelate
         self.contentView.backgroundColor = ColorClassification.viewBackground.value
         
+        UIApplication.shared.rx
+            .didBecomeActive
+            .subscribe(onNext: {[weak self] _ in
+                self?.animationView.play()
+            })
+            .disposed(by: disposeBag)
         
+        NotificationCenter.default.rx.notification(.animationRestart)
+            .takeUntil(rx.deallocated)
+            .subscribeOn(MainScheduler.instance).subscribe(onNext: {[weak self] (noti) in
+                self?.animationView.play()
+            }).disposed(by: disposeBag)
     }
     
     func bind(_ data: IOTLockInfoModel?) {
@@ -71,7 +82,7 @@ class AnimationHeaderView: UITableViewCell {
         }
         
         if let days = model.DaysInt, let powerValue = model.getPower() {
-            let sentenceOne = "预估使用\(days)天"
+            let sentenceOne = "电池预估使用\(days)天"
             let sentenceTwo = "剩余电量\(powerValue)"
             timer.delaySubscription(5, scheduler: MainScheduler.instance).subscribe(onNext: {[weak self] (_) in
                 guard let this = self else { return }

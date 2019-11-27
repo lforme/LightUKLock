@@ -13,8 +13,10 @@ let kLSRem = UIScreen.main.bounds.width / 375
 
 extension NSNotification.Name {
     
-    public static let loginStateDidChange = NSNotification.Name(rawValue: "loginStateDidChange")
-    public static let statuBarDidChange = NSNotification.Name(rawValue: "statuBarDidChange")
-    public static let refreshState = NSNotification.Name(rawValue: "refreshState")
+    static let loginStateDidChange = NSNotification.Name(rawValue: "loginStateDidChange")
+    static let statuBarDidChange = NSNotification.Name(rawValue: "statuBarDidChange")
+    static let refreshState = NSNotification.Name(rawValue: "refreshState")
+    
+    static let animationRestart = NSNotification.Name(rawValue: "animationRestart")
     
 }

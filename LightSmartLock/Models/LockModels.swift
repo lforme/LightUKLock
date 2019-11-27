@@ -58,3 +58,42 @@ struct IOTLockInfoModel: HandyJSON {
         return String(format: "%.0f", (p * Float(100))) + "%"
     }
 }
+
+
+struct UnlockRecordModel: HandyJSON {
+    
+    enum KeyType: Int, HandyJSONEnum, CustomStringConvertible {
+        case password = 1
+        case finger
+        case ICCard
+        case identifyCard
+        case tempPassword
+        case bluetooth
+        
+        var description: String {
+            switch self {
+            case .bluetooth:
+                return "蓝牙解锁"
+            case .finger:
+                return "指纹解锁"
+            case .ICCard:
+                return "IC卡解锁"
+            case .identifyCard:
+                return "身份证解锁"
+            case .password:
+                return "密码解锁"
+            case .tempPassword:
+                return "临时密码解锁"
+            }
+        }
+    }
+    
+    var LockNum: String?
+    var UserCode: String?
+    var KeyType: KeyType!
+    var KeyID: String?
+    var UnlockTime: String!
+    var CustomerID: String!
+    var headPic: String?
+    var customerNickName: String?
+}

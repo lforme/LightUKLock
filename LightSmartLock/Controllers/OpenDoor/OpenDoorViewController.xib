@@ -8,13 +8,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OpenDoorViewController" customModule="LightSmartLock" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OpenDoorViewController" customModule="门锁助手_极速版" customModuleProvider="target">
             <connections>
                 <outlet property="animationView" destination="sXN-Ik-FdK" id="5Vz-dF-Ob0"/>
                 <outlet property="animationViewHeight" destination="Ted-mb-hVZ" id="Ji8-VI-tt1"/>
                 <outlet property="animationViewTopOffset" destination="IYU-xD-5cR" id="PGR-A0-MSB"/>
                 <outlet property="animationViewWidth" destination="VJh-VR-EuP" id="IDb-qt-7Gw"/>
                 <outlet property="backButton" destination="Ze4-Ql-YEF" id="OsI-yU-LG2"/>
+                <outlet property="desLabel" destination="i3x-8H-I1M" id="OM4-5m-oVI"/>
                 <outlet property="label" destination="ee4-ME-gSa" id="CDd-RO-LdQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -37,7 +38,6 @@
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sXN-Ik-FdK" customClass="AnimationView" customModule="Lottie">
                     <rect key="frame" x="107" y="104" width="200" height="200"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="Ted-mb-hVZ"/>
                         <constraint firstAttribute="width" constant="200" id="VJh-VR-EuP"/>
