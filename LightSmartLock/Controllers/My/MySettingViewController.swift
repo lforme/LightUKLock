@@ -65,6 +65,12 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
         case .avatar:
             uploadAvatarAction()
             
+        case .nickname:
+            changeNicknameAction()
+            
+        case .password:
+            changePasswordAction()
+            
         case .logout:
            logoutAction()
         default:
@@ -102,5 +108,31 @@ extension MySettingViewController {
             }
         }
         navigationController?.present(imagePickerVC!, animated: true, completion: nil)
+    }
+    
+    func changeNicknameAction() {
+        
+        SingleInputController.rx.present(wiht: "修改昵称", saveTitle: "保存", placeholder: "请输入...").flatMapLatest(self.vm.changeNickname).subscribe(onNext: { (user) in
+            LSLUser.current().user = user
+        }, onError: { (error) in
+            PKHUD.sharedHUD.rx.showError(error)
+        }).disposed(by: rx.disposeBag)
+    }
+    
+    func changePasswordAction() {
+        var isSupport: Bool = false
+        vm.verify(isSupport: { (support) in
+            isSupport = support
+            
+            if !support {
+                HUD.flash(.label("为了您的账号安全\n请先开启手机密码"), delay: 2)
+            }
+            
+        }) { (isVerify) in
+            
+            if isVerify && isSupport {
+                // do
+            }
+        }
     }
 }

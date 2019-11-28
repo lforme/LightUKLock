@@ -88,7 +88,7 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         let fix = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         fix.width = 8
         let fixTwo = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        fixTwo.width = 16
+        fixTwo.width = 32
         
         let settingButton = UIButton(type: .custom)
         settingButton.setImage(UIImage(named: "my_setting"), for: UIControl.State())

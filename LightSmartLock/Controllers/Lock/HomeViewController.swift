@@ -65,7 +65,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         let fix = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         fix.width = 8
         let fixTwo = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        fixTwo.width = 16
+        fixTwo.width = 32
         
         let moreButton = UIButton(type: .custom)
         moreButton.setImage(UIImage(named: "home_more_item"), for: UIControl.State())
