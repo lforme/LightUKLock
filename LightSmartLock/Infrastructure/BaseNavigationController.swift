@@ -26,6 +26,13 @@ class BaseNavigationController: UINavigationController {
         return appearance
     }()
     
+    private var previousViewController: UIViewController? {
+        guard viewControllers.count > 1 else {
+            return nil
+        }
+        return viewControllers[viewControllers.count - 2]
+    }
+    
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
     }
@@ -50,6 +57,15 @@ class BaseNavigationController: UINavigationController {
         
         super.pushViewController(viewController, animated: animated)
     }
+    
+    override func popViewController(animated: Bool) -> UIViewController? {
+        if let style = self.previousViewController as? NavigationSettingStyle {
+            self.setNavigationStyle(style)
+        }
+        
+        return super.popViewController(animated: animated)
+    }
+  
     
     override open func show(_ vc: UIViewController, sender: Any?) {
         controlClearBackTitle(vc: vc)

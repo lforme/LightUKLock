@@ -84,6 +84,7 @@ final class RegisForgetViewModel: RegisForgetViewModeling {
                             return AuthAPI.requestMapJSON(.getAccountInfoByPhone(phone: p!), classType: UserModel.self).flatMapLatest { (_) -> Observable<Bool> in
                                 
                                 return AuthAPI.requestMapJSON(.updateLoginPassword(password: pwd!.md5()), classType: UserModel.self).map { (user) -> Bool in
+                                    print(user)
                                     LSLUser.current().user = user
                                     return true
                                 }

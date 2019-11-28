@@ -1,0 +1,68 @@
+//
+//  MyListCell.swift
+//  LightSmartLock
+//
+//  Created by mugua on 2019/11/28.
+//  Copyright © 2019 mugua. All rights reserved.
+//
+
+import UIKit
+import RxSwift
+
+class MyListCell: UITableViewCell {
+    
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var indicator: UIView!
+    @IBOutlet weak var notiView: UIImageView!
+    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var message: UILabel!
+    @IBOutlet weak var bgView: UIView!
+    
+    private(set) var disposeBag = DisposeBag()
+    
+    override func prepareForReuse() {
+        disposeBag = DisposeBag()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        name.textColor = ColorClassification.textPrimary.value
+        address.textColor = ColorClassification.textDescription.value
+        message.textColor = ColorClassification.textDescription.value
+        bgView.backgroundColor = ColorClassification.viewBackground.value
+        self.contentView.backgroundColor = ColorClassification.tableViewBackground.value
+        
+        bgView.setCircularShadow(radius: 7, color: ColorClassification.primary.value)
+        indicator.setCircular(radius: 3)
+    }
+    
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        if selected {
+            indicator.backgroundColor = #colorLiteral(red: 0.9982913136, green: 0.6771650314, blue: 0.05553042889, alpha: 1)
+        } else {
+            indicator.backgroundColor = ColorClassification.viewBackground.value
+        }
+    }
+    
+    func bind(_ data: SceneListModel) {
+        name.text = data.villageName
+        address.text = data.villageName
+        if let lockInfo = data.lockType {
+            message.text = "已安装门锁, 门锁类型: \(lockInfo)"
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
+            if let localSceneId = LSLUser.current().scene?.sceneID, let sceneId = data.sceneID {
+                if localSceneId == sceneId {
+                    self?.isSelected = true
+                } else {
+                    self?.isSelected = false
+                }
+            }
+        }
+    }
+}

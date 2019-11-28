@@ -30,4 +30,5 @@ enum BusinessInterface {
     case getLockInfoBySceneID // 根据场景ID获取门锁绑定信息
     case getLockCurrentInfoFromIOTPlatform // 从物联网平台获取门锁信息
     case getUnlockLog(userCodes: [String], beginTime: String?, endTime: String?, index: Int, pageSize: Int?) //解锁记录
+    case updateUserInfo(info: UserModel) // 更户信息
 }

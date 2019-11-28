@@ -85,13 +85,13 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
             self.hasLock(has: install)
         }).flatMapLatest {[unowned self] (_) in
             return self.vm.userInScene
-        }.flatMapLatest {[unowned self] (userInScene) -> Observable<SmartLockInfoModel> in
+            }.delaySubscription(0.5, scheduler: MainScheduler.instance).flatMapLatest {[unowned self] (userInScene) -> Observable<SmartLockInfoModel> in
             LSLUser.current().userInScene = userInScene
             return self.vm.lockInfo
-        }.flatMapLatest {[unowned self] (lockInfo) -> Observable<IOTLockInfoModel> in
+            }.delaySubscription(0.5, scheduler: MainScheduler.instance).flatMapLatest {[unowned self] (lockInfo) -> Observable<IOTLockInfoModel> in
             LSLUser.current().lockInfo = lockInfo
             return self.vm.lockIOTInfo
-        }.flatMapLatest {[unowned self] (IOTLockInfo) -> Observable<[UnlockRecordModel]> in
+            }.delaySubscription(0.5, scheduler: MainScheduler.instance).flatMapLatest {[unowned self] (IOTLockInfo) -> Observable<[UnlockRecordModel]> in
             LSLUser.current().lockIOTInfo = IOTLockInfo
             return self.vm.unlockRecord
         }.subscribe(onNext: {[unowned self] (list) in
@@ -100,6 +100,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
             }, onError: { (error) in
                 PKHUD.sharedHUD.rx.showError(error)
         }).disposed(by: rx.disposeBag)
+        
         
     }
     

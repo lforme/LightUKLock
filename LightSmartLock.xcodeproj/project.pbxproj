@@ -62,6 +62,13 @@
 		9C752FD0238794BE000FEA73 /* CountdownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C752FCF238794BE000FEA73 /* CountdownButton.swift */; };
 		9C752FD223879546000FEA73 /* RegisPwdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C752FD123879546000FEA73 /* RegisPwdViewModel.swift */; };
 		9C752FD42388080A000FEA73 /* NoLockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C752FD32388080A000FEA73 /* NoLockViewController.swift */; };
+		9C770592238FA11A008E1552 /* MyInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C770590238FA11A008E1552 /* MyInfoHeader.swift */; };
+		9C770593238FA11A008E1552 /* MyInfoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C770591238FA11A008E1552 /* MyInfoHeader.xib */; };
+		9C770596238FA351008E1552 /* MyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C770594238FA351008E1552 /* MyListCell.swift */; };
+		9C770597238FA351008E1552 /* MyListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C770595238FA351008E1552 /* MyListCell.xib */; };
+		9C77059A238FACC7008E1552 /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C770599238FACC7008E1552 /* MyViewModel.swift */; };
+		9C77059C238FBFC6008E1552 /* MySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77059B238FBFC6008E1552 /* MySettingViewController.swift */; };
+		9C77059E238FCC79008E1552 /* MySettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77059D238FCC79008E1552 /* MySettingViewModel.swift */; };
 		9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD27212382801D006A9B97 /* AppDelegate.swift */; };
 		9CDD27292382801D006A9B97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD27272382801D006A9B97 /* Main.storyboard */; };
 		9CDD272B2382801E006A9B97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD272A2382801E006A9B97 /* Assets.xcassets */; };
@@ -139,6 +146,13 @@
 		9C752FCF238794BE000FEA73 /* CountdownButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownButton.swift; sourceTree = "<group>"; };
 		9C752FD123879546000FEA73 /* RegisPwdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisPwdViewModel.swift; sourceTree = "<group>"; };
 		9C752FD32388080A000FEA73 /* NoLockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoLockViewController.swift; sourceTree = "<group>"; };
+		9C770590238FA11A008E1552 /* MyInfoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoHeader.swift; sourceTree = "<group>"; };
+		9C770591238FA11A008E1552 /* MyInfoHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyInfoHeader.xib; sourceTree = "<group>"; };
+		9C770594238FA351008E1552 /* MyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListCell.swift; sourceTree = "<group>"; };
+		9C770595238FA351008E1552 /* MyListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyListCell.xib; sourceTree = "<group>"; };
+		9C770599238FACC7008E1552 /* MyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
+		9C77059B238FBFC6008E1552 /* MySettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingViewController.swift; sourceTree = "<group>"; };
+		9C77059D238FCC79008E1552 /* MySettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingViewModel.swift; sourceTree = "<group>"; };
 		9CDD271E2382801D006A9B97 /* 门锁助手-极速版.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "门锁助手-极速版.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CDD27212382801D006A9B97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CDD27282382801D006A9B97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -299,6 +313,26 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		9C77058F238FA0FB008E1552 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9C770590238FA11A008E1552 /* MyInfoHeader.swift */,
+				9C770591238FA11A008E1552 /* MyInfoHeader.xib */,
+				9C770594238FA351008E1552 /* MyListCell.swift */,
+				9C770595238FA351008E1552 /* MyListCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9C770598238FA846008E1552 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C770599238FACC7008E1552 /* MyViewModel.swift */,
+				9C77059D238FCC79008E1552 /* MySettingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		9CDD27152382801C006A9B97 = {
 			isa = PBXGroup;
 			children = (
@@ -353,7 +387,10 @@
 		9CDD273A238283EA006A9B97 /* My */ = {
 			isa = PBXGroup;
 			children = (
+				9C770598238FA846008E1552 /* ViewModel */,
+				9C77058F238FA0FB008E1552 /* View */,
 				9C24AC452383EBB1005EBF95 /* MyViewController.swift */,
+				9C77059B238FBFC6008E1552 /* MySettingViewController.swift */,
 				9C24AC432383EB96005EBF95 /* My.storyboard */,
 			);
 			path = My;
@@ -492,8 +529,10 @@
 			files = (
 				9C1A4BC5238D0A1A00626DB4 /* AnimationHeaderView.xib in Resources */,
 				9C1A4BC9238D2E7C00626DB4 /* HomeControlCell.xib in Resources */,
+				9C770593238FA11A008E1552 /* MyInfoHeader.xib in Resources */,
 				9CFDE1FC238513D40062522E /* bluetooth.json in Resources */,
 				9CFDE1FA2384EA2A0062522E /* opendoor.json in Resources */,
+				9C770597238FA351008E1552 /* MyListCell.xib in Resources */,
 				9C24AC402383EB55005EBF95 /* OpenDoorViewController.xib in Resources */,
 				9C1A4BCD238D35BA00626DB4 /* HomeUnlockRecordHeader.xib in Resources */,
 				9C24AC212383C1C6005EBF95 /* Login.storyboard in Resources */,
@@ -582,20 +621,24 @@
 				9C524038238E66B500308AC4 /* RecordUnlockReactor.swift in Sources */,
 				9C1A4BCC238D35BA00626DB4 /* HomeUnlockRecordHeader.swift in Sources */,
 				9CFDE211238537A30062522E /* NetworkAPI.swift in Sources */,
+				9C77059E238FCC79008E1552 /* MySettingViewModel.swift in Sources */,
 				9CFDE21623853DE60062522E /* NetworkDiskStorage.swift in Sources */,
 				9C24AC3F2383EB55005EBF95 /* OpenDoorViewController.swift in Sources */,
 				9C752FD0238794BE000FEA73 /* CountdownButton.swift in Sources */,
 				9C24AC372383DE6E005EBF95 /* SceneModels.swift in Sources */,
+				9C77059C238FBFC6008E1552 /* MySettingViewController.swift in Sources */,
 				9C429767238637E3004CB999 /* LoginViewReactor.swift in Sources */,
 				9C524028238E12E300308AC4 /* UIApplicationProxy.swift in Sources */,
 				9C42976D23866026004CB999 /* UIButton+Extension.swift in Sources */,
 				9C752FD42388080A000FEA73 /* NoLockViewController.swift in Sources */,
 				9C24AC352383DCB0005EBF95 /* UserModel.swift in Sources */,
+				9C77059A238FACC7008E1552 /* MyViewModel.swift in Sources */,
 				9C1A4BC4238D0A1A00626DB4 /* AnimationHeaderView.swift in Sources */,
 				9C1C838E23892C83005BB17C /* HomeViewModel.swift in Sources */,
 				9C24AC1923838E56005EBF95 /* UIFont+extension.swift in Sources */,
 				9C52402A238E132900308AC4 /* UIApplication+Rx.swift in Sources */,
 				9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */,
+				9C770596238FA351008E1552 /* MyListCell.swift in Sources */,
 				9C524034238E64C000308AC4 /* RecordUnlockController.swift in Sources */,
 				9C24AC1623838CD1005EBF95 /* NavigationSettingStyle.swift in Sources */,
 				9C24AC1423838C80005EBF95 /* BaseNavigationController.swift in Sources */,
@@ -607,6 +650,7 @@
 				9C24AC2E2383D5D9005EBF95 /* LSLUser.swift in Sources */,
 				9C42976B2386389B004CB999 /* LoginService.swift in Sources */,
 				9C24AC1F2383A2C7005EBF95 /* ColorClassification.swift in Sources */,
+				9C770592238FA11A008E1552 /* MyInfoHeader.swift in Sources */,
 				9C52402D238E163D00308AC4 /* UnlockRecordCell.swift in Sources */,
 				9C752FD223879546000FEA73 /* RegisPwdViewModel.swift in Sources */,
 				9C42976F23866088004CB999 /* PKHud+Rx.swift in Sources */,

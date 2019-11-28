@@ -187,6 +187,8 @@ extension BusinessInterface: TargetType {
             return "api/Lock/GetLockCurrentInfoFromIOTPlatform"
         case .getUnlockLog:
             return "api/Lock/GetUnlockLog"
+        case .updateUserInfo:
+            return "api/User/UpdateAccountInfo"
         }
     }
     
@@ -280,6 +282,9 @@ extension BusinessInterface: TargetType {
             }
             
             return dict
+            
+        case let .updateUserInfo(info):
+            return info.toJSON()
             
         default:
             return nil

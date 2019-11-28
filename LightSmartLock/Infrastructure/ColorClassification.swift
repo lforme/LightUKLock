@@ -73,7 +73,7 @@ enum ColorClassification {
                     if collection.userInterfaceStyle == .dark {
                         return #colorLiteral(red: 0.2, green: 0.2039215686, blue: 0.2078431373, alpha: 1)
                     } else {
-                        return #colorLiteral(red: 0.933242023, green: 0.9333798289, blue: 0.9332232475, alpha: 1)
+                        return #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
                     }
                 }
                 return color

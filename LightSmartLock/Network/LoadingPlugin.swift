@@ -13,32 +13,30 @@ import Lottie
 import Result
 
 final class LoadingPlugin: PluginType {
-
+    
     init() {}
     
     func willSend(_ request: RequestType, target: TargetType) {
-        if HUD.isVisible {
-            return
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            guard let this = self else { return }
-            
-            HUD.show(.customView(view: this.creatAnimationView()))
+        if !HUD.isVisible {
+            DispatchQueue.main.async {[weak self] in
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+                guard let this = self else { return }
+                HUD.show(.customView(view: this.creatAnimationView()))
+            }
         }
     }
     
     func didReceive(_ result: Result<Moya.Response, MoyaError>, target: TargetType) {
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
-        HUD.hide(afterDelay: 1.2)
+        HUD.hide(afterDelay: 1)
     }
     
     
     private func creatAnimationView() -> UIView {
-       let animation = Animation.named("loading", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)!
+        let animation = Animation.named("loading", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)!
         let animationView = AnimationView(animation: animation)
         animationView.frame.size = CGSize(width: 40, height: 40)
         animationView.animation = animation

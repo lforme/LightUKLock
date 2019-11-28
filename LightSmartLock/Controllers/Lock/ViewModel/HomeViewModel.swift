@@ -46,12 +46,14 @@ final class HomeViewModel: HomeViewModeling {
             if count == 0 {
                 return false
             } else {
-                LSLUser.current().scene = noOptionSceneList.filter { $0.IsInstallLock }.first
+                if LSLUser.current().scene == nil {
+                    LSLUser.current().scene = noOptionSceneList.filter { $0.IsInstallLock }.first
+                }
                 return true
             }
         }
         
-        isInstallLock = Observable.combineLatest(networkHasLock, Observable.just(LSLUser.current().isInstalledLock)).map{ $0.0 && $0.1 }
+        isInstallLock = Observable.combineLatest(networkHasLock, Observable.just(LSLUser.current().isInstalledLock)).map{ $0.0 || $0.1 }
         
         let shareSceneListModel = LSLUser.current().obScene.share(replay: 1, scope: .forever)
         
@@ -91,5 +93,5 @@ final class HomeViewModel: HomeViewModeling {
         })
         
     }
-
+    
 }

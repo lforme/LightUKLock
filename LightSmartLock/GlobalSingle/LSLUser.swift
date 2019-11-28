@@ -18,6 +18,9 @@ class LSLUser: NSObject {
     private override init() {
         lock.name = "com.LSLUser.lock"
         super.init()
+        
+        changeableScene.accept(self.scene)
+        changeableUserInfo.accept(self.user)
     }
     
     private static let instance = LSLUser()
@@ -42,13 +45,13 @@ class LSLUser: NSObject {
         lockInfo = nil
         NotificationCenter.default.post(name: .loginStateDidChange, object: false)
         UIApplication.shared.applicationIconBadgeNumber = 0
+        
     }
     
     var token: AccessTokenModel? {
         set {
-            guard let value = newValue, let json = value.toJSON() else { return }
             lock.lock()
-            LocalArchiver.save(key: LSLUser.Keys.token.rawValue, value: json)
+            LocalArchiver.save(key: LSLUser.Keys.token.rawValue, value: newValue?.toJSON())
             lock.unlock()
         }
         
@@ -61,9 +64,8 @@ class LSLUser: NSObject {
     
     var refreshToken: AccessTokenModel? {
         set {
-            guard let value = newValue, let json = value.toJSON() else { return }
             lock.lock()
-            LocalArchiver.save(key: LSLUser.Keys.refreshToekn.rawValue, value: json)
+            LocalArchiver.save(key: LSLUser.Keys.refreshToekn.rawValue, value: newValue?.toJSON())
             lock.unlock()
         }
         
@@ -76,10 +78,9 @@ class LSLUser: NSObject {
     
     var user: UserModel? {
         set {
-            guard let value = newValue, let json = value.toJSON() else { return }
-            changeableUserInfo.accept(value)
+            changeableUserInfo.accept(newValue)
             lock.lock()
-            LocalArchiver.save(key: LSLUser.Keys.userInfo.rawValue, value: json)
+            LocalArchiver.save(key: LSLUser.Keys.userInfo.rawValue, value: newValue?.toJSON())
             lock.unlock()
         }
         
@@ -92,9 +93,9 @@ class LSLUser: NSObject {
     
     var userInScene: UserInSceneModel? {
         set {
-            guard let value = newValue, let json = value.toJSON() else { return }
+            print("用户In场景更新")
             lock.lock()
-            LocalArchiver.save(key: LSLUser.Keys.userInScene.rawValue, value: json)
+            LocalArchiver.save(key: LSLUser.Keys.userInScene.rawValue, value: newValue?.toJSON())
             lock.unlock()
         }
         
@@ -107,10 +108,10 @@ class LSLUser: NSObject {
     
     var scene: SceneListModel? {
         set {
-            guard let value = newValue, let json = value.toJSON() else { return }
-            changeableScene.accept(value)
+            print("场景更新")
+            changeableScene.accept(newValue)
             lock.lock()
-            LocalArchiver.save(key: LSLUser.Keys.scene.rawValue, value: json)
+            LocalArchiver.save(key: LSLUser.Keys.scene.rawValue, value: newValue?.toJSON())
             lock.unlock()
         }
         
@@ -123,9 +124,9 @@ class LSLUser: NSObject {
     
     var lockInfo: SmartLockInfoModel? {
         set {
-            guard let value = newValue, let json = value.toJSON() else { return }
+            print("门锁信息更新")
             lock.lock()
-            LocalArchiver.save(key: LSLUser.Keys.smartLockInfo.rawValue, value: json)
+            LocalArchiver.save(key: LSLUser.Keys.smartLockInfo.rawValue, value: newValue?.toJSON())
             lock.unlock()
         }
         
@@ -138,9 +139,9 @@ class LSLUser: NSObject {
     
     var lockIOTInfo: IOTLockInfoModel? {
         set {
-            guard let value = newValue, let json = value.toJSON() else { return }
+            print("IOT门锁信息更新")
             lock.lock()
-            LocalArchiver.save(key: LSLUser.Keys.lockIOTInfo.rawValue, value: json)
+            LocalArchiver.save(key: LSLUser.Keys.lockIOTInfo.rawValue, value: newValue?.toJSON())
             lock.unlock()
         }
         

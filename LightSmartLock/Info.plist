@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSFaceIDUsageDescription</key>
+	<string>门锁助手需要使用FaceID来验证用户身份</string>
+	<key>NSCameraUsageDescription</key>
+	<string>门锁助手需要使用相机, 为您更换头像</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>门锁助手需要使用相册资源, 为您更换头像</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

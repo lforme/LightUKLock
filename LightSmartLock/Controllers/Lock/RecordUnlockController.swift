@@ -66,10 +66,12 @@ class RecordUnlockController: UIViewController, View {
             Observable.just(Reactor.Action.refreshChange(1)).bind(to: reactor.action).disposed(by: this.disposeBag)
         })
         
-        self.tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {[weak self] in
+        let footer = MJRefreshAutoNormalFooter(refreshingBlock: {[weak self] in
             guard let this = self else { return }
             Observable.just(Reactor.Action.loadMore(1)).bind(to: reactor.action).disposed(by: this.disposeBag)
         })
+        footer.setTitle("", for: .idle)
+        self.tableView.mj_footer = footer
         
         reactor.state.map { $0.loadMoreFinished }.delay(1, scheduler: MainScheduler.instance).subscribe(onNext: {[weak self] (noMore) in
             if noMore {
