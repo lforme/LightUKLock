@@ -85,23 +85,21 @@ class MyViewController: UIViewController, NavigationSettingStyle {
     }
     
     func setupRightNavigationItem() {
-        let fix = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        fix.width = 8
-        let fixTwo = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        fixTwo.width = 32
+        
         
         let settingButton = UIButton(type: .custom)
         settingButton.setImage(UIImage(named: "my_setting"), for: UIControl.State())
-        settingButton.sizeToFit()
+        settingButton.frame.size = CGSize(width: 32, height: 32)
+        settingButton.contentHorizontalAlignment = .right
         settingButton.addTarget(self, action: #selector(self.gotoMySettingVC), for: .touchUpInside)
         let settingItem = UIBarButtonItem(customView: settingButton)
         
         let addButton = UIButton(type: .custom)
         addButton.setImage(UIImage(named: "my_add"), for: UIControl.State())
-        addButton.sizeToFit()
-        
+        addButton.frame.size = CGSize(width: 32, height: 32)
+        addButton.contentHorizontalAlignment = .left
         let addItem = UIBarButtonItem(customView: addButton)
-        self.navigationItem.rightBarButtonItems = [fix, settingItem, fixTwo, addItem]
+        self.navigationItem.rightBarButtonItems = [settingItem, addItem]
     }
     
     func observerTableViewDidScroll() {

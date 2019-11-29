@@ -68,9 +68,6 @@ final class RegisAndRecoveryValidationService {
             return .error(AppError.reason("密码不能为空"))
         }
         
-        if pwd.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) != nil {
-            return .error(AppError.reason("密码只能输入数字"))
-        }
         
         if pwd.count < minimumPwdCount {
             return .error(AppError.reason("密码必须大于等于6位"))

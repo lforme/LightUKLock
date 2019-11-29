@@ -62,22 +62,20 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     }
     
     func setupRightNavigationItems() {
-        let fix = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        fix.width = 8
-        let fixTwo = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        fixTwo.width = 32
         
         let moreButton = UIButton(type: .custom)
         moreButton.setImage(UIImage(named: "home_more_item"), for: UIControl.State())
-        moreButton.sizeToFit()
+        moreButton.frame.size = CGSize(width: 32, height: 32)
+        moreButton.contentHorizontalAlignment = .right
         let moreItem = UIBarButtonItem(customView: moreButton)
         
         let notiButton = UIButton(type: .custom)
         notiButton.setImage(UIImage(named: "home_noti_item"), for: UIControl.State())
-        notiButton.sizeToFit()
-        
+        notiButton.frame.size = CGSize(width: 32, height: 32)
+        notiButton.contentHorizontalAlignment = .left
+        notiButton.addTarget(self, action: #selector(self.gotoMessageCenterVC), for: .touchUpInside)
         let notiItem = UIBarButtonItem(customView: notiButton)
-        self.navigationItem.rightBarButtonItems = [fix, moreItem, fixTwo, notiItem]
+        self.navigationItem.rightBarButtonItems = [moreItem, notiItem]
     }
     
     func bind() {
@@ -107,15 +105,16 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     private func hasLock(has: Bool) {
         if has {
             noLockView.alpha = 0
-            self.tabBarController?.tabBar.isHidden = false
-            self.extendedLayoutIncludesOpaqueBars = false
             self.view.bringSubviewToFront(tableView)
         } else {
             noLockView.alpha = 1
-            self.tabBarController?.tabBar.isHidden = true
-            self.extendedLayoutIncludesOpaqueBars = true
             self.view.sendSubviewToBack(tableView)
         }
+    }
+    
+    @objc func gotoMessageCenterVC() {
+        let messageCenterVC: MessageCenterController = ViewLoader.Storyboard.controller(from: "Home")
+        navigationController?.pushViewController(messageCenterVC, animated: true)
     }
 }
 

@@ -42,6 +42,10 @@ class RecordUnlockController: UIViewController, View {
         tableView.mj_header?.beginRefreshing()
     }
     
+    deinit {
+        print("\(self) deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,6 +60,7 @@ class RecordUnlockController: UIViewController, View {
             maker.edges.equalToSuperview()
         }
         tableView.separatorStyle = .none
+        tableView.emptyDataSetSource = self
     }
     
     

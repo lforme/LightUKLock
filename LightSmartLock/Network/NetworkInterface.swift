@@ -16,7 +16,7 @@ enum AuthenticationInterface {
     case MSMFetchCode(phone: String) // 获取短信
     case validatePhoneCode(phone: String, code: String) // 注册
     case getAccountInfoByPhone(phone: String) // 获取用户信息
-    case updateLoginPassword(password: String) // 设置密码
+    case updateLoginPassword(password: String, accountId: String) // 设置密码
     case userToken(userName: String, pwd: String) // 登录成功之后获取用户token
     case refreshPlatformToken // 401刷新token
     case refreshUserToken // 401刷新token
@@ -31,4 +31,6 @@ enum BusinessInterface {
     case getLockCurrentInfoFromIOTPlatform // 从物联网平台获取门锁信息
     case getUnlockLog(userCodes: [String], beginTime: String?, endTime: String?, index: Int, pageSize: Int?) //解锁记录
     case updateUserInfo(info: UserModel) // 更户信息
+    case submitBluthUnlockOperation // 上传蓝牙解锁记录
+    
 }

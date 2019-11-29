@@ -42,6 +42,18 @@
 		9C24AC482383EBE5005EBF95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC472383EBE5005EBF95 /* HomeViewController.swift */; };
 		9C24AC4A2383F344005EBF95 /* CustomizedTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC492383F344005EBF95 /* CustomizedTabbarItem.swift */; };
 		9C24AC4C2383F639005EBF95 /* CustomizedOpenDoorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC4B2383F639005EBF95 /* CustomizedOpenDoorItem.swift */; };
+		9C3726C62390B2DD00450757 /* ChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3726C52390B2DD00450757 /* ChangePasswordController.swift */; };
+		9C3726C82390C6AD00450757 /* Empty+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3726C72390C6AD00450757 /* Empty+UIViewController.swift */; };
+		9C3726CC2390CE4D00450757 /* normalDarkMode.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C3726CB2390CE4D00450757 /* normalDarkMode.json */; };
+		9C3726CE2390D29900450757 /* ChangePhoneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3726CD2390D29900450757 /* ChangePhoneController.swift */; };
+		9C3726D723910C0100450757 /* NORData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3726D223910C0100450757 /* NORData.swift */; };
+		9C3726D923910C0100450757 /* NORServiceIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3726D423910C0100450757 /* NORServiceIdentifiers.swift */; };
+		9C3726DC23910CB000450757 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3726DB23910CB000450757 /* String+Extension.swift */; };
+		9C3726DE23910FF700450757 /* BluetoothPapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3726DD23910FF700450757 /* BluetoothPapa.swift */; };
+		9C3726E02391108400450757 /* PPBluetoothScanEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3726DF2391108400450757 /* PPBluetoothScanEntity.swift */; };
+		9C3726E32391164700450757 /* OpenDoorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3726E22391164700450757 /* OpenDoorViewModel.swift */; };
+		9C3726E52391369900450757 /* MessageCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3726E42391369900450757 /* MessageCenterController.swift */; };
+		9C3726E723913C5400450757 /* MessageCenterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3726E623913C5400450757 /* MessageCenterViewModel.swift */; };
 		9C429767238637E3004CB999 /* LoginViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C429766238637E3004CB999 /* LoginViewReactor.swift */; };
 		9C42976B2386389B004CB999 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42976A2386389B004CB999 /* LoginService.swift */; };
 		9C42976D23866026004CB999 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42976C23866026004CB999 /* UIButton+Extension.swift */; };
@@ -128,6 +140,18 @@
 		9C24AC472383EBE5005EBF95 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9C24AC492383F344005EBF95 /* CustomizedTabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedTabbarItem.swift; sourceTree = "<group>"; };
 		9C24AC4B2383F639005EBF95 /* CustomizedOpenDoorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedOpenDoorItem.swift; sourceTree = "<group>"; };
+		9C3726C52390B2DD00450757 /* ChangePasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordController.swift; sourceTree = "<group>"; };
+		9C3726C72390C6AD00450757 /* Empty+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Empty+UIViewController.swift"; sourceTree = "<group>"; };
+		9C3726CB2390CE4D00450757 /* normalDarkMode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = normalDarkMode.json; sourceTree = "<group>"; };
+		9C3726CD2390D29900450757 /* ChangePhoneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneController.swift; sourceTree = "<group>"; };
+		9C3726D223910C0100450757 /* NORData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NORData.swift; sourceTree = "<group>"; };
+		9C3726D423910C0100450757 /* NORServiceIdentifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NORServiceIdentifiers.swift; sourceTree = "<group>"; };
+		9C3726DB23910CB000450757 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		9C3726DD23910FF700450757 /* BluetoothPapa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothPapa.swift; sourceTree = "<group>"; };
+		9C3726DF2391108400450757 /* PPBluetoothScanEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPBluetoothScanEntity.swift; sourceTree = "<group>"; };
+		9C3726E22391164700450757 /* OpenDoorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDoorViewModel.swift; sourceTree = "<group>"; };
+		9C3726E42391369900450757 /* MessageCenterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCenterController.swift; sourceTree = "<group>"; };
+		9C3726E623913C5400450757 /* MessageCenterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCenterViewModel.swift; sourceTree = "<group>"; };
 		9C429766238637E3004CB999 /* LoginViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewReactor.swift; sourceTree = "<group>"; };
 		9C42976A2386389B004CB999 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		9C42976C23866026004CB999 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
@@ -227,6 +251,7 @@
 			children = (
 				9C1C838D23892C83005BB17C /* HomeViewModel.swift */,
 				9C524037238E66B500308AC4 /* RecordUnlockReactor.swift */,
+				9C3726E623913C5400450757 /* MessageCenterViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -240,6 +265,7 @@
 				9C24AC2A2383CD94005EBF95 /* StaticConst.swift */,
 				9C24AC492383F344005EBF95 /* CustomizedTabbarItem.swift */,
 				9C24AC4B2383F639005EBF95 /* CustomizedOpenDoorItem.swift */,
+				9C3726C72390C6AD00450757 /* Empty+UIViewController.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -257,6 +283,7 @@
 				9C42976E23866088004CB999 /* PKHud+Rx.swift */,
 				9C524029238E132900308AC4 /* UIApplication+Rx.swift */,
 				9C52402F238E56A700308AC4 /* UIViewController+Extension.swift */,
+				9C3726DB23910CB000450757 /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -290,6 +317,33 @@
 				9C42977123867622004CB999 /* MessageNotificationHelper.swift */,
 			);
 			path = ToolBox;
+			sourceTree = "<group>";
+		};
+		9C3726CF23910C0100450757 /* Bluepapa */ = {
+			isa = PBXGroup;
+			children = (
+				9C3726DF2391108400450757 /* PPBluetoothScanEntity.swift */,
+				9C3726DD23910FF700450757 /* BluetoothPapa.swift */,
+				9C3726D123910C0100450757 /* Utilities */,
+			);
+			path = Bluepapa;
+			sourceTree = "<group>";
+		};
+		9C3726D123910C0100450757 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				9C3726D223910C0100450757 /* NORData.swift */,
+				9C3726D423910C0100450757 /* NORServiceIdentifiers.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		9C3726E12391163900450757 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C3726E22391164700450757 /* OpenDoorViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9C429763238635C1004CB999 /* ViewModel */ = {
@@ -360,6 +414,7 @@
 		9CDD27202382801D006A9B97 /* LightSmartLock */ = {
 			isa = PBXGroup;
 			children = (
+				9C3726CF23910C0100450757 /* Bluepapa */,
 				9C524026238E12AF00308AC4 /* InvokedProxy */,
 				9CFDE1FD23851CC40062522E /* Network */,
 				9CFDE1F62384E9FD0062522E /* AnimationSource */,
@@ -397,6 +452,8 @@
 				9C77058F238FA0FB008E1552 /* View */,
 				9C24AC452383EBB1005EBF95 /* MyViewController.swift */,
 				9C77059B238FBFC6008E1552 /* MySettingViewController.swift */,
+				9C3726C52390B2DD00450757 /* ChangePasswordController.swift */,
+				9C3726CD2390D29900450757 /* ChangePhoneController.swift */,
 				9C24AC432383EB96005EBF95 /* My.storyboard */,
 			);
 			path = My;
@@ -410,6 +467,7 @@
 				9C24AC472383EBE5005EBF95 /* HomeViewController.swift */,
 				9C752FD32388080A000FEA73 /* NoLockViewController.swift */,
 				9C524033238E64C000308AC4 /* RecordUnlockController.swift */,
+				9C3726E42391369900450757 /* MessageCenterController.swift */,
 				9C24AC412383EB88005EBF95 /* Home.storyboard */,
 			);
 			path = Lock;
@@ -418,6 +476,7 @@
 		9CDD273E23828639006A9B97 /* OpenDoor */ = {
 			isa = PBXGroup;
 			children = (
+				9C3726E12391163900450757 /* ViewModel */,
 				9C24AC3D2383EB55005EBF95 /* OpenDoorViewController.swift */,
 				9C24AC3E2383EB55005EBF95 /* OpenDoorViewController.xib */,
 			);
@@ -441,6 +500,7 @@
 			children = (
 				9C524022238E0E3F00308AC4 /* error.json */,
 				9C524024238E0E5500308AC4 /* warning.json */,
+				9C3726CB2390CE4D00450757 /* normalDarkMode.json */,
 				9C524020238E0E3100308AC4 /* normal.json */,
 				9CFDE20A238531CB0062522E /* loading.json */,
 				9CFDE1FB238513D40062522E /* bluetooth.json */,
@@ -553,6 +613,7 @@
 				9CDD272B2382801E006A9B97 /* Assets.xcassets in Resources */,
 				9CDD27292382801D006A9B97 /* Main.storyboard in Resources */,
 				9C24AC442383EB96005EBF95 /* My.storyboard in Resources */,
+				9C3726CC2390CE4D00450757 /* normalDarkMode.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,6 +666,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C3726C62390B2DD00450757 /* ChangePasswordController.swift in Sources */,
+				9C3726E723913C5400450757 /* MessageCenterViewModel.swift in Sources */,
 				9C24AC232383C206005EBF95 /* LoginViewController.swift in Sources */,
 				9C24AC272383CB78005EBF95 /* ObjectAssociation.swift in Sources */,
 				9C24AC1B23839D75005EBF95 /* Swizzling+UIViewController.swift in Sources */,
@@ -619,6 +682,7 @@
 				9CFDE20123851EE80062522E /* NetworkInterface.swift in Sources */,
 				9CFDE20323851F660062522E /* NetworkInterfaceImplement.swift in Sources */,
 				9C24AC462383EBB1005EBF95 /* MyViewController.swift in Sources */,
+				9C3726CE2390D29900450757 /* ChangePhoneController.swift in Sources */,
 				9C24AC332383D91B005EBF95 /* AccessTokenModel.swift in Sources */,
 				9C4297782386A64C004CB999 /* RegistrationRecoveryService.swift in Sources */,
 				9C24AC302383D89A005EBF95 /* LocalArchiver.swift in Sources */,
@@ -627,6 +691,8 @@
 				9C24AC4C2383F639005EBF95 /* CustomizedOpenDoorItem.swift in Sources */,
 				9C7705A1238FE358008E1552 /* SingleInputController.swift in Sources */,
 				9C524038238E66B500308AC4 /* RecordUnlockReactor.swift in Sources */,
+				9C3726E52391369900450757 /* MessageCenterController.swift in Sources */,
+				9C3726E32391164700450757 /* OpenDoorViewModel.swift in Sources */,
 				9C1A4BCC238D35BA00626DB4 /* HomeUnlockRecordHeader.swift in Sources */,
 				9CFDE211238537A30062522E /* NetworkAPI.swift in Sources */,
 				9C77059E238FCC79008E1552 /* MySettingViewModel.swift in Sources */,
@@ -646,18 +712,24 @@
 				9C24AC1923838E56005EBF95 /* UIFont+extension.swift in Sources */,
 				9C52402A238E132900308AC4 /* UIApplication+Rx.swift in Sources */,
 				9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */,
+				9C3726E02391108400450757 /* PPBluetoothScanEntity.swift in Sources */,
 				9C770596238FA351008E1552 /* MyListCell.swift in Sources */,
 				9C524034238E64C000308AC4 /* RecordUnlockController.swift in Sources */,
 				9C24AC1623838CD1005EBF95 /* NavigationSettingStyle.swift in Sources */,
+				9C3726D923910C0100450757 /* NORServiceIdentifiers.swift in Sources */,
 				9C24AC1423838C80005EBF95 /* BaseNavigationController.swift in Sources */,
 				9C24AC292383CB92005EBF95 /* UITextField+Extension.swift in Sources */,
 				9CFDE20F2385346E0062522E /* AppErrorDomain.swift in Sources */,
 				9C524030238E56A700308AC4 /* UIViewController+Extension.swift in Sources */,
 				9C24AC392383E00C005EBF95 /* LockModels.swift in Sources */,
 				9C24AC252383C9CB005EBF95 /* UIView+Extension.swift in Sources */,
+				9C3726DE23910FF700450757 /* BluetoothPapa.swift in Sources */,
+				9C3726D723910C0100450757 /* NORData.swift in Sources */,
 				9C24AC2E2383D5D9005EBF95 /* LSLUser.swift in Sources */,
 				9C42976B2386389B004CB999 /* LoginService.swift in Sources */,
+				9C3726DC23910CB000450757 /* String+Extension.swift in Sources */,
 				9C24AC1F2383A2C7005EBF95 /* ColorClassification.swift in Sources */,
+				9C3726C82390C6AD00450757 /* Empty+UIViewController.swift in Sources */,
 				9C770592238FA11A008E1552 /* MyInfoHeader.swift in Sources */,
 				9C52402D238E163D00308AC4 /* UnlockRecordCell.swift in Sources */,
 				9C752FD223879546000FEA73 /* RegisPwdViewModel.swift in Sources */,

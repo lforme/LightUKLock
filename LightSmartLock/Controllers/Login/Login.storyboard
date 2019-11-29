@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -210,13 +211,21 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S m a r t H o m e" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZS-Li-gFf">
                                                     <rect key="frame" x="16" y="97" width="94.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" name="textPrimary"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V e r s i o n" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glg-it-jnu">
+                                                    <rect key="frame" x="114.5" y="97" width="63.5" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" name="textPrimary"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="glg-it-jnu" firstAttribute="leading" secondItem="sZS-Li-gFf" secondAttribute="trailing" constant="4" id="2Sc-K2-Qqk"/>
                                                 <constraint firstItem="eh2-1l-lNr" firstAttribute="top" secondItem="k1D-pV-7pa" secondAttribute="top" constant="60" id="5fm-pa-Bzg"/>
                                                 <constraint firstItem="sZS-Li-gFf" firstAttribute="leading" secondItem="eh2-1l-lNr" secondAttribute="leading" id="6ZZ-u4-T6U"/>
+                                                <constraint firstItem="glg-it-jnu" firstAttribute="centerY" secondItem="sZS-Li-gFf" secondAttribute="centerY" id="CtX-YH-fjC"/>
                                                 <constraint firstItem="eh2-1l-lNr" firstAttribute="leading" secondItem="k1D-pV-7pa" secondAttribute="leading" constant="16" id="YEz-C2-JbR"/>
                                                 <constraint firstItem="sZS-Li-gFf" firstAttribute="top" secondItem="eh2-1l-lNr" secondAttribute="bottom" constant="8" id="zyd-xE-xTE"/>
                                             </constraints>
@@ -365,6 +374,7 @@
                         <outlet property="pwdContainerView" destination="H2t-b5-nVB" id="oUy-gG-bMG"/>
                         <outlet property="pwdTextField" destination="zto-RN-7kP" id="TrG-3w-RfU"/>
                         <outlet property="titleLabel" destination="eh2-1l-lNr" id="jQQ-BX-ioc"/>
+                        <outlet property="versionLabel" destination="glg-it-jnu" id="kbH-ja-80L"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LoJ-2S-Hhw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -377,5 +387,8 @@
         <image name="login_eys_close" width="22" height="12"/>
         <image name="signin_passwords" width="12" height="17"/>
         <image name="signin_phone_icon" width="10" height="18"/>
+        <namedColor name="textPrimary">
+            <color red="0.039000000804662704" green="0.12200000137090683" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

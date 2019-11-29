@@ -64,13 +64,27 @@ private extension RxMoyaProvider {
     
     private func useCacheWhenErrorOccurred(_ token: Target) -> Observable<Response> {
         
-        if let interface = token as? AuthenticationInterface {
+        if let interface = token as? BusinessInterface {
             var key = interface.path + interface.method.rawValue
             if let param = interface.parameters {
-                key += param.description
+                for (k, v) in param {
+                    key += k
+                    if let vStr = v as? String {
+                        key += "=\(vStr)&"
+                    }
+                    
+                    if let vStr = v as? Int {
+                        key += "=\(vStr)&"
+                    }
+                    
+                    if let vStr = v as? Bool {
+                        key += "=\(vStr)&"
+                    }
+                }
             }
             // 读取缓存
-            guard let data = diskCache.value(forKey: key) else {
+            print("读取 Key: \(key)")
+            guard let data = diskCache.value(forKey: "key") else {
                 return self._request(token)
             }
             let cache = Response(statusCode: 200, data: data, request: nil, response: nil)
@@ -132,12 +146,26 @@ private extension RxMoyaProvider {
                 } else {
                     
                     // 写入缓存
-                    if let interface = token as? AuthenticationInterface {
+                    if let interface = token as? BusinessInterface {
                         var key = interface.path + interface.method.rawValue
                         if let param = interface.parameters {
-                            key += param.description
+                            for (k, v) in param {
+                                key += k
+                                if let vStr = v as? String {
+                                    key += "=\(vStr)&"
+                                }
+                                
+                                if let vStr = v as? Int {
+                                    key += "=\(vStr)&"
+                                }
+                                
+                                if let vStr = v as? Bool {
+                                    key += "=\(vStr)&"
+                                }
+                            }
                         }
-                        self.diskCache.save(value: res.data, forKey: key)
+                        print("写入 Key: \(key)")
+                        self.diskCache.save(value: res.data, forKey: "key")
                     }
                     
                     return Observable.just(res)

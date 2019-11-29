@@ -81,9 +81,9 @@ final class RegisForgetViewModel: RegisForgetViewModeling {
                 if isPass {
                     return AuthAPI.requestMapBool(.validatePhoneCode(phone: p!, code: c!)).flatMapLatest { (isValidate) -> Observable<Bool> in
                         if isValidate {
-                            return AuthAPI.requestMapJSON(.getAccountInfoByPhone(phone: p!), classType: UserModel.self).flatMapLatest { (_) -> Observable<Bool> in
+                            return AuthAPI.requestMapJSON(.getAccountInfoByPhone(phone: p!), classType: UserModel.self).flatMapLatest { (m) -> Observable<Bool> in
                                 
-                                return AuthAPI.requestMapJSON(.updateLoginPassword(password: pwd!.md5()), classType: UserModel.self).map { (user) -> Bool in
+                                return AuthAPI.requestMapJSON(.updateLoginPassword(password: pwd!.md5(), accountId: m.accountID), classType: UserModel.self).map { (user) -> Bool in
                                     print(user)
                                     LSLUser.current().user = user
                                     return true

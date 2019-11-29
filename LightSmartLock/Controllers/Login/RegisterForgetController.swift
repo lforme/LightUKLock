@@ -81,6 +81,8 @@ class RegisterForgetController: UITableViewController, NavigationSettingStyle {
         
         cell1.backgroundColor = ColorClassification.viewBackground.value
         cell2.backgroundColor = ColorClassification.viewBackground.value
+        
+        pwdTextField.isSecureTextEntry = true
     }
     
     func bind() {

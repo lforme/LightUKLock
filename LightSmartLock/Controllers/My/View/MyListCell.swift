@@ -33,8 +33,17 @@ class MyListCell: UITableViewCell {
         bgView.backgroundColor = ColorClassification.viewBackground.value
         self.contentView.backgroundColor = ColorClassification.tableViewBackground.value
         
-        bgView.setCircularShadow(radius: 7, color: ColorClassification.primary.value)
+        bgView.setCircularShadow(radius: 7, color: ColorClassification.textPlaceholder.value)
         indicator.setCircular(radius: 3)
+        
+        if #available(iOS 12.0, *) {
+            if self.traitCollection.userInterfaceStyle == .dark {
+                bgView.layer.shadowColor = UIColor.clear.cgColor
+                bgView.layer.cornerRadius = 7
+                bgView.layer.borderWidth = 0.5
+                bgView.layer.borderColor = #colorLiteral(red: 0.2705882353, green: 0.2745098039, blue: 0.2784313725, alpha: 1).cgColor
+            }
+        } else {}
     }
     
     

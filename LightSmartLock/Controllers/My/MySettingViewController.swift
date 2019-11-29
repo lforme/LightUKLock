@@ -10,6 +10,7 @@ import UIKit
 import Kingfisher
 import PKHUD
 import TZImagePickerController
+import RxSwift
 
 class MySettingViewController: UITableViewController, NavigationSettingStyle {
     
@@ -18,6 +19,7 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
         case nickname
         case password
         case phone
+        case version
         case logout
     }
     
@@ -25,11 +27,16 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
         return ColorClassification.viewBackground.value
     }
     
+    @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var nameValue: UILabel!
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var avatar: UIImageView!
     
     let vm = MySettingViewModel()
+    
+    deinit {
+        print("\(self) deinit")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +51,7 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
         self.tableView.tableFooterView = UIView(frame: .zero)
         self.avatar.clipsToBounds = true
         self.avatar.layer.cornerRadius = self.avatar.bounds.height / 2
+        self.versionLabel.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     }
     
     func bind() {
@@ -71,10 +79,13 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
         case .password:
             changePasswordAction()
             
+        case .phone:
+            changePhoneAction()
+            
         case .logout:
-           logoutAction()
-        default:
-            break
+            logoutAction()
+        
+        default: break
         }
     }
 }
@@ -120,19 +131,56 @@ extension MySettingViewController {
     }
     
     func changePasswordAction() {
-        var isSupport: Bool = false
-        vm.verify(isSupport: { (support) in
-            isSupport = support
-            
+        
+        vm.verify().flatMapLatest {[weak self] (support, verify) -> Observable<String> in
+            guard let this = self else {
+                return .empty()
+            }
+            if verify {
+                return ChangePasswordController.rx.present(from: this)
+            }
             if !support {
-                HUD.flash(.label("为了您的账号安全\n请先开启手机密码"), delay: 2)
+                HUD.flash(.label("为了您的账号安全\n请开启手机密码验证"), delay: 2)
+                return .empty()
             }
-            
-        }) { (isVerify) in
-            
-            if isVerify && isSupport {
-                // do
+            return .empty()
+        }.flatMapLatest {[weak self] (newPassword) -> Observable<UserModel> in
+            guard let this = self else {
+                return .empty()
             }
-        }
+            return this.vm.changePassword(newPassword.md5())
+        }.subscribe(onNext: { (user) in
+            HUD.flash(.label("密码修改成功"), delay: 2)
+            LSLUser.current().user = user
+        }, onError: { (error) in
+            PKHUD.sharedHUD.rx.showError(error)
+        }).disposed(by: rx.disposeBag)
+    }
+    
+    func changePhoneAction() {
+        
+        vm.verify().flatMapLatest {[weak self] (support, verify) -> Observable<String> in
+            guard let this = self else {
+                return .empty()
+            }
+            if verify {
+                return ChangePhoneController.rx.present(from: this)
+            }
+            if !support {
+                HUD.flash(.label("为了您的账号安全\n请开启手机密码验证"), delay: 2)
+                return .empty()
+            }
+            return .empty()
+        }.flatMapLatest {[weak self] (newPhone) -> Observable<UserModel> in
+            guard let this = self else {
+                return .empty()
+            }
+            return this.vm.changePhone(newPhone)
+        }.subscribe(onNext: { (user) in
+            HUD.flash(.label("电话修改成功"), delay: 2)
+            LSLUser.current().user = user
+        }, onError: { (error) in
+            PKHUD.sharedHUD.rx.showError(error)
+        }).disposed(by: rx.disposeBag)
     }
 }

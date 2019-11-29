@@ -51,25 +51,36 @@ final class MySettingViewModel {
         }
     }
     
-    func verify(isSupport: @escaping (Bool)->Void, block: @escaping (Bool)->Void) {
-        let laContext = LAContext()
-        laContext.localizedFallbackTitle = nil
-        var error : NSError?
-        let support = laContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
-        
-        if support {
-            laContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "验证您的身份") { (success, er) in
-                DispatchQueue.main.async {
-                    if let e = er {
-                        print(e.localizedDescription)
-                    } else {
-                        block(success)
+    func verify() -> Observable<(isSupport: Bool, isVerify: Bool)> {
+        return Observable.create { (observer) -> Disposable in
+            let laContext = LAContext()
+            laContext.localizedFallbackTitle = "验证失败"
+            laContext.localizedCancelTitle = "取消验证"
+            var error : NSError?
+            let support = laContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
+            
+            if support {
+                laContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "验证您的身份") { (success, er) in
+                    DispatchQueue.main.async {
+                        if let e = er {
+                            print(e.localizedDescription)
+                            observer.onNext((isSupport: true, isVerify: false))
+                            observer.onCompleted()
+                        } else {
+                            observer.onNext((isSupport: true, isVerify: true))
+                            observer.onCompleted()
+                        }
                     }
                 }
+            } else {
+                observer.onNext((isSupport: false, isVerify: false))
+                observer.onCompleted()
             }
+            
+            return Disposables.create()
         }
-        isSupport(support)
     }
+    
     
     private func uoloadImage(_ image: UIImage) -> Observable<String?> {
         return BusinessAPI.requestMapAny(.uploadImage(image, description: "头像上传")).map { (res) -> String? in

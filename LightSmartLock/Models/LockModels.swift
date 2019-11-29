@@ -17,8 +17,8 @@ struct SmartLockInfoModel: HandyJSON {
     var customerLockID: String!
     var sceneID: String?
     var lockNum: String!
-    var secretKey: String!
-    var bluthName: String!
+    var secretKey: String?
+    var bluthName: String?
     var MAC: String!
     var IMEI: String!
     var lockVersion: String!

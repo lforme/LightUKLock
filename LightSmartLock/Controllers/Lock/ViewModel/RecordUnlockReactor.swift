@@ -72,7 +72,7 @@ final class RecordUnlockReactor: Reactor {
             ])
             
         case let .refreshChange(index):
-            let request = BusinessAPI.requestMapJSONArray(.getUnlockLog(userCodes: [self.userCode], beginTime: nil, endTime: nil, index: index, pageSize: 15), classType: UnlockRecordModel.self).map { $0.compactMap { $0 } }.share(replay: 1, scope: .forever)
+            let request = BusinessAPI.requestMapJSONArray(.getUnlockLog(userCodes: [self.userCode], beginTime: nil, endTime: nil, index: index, pageSize: 15), classType: UnlockRecordModel.self, useCache: true).map { $0.compactMap { $0 } }.share(replay: 1, scope: .forever)
             
             return Observable.concat([
                 .just(.setRefreshPageIndex(index)),

@@ -27,6 +27,7 @@ class LoginViewController: UITableViewController, StoryboardView {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var cell1: UITableViewCell!
     @IBOutlet weak var cell2: UITableViewCell!
+    @IBOutlet weak var versionLabel: UILabel!
     
     var disposeBag: DisposeBag = DisposeBag()
     
@@ -122,6 +123,7 @@ class LoginViewController: UITableViewController, StoryboardView {
         cell1.backgroundColor = ColorClassification.viewBackground.value
         cell2.backgroundColor = ColorClassification.viewBackground.value
         
+        versionLabel.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     }
     
     @IBAction func registerTap(_ sender: UIButton) {

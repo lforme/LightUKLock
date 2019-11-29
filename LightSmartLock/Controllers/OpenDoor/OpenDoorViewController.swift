@@ -8,6 +8,9 @@
 
 import UIKit
 import Lottie
+import RxCocoa
+import RxSwift
+import PKHUD
 
 class OpenDoorViewController: UIViewController {
     
@@ -20,6 +23,8 @@ class OpenDoorViewController: UIViewController {
     @IBOutlet weak var animationViewWidth: NSLayoutConstraint!
     @IBOutlet weak var animationViewTopOffset: NSLayoutConstraint!
     
+    let vm = OpenDoorViewModel()
+    
     deinit {
         print("\(self) deinit")
     }
@@ -29,9 +34,36 @@ class OpenDoorViewController: UIViewController {
         
         setupUI()
         loadFinddingAnimationJson()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.loadOpendoorAnimationJson()
-        }
+        bind()
+    }
+    
+    func bind() {
+        vm.startConnected.flatMapLatest {[weak self] (isConnected) -> Observable<Bool> in
+            guard let this = self else {
+                return .error(AppError.reason("解锁失败"))
+            }
+            if isConnected {
+                return this.vm.openDoor()
+            } else {
+                return .just(false)
+            }
+        }.flatMapLatest {[weak self] (openDoorSuccess) -> Observable<Bool> in
+            guard let this = self else {
+                return .error(AppError.reason("解锁失败"))
+            }
+            if openDoorSuccess {
+                return this.vm.uploadUnlockRecord()
+            } else {
+                return .just(false)
+            }
+        }.subscribe(onNext: {[weak self] (finished) in
+            if finished {
+               self?.loadOpendoorAnimationJson()
+            }
+        }, onError: {[weak self] (error) in
+            PKHUD.sharedHUD.rx.showError(error)
+            self?.dismiss(animated: true, completion: nil)
+        }).disposed(by: rx.disposeBag)
     }
     
     func setupUI() {

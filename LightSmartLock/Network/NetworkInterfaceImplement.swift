@@ -89,9 +89,8 @@ extension AuthenticationInterface: TargetType {
             ]
             return params
             
-        case .updateLoginPassword(let password):
-            guard let userId = LSLUser.current().user?.accountID else { return nil }
-            return ["AccountID": userId, "LoginPassword": password]
+        case .updateLoginPassword(let password, let accountId):
+            return ["AccountID": accountId, "LoginPassword": password]
             
         case .validatePhoneCode(let phone, let code):
             return ["Phone": phone,
@@ -189,6 +188,8 @@ extension BusinessInterface: TargetType {
             return "api/Lock/GetUnlockLog"
         case .updateUserInfo:
             return "api/User/UpdateAccountInfo"
+        case .submitBluthUnlockOperation:
+            return "api/Lock/SubmitBluthUnlockOperation"
         }
     }
     
@@ -285,6 +286,10 @@ extension BusinessInterface: TargetType {
             
         case let .updateUserInfo(info):
             return info.toJSON()
+            
+        case .submitBluthUnlockOperation:
+            guard let customerId = LSLUser.current().userInScene?.customerID else { return nil }
+            return ["CustomerID": customerId]
             
         default:
             return nil

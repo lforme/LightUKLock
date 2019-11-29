@@ -35,19 +35,19 @@ final class HomeViewModel: HomeViewModeling {
     
     init() {
         
-        let requset = BusinessAPI.requestMapJSONArray(.getCustomerSceneList(pageIndex: 1, pageSize: 3, Sort: 1), classType: SceneListModel.self, useCache: true).catchErrorJustReturn([])
+        let requset = BusinessAPI.requestMapJSONArray(.getCustomerSceneList(pageIndex: 1, pageSize: 5, Sort: 1), classType: SceneListModel.self, useCache: true).catchErrorJustReturn([])
         
         let networkHasLock = requset.map { (sceneList) -> Bool in
             let noOptionSceneList = sceneList.compactMap { $0 }
             if noOptionSceneList.count == 0 {
                 return false
             }
-            let count = noOptionSceneList.filter { $0.IsInstallLock }.count
+            let count = noOptionSceneList.filter { $0.IsInstallLock ?? false }.count
             if count == 0 {
                 return false
             } else {
                 if LSLUser.current().scene == nil {
-                    LSLUser.current().scene = noOptionSceneList.filter { $0.IsInstallLock }.first
+                    LSLUser.current().scene = noOptionSceneList.filter { $0.IsInstallLock ?? false }.first
                 }
                 return true
             }

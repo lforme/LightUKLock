@@ -48,7 +48,7 @@ struct SceneListModel: HandyJSON {
     var sort: Int?
     var villageName: String?
     var devNoticeCount: Int?
-    var IsInstallLock: Bool!
+    var IsInstallLock: Bool?
     var lockType: String?
     var customerLockID: String?
     var assetsID: String?
