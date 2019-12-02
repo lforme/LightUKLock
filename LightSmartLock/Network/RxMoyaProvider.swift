@@ -66,27 +66,19 @@ private extension RxMoyaProvider {
         
         if let interface = token as? BusinessInterface {
             var key = interface.path + interface.method.rawValue
-            if let param = interface.parameters {
-                for (k, v) in param {
-                    key += k
-                    if let vStr = v as? String {
-                        key += "=\(vStr)&"
-                    }
-                    
-                    if let vStr = v as? Int {
-                        key += "=\(vStr)&"
-                    }
-                    
-                    if let vStr = v as? Bool {
-                        key += "=\(vStr)&"
-                    }
-                }
+            if let param = interface.parameters?.sorted(by: { (a, b) -> Bool in
+                return a.key < b.key
+            }).description {
+                key += param
             }
             // 读取缓存
             print("读取 Key: \(key)")
-            guard let data = diskCache.value(forKey: "key") else {
+            let md5 = key.md5()
+            print("读取 Key MD5: \(md5)")
+            guard let data = diskCache.value(forKey: md5) else {
                 return self._request(token)
             }
+            
             let cache = Response(statusCode: 200, data: data, request: nil, response: nil)
             return self._request(token).catchErrorJustReturn(cache)
         }
@@ -148,24 +140,15 @@ private extension RxMoyaProvider {
                     // 写入缓存
                     if let interface = token as? BusinessInterface {
                         var key = interface.path + interface.method.rawValue
-                        if let param = interface.parameters {
-                            for (k, v) in param {
-                                key += k
-                                if let vStr = v as? String {
-                                    key += "=\(vStr)&"
-                                }
-                                
-                                if let vStr = v as? Int {
-                                    key += "=\(vStr)&"
-                                }
-                                
-                                if let vStr = v as? Bool {
-                                    key += "=\(vStr)&"
-                                }
-                            }
+                        if let param = interface.parameters?.sorted(by: { (a, b) -> Bool in
+                            return a.key < b.key
+                        }).description {
+                            key += param
                         }
                         print("写入 Key: \(key)")
-                        self.diskCache.save(value: res.data, forKey: "key")
+                        let md5 = key.md5()
+                        print("写入 Key MD5: \(md5)")
+                        self.diskCache.save(value: res.data, forKey: md5)
                     }
                     
                     return Observable.just(res)
@@ -181,7 +164,7 @@ extension RxMoyaProvider {
     
     func requestMapBool(_ token: Target) -> Observable<Bool> {
         
-        return _request(token).flatMap({ (response) -> Observable<Bool> in
+        return _request(token).flatMapLatest({ (response) -> Observable<Bool> in
             guard let json = try? response.mapJSON(failsOnEmptyData: true), let dict = json as? [String: Any] else {
                 return .error(AppError.reason(response.description))
             }
@@ -196,7 +179,7 @@ extension RxMoyaProvider {
     func requestMapAny(_ token: Target, useCache: Bool = false) -> Observable<Any> {
         
         if useCache {
-            return useCacheWhenErrorOccurred(token).flatMap({ (response) -> Observable<Any> in
+            return useCacheWhenErrorOccurred(token).flatMapLatest({ (response) -> Observable<Any> in
                 guard let json = try? response.mapJSON(failsOnEmptyData: true) else {
                     return .error(AppError.reason(response.description))
                 }
@@ -216,7 +199,7 @@ extension RxMoyaProvider {
     func requestMapJSON<E: HandyJSON>(_ token: Target, classType: E.Type, useCache: Bool = false) -> Observable<E> {
         
         if useCache {
-            return useCacheWhenErrorOccurred(token).flatMap({ (response) -> Observable<E> in
+            return useCacheWhenErrorOccurred(token).flatMapLatest({ (response) -> Observable<E> in
                 
                 guard let json = try? response.mapJSON() else {
                     return .error(AppError.reason("服务器出错啦"))
@@ -268,7 +251,7 @@ extension RxMoyaProvider {
     func requestMapJSONArray<E: HandyJSON>(_ token: Target, classType: E.Type, useCache: Bool = false) -> Observable<[E?]> {
         
         if useCache {
-            return useCacheWhenErrorOccurred(token).flatMap({ (response) -> Observable<[E?]> in
+            return useCacheWhenErrorOccurred(token).flatMapLatest({ (response) -> Observable<[E?]> in
                 
                 guard let json = try? response.mapJSON() else {
                     return .error(AppError.reason("服务器出错啦"))
@@ -279,11 +262,9 @@ extension RxMoyaProvider {
                 }
                 
                 if code == 1 {
-                    
                     let value = dic["Data"] as? [[String: Any]]
                     
                     if let objects = [E].deserialize(from: value) {
-                        
                         return Observable.just(objects)
                     } else {
                         return .error(AppError.reason("服务器出错啦"))
