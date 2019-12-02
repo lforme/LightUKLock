@@ -33,8 +33,9 @@ final class NetworkDiskStorage {
         removeExpiredValues()
     }
     
-    func save(value: Data, forKey key: String) {
-        db.save(value, key: key)
+    @discardableResult
+    func save(value: Data, forKey key: String) -> Bool {
+       return db.save(value, key: key)
     }
     
     @discardableResult
