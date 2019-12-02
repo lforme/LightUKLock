@@ -60,6 +60,12 @@
 		9C42976F23866088004CB999 /* PKHud+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42976E23866088004CB999 /* PKHud+Rx.swift */; };
 		9C42977223867622004CB999 /* MessageNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42977123867622004CB999 /* MessageNotificationHelper.swift */; };
 		9C4297782386A64C004CB999 /* RegistrationRecoveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4297772386A64C004CB999 /* RegistrationRecoveryService.swift */; };
+		9C452F082394AA2E00144827 /* CenterMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452F072394AA2E00144827 /* CenterMessageModel.swift */; };
+		9C452F0A2394C38800144827 /* HomeSettringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452F092394C38800144827 /* HomeSettringController.swift */; };
+		9C452F0C2394E2BE00144827 /* LockSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452F0B2394E2BE00144827 /* LockSettingController.swift */; };
+		9C452F0E2394E84A00144827 /* BluetoothViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452F0D2394E84A00144827 /* BluetoothViewModel.swift */; };
+		9C452F102394E9CE00144827 /* LockSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452F0F2394E9CE00144827 /* LockSettingViewModel.swift */; };
+		9C452F122394EC3E00144827 /* SoundSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452F112394EC3E00144827 /* SoundSettingController.swift */; };
 		9C524021238E0E3100308AC4 /* normal.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C524020238E0E3100308AC4 /* normal.json */; };
 		9C524023238E0E3F00308AC4 /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C524022238E0E3F00308AC4 /* error.json */; };
 		9C524025238E0E5500308AC4 /* warning.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C524024238E0E5500308AC4 /* warning.json */; };
@@ -70,6 +76,13 @@
 		9C524030238E56A700308AC4 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52402F238E56A700308AC4 /* UIViewController+Extension.swift */; };
 		9C524034238E64C000308AC4 /* RecordUnlockController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C524033238E64C000308AC4 /* RecordUnlockController.swift */; };
 		9C524038238E66B500308AC4 /* RecordUnlockReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C524037238E66B500308AC4 /* RecordUnlockReactor.swift */; };
+		9C5471992395047200432ACA /* LockInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5471982395047200432ACA /* LockInfoController.swift */; };
+		9C54719B239507DE00432ACA /* LSLWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C54719A239507DE00432ACA /* LSLWebViewController.swift */; };
+		9C54719D2395107E00432ACA /* PositioEditingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C54719C2395107E00432ACA /* PositioEditingController.swift */; };
+		9C54719F239517F000432ACA /* PositionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C54719E239517F000432ACA /* PositionViewModel.swift */; };
+		9C5471A12395184400432ACA /* PositionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5471A02395184400432ACA /* PositionModel.swift */; };
+		9C5471A423951C1E00432ACA /* DataPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C5471A223951C1E00432ACA /* DataPickerController.xib */; };
+		9C5471A523951C1E00432ACA /* DataPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5471A323951C1E00432ACA /* DataPickerController.swift */; };
 		9C752FCD238774A9000FEA73 /* RegisterForgetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C752FCC238774A9000FEA73 /* RegisterForgetController.swift */; };
 		9C752FD0238794BE000FEA73 /* CountdownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C752FCF238794BE000FEA73 /* CountdownButton.swift */; };
 		9C752FD223879546000FEA73 /* RegisPwdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C752FD123879546000FEA73 /* RegisPwdViewModel.swift */; };
@@ -158,6 +171,12 @@
 		9C42976E23866088004CB999 /* PKHud+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PKHud+Rx.swift"; sourceTree = "<group>"; };
 		9C42977123867622004CB999 /* MessageNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageNotificationHelper.swift; sourceTree = "<group>"; };
 		9C4297772386A64C004CB999 /* RegistrationRecoveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRecoveryService.swift; sourceTree = "<group>"; };
+		9C452F072394AA2E00144827 /* CenterMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterMessageModel.swift; sourceTree = "<group>"; };
+		9C452F092394C38800144827 /* HomeSettringController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSettringController.swift; sourceTree = "<group>"; };
+		9C452F0B2394E2BE00144827 /* LockSettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSettingController.swift; sourceTree = "<group>"; };
+		9C452F0D2394E84A00144827 /* BluetoothViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothViewModel.swift; sourceTree = "<group>"; };
+		9C452F0F2394E9CE00144827 /* LockSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSettingViewModel.swift; sourceTree = "<group>"; };
+		9C452F112394EC3E00144827 /* SoundSettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundSettingController.swift; sourceTree = "<group>"; };
 		9C524020238E0E3100308AC4 /* normal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = normal.json; sourceTree = "<group>"; };
 		9C524022238E0E3F00308AC4 /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
 		9C524024238E0E5500308AC4 /* warning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = warning.json; sourceTree = "<group>"; };
@@ -168,6 +187,13 @@
 		9C52402F238E56A700308AC4 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		9C524033238E64C000308AC4 /* RecordUnlockController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordUnlockController.swift; sourceTree = "<group>"; };
 		9C524037238E66B500308AC4 /* RecordUnlockReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordUnlockReactor.swift; sourceTree = "<group>"; };
+		9C5471982395047200432ACA /* LockInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockInfoController.swift; sourceTree = "<group>"; };
+		9C54719A239507DE00432ACA /* LSLWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLWebViewController.swift; sourceTree = "<group>"; };
+		9C54719C2395107E00432ACA /* PositioEditingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositioEditingController.swift; sourceTree = "<group>"; };
+		9C54719E239517F000432ACA /* PositionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionViewModel.swift; sourceTree = "<group>"; };
+		9C5471A02395184400432ACA /* PositionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionModel.swift; sourceTree = "<group>"; };
+		9C5471A223951C1E00432ACA /* DataPickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataPickerController.xib; sourceTree = "<group>"; };
+		9C5471A323951C1E00432ACA /* DataPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPickerController.swift; sourceTree = "<group>"; };
 		9C752FCC238774A9000FEA73 /* RegisterForgetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterForgetController.swift; sourceTree = "<group>"; };
 		9C752FCF238794BE000FEA73 /* CountdownButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownButton.swift; sourceTree = "<group>"; };
 		9C752FD123879546000FEA73 /* RegisPwdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisPwdViewModel.swift; sourceTree = "<group>"; };
@@ -252,6 +278,9 @@
 				9C1C838D23892C83005BB17C /* HomeViewModel.swift */,
 				9C524037238E66B500308AC4 /* RecordUnlockReactor.swift */,
 				9C3726E623913C5400450757 /* MessageCenterViewModel.swift */,
+				9C452F0D2394E84A00144827 /* BluetoothViewModel.swift */,
+				9C452F0F2394E9CE00144827 /* LockSettingViewModel.swift */,
+				9C54719E239517F000432ACA /* PositionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -294,6 +323,9 @@
 				9C24AC2D2383D5D9005EBF95 /* LSLUser.swift */,
 				9C77059F238FE358008E1552 /* SingleInputController.swift */,
 				9C7705A0238FE358008E1552 /* SingleInputController.xib */,
+				9C54719A239507DE00432ACA /* LSLWebViewController.swift */,
+				9C5471A323951C1E00432ACA /* DataPickerController.swift */,
+				9C5471A223951C1E00432ACA /* DataPickerController.xib */,
 			);
 			path = GlobalSingle;
 			sourceTree = "<group>";
@@ -305,6 +337,8 @@
 				9C24AC342383DCB0005EBF95 /* UserModel.swift */,
 				9C24AC362383DE6E005EBF95 /* SceneModels.swift */,
 				9C24AC382383E00C005EBF95 /* LockModels.swift */,
+				9C452F072394AA2E00144827 /* CenterMessageModel.swift */,
+				9C5471A02395184400432ACA /* PositionModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -468,6 +502,11 @@
 				9C752FD32388080A000FEA73 /* NoLockViewController.swift */,
 				9C524033238E64C000308AC4 /* RecordUnlockController.swift */,
 				9C3726E42391369900450757 /* MessageCenterController.swift */,
+				9C452F092394C38800144827 /* HomeSettringController.swift */,
+				9C452F0B2394E2BE00144827 /* LockSettingController.swift */,
+				9C452F112394EC3E00144827 /* SoundSettingController.swift */,
+				9C5471982395047200432ACA /* LockInfoController.swift */,
+				9C54719C2395107E00432ACA /* PositioEditingController.swift */,
 				9C24AC412383EB88005EBF95 /* Home.storyboard */,
 			);
 			path = Lock;
@@ -614,6 +653,7 @@
 				9CDD27292382801D006A9B97 /* Main.storyboard in Resources */,
 				9C24AC442383EB96005EBF95 /* My.storyboard in Resources */,
 				9C3726CC2390CE4D00450757 /* normalDarkMode.json in Resources */,
+				9C5471A423951C1E00432ACA /* DataPickerController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,9 +714,12 @@
 				9C24AC2B2383CD94005EBF95 /* StaticConst.swift in Sources */,
 				9C42977223867622004CB999 /* MessageNotificationHelper.swift in Sources */,
 				9C752FCD238774A9000FEA73 /* RegisterForgetController.swift in Sources */,
+				9C452F0E2394E84A00144827 /* BluetoothViewModel.swift in Sources */,
 				9C24AC1D23839EB9005EBF95 /* UIImage+Extension.swift in Sources */,
 				9C24AC3B2383E736005EBF95 /* ViewLoader.swift in Sources */,
 				9CFDE21423853C170062522E /* NetworkMetaDb.swift in Sources */,
+				9C54719F239517F000432ACA /* PositionViewModel.swift in Sources */,
+				9C452F0A2394C38800144827 /* HomeSettringController.swift in Sources */,
 				9C24AC482383EBE5005EBF95 /* HomeViewController.swift in Sources */,
 				9C1A4BC8238D2E7C00626DB4 /* HomeControlCell.swift in Sources */,
 				9CFDE20123851EE80062522E /* NetworkInterface.swift in Sources */,
@@ -687,6 +730,7 @@
 				9C4297782386A64C004CB999 /* RegistrationRecoveryService.swift in Sources */,
 				9C24AC302383D89A005EBF95 /* LocalArchiver.swift in Sources */,
 				9CDD274423829363006A9B97 /* RootViewController.swift in Sources */,
+				9C5471A523951C1E00432ACA /* DataPickerController.swift in Sources */,
 				9CFDE207238523A80062522E /* LoadingPlugin.swift in Sources */,
 				9C24AC4C2383F639005EBF95 /* CustomizedOpenDoorItem.swift in Sources */,
 				9C7705A1238FE358008E1552 /* SingleInputController.swift in Sources */,
@@ -701,15 +745,19 @@
 				9C752FD0238794BE000FEA73 /* CountdownButton.swift in Sources */,
 				9C24AC372383DE6E005EBF95 /* SceneModels.swift in Sources */,
 				9C77059C238FBFC6008E1552 /* MySettingViewController.swift in Sources */,
+				9C5471A12395184400432ACA /* PositionModel.swift in Sources */,
 				9C429767238637E3004CB999 /* LoginViewReactor.swift in Sources */,
 				9C524028238E12E300308AC4 /* UIApplicationProxy.swift in Sources */,
 				9C42976D23866026004CB999 /* UIButton+Extension.swift in Sources */,
+				9C54719D2395107E00432ACA /* PositioEditingController.swift in Sources */,
 				9C752FD42388080A000FEA73 /* NoLockViewController.swift in Sources */,
 				9C24AC352383DCB0005EBF95 /* UserModel.swift in Sources */,
 				9C77059A238FACC7008E1552 /* MyViewModel.swift in Sources */,
 				9C1A4BC4238D0A1A00626DB4 /* AnimationHeaderView.swift in Sources */,
+				9C452F102394E9CE00144827 /* LockSettingViewModel.swift in Sources */,
 				9C1C838E23892C83005BB17C /* HomeViewModel.swift in Sources */,
 				9C24AC1923838E56005EBF95 /* UIFont+extension.swift in Sources */,
+				9C452F0C2394E2BE00144827 /* LockSettingController.swift in Sources */,
 				9C52402A238E132900308AC4 /* UIApplication+Rx.swift in Sources */,
 				9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */,
 				9C3726E02391108400450757 /* PPBluetoothScanEntity.swift in Sources */,
@@ -720,8 +768,10 @@
 				9C24AC1423838C80005EBF95 /* BaseNavigationController.swift in Sources */,
 				9C24AC292383CB92005EBF95 /* UITextField+Extension.swift in Sources */,
 				9CFDE20F2385346E0062522E /* AppErrorDomain.swift in Sources */,
+				9C452F122394EC3E00144827 /* SoundSettingController.swift in Sources */,
 				9C524030238E56A700308AC4 /* UIViewController+Extension.swift in Sources */,
 				9C24AC392383E00C005EBF95 /* LockModels.swift in Sources */,
+				9C54719B239507DE00432ACA /* LSLWebViewController.swift in Sources */,
 				9C24AC252383C9CB005EBF95 /* UIView+Extension.swift in Sources */,
 				9C3726DE23910FF700450757 /* BluetoothPapa.swift in Sources */,
 				9C3726D723910C0100450757 /* NORData.swift in Sources */,
@@ -732,8 +782,10 @@
 				9C3726C82390C6AD00450757 /* Empty+UIViewController.swift in Sources */,
 				9C770592238FA11A008E1552 /* MyInfoHeader.swift in Sources */,
 				9C52402D238E163D00308AC4 /* UnlockRecordCell.swift in Sources */,
+				9C452F082394AA2E00144827 /* CenterMessageModel.swift in Sources */,
 				9C752FD223879546000FEA73 /* RegisPwdViewModel.swift in Sources */,
 				9C42976F23866088004CB999 /* PKHud+Rx.swift in Sources */,
+				9C5471992395047200432ACA /* LockInfoController.swift in Sources */,
 				9C24AC4A2383F344005EBF95 /* CustomizedTabbarItem.swift in Sources */,
 				9CFDE2052385219F0062522E /* RxMoyaProvider.swift in Sources */,
 				9CFDE1FF23851E310062522E /* NetworkingEnvironment.swift in Sources */,

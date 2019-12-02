@@ -2,26 +2,28 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "Left arrow.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "scale" : "1x",
+      "filename" : "Left arrow_Light.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
           "value" : "dark"
         }
-      ]
+      ],
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Return Copy@2x.png",
+      "filename" : "Left arrow@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "htmal5icon37-3.png",
+      "filename" : "Left arrow_Light@2x.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
@@ -32,12 +34,12 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "Return Copy@3x.png",
+      "filename" : "Left arrow@3x.png",
       "scale" : "3x"
     },
     {
       "idiom" : "universal",
-      "filename" : "htmal5icon37-2.png",
+      "filename" : "Left arrow_Light@3x.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
