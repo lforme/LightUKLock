@@ -11,12 +11,15 @@ import UIKit
 
 let kLSRem = UIScreen.main.bounds.width / 375
 
+enum NotificationRefreshType {
+    case deleteLock
+    case addLock
+}
+
 extension NSNotification.Name {
     
     static let loginStateDidChange = NSNotification.Name(rawValue: "loginStateDidChange")
     static let statuBarDidChange = NSNotification.Name(rawValue: "statuBarDidChange")
     static let refreshState = NSNotification.Name(rawValue: "refreshState")
-    
     static let animationRestart = NSNotification.Name(rawValue: "animationRestart")
-    
 }
