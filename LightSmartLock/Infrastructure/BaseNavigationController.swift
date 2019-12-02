@@ -155,7 +155,13 @@ extension BaseNavigationController {
     fileprivate func controlClearBackTitle(vc: UIViewController) {
         if clearBackTitle {
             
-            vc.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+            let button = UIButton(type: .custom)
+            button.setImage(UIImage(named: "back_arrow"), for: UIControl.State())
+            button.sizeToFit()
+            button.contentHorizontalAlignment = .center
+            
+            vc.navigationItem.backBarButtonItem = UIBarButtonItem(customView: button)
+            
             guard let style = vc as? NavigationSettingStyle, let naviBkColor = style.backgroundColor else {
                 return
             }
