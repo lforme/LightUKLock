@@ -92,7 +92,7 @@ class AnimationHeaderView: UITableViewCell {
         }
         
         if let days = model.DaysInt, let powerValue = model.getPower() {
-            let sentenceOne = "电池预估使用\(days)天"
+            let sentenceOne = "电池预估能用\(days)天"
             let sentenceTwo = "剩余电量\(powerValue)"
             timer.delaySubscription(5, scheduler: MainScheduler.instance).subscribe(onNext: {[weak self] (_) in
                 guard let this = self else { return }
