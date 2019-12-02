@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import PKHUD
 
 final class OpenDoorViewModel {
     
@@ -25,6 +26,12 @@ final class OpenDoorViewModel {
     
     init() {
        
+        BluetoothPapa.shareInstance.checkBluetoothState { (state) in
+            if state == .poweredOff {
+                HUD.flash(.label("检测到蓝牙处于关闭状态\n请先开启蓝牙"), delay: 2)
+            }
+        }
+        
         BluetoothPapa.shareInstance.scanForPeripherals(true)
         
         timer.take(15).subscribe(onNext: {[weak self] (_) in
