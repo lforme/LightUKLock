@@ -1075,10 +1075,10 @@ extension BluetoothPapa: CBCentralManagerDelegate {
                 } else {
                     self.peripherals.append(sensor)
                 }
-                print("scan bluethooth name: \(peripheral.name ?? "no name")")
+//                print("scan bluethooth name: \(peripheral.name ?? "no name")")
                 
                 self.peripheralsResult?(self.peripherals)
-            }else{
+            } else {
                 sensor = self.peripherals[self.peripherals.firstIndex(of: sensor)!]
                 sensor.RSSI = RSSI.int32Value
             }
