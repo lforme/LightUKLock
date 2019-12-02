@@ -32,5 +32,7 @@ enum BusinessInterface {
     case getUnlockLog(userCodes: [String], beginTime: String?, endTime: String?, index: Int, pageSize: Int?) //解锁记录
     case updateUserInfo(info: UserModel) // 更户信息
     case submitBluthUnlockOperation // 上传蓝牙解锁记录
-    
+    case getLockNotice(noticeType: [Int], noticeLevel: [Int], pageIndex: Int, pageSize: Int?) // 获取消息提醒 noticeType = -1 全部  noticeLevel = -1 全部
+    case unInstallLock // 删除蓝牙门锁
+    case getSceneAssets // 获取资产详情
 }
