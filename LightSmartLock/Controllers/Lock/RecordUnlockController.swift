@@ -73,8 +73,9 @@ class RecordUnlockController: UIViewController, View {
         
         let footer = MJRefreshAutoNormalFooter(refreshingBlock: {[weak self] in
             guard let this = self else { return }
-            Observable.just(Reactor.Action.loadMore(1)).bind(to: reactor.action).disposed(by: this.disposeBag)
+            Observable.just(Reactor.Action.loadMore(1)).delaySubscription(1, scheduler: MainScheduler.instance).bind(to: reactor.action).disposed(by: this.disposeBag)
         })
+        
         footer.setTitle("", for: .idle)
         self.tableView.mj_footer = footer
         
@@ -82,10 +83,6 @@ class RecordUnlockController: UIViewController, View {
             if noMore {
                 self?.tableView.mj_footer?.endRefreshingWithNoMoreData()
             }
-        }).disposed(by: disposeBag)
-        
-        reactor.state.map { $0.networkError }.subscribe(onNext: { (e) in
-            PKHUD.sharedHUD.rx.showAppError(e)
         }).disposed(by: disposeBag)
         
         reactor.state.map { $0.pageIndex }.distinctUntilChanged().subscribe(onNext: { (index) in
@@ -105,7 +102,9 @@ class RecordUnlockController: UIViewController, View {
             return cell
         })
         
-        reactor.state.map { $0.recordList }.map { [SectionModel(model: "解锁记录", items: $0)] }.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+         reactor.state.map { $0.recordList }.map { [SectionModel(model: "解锁记录", items: $0)] }.do(onError: { (error) in
+            PKHUD.sharedHUD.rx.showError(error)
+        }).bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
         
     }
 }
