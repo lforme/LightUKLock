@@ -35,7 +35,9 @@ final class HomeViewModel: HomeViewModeling {
     
     init() {
         
-        let requset = BusinessAPI.requestMapJSONArray(.getCustomerSceneList(pageIndex: 1, pageSize: 5, Sort: 1), classType: SceneListModel.self, useCache: true).catchErrorJustReturn([])
+        
+        
+        let requset = BusinessAPI.requestMapJSONArray(.getCustomerSceneList(pageIndex: 1, pageSize: 5, Sort: 1), classType: SceneListModel.self, useCache: true).catchErrorJustReturn([LSLUser.current().scene ])
         
         let networkHasLock = requset.map { (sceneList) -> Bool in
             let noOptionSceneList = sceneList.compactMap { $0 }
@@ -87,7 +89,7 @@ final class HomeViewModel: HomeViewModeling {
                 return .error(AppError.reason("无法从服务器获取user code"))
             }
             
-            return BusinessAPI.requestMapJSONArray(.getUnlockLog(userCodes: [userCode], beginTime: nil, endTime: nil, index: 1, pageSize: 3), classType: UnlockRecordModel.self, useCache: true).map { (models) -> [UnlockRecordModel] in
+            return BusinessAPI.requestMapJSONArray(.getUnlockLog(userCodes: [userCode], beginTime: nil, endTime: nil, index: 1, pageSize: 5), classType: UnlockRecordModel.self, useCache: true).map { (models) -> [UnlockRecordModel] in
                 return models.compactMap { $0 }
             }
         })
