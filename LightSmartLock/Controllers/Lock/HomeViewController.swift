@@ -46,6 +46,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         bind()
         setupUI()
         setupRightNavigationItems()
+        observerNotification()
     }
     
     func setupUI() {
@@ -67,6 +68,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         moreButton.setImage(UIImage(named: "home_more_item"), for: UIControl.State())
         moreButton.frame.size = CGSize(width: 32, height: 32)
         moreButton.contentHorizontalAlignment = .right
+        moreButton.addTarget(self, action: #selector(self.gotoSettingVC), for: .touchUpInside)
         let moreItem = UIBarButtonItem(customView: moreButton)
         
         let notiButton = UIButton(type: .custom)
@@ -83,13 +85,13 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
             self.hasLock(has: install)
         }).flatMapLatest {[unowned self] (_) in
             return self.vm.userInScene
-            }.delaySubscription(0.5, scheduler: MainScheduler.instance).flatMapLatest {[unowned self] (userInScene) -> Observable<SmartLockInfoModel> in
+        }.delaySubscription(0.5, scheduler: MainScheduler.instance).flatMapLatest {[unowned self] (userInScene) -> Observable<SmartLockInfoModel> in
             LSLUser.current().userInScene = userInScene
             return self.vm.lockInfo
-            }.delaySubscription(0.5, scheduler: MainScheduler.instance).flatMapLatest {[unowned self] (lockInfo) -> Observable<IOTLockInfoModel> in
+        }.delaySubscription(0.5, scheduler: MainScheduler.instance).flatMapLatest {[unowned self] (lockInfo) -> Observable<IOTLockInfoModel> in
             LSLUser.current().lockInfo = lockInfo
             return self.vm.lockIOTInfo
-            }.delaySubscription(0.5, scheduler: MainScheduler.instance).flatMapLatest {[unowned self] (IOTLockInfo) -> Observable<[UnlockRecordModel]> in
+        }.delaySubscription(0.5, scheduler: MainScheduler.instance).flatMapLatest {[unowned self] (IOTLockInfo) -> Observable<[UnlockRecordModel]> in
             LSLUser.current().lockIOTInfo = IOTLockInfo
             return self.vm.unlockRecord
         }.subscribe(onNext: {[unowned self] (list) in
@@ -99,7 +101,15 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
                 PKHUD.sharedHUD.rx.showError(error)
         }).disposed(by: rx.disposeBag)
         
-        
+    }
+    
+    func observerNotification() {
+        NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
+            guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
+            if refreshType == .deleteLock {
+                self?.hasLock(has: false)
+            }
+        }).disposed(by: rx.disposeBag)
     }
     
     private func hasLock(has: Bool) {
@@ -115,6 +125,11 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     @objc func gotoMessageCenterVC() {
         let messageCenterVC: MessageCenterController = ViewLoader.Storyboard.controller(from: "Home")
         navigationController?.pushViewController(messageCenterVC, animated: true)
+    }
+    
+    @objc func gotoSettingVC() {
+        let settingVC: HomeSettringController = ViewLoader.Storyboard.controller(from: "Home")
+        navigationController?.pushViewController(settingVC, animated: true)
     }
 }
 
