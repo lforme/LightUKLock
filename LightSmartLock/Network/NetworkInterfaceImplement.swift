@@ -190,6 +190,12 @@ extension BusinessInterface: TargetType {
             return "api/User/UpdateAccountInfo"
         case .submitBluthUnlockOperation:
             return "api/Lock/SubmitBluthUnlockOperation"
+        case .getLockNotice:
+            return "api/Lock/GetLockNotice"
+        case .unInstallLock:
+            return "api/Lock/UnInstallLock"
+        case .getSceneAssets:
+            return "api/Scene/GetSceneAssets"
         }
     }
     
@@ -290,6 +296,27 @@ extension BusinessInterface: TargetType {
         case .submitBluthUnlockOperation:
             guard let customerId = LSLUser.current().userInScene?.customerID else { return nil }
             return ["CustomerID": customerId]
+            
+        case let .getLockNotice(noticeTypes, noticeLevels, pageIndex, pageSize):
+            
+            guard let customerId = LSLUser.current().userInScene?.customerID, let lockId = LSLUser.current().lockInfo?.customerLockID else {
+                return nil
+            }
+            let param: [String: Any] = ["CustomerID": customerId,
+                                        "CustomerLockID": lockId,
+                                        "noticeType": noticeTypes,
+                                        "noticeLevel": noticeLevels,
+                                        "pageIndex": pageIndex,
+                                        "PageSize": pageSize ?? 15]
+            return param
+            
+        case .unInstallLock:
+            guard let sceneId = LSLUser.current().scene?.sceneID else { return nil }
+            return ["SceneID": sceneId]
+            
+        case .getSceneAssets:
+            guard let sceneId = LSLUser.current().scene?.sceneID else { return nil }
+            return ["SceneID": sceneId]
             
         default:
             return nil
