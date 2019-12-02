@@ -23,7 +23,6 @@ final class RecordUnlockReactor: Reactor {
         var loadMoreFinished: Bool
         var requestFinished: Bool
         var recordList: [UnlockRecordModel]
-        var networkError: AppError?
     }
     
     enum Mutation {
@@ -31,8 +30,8 @@ final class RecordUnlockReactor: Reactor {
         case setLoadMorePageIndex(Int)
         case setLoadMoreFinished(Bool)
         case setRequestFinished(Bool)
-        case setLoadMoreResult([UnlockRecordModel], AppError?)
-        case setRefreshResult([UnlockRecordModel], AppError?)
+        case setLoadMoreResult([UnlockRecordModel])
+        case setRefreshResult([UnlockRecordModel])
     }
     
     let initialState: State
@@ -42,7 +41,7 @@ final class RecordUnlockReactor: Reactor {
     init(userCode: String) {
         self.userCode = userCode
         
-        self.initialState = State(pageIndex: 1, loadMoreFinished: false, requestFinished: true, recordList: [], networkError: nil)
+        self.initialState = State(pageIndex: 1, loadMoreFinished: false, requestFinished: true, recordList: [])
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -66,7 +65,7 @@ final class RecordUnlockReactor: Reactor {
                     }
                 }),
                 request.map({ (list) -> Mutation in
-                    return Mutation.setLoadMoreResult(list, nil)
+                    return Mutation.setLoadMoreResult(list)
                 }),
                 request.map{ _ in Mutation.setRequestFinished(true) }
             ])
@@ -78,7 +77,7 @@ final class RecordUnlockReactor: Reactor {
                 .just(.setRefreshPageIndex(index)),
                 .just(.setLoadMoreFinished(false)),
                 request.map({ (list) -> Mutation in
-                    return .setRefreshResult(list, nil)
+                    return .setRefreshResult(list)
                 }),
                 request.map{ _ in Mutation.setRequestFinished(true) }
             ])
@@ -97,15 +96,13 @@ final class RecordUnlockReactor: Reactor {
         case let .setLoadMorePageIndex(index):
             state.pageIndex += index
             
-        case let .setRefreshResult(list, error):
+        case let .setRefreshResult(list):
             state.requestFinished = true
             state.recordList = list
-            state.networkError = error
             
-        case let .setLoadMoreResult(list, error):
+        case let .setLoadMoreResult(list):
             state.requestFinished = true
             state.recordList += list
-            state.networkError = error
             
         case let .setRefreshPageIndex(index):
             state.pageIndex = index
