@@ -156,7 +156,7 @@ extension MyViewController: UITableViewDataSource, UITableViewDelegate {
         let scene = dataSource[indexPath.row]
         LSLUser.current().scene = scene
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            HUD.flash(.label("首页场景切换"), delay: 2)
+            HUD.flash(.label("首页场景已切换"), delay: 2)
         }
     }
 }

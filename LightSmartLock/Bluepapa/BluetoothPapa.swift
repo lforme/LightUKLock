@@ -1075,7 +1075,7 @@ extension BluetoothPapa: CBCentralManagerDelegate {
                 } else {
                     self.peripherals.append(sensor)
                 }
-//                print("scan bluethooth name: \(peripheral.name ?? "no name")")
+                print("scan bluethooth name: \(peripheral.name ?? "no name")")
                 
                 self.peripheralsResult?(self.peripherals)
             } else {

@@ -40,6 +40,7 @@ target 'LightSmartLock' do
   pod 'PKHUD'
   pod 'ESTabBarController-swift'
   pod 'LTMorphingLabel'
+  pod 'CBPinEntryView'
   
   # 动画
   pod 'lottie-ios'

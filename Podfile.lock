@@ -4,6 +4,7 @@ PODS:
     - RxSwift (~> 4.0)
   - Alamofire (4.9.1)
   - AlignedCollectionViewFlowLayout (1.1.2)
+  - CBPinEntryView (1.7.1)
   - ChameleonFramework (2.1.0):
     - ChameleonFramework/Default (= 2.1.0)
   - ChameleonFramework/Default (2.1.0)
@@ -55,6 +56,7 @@ PODS:
 DEPENDENCIES:
   - Action
   - AlignedCollectionViewFlowLayout
+  - CBPinEntryView
   - ChameleonFramework
   - CryptoSwift
   - DZNEmptyDataSet
@@ -85,6 +87,7 @@ SPEC REPOS:
     - Action
     - Alamofire
     - AlignedCollectionViewFlowLayout
+    - CBPinEntryView
     - ChameleonFramework
     - CryptoSwift
     - Differentiator
@@ -119,6 +122,7 @@ SPEC CHECKSUMS:
   Action: 689181e4c3f6566844178d8a7da6fef39a9597fc
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlignedCollectionViewFlowLayout: ee2ef451e741ec08f8e0967d828001e2f051c20a
+  CBPinEntryView: 5a91ba422bd8a38eea587511c92c89b19be78454
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CryptoSwift: 6b6e488df0598b3e9fa49254ed1a65e8c1b1e10b
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
@@ -149,6 +153,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 821b81f83594a736e831a018f2a2ce31822ddf0b
   "UITextView+Placeholder": c407b27599ea23cca425946fee3cf1db5d547008
 
-PODFILE CHECKSUM: 4e52f70490efbd1104a171698ae7004a6c8cb342
+PODFILE CHECKSUM: 513fcfb75a24562024f38e536c2e98186d2b7be1
 
 COCOAPODS: 1.8.3
