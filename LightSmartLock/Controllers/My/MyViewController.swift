@@ -155,5 +155,8 @@ extension MyViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let scene = dataSource[indexPath.row]
         LSLUser.current().scene = scene
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            HUD.flash(.label("首页场景切换"), delay: 2)
+        }
     }
 }
