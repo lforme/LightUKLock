@@ -23,3 +23,8 @@ extension NSNotification.Name {
     static let refreshState = NSNotification.Name(rawValue: "refreshState")
     static let animationRestart = NSNotification.Name(rawValue: "animationRestart")
 }
+
+
+struct PlatformKey {
+    static let gouda = "caed09caa3daeca4a11a9eb671294d65"
+}

@@ -38,7 +38,18 @@ class OpenDoorViewController: UIViewController {
     }
     
     func bind() {
-        vm.startConnected.flatMapLatest {[weak self] (isConnected) -> Observable<Bool> in
+        
+        let shareConnected = vm.startConnected.share(replay: 1, scope: .forever)
+        
+        shareConnected.subscribe(onNext: { (connect) in
+            if connect {
+                BluetoothPapa.shareInstance.handshake { (data) in
+                    print(data ?? "握手失败")
+                }
+            }
+        }).disposed(by: rx.disposeBag)
+        
+        shareConnected.delaySubscription(2, scheduler: MainScheduler.instance).flatMapLatest {[weak self] (isConnected) -> Observable<Bool> in
             guard let this = self else {
                 return .error(AppError.reason("解锁失败"))
             }

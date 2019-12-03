@@ -24,7 +24,7 @@ final class LockSettingViewModel: BluetoothViewModel {
         shareConnected.subscribe(onNext: { (connect) in
             if connect {
                 BluetoothPapa.shareInstance.handshake { (data) in
-                    print(BluetoothPapa.serializeShake(data) ?? "握手失败")
+                    print(data ?? "握手失败")
                 }
             }
         }).disposed(by: disposeBag)

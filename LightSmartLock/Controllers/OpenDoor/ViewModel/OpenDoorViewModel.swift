@@ -35,6 +35,7 @@ final class OpenDoorViewModel {
         BluetoothPapa.shareInstance.scanForPeripherals(true)
         
         timer.take(15).subscribe(onNext: {[weak self] (_) in
+            
             if BluetoothPapa.shareInstance.isConnected() {
                 self?.obConnected.onNext(true)
                 self?.obConnected.onCompleted()

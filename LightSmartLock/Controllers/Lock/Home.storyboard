@@ -384,6 +384,146 @@
             </objects>
             <point key="canvasLocation" x="1712" y="502"/>
         </scene>
+        <!--Set Building Number Controller-->
+        <scene sceneID="9vT-Z6-jj5">
+            <objects>
+                <tableViewController storyboardIdentifier="SetBuildingNumberController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Q39-D3-VxG" customClass="SetBuildingNumberController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2GJ-g4-7ch">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="tableViewBackground"/>
+                        <sections>
+                            <tableViewSection id="CNh-vH-TWe">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="50" id="L6V-mA-FsF">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="L6V-mA-FsF" id="JFZ-yf-1d8">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入楼栋号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CF5-En-xC8">
+                                                    <rect key="frame" x="20" y="16.5" width="378" height="17"/>
+                                                    <color key="textColor" name="textOpaque78"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                            <color key="value" name="textPlaceholder"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="CF5-En-xC8" secondAttribute="trailing" constant="16" id="1bO-gK-eqH"/>
+                                                <constraint firstItem="CF5-En-xC8" firstAttribute="leading" secondItem="JFZ-yf-1d8" secondAttribute="leading" constant="20" id="Zog-tr-cdT"/>
+                                                <constraint firstItem="CF5-En-xC8" firstAttribute="centerY" secondItem="JFZ-yf-1d8" secondAttribute="centerY" id="pTj-KL-EeV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="viewBackground"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="50" id="9VJ-2X-vEv">
+                                        <rect key="frame" x="0.0" y="78" width="414" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9VJ-2X-vEv" id="PnP-jx-I0k">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入单元号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JxM-zn-FlI">
+                                                    <rect key="frame" x="20" y="16.5" width="262" height="17"/>
+                                                    <color key="textColor" name="textOpaque78"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                            <color key="value" name="textPlaceholder"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyW-VK-X5p">
+                                                    <rect key="frame" x="302" y="9" width="96" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="96" id="3au-NT-fJN"/>
+                                                        <constraint firstAttribute="height" constant="32" id="xaQ-r8-iku"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                                                    <state key="normal" title="无单元号" image="home_lock_radio_normal">
+                                                        <color key="titleColor" name="textOpaque78"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kyW-VK-X5p" firstAttribute="centerY" secondItem="PnP-jx-I0k" secondAttribute="centerY" id="1p6-dK-Im1"/>
+                                                <constraint firstItem="kyW-VK-X5p" firstAttribute="leading" secondItem="JxM-zn-FlI" secondAttribute="trailing" constant="20" id="Si9-HM-lWD"/>
+                                                <constraint firstAttribute="trailing" secondItem="kyW-VK-X5p" secondAttribute="trailing" constant="16" id="oKb-CO-nuB"/>
+                                                <constraint firstItem="JxM-zn-FlI" firstAttribute="leading" secondItem="PnP-jx-I0k" secondAttribute="leading" constant="20" id="qPt-ml-nx4"/>
+                                                <constraint firstItem="JxM-zn-FlI" firstAttribute="centerY" secondItem="PnP-jx-I0k" secondAttribute="centerY" id="wdo-4a-4hb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="viewBackground"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="50" id="WIw-K6-iEP">
+                                        <rect key="frame" x="0.0" y="128" width="414" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WIw-K6-iEP" id="T53-gZ-OIb">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入门牌号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4dF-JP-H8Q">
+                                                    <rect key="frame" x="20" y="16.5" width="262" height="17"/>
+                                                    <color key="textColor" name="textOpaque78"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                            <color key="value" name="textPlaceholder"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Bu-UQ-5LH">
+                                                    <rect key="frame" x="302" y="9" width="96" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="JDQ-W5-EiG"/>
+                                                        <constraint firstAttribute="width" constant="96" id="QvM-Ou-Qy9"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                                                    <state key="normal" title="无门牌号" image="home_lock_radio_normal">
+                                                        <color key="titleColor" name="textOpaque78"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4dF-JP-H8Q" firstAttribute="leading" secondItem="T53-gZ-OIb" secondAttribute="leading" constant="20" id="1DR-di-Ydn"/>
+                                                <constraint firstItem="7Bu-UQ-5LH" firstAttribute="centerY" secondItem="T53-gZ-OIb" secondAttribute="centerY" id="JB0-1z-njq"/>
+                                                <constraint firstItem="7Bu-UQ-5LH" firstAttribute="leading" secondItem="4dF-JP-H8Q" secondAttribute="trailing" constant="20" id="c7V-AI-pa1"/>
+                                                <constraint firstItem="4dF-JP-H8Q" firstAttribute="centerY" secondItem="T53-gZ-OIb" secondAttribute="centerY" id="f6N-TQ-TxT"/>
+                                                <constraint firstAttribute="trailing" secondItem="7Bu-UQ-5LH" secondAttribute="trailing" constant="16" id="z15-hQ-Bed"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="viewBackground"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Q39-D3-VxG" id="PgP-do-jiq"/>
+                            <outlet property="delegate" destination="Q39-D3-VxG" id="mzb-cR-MIZ"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="buildingTextField" destination="CF5-En-xC8" id="lD4-BR-YLq"/>
+                        <outlet property="doorplateButton" destination="7Bu-UQ-5LH" id="5Ft-4r-yFG"/>
+                        <outlet property="doorplateTextField" destination="4dF-JP-H8Q" id="ycp-YS-Rcm"/>
+                        <outlet property="unitButton" destination="kyW-VK-X5p" id="szE-hM-kQc"/>
+                        <outlet property="unitTextField" destination="JxM-zn-FlI" id="dl9-at-Rsz"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ETE-Kc-Lfd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2810" y="489"/>
+        </scene>
         <!--No Lock View Controller-->
         <scene sceneID="dN2-tr-zwy">
             <objects>
@@ -806,7 +946,7 @@
                                                     <rect key="frame" x="205" y="13.5" width="178" height="17"/>
                                                     <color key="textColor" name="textPrimary"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                                             <color key="value" name="textPlaceholder"/>
@@ -935,6 +1075,7 @@
                                                 <constraint firstItem="3qn-fN-Rcu" firstAttribute="leading" secondItem="Efl-dT-cg5" secondAttribute="leading" constant="16" id="sQp-Fi-Gva"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="viewBackground"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -956,8 +1097,75 @@
             </objects>
             <point key="canvasLocation" x="2384" y="-184"/>
         </scene>
+        <!--Search Plot Controller-->
+        <scene sceneID="ctN-fP-Aex">
+            <objects>
+                <viewController storyboardIdentifier="SearchPlotController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wg4-Tf-dBK" customClass="SearchPlotController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="w09-nn-wU4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OxH-LH-2fg">
+                                <rect key="frame" x="16" y="52" width="382" height="40"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_lock_sreach" translatesAutoresizingMaskIntoConstraints="NO" id="noa-X0-rlc">
+                                        <rect key="frame" x="16" y="6" width="28" height="28"/>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入小区名称关键字" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="V8q-YV-lhq">
+                                        <rect key="frame" x="52" y="2" width="322" height="36"/>
+                                        <color key="textColor" red="0.023529411760000001" green="0.10980392160000001" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                <color key="value" red="0.6997292638" green="0.70229661460000004" blue="0.71793264150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92946153880000004" green="0.92932760719999996" blue="0.93333476780000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="noa-X0-rlc" firstAttribute="leading" secondItem="OxH-LH-2fg" secondAttribute="leading" constant="16" id="0dz-cq-3Ck"/>
+                                    <constraint firstItem="V8q-YV-lhq" firstAttribute="centerY" secondItem="OxH-LH-2fg" secondAttribute="centerY" id="2Kb-DP-4As"/>
+                                    <constraint firstAttribute="bottom" secondItem="V8q-YV-lhq" secondAttribute="bottom" constant="2" id="3kP-xg-d3F"/>
+                                    <constraint firstItem="V8q-YV-lhq" firstAttribute="leading" secondItem="noa-X0-rlc" secondAttribute="trailing" constant="8" id="ZQA-nS-q5z"/>
+                                    <constraint firstAttribute="height" constant="40" id="b6f-HB-qeO"/>
+                                    <constraint firstAttribute="trailing" secondItem="V8q-YV-lhq" secondAttribute="trailing" constant="8" id="eBu-KE-KdQ"/>
+                                    <constraint firstItem="V8q-YV-lhq" firstAttribute="top" secondItem="OxH-LH-2fg" secondAttribute="top" constant="2" id="ihI-AM-9BZ"/>
+                                    <constraint firstItem="noa-X0-rlc" firstAttribute="centerY" secondItem="OxH-LH-2fg" secondAttribute="centerY" id="qpO-3L-GZX"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OOg-bV-IYy">
+                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                                <color key="backgroundColor" name="tableViewBackground"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" name="viewBackground"/>
+                        <constraints>
+                            <constraint firstItem="OxH-LH-2fg" firstAttribute="top" secondItem="BtK-Ep-Gep" secondAttribute="top" constant="8" id="Dwa-hZ-0XS"/>
+                            <constraint firstItem="BtK-Ep-Gep" firstAttribute="trailing" secondItem="OxH-LH-2fg" secondAttribute="trailing" constant="16" id="IKd-ze-67g"/>
+                            <constraint firstItem="OOg-bV-IYy" firstAttribute="top" secondItem="OxH-LH-2fg" secondAttribute="bottom" constant="8" id="J4f-4A-oTd"/>
+                            <constraint firstItem="OOg-bV-IYy" firstAttribute="leading" secondItem="BtK-Ep-Gep" secondAttribute="leading" id="L40-4q-Re8"/>
+                            <constraint firstItem="BtK-Ep-Gep" firstAttribute="bottom" secondItem="OOg-bV-IYy" secondAttribute="bottom" id="N27-3o-i2R"/>
+                            <constraint firstItem="OxH-LH-2fg" firstAttribute="leading" secondItem="BtK-Ep-Gep" secondAttribute="leading" constant="16" id="U3h-Kd-V1Z"/>
+                            <constraint firstItem="BtK-Ep-Gep" firstAttribute="trailing" secondItem="OOg-bV-IYy" secondAttribute="trailing" id="kKY-ES-c9c"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BtK-Ep-Gep"/>
+                    </view>
+                    <connections>
+                        <outlet property="inputContainer" destination="OxH-LH-2fg" id="qqg-0f-Rid"/>
+                        <outlet property="searchTextField" destination="V8q-YV-lhq" id="Qpp-3M-OcD"/>
+                        <outlet property="tableView" destination="OOg-bV-IYy" id="1PJ-fs-ycq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dlb-H7-7bh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3435" y="-184"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="home_lock_radio_normal" width="18" height="18"/>
+        <image name="home_lock_sreach" width="14" height="14"/>
         <image name="lock_add_diagram" width="254" height="112"/>
         <image name="lock_setting_sound_bitty" width="11" height="16"/>
         <image name="lock_setting_sound_loud" width="26" height="22"/>
@@ -970,6 +1178,9 @@
         </namedColor>
         <namedColor name="textDescription">
             <color red="0.65100002288818359" green="0.68199998140335083" blue="0.7369999885559082" alpha="0.77999997138977051" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textOpaque78">
+            <color red="0.039000000804662704" green="0.12200000137090683" blue="0.2669999897480011" alpha="0.77999997138977051" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textPlaceholder">
             <color red="0.65100002288818359" green="0.68199998140335083" blue="0.7369999885559082" alpha="0.68000000715255737" colorSpace="custom" customColorSpace="sRGB"/>

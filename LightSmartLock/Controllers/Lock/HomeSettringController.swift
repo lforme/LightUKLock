@@ -8,7 +8,11 @@
 
 import UIKit
 
-class HomeSettringController: UITableViewController {
+class HomeSettringController: UITableViewController, NavigationSettingStyle {
+    
+    var backgroundColor: UIColor? {
+        return ColorClassification.navigationBackground.value
+    }
     
     enum SeletType: Int {
         case lockSetting = 0

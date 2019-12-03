@@ -13,6 +13,43 @@ import Alamofire
 import CryptoSwift
 import PKHUD
 
+extension AMapAPI: TargetType {
+    
+    var path: String {
+        switch self {
+        case .searchByKeyWords: return "/place/around"
+        }
+    }
+    
+    var method: Moya.Method { return .get }
+    
+    var sampleData: Data {
+        return Data()
+    }
+    
+    var task: Task {
+        let requestParameters = parameters ?? [:]
+        let encoding: ParameterEncoding = URLEncoding.default
+        return .requestParameters(parameters: requestParameters, encoding: encoding)
+    }
+    
+    var baseURL: URL { return URL(string: "http://restapi.amap.com/v3")! }
+    
+    var headers: [String : String]? { return ["Content-Type": "application/json"] }
+    
+    var parameters: [String: Any]? {
+        switch self {
+        case .searchByKeyWords(let keywords, let currentLoction, let index):
+            
+            var param: [String: Any] = ["types": 120000, "radius": 0, "offset": 20, "xtensions": "all", "key": PlatformKey.gouda]
+            param.updateValue(keywords, forKey: "keywords")
+            param.updateValue("\(currentLoction.0),\(currentLoction.1)", forKey: "location")
+            param.updateValue(index, forKey: "page")
+            return param
+        }
+    }
+}
+
 extension AuthenticationInterface: TargetType {
     
     var baseURL: URL {
@@ -196,6 +233,10 @@ extension BusinessInterface: TargetType {
             return "api/Lock/UnInstallLock"
         case .getSceneAssets:
             return "api/Scene/GetSceneAssets"
+        case .addOrUpdateSceneAsset:
+            return "api/Scene/AddOrUpdateSceneAssets"
+        case .deleteSceneAssetsBySceneId:
+            return "api/Scene/DeleteSceneAssetsBySceneID"
         }
     }
     
@@ -318,6 +359,16 @@ extension BusinessInterface: TargetType {
             guard let sceneId = LSLUser.current().scene?.sceneID else { return nil }
             return ["SceneID": sceneId]
             
+        case let .addOrUpdateSceneAsset(parameter):
+            guard let accountId = LSLUser.current().user?.accountID else {
+                return nil
+            }
+            var param = parameter.toJSON()
+            param?.updateValue(accountId, forKey: "accountID")
+            return param
+            
+        case let .deleteSceneAssetsBySceneId(id):
+            return ["SceneID": id]
         default:
             return nil
         }

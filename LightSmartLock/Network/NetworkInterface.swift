@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+// 高德地图 Web API
+enum AMapAPI {
+    case searchByKeyWords(_ keyWords: String, currentLoction:(Double, Double), index: Int) // 搜索周边
+}
+
+
 enum AuthenticationInterface {
     
     case login(userName: String, password: String) // 用户面密码登录
@@ -35,4 +41,6 @@ enum BusinessInterface {
     case getLockNotice(noticeType: [Int], noticeLevel: [Int], pageIndex: Int, pageSize: Int?) // 获取消息提醒 noticeType = -1 全部  noticeLevel = -1 全部
     case unInstallLock // 删除蓝牙门锁
     case getSceneAssets // 获取资产详情
+    case addOrUpdateSceneAsset(parameter: PositionModel) // 新增,编辑 资产位置信息
+    case deleteSceneAssetsBySceneId(String) // 删除资产
 }

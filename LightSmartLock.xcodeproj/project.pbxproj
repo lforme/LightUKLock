@@ -96,6 +96,16 @@
 		9C77059E238FCC79008E1552 /* MySettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77059D238FCC79008E1552 /* MySettingViewModel.swift */; };
 		9C7705A1238FE358008E1552 /* SingleInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77059F238FE358008E1552 /* SingleInputController.swift */; };
 		9C7705A2238FE358008E1552 /* SingleInputController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C7705A0238FE358008E1552 /* SingleInputController.xib */; };
+		9C7AFF142395FAF70075442D /* GeolocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF132395FAF70075442D /* GeolocationService.swift */; };
+		9C7AFF162395FC870075442D /* CLLocationManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF152395FC870075442D /* CLLocationManager+Rx.swift */; };
+		9C7AFF182395FD2C0075442D /* GoudaMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF172395FD2C0075442D /* GoudaMapModel.swift */; };
+		9C7AFF1A239600830075442D /* SearchPlotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF19239600830075442D /* SearchPlotController.swift */; };
+		9C7AFF1D239603F00075442D /* SearchPlotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF1B239603F00075442D /* SearchPlotCell.swift */; };
+		9C7AFF1E239603F00075442D /* SearchPlotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C7AFF1C239603F00075442D /* SearchPlotCell.xib */; };
+		9C7AFF20239618040075442D /* SearchPlotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF1F239618040075442D /* SearchPlotViewModel.swift */; };
+		9C7AFF22239631930075442D /* UKRefreshStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF21239631930075442D /* UKRefreshStatus.swift */; };
+		9C7AFF24239636640075442D /* NSMutableAttributedString+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF23239636640075442D /* NSMutableAttributedString+Extention.swift */; };
+		9C7AFF2623964A950075442D /* SetBuildingNumberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF2523964A950075442D /* SetBuildingNumberController.swift */; };
 		9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD27212382801D006A9B97 /* AppDelegate.swift */; };
 		9CDD27292382801D006A9B97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD27272382801D006A9B97 /* Main.storyboard */; };
 		9CDD272B2382801E006A9B97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD272A2382801E006A9B97 /* Assets.xcassets */; };
@@ -207,6 +217,16 @@
 		9C77059D238FCC79008E1552 /* MySettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingViewModel.swift; sourceTree = "<group>"; };
 		9C77059F238FE358008E1552 /* SingleInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleInputController.swift; sourceTree = "<group>"; };
 		9C7705A0238FE358008E1552 /* SingleInputController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SingleInputController.xib; sourceTree = "<group>"; };
+		9C7AFF132395FAF70075442D /* GeolocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeolocationService.swift; sourceTree = "<group>"; };
+		9C7AFF152395FC870075442D /* CLLocationManager+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Rx.swift"; sourceTree = "<group>"; };
+		9C7AFF172395FD2C0075442D /* GoudaMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoudaMapModel.swift; sourceTree = "<group>"; };
+		9C7AFF19239600830075442D /* SearchPlotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlotController.swift; sourceTree = "<group>"; };
+		9C7AFF1B239603F00075442D /* SearchPlotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlotCell.swift; sourceTree = "<group>"; };
+		9C7AFF1C239603F00075442D /* SearchPlotCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchPlotCell.xib; sourceTree = "<group>"; };
+		9C7AFF1F239618040075442D /* SearchPlotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlotViewModel.swift; sourceTree = "<group>"; };
+		9C7AFF21239631930075442D /* UKRefreshStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UKRefreshStatus.swift; sourceTree = "<group>"; };
+		9C7AFF23239636640075442D /* NSMutableAttributedString+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extention.swift"; sourceTree = "<group>"; };
+		9C7AFF2523964A950075442D /* SetBuildingNumberController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetBuildingNumberController.swift; sourceTree = "<group>"; };
 		9CDD271E2382801D006A9B97 /* 门锁助手-极速版.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "门锁助手-极速版.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CDD27212382801D006A9B97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CDD27282382801D006A9B97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -268,6 +288,8 @@
 				9C1A4BCB238D35BA00626DB4 /* HomeUnlockRecordHeader.xib */,
 				9C52402B238E163D00308AC4 /* UnlockRecordCell.swift */,
 				9C52402C238E163D00308AC4 /* UnlockRecordCell.xib */,
+				9C7AFF1B239603F00075442D /* SearchPlotCell.swift */,
+				9C7AFF1C239603F00075442D /* SearchPlotCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -281,6 +303,7 @@
 				9C452F0D2394E84A00144827 /* BluetoothViewModel.swift */,
 				9C452F0F2394E9CE00144827 /* LockSettingViewModel.swift */,
 				9C54719E239517F000432ACA /* PositionViewModel.swift */,
+				9C7AFF1F239618040075442D /* SearchPlotViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -295,6 +318,7 @@
 				9C24AC492383F344005EBF95 /* CustomizedTabbarItem.swift */,
 				9C24AC4B2383F639005EBF95 /* CustomizedOpenDoorItem.swift */,
 				9C3726C72390C6AD00450757 /* Empty+UIViewController.swift */,
+				9C7AFF21239631930075442D /* UKRefreshStatus.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -313,6 +337,8 @@
 				9C524029238E132900308AC4 /* UIApplication+Rx.swift */,
 				9C52402F238E56A700308AC4 /* UIViewController+Extension.swift */,
 				9C3726DB23910CB000450757 /* String+Extension.swift */,
+				9C7AFF152395FC870075442D /* CLLocationManager+Rx.swift */,
+				9C7AFF23239636640075442D /* NSMutableAttributedString+Extention.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -326,6 +352,7 @@
 				9C54719A239507DE00432ACA /* LSLWebViewController.swift */,
 				9C5471A323951C1E00432ACA /* DataPickerController.swift */,
 				9C5471A223951C1E00432ACA /* DataPickerController.xib */,
+				9C7AFF132395FAF70075442D /* GeolocationService.swift */,
 			);
 			path = GlobalSingle;
 			sourceTree = "<group>";
@@ -339,6 +366,7 @@
 				9C24AC382383E00C005EBF95 /* LockModels.swift */,
 				9C452F072394AA2E00144827 /* CenterMessageModel.swift */,
 				9C5471A02395184400432ACA /* PositionModel.swift */,
+				9C7AFF172395FD2C0075442D /* GoudaMapModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -507,6 +535,8 @@
 				9C452F112394EC3E00144827 /* SoundSettingController.swift */,
 				9C5471982395047200432ACA /* LockInfoController.swift */,
 				9C54719C2395107E00432ACA /* PositioEditingController.swift */,
+				9C7AFF19239600830075442D /* SearchPlotController.swift */,
+				9C7AFF2523964A950075442D /* SetBuildingNumberController.swift */,
 				9C24AC412383EB88005EBF95 /* Home.storyboard */,
 			);
 			path = Lock;
@@ -651,6 +681,7 @@
 				9C524023238E0E3F00308AC4 /* error.json in Resources */,
 				9CDD272B2382801E006A9B97 /* Assets.xcassets in Resources */,
 				9CDD27292382801D006A9B97 /* Main.storyboard in Resources */,
+				9C7AFF1E239603F00075442D /* SearchPlotCell.xib in Resources */,
 				9C24AC442383EB96005EBF95 /* My.storyboard in Resources */,
 				9C3726CC2390CE4D00450757 /* normalDarkMode.json in Resources */,
 				9C5471A423951C1E00432ACA /* DataPickerController.xib in Resources */,
@@ -706,6 +737,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C7AFF142395FAF70075442D /* GeolocationService.swift in Sources */,
 				9C3726C62390B2DD00450757 /* ChangePasswordController.swift in Sources */,
 				9C3726E723913C5400450757 /* MessageCenterViewModel.swift in Sources */,
 				9C24AC232383C206005EBF95 /* LoginViewController.swift in Sources */,
@@ -722,11 +754,13 @@
 				9C452F0A2394C38800144827 /* HomeSettringController.swift in Sources */,
 				9C24AC482383EBE5005EBF95 /* HomeViewController.swift in Sources */,
 				9C1A4BC8238D2E7C00626DB4 /* HomeControlCell.swift in Sources */,
+				9C7AFF162395FC870075442D /* CLLocationManager+Rx.swift in Sources */,
 				9CFDE20123851EE80062522E /* NetworkInterface.swift in Sources */,
 				9CFDE20323851F660062522E /* NetworkInterfaceImplement.swift in Sources */,
 				9C24AC462383EBB1005EBF95 /* MyViewController.swift in Sources */,
 				9C3726CE2390D29900450757 /* ChangePhoneController.swift in Sources */,
 				9C24AC332383D91B005EBF95 /* AccessTokenModel.swift in Sources */,
+				9C7AFF22239631930075442D /* UKRefreshStatus.swift in Sources */,
 				9C4297782386A64C004CB999 /* RegistrationRecoveryService.swift in Sources */,
 				9C24AC302383D89A005EBF95 /* LocalArchiver.swift in Sources */,
 				9CDD274423829363006A9B97 /* RootViewController.swift in Sources */,
@@ -743,6 +777,7 @@
 				9CFDE21623853DE60062522E /* NetworkDiskStorage.swift in Sources */,
 				9C24AC3F2383EB55005EBF95 /* OpenDoorViewController.swift in Sources */,
 				9C752FD0238794BE000FEA73 /* CountdownButton.swift in Sources */,
+				9C7AFF1A239600830075442D /* SearchPlotController.swift in Sources */,
 				9C24AC372383DE6E005EBF95 /* SceneModels.swift in Sources */,
 				9C77059C238FBFC6008E1552 /* MySettingViewController.swift in Sources */,
 				9C5471A12395184400432ACA /* PositionModel.swift in Sources */,
@@ -763,14 +798,18 @@
 				9C3726E02391108400450757 /* PPBluetoothScanEntity.swift in Sources */,
 				9C770596238FA351008E1552 /* MyListCell.swift in Sources */,
 				9C524034238E64C000308AC4 /* RecordUnlockController.swift in Sources */,
+				9C7AFF1D239603F00075442D /* SearchPlotCell.swift in Sources */,
+				9C7AFF24239636640075442D /* NSMutableAttributedString+Extention.swift in Sources */,
 				9C24AC1623838CD1005EBF95 /* NavigationSettingStyle.swift in Sources */,
 				9C3726D923910C0100450757 /* NORServiceIdentifiers.swift in Sources */,
 				9C24AC1423838C80005EBF95 /* BaseNavigationController.swift in Sources */,
 				9C24AC292383CB92005EBF95 /* UITextField+Extension.swift in Sources */,
 				9CFDE20F2385346E0062522E /* AppErrorDomain.swift in Sources */,
 				9C452F122394EC3E00144827 /* SoundSettingController.swift in Sources */,
+				9C7AFF182395FD2C0075442D /* GoudaMapModel.swift in Sources */,
 				9C524030238E56A700308AC4 /* UIViewController+Extension.swift in Sources */,
 				9C24AC392383E00C005EBF95 /* LockModels.swift in Sources */,
+				9C7AFF20239618040075442D /* SearchPlotViewModel.swift in Sources */,
 				9C54719B239507DE00432ACA /* LSLWebViewController.swift in Sources */,
 				9C24AC252383C9CB005EBF95 /* UIView+Extension.swift in Sources */,
 				9C3726DE23910FF700450757 /* BluetoothPapa.swift in Sources */,
@@ -783,6 +822,7 @@
 				9C770592238FA11A008E1552 /* MyInfoHeader.swift in Sources */,
 				9C52402D238E163D00308AC4 /* UnlockRecordCell.swift in Sources */,
 				9C452F082394AA2E00144827 /* CenterMessageModel.swift in Sources */,
+				9C7AFF2623964A950075442D /* SetBuildingNumberController.swift in Sources */,
 				9C752FD223879546000FEA73 /* RegisPwdViewModel.swift in Sources */,
 				9C42976F23866088004CB999 /* PKHud+Rx.swift in Sources */,
 				9C5471992395047200432ACA /* LockInfoController.swift in Sources */,

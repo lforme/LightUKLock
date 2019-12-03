@@ -76,10 +76,10 @@ class LockSettingController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let type = SelectType.init(rawValue: indexPath.row + (indexPath.section * 10)) else {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let type = SelectType(rawValue: indexPath.row + (indexPath.section * 10)) else {
             return
         }
-        
         switch type {
         case .sound:
             let soundVC: SoundSettingController = ViewLoader.Storyboard.controller(from: "Home")
