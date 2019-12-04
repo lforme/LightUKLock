@@ -33,7 +33,12 @@ class NoLockViewController: UIViewController {
         
         addButton.set(image: UIImage(named: "lock_add_icon"), title: "添加门锁", titlePosition: UIButton.Position.bottom, additionalSpacing: 30, state: UIControl.State())
         addButton.setTitleColor(ColorClassification.textPrimary.value, for: UIControl.State())
+        addButton.addTarget(self, action: #selector(self.gotoSelectedLockVC), for: .touchUpInside)
     }
     
-    
+    @objc func gotoSelectedLockVC() {
+        
+        let selectVC: SelectLockTypeController = ViewLoader.Storyboard.controller(from: "InitialLock")
+        self.navigationController?.pushViewController(selectVC, animated: true)
+    }
 }
