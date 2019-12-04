@@ -237,6 +237,8 @@ extension BusinessInterface: TargetType {
             return "api/Scene/AddOrUpdateSceneAssets"
         case .deleteSceneAssetsBySceneId:
             return "api/Scene/DeleteSceneAssetsBySceneID"
+        case .uploadLockConfigInfo:
+            return "api/Lock/UploadLockConfigInfo"
         }
     }
     
@@ -369,6 +371,10 @@ extension BusinessInterface: TargetType {
             
         case let .deleteSceneAssetsBySceneId(id):
             return ["SceneID": id]
+            
+        case let .uploadLockConfigInfo(info):
+            return info.toJSON()
+            
         default:
             return nil
         }
