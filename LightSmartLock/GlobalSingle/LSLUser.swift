@@ -106,11 +106,10 @@ class LSLUser: NSObject {
     
     var scene: SceneListModel? {
         set {
-            guard let entity = newValue?.toJSON() else { return }
             print("场景更新")
             changeableScene.accept(newValue)
             lock.lock()
-            LocalArchiver.save(key: LSLUser.Keys.scene.rawValue, value: entity)
+            LocalArchiver.save(key: LSLUser.Keys.scene.rawValue, value: newValue?.toJSON())
             lock.unlock()
         }
         
@@ -123,10 +122,9 @@ class LSLUser: NSObject {
     
     var lockInfo: SmartLockInfoModel? {
         set {
-            guard let entity = newValue?.toJSON() else { return }
             print("门锁信息更新")
             lock.lock()
-            LocalArchiver.save(key: LSLUser.Keys.smartLockInfo.rawValue, value: entity)
+            LocalArchiver.save(key: LSLUser.Keys.smartLockInfo.rawValue, value: newValue?.toJSON())
             lock.unlock()
         }
         
