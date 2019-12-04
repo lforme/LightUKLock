@@ -9,6 +9,98 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Select Lock Type Controller-->
+        <scene sceneID="cz7-7g-E5J">
+            <objects>
+                <tableViewController storyboardIdentifier="SelectLockTypeController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Eq-A6-yoQ" customClass="SelectLockTypeController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tcF-tO-oBb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="tableViewBackground"/>
+                        <sections>
+                            <tableViewSection id="Cm9-2o-CeA">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="112" id="8gU-j5-BAX">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="112"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8gU-j5-BAX" id="G6d-g5-Prd">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="112"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock_kf100" translatesAutoresizingMaskIntoConstraints="NO" id="Th2-29-Ta8">
+                                                    <rect key="frame" x="20" y="10" width="44" height="92"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KF100 LOCK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkl-6j-RhN">
+                                                    <rect key="frame" x="80" y="34" width="94" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                    <color key="textColor" red="0.039215686274509803" green="0.12156862745098039" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击进行绑定" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Sg-b8-X8a">
+                                                    <rect key="frame" x="80" y="61.5" width="86" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                    <color key="textColor" red="0.039215686270000001" green="0.1215686275" blue="0.2666666667" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1Sg-b8-X8a" firstAttribute="leading" secondItem="zkl-6j-RhN" secondAttribute="leading" id="ASf-dp-1ws"/>
+                                                <constraint firstItem="Th2-29-Ta8" firstAttribute="leading" secondItem="G6d-g5-Prd" secondAttribute="leading" constant="20" id="PN2-14-gMj"/>
+                                                <constraint firstItem="Th2-29-Ta8" firstAttribute="centerY" secondItem="G6d-g5-Prd" secondAttribute="centerY" id="ZcH-po-9hJ"/>
+                                                <constraint firstItem="1Sg-b8-X8a" firstAttribute="top" secondItem="zkl-6j-RhN" secondAttribute="bottom" constant="8" id="gXA-bK-9zz"/>
+                                                <constraint firstItem="zkl-6j-RhN" firstAttribute="top" secondItem="G6d-g5-Prd" secondAttribute="top" constant="34" id="rBz-Yk-GzR"/>
+                                                <constraint firstItem="zkl-6j-RhN" firstAttribute="leading" secondItem="Th2-29-Ta8" secondAttribute="trailing" constant="16" id="tTI-au-zJT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="112" id="5cZ-cS-6Ru">
+                                        <rect key="frame" x="0.0" y="140" width="414" height="112"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5cZ-cS-6Ru" id="9nB-9I-U5M">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="112"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock_kf100a" translatesAutoresizingMaskIntoConstraints="NO" id="KEm-9B-EUa">
+                                                    <rect key="frame" x="20" y="10" width="48" height="92"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KF100A LOCK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFS-5U-LAG">
+                                                    <rect key="frame" x="84" y="34" width="104.5" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                    <color key="textColor" red="0.039215686270000001" green="0.1215686275" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击进行绑定" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdQ-64-k0g">
+                                                    <rect key="frame" x="84" y="61.5" width="86" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                    <color key="textColor" red="0.039215686270000001" green="0.1215686275" blue="0.2666666667" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="sFS-5U-LAG" firstAttribute="top" secondItem="9nB-9I-U5M" secondAttribute="top" constant="34" id="49Z-g2-dsk"/>
+                                                <constraint firstItem="hdQ-64-k0g" firstAttribute="leading" secondItem="sFS-5U-LAG" secondAttribute="leading" id="CHx-eT-AWa"/>
+                                                <constraint firstItem="KEm-9B-EUa" firstAttribute="centerY" secondItem="9nB-9I-U5M" secondAttribute="centerY" id="PhB-aW-6xe"/>
+                                                <constraint firstItem="hdQ-64-k0g" firstAttribute="top" secondItem="sFS-5U-LAG" secondAttribute="bottom" constant="8" id="W3H-qb-KwQ"/>
+                                                <constraint firstItem="KEm-9B-EUa" firstAttribute="leading" secondItem="9nB-9I-U5M" secondAttribute="leading" constant="20" id="Ydw-lE-Y5F"/>
+                                                <constraint firstItem="sFS-5U-LAG" firstAttribute="leading" secondItem="KEm-9B-EUa" secondAttribute="trailing" constant="16" id="vof-GX-BT7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="9Eq-A6-yoQ" id="Sq1-lT-n4x"/>
+                            <outlet property="delegate" destination="9Eq-A6-yoQ" id="ihl-qq-ox8"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="10I-Mt-R5w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1231.8840579710145" y="133.92857142857142"/>
+        </scene>
         <!--Lock Start Scanning Controller-->
         <scene sceneID="tBs-rs-N9w">
             <objects>
@@ -145,7 +237,7 @@
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VXv-YP-spt" customClass="CBPinEntryView" customModule="CBPinEntryView">
                                 <rect key="frame" x="62" y="199.5" width="290" height="40"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" name="viewBackground"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="290" id="McL-9t-vrx"/>
                                     <constraint firstAttribute="height" constant="40" id="tJY-6n-mTX"/>
@@ -203,6 +295,7 @@
                         <viewLayoutGuide key="safeArea" id="Ahz-pG-HvD"/>
                     </view>
                     <connections>
+                        <outlet property="individualView" destination="SOy-rM-d8J" id="t2h-Ym-605"/>
                         <outlet property="nextButton" destination="Q2G-AA-x2S" id="EX8-mx-ewK"/>
                         <outlet property="passwordInput" destination="VXv-YP-spt" id="4Y5-4K-l7F"/>
                     </connections>
@@ -214,8 +307,13 @@
     </scenes>
     <resources>
         <image name="lock_Installation_guide" width="180" height="252"/>
+        <image name="lock_kf100" width="44" height="92"/>
+        <image name="lock_kf100a" width="48" height="92"/>
         <namedColor name="primary">
             <color red="1" green="0.67799997329711914" blue="0.054999999701976776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="tableViewBackground">
+            <color red="0.93300002813339233" green="0.93300002813339233" blue="0.93300002813339233" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textDescription">
             <color red="0.65100002288818359" green="0.68199998140335083" blue="0.7369999885559082" alpha="0.77999997138977051" colorSpace="custom" customColorSpace="sRGB"/>

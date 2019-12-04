@@ -14,6 +14,12 @@
 		9C1A4BC9238D2E7C00626DB4 /* HomeControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC7238D2E7C00626DB4 /* HomeControlCell.xib */; };
 		9C1A4BCC238D35BA00626DB4 /* HomeUnlockRecordHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A4BCA238D35BA00626DB4 /* HomeUnlockRecordHeader.swift */; };
 		9C1A4BCD238D35BA00626DB4 /* HomeUnlockRecordHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A4BCB238D35BA00626DB4 /* HomeUnlockRecordHeader.xib */; };
+		9C1B87C2239767A100216ADA /* InitialLock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1B87C1239767A100216ADA /* InitialLock.storyboard */; };
+		9C1B87C42397693100216ADA /* LockStartScanningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B87C32397693100216ADA /* LockStartScanningController.swift */; };
+		9C1B87C72397701C00216ADA /* LockStartScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B87C62397701C00216ADA /* LockStartScanViewModel.swift */; };
+		9C1B87C92397739100216ADA /* LockSettingPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B87C82397739100216ADA /* LockSettingPasswordController.swift */; };
+		9C1B87CB2397942700216ADA /* LockBindViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B87CA2397942700216ADA /* LockBindViewModel.swift */; };
+		9C1B87CD23979B7200216ADA /* SelectLockTypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B87CC23979B7200216ADA /* SelectLockTypeController.swift */; };
 		9C1C838E23892C83005BB17C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C838D23892C83005BB17C /* HomeViewModel.swift */; };
 		9C24AC1423838C80005EBF95 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1323838C80005EBF95 /* BaseNavigationController.swift */; };
 		9C24AC1623838CD1005EBF95 /* NavigationSettingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1523838CD1005EBF95 /* NavigationSettingStyle.swift */; };
@@ -135,6 +141,12 @@
 		9C1A4BC7238D2E7C00626DB4 /* HomeControlCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeControlCell.xib; sourceTree = "<group>"; };
 		9C1A4BCA238D35BA00626DB4 /* HomeUnlockRecordHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUnlockRecordHeader.swift; sourceTree = "<group>"; };
 		9C1A4BCB238D35BA00626DB4 /* HomeUnlockRecordHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeUnlockRecordHeader.xib; sourceTree = "<group>"; };
+		9C1B87C1239767A100216ADA /* InitialLock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InitialLock.storyboard; sourceTree = "<group>"; };
+		9C1B87C32397693100216ADA /* LockStartScanningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockStartScanningController.swift; sourceTree = "<group>"; };
+		9C1B87C62397701C00216ADA /* LockStartScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockStartScanViewModel.swift; sourceTree = "<group>"; };
+		9C1B87C82397739100216ADA /* LockSettingPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSettingPasswordController.swift; sourceTree = "<group>"; };
+		9C1B87CA2397942700216ADA /* LockBindViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockBindViewModel.swift; sourceTree = "<group>"; };
+		9C1B87CC23979B7200216ADA /* SelectLockTypeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLockTypeController.swift; sourceTree = "<group>"; };
 		9C1C838D23892C83005BB17C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9C24AC1323838C80005EBF95 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		9C24AC1523838CD1005EBF95 /* NavigationSettingStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSettingStyle.swift; sourceTree = "<group>"; };
@@ -292,6 +304,27 @@
 				9C7AFF1C239603F00075442D /* SearchPlotCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		9C1B87C02397677300216ADA /* InitialLock */ = {
+			isa = PBXGroup;
+			children = (
+				9C1B87C523976FF600216ADA /* ViewModel */,
+				9C1B87CC23979B7200216ADA /* SelectLockTypeController.swift */,
+				9C1B87C32397693100216ADA /* LockStartScanningController.swift */,
+				9C1B87C82397739100216ADA /* LockSettingPasswordController.swift */,
+				9C1B87C1239767A100216ADA /* InitialLock.storyboard */,
+			);
+			path = InitialLock;
+			sourceTree = "<group>";
+		};
+		9C1B87C523976FF600216ADA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C1B87C62397701C00216ADA /* LockStartScanViewModel.swift */,
+				9C1B87CA2397942700216ADA /* LockBindViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9C1C838C23892C66005BB17C /* ViewModel */ = {
@@ -499,6 +532,7 @@
 		9CDD2739238283D8006A9B97 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9C1B87C02397677300216ADA /* InitialLock */,
 				9CDD27452382AD4E006A9B97 /* Login */,
 				9CDD273E23828639006A9B97 /* OpenDoor */,
 				9CDD273B23828599006A9B97 /* Lock */,
@@ -662,6 +696,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C1B87C2239767A100216ADA /* InitialLock.storyboard in Resources */,
 				9C7705A2238FE358008E1552 /* SingleInputController.xib in Resources */,
 				9C1A4BC5238D0A1A00626DB4 /* AnimationHeaderView.xib in Resources */,
 				9C1A4BC9238D2E7C00626DB4 /* HomeControlCell.xib in Resources */,
@@ -741,8 +776,10 @@
 				9C3726C62390B2DD00450757 /* ChangePasswordController.swift in Sources */,
 				9C3726E723913C5400450757 /* MessageCenterViewModel.swift in Sources */,
 				9C24AC232383C206005EBF95 /* LoginViewController.swift in Sources */,
+				9C1B87CB2397942700216ADA /* LockBindViewModel.swift in Sources */,
 				9C24AC272383CB78005EBF95 /* ObjectAssociation.swift in Sources */,
 				9C24AC1B23839D75005EBF95 /* Swizzling+UIViewController.swift in Sources */,
+				9C1B87CD23979B7200216ADA /* SelectLockTypeController.swift in Sources */,
 				9C24AC2B2383CD94005EBF95 /* StaticConst.swift in Sources */,
 				9C42977223867622004CB999 /* MessageNotificationHelper.swift in Sources */,
 				9C752FCD238774A9000FEA73 /* RegisterForgetController.swift in Sources */,
@@ -782,6 +819,7 @@
 				9C77059C238FBFC6008E1552 /* MySettingViewController.swift in Sources */,
 				9C5471A12395184400432ACA /* PositionModel.swift in Sources */,
 				9C429767238637E3004CB999 /* LoginViewReactor.swift in Sources */,
+				9C1B87C92397739100216ADA /* LockSettingPasswordController.swift in Sources */,
 				9C524028238E12E300308AC4 /* UIApplicationProxy.swift in Sources */,
 				9C42976D23866026004CB999 /* UIButton+Extension.swift in Sources */,
 				9C54719D2395107E00432ACA /* PositioEditingController.swift in Sources */,
@@ -800,6 +838,7 @@
 				9C524034238E64C000308AC4 /* RecordUnlockController.swift in Sources */,
 				9C7AFF1D239603F00075442D /* SearchPlotCell.swift in Sources */,
 				9C7AFF24239636640075442D /* NSMutableAttributedString+Extention.swift in Sources */,
+				9C1B87C72397701C00216ADA /* LockStartScanViewModel.swift in Sources */,
 				9C24AC1623838CD1005EBF95 /* NavigationSettingStyle.swift in Sources */,
 				9C3726D923910C0100450757 /* NORServiceIdentifiers.swift in Sources */,
 				9C24AC1423838C80005EBF95 /* BaseNavigationController.swift in Sources */,
@@ -809,6 +848,7 @@
 				9C7AFF182395FD2C0075442D /* GoudaMapModel.swift in Sources */,
 				9C524030238E56A700308AC4 /* UIViewController+Extension.swift in Sources */,
 				9C24AC392383E00C005EBF95 /* LockModels.swift in Sources */,
+				9C1B87C42397693100216ADA /* LockStartScanningController.swift in Sources */,
 				9C7AFF20239618040075442D /* SearchPlotViewModel.swift in Sources */,
 				9C54719B239507DE00432ACA /* LSLWebViewController.swift in Sources */,
 				9C24AC252383C9CB005EBF95 /* UIView+Extension.swift in Sources */,

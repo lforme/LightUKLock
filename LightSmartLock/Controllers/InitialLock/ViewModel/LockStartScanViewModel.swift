@@ -12,7 +12,7 @@ import RxCocoa
 import RxSwift
 import PKHUD
 
-class LockStartScanViewModel {
+final class LockStartScanViewModel {
     
     var scanAction: Action<Void, Bool>!
     
