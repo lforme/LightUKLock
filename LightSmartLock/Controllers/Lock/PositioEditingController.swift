@@ -123,15 +123,25 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
                 } else {
                     return this.showAlert(title: "确定删除资产吗？删除后不能撤销", message: nil, buttonTitles: ["取消", "删除"], highlightedButtonIndex: 0).map { $0 == 1 }.flatMapLatest { (_) -> Observable<Bool> in
                         return this.vm.delete()
-                    }
+                    }.do(onNext: { (success) in
+                        if success {
+                            LSLUser.current().scene = nil
+                        }
+                    })
                 }
                 
             case .save:
                 return this.vm.save()
             }
-        }.subscribe(onNext: { (success) in
+        }.subscribe(onNext: {[weak self] (success) in
+            guard let this = self else { return }
             if success {
                 HUD.flash(.label("操作成功"), delay: 2)
+                if this.editinType == .addNew {
+                    this.navigationController?.popToRootViewController(animated: true)
+                } else {
+                    this.navigationController?.popViewController(animated: true)
+                }
             }
         }, onError: { (error) in
             PKHUD.sharedHUD.rx.showError(error)
@@ -145,7 +155,7 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let type = SelectType.init(rawValue: indexPath.row) else {
+        guard let type = SelectType(rawValue: indexPath.row) else {
             return
         }
         
