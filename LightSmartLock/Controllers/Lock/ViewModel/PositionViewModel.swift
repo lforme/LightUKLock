@@ -46,13 +46,17 @@ final class PositionViewModel {
     
     init(type: PositioEditingController.EditingType) {
         
-        let shareReq = BusinessAPI.requestMapJSON(.getSceneAssets, classType: PositionModel.self, useCache: true).share(replay: 1, scope: .forever)
-        shareReq.bind(to: obPositionModel).disposed(by: disposeBag)
-        
         self.type = type
+        
         if type == .addNew {
+            var newPos = PositionModel()
+            newPos.sceneID = LSLUser.current().scene?.sceneID
+            _obPositionModel.accept(newPos)
             obButtonType.accept(.save)
         } else {
+            
+            let shareReq = BusinessAPI.requestMapJSON(.getSceneAssets, classType: PositionModel.self, useCache: true).share(replay: 1, scope: .forever)
+            
             Observable.combineLatest(obVillageName.asObservable(), obArea.asObservable(), obHouseType.asObservable(), obTowards.asObservable(), obDoorplate, obUnit.asObservable(), obCity.asObservable(), obRegion.asObservable()).subscribe(onNext: {[weak self] (_) in
                 
                 self?.obButtonType.accept(.save)
@@ -60,11 +64,13 @@ final class PositionViewModel {
             }).disposed(by: disposeBag)
             
             self.obButtonType.accept(.delete)
+            
+            shareReq.bind(to: obPositionModel).disposed(by: disposeBag)
+            
+            shareReq.subscribe(onNext: {[weak self] (model) in
+                self?._obPositionModel.accept(model)
+            }).disposed(by: disposeBag)
         }
-        
-        shareReq.subscribe(onNext: {[weak self] (model) in
-            self?._obPositionModel.accept(model)
-        }).disposed(by: disposeBag)
         
         obArea.subscribe(onNext: {[weak self] (area) in
             var param = self?._obPositionModel.value
