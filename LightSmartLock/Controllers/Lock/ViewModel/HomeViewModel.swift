@@ -35,8 +35,6 @@ final class HomeViewModel: HomeViewModeling {
     
     init() {
         
-        
-        
         let requset = BusinessAPI.requestMapJSONArray(.getCustomerSceneList(pageIndex: 1, pageSize: 5, Sort: 1), classType: SceneListModel.self, useCache: true).catchErrorJustReturn([LSLUser.current().scene ])
         
         let networkHasLock = requset.map { (sceneList) -> Bool in
@@ -54,7 +52,7 @@ final class HomeViewModel: HomeViewModeling {
                 return true
             }
         }
-        
+       
         isInstallLock = Observable.combineLatest(networkHasLock, Observable.just(LSLUser.current().isInstalledLock)).map{ $0.0 || $0.1 }
         
         let shareSceneListModel = LSLUser.current().obScene.share(replay: 1, scope: .forever)
