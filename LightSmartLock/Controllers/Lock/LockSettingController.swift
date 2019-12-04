@@ -49,7 +49,6 @@ class LockSettingController: UITableViewController {
         
         deleteButton.rx.tap.flatMapLatest {[weak self] (_) -> Observable<Int> in
             guard let this = self else { return .empty() }
-            
             return this.showActionSheet(title: "确定要删除门锁吗?", message: nil, buttonTitles: ["删除", "取消"], highlightedButtonIndex: 1)
         }.flatMapLatest {[weak self] (buttonIndex) -> Observable<Bool> in
             guard let this = self else { return .empty() }
@@ -58,7 +57,10 @@ class LockSettingController: UITableViewController {
             if success {
                 self?.navigationController?.popViewController(animated: true)
                 NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.deleteLock)
-                
+                var updateValue = LSLUser.current().scene
+                updateValue?.IsInstallLock = false
+                LSLUser.current().scene = updateValue
+                LSLUser.current().lockInfo = nil
             } else {
                 HUD.flash(.label("删除门锁失败"), delay: 2)
             }
