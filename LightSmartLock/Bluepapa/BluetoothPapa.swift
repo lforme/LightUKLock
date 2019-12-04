@@ -40,24 +40,22 @@ public class BluetoothPapa: NSObject {
     public static let shareInstance = BluetoothPapa()
     
     fileprivate let lock = NSRecursiveLock()
+    
+    private var holdKey: String?
     /// 蓝牙门锁通信加密密匙
-    var AESkey: String? {
+    fileprivate var AESkey: String? {
         get {
             if LSLUser.current().lockInfo?.secretKey == nil {
-                let array = Array(repeating: 0, count: 16).map { String($0) }.compactMap { $0 }
-                let key = array.joined(separator:"")
-                return key
+                return self.holdKey
             } else {
                 return LSLUser.current().lockInfo?.secretKey
             }
         }
-        
         set {
-            guard var lockInfo = LSLUser.current().lockInfo else {
-                return
-            }
-            lockInfo.secretKey = newValue
+            var lockInfo = LSLUser.current().lockInfo
+            lockInfo?.secretKey = newValue
             LSLUser.current().lockInfo = lockInfo
+            self.holdKey = newValue
         }
     }
     
@@ -72,7 +70,7 @@ public class BluetoothPapa: NSObject {
     fileprivate let endMark = "#*#" // 35, 42, 35 十进制 23 2A 23
     fileprivate let MTU = 20
     private var bluetoothManager : CBCentralManager?
-    private let centralQueue = DispatchQueue(label: "no.nordicsemi.swiftBluetooth", attributes: [.concurrent])
+    private let centralQueue = DispatchQueue(label: "no.nordicsemi.swiftBluetooth", qos: .default, attributes: .concurrent, autoreleaseFrequency: .workItem, target: nil)
     fileprivate let dfuServiceUUIDString  = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E"
     fileprivate let ANCSServiceUUIDString = "6E400002-B5A3-F393-E0A9-E50E24DCCA9E"
     fileprivate var filterUUID: CBUUID?
@@ -100,8 +98,13 @@ public class BluetoothPapa: NSObject {
         bluetoothManager = CBCentralManager(delegate: self, queue: centralQueue)
         if let blueName = LSLUser.current().lockInfo?.bluthName {
             filterBluetoothNames = [blueName]
+        } else {
+            filterBluetoothNames = ["UOKO"]
         }
         
+        let array = Array(repeating: 0, count: 16).map { String($0) }.compactMap { $0 }
+        let key = array.joined(separator:"")
+        self.holdKey = key
     }
     
     fileprivate func getConnectedPeripherals() -> [CBPeripheral] {
@@ -225,20 +228,20 @@ public class BluetoothPapa: NSObject {
     /// - Returns: resutl
     @discardableResult
     public func scanForPeripherals(_ enable: Bool) -> Bool {
-        guard bluetoothManager?.state != .poweredOn else {
-            self.bluetoothManager?.stopScan()
-            return false
-        }
-        DispatchQueue.main.async {
+
+        DispatchQueue.main.async {[weak self] in
+            guard let this = self else {
+                return
+            }
             if enable == true {
                 let options: NSDictionary = NSDictionary(objects: [NSNumber(value: true as Bool)], forKeys: [CBCentralManagerScanOptionAllowDuplicatesKey as NSCopying])
-                if self.filterUUID != nil {
-                    self.bluetoothManager?.scanForPeripherals(withServices: [self.filterUUID!], options: options as? [String : AnyObject])
+                if this.filterUUID != nil {
+                    this.bluetoothManager?.scanForPeripherals(withServices: [this.filterUUID!], options: options as? [String : AnyObject])
                 } else {
-                    self.bluetoothManager?.scanForPeripherals(withServices: nil, options: options as? [String : AnyObject])
+                    this.bluetoothManager?.scanForPeripherals(withServices: nil, options: options as? [String : AnyObject])
                 }
             } else {
-                self.bluetoothManager?.stopScan()
+                this.bluetoothManager?.stopScan()
             }
         }
         return true
@@ -329,7 +332,7 @@ public class BluetoothPapa: NSObject {
         
         let command = "\(messageHeader)160E\(key)"
         encrypt(command: command)
-        AESkey = key
+        self.holdKey = key
     }
     
     /// 改变蓝牙广播名
@@ -1075,7 +1078,7 @@ extension BluetoothPapa: CBCentralManagerDelegate {
                 } else {
                     self.peripherals.append(sensor)
                 }
-                print("scan bluethooth name: \(peripheral.name ?? "no name")")
+//                print("scan bluethooth name: \(peripheral.name ?? "no name")")
                 
                 self.peripheralsResult?(self.peripherals)
             } else {
