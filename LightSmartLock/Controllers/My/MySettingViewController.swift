@@ -51,7 +51,6 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
         self.tableView.tableFooterView = UIView(frame: .zero)
         self.avatar.clipsToBounds = true
         self.avatar.layer.cornerRadius = self.avatar.bounds.height / 2
-        self.versionLabel.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     }
     
     func bind() {
@@ -63,6 +62,9 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
             self?.avatar.kf.setImage(with: URL(string: newString))
         }).disposed(by: rx.disposeBag)
         
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            self.versionLabel.text = "v\(version)"
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
