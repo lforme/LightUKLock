@@ -99,6 +99,7 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         addButton.frame.size = CGSize(width: 32, height: 32)
         addButton.contentHorizontalAlignment = .left
         let addItem = UIBarButtonItem(customView: addButton)
+        addButton.addTarget(self, action: #selector(self.gotoSelectedLockVC), for: .touchUpInside)
         self.navigationItem.rightBarButtonItems = [settingItem, addItem]
     }
     
@@ -116,6 +117,11 @@ class MyViewController: UIViewController, NavigationSettingStyle {
     @objc func gotoMySettingVC() {
         let settingVC: MySettingViewController = ViewLoader.Storyboard.controller(from: "My")
         self.navigationController?.pushViewController(settingVC, animated: true)
+    }
+    
+    @objc func gotoSelectedLockVC() {
+        let selectVC: SelectLockTypeController = ViewLoader.Storyboard.controller(from: "InitialLock")
+        self.navigationController?.pushViewController(selectVC, animated: true)
     }
 }
 
