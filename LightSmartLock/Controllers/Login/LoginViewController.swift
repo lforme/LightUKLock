@@ -123,7 +123,9 @@ class LoginViewController: UITableViewController, StoryboardView {
         cell1.backgroundColor = ColorClassification.viewBackground.value
         cell2.backgroundColor = ColorClassification.viewBackground.value
         
-        versionLabel.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            versionLabel.text = "v\(version)"
+        }
     }
     
     @IBAction func registerTap(_ sender: UIButton) {
