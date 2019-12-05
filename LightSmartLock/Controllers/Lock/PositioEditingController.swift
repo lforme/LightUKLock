@@ -123,11 +123,7 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
                 } else {
                     return this.showAlert(title: "确定删除资产吗？删除后不能撤销", message: nil, buttonTitles: ["取消", "删除"], highlightedButtonIndex: 0).map { $0 == 1 }.flatMapLatest { (_) -> Observable<Bool> in
                         return this.vm.delete()
-                    }.do(onNext: { (success) in
-                        if success {
-                            LSLUser.current().scene = nil
-                        }
-                    })
+                    }
                 }
                 
             case .save:
