@@ -53,7 +53,7 @@ final class HomeViewModel: HomeViewModeling {
             }
         }
        
-        isInstallLock = Observable.combineLatest(networkHasLock, Observable.just(LSLUser.current().isInstalledLock)).map{ $0.0 || $0.1 }
+        isInstallLock = networkHasLock
         
         let shareSceneListModel = LSLUser.current().obScene.share(replay: 1, scope: .forever)
         
