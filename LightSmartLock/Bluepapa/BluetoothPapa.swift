@@ -1037,11 +1037,12 @@ extension BluetoothPapa: CBCentralManagerDelegate {
         }
         print("[Callback] Central Manager did disconnect peripheral successfully")
         print("Disconnected")
-        
+        cancelPeripheralConnection()
         connected = false
         delegate?.didDisconnectPeripheral?()
         bluetoothPeripheral?.delegate = nil
         bluetoothPeripheral = nil
+        
     }
     
     public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
