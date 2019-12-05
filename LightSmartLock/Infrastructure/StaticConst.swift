@@ -14,6 +14,8 @@ let kLSRem = UIScreen.main.bounds.width / 375
 enum NotificationRefreshType {
     case deleteLock
     case addLock
+    case deleteScene
+    case updateScene
 }
 
 extension NSNotification.Name {
