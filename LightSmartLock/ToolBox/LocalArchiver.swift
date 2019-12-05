@@ -27,5 +27,8 @@ public struct LocalArchiver {
     
     public static func remove(key: String) {
         UserDefaults.standard.removeObject(forKey: key)
+        do {
+            UserDefaults.standard.synchronize()
+        }
     }
 }
