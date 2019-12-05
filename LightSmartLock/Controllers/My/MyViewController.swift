@@ -32,6 +32,16 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         observerTableViewDidScroll()
         setupTableviewRefresh()
         bind()
+        observerSceneChanged()
+    }
+    
+    func observerSceneChanged() {
+        NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
+            guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
+            if refreshType == .deleteScene || refreshType == .updateScene {
+                self?.tableView.mj_header?.beginRefreshing()
+            }
+        }).disposed(by: rx.disposeBag)
     }
     
     func bind() {
@@ -68,7 +78,7 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
             self?.tableView.mj_header?.beginRefreshing()
         }
-
+        
     }
     
     func setupUI() {
@@ -145,7 +155,7 @@ extension MyViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableCell(withIdentifier: "MyInfoHeader") as! MyInfoHeader
         let shareInfo = LSLUser.current().obUserInfo.share(replay: 1, scope: .forever)
-    
+        
         shareInfo.map { $0?.userName }.bind(to: header.nick.rx.text).disposed(by: header.disposeBag)
         shareInfo.map { $0?.phone }.bind(to: header.phone.rx.text).disposed(by: header.disposeBag)
         
