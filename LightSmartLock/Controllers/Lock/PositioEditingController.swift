@@ -16,7 +16,7 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
     var backgroundColor: UIColor? {
         return ColorClassification.navigationBackground.value
     }
-
+    
     enum SelectType: Int {
         case name = 0
         case area
@@ -25,13 +25,6 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
         case buildingNumber
     }
     
-    enum EditingType {
-        case addNew
-        case modify
-    }
-    
-    var editinType: EditingType = .modify
-    
     @IBOutlet weak var areaTextfield: UITextField!
     @IBOutlet weak var houseType: UILabel!
     @IBOutlet weak var plotName: UILabel!
@@ -39,7 +32,7 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
     @IBOutlet weak var buildingNumber: UILabel!
     
     var navigationRightButton: UIButton!
-    var vm: PositionViewModel!
+    let vm: PositionViewModel = PositionViewModel()
     
     deinit {
         print("\(self) deinit")
@@ -56,8 +49,6 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
     }
     
     func bind() {
-        self.vm = PositionViewModel(type: self.editinType)
-        
         self.vm.defaultPositionModel.subscribe(onNext: {[weak self] (defaultModel) in
             self?.plotName.text = defaultModel?.villageName
             self?.areaTextfield.text = defaultModel?.area
@@ -121,8 +112,12 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
                 if LSLUser.current().isInstalledLock {
                     return this.showAlert(title: "删除资产前请先到门锁设置中删除门锁", message: nil, buttonTitles: ["知道啦"], highlightedButtonIndex: 0).map { _ in false }
                 } else {
-                    return this.showAlert(title: "确定删除资产吗？删除后不能撤销", message: nil, buttonTitles: ["取消", "删除"], highlightedButtonIndex: 0).map { $0 == 1 }.flatMapLatest { (_) -> Observable<Bool> in
-                        return this.vm.delete()
+                    return this.showAlert(title: "确定删除资产吗？删除后不能撤销", message: nil, buttonTitles: ["取消", "删除"], highlightedButtonIndex: 0).map { $0 == 1 }.flatMapLatest { (delete) -> Observable<Bool> in
+                        if delete {
+                            return this.vm.delete()
+                        } else {
+                            return .just(false)
+                        }
                     }
                 }
                 
@@ -132,15 +127,16 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
         }.subscribe(onNext: {[weak self] (success) in
             guard let this = self else { return }
             if success {
+                BluetoothPapa.shareInstance.reboot { (_) in
+                    // 写入门锁
+                }
                 HUD.flash(.label("操作成功"), delay: 2)
-                if this.editinType == .addNew {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     this.navigationController?.popToRootViewController(animated: true)
-                } else {
-                    this.navigationController?.popViewController(animated: true)
                 }
             }
-        }, onError: { (error) in
-            PKHUD.sharedHUD.rx.showError(error)
+            }, onError: { (error) in
+                PKHUD.sharedHUD.rx.showError(error)
         }).disposed(by: rx.disposeBag)
     }
     
