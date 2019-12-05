@@ -77,20 +77,26 @@ class LockSettingPasswordController: UIViewController {
             
             switch step {
             case let .uploadInfoToServer(sceneId):
-                var updateValue = LSLUser.current().scene
-                updateValue?.sceneID = sceneId
-                updateValue?.IsInstallLock = true
-                LSLUser.current().scene = updateValue
                 
                 let positionVC: PositioEditingController = ViewLoader.Storyboard.controller(from: "Home")
-                positionVC.editinType = .addNew
+                
+                if self?.lockInfo.sceneID?.isEmpty ?? false {
+                    var updateValue = LSLUser.current().scene
+                    updateValue?.sceneID = sceneId
+                    updateValue?.IsInstallLock = true
+                    LSLUser.current().scene = updateValue
+                    positionVC.editinType = .addNew
+                } else {
+                    positionVC.editinType = .modify
+                }
+                
                 self?.navigationController?.pushViewController(positionVC, animated: true)
                 
             default: break
             }
             
             }, onError: { (error) in
-                PKHUD.sharedHUD.rx.showError(error)
+                HUD.flash(.label("门锁配置失败, 门锁已恢复出厂设置"), delay: 2)
                 BluetoothPapa.shareInstance.factoryReset {[weak self] (_) in
                     self?.navigationController?.popToRootViewController(animated: true)
                 }
