@@ -41,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_noti" translatesAutoresizingMaskIntoConstraints="NO" id="wXS-UU-veQ">
-                                <rect key="frame" x="242" y="18" width="20" height="20"/>
+                                <rect key="frame" x="222" y="8" width="40" height="40"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5J-Pr-avG">
                                 <rect key="frame" x="52" y="46" width="210" height="14.5"/>
