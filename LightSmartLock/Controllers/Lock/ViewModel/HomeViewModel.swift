@@ -35,7 +35,7 @@ final class HomeViewModel: HomeViewModeling {
     
     init() {
         
-        let requset = BusinessAPI.requestMapJSONArray(.getCustomerSceneList(pageIndex: 1, pageSize: 5, Sort: 1), classType: SceneListModel.self, useCache: true).catchErrorJustReturn([LSLUser.current().scene ])
+        let requset = BusinessAPI.requestMapJSONArray(.getCustomerSceneList(pageIndex: 1, pageSize: 5, Sort: 1), classType: SceneListModel.self, useCache: true).catchErrorJustReturn([LSLUser.current().scene])
         
         let networkHasLock = requset.map { (sceneList) -> Bool in
             let noOptionSceneList = sceneList.compactMap { $0 }
