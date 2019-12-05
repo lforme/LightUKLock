@@ -12,7 +12,11 @@ import PKHUD
 import RxSwift
 import RxCocoa
 
-class LockSettingPasswordController: UIViewController {
+class LockSettingPasswordController: UIViewController, NavigationSettingStyle {
+    
+    var backgroundColor: UIColor? {
+        return ColorClassification.navigationBackground.value
+    }
     
     @IBOutlet weak var passwordInput: CBPinEntryView!
     @IBOutlet weak var nextButton: UIButton!
@@ -36,7 +40,7 @@ class LockSettingPasswordController: UIViewController {
     }
     
     func bind() {
-        self.vm = LockBindViewModel.init(lockInfo: self.lockInfo)
+        self.vm = LockBindViewModel(lockInfo: self.lockInfo)
     }
     
     func updateUI() {
@@ -56,6 +60,10 @@ class LockSettingPasswordController: UIViewController {
         passwordInput.entryTextColour = #colorLiteral(red: 0.02352941176, green: 0.1098039216, blue: 0.2470588235, alpha: 1)
         passwordInput.delegate = self
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
+            self?.passwordInput.becomeFirstResponder()
+        }
+        
     }
     
     @objc func nextTap() {
@@ -63,44 +71,45 @@ class LockSettingPasswordController: UIViewController {
             HUD.flash(.label("请输入6位管理员密码"), delay: 2)
             return
         }
+        HUD.show(.label("正在配置门锁..."))
         self.vm.setAdiminPassword(pwd).flatMapLatest {[unowned self] (step) -> Observable<LockBindViewModel.Step> in
-            return self.vm.checkVersionInfo()
+            return self.vm.setPrivateKey(self.privateKey).delay(1, scheduler: MainScheduler.instance)
+        }.flatMapLatest {[unowned self] (step) -> Observable<LockBindViewModel.Step> in
+            return self.vm.checkVersionInfo().delay(1, scheduler: MainScheduler.instance)
         }.flatMapLatest { (step) -> Observable<LockBindViewModel.Step> in
-            return self.vm.changeBroadcastName()
-        }.flatMapLatest { (step) -> Observable<LockBindViewModel.Step> in
-            return self.vm.setPrivateKey(self.privateKey)
+            return self.vm.changeBroadcastName().delay(1, scheduler: MainScheduler.instance)
         }.flatMapLatest { (step) -> Observable<LockBindViewModel.Step> in
             return self.vm.uploadToServer()
         }.subscribe(onNext: {[weak self] (step) in
             self?.updateUI()
             HUD.flash(.label(step.description), delay: 2)
-            
             switch step {
             case let .uploadInfoToServer(sceneId):
                 
-                let positionVC: PositioEditingController = ViewLoader.Storyboard.controller(from: "Home")
-                
-                if self?.lockInfo.sceneID?.isEmpty ?? false {
-                    var updateValue = LSLUser.current().scene
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addLock)
+                var updateValue = LSLUser.current().scene
+                if updateValue == nil {
+                    updateValue = SceneListModel()
                     updateValue?.sceneID = sceneId
                     updateValue?.IsInstallLock = true
                     LSLUser.current().scene = updateValue
-                    positionVC.editinType = .addNew
-                } else {
-                    positionVC.editinType = .modify
                 }
-                
+                let positionVC: PositioEditingController = ViewLoader.Storyboard.controller(from: "Home")
                 self?.navigationController?.pushViewController(positionVC, animated: true)
-                
             default: break
             }
             
-            }, onError: { (error) in
+            }, onError: {[weak self] (error) in
                 HUD.flash(.label("门锁配置失败, 门锁已恢复出厂设置"), delay: 2)
                 BluetoothPapa.shareInstance.factoryReset {[weak self] (_) in
                     self?.navigationController?.popToRootViewController(animated: true)
                 }
-        }).disposed(by: rx.disposeBag)
+                
+            }, onCompleted: {
+                HUD.hide(animated: true)
+        }) {
+            HUD.hide(animated: true)
+        }.disposed(by: rx.disposeBag)
     }
 }
 
