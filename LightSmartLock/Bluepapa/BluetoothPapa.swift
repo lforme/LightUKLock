@@ -228,7 +228,9 @@ public class BluetoothPapa: NSObject {
     /// - Returns: resutl
     @discardableResult
     public func scanForPeripherals(_ enable: Bool) -> Bool {
-
+        
+        cancelPeripheralConnection()
+        
         DispatchQueue.main.async {[weak self] in
             guard let this = self else {
                 return
@@ -276,6 +278,7 @@ public class BluetoothPapa: NSObject {
             print("Peripheral not set")
             return
         }
+        
         if connected {
             print("Disconnecting...")
         } else {
@@ -283,12 +286,11 @@ public class BluetoothPapa: NSObject {
         }
         print("bluetoothPeripheral.cancelPeripheralConnection(peripheral)")
         bluetoothManager?.cancelPeripheralConnection(bluetoothPeripheral)
-        
+        connected = false
         // In case the previous connection attempt failed before establishing a connection
         if !connected {
             self.bluetoothPeripheral = nil
             delegate?.didDisconnectPeripheral?()
-            AESkey = nil
         }
     }
     
