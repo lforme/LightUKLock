@@ -13,7 +13,7 @@ class NoLockViewController: UIViewController {
     @IBOutlet weak var mustRead: UILabel!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var containerA: UIView!
-    @IBOutlet weak var containerB: UIView!
+    @IBOutlet weak var dotView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,17 +22,11 @@ class NoLockViewController: UIViewController {
     }
     
     func setupUI() {
-        self.view.backgroundColor = ColorClassification.tableViewBackground.value
-        containerA.backgroundColor = ColorClassification.viewBackground.value
-        containerB.backgroundColor = ColorClassification.viewBackground.value
-        
-        containerA.setCircularShadow(radius: 3, color: ColorClassification.primary.value)
-        containerB.setCircularShadow(radius: 3, color: ColorClassification.primary.value)
-        
+        dotView.setCircular(radius: 4)
+        containerA.setCircularShadow(radius: 7, color: ColorClassification.textPlaceholder.value)
         mustRead.textColor = ColorClassification.textPrimary.value
         
-        addButton.set(image: UIImage(named: "lock_add_icon"), title: "添加门锁", titlePosition: UIButton.Position.bottom, additionalSpacing: 30, state: UIControl.State())
-        addButton.setTitleColor(ColorClassification.textPrimary.value, for: UIControl.State())
+        addButton.setCircular(radius: 7)
         addButton.addTarget(self, action: #selector(self.gotoSelectedLockVC), for: .touchUpInside)
     }
     
