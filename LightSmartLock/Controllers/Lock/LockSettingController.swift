@@ -61,6 +61,7 @@ class LockSettingController: UITableViewController {
                 updateValue?.IsInstallLock = false
                 LSLUser.current().scene = updateValue
                 LSLUser.current().lockInfo = nil
+                
             } else {
                 HUD.flash(.label("删除门锁失败"), delay: 2)
             }
