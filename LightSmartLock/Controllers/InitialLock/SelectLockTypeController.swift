@@ -50,12 +50,19 @@ class SelectLockTypeController: UITableViewController, NavigationSettingStyle {
         guard let type = SelectedType(rawValue: indexPath.row) else {
             return
         }
-        var lockInfo = SmartLockInfoModel()
-        lockInfo.lockType = type.description
-        lockInfo.UserCode = "01"
-        lockInfo.AccountID = LSLUser.current().user?.accountID
+        
         let initialLockVC: LockStartScanningController = ViewLoader.Storyboard.controller(from: "InitialLock")
-        initialLockVC.lockInfo = lockInfo
+        var lock = SmartLockInfoModel()
+        lock.lockType = type.description
+        lock.UserCode = "01"
+        lock.AccountID = LSLUser.current().user?.accountID
+        
+        if let sceneId = LSLUser.current().scene?.sceneID, !sceneId.isEmpty {
+            initialLockVC.lockInfo.sceneID = sceneId
+            initialLockVC.lockInfo = lock
+        } else {
+            initialLockVC.lockInfo = lock
+        }
         navigationController?.pushViewController(initialLockVC, animated: true)
     }
     
