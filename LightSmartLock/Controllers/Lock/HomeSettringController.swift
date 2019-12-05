@@ -57,7 +57,6 @@ class HomeSettringController: UITableViewController, NavigationSettingStyle {
             
         case .position:
             let positionVC: PositioEditingController = ViewLoader.Storyboard.controller(from: "Home")
-            positionVC.editinType = .modify
             navigationController?.pushViewController(positionVC, animated: true)
             
         case .privacyPolicy:
