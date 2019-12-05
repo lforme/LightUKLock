@@ -32,9 +32,11 @@ class LSLUser: NSObject {
     func logout() {
         
         let diskCache = NetworkDiskStorage(autoCleanTrash: true, path: "network")
-        diskCache.deleteValueBy(user?.accountID)
+        let deleteDb = diskCache.deleteValueBy(user?.accountID)
+        print("数据库网络缓存文件删除:\(deleteDb ? "成功" : "失败")")
         
         Keys.allCases.forEach {
+            print("已删除Key:\($0.rawValue)")
             LocalArchiver.remove(key: $0.rawValue)
         }
         NotificationCenter.default.post(name: .loginStateDidChange, object: false)
@@ -44,14 +46,14 @@ class LSLUser: NSObject {
     
     var token: AccessTokenModel? {
         set {
-            guard let entity = newValue?.toJSON() else { return }
+            guard let entity = newValue?.toJSONString() else { return }
             lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.token.rawValue, value: entity)
             lock.unlock()
         }
         
         get {
-            let json = LocalArchiver.load(key: LSLUser.Keys.token.rawValue) as? [String: Any]
+            let json = LocalArchiver.load(key: LSLUser.Keys.token.rawValue) as? String
             let value = AccessTokenModel.deserialize(from: json)
             return value
         }
@@ -59,14 +61,14 @@ class LSLUser: NSObject {
     
     var refreshToken: AccessTokenModel? {
         set {
-            guard let entity = newValue?.toJSON() else { return }
+            guard let entity = newValue?.toJSONString() else { return }
             lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.refreshToekn.rawValue, value: entity)
             lock.unlock()
         }
         
         get {
-            let json = LocalArchiver.load(key: LSLUser.Keys.refreshToekn.rawValue) as? [String: Any]
+            let json = LocalArchiver.load(key: LSLUser.Keys.refreshToekn.rawValue) as? String
             let value = AccessTokenModel.deserialize(from: json)
             return value
         }
@@ -74,7 +76,7 @@ class LSLUser: NSObject {
     
     var user: UserModel? {
         set {
-            guard let entity = newValue?.toJSON() else { return }
+            guard let entity = newValue?.toJSONString() else { return }
             changeableUserInfo.accept(newValue)
             lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.userInfo.rawValue, value: entity)
@@ -82,7 +84,7 @@ class LSLUser: NSObject {
         }
         
         get {
-            let json = LocalArchiver.load(key: LSLUser.Keys.userInfo.rawValue) as? [String: Any]
+            let json = LocalArchiver.load(key: LSLUser.Keys.userInfo.rawValue) as? String
             let value = UserModel.deserialize(from: json)
             return value
         }
@@ -90,7 +92,7 @@ class LSLUser: NSObject {
     
     var userInScene: UserInSceneModel? {
         set {
-            guard let entity = newValue?.toJSON() else { return }
+            guard let entity = newValue?.toJSONString() else { return }
             print("用户In场景更新")
             lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.userInScene.rawValue, value: entity)
@@ -98,7 +100,7 @@ class LSLUser: NSObject {
         }
         
         get {
-            let json = LocalArchiver.load(key: LSLUser.Keys.userInScene.rawValue) as? [String: Any]
+            let json = LocalArchiver.load(key: LSLUser.Keys.userInScene.rawValue) as? String
             let value = UserInSceneModel.deserialize(from: json)
             return value
         }
@@ -109,12 +111,12 @@ class LSLUser: NSObject {
             print("场景更新")
             changeableScene.accept(newValue)
             lock.lock()
-            LocalArchiver.save(key: LSLUser.Keys.scene.rawValue, value: newValue?.toJSON())
+            LocalArchiver.save(key: LSLUser.Keys.scene.rawValue, value: newValue?.toJSONString())
             lock.unlock()
         }
         
         get {
-            let json = LocalArchiver.load(key: LSLUser.Keys.scene.rawValue) as? [String: Any]
+            let json = LocalArchiver.load(key: LSLUser.Keys.scene.rawValue) as? String
             let value = SceneListModel.deserialize(from: json)
             return value
         }
@@ -124,12 +126,12 @@ class LSLUser: NSObject {
         set {
             print("门锁信息更新")
             lock.lock()
-            LocalArchiver.save(key: LSLUser.Keys.smartLockInfo.rawValue, value: newValue?.toJSON())
+            LocalArchiver.save(key: LSLUser.Keys.smartLockInfo.rawValue, value: newValue?.toJSONString())
             lock.unlock()
         }
         
         get {
-            let json = LocalArchiver.load(key: LSLUser.Keys.smartLockInfo.rawValue) as? [String: Any]
+            let json = LocalArchiver.load(key: LSLUser.Keys.smartLockInfo.rawValue) as? String
             let value = SmartLockInfoModel.deserialize(from: json)
             return value
         }
@@ -137,7 +139,7 @@ class LSLUser: NSObject {
     
     var lockIOTInfo: IOTLockInfoModel? {
         set {
-            guard let entity = newValue?.toJSON() else { return }
+            guard let entity = newValue?.toJSONString() else { return }
             print("IOT门锁信息更新")
             lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.lockIOTInfo.rawValue, value: entity)
@@ -145,7 +147,7 @@ class LSLUser: NSObject {
         }
         
         get {
-            let json = LocalArchiver.load(key: LSLUser.Keys.lockIOTInfo.rawValue) as? [String: Any]
+            let json = LocalArchiver.load(key: LSLUser.Keys.lockIOTInfo.rawValue) as? String
             let value = IOTLockInfoModel.deserialize(from: json)
             return value
         }
