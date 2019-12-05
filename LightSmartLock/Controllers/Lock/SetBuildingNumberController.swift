@@ -65,39 +65,44 @@ class SetBuildingNumberController: UITableViewController {
     func bind() {
         unitButton.rx.tap.map {[unowned self] (_) -> Bool in
             self.unitButton.isSelected = !self.unitButton.isSelected
+            self.unitTextField.isEnabled = !self.unitButton.isSelected
             return self.unitButton.isSelected
         }.bind(to: haveToUnit).disposed(by: rx.disposeBag)
         
         doorplateButton.rx.tap.map {[unowned self] (_) -> Bool in
             self.doorplateButton.isSelected = !self.doorplateButton.isSelected
+            self.doorplateTextField.isEnabled = !self.doorplateButton.isSelected
             return self.doorplateButton.isSelected
         }.bind(to: haveToPlate).disposed(by: rx.disposeBag)
         
-        saveButton.rx.tap.subscribe(onNext: {[weak self] (_) in
+        saveButton.rx.tap.subscribe(onNext: {[unowned self] (_) in
             
-            guard let buildingStr = self?.buildingTextField.text, !buildingStr.isEmpty else {
+    
+            guard let buildingStr = self.buildingTextField.text, !buildingStr.isEmpty else {
                 HUD.flash(.label("请填写楼栋号"), delay: 2)
                 return
             }
             
-            if self?.haveToUnit.value ?? false {
-                guard let unitStr = self?.unitTextField.text, !unitStr.isEmpty else {
+            if !self.haveToUnit.value {
+                guard let unitStr = self.unitTextField.text, unitStr.isEmpty else {
                     HUD.flash(.label("请填写单元号"), delay: 2)
                     return
                 }
             }
             
-            if self?.haveToPlate.value ?? false {
-                guard let plateStr = self?.doorplateTextField.text, !plateStr.isEmpty else {
+            if !self.haveToPlate.value {
+                guard let plateStr = self.doorplateTextField.text, !plateStr.isEmpty else {
                     HUD.flash(.label("请填写门牌号"), delay: 2)
                     return
                 }
             }
             
-            self?.input?(self?.buildingTextField.text, self?.unitTextField.text, self?.doorplateTextField.text)
-            self?.navigationController?.popViewController(animated: true)
+            self.input?(self.buildingTextField.text, self.unitTextField.text, self.doorplateTextField.text)
+            self.navigationController?.popViewController(animated: true)
             
         }).disposed(by: rx.disposeBag)
+        
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
