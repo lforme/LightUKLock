@@ -122,14 +122,28 @@ final class PositionViewModel {
         guard let id = LSLUser.current().scene?.sceneID else {
             return .empty()
         }
-        return BusinessAPI.requestMapBool(.deleteSceneAssetsBySceneId(id))
+        return BusinessAPI.requestMapBool(.deleteSceneAssetsBySceneId(id)).do(onNext: { (success) in
+            if success {
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.deleteScene)
+                LSLUser.current().scene = nil
+            }
+        })
     }
     
     func save() -> Observable<Bool> {
         guard let param = self._obPositionModel.value else {
             return .empty()
         }
-        return BusinessAPI.requestMapJSON(.addOrUpdateSceneAsset(parameter: param), classType: PositionModel.self).map { _ in true }
+        return BusinessAPI.requestMapJSON(.addOrUpdateSceneAsset(parameter: param), classType: PositionModel.self).flatMapLatest({ (_) -> Observable<[SceneListModel]> in
+            return BusinessAPI.requestMapJSONArray(.getCustomerSceneList(pageIndex: 1, pageSize: 20, Sort: 1), classType: SceneListModel.self, useCache: true).map { $0.compactMap { $0 } }
+        }).do(onNext: { (allScene) in
+            
+            guard let currentSceneId = LSLUser.current().scene?.sceneID else { return }
+            let optionValue = allScene.filter { $0.sceneID == currentSceneId }.last
+            guard let updateValue = optionValue else { return }
+            LSLUser.current().scene = updateValue
+            NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.updateScene)
+        }).map { _ in true }
     }
     
 }
