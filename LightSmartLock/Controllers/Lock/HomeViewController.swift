@@ -43,7 +43,6 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         super.viewDidLoad()
         title = "门锁助手"
         
-        bind()
         setupUI()
         setupRightNavigationItems()
         observerNotification()
@@ -81,6 +80,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     }
     
     func bind() {
+        
         vm.isInstallLock.do(onNext: {[unowned self] (install) in
             self.hasLock(has: install)
         }).flatMapLatest {[unowned self] (_) in
@@ -104,15 +104,19 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     }
     
     func observerNotification() {
+        
         NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
             guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
-            if refreshType == .deleteLock {
+            if refreshType == .deleteLock || refreshType == .deleteScene {
                 self?.hasLock(has: false)
             }
             if refreshType == .addLock {
                 self?.hasLock(has: true)
             }
-            
+        }).disposed(by: rx.disposeBag)
+        
+        LSLUser.current().obScene.throttle(2, scheduler: MainScheduler.instance).subscribe(onNext: {[weak self] (model) in
+            self?.bind()
         }).disposed(by: rx.disposeBag)
     }
     
