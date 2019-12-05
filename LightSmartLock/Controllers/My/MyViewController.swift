@@ -174,5 +174,6 @@ extension MyViewController: UITableViewDataSource, UITableViewDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             HUD.flash(.label("首页场景已切换"), delay: 2)
         }
+        tableView.reloadData()
     }
 }
