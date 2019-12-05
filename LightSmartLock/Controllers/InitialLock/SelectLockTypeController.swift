@@ -56,13 +56,7 @@ class SelectLockTypeController: UITableViewController, NavigationSettingStyle {
         lock.lockType = type.description
         lock.UserCode = "01"
         lock.AccountID = LSLUser.current().user?.accountID
-        
-        if let sceneId = LSLUser.current().scene?.sceneID, !sceneId.isEmpty {
-            initialLockVC.lockInfo.sceneID = sceneId
-            initialLockVC.lockInfo = lock
-        } else {
-            initialLockVC.lockInfo = lock
-        }
+        initialLockVC.lockInfo = lock
         navigationController?.pushViewController(initialLockVC, animated: true)
     }
     
