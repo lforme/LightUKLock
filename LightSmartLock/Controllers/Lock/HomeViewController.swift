@@ -109,6 +109,10 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
             if refreshType == .deleteLock {
                 self?.hasLock(has: false)
             }
+            if refreshType == .addLock {
+                self?.hasLock(has: true)
+            }
+            
         }).disposed(by: rx.disposeBag)
     }
     
