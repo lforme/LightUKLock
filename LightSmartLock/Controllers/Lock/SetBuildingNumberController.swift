@@ -76,32 +76,16 @@ class SetBuildingNumberController: UITableViewController {
         }.bind(to: haveToPlate).disposed(by: rx.disposeBag)
         
         saveButton.rx.tap.subscribe(onNext: {[unowned self] (_) in
-            
-    
+        
             guard let buildingStr = self.buildingTextField.text, !buildingStr.isEmpty else {
                 HUD.flash(.label("请填写楼栋号"), delay: 2)
                 return
-            }
-            
-            if !self.haveToUnit.value {
-                guard let unitStr = self.unitTextField.text, unitStr.isEmpty else {
-                    HUD.flash(.label("请填写单元号"), delay: 2)
-                    return
-                }
-            }
-            
-            if !self.haveToPlate.value {
-                guard let plateStr = self.doorplateTextField.text, !plateStr.isEmpty else {
-                    HUD.flash(.label("请填写门牌号"), delay: 2)
-                    return
-                }
             }
             
             self.input?(self.buildingTextField.text, self.unitTextField.text, self.doorplateTextField.text)
             self.navigationController?.popViewController(animated: true)
             
         }).disposed(by: rx.disposeBag)
-        
         
     }
     
