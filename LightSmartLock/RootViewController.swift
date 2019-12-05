@@ -64,7 +64,7 @@ class RootViewController: UIViewController {
         
         homeTabBarVC?.didHijackHandler = {[weak self] tabVC, vc, Index in
             
-            if LSLUser.current().lockInfo == nil {
+            if LSLUser.current().lockInfo?.secretKey == nil {
                 HUD.flash(.label("请先绑定门锁"), delay: 2)
                 return
             }
