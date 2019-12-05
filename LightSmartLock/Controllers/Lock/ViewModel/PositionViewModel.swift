@@ -23,8 +23,6 @@ final class PositionViewModel {
         return obButtonType.asObservable()
     }
     
-    let type: PositioEditingController.EditingType
-    
     var defaultPositionModel: Observable<PositionModel?> {
         return Observable.merge(obPositionModel.asObservable(), _obPositionModel.asObservable())
     }
@@ -44,39 +42,28 @@ final class PositionViewModel {
     private let _obPositionModel = BehaviorRelay<PositionModel?>(value: nil)
     private var disposeBag = DisposeBag()
     
-    init(type: PositioEditingController.EditingType) {
+    init() {
         
-        self.type = type
+        let shareReq = BusinessAPI.requestMapJSON(.getSceneAssets, classType: PositionModel.self, useCache: true).share(replay: 1, scope: .forever)
         
-        if type == .addNew {
-            var newPos = PositionModel()
-            newPos.sceneID = LSLUser.current().scene?.sceneID
-            _obPositionModel.accept(newPos)
-            obButtonType.accept(.save)
-        } else {
-            
-            let shareReq = BusinessAPI.requestMapJSON(.getSceneAssets, classType: PositionModel.self, useCache: true).share(replay: 1, scope: .forever)
-            
-            Observable.combineLatest(obVillageName.asObservable(), obArea.asObservable(), obHouseType.asObservable(), obTowards.asObservable(), obDoorplate, obUnit.asObservable(), obCity.asObservable(), obRegion.asObservable()).subscribe(onNext: {[weak self] (_) in
-                
-                self?.obButtonType.accept(.save)
-                
-            }).disposed(by: disposeBag)
-            
-            self.obButtonType.accept(.delete)
-            
-            shareReq.bind(to: obPositionModel).disposed(by: disposeBag)
-            
-            shareReq.subscribe(onNext: {[weak self] (model) in
-                self?._obPositionModel.accept(model)
-            }).disposed(by: disposeBag)
-        }
+        Observable.combineLatest(obVillageName.asObservable(), obArea.asObservable(), obHouseType.asObservable(), obTowards.asObservable(), obDoorplate, obUnit.asObservable(), obCity.asObservable(), obRegion.asObservable()).subscribe(onNext: {[weak self] (_) in
+            self?.obButtonType.accept(.save)
+        }).disposed(by: disposeBag)
+        
+        shareReq.bind(to: obPositionModel).disposed(by: disposeBag)
+        
+        shareReq.subscribe(onNext: {[weak self] (model) in
+            self?._obPositionModel.accept(model)
+        }).disposed(by: disposeBag)
         
         obArea.subscribe(onNext: {[weak self] (area) in
             var param = self?._obPositionModel.value
             param?.area = area
             self?._obPositionModel.accept(param)
-            
+        }).disposed(by: disposeBag)
+        
+        shareReq.subscribe(onCompleted: {[weak self] in
+            self?.obButtonType.accept(.delete)
         }).disposed(by: disposeBag)
     }
     
