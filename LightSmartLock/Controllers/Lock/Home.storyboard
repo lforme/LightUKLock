@@ -926,8 +926,11 @@
                                                     <color key="textColor" name="textPrimary"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小区名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQc-06-jHM">
-                                                    <rect key="frame" x="325.5" y="13.5" width="57.5" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="小区名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQc-06-jHM">
+                                                    <rect key="frame" x="325.5" y="6" width="57.5" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="sNx-ZA-ggF"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" name="textPrimary"/>
                                                     <nil key="highlightedColor"/>
@@ -945,6 +948,7 @@
                                                 <constraint firstItem="Ejg-Kb-Zym" firstAttribute="leading" secondItem="cOs-st-QmO" secondAttribute="leading" constant="16" id="9b7-mb-7Ku"/>
                                                 <constraint firstItem="Ejg-Kb-Zym" firstAttribute="centerY" secondItem="cOs-st-QmO" secondAttribute="centerY" id="Dlt-xn-Ej2"/>
                                                 <constraint firstItem="VIv-Ed-BZs" firstAttribute="top" secondItem="Ejg-Kb-Zym" secondAttribute="top" id="dEw-Oe-K0K"/>
+                                                <constraint firstItem="qQc-06-jHM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VIv-Ed-BZs" secondAttribute="trailing" constant="20" id="pKB-Un-u6u"/>
                                                 <constraint firstItem="VIv-Ed-BZs" firstAttribute="leading" secondItem="Ejg-Kb-Zym" secondAttribute="trailing" constant="4" id="qNF-ls-Mcq"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -970,7 +974,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入面积" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oIG-U4-04g">
-                                                    <rect key="frame" x="205" y="13.5" width="178" height="17"/>
+                                                    <rect key="frame" x="205" y="6" width="178" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="9BV-xJ-KUG"/>
+                                                    </constraints>
                                                     <color key="textColor" name="textPrimary"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
