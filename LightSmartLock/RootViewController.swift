@@ -12,6 +12,7 @@ import SnapKit
 import RxCocoa
 import RxSwift
 import NSObject_Rx
+import PKHUD
 
 class RootViewController: UIViewController {
     
@@ -51,7 +52,7 @@ class RootViewController: UIViewController {
         
         homeTabBarVC = ESTabBarController()
         homeTabBarVC?.title = "主页"
-        homeTabBarVC?.tabBar.shadowImage = UIImage.from(color: #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1))
+        homeTabBarVC?.tabBar.shadowImage = UIImage.from(color: #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 0.48))
         homeTabBarVC?.tabBar.backgroundImage = UIImage.from(color: ColorClassification.viewBackground.value)
         
         homeTabBarVC?.shouldHijackHandler = { tabVC, vc, index in
@@ -62,6 +63,11 @@ class RootViewController: UIViewController {
         }
         
         homeTabBarVC?.didHijackHandler = {[weak self] tabVC, vc, Index in
+            
+            if LSLUser.current().lockInfo == nil {
+                HUD.flash(.label("请先绑定门锁"), delay: 2)
+                return
+            }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 let openDoorVC: OpenDoorViewController = ViewLoader.Xib.controller()
