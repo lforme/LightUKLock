@@ -42,9 +42,10 @@ final class LockSettingViewModel: BluetoothViewModel {
     func deleteLock(_ buttonIndex: Int) -> Observable<Bool> {
         
         if !self.isConnected {
+            HUD.flash(.label("蓝牙未连接到门锁"), delay: 2)
             return .empty()
         }
-        
+
         if buttonIndex == 0 {
             return BusinessAPI.requestMapBool(.unInstallLock).flatMapLatest { (requestSuccess) -> Observable<Bool> in
                 
@@ -54,9 +55,9 @@ final class LockSettingViewModel: BluetoothViewModel {
                         BluetoothPapa.shareInstance.factoryReset { (data) in
                             BluetoothPapa.shareInstance.removeAESkey()
                             BluetoothPapa.shareInstance.cancelPeripheralConnection()
-                            observer.onNext(true)
-                            observer.onCompleted()
                         }
+                        observer.onNext(true)
+                        observer.onCompleted()
                     } else {
                         observer.onNext(false)
                         observer.onCompleted()
