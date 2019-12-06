@@ -160,9 +160,8 @@ extension MyViewController: UITableViewDataSource, UITableViewDelegate {
         shareInfo.map { $0?.phone }.bind(to: header.phone.rx.text).disposed(by: header.disposeBag)
         
         shareInfo.map { $0?.headPic }.subscribe(onNext: { (urlString) in
-            guard let str = urlString else { return }
-            let newString =  str.replacingOccurrences(of: "\\", with: "/")
-            header.avatar?.kf.setImage(with: URL(string: newString))
+            guard let str = urlString?.encodeUrl() else { return }
+            header.avatar?.kf.setImage(with: URL(string: str))
         }).disposed(by: header.disposeBag)
         
         return header

@@ -57,9 +57,8 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
         let shareInfo = LSLUser.current().obUserInfo.share(replay: 1, scope: .forever)
         shareInfo.map { $0?.userName }.bind(to: nameValue.rx.text).disposed(by: rx.disposeBag)
         shareInfo.map { $0?.headPic }.subscribe(onNext: {[weak self] (str) in
-            guard let urlStr = str else { return }
-            let newString = urlStr.replacingOccurrences(of: "\\", with: "/")
-            self?.avatar.kf.setImage(with: URL(string: newString))
+            guard let urlStr = str?.encodeUrl() else { return }
+            self?.avatar.kf.setImage(with: URL(string: urlStr))
         }).disposed(by: rx.disposeBag)
         
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {

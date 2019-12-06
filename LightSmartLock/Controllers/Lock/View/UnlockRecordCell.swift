@@ -32,9 +32,8 @@ class UnlockRecordCell: UITableViewCell {
     func bind(_ data: UnlockRecordModel) {
         self.nickname.text = data.customerNickName
         self.time.text = data.UnlockTime.toDate()?.toString(.custom("MM / dd  HH:mm"))
-        if let headerPicURL = data.headPic, !headerPicURL.isEmpty {
-            let newString =  headerPicURL.replacingOccurrences(of: "\\", with: "/")
-            self.avatar.kf.setImage(with: URL(string: newString))
+        if let headerPicURL = data.headPic?.encodeUrl() {
+            self.avatar.kf.setImage(with: URL(string: headerPicURL))
         }
         self.unlockType.text = data.KeyType.description
     }
