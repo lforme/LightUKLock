@@ -159,4 +159,8 @@ class MessageCenterController: UITableViewController, StoryboardView {
         cell.bind(dataSource[indexPath.row])
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 8
+    }
 }
