@@ -45,3 +45,23 @@ extension String {
         return ceil(boundingBox.width)
     }
 }
+
+extension Optional where Wrapped == String {
+    var isNilOrEmpty: Bool {
+        switch self {
+        case .none:
+            return true
+        case .some(let value):
+            return value.isEmpty
+        }
+    }
+    
+    var isNotNilNotEmpty: Bool {
+        return !isNilOrEmpty
+    }
+    
+    var orEmpty: String {
+        guard let str = self else { return "" }
+        return str
+    }
+}
