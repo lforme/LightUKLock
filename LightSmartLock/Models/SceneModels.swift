@@ -9,13 +9,24 @@
 import Foundation
 import HandyJSON
 
-struct UserInSceneModel: HandyJSON {
+enum RoleModel: Int, HandyJSONEnum, CustomStringConvertible {
+    case superAdmin = 0
+    case admin
+    case member
     
-    enum Role: Int, HandyJSONEnum {
-        case superAdmin = 0
-        case admin
-        case member
+    var description: String {
+        switch self {
+        case .superAdmin:
+            return "超级管理员"
+        case .admin:
+            return "管理员"
+        case .member:
+            return "成员"
+        }
     }
+}
+
+struct UserInSceneModel: HandyJSON {
     
     var customerID: String!
     var accountID: String?
@@ -27,7 +38,7 @@ struct UserInSceneModel: HandyJSON {
     var headPic: String?
     var userCode: String?
     var Label: String?
-    var relationType: Role! // 0 是管理员
+    var relationType: RoleModel! // 0 是管理员
     var pwdNumber: String? // 新添加字段, 服务器也要添加, 蓝牙添加指纹之后返回的编号
 }
 
