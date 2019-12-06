@@ -17,7 +17,7 @@ protocol MyViewModeling {
     var sceneList: Observable<[SceneListModel]> { get }
     var requestFinished: Observable<Bool> { get }
     var nomore: Observable<Bool> { get }
-    
+
     func refresh()
     func loadMore()
 }
