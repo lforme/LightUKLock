@@ -37,6 +37,10 @@ class HomeSettringController: UITableViewController, NavigationSettingStyle {
         tableView.tableFooterView = UIView()
     }
     
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = ColorClassification.tableViewBackground.value
+    }
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 8
     }
