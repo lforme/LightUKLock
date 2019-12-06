@@ -239,6 +239,8 @@ extension BusinessInterface: TargetType {
             return "api/Scene/DeleteSceneAssetsBySceneID"
         case .uploadLockConfigInfo:
             return "api/Lock/UploadLockConfigInfo"
+        case .getCustomerMemberList:
+            return "api/CustomerMember/GetCustomerMemberList"
         }
     }
     
@@ -374,6 +376,13 @@ extension BusinessInterface: TargetType {
             
         case let .uploadLockConfigInfo(info):
             return info.toJSON()
+            
+        case let .getCustomerMemberList(pageIndex, pageSize):
+            guard let accountId = LSLUser.current().user?.accountID, let sceneId = LSLUser.current().scene?.sceneID else {
+                return nil
+            }
+            
+            return ["AccountID": accountId, "SceneID": sceneId, "PageIndex": pageIndex, "PageSize": pageSize ?? 15]
             
         default:
             return nil

@@ -44,4 +44,5 @@ enum BusinessInterface {
     case addOrUpdateSceneAsset(parameter: PositionModel) // 新增,编辑 资产位置信息
     case deleteSceneAssetsBySceneId(String) // 删除资产
     case uploadLockConfigInfo(info: SmartLockInfoModel) // 上传蓝牙门锁绑定信息
+    case getCustomerMemberList(pageIndex: Int, pageSize: Int?) // 获取成员列表
 }
