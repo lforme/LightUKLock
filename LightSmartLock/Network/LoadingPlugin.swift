@@ -46,6 +46,7 @@ final class LoadingPlugin: PluginType {
         view.frame.size = CGSize(width: 50, height: 50)
         animationView.center = view.center
         view.addSubview(animationView)
+        view.backgroundColor = ColorClassification.hudColor.value
         return view
     }
 }

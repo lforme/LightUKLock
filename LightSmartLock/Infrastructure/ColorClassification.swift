@@ -22,6 +22,7 @@ enum ColorClassification {
     case textPlaceholder
     case lightBackground
     case primary
+    case hudColor
     
     var value: UIColor {
         switch self {
@@ -54,7 +55,7 @@ enum ColorClassification {
             }
             
         case .viewBackground:
-           if #available(iOS 13.0, *) {
+            if #available(iOS 13.0, *) {
                 let color = UIColor { (collection) -> UIColor in
                     if collection.userInterfaceStyle == .dark {
                         return #colorLiteral(red: 0.2, green: 0.2039215686, blue: 0.2078431373, alpha: 1)
@@ -182,6 +183,21 @@ enum ColorClassification {
             } else {
                 return #colorLiteral(red: 0.9982913136, green: 0.6771650314, blue: 0.05553042889, alpha: 1)
             }
+            
+        case .hudColor:
+            if #available(iOS 13.0, *) {
+                let color = UIColor { (collection) -> UIColor in
+                    if collection.userInterfaceStyle == .dark {
+                        return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6)
+                    } else {
+                        return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.12)
+                    }
+                }
+                return color
+            } else {
+                return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.12)
+            }
+            
         }
     }
 }
