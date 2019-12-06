@@ -64,7 +64,6 @@
 		9C42976B2386389B004CB999 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42976A2386389B004CB999 /* LoginService.swift */; };
 		9C42976D23866026004CB999 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42976C23866026004CB999 /* UIButton+Extension.swift */; };
 		9C42976F23866088004CB999 /* PKHud+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42976E23866088004CB999 /* PKHud+Rx.swift */; };
-		9C42977223867622004CB999 /* MessageNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42977123867622004CB999 /* MessageNotificationHelper.swift */; };
 		9C4297782386A64C004CB999 /* RegistrationRecoveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4297772386A64C004CB999 /* RegistrationRecoveryService.swift */; };
 		9C452F082394AA2E00144827 /* CenterMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452F072394AA2E00144827 /* CenterMessageModel.swift */; };
 		9C452F0A2394C38800144827 /* HomeSettringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452F092394C38800144827 /* HomeSettringController.swift */; };
@@ -72,6 +71,14 @@
 		9C452F0E2394E84A00144827 /* BluetoothViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452F0D2394E84A00144827 /* BluetoothViewModel.swift */; };
 		9C452F102394E9CE00144827 /* LockSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452F0F2394E9CE00144827 /* LockSettingViewModel.swift */; };
 		9C452F122394EC3E00144827 /* SoundSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452F112394EC3E00144827 /* SoundSettingController.swift */; };
+		9C47DB73239A0A220019EAA0 /* Popups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C47DB72239A0A220019EAA0 /* Popups.swift */; };
+		9C47DB77239A0A810019EAA0 /* SelectPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C47DB76239A0A810019EAA0 /* SelectPopupView.swift */; };
+		9C47DB79239A0B0E0019EAA0 /* SelectPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C47DB78239A0B0E0019EAA0 /* SelectPopupView.xib */; };
+		9C47DB7B239A2DD70019EAA0 /* UserManagementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C47DB7A239A2DD70019EAA0 /* UserManagementController.swift */; };
+		9C47DB7D239A36320019EAA0 /* UserMembersModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C47DB7C239A36320019EAA0 /* UserMembersModels.swift */; };
+		9C47DB7F239A36560019EAA0 /* UserManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C47DB7E239A36560019EAA0 /* UserManagementViewModel.swift */; };
+		9C47DB83239A39070019EAA0 /* ListViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C47DB82239A39070019EAA0 /* ListViewModeling.swift */; };
+		9C47DB85239A526E0019EAA0 /* UserDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C47DB84239A526E0019EAA0 /* UserDetailController.swift */; };
 		9C524021238E0E3100308AC4 /* normal.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C524020238E0E3100308AC4 /* normal.json */; };
 		9C524023238E0E3F00308AC4 /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C524022238E0E3F00308AC4 /* error.json */; };
 		9C524025238E0E5500308AC4 /* warning.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C524024238E0E5500308AC4 /* warning.json */; };
@@ -191,7 +198,6 @@
 		9C42976A2386389B004CB999 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		9C42976C23866026004CB999 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		9C42976E23866088004CB999 /* PKHud+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PKHud+Rx.swift"; sourceTree = "<group>"; };
-		9C42977123867622004CB999 /* MessageNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageNotificationHelper.swift; sourceTree = "<group>"; };
 		9C4297772386A64C004CB999 /* RegistrationRecoveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRecoveryService.swift; sourceTree = "<group>"; };
 		9C452F072394AA2E00144827 /* CenterMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterMessageModel.swift; sourceTree = "<group>"; };
 		9C452F092394C38800144827 /* HomeSettringController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSettringController.swift; sourceTree = "<group>"; };
@@ -199,6 +205,14 @@
 		9C452F0D2394E84A00144827 /* BluetoothViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothViewModel.swift; sourceTree = "<group>"; };
 		9C452F0F2394E9CE00144827 /* LockSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSettingViewModel.swift; sourceTree = "<group>"; };
 		9C452F112394EC3E00144827 /* SoundSettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundSettingController.swift; sourceTree = "<group>"; };
+		9C47DB72239A0A220019EAA0 /* Popups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popups.swift; sourceTree = "<group>"; };
+		9C47DB76239A0A810019EAA0 /* SelectPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPopupView.swift; sourceTree = "<group>"; };
+		9C47DB78239A0B0E0019EAA0 /* SelectPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectPopupView.xib; sourceTree = "<group>"; };
+		9C47DB7A239A2DD70019EAA0 /* UserManagementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagementController.swift; sourceTree = "<group>"; };
+		9C47DB7C239A36320019EAA0 /* UserMembersModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMembersModels.swift; sourceTree = "<group>"; };
+		9C47DB7E239A36560019EAA0 /* UserManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagementViewModel.swift; sourceTree = "<group>"; };
+		9C47DB82239A39070019EAA0 /* ListViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModeling.swift; sourceTree = "<group>"; };
+		9C47DB84239A526E0019EAA0 /* UserDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailController.swift; sourceTree = "<group>"; };
 		9C524020238E0E3100308AC4 /* normal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = normal.json; sourceTree = "<group>"; };
 		9C524022238E0E3F00308AC4 /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
 		9C524024238E0E5500308AC4 /* warning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = warning.json; sourceTree = "<group>"; };
@@ -337,6 +351,7 @@
 				9C452F0F2394E9CE00144827 /* LockSettingViewModel.swift */,
 				9C54719E239517F000432ACA /* PositionViewModel.swift */,
 				9C7AFF1F239618040075442D /* SearchPlotViewModel.swift */,
+				9C47DB7E239A36560019EAA0 /* UserManagementViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -352,6 +367,7 @@
 				9C24AC4B2383F639005EBF95 /* CustomizedOpenDoorItem.swift */,
 				9C3726C72390C6AD00450757 /* Empty+UIViewController.swift */,
 				9C7AFF21239631930075442D /* UKRefreshStatus.swift */,
+				9C47DB82239A39070019EAA0 /* ListViewModeling.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -386,6 +402,9 @@
 				9C5471A323951C1E00432ACA /* DataPickerController.swift */,
 				9C5471A223951C1E00432ACA /* DataPickerController.xib */,
 				9C7AFF132395FAF70075442D /* GeolocationService.swift */,
+				9C47DB72239A0A220019EAA0 /* Popups.swift */,
+				9C47DB76239A0A810019EAA0 /* SelectPopupView.swift */,
+				9C47DB78239A0B0E0019EAA0 /* SelectPopupView.xib */,
 			);
 			path = GlobalSingle;
 			sourceTree = "<group>";
@@ -400,6 +419,7 @@
 				9C452F072394AA2E00144827 /* CenterMessageModel.swift */,
 				9C5471A02395184400432ACA /* PositionModel.swift */,
 				9C7AFF172395FD2C0075442D /* GoudaMapModel.swift */,
+				9C47DB7C239A36320019EAA0 /* UserMembersModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -409,7 +429,6 @@
 			children = (
 				9C24AC2F2383D89A005EBF95 /* LocalArchiver.swift */,
 				9C24AC3A2383E736005EBF95 /* ViewLoader.swift */,
-				9C42977123867622004CB999 /* MessageNotificationHelper.swift */,
 			);
 			path = ToolBox;
 			sourceTree = "<group>";
@@ -571,6 +590,8 @@
 				9C54719C2395107E00432ACA /* PositioEditingController.swift */,
 				9C7AFF19239600830075442D /* SearchPlotController.swift */,
 				9C7AFF2523964A950075442D /* SetBuildingNumberController.swift */,
+				9C47DB7A239A2DD70019EAA0 /* UserManagementController.swift */,
+				9C47DB84239A526E0019EAA0 /* UserDetailController.swift */,
 				9C24AC412383EB88005EBF95 /* Home.storyboard */,
 			);
 			path = Lock;
@@ -717,6 +738,7 @@
 				9CDD272B2382801E006A9B97 /* Assets.xcassets in Resources */,
 				9CDD27292382801D006A9B97 /* Main.storyboard in Resources */,
 				9C7AFF1E239603F00075442D /* SearchPlotCell.xib in Resources */,
+				9C47DB79239A0B0E0019EAA0 /* SelectPopupView.xib in Resources */,
 				9C24AC442383EB96005EBF95 /* My.storyboard in Resources */,
 				9C3726CC2390CE4D00450757 /* normalDarkMode.json in Resources */,
 				9C5471A423951C1E00432ACA /* DataPickerController.xib in Resources */,
@@ -777,11 +799,13 @@
 				9C3726E723913C5400450757 /* MessageCenterViewModel.swift in Sources */,
 				9C24AC232383C206005EBF95 /* LoginViewController.swift in Sources */,
 				9C1B87CB2397942700216ADA /* LockBindViewModel.swift in Sources */,
+				9C47DB85239A526E0019EAA0 /* UserDetailController.swift in Sources */,
 				9C24AC272383CB78005EBF95 /* ObjectAssociation.swift in Sources */,
 				9C24AC1B23839D75005EBF95 /* Swizzling+UIViewController.swift in Sources */,
+				9C47DB73239A0A220019EAA0 /* Popups.swift in Sources */,
+				9C47DB7F239A36560019EAA0 /* UserManagementViewModel.swift in Sources */,
 				9C1B87CD23979B7200216ADA /* SelectLockTypeController.swift in Sources */,
 				9C24AC2B2383CD94005EBF95 /* StaticConst.swift in Sources */,
-				9C42977223867622004CB999 /* MessageNotificationHelper.swift in Sources */,
 				9C752FCD238774A9000FEA73 /* RegisterForgetController.swift in Sources */,
 				9C452F0E2394E84A00144827 /* BluetoothViewModel.swift in Sources */,
 				9C24AC1D23839EB9005EBF95 /* UIImage+Extension.swift in Sources */,
@@ -814,6 +838,7 @@
 				9CFDE21623853DE60062522E /* NetworkDiskStorage.swift in Sources */,
 				9C24AC3F2383EB55005EBF95 /* OpenDoorViewController.swift in Sources */,
 				9C752FD0238794BE000FEA73 /* CountdownButton.swift in Sources */,
+				9C47DB83239A39070019EAA0 /* ListViewModeling.swift in Sources */,
 				9C7AFF1A239600830075442D /* SearchPlotController.swift in Sources */,
 				9C24AC372383DE6E005EBF95 /* SceneModels.swift in Sources */,
 				9C77059C238FBFC6008E1552 /* MySettingViewController.swift in Sources */,
@@ -821,6 +846,7 @@
 				9C429767238637E3004CB999 /* LoginViewReactor.swift in Sources */,
 				9C1B87C92397739100216ADA /* LockSettingPasswordController.swift in Sources */,
 				9C524028238E12E300308AC4 /* UIApplicationProxy.swift in Sources */,
+				9C47DB77239A0A810019EAA0 /* SelectPopupView.swift in Sources */,
 				9C42976D23866026004CB999 /* UIButton+Extension.swift in Sources */,
 				9C54719D2395107E00432ACA /* PositioEditingController.swift in Sources */,
 				9C752FD42388080A000FEA73 /* NoLockViewController.swift in Sources */,
@@ -835,6 +861,7 @@
 				9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */,
 				9C3726E02391108400450757 /* PPBluetoothScanEntity.swift in Sources */,
 				9C770596238FA351008E1552 /* MyListCell.swift in Sources */,
+				9C47DB7D239A36320019EAA0 /* UserMembersModels.swift in Sources */,
 				9C524034238E64C000308AC4 /* RecordUnlockController.swift in Sources */,
 				9C7AFF1D239603F00075442D /* SearchPlotCell.swift in Sources */,
 				9C7AFF24239636640075442D /* NSMutableAttributedString+Extention.swift in Sources */,
@@ -857,6 +884,7 @@
 				9C24AC2E2383D5D9005EBF95 /* LSLUser.swift in Sources */,
 				9C42976B2386389B004CB999 /* LoginService.swift in Sources */,
 				9C3726DC23910CB000450757 /* String+Extension.swift in Sources */,
+				9C47DB7B239A2DD70019EAA0 /* UserManagementController.swift in Sources */,
 				9C24AC1F2383A2C7005EBF95 /* ColorClassification.swift in Sources */,
 				9C3726C82390C6AD00450757 /* Empty+UIViewController.swift in Sources */,
 				9C770592238FA11A008E1552 /* MyInfoHeader.swift in Sources */,
