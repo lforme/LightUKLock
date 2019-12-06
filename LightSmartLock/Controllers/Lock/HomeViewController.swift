@@ -13,6 +13,7 @@ import RxSwift
 import RxCocoa
 import Then
 
+
 class HomeViewController: UIViewController, NavigationSettingStyle {
     
     var backgroundColor: UIColor? {
@@ -139,6 +140,11 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         let settingVC: HomeSettringController = ViewLoader.Storyboard.controller(from: "Home")
         navigationController?.pushViewController(settingVC, animated: true)
     }
+    
+    @objc func userManagementVC() {
+        let usermangeVC: UserManagementController = ViewLoader.Storyboard.controller(from: "Home")
+        navigationController?.pushViewController(usermangeVC, animated: true)
+    }
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -188,6 +194,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         if section == 1 {
             let header = tableView.dequeueReusableCell(withIdentifier: "HomeControlCell") as! HomeControlCell
+            header.userButton.addTarget(self, action: #selector(self.userManagementVC), for: .touchUpInside)
             return header
         }
         
