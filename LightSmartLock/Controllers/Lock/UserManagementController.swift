@@ -61,8 +61,8 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
         vm.list.subscribe(onNext: {[weak self] (list) in
             self?.dataSource = list
             self?.tableView.reloadData()
-        }, onError: { (error) in
-            PKHUD.sharedHUD.rx.showError(error)
+            }, onError: { (error) in
+                PKHUD.sharedHUD.rx.showError(error)
         }).disposed(by: rx.disposeBag)
     }
     
@@ -72,13 +72,12 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
         tableView.rowHeight = 80.0
     }
     
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = ColorClassification.tableViewBackground.value
+    }
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch section {
-        case 0:
-            return 8
-        default:
-            return 24
-        }
+        return 8
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -96,6 +95,13 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
         }
         cell.synchronizedStart(data.userCode.isNilOrEmpty)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = dataSource[indexPath.row]
+        let userDetailVC: UserDetailController = ViewLoader.Storyboard.controller(from: "Home")
+        userDetailVC.model = data
+        navigationController?.pushViewController(userDetailVC, animated: true)
     }
 }
 
