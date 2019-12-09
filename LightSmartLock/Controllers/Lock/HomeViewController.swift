@@ -108,11 +108,12 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         
         NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
             guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
-            if refreshType == .deleteLock || refreshType == .deleteScene {
-                self?.hasLock(has: false)
-            }
-            if refreshType == .addLock {
+            switch refreshType {
+            case .addLock:
                 self?.hasLock(has: true)
+            case .deleteLock, .deleteScene:
+                self?.hasLock(has: false)
+            default: break
             }
         }).disposed(by: rx.disposeBag)
         
@@ -141,9 +142,14 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         navigationController?.pushViewController(settingVC, animated: true)
     }
     
-    @objc func userManagementVC() {
+    @objc func gotoUserManagementVC() {
         let usermangeVC: UserManagementController = ViewLoader.Storyboard.controller(from: "Home")
         navigationController?.pushViewController(usermangeVC, animated: true)
+    }
+    
+    @objc func gotoPasswordManagementVC() {
+        let passwordManageVC: PasswordManagementController = ViewLoader.Storyboard.controller(from: "Home")
+        navigationController?.pushViewController(passwordManageVC, animated: true)
     }
 }
 
@@ -194,7 +200,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         if section == 1 {
             let header = tableView.dequeueReusableCell(withIdentifier: "HomeControlCell") as! HomeControlCell
-            header.userButton.addTarget(self, action: #selector(self.userManagementVC), for: .touchUpInside)
+            header.userButton.addTarget(self, action: #selector(self.gotoUserManagementVC), for: .touchUpInside)
+            header.keyButton.addTarget(self, action: #selector(self.gotoPasswordManagementVC), for: .touchUpInside)
             return header
         }
         

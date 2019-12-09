@@ -38,9 +38,13 @@ class MyViewController: UIViewController, NavigationSettingStyle {
     func observerSceneChanged() {
         NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
             guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
-            if refreshType == .deleteScene || refreshType == .updateScene {
+            
+            switch refreshType {
+            case .deleteScene, .updateScene:
                 self?.tableView.mj_header?.beginRefreshing()
+            default: break
             }
+            
         }).disposed(by: rx.disposeBag)
     }
     
