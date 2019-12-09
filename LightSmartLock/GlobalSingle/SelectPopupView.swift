@@ -18,6 +18,9 @@ class SelectPopupView: UIView {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var confirmButton: UIButton!
     
+    var contentA: String?
+    var contentB: String?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -36,12 +39,15 @@ class SelectPopupView: UIView {
         indexTwoButton.rx.tap.subscribe(onNext: {[weak self] (_) in
             self?.indexTwoButton.isSelected = true
             self?.indexOneButton.isSelected = false
+            self?.contentLabel.text = self?.contentB
         }).disposed(by: rx.disposeBag)
         
         indexOneButton.rx.tap.subscribe(onNext: {[weak self] (_) in
             self?.indexTwoButton.isSelected = false
             self?.indexOneButton.isSelected = true
+            self?.contentLabel.text = self?.contentA
         }).disposed(by: rx.disposeBag)
+        
     }
     
     private func setupUI() {
@@ -59,5 +65,8 @@ class SelectPopupView: UIView {
         
         indexOneButton.tag = 0
         indexTwoButton.tag = 1
+        
+        indexOneButton.isSelected = true
+        indexTwoButton.isSelected = false
     }
 }

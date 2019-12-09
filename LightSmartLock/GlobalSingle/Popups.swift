@@ -15,7 +15,7 @@ import Action
 
 struct Popups {
     
-    static func showSelect(title: String, indexTitleOne: String, IndexTitleTwo: String, content: String) -> Observable<Int> {
+    static func showSelect(title: String, indexTitleOne: String, IndexTitleTwo: String, contentA: String, contentB: String) -> Observable<Int> {
         
         return Observable.create { (observer) -> Disposable in
             var attributes = EKAttributes()
@@ -60,7 +60,9 @@ struct Popups {
             customView = customView.then({ (view) in
 
                 view.titleLabel.text = title
-                view.contentLabel.text = content
+                view.contentA = contentA
+                view.contentB = contentB
+                view.contentLabel.text = contentA
                 view.indexOneButton.setTitle(indexTitleOne, for: UIControl.State())
                 view.indexTwoButton.setTitle(IndexTitleTwo, for: UIControl.State())
                 
