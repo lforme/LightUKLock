@@ -60,8 +60,12 @@ class LockStartScanningController: UIViewController, NavigationSettingStyle {
         shareConnected.delay(1, scheduler: MainScheduler.instance).subscribe(onNext: {[weak self] (success) in
             if success {
                 let setPwdVC: LockSettingPasswordController = ViewLoader.Storyboard.controller(from: "InitialLock")
-                self?.navigationController?.pushViewController(setPwdVC, animated: true)
+                
+                if let lastSceneId = LSLUser.current().scene?.sceneID {
+                    self?.lockInfo.sceneID = lastSceneId
+                }
                 setPwdVC.lockInfo = self?.lockInfo
+                self?.navigationController?.pushViewController(setPwdVC, animated: true)
                 HUD.hide(animated: true)
             } else {
                 HUD.flash(.label("未找到蓝牙门锁,请稍后再试"), delay: 2)
