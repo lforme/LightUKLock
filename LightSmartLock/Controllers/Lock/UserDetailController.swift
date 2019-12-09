@@ -22,6 +22,10 @@ class UserDetailController: UITableViewController {
     
     var model: UserMemberListModel!
     
+    deinit {
+        print("\(self) deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +33,6 @@ class UserDetailController: UITableViewController {
         setupUI()
         bind()
     }
-    
     
     func setupUI() {
         self.clearsSelectionOnViewWillAppear = true

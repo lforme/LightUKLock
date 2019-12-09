@@ -20,6 +20,10 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
     let vm = UserManagementViewModel()
     var dataSource: [UserMemberListModel] = []
     
+    deinit {
+        print("\(self) deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
