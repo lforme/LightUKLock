@@ -12,7 +12,11 @@ import RxCocoa
 import RxSwift
 import PKHUD
 
-class ChangeDigitalPwdController: UITableViewController {
+class ChangeDigitalPwdController: UITableViewController, NavigationSettingStyle {
+    
+    var backgroundColor: UIColor? {
+        return ColorClassification.navigationBackground.value
+    }
     
     var oldPassword: String!
     @IBOutlet weak var passwordInput: CBPinEntryView!

@@ -156,16 +156,18 @@ extension BaseNavigationController {
         if clearBackTitle {
             
             let button = UIButton(type: .custom)
-            button.setImage(UIImage(named: "back_arrow"), for: UIControl.State())
+            let image = UIImage(named: "back_arrow")
+            button.setImage(image, for: UIControl.State())
             button.sizeToFit()
             button.contentHorizontalAlignment = .center
-            
             vc.navigationItem.backBarButtonItem = UIBarButtonItem(customView: button)
             
             guard let style = vc as? NavigationSettingStyle, let naviBkColor = style.backgroundColor else {
                 return
             }
-            vc.navigationItem.backBarButtonItem?.tintColor = UIColor(contrastingBlackOrWhiteColorOn: naviBkColor, isFlat: true)
+            guard let color = UIColor(contrastingBlackOrWhiteColorOn: naviBkColor, isFlat: true) else { return }
+            vc.navigationItem.backBarButtonItem?.tintColor = color
+            
         }
     }
 }

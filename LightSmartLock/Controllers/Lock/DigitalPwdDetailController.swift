@@ -11,7 +11,11 @@ import PKHUD
 import RxCocoa
 import RxSwift
 
-class DigitalPwdDetailController: UITableViewController {
+class DigitalPwdDetailController: UITableViewController, NavigationSettingStyle {
+    
+    var backgroundColor: UIColor? {
+        return ColorClassification.navigationBackground.value
+    }
     
     var vm: PasswordManagementViewModel!
     var dataSource: [DigitalPasswordLogModel] = []
