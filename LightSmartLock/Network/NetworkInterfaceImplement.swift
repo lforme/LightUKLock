@@ -241,6 +241,12 @@ extension BusinessInterface: TargetType {
             return "api/Lock/UploadLockConfigInfo"
         case .getCustomerMemberList:
             return "api/CustomerMember/GetCustomerMemberList"
+        case .getCustomerKeyFirst:
+            return "api/Key/GetCustomerKeyFirst"
+        case .getKeyStatusChangeLogByKeyId:
+            return "api/Key/GetKeyStatusChangeLogByKeyId"
+        case .updateCustomerCodeKey:
+            return "api/Key/UpdateCustomerCodeKey"
         }
     }
     
@@ -381,8 +387,27 @@ extension BusinessInterface: TargetType {
             guard let accountId = LSLUser.current().user?.accountID, let sceneId = LSLUser.current().scene?.sceneID else {
                 return nil
             }
-            
             return ["AccountID": accountId, "SceneID": sceneId, "PageIndex": pageIndex, "PageSize": pageSize ?? 15]
+            
+        case let .getCustomerKeyFirst(type):
+            guard let customerId = LSLUser.current().userInScene?.customerID else {
+                return nil
+            }
+            return ["CustomerID": customerId, "KeyType": type]
+            
+        case let .getKeyStatusChangeLogByKeyId(keyID, index, pageSize):
+            return ["KeyID": keyID, "PageIndex": index, "PageSize": pageSize ?? 15]
+            
+            
+        case let .updateCustomerCodeKey(secret, isRemote):
+            guard let customerId = LSLUser.current().userInScene?.customerID else {
+                return nil
+            }
+            if let remote = isRemote {
+                return ["CustomerID": customerId, "Secret": secret, "isRemote": remote]
+            } else {
+                return ["CustomerID": customerId, "Secret": secret]
+            }
             
         default:
             return nil

@@ -45,4 +45,7 @@ enum BusinessInterface {
     case deleteSceneAssetsBySceneId(String) // 删除资产
     case uploadLockConfigInfo(info: SmartLockInfoModel) // 上传蓝牙门锁绑定信息
     case getCustomerMemberList(pageIndex: Int, pageSize: Int?) // 获取成员列表
+    case getCustomerKeyFirst(type: Int) // 密码管理页面
+    case getKeyStatusChangeLogByKeyId(keyID: String, index: Int, pageSize: Int?) // 密码详情变更状态
+    case updateCustomerCodeKey(secret: String, isRemote: Bool?) // 更新我的密码
 }
