@@ -48,4 +48,10 @@ enum BusinessInterface {
     case getCustomerKeyFirst(type: Int) // 密码管理页面
     case getKeyStatusChangeLogByKeyId(keyID: String, index: Int, pageSize: Int?) // 密码详情变更状态
     case updateCustomerCodeKey(secret: String, isRemote: Bool?) // 更新我的密码
+    case getFingerPrintKeyList(customerId: String, index: Int, pageSize: Int?)
+    case setFingerCoercionReminPhone(id: String, phone: String) // 设置为胁迫指纹
+    case setFingerCoercionToNormal(id: String) // 设置为正常指纹
+    case setFingerRemark(id: String, fingerName: String) // 设置指纹名称
+    case deleteFingerPrintKey(id: String, isRemote: Bool) // 删除指纹
+    case addFingerPrintKey(name: String) // 添加指纹
 }

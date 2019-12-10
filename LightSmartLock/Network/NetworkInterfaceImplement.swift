@@ -247,6 +247,18 @@ extension BusinessInterface: TargetType {
             return "api/Key/GetKeyStatusChangeLogByKeyId"
         case .updateCustomerCodeKey:
             return "api/Key/UpdateCustomerCodeKey"
+        case .getFingerPrintKeyList:
+            return "api/FingerPrint/GetFingerPrintKeyList"
+        case .setFingerCoercionReminPhone:
+            return "api/FingerPrint/SetFingerCoercionReminPhone"
+        case .setFingerCoercionToNormal:
+            return "api/FingerPrint/SetFingerCoercionToNormal"
+        case .setFingerRemark:
+            return "api/FingerPrint/SetFingerRemark"
+        case .deleteFingerPrintKey:
+            return "api/FingerPrint/DeleteFingerPrintKey"
+        case .addFingerPrintKey:
+            return "api/FingerPrint/AddFingerPrintKey"
         }
     }
     
@@ -408,6 +420,30 @@ extension BusinessInterface: TargetType {
             } else {
                 return ["CustomerID": customerId, "Secret": secret]
             }
+            
+        case let .getFingerPrintKeyList(customerId, index, pageSize):
+            guard let lockId = LSLUser.current().lockInfo?.customerLockID else {
+                return nil
+            }
+            return ["CustomerID": customerId, "LockID": lockId, "PageSize":  pageSize ?? 15, "PageIndex": index]
+            
+        case let .setFingerCoercionReminPhone(id, phone):
+            return ["KeyID": id, "Phone": phone]
+            
+        case let .setFingerCoercionToNormal(id):
+            return ["KeyID": id]
+            
+        case let .setFingerRemark(id, fingerName):
+            return ["KeyID": id, "Remark": fingerName]
+            
+        case let .deleteFingerPrintKey(id, isRemote):
+            return ["KeyID": id, "isRemote": isRemote]
+            
+        case let .addFingerPrintKey(name):
+            guard let userCode = LSLUser.current().userInScene?.userCode, let customerId = LSLUser.current().userInScene?.customerID, let lockId = LSLUser.current().lockInfo?.customerLockID, let keyId = LSLUser.current().userInScene?.pwdNumber else {
+                return nil
+            }
+            return ["UserCode": userCode, "CustomerID": customerId, "LockID": lockId, "KeyNumber": keyId, "Remark": name]
             
         default:
             return nil

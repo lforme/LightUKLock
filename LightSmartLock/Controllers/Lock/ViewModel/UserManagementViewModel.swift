@@ -16,7 +16,7 @@ final class UserManagementViewModel: ListViewModeling {
     
     typealias Item = UserMemberListModel
     
-    var refreshStaus: Observable<UKRefreshStatus> {
+    var refreshStatus: Observable<UKRefreshStatus> {
         return obRefreshStatus.asObservable()
     }
     

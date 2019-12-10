@@ -15,7 +15,7 @@ protocol ListViewModeling {
     
     associatedtype Item
     
-    var refreshStaus: Observable<UKRefreshStatus> { get }
+    var refreshStatus: Observable<UKRefreshStatus> { get }
     var list: Observable<[Item]> { get }
     var pageIndex: Int { set get }
     var disposeBag: DisposeBag { get }

@@ -72,7 +72,7 @@ class SearchPlotController: UIViewController {
         footer.setTitle("", for: .idle)
         self.tableView.mj_footer = footer
         
-        vm.refreshStaus.subscribe(onNext: {[weak self] status in
+        vm.refreshStatus.subscribe(onNext: {[weak self] status in
             switch status {
             case .endFooterRefresh:
                 self?.tableView.mj_footer?.endRefreshing()

@@ -151,6 +151,11 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         let passwordManageVC: PasswordManagementController = ViewLoader.Storyboard.controller(from: "Home")
         navigationController?.pushViewController(passwordManageVC, animated: true)
     }
+    
+    @objc func gotoFingerManagementVC() {
+        let fingerManageVC: FingerManageController = ViewLoader.Storyboard.controller(from: "Home")
+        navigationController?.pushViewController(fingerManageVC, animated: true)
+    }
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -202,6 +207,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let header = tableView.dequeueReusableCell(withIdentifier: "HomeControlCell") as! HomeControlCell
             header.userButton.addTarget(self, action: #selector(self.gotoUserManagementVC), for: .touchUpInside)
             header.keyButton.addTarget(self, action: #selector(self.gotoPasswordManagementVC), for: .touchUpInside)
+            header.fingerButton.addTarget(self, action: #selector(self.gotoFingerManagementVC), for: .touchUpInside)
             return header
         }
         

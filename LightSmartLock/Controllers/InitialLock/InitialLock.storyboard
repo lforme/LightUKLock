@@ -99,7 +99,94 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10I-Mt-R5w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1231.8840579710145" y="133.92857142857142"/>
+            <point key="canvasLocation" x="-970" y="127"/>
+        </scene>
+        <!--Add Finger Controller-->
+        <scene sceneID="Em2-ol-ph5">
+            <objects>
+                <viewController storyboardIdentifier="AddFingerController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dxG-Gz-oJF" customClass="AddFingerController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rg1-Rj-car">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAz-F0-GLr">
+                                <rect key="frame" x="100" y="104" width="214" height="57.5"/>
+                                <string key="text">点击开始添加后
+请采用日常握住门把手的姿势
+和开门时的手指按压力度</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" name="textPrimary"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="finger_add_guide" translatesAutoresizingMaskIntoConstraints="NO" id="idG-Wa-suy">
+                                <rect key="frame" x="-45" y="221.5" width="504" height="504"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccs-fR-9a2">
+                                <rect key="frame" x="80" y="754" width="254" height="48"/>
+                                <color key="backgroundColor" name="primary"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="di7-zx-JHK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <state key="normal" title="开始添加">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="viewBackground"/>
+                        <constraints>
+                            <constraint firstItem="jbm-h4-0eE" firstAttribute="bottom" secondItem="ccs-fR-9a2" secondAttribute="bottom" constant="60" id="6vH-KJ-9Mj"/>
+                            <constraint firstItem="jbm-h4-0eE" firstAttribute="trailing" secondItem="LAz-F0-GLr" secondAttribute="trailing" constant="100" id="CIU-Zm-1ZS"/>
+                            <constraint firstItem="jbm-h4-0eE" firstAttribute="trailing" secondItem="ccs-fR-9a2" secondAttribute="trailing" constant="80" id="CmA-zx-TnW"/>
+                            <constraint firstItem="idG-Wa-suy" firstAttribute="top" secondItem="LAz-F0-GLr" secondAttribute="bottom" constant="60" id="QVY-58-0OO"/>
+                            <constraint firstItem="ccs-fR-9a2" firstAttribute="leading" secondItem="jbm-h4-0eE" secondAttribute="leading" constant="80" id="SYx-jW-luA"/>
+                            <constraint firstItem="LAz-F0-GLr" firstAttribute="top" secondItem="jbm-h4-0eE" secondAttribute="top" constant="60" id="bUM-I7-ktS"/>
+                            <constraint firstItem="LAz-F0-GLr" firstAttribute="leading" secondItem="jbm-h4-0eE" secondAttribute="leading" constant="100" id="gMJ-TR-Qew"/>
+                            <constraint firstItem="ccs-fR-9a2" firstAttribute="centerX" secondItem="jbm-h4-0eE" secondAttribute="centerX" id="wpO-KN-m33"/>
+                            <constraint firstItem="LAz-F0-GLr" firstAttribute="centerX" secondItem="jbm-h4-0eE" secondAttribute="centerX" id="x1B-9R-WSS"/>
+                            <constraint firstItem="idG-Wa-suy" firstAttribute="centerX" secondItem="jbm-h4-0eE" secondAttribute="centerX" id="yR8-KB-OCx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jbm-h4-0eE"/>
+                    </view>
+                    <connections>
+                        <outlet property="addButton" destination="ccs-fR-9a2" id="NxI-Is-iFn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="er0-qk-KaY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1006" y="814"/>
+        </scene>
+        <!--Add Finger Finish Controller-->
+        <scene sceneID="jBy-TW-Gie">
+            <objects>
+                <viewController storyboardIdentifier="AddFingerFinishController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="22V-bs-rHd" customClass="AddFingerFinishController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dD3-ro-DLg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IMR-BY-CNe" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="40" y="104" width="334" height="400"/>
+                                <color key="backgroundColor" name="viewBackground"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="LMF-Fd-zFK"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="viewBackground"/>
+                        <constraints>
+                            <constraint firstItem="IMR-BY-CNe" firstAttribute="top" secondItem="cP0-Bs-cfV" secondAttribute="top" constant="60" id="YRb-dh-zA9"/>
+                            <constraint firstItem="IMR-BY-CNe" firstAttribute="leading" secondItem="cP0-Bs-cfV" secondAttribute="leading" constant="40" id="uto-H7-rH6"/>
+                            <constraint firstItem="cP0-Bs-cfV" firstAttribute="trailing" secondItem="IMR-BY-CNe" secondAttribute="trailing" constant="40" id="xSQ-60-WgN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cP0-Bs-cfV"/>
+                    </view>
+                    <connections>
+                        <outlet property="animationView" destination="IMR-BY-CNe" id="Nw2-Pc-Vv9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ytv-5L-yss" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-65" y="820"/>
         </scene>
         <!--Lock Start Scanning Controller-->
         <scene sceneID="tBs-rs-N9w">
@@ -302,10 +389,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NzL-u8-S8h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="622" y="127"/>
+            <point key="canvasLocation" x="525" y="127"/>
         </scene>
     </scenes>
     <resources>
+        <image name="finger_add_guide" width="252" height="252"/>
         <image name="lock_Installation_guide" width="180" height="252"/>
         <image name="lock_kf100" width="44" height="92"/>
         <image name="lock_kf100a" width="48" height="92"/>

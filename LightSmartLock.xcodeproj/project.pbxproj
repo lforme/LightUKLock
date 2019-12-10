@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		1F64F18F4FD1BF62618F8397 /* Pods_LightSmartLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */; };
+		9C03B0EB239F46510001E849 /* FingerManageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EA239F46510001E849 /* FingerManageController.swift */; };
+		9C03B0ED239F49440001E849 /* FingerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EC239F49440001E849 /* FingerModel.swift */; };
+		9C03B0EF239F4A7B0001E849 /* FingerManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EE239F4A7B0001E849 /* FingerManageViewModel.swift */; };
+		9C03B0F1239F51240001E849 /* FingerDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0F0239F51240001E849 /* FingerDetailController.swift */; };
+		9C03B0F3239F6E8F0001E849 /* FingerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0F2239F6E8F0001E849 /* FingerDetailViewModel.swift */; };
+		9C03B0F5239F83D00001E849 /* AddFingerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0F4239F83D00001E849 /* AddFingerController.swift */; };
+		9C03B0F9239F87B60001E849 /* AddFingerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0F8239F87B60001E849 /* AddFingerViewModel.swift */; };
+		9C03B0FB239F88860001E849 /* AddFingerFinishController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0FA239F88860001E849 /* AddFingerFinishController.swift */; };
+		9C03B0FD239FB3620001E849 /* addFinger.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C03B0FC239FB3620001E849 /* addFinger.json */; };
 		9C1A4BC4238D0A1A00626DB4 /* AnimationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC2238D0A1A00626DB4 /* AnimationHeaderView.swift */; };
 		9C1A4BC5238D0A1A00626DB4 /* AnimationHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC3238D0A1A00626DB4 /* AnimationHeaderView.xib */; };
 		9C1A4BC8238D2E7C00626DB4 /* HomeControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC6238D2E7C00626DB4 /* HomeControlCell.swift */; };
@@ -148,6 +157,15 @@
 		2CC741DB4C59065DD926D509 /* Pods-LightSmartLock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightSmartLock.release.xcconfig"; path = "Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock.release.xcconfig"; sourceTree = "<group>"; };
 		56B15D3085FA9EFD559AB2C2 /* Pods-LightSmartLock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightSmartLock.debug.xcconfig"; path = "Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock.debug.xcconfig"; sourceTree = "<group>"; };
 		5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LightSmartLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C03B0EA239F46510001E849 /* FingerManageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerManageController.swift; sourceTree = "<group>"; };
+		9C03B0EC239F49440001E849 /* FingerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerModel.swift; sourceTree = "<group>"; };
+		9C03B0EE239F4A7B0001E849 /* FingerManageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerManageViewModel.swift; sourceTree = "<group>"; };
+		9C03B0F0239F51240001E849 /* FingerDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerDetailController.swift; sourceTree = "<group>"; };
+		9C03B0F2239F6E8F0001E849 /* FingerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerDetailViewModel.swift; sourceTree = "<group>"; };
+		9C03B0F4239F83D00001E849 /* AddFingerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFingerController.swift; sourceTree = "<group>"; };
+		9C03B0F8239F87B60001E849 /* AddFingerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFingerViewModel.swift; sourceTree = "<group>"; };
+		9C03B0FA239F88860001E849 /* AddFingerFinishController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFingerFinishController.swift; sourceTree = "<group>"; };
+		9C03B0FC239FB3620001E849 /* addFinger.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = addFinger.json; sourceTree = "<group>"; };
 		9C1A4BC2238D0A1A00626DB4 /* AnimationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHeaderView.swift; sourceTree = "<group>"; };
 		9C1A4BC3238D0A1A00626DB4 /* AnimationHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimationHeaderView.xib; sourceTree = "<group>"; };
 		9C1A4BC6238D2E7C00626DB4 /* HomeControlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeControlCell.swift; sourceTree = "<group>"; };
@@ -339,6 +357,8 @@
 				9C1B87CC23979B7200216ADA /* SelectLockTypeController.swift */,
 				9C1B87C32397693100216ADA /* LockStartScanningController.swift */,
 				9C1B87C82397739100216ADA /* LockSettingPasswordController.swift */,
+				9C03B0F4239F83D00001E849 /* AddFingerController.swift */,
+				9C03B0FA239F88860001E849 /* AddFingerFinishController.swift */,
 				9C1B87C1239767A100216ADA /* InitialLock.storyboard */,
 			);
 			path = InitialLock;
@@ -349,6 +369,7 @@
 			children = (
 				9C1B87C62397701C00216ADA /* LockStartScanViewModel.swift */,
 				9C1B87CA2397942700216ADA /* LockBindViewModel.swift */,
+				9C03B0F8239F87B60001E849 /* AddFingerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -366,6 +387,8 @@
 				9C47DB7E239A36560019EAA0 /* UserManagementViewModel.swift */,
 				9CB4B348239DE774001197AB /* PasswordManagementViewModel.swift */,
 				9CB4B350239E3AA2001197AB /* DigitalChangePwdViewModel.swift */,
+				9C03B0EE239F4A7B0001E849 /* FingerManageViewModel.swift */,
+				9C03B0F2239F6E8F0001E849 /* FingerDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -435,6 +458,7 @@
 				9C7AFF172395FD2C0075442D /* GoudaMapModel.swift */,
 				9C47DB7C239A36320019EAA0 /* UserMembersModels.swift */,
 				9CB4B34A239DE8C3001197AB /* DigitalPasswordModel.swift */,
+				9C03B0EC239F49440001E849 /* FingerModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -610,6 +634,8 @@
 				9CB4B346239DE08E001197AB /* PasswordManagementController.swift */,
 				9CB4B34C239DF519001197AB /* DigitalPwdDetailController.swift */,
 				9CB4B34E239E31FC001197AB /* ChangeDigitalPwdController.swift */,
+				9C03B0EA239F46510001E849 /* FingerManageController.swift */,
+				9C03B0F0239F51240001E849 /* FingerDetailController.swift */,
 				9C24AC412383EB88005EBF95 /* Home.storyboard */,
 			);
 			path = Lock;
@@ -647,6 +673,7 @@
 				9CFDE20A238531CB0062522E /* loading.json */,
 				9CFDE1FB238513D40062522E /* bluetooth.json */,
 				9CFDE1F82384EA2A0062522E /* opendoor.json */,
+				9C03B0FC239FB3620001E849 /* addFinger.json */,
 			);
 			path = AnimationSource;
 			sourceTree = "<group>";
@@ -737,6 +764,7 @@
 			files = (
 				9C1B87C2239767A100216ADA /* InitialLock.storyboard in Resources */,
 				9C7705A2238FE358008E1552 /* SingleInputController.xib in Resources */,
+				9C03B0FD239FB3620001E849 /* addFinger.json in Resources */,
 				9C1A4BC5238D0A1A00626DB4 /* AnimationHeaderView.xib in Resources */,
 				9C1A4BC9238D2E7C00626DB4 /* HomeControlCell.xib in Resources */,
 				9C770593238FA11A008E1552 /* MyInfoHeader.xib in Resources */,
@@ -830,13 +858,16 @@
 				9C24AC2B2383CD94005EBF95 /* StaticConst.swift in Sources */,
 				9C752FCD238774A9000FEA73 /* RegisterForgetController.swift in Sources */,
 				9C452F0E2394E84A00144827 /* BluetoothViewModel.swift in Sources */,
+				9C03B0F3239F6E8F0001E849 /* FingerDetailViewModel.swift in Sources */,
 				9C24AC1D23839EB9005EBF95 /* UIImage+Extension.swift in Sources */,
+				9C03B0FB239F88860001E849 /* AddFingerFinishController.swift in Sources */,
 				9C24AC3B2383E736005EBF95 /* ViewLoader.swift in Sources */,
 				9CFDE21423853C170062522E /* NetworkMetaDb.swift in Sources */,
 				9C54719F239517F000432ACA /* PositionViewModel.swift in Sources */,
 				9C452F0A2394C38800144827 /* HomeSettringController.swift in Sources */,
 				9C24AC482383EBE5005EBF95 /* HomeViewController.swift in Sources */,
 				9C1A4BC8238D2E7C00626DB4 /* HomeControlCell.swift in Sources */,
+				9C03B0EB239F46510001E849 /* FingerManageController.swift in Sources */,
 				9C7AFF162395FC870075442D /* CLLocationManager+Rx.swift in Sources */,
 				9CFDE20123851EE80062522E /* NetworkInterface.swift in Sources */,
 				9CFDE20323851F660062522E /* NetworkInterfaceImplement.swift in Sources */,
@@ -845,11 +876,13 @@
 				9C24AC332383D91B005EBF95 /* AccessTokenModel.swift in Sources */,
 				9C7AFF22239631930075442D /* UKRefreshStatus.swift in Sources */,
 				9C4297782386A64C004CB999 /* RegistrationRecoveryService.swift in Sources */,
+				9C03B0F9239F87B60001E849 /* AddFingerViewModel.swift in Sources */,
 				9C24AC302383D89A005EBF95 /* LocalArchiver.swift in Sources */,
 				9CDD274423829363006A9B97 /* RootViewController.swift in Sources */,
 				9C5471A523951C1E00432ACA /* DataPickerController.swift in Sources */,
 				9CFDE207238523A80062522E /* LoadingPlugin.swift in Sources */,
 				9C24AC4C2383F639005EBF95 /* CustomizedOpenDoorItem.swift in Sources */,
+				9C03B0F1239F51240001E849 /* FingerDetailController.swift in Sources */,
 				9C7705A1238FE358008E1552 /* SingleInputController.swift in Sources */,
 				9C524038238E66B500308AC4 /* RecordUnlockReactor.swift in Sources */,
 				9C3726E52391369900450757 /* MessageCenterController.swift in Sources */,
@@ -884,6 +917,7 @@
 				9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */,
 				9C3726E02391108400450757 /* PPBluetoothScanEntity.swift in Sources */,
 				9C770596238FA351008E1552 /* MyListCell.swift in Sources */,
+				9C03B0ED239F49440001E849 /* FingerModel.swift in Sources */,
 				9C47DB7D239A36320019EAA0 /* UserMembersModels.swift in Sources */,
 				9CB4B34F239E31FC001197AB /* ChangeDigitalPwdController.swift in Sources */,
 				9C524034238E64C000308AC4 /* RecordUnlockController.swift in Sources */,
@@ -896,6 +930,7 @@
 				9C24AC292383CB92005EBF95 /* UITextField+Extension.swift in Sources */,
 				9CFDE20F2385346E0062522E /* AppErrorDomain.swift in Sources */,
 				9C452F122394EC3E00144827 /* SoundSettingController.swift in Sources */,
+				9C03B0EF239F4A7B0001E849 /* FingerManageViewModel.swift in Sources */,
 				9C7AFF182395FD2C0075442D /* GoudaMapModel.swift in Sources */,
 				9C524030238E56A700308AC4 /* UIViewController+Extension.swift in Sources */,
 				9C24AC392383E00C005EBF95 /* LockModels.swift in Sources */,
@@ -910,6 +945,7 @@
 				9C3726DC23910CB000450757 /* String+Extension.swift in Sources */,
 				9C47DB7B239A2DD70019EAA0 /* UserManagementController.swift in Sources */,
 				9C24AC1F2383A2C7005EBF95 /* ColorClassification.swift in Sources */,
+				9C03B0F5239F83D00001E849 /* AddFingerController.swift in Sources */,
 				9C3726C82390C6AD00450757 /* Empty+UIViewController.swift in Sources */,
 				9C770592238FA11A008E1552 /* MyInfoHeader.swift in Sources */,
 				9C52402D238E163D00308AC4 /* UnlockRecordCell.swift in Sources */,

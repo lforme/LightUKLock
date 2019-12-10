@@ -46,7 +46,7 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
     }
     
     func bind() {
-        vm.refreshStaus.subscribe(onNext: {[weak self] (status) in
+        vm.refreshStatus.subscribe(onNext: {[weak self] (status) in
             switch status {
             case .endFooterRefresh:
                 self?.tableView.mj_footer?.endRefreshing()
@@ -74,6 +74,7 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
         self.clearsSelectionOnViewWillAppear = true
         tableView.tableFooterView = UIView()
         tableView.rowHeight = 80.0
+        tableView.emptyDataSetSource = self
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

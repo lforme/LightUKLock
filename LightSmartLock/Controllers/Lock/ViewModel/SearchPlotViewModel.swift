@@ -23,7 +23,7 @@ final class SearchPlotViewModel {
         }
     }
     
-    var refreshStaus: Observable<UKRefreshStatus> {
+    var refreshStatus: Observable<UKRefreshStatus> {
         return obRefreshStatus.asObservable()
     }
     
