@@ -71,9 +71,17 @@ class FingerDetailController: UITableViewController {
         
         vm.saveAction.elements.subscribe(onNext: { (success) in
             if success {
-                HUD.flash(.label("删除成功"), delay: 2)
+                HUD.flash(.label("成功"), delay: 2)
             } else {
-                HUD.flash(.label("删除失败"), delay: 2)
+                HUD.flash(.label("失败"), delay: 2)
+            }
+        }).disposed(by: rx.disposeBag)
+        
+        vm.saveAction.executing.subscribe(onNext: { (exe) in
+            if exe {
+                HUD.show(.label("数据写入中..."))
+            } else {
+                HUD.hide(animated: true)
             }
         }).disposed(by: rx.disposeBag)
     }

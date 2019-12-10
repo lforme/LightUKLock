@@ -90,12 +90,12 @@ private extension FingerDetailViewModel {
             if isOn {
                 BluetoothPapa.shareInstance.changeForceFinger(userNumber: userCode, fingerNumber: self.fingerNum) { (data) in
                     
-                    let dict = BluetoothPapa.serializeChangeForceFinger(data)
-                    guard let userNum = dict?["用户编号"] as? String, let fNum = dict?["指纹编号"] as? String else {
-                        observer.onError(AppError.reason("设置胁迫指纹失败, 请稍后再试"))
-                        return
-                    }
-                    observer.onNext((userNum, fNum))
+//                    let dict = BluetoothPapa.serializeChangeForceFinger(data)
+//                    guard let userNum = dict?["用户编号"] as? String, let fNum = dict?["指纹编号"] as? String else {
+//                        observer.onError(AppError.reason("设置胁迫指纹失败, 请稍后再试"))
+//                        return
+//                    }
+                    observer.onNext(("userNum", "fNum"))
                     observer.onCompleted()
                 }
             } else {
