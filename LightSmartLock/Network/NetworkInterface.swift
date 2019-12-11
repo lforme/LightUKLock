@@ -54,4 +54,10 @@ enum BusinessInterface {
     case setFingerRemark(id: String, fingerName: String) // 设置指纹名称
     case deleteFingerPrintKey(id: String, isRemote: Bool) // 删除指纹
     case addFingerPrintKey(name: String) // 添加指纹
+    case getCustomerKeyList(keyType: Int, index: Int, pageSize: Int?) // 密码列表
+    case addCustomerCard(KeyNumber: String, remark: String?) //添加门卡
+    case setCardRemark(keyId: String, remark: String) // 更新门卡名称
+    case deleteCustomerCard(keyId: String) // 删除门卡
+    case getCustomerSysRoleTips // 获取系统内置标签
+    case addCustomerMember(member: AddUserMemberModel) // 添加成员
 }

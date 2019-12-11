@@ -81,7 +81,7 @@ class FingerDetailController: UITableViewController {
             if exe {
                 HUD.show(.label("数据写入中..."))
             } else {
-                HUD.hide(animated: true)
+                HUD.hide(afterDelay: 1.2)
             }
         }).disposed(by: rx.disposeBag)
     }

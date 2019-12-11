@@ -8,7 +8,11 @@
 
 import UIKit
 
-class UserDetailController: UITableViewController {
+class UserDetailController: UITableViewController, NavigationSettingStyle {
+    
+    var backgroundColor: UIColor? {
+        return ColorClassification.navigationBackground.value
+    }
     
     @IBOutlet weak var cell1: UITableViewCell!
     
@@ -82,10 +86,16 @@ class UserDetailController: UITableViewController {
             switch indexPath.row {
             case 1:
                 print("密码管理")
+                let passwordManageVC: PasswordManagementController = ViewLoader.Storyboard.controller(from: "Home")
+                navigationController?.pushViewController(passwordManageVC, animated: true)
             case 2:
                 print("指纹管理")
+                let fingerManageVC: FingerManageController = ViewLoader.Storyboard.controller(from: "Home")
+                navigationController?.pushViewController(fingerManageVC, animated: true)
             case 3:
                 print("门卡管理")
+                let cardManageVC: CardManageController = ViewLoader.Storyboard.controller(from: "Home")
+                navigationController?.pushViewController(cardManageVC, animated: true)
             default:
                 break
             }

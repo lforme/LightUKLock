@@ -156,6 +156,11 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         let fingerManageVC: FingerManageController = ViewLoader.Storyboard.controller(from: "Home")
         navigationController?.pushViewController(fingerManageVC, animated: true)
     }
+    
+    @objc func gotoCardManagementVC() {
+        let cardManageVC: CardManageController = ViewLoader.Storyboard.controller(from: "Home")
+        navigationController?.pushViewController(cardManageVC, animated: true)
+    }
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -208,6 +213,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             header.userButton.addTarget(self, action: #selector(self.gotoUserManagementVC), for: .touchUpInside)
             header.keyButton.addTarget(self, action: #selector(self.gotoPasswordManagementVC), for: .touchUpInside)
             header.fingerButton.addTarget(self, action: #selector(self.gotoFingerManagementVC), for: .touchUpInside)
+            header.cardButton.addTarget(self, action: #selector(self.gotoCardManagementVC), for: .touchUpInside)
             return header
         }
         

@@ -32,3 +32,15 @@ struct UserMemberListModel: HandyJSON {
     
     var relationType: RoleModel?
 }
+
+struct AddUserMemberModel: HandyJSON {
+    
+    var SceneID: String?
+    var CustomerNickName: String?
+    var Phone: String?
+    var InitialSecret: String?
+    var UserCode: String?
+    var OperationType: Int?
+    var Label: String?
+    var HeadPic: String?
+}

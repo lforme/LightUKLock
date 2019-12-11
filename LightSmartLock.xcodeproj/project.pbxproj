@@ -105,6 +105,14 @@
 		9C5471A12395184400432ACA /* PositionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5471A02395184400432ACA /* PositionModel.swift */; };
 		9C5471A423951C1E00432ACA /* DataPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C5471A223951C1E00432ACA /* DataPickerController.xib */; };
 		9C5471A523951C1E00432ACA /* DataPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5471A323951C1E00432ACA /* DataPickerController.swift */; };
+		9C5A967823A07D4E002A2B06 /* AddCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A967723A07D4E002A2B06 /* AddCardController.swift */; };
+		9C5A967A23A07F62002A2B06 /* CardManageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A967923A07F61002A2B06 /* CardManageController.swift */; };
+		9C5A967C23A082F1002A2B06 /* CardManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A967B23A082F1002A2B06 /* CardManageViewModel.swift */; };
+		9C5A967E23A08EE4002A2B06 /* AddCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A967D23A08EE4002A2B06 /* AddCardViewModel.swift */; };
+		9C5A968023A09813002A2B06 /* CardDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A967F23A09813002A2B06 /* CardDetailController.swift */; };
+		9C5A968223A09A73002A2B06 /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A968123A09A73002A2B06 /* CardDetailViewModel.swift */; };
+		9C5A968423A0D210002A2B06 /* AddUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A968323A0D210002A2B06 /* AddUserController.swift */; };
+		9C5A968623A0DFCC002A2B06 /* AddUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A968523A0DFCC002A2B06 /* AddUserViewModel.swift */; };
 		9C752FCD238774A9000FEA73 /* RegisterForgetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C752FCC238774A9000FEA73 /* RegisterForgetController.swift */; };
 		9C752FD0238794BE000FEA73 /* CountdownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C752FCF238794BE000FEA73 /* CountdownButton.swift */; };
 		9C752FD223879546000FEA73 /* RegisPwdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C752FD123879546000FEA73 /* RegisPwdViewModel.swift */; };
@@ -254,6 +262,14 @@
 		9C5471A02395184400432ACA /* PositionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionModel.swift; sourceTree = "<group>"; };
 		9C5471A223951C1E00432ACA /* DataPickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataPickerController.xib; sourceTree = "<group>"; };
 		9C5471A323951C1E00432ACA /* DataPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPickerController.swift; sourceTree = "<group>"; };
+		9C5A967723A07D4E002A2B06 /* AddCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardController.swift; sourceTree = "<group>"; };
+		9C5A967923A07F61002A2B06 /* CardManageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManageController.swift; sourceTree = "<group>"; };
+		9C5A967B23A082F1002A2B06 /* CardManageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManageViewModel.swift; sourceTree = "<group>"; };
+		9C5A967D23A08EE4002A2B06 /* AddCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewModel.swift; sourceTree = "<group>"; };
+		9C5A967F23A09813002A2B06 /* CardDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailController.swift; sourceTree = "<group>"; };
+		9C5A968123A09A73002A2B06 /* CardDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModel.swift; sourceTree = "<group>"; };
+		9C5A968323A0D210002A2B06 /* AddUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserController.swift; sourceTree = "<group>"; };
+		9C5A968523A0DFCC002A2B06 /* AddUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewModel.swift; sourceTree = "<group>"; };
 		9C752FCC238774A9000FEA73 /* RegisterForgetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterForgetController.swift; sourceTree = "<group>"; };
 		9C752FCF238794BE000FEA73 /* CountdownButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownButton.swift; sourceTree = "<group>"; };
 		9C752FD123879546000FEA73 /* RegisPwdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisPwdViewModel.swift; sourceTree = "<group>"; };
@@ -359,6 +375,7 @@
 				9C1B87C82397739100216ADA /* LockSettingPasswordController.swift */,
 				9C03B0F4239F83D00001E849 /* AddFingerController.swift */,
 				9C03B0FA239F88860001E849 /* AddFingerFinishController.swift */,
+				9C5A967723A07D4E002A2B06 /* AddCardController.swift */,
 				9C1B87C1239767A100216ADA /* InitialLock.storyboard */,
 			);
 			path = InitialLock;
@@ -370,6 +387,7 @@
 				9C1B87C62397701C00216ADA /* LockStartScanViewModel.swift */,
 				9C1B87CA2397942700216ADA /* LockBindViewModel.swift */,
 				9C03B0F8239F87B60001E849 /* AddFingerViewModel.swift */,
+				9C5A967D23A08EE4002A2B06 /* AddCardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -389,6 +407,9 @@
 				9CB4B350239E3AA2001197AB /* DigitalChangePwdViewModel.swift */,
 				9C03B0EE239F4A7B0001E849 /* FingerManageViewModel.swift */,
 				9C03B0F2239F6E8F0001E849 /* FingerDetailViewModel.swift */,
+				9C5A967B23A082F1002A2B06 /* CardManageViewModel.swift */,
+				9C5A968123A09A73002A2B06 /* CardDetailViewModel.swift */,
+				9C5A968523A0DFCC002A2B06 /* AddUserViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -631,11 +652,14 @@
 				9C7AFF2523964A950075442D /* SetBuildingNumberController.swift */,
 				9C47DB7A239A2DD70019EAA0 /* UserManagementController.swift */,
 				9C47DB84239A526E0019EAA0 /* UserDetailController.swift */,
+				9C5A968323A0D210002A2B06 /* AddUserController.swift */,
 				9CB4B346239DE08E001197AB /* PasswordManagementController.swift */,
 				9CB4B34C239DF519001197AB /* DigitalPwdDetailController.swift */,
 				9CB4B34E239E31FC001197AB /* ChangeDigitalPwdController.swift */,
 				9C03B0EA239F46510001E849 /* FingerManageController.swift */,
 				9C03B0F0239F51240001E849 /* FingerDetailController.swift */,
+				9C5A967923A07F61002A2B06 /* CardManageController.swift */,
+				9C5A967F23A09813002A2B06 /* CardDetailController.swift */,
 				9C24AC412383EB88005EBF95 /* Home.storyboard */,
 			);
 			path = Lock;
@@ -859,6 +883,7 @@
 				9C752FCD238774A9000FEA73 /* RegisterForgetController.swift in Sources */,
 				9C452F0E2394E84A00144827 /* BluetoothViewModel.swift in Sources */,
 				9C03B0F3239F6E8F0001E849 /* FingerDetailViewModel.swift in Sources */,
+				9C5A967C23A082F1002A2B06 /* CardManageViewModel.swift in Sources */,
 				9C24AC1D23839EB9005EBF95 /* UIImage+Extension.swift in Sources */,
 				9C03B0FB239F88860001E849 /* AddFingerFinishController.swift in Sources */,
 				9C24AC3B2383E736005EBF95 /* ViewLoader.swift in Sources */,
@@ -883,6 +908,7 @@
 				9CFDE207238523A80062522E /* LoadingPlugin.swift in Sources */,
 				9C24AC4C2383F639005EBF95 /* CustomizedOpenDoorItem.swift in Sources */,
 				9C03B0F1239F51240001E849 /* FingerDetailController.swift in Sources */,
+				9C5A967823A07D4E002A2B06 /* AddCardController.swift in Sources */,
 				9C7705A1238FE358008E1552 /* SingleInputController.swift in Sources */,
 				9C524038238E66B500308AC4 /* RecordUnlockReactor.swift in Sources */,
 				9C3726E52391369900450757 /* MessageCenterController.swift in Sources */,
@@ -891,6 +917,7 @@
 				9CFDE211238537A30062522E /* NetworkAPI.swift in Sources */,
 				9C77059E238FCC79008E1552 /* MySettingViewModel.swift in Sources */,
 				9CFDE21623853DE60062522E /* NetworkDiskStorage.swift in Sources */,
+				9C5A968623A0DFCC002A2B06 /* AddUserViewModel.swift in Sources */,
 				9C24AC3F2383EB55005EBF95 /* OpenDoorViewController.swift in Sources */,
 				9C752FD0238794BE000FEA73 /* CountdownButton.swift in Sources */,
 				9C47DB83239A39070019EAA0 /* ListViewModeling.swift in Sources */,
@@ -901,11 +928,14 @@
 				9C429767238637E3004CB999 /* LoginViewReactor.swift in Sources */,
 				9C1B87C92397739100216ADA /* LockSettingPasswordController.swift in Sources */,
 				9C524028238E12E300308AC4 /* UIApplicationProxy.swift in Sources */,
+				9C5A967E23A08EE4002A2B06 /* AddCardViewModel.swift in Sources */,
 				9C47DB77239A0A810019EAA0 /* SelectPopupView.swift in Sources */,
 				9CB4B347239DE08E001197AB /* PasswordManagementController.swift in Sources */,
 				9C42976D23866026004CB999 /* UIButton+Extension.swift in Sources */,
 				9C54719D2395107E00432ACA /* PositioEditingController.swift in Sources */,
+				9C5A968023A09813002A2B06 /* CardDetailController.swift in Sources */,
 				9C752FD42388080A000FEA73 /* NoLockViewController.swift in Sources */,
+				9C5A968423A0D210002A2B06 /* AddUserController.swift in Sources */,
 				9C24AC352383DCB0005EBF95 /* UserModel.swift in Sources */,
 				9C77059A238FACC7008E1552 /* MyViewModel.swift in Sources */,
 				9C1A4BC4238D0A1A00626DB4 /* AnimationHeaderView.swift in Sources */,
@@ -928,6 +958,7 @@
 				9C3726D923910C0100450757 /* NORServiceIdentifiers.swift in Sources */,
 				9C24AC1423838C80005EBF95 /* BaseNavigationController.swift in Sources */,
 				9C24AC292383CB92005EBF95 /* UITextField+Extension.swift in Sources */,
+				9C5A968223A09A73002A2B06 /* CardDetailViewModel.swift in Sources */,
 				9CFDE20F2385346E0062522E /* AppErrorDomain.swift in Sources */,
 				9C452F122394EC3E00144827 /* SoundSettingController.swift in Sources */,
 				9C03B0EF239F4A7B0001E849 /* FingerManageViewModel.swift in Sources */,
@@ -938,6 +969,7 @@
 				9C7AFF20239618040075442D /* SearchPlotViewModel.swift in Sources */,
 				9C54719B239507DE00432ACA /* LSLWebViewController.swift in Sources */,
 				9C24AC252383C9CB005EBF95 /* UIView+Extension.swift in Sources */,
+				9C5A967A23A07F62002A2B06 /* CardManageController.swift in Sources */,
 				9C3726DE23910FF700450757 /* BluetoothPapa.swift in Sources */,
 				9C3726D723910C0100450757 /* NORData.swift in Sources */,
 				9C24AC2E2383D5D9005EBF95 /* LSLUser.swift in Sources */,

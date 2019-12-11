@@ -119,7 +119,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="finger_add_guide" translatesAutoresizingMaskIntoConstraints="NO" id="idG-Wa-suy">
-                                <rect key="frame" x="-45" y="221.5" width="504" height="504"/>
+                                <rect key="frame" x="-45" y="281.5" width="504" height="504"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccs-fR-9a2">
                                 <rect key="frame" x="80" y="754" width="254" height="48"/>
@@ -138,7 +138,7 @@
                             <constraint firstItem="jbm-h4-0eE" firstAttribute="bottom" secondItem="ccs-fR-9a2" secondAttribute="bottom" constant="60" id="6vH-KJ-9Mj"/>
                             <constraint firstItem="jbm-h4-0eE" firstAttribute="trailing" secondItem="LAz-F0-GLr" secondAttribute="trailing" constant="100" id="CIU-Zm-1ZS"/>
                             <constraint firstItem="jbm-h4-0eE" firstAttribute="trailing" secondItem="ccs-fR-9a2" secondAttribute="trailing" constant="80" id="CmA-zx-TnW"/>
-                            <constraint firstItem="idG-Wa-suy" firstAttribute="top" secondItem="LAz-F0-GLr" secondAttribute="bottom" constant="60" id="QVY-58-0OO"/>
+                            <constraint firstItem="idG-Wa-suy" firstAttribute="top" secondItem="LAz-F0-GLr" secondAttribute="bottom" constant="120" id="QVY-58-0OO"/>
                             <constraint firstItem="ccs-fR-9a2" firstAttribute="leading" secondItem="jbm-h4-0eE" secondAttribute="leading" constant="80" id="SYx-jW-luA"/>
                             <constraint firstItem="LAz-F0-GLr" firstAttribute="top" secondItem="jbm-h4-0eE" secondAttribute="top" constant="60" id="bUM-I7-ktS"/>
                             <constraint firstItem="LAz-F0-GLr" firstAttribute="leading" secondItem="jbm-h4-0eE" secondAttribute="leading" constant="100" id="gMJ-TR-Qew"/>
@@ -155,6 +155,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="er0-qk-KaY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1006" y="814"/>
+        </scene>
+        <!--Add Card Controller-->
+        <scene sceneID="ccO-48-1oY">
+            <objects>
+                <viewController storyboardIdentifier="AddCardController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IOX-sx-5qr" customClass="AddCardController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mf4-7X-aem">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请站在门锁前，打开手机蓝牙" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kel-8o-C1Y">
+                                <rect key="frame" x="100" y="104" width="214" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <color key="textColor" name="textPrimary"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="finger_add_guide" translatesAutoresizingMaskIntoConstraints="NO" id="T3b-sQ-iJl">
+                                <rect key="frame" x="-45" y="243.5" width="504" height="504"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHu-7p-v8h">
+                                <rect key="frame" x="80" y="754" width="254" height="48"/>
+                                <color key="backgroundColor" name="primary"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="VbJ-JL-4h9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <state key="normal" title="开始添加">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="viewBackground"/>
+                        <constraints>
+                            <constraint firstItem="ZHu-7p-v8h" firstAttribute="centerX" secondItem="8jC-75-SRr" secondAttribute="centerX" id="17O-6w-e0a"/>
+                            <constraint firstItem="8jC-75-SRr" firstAttribute="bottom" secondItem="ZHu-7p-v8h" secondAttribute="bottom" constant="60" id="CE3-Jo-xp4"/>
+                            <constraint firstItem="T3b-sQ-iJl" firstAttribute="top" secondItem="Kel-8o-C1Y" secondAttribute="bottom" constant="120" id="Dgy-7u-sHw"/>
+                            <constraint firstItem="ZHu-7p-v8h" firstAttribute="leading" secondItem="8jC-75-SRr" secondAttribute="leading" constant="80" id="S7O-gh-5Wj"/>
+                            <constraint firstItem="Kel-8o-C1Y" firstAttribute="centerX" secondItem="8jC-75-SRr" secondAttribute="centerX" id="UZe-z1-T3v"/>
+                            <constraint firstItem="8jC-75-SRr" firstAttribute="trailing" secondItem="Kel-8o-C1Y" secondAttribute="trailing" constant="100" id="X1m-Cu-6a7"/>
+                            <constraint firstItem="Kel-8o-C1Y" firstAttribute="top" secondItem="8jC-75-SRr" secondAttribute="top" constant="60" id="f1m-Kt-O7E"/>
+                            <constraint firstItem="T3b-sQ-iJl" firstAttribute="centerX" secondItem="8jC-75-SRr" secondAttribute="centerX" id="kwv-7A-WvB"/>
+                            <constraint firstItem="Kel-8o-C1Y" firstAttribute="leading" secondItem="8jC-75-SRr" secondAttribute="leading" constant="100" id="nRT-GE-FJD"/>
+                            <constraint firstItem="8jC-75-SRr" firstAttribute="trailing" secondItem="ZHu-7p-v8h" secondAttribute="trailing" constant="80" id="tdy-m2-NvM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8jC-75-SRr"/>
+                    </view>
+                    <connections>
+                        <outlet property="addButton" destination="ZHu-7p-v8h" id="X9a-4e-cPN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hux-MS-Eeq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-993" y="1493"/>
         </scene>
         <!--Add Finger Finish Controller-->
         <scene sceneID="jBy-TW-Gie">

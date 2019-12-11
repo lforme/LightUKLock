@@ -259,6 +259,18 @@ extension BusinessInterface: TargetType {
             return "api/FingerPrint/DeleteFingerPrintKey"
         case .addFingerPrintKey:
             return "api/FingerPrint/AddFingerPrintKey"
+        case .getCustomerKeyList:
+            return "api/Key/GetCustomerKeyList"
+        case .addCustomerCard:
+            return "api/Card/AddCustomerCard"
+        case .setCardRemark:
+            return "api/Card/SetCardRemark"
+        case .deleteCustomerCard:
+            return "api/Card/DeleteCustomerCard"
+        case .getCustomerSysRoleTips:
+            return "api/CustomerMember/GetCustomerSysRoleTips"
+        case .addCustomerMember:
+            return "api/CustomerMember/AddCustomerMember"
         }
     }
     
@@ -444,6 +456,30 @@ extension BusinessInterface: TargetType {
                 return nil
             }
             return ["UserCode": userCode, "CustomerID": customerId, "LockID": lockId, "KeyNumber": keyId, "Remark": name]
+            
+        case let .getCustomerKeyList(keyType, index, pageSize):
+            guard let customerId = LSLUser.current().userInScene?.customerID else { return nil }
+            return ["CustomerID": customerId, "KeyType": keyType, "PageIndex": index, "PageSize": pageSize ?? 15]
+            
+        case let .addCustomerCard(KeyNumber, remark):
+            guard let userCode = LSLUser.current().userInScene?.userCode, let customerId = LSLUser.current().userInScene?.customerID, let lockId = LSLUser.current().lockInfo?.customerLockID else {
+                return nil
+            }
+            var dict: [String: Any] = ["UserCode": userCode, "CustomerID": customerId, "LockID": lockId, "KeyNumber": KeyNumber]
+            if let name = remark {
+                dict.updateValue(name, forKey: "Remark")
+            }
+            return dict
+            
+        case let .setCardRemark(keyId, remark):
+            return ["KeyID": keyId, "Remark": remark]
+            
+        case let .deleteCustomerCard(keyId):
+            return ["KeyID": keyId]
+            
+        case let .addCustomerMember(member):
+            let param = member.toJSON()
+            return param
             
         default:
             return nil
