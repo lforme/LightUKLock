@@ -82,8 +82,15 @@ class PasswordManagementController: UITableViewController, NavigationSettingStyl
             let digitalPwdVC: DigitalPwdDetailController = ViewLoader.Storyboard.controller(from: "Home")
             digitalPwdVC.vm = self.vm
             navigationController?.pushViewController(digitalPwdVC, animated: true)
-        default:
-            break
+            
+        case .multiple:
+            let multipleTempPwdVC: MultipleTempPasswordController = ViewLoader.Storyboard.controller(from: "Home")
+            navigationController?.pushViewController(multipleTempPwdVC, animated: true)
+            
+        case .temporary:
+            let temporayTempPwdVC: SingleTempPasswordController = ViewLoader.Storyboard.controller(from: "Home")
+            navigationController?.pushViewController(temporayTempPwdVC, animated: true)
+     
         }
     }
 }

@@ -34,6 +34,8 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     
     var dataSource: [UnlockRecordModel] = []
     
+    private let synchronizeTaks = BluetoothSynchronizeTask()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -47,6 +49,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         setupUI()
         setupRightNavigationItems()
         observerNotification()
+        synchronizeTaks.synchronizeTask()
     }
     
     func setupUI() {

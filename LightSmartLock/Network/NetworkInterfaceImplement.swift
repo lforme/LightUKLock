@@ -275,6 +275,14 @@ extension BusinessInterface: TargetType {
             return "api/CustomerMember/UpdateCustomerNameById"
         case .deleteCustomerMember:
             return "api/CustomerMember/DeleteCustomerMember"
+        case .getTempKeyShareList:
+            return "api/Key/GetTempKeyShareContainLogList"
+        case .getTempKeyShareLog:
+            return "api/Key/GetTempKeyShareLog"
+        case .retractTempKeyShare:
+            return "api/Key/RetractTempKeyShare"
+        case .generateTempBy:
+            return "api/Key/ShareTempKey"
         }
     }
     
@@ -497,6 +505,23 @@ extension BusinessInterface: TargetType {
                 return ["customerID": id, "isRemote": remote]
             }
             return ["customerID": id]
+            
+        case let .getTempKeyShareList(customerId, pageIndex, pageSize):
+            return  ["CustomerID": customerId,
+                     "PageIndex": pageIndex,
+                     "PageSize": pageSize ?? 15]
+            
+        case let .getTempKeyShareLog(shareID):
+            return ["ShareID": shareID, "PageIndex": 1, "PageSize": 20]
+            
+        case let .retractTempKeyShare(shareID):
+            return ["ShareID": shareID]
+            
+        case let .generateTempBy(input):
+            guard let CustomerID = LSLUser.current().userInScene?.customerID else { return nil }
+            var dict = input.toJSON()
+            dict?.updateValue(CustomerID, forKey: "CustomerID")
+            return dict
             
         default:
             return nil

@@ -62,4 +62,8 @@ enum BusinessInterface {
     case addCustomerMember(member: AddUserMemberModel) // 添加成员
     case updateCustomerNameById(id: String, name: String)
     case deleteCustomerMember(customerID: String, isRemote: Bool?) // 删除成员
+    case getTempKeyShareList(customerID: String, pageIndex: Int, pageSize: Int?) // 获取临时密码列表
+    case getTempKeyShareLog(shareID: String) // 获取临时密码分享记录
+    case retractTempKeyShare(shareID: String) // 撤回分享内容
+    case generateTempBy(input: TempPasswordShareParameter) // 分享
 }

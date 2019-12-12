@@ -52,10 +52,7 @@ final class AddFingerViewModel {
                     self?.obConnected.onCompleted()
                 }
                 }, onCompleted: {[weak self] in
-                    if BluetoothPapa.shareInstance.isConnected() {
-                        self?.obConnected.onNext(true)
-                        self?.obConnected.onCompleted()
-                    } else {
+                    if !BluetoothPapa.shareInstance.isConnected() {
                         self?.obConnected.onError(AppError.reason("没有找到蓝牙门锁"))
                     }
             }).disposed(by: self.disposeBag)

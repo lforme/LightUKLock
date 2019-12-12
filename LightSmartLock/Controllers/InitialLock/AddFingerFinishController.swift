@@ -85,6 +85,8 @@ class AddFingerFinishController: UIViewController {
             }, onError: {[weak self] (error) in
                 PKHUD.sharedHUD.rx.showError(error)
                 self?.navigationController?.popToRootViewController(animated: true)
+            }, onCompleted: {[weak self] in
+                self?.animationView.play(toProgress: 1)
         }).disposed(by: rx.disposeBag)
     }
     

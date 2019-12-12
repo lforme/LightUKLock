@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DatePickerController" customModule="门锁助手_极速版" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelButton" destination="ZEo-89-bWO" id="rjR-ab-Qcs"/>
+                <outlet property="confirmButton" destination="MEX-gW-S12" id="Ieo-Xw-Eyk"/>
+                <outlet property="containerView" destination="fn9-fX-sKf" id="NmZ-td-T1w"/>
+                <outlet property="datePicker" destination="76m-hw-eY9" id="3Zi-Ll-hGT"/>
+                <outlet property="dismissBackgourndView" destination="ywd-KH-wg3" id="Ce2-Al-DR3"/>
+                <outlet property="titleLabel" destination="SXI-nJ-sPH" id="jHf-76-dZg"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fn9-fX-sKf">
+                    <rect key="frame" x="8" y="574" width="398" height="280"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cSM-kp-piu">
+                            <rect key="frame" x="0.0" y="0.0" width="398" height="45"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEo-89-bWO">
+                                    <rect key="frame" x="16" y="8" width="30" height="29"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <state key="normal" title="取消">
+                                        <color key="titleColor" red="0.61960784313725492" green="0.61960784313725492" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="null" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXI-nJ-sPH">
+                                    <rect key="frame" x="187.5" y="14.5" width="23" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                    <color key="textColor" red="0.5607843137254902" green="0.55686274509803924" blue="0.58039215686274503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEX-gW-S12">
+                                    <rect key="frame" x="352" y="8" width="30" height="29"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                    <state key="normal" title="确定">
+                                        <color key="titleColor" name="primary"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.97620195150375366" green="0.97631865739822388" blue="0.9761621356010437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="ZEo-89-bWO" firstAttribute="leading" secondItem="cSM-kp-piu" secondAttribute="leading" constant="16" id="Evg-ls-sx7"/>
+                                <constraint firstAttribute="trailing" secondItem="MEX-gW-S12" secondAttribute="trailing" constant="16" id="OIK-QI-uXJ"/>
+                                <constraint firstItem="SXI-nJ-sPH" firstAttribute="centerY" secondItem="cSM-kp-piu" secondAttribute="centerY" id="OJx-pN-ics"/>
+                                <constraint firstItem="ZEo-89-bWO" firstAttribute="centerY" secondItem="cSM-kp-piu" secondAttribute="centerY" id="WzV-5V-Ygk"/>
+                                <constraint firstItem="SXI-nJ-sPH" firstAttribute="centerX" secondItem="cSM-kp-piu" secondAttribute="centerX" id="fdn-2D-P8k"/>
+                                <constraint firstAttribute="height" constant="45" id="glU-M0-o2o"/>
+                                <constraint firstItem="MEX-gW-S12" firstAttribute="centerY" secondItem="cSM-kp-piu" secondAttribute="centerY" id="t2U-ms-ObE"/>
+                            </constraints>
+                        </view>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="76m-hw-eY9">
+                            <rect key="frame" x="0.0" y="45" width="398" height="235"/>
+                        </datePicker>
+                    </subviews>
+                    <color key="backgroundColor" name="viewBackground"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="280" id="R0x-uf-577"/>
+                        <constraint firstItem="cSM-kp-piu" firstAttribute="top" secondItem="fn9-fX-sKf" secondAttribute="top" id="RdJ-ML-Xbh"/>
+                        <constraint firstItem="76m-hw-eY9" firstAttribute="leading" secondItem="fn9-fX-sKf" secondAttribute="leading" id="dbs-Og-gA9"/>
+                        <constraint firstItem="76m-hw-eY9" firstAttribute="top" secondItem="cSM-kp-piu" secondAttribute="bottom" id="gAG-N3-WGs"/>
+                        <constraint firstItem="cSM-kp-piu" firstAttribute="leading" secondItem="fn9-fX-sKf" secondAttribute="leading" id="hZo-8A-ZDK"/>
+                        <constraint firstAttribute="trailing" secondItem="76m-hw-eY9" secondAttribute="trailing" id="jZG-tp-08O"/>
+                        <constraint firstAttribute="bottom" secondItem="76m-hw-eY9" secondAttribute="bottom" id="mmp-So-sO3"/>
+                        <constraint firstAttribute="trailing" secondItem="cSM-kp-piu" secondAttribute="trailing" id="zGT-9O-13a"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywd-KH-wg3">
+                    <rect key="frame" x="0.0" y="44" width="414" height="530"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="fn9-fX-sKf" secondAttribute="bottom" constant="8" id="8l2-zU-8af"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ywd-KH-wg3" secondAttribute="trailing" id="Iwv-dl-LHO"/>
+                <constraint firstItem="ywd-KH-wg3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="TSH-3t-s0X"/>
+                <constraint firstItem="fn9-fX-sKf" firstAttribute="top" secondItem="ywd-KH-wg3" secondAttribute="bottom" id="hpk-K4-fGc"/>
+                <constraint firstItem="fn9-fX-sKf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="ou0-eq-BAE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fn9-fX-sKf" secondAttribute="trailing" constant="8" id="xqn-GU-beC"/>
+                <constraint firstItem="ywd-KH-wg3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xxF-6i-kou"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="47.826086956521742" y="67.633928571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="primary">
+            <color red="1" green="0.67799997329711914" blue="0.054999999701976776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="viewBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
