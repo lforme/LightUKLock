@@ -271,6 +271,10 @@ extension BusinessInterface: TargetType {
             return "api/CustomerMember/GetCustomerSysRoleTips"
         case .addCustomerMember:
             return "api/CustomerMember/AddCustomerMember"
+        case .updateCustomerNameById:
+            return "api/CustomerMember/UpdateCustomerNameById"
+        case .deleteCustomerMember:
+            return "api/CustomerMember/DeleteCustomerMember"
         }
     }
     
@@ -478,8 +482,21 @@ extension BusinessInterface: TargetType {
             return ["KeyID": keyId]
             
         case let .addCustomerMember(member):
-            let param = member.toJSON()
+            
+            var param = member.toJSON()
+            if let customerId = LSLUser.current().userInScene?.customerID {
+                param?.updateValue(customerId, forKey: "CustomerId")
+            }
             return param
+            
+        case let .updateCustomerNameById(id, name):
+            return ["customerID": id, "customerNickName": name]
+            
+        case let .deleteCustomerMember(id, isRemote):
+            if let remote = isRemote {
+                return ["customerID": id, "isRemote": remote]
+            }
+            return ["customerID": id]
             
         default:
             return nil

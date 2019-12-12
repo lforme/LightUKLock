@@ -92,10 +92,12 @@ class AddUserController: UITableViewController {
         vm.saveAtion.elements.subscribe(onNext: {[weak self] (success) in
             if success {
                 HUD.flash(.label("添加成功"), delay: 2)
-                self?.navigationController?.popToRootViewController(animated: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self?.navigationController?.popToRootViewController(animated: true)
+                }
             }
         }).disposed(by: rx.disposeBag)
-
+        
     }
     
     func setupUI() {

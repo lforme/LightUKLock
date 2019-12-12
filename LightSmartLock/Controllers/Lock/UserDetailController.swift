@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+import PKHUD
 
 class UserDetailController: UITableViewController, NavigationSettingStyle {
     
@@ -25,6 +28,7 @@ class UserDetailController: UITableViewController, NavigationSettingStyle {
     @IBOutlet weak var cell4Label: UILabel!
     
     var model: UserMemberListModel!
+    var vm: UserDetailViewModel!
     
     deinit {
         print("\(self) deinit")
@@ -48,6 +52,9 @@ class UserDetailController: UITableViewController, NavigationSettingStyle {
     }
     
     func bind() {
+        
+        self.vm = UserDetailViewModel(userModel: model)
+        
         nickname.text = model.customerNickName
         role.text = model.relationType?.description
         phone.text = model.phone
@@ -105,8 +112,35 @@ class UserDetailController: UITableViewController, NavigationSettingStyle {
             switch indexPath.row {
             case 1:
                 print("修改用户名称")
+                SingleInputController.rx.present(wiht: "修改成员昵称", saveTitle: "保存", placeholder: model.customerNickName).flatMapLatest {[weak self] (newName) -> Observable<Bool> in
+                    guard let this = self else { return .just(false) }
+                    this.nickname.text = newName
+                    return this.vm.changeUserName(newName)
+                }.subscribe(onNext: { (success) in
+                    if success {
+                        HUD.flash(.label("修改昵称成功"), delay: 2)
+                    } else {
+                        HUD.flash(.label("修改失败, 请稍后再试"), delay: 2)
+                    }
+                }, onError: { (error) in
+                    PKHUD.sharedHUD.rx.showError(error)
+                }).disposed(by: rx.disposeBag)
+                
             case 2:
                 print("删除用户")
+                Popups.showSelect(title: "请选择删除方式", indexTitleOne: "现场删除", IndexTitleTwo: "远程删除", contentA: "请在门锁附近(2-3米内)打开手机蓝牙删除用户，删除后立即生效", contentB: "请在网络信号通畅的地方删除，远程删除成员需云端同步到门锁，可能会存在信号延迟，请稍后在成员列表查看成员状态").map { UserDetailViewModel.DeleteWay(rawValue: $0)! }.flatMapLatest {[unowned self] (way) -> Observable<Bool> in
+                    return self.vm.deleteUser(way: way)
+                }.subscribe(onNext: { (succsee) in
+                    if succsee {
+                        HUD.flash(.label("删除用户成功"), delay: 2)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {[weak self] in
+                            self?.navigationController?.popToRootViewController(animated: true)
+                        }
+                    }
+                }, onError: { (error) in
+                    PKHUD.sharedHUD.rx.showError(error)
+                }).disposed(by: rx.disposeBag)
+                
             default:
                 break
             }

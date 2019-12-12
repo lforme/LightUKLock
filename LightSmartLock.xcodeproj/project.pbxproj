@@ -142,6 +142,7 @@
 		9CB4B34D239DF519001197AB /* DigitalPwdDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4B34C239DF519001197AB /* DigitalPwdDetailController.swift */; };
 		9CB4B34F239E31FC001197AB /* ChangeDigitalPwdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4B34E239E31FC001197AB /* ChangeDigitalPwdController.swift */; };
 		9CB4B351239E3AA2001197AB /* DigitalChangePwdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4B350239E3AA2001197AB /* DigitalChangePwdViewModel.swift */; };
+		9CBD8F3923A1D67A00886519 /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD8F3823A1D67A00886519 /* UserDetailViewModel.swift */; };
 		9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD27212382801D006A9B97 /* AppDelegate.swift */; };
 		9CDD27292382801D006A9B97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD27272382801D006A9B97 /* Main.storyboard */; };
 		9CDD272B2382801E006A9B97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD272A2382801E006A9B97 /* Assets.xcassets */; };
@@ -299,6 +300,7 @@
 		9CB4B34C239DF519001197AB /* DigitalPwdDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalPwdDetailController.swift; sourceTree = "<group>"; };
 		9CB4B34E239E31FC001197AB /* ChangeDigitalPwdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDigitalPwdController.swift; sourceTree = "<group>"; };
 		9CB4B350239E3AA2001197AB /* DigitalChangePwdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalChangePwdViewModel.swift; sourceTree = "<group>"; };
+		9CBD8F3823A1D67A00886519 /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
 		9CDD271E2382801D006A9B97 /* 门锁助手-极速版.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "门锁助手-极速版.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CDD27212382801D006A9B97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CDD27282382801D006A9B97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 				9C5A967B23A082F1002A2B06 /* CardManageViewModel.swift */,
 				9C5A968123A09A73002A2B06 /* CardDetailViewModel.swift */,
 				9C5A968523A0DFCC002A2B06 /* AddUserViewModel.swift */,
+				9CBD8F3823A1D67A00886519 /* UserDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -936,6 +939,7 @@
 				9C5A968023A09813002A2B06 /* CardDetailController.swift in Sources */,
 				9C752FD42388080A000FEA73 /* NoLockViewController.swift in Sources */,
 				9C5A968423A0D210002A2B06 /* AddUserController.swift in Sources */,
+				9CBD8F3923A1D67A00886519 /* UserDetailViewModel.swift in Sources */,
 				9C24AC352383DCB0005EBF95 /* UserModel.swift in Sources */,
 				9C77059A238FACC7008E1552 /* MyViewModel.swift in Sources */,
 				9C1A4BC4238D0A1A00626DB4 /* AnimationHeaderView.swift in Sources */,

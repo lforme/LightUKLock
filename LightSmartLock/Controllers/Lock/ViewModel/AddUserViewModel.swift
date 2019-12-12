@@ -115,9 +115,7 @@ final class AddUserViewModel: BluetoothViewModel {
     }
     
     private func addAction() -> Action<AddUserMemberModel, Bool> {
-        
-        
-        
+    
         return Action<AddUserMemberModel, Bool> {[weak self] (_) -> Observable<Bool> in
             guard let this = self else {
                 return .empty()
@@ -126,7 +124,7 @@ final class AddUserViewModel: BluetoothViewModel {
             let localModel = this._submitModel.value
             
             guard localModel.InitialSecret.isNotNilNotEmpty, localModel.Label.isNotNilNotEmpty, localModel.Phone.isNotNilNotEmpty, localModel.CustomerNickName.isNotNilNotEmpty else {
-            
+                
                 return .error(AppError.reason("请检查必填项是否输入完整"))
             }
             
@@ -153,7 +151,18 @@ final class AddUserViewModel: BluetoothViewModel {
                     return Disposables.create()
                 }.do(onNext: {(success) in
                     if success {
-                        BusinessAPI.requestMapBool(.addCustomerMember(member: this._submitModel.value)).subscribe().disposed(by: this.disposeBag)
+                        BusinessAPI.requestMapBool(.addCustomerMember(member: this._submitModel.value)).subscribe(onNext: { (s) in
+                            if !s {
+                                BluetoothPapa.shareInstance.deleteUserBy(this._submitModel.value.InitialSecret!, userNumber: this._submitModel.value.UserCode!) { (data) in
+                                    print(data ?? "", "网络请求失败删除门锁用户")
+                                }
+                            }
+                        }, onError: { (e) in
+                            print(e)
+                            BluetoothPapa.shareInstance.deleteUserBy(this._submitModel.value.InitialSecret!, userNumber: this._submitModel.value.UserCode!) { (data) in
+                                print(data ?? "", "网络请求失败删除门锁用户")
+                            }
+                        }).disposed(by: this.disposeBag)
                     }
                 })
                 

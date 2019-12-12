@@ -60,4 +60,6 @@ enum BusinessInterface {
     case deleteCustomerCard(keyId: String) // 删除门卡
     case getCustomerSysRoleTips // 获取系统内置标签
     case addCustomerMember(member: AddUserMemberModel) // 添加成员
+    case updateCustomerNameById(id: String, name: String)
+    case deleteCustomerMember(customerID: String, isRemote: Bool?) // 删除成员
 }
