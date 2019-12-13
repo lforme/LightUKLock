@@ -18,6 +18,7 @@ fileprivate let lock = DispatchSemaphore(value: 1)
 
 final class RxMoyaProvider<Target>: MoyaProvider<Target> where Target: TargetType {
     
+    fileprivate let dateFormatter: DateFormatter
     fileprivate let stubScheduler: SchedulerType?
     fileprivate var authenticationBlock = { (_ done: () -> Void) -> Void in
         print("Execute refresh and after retry! !!!")
@@ -55,6 +56,11 @@ final class RxMoyaProvider<Target>: MoyaProvider<Target> where Target: TargetTyp
         manager.startRequestsImmediately = false
         self.stubScheduler = stubScheduler
         
+        dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        dateFormatter.locale = Locale.current
+        dateFormatter.timeZone = TimeZone.current
+        
         super.init(endpointClosure: endpointClosure, requestClosure: requestClosure, stubClosure: stubClosure, callbackQueue: nil, manager: manager, plugins: plugins, trackInflights: trackInflights)
     }
 }
@@ -72,12 +78,11 @@ private extension RxMoyaProvider {
                 key += param
             }
             // 读取缓存
-            print("读取 Key: \(key)")
             let md5 = key.md5()
-            print("读取 Key MD5: \(md5)")
             guard let data = diskCache.value(forKey: md5) else {
                 return self._request(token)
             }
+            print("⏰=> 缓存读取时间: [\(self.dateFormatter.string(from: Date()))]\n\("🧤=> 读取成功 ✌️✌️✌️")\n\("💡=> 缓存Key: \(md5)")")
             
             let cache = Response(statusCode: 200, data: data, request: nil, response: nil)
             return self._request(token).catchErrorJustReturn(cache)
@@ -145,10 +150,10 @@ private extension RxMoyaProvider {
                         }).description {
                             key += param
                         }
-                        print("写入 Key: \(key)")
+                        
                         let md5 = key.md5()
-                        print("写入 Key MD5: \(md5)")
                         self.diskCache.save(value: res.data, forKey: md5)
+                        print("⏰=> 本地缓存写入时间: [\(self.dateFormatter.string(from: Date()))]\n\("🧤=> 本地缓存写入成功 🐸🐸🐸")\n\("💡=> 缓存Key: \(md5)")")
                     }
                     
                     return Observable.just(res)
