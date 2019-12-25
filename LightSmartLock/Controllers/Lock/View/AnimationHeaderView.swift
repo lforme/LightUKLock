@@ -38,16 +38,7 @@ class AnimationHeaderView: UITableViewCell {
         
         animationError = Animation.named("error", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)
         animationLowpower = Animation.named("warning", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)
-        
-        if #available(iOS 12.0, *) {
-            if self.traitCollection.userInterfaceStyle == .dark {
-                animationNormal = Animation.named("normalDarkMode", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)
-            } else {
-                animationNormal = Animation.named("normal", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)
-            }
-        } else {
-            animationNormal = Animation.named("normal", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)
-        }
+        animationNormal = Animation.named("normal", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)
         
         animationView.loopMode = .loop
         animationView.contentMode = .scaleAspectFit
