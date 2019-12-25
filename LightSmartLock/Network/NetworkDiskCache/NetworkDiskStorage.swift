@@ -19,14 +19,15 @@ final class NetworkDiskStorage {
         
         self.autoCleanTrash = autoCleanTrash ?? true
         var documentsDirectory = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString) as String
-        if documentsDirectory.last! != "/" {
-            documentsDirectory.append("/")
-        }
         var p = documentsDirectory
         
         if let customPath = path {
             p += "/"
             p += customPath
+        }
+        
+        if documentsDirectory.last! != "/" {
+            documentsDirectory.append("/")
         }
         
         db = NetworkMetaDb(path: p)
@@ -35,7 +36,7 @@ final class NetworkDiskStorage {
     
     @discardableResult
     func save(value: Data, forKey key: String) -> Bool {
-       return db.save(value, key: key)
+        return db.save(value, key: key)
     }
     
     @discardableResult

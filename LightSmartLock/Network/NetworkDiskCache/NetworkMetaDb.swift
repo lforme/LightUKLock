@@ -24,7 +24,7 @@ final class NetworkMetaDb {
     let accountId = Expression<String?>("accountId")
     
     private let lock = NSRecursiveLock()
-    private let kDatabaseName = "networkcachedb.sqlite3"
+    private let kDatabaseName = "cachedb.sqlite3"
     private let kTableName = "networkcache"
     
     init(path: String) {
