@@ -61,9 +61,7 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
             self?.avatar.kf.setImage(with: URL(string: urlStr))
         }).disposed(by: rx.disposeBag)
         
-        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-            self.versionLabel.text = "v\(version)"
-        }
+        self.versionLabel.text = ServerHost.shared.environment.description
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

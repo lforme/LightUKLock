@@ -17,7 +17,7 @@ enum NetworkingEnvironment: Int, CustomStringConvertible, CaseIterable {
         case .dev:
             return "开发"
         case .production:
-            return "生产 [\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "1.0")]"
+            return "v\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "v1.0")"
         }
     }
     
