@@ -35,6 +35,17 @@ class RootViewController: UIViewController {
         observeStatusBarChanged()
         observerLoginStatus()
         checkLoginStatus()
+        observerSiriOpenDoor()
+    }
+    
+    func observerSiriOpenDoor() {
+        NotificationCenter.default.rx.notification(.siriOpenDoor)
+        .takeUntil(rx.deallocated)
+        .observeOn(MainScheduler.instance)
+        .subscribeOn(MainScheduler.instance)
+        .subscribe(onNext: {[weak self] (_) in
+            self?.openDoor()
+        }).disposed(by: rx.disposeBag)
     }
     
     func checkLoginStatus() {
@@ -108,6 +119,12 @@ class RootViewController: UIViewController {
         })
     }
     
+    func openDoor() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
+            let openDoorVC: OpenDoorViewController = ViewLoader.Xib.controller()
+            self?.homeTabBarVC?.present(openDoorVC, animated: true, completion: nil)
+        }
+    }
     
     
     static func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {

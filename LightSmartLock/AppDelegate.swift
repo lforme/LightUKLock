@@ -29,6 +29,12 @@ extension AppDelegate {
     static func changeStatusBarStyle(_ style: UIStatusBarStyle) {
         NotificationCenter.default.post(name: .statuBarDidChange, object: style)
     }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        NotificationCenter.default
+            .post(name: .siriOpenDoor, object: nil)
+        return true
+    }
 }
 
 extension AppDelegate {

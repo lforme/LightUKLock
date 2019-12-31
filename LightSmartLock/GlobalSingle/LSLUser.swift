@@ -172,6 +172,19 @@ class LSLUser: NSObject {
         return sceneModel.IsInstallLock ?? false
     }
     
+    var hasSiriShortcuts: Bool {
+        set {
+            lock.lock()
+            LocalArchiver.save(key: LSLUser.Keys.siriShortcuts.rawValue, value: newValue)
+            lock.unlock()
+        }
+        
+        get {
+            let value = LocalArchiver.load(key: LSLUser.Keys.siriShortcuts.rawValue) as? Bool
+            return value ?? false
+        }
+    }
+    
     private let changeableUserInfo = BehaviorRelay<UserModel?>(value: nil)
     private let changeableScene = BehaviorRelay<SceneListModel?>(value: nil)
 }
@@ -186,6 +199,7 @@ extension LSLUser {
         case userInfo = "userInfoModel"
         case smartLockInfo = "smartLockInfo"
         case lockIOTInfo = "lockIOTInfo"
+        case siriShortcuts = "siriShortcuts"
     }
 }
 

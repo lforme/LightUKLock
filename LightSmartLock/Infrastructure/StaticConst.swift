@@ -25,6 +25,7 @@ extension NSNotification.Name {
     static let statuBarDidChange = NSNotification.Name(rawValue: "statuBarDidChange")
     static let refreshState = NSNotification.Name(rawValue: "refreshState")
     static let animationRestart = NSNotification.Name(rawValue: "animationRestart")
+    static let siriOpenDoor = NSNotification.Name(rawValue: "siriOpenDoor")
 }
 
 

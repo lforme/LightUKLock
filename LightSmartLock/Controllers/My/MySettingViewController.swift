@@ -11,6 +11,7 @@ import Kingfisher
 import PKHUD
 import TZImagePickerController
 import RxSwift
+import IntentsUI
 
 class MySettingViewController: UITableViewController, NavigationSettingStyle {
     
@@ -19,6 +20,7 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
         case nickname
         case password
         case phone
+        case siri
         case version
         case logout
     }
@@ -31,6 +33,7 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
     @IBOutlet weak var nameValue: UILabel!
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var siriLabel: UILabel!
     
     let vm = MySettingViewModel()
     
@@ -61,7 +64,9 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
             self?.avatar.kf.setImage(with: URL(string: urlStr))
         }).disposed(by: rx.disposeBag)
         
-        self.versionLabel.text = ServerHost.shared.environment.description
+        versionLabel.text = ServerHost.shared.environment.description
+        siriLabel.text = LSLUser.current().hasSiriShortcuts ? "已设置" : "未设置"
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -83,7 +88,10 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
             
         case .logout:
             logoutAction()
-        
+            
+        case .siri:
+            setupSiriShortcuts()
+            
         default: break
         }
     }
@@ -181,5 +189,45 @@ extension MySettingViewController {
         }, onError: { (error) in
             PKHUD.sharedHUD.rx.showError(error)
         }).disposed(by: rx.disposeBag)
+    }
+    
+    func setupSiriShortcuts() {
+        if #available(iOS 12.0, *) {
+            if LSLUser.current().hasSiriShortcuts {
+                HUD.flash(.label("已设置过Siri开门"), delay: 2)
+                let activity = NSUserActivity(activityType: "com.oldwhy.QuickSmartLock.sirisortcut.opendoor")
+                print(activity.keywords)
+            } else {
+                let activity = NSUserActivity(activityType: "com.oldwhy.QuickSmartLock.sirisortcut.opendoor")
+                activity.title = "请点击录音按钮, 试着对着它说开门指令, 例如: 开门 (当然你也可以录制个性指令: Open The Door) "
+                activity.userInfo = ["speech" : "添加开门命令"]
+                activity.isEligibleForSearch = true
+                activity.isEligibleForPrediction = true
+                activity.persistentIdentifier = NSUserActivityPersistentIdentifier("com.oldwhy.QuickSmartLock.sirisortcut.opendoor")
+                view.userActivity = activity
+                activity.becomeCurrent()
+                
+                let addSiriShortVersesVC = INUIAddVoiceShortcutViewController(shortcut: INShortcut(userActivity: activity))
+                addSiriShortVersesVC.delegate = self
+                navigationController?.present(addSiriShortVersesVC, animated: true, completion: nil)
+            }
+            
+        } else {
+            HUD.flash(.label("iOS系统版本过低\n无法使用Siri开门"), delay: 2)
+        }
+    }
+}
+
+@available(iOS 12.0, *)
+extension MySettingViewController: INUIAddVoiceShortcutViewControllerDelegate {
+    
+    func addVoiceShortcutViewController(_ controller: INUIAddVoiceShortcutViewController, didFinishWith voiceShortcut: INVoiceShortcut?, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+        LSLUser.current().hasSiriShortcuts = true
+        siriLabel.text = "已设置"
+    }
+    
+    func addVoiceShortcutViewControllerDidCancel(_ controller: INUIAddVoiceShortcutViewController) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }
