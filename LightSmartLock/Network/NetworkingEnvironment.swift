@@ -15,7 +15,7 @@ enum NetworkingEnvironment: Int, CustomStringConvertible, CaseIterable {
     var description: String {
         switch self {
         case .dev:
-            return "开发"
+            return "开发环境 v\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "v1.0")"
         case .production:
             return "v\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "v1.0")"
         }
