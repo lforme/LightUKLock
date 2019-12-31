@@ -211,13 +211,13 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S m a r t H o m e" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZS-Li-gFf">
                                                     <rect key="frame" x="16" y="97" width="94.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" name="textPrimary"/>
+                                                    <color key="textColor" name="textDescription"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V e r s i o n" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glg-it-jnu">
                                                     <rect key="frame" x="114.5" y="97" width="63.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" name="textPrimary"/>
+                                                    <color key="textColor" name="textDescription"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="极速版" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIh-aA-awL">
@@ -395,6 +395,9 @@
         <image name="login_eys_close" width="22" height="12"/>
         <image name="signin_passwords" width="12" height="17"/>
         <image name="signin_phone_icon" width="10" height="18"/>
+        <namedColor name="textDescription">
+            <color red="0.65100002288818359" green="0.68199998140335083" blue="0.7369999885559082" alpha="0.81999999284744263" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="textPrimary">
             <color red="0.039000000804662704" green="0.12200000137090683" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
