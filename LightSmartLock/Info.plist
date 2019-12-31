@@ -20,6 +20,8 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>Microphone Usage Description</key>
+	<string>门锁助手需要使用麦克风设置Siri捷径</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -37,8 +39,6 @@
 	<string>门锁助手需要获取您当前坐标, 检索周围小区</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>门锁助手需要使用相册资源, 为您更换头像</string>
-	<key>Microphone Usage Description</key>
-	<string>门锁助手需要使用麦克风设置Siri捷径</string>
 	<key>NSUserActivityTypes</key>
 	<string>com.oldwhy.QuickSmartLock.sirisortcut.opendoor</string>
 	<key>UILaunchStoryboardName</key>
