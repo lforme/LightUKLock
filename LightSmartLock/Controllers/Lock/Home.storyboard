@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +12,7 @@
         <!--User Detail Controller-->
         <scene sceneID="b1F-gY-gNm">
             <objects>
-                <tableViewController storyboardIdentifier="UserDetailController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Cjc-ef-86u" customClass="UserDetailController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="UserDetailController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Cjc-ef-86u" customClass="UserDetailController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sn3-Nn-Bwz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -156,13 +156,13 @@
         <!--User Management Controller-->
         <scene sceneID="1OV-1p-GOg">
             <objects>
-                <tableViewController storyboardIdentifier="UserManagementController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rWt-an-JxT" customClass="UserManagementController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="UserManagementController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rWt-an-JxT" customClass="UserManagementController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="W6i-iD-wtv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="tableViewBackground"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserManagementCell" rowHeight="80" id="jvO-ys-1KG" customClass="UserManagementCell" customModule="门锁助手_极速版" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserManagementCell" rowHeight="80" id="jvO-ys-1KG" customClass="UserManagementCell" customModule="门锁助手极速版" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jvO-ys-1KG" id="ukA-Xa-8e2">
@@ -177,7 +177,7 @@
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="9xM-gP-4w8">
-                                            <rect key="frame" x="64" y="21" width="249" height="38"/>
+                                            <rect key="frame" x="64" y="21" width="261" height="38"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oip-y1-B8s">
                                                     <rect key="frame" x="0.0" y="0.0" width="72.5" height="19.5"/>
@@ -194,10 +194,10 @@
                                             </subviews>
                                         </stackView>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_syn" translatesAutoresizingMaskIntoConstraints="NO" id="D5q-zY-iik">
-                                            <rect key="frame" x="374" y="24" width="24" height="32"/>
+                                            <rect key="frame" x="386" y="32" width="12" height="16"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="同步中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="567-gJ-vTC">
-                                            <rect key="frame" x="329" y="33" width="37" height="14.5"/>
+                                            <rect key="frame" x="341" y="33" width="37" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" name="textDescription"/>
                                             <nil key="highlightedColor"/>
@@ -238,7 +238,7 @@
         <!--Home View Controller-->
         <scene sceneID="cQJ-Qe-o5J">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WPg-Ta-5La" customClass="HomeViewController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WPg-Ta-5La" customClass="HomeViewController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ne8-re-Hzu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -270,7 +270,7 @@
         <!--Record Unlock Controller-->
         <scene sceneID="qEc-ui-8bu">
             <objects>
-                <viewController storyboardIdentifier="RecordUnlockController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dvJ-72-VG2" customClass="RecordUnlockController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecordUnlockController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dvJ-72-VG2" customClass="RecordUnlockController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U99-7K-EKi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -300,7 +300,7 @@
         <!--Change Digital Pwd Controller-->
         <scene sceneID="bDe-Gq-Bal">
             <objects>
-                <tableViewController storyboardIdentifier="ChangeDigitalPwdController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZMq-KY-zlY" customClass="ChangeDigitalPwdController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ChangeDigitalPwdController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZMq-KY-zlY" customClass="ChangeDigitalPwdController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BRX-UY-tBt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -375,13 +375,13 @@
         <!--Digital Pwd Detail Controller-->
         <scene sceneID="69z-pR-gWp">
             <objects>
-                <tableViewController storyboardIdentifier="DigitalPwdDetailController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FRO-0Y-Lgh" customClass="DigitalPwdDetailController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DigitalPwdDetailController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FRO-0Y-Lgh" customClass="DigitalPwdDetailController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oCl-rP-fLD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="tableViewBackground"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DigitalPasswordCell" rowHeight="80" id="Au3-dG-huA" customClass="DigitalPasswordCell" customModule="门锁助手_极速版" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DigitalPasswordCell" rowHeight="80" id="Au3-dG-huA" customClass="DigitalPasswordCell" customModule="门锁助手极速版" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Au3-dG-huA" id="N2D-JT-xi1">
@@ -419,7 +419,7 @@
                                     <outlet property="useDayLabel" destination="4hk-W6-HvP" id="77e-Vu-gHA"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DigitalPasswordStatusCell" rowHeight="44" id="Ckf-5O-h01" customClass="DigitalPasswordStatusCell" customModule="门锁助手_极速版" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DigitalPasswordStatusCell" rowHeight="44" id="Ckf-5O-h01" customClass="DigitalPasswordStatusCell" customModule="门锁助手极速版" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="108" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ckf-5O-h01" id="MWr-9f-iNO">
@@ -459,7 +459,7 @@
                                     <outlet property="extendButton" destination="Qnf-4M-Xml" id="l0C-jb-QNo"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DigitalPasswordLogCell" rowHeight="48" id="gbf-Jg-dtL" customClass="DigitalPasswordLogCell" customModule="门锁助手_极速版" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DigitalPasswordLogCell" rowHeight="48" id="gbf-Jg-dtL" customClass="DigitalPasswordLogCell" customModule="门锁助手极速版" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="152" width="414" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gbf-Jg-dtL" id="PLY-66-7ul">
@@ -518,7 +518,7 @@
         <!--Password Management Controller-->
         <scene sceneID="EyP-KN-ZgJ">
             <objects>
-                <tableViewController storyboardIdentifier="PasswordManagementController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TtA-78-Ybd" customClass="PasswordManagementController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PasswordManagementController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TtA-78-Ybd" customClass="PasswordManagementController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="JCr-3H-tfC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -646,7 +646,7 @@
         <!--Finger Detail Controller-->
         <scene sceneID="pb1-KS-Sxz">
             <objects>
-                <tableViewController storyboardIdentifier="FingerDetailController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="94i-dO-NXk" customClass="FingerDetailController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="FingerDetailController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="94i-dO-NXk" customClass="FingerDetailController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BqV-2i-yho">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -788,7 +788,7 @@
         <!--Add User Controller-->
         <scene sceneID="uOX-Qb-395">
             <objects>
-                <tableViewController storyboardIdentifier="AddUserController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="A3Y-wA-XEI" customClass="AddUserController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AddUserController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="A3Y-wA-XEI" customClass="AddUserController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tS4-CS-wKU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1057,13 +1057,13 @@
         <!--Single Temp Password Controller-->
         <scene sceneID="28D-ki-OpZ">
             <objects>
-                <tableViewController storyboardIdentifier="SingleTempPasswordController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Da-9I-68g" customClass="SingleTempPasswordController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SingleTempPasswordController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Da-9I-68g" customClass="SingleTempPasswordController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="muP-Jn-HTk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="tableViewBackground"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SingleTempPasswordCell" rowHeight="128" id="dhW-B5-dB5" customClass="SingleTempPasswordCell" customModule="门锁助手_极速版" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SingleTempPasswordCell" rowHeight="128" id="dhW-B5-dB5" customClass="SingleTempPasswordCell" customModule="门锁助手极速版" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dhW-B5-dB5" id="xmj-DE-nb7">
@@ -1131,7 +1131,7 @@
         <!--Share Password Signle Controller-->
         <scene sceneID="1CZ-fa-rQs">
             <objects>
-                <tableViewController storyboardIdentifier="SharePasswordSignleController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6T9-Bd-xQe" customClass="SharePasswordSignleController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SharePasswordSignleController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6T9-Bd-xQe" customClass="SharePasswordSignleController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kkJ-rs-xYh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1146,7 +1146,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开始时间*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhR-et-aOW">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分享方式*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhR-et-aOW">
                                                     <rect key="frame" x="20" y="12" width="63.5" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" name="textPrimary"/>
@@ -1184,46 +1184,8 @@
                             </tableViewSection>
                             <tableViewSection id="0cA-gN-SsT">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="Nw7-k3-DPd">
-                                        <rect key="frame" x="0.0" y="184" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nw7-k3-DPd" id="pK4-td-5is">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入手机号码*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6Y-sb-kSy">
-                                                    <rect key="frame" x="20" y="13.5" width="106.5" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" name="textPrimary"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eCK-Fy-TkE">
-                                                    <rect key="frame" x="146.5" y="6" width="247.5" height="32"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="32" id="xIZ-SH-xac"/>
-                                                    </constraints>
-                                                    <color key="textColor" name="textOpaque78"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                            <color key="value" name="textPlaceholder"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="b6Y-sb-kSy" firstAttribute="leading" secondItem="pK4-td-5is" secondAttribute="leading" constant="20" id="6c6-re-MVf"/>
-                                                <constraint firstItem="eCK-Fy-TkE" firstAttribute="leading" secondItem="b6Y-sb-kSy" secondAttribute="trailing" constant="20" id="Bfo-S7-TeP"/>
-                                                <constraint firstItem="eCK-Fy-TkE" firstAttribute="centerY" secondItem="pK4-td-5is" secondAttribute="centerY" id="V2Z-pU-XAb"/>
-                                                <constraint firstAttribute="trailing" secondItem="eCK-Fy-TkE" secondAttribute="trailing" constant="20" id="fhq-nE-nC7"/>
-                                                <constraint firstItem="b6Y-sb-kSy" firstAttribute="centerY" secondItem="pK4-td-5is" secondAttribute="centerY" id="pYa-rz-LaC"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" name="viewBackground"/>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="qoB-oz-McH">
-                                        <rect key="frame" x="0.0" y="227.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="184" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qoB-oz-McH" id="ZGj-8B-KmC">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -1260,6 +1222,44 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="viewBackground"/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="Nw7-k3-DPd">
+                                        <rect key="frame" x="0.0" y="227.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nw7-k3-DPd" id="pK4-td-5is">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入手机号码*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6Y-sb-kSy">
+                                                    <rect key="frame" x="20" y="13.5" width="106.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" name="textPrimary"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eCK-Fy-TkE">
+                                                    <rect key="frame" x="146.5" y="6" width="247.5" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="xIZ-SH-xac"/>
+                                                    </constraints>
+                                                    <color key="textColor" name="textOpaque78"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                            <color key="value" name="textPlaceholder"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="b6Y-sb-kSy" firstAttribute="leading" secondItem="pK4-td-5is" secondAttribute="leading" constant="20" id="6c6-re-MVf"/>
+                                                <constraint firstItem="eCK-Fy-TkE" firstAttribute="leading" secondItem="b6Y-sb-kSy" secondAttribute="trailing" constant="20" id="Bfo-S7-TeP"/>
+                                                <constraint firstItem="eCK-Fy-TkE" firstAttribute="centerY" secondItem="pK4-td-5is" secondAttribute="centerY" id="V2Z-pU-XAb"/>
+                                                <constraint firstAttribute="trailing" secondItem="eCK-Fy-TkE" secondAttribute="trailing" constant="20" id="fhq-nE-nC7"/>
+                                                <constraint firstItem="b6Y-sb-kSy" firstAttribute="centerY" secondItem="pK4-td-5is" secondAttribute="centerY" id="pYa-rz-LaC"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="viewBackground"/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1281,7 +1281,7 @@
         <!--Share Password Multiple Controller-->
         <scene sceneID="yKB-zY-qns">
             <objects>
-                <tableViewController storyboardIdentifier="SharePasswordMultipleController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Oyg-am-cOK" customClass="SharePasswordMultipleController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SharePasswordMultipleController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Oyg-am-cOK" customClass="SharePasswordMultipleController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nil-x7-10X">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1370,7 +1370,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开始时间*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htz-Ep-9iv">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分享方式*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htz-Ep-9iv">
                                                     <rect key="frame" x="20" y="12" width="63.5" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" name="textPrimary"/>
@@ -1408,46 +1408,8 @@
                             </tableViewSection>
                             <tableViewSection id="UMf-fG-ejo">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="iUT-NE-MKC">
-                                        <rect key="frame" x="0.0" y="327" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iUT-NE-MKC" id="WPb-YT-wVU">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入手机号码*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pt8-ti-1dq">
-                                                    <rect key="frame" x="20" y="13.5" width="106.5" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" name="textPrimary"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I4x-CB-4UC">
-                                                    <rect key="frame" x="146.5" y="6" width="247.5" height="32"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="32" id="CuA-e5-Gn6"/>
-                                                    </constraints>
-                                                    <color key="textColor" name="textOpaque78"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                            <color key="value" name="textPlaceholder"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="I4x-CB-4UC" secondAttribute="trailing" constant="20" id="74O-Nn-hBN"/>
-                                                <constraint firstItem="I4x-CB-4UC" firstAttribute="centerY" secondItem="WPb-YT-wVU" secondAttribute="centerY" id="AQU-eL-g4b"/>
-                                                <constraint firstItem="I4x-CB-4UC" firstAttribute="leading" secondItem="pt8-ti-1dq" secondAttribute="trailing" constant="20" id="SgP-8s-kyc"/>
-                                                <constraint firstItem="pt8-ti-1dq" firstAttribute="leading" secondItem="WPb-YT-wVU" secondAttribute="leading" constant="20" id="WZp-4O-V4p"/>
-                                                <constraint firstItem="pt8-ti-1dq" firstAttribute="centerY" secondItem="WPb-YT-wVU" secondAttribute="centerY" id="eV1-ZP-wZU"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" name="viewBackground"/>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="Abr-tN-ddE">
-                                        <rect key="frame" x="0.0" y="370.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="327" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Abr-tN-ddE" id="w6x-eU-7ro">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -1484,6 +1446,44 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="viewBackground"/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="iUT-NE-MKC">
+                                        <rect key="frame" x="0.0" y="370.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iUT-NE-MKC" id="WPb-YT-wVU">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入手机号码*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pt8-ti-1dq">
+                                                    <rect key="frame" x="20" y="13.5" width="106.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" name="textPrimary"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I4x-CB-4UC">
+                                                    <rect key="frame" x="146.5" y="6" width="247.5" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="CuA-e5-Gn6"/>
+                                                    </constraints>
+                                                    <color key="textColor" name="textOpaque78"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                            <color key="value" name="textPlaceholder"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="I4x-CB-4UC" secondAttribute="trailing" constant="20" id="74O-Nn-hBN"/>
+                                                <constraint firstItem="I4x-CB-4UC" firstAttribute="centerY" secondItem="WPb-YT-wVU" secondAttribute="centerY" id="AQU-eL-g4b"/>
+                                                <constraint firstItem="I4x-CB-4UC" firstAttribute="leading" secondItem="pt8-ti-1dq" secondAttribute="trailing" constant="20" id="SgP-8s-kyc"/>
+                                                <constraint firstItem="pt8-ti-1dq" firstAttribute="leading" secondItem="WPb-YT-wVU" secondAttribute="leading" constant="20" id="WZp-4O-V4p"/>
+                                                <constraint firstItem="pt8-ti-1dq" firstAttribute="centerY" secondItem="WPb-YT-wVU" secondAttribute="centerY" id="eV1-ZP-wZU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="viewBackground"/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1507,13 +1507,13 @@
         <!--Multiple Temp Password Controller-->
         <scene sceneID="GEu-Hf-F1g">
             <objects>
-                <tableViewController storyboardIdentifier="MultipleTempPasswordController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nfc-Gy-s1K" customClass="MultipleTempPasswordController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MultipleTempPasswordController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nfc-Gy-s1K" customClass="MultipleTempPasswordController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="u7j-X0-wAT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="tableViewBackground"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MultipleTempPasswordCell" rowHeight="128" id="UJh-Nw-ndi" customClass="MultipleTempPasswordCell" customModule="门锁助手_极速版" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MultipleTempPasswordCell" rowHeight="128" id="UJh-Nw-ndi" customClass="MultipleTempPasswordCell" customModule="门锁助手极速版" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UJh-Nw-ndi" id="QV8-tI-EBs">
@@ -1578,13 +1578,13 @@
         <!--Card Manage Controller-->
         <scene sceneID="Dey-1o-DJq">
             <objects>
-                <tableViewController storyboardIdentifier="CardManageController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Xye-NA-hCU" customClass="CardManageController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CardManageController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Xye-NA-hCU" customClass="CardManageController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NmX-gt-baD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="tableViewBackground"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CardManageCell" rowHeight="80" id="LDq-P3-LrV" customClass="CardManageCell" customModule="门锁助手_极速版" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CardManageCell" rowHeight="80" id="LDq-P3-LrV" customClass="CardManageCell" customModule="门锁助手极速版" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LDq-P3-LrV" id="b4t-Sl-ShH">
@@ -1623,7 +1623,7 @@
         <!--Card Detail Controller-->
         <scene sceneID="DRE-sT-ldZ">
             <objects>
-                <tableViewController storyboardIdentifier="CardDetailController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vch-bp-njS" customClass="CardDetailController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CardDetailController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vch-bp-njS" customClass="CardDetailController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6Qw-W3-CuD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1694,13 +1694,13 @@
         <!--Finger Manage Controller-->
         <scene sceneID="ubd-xY-Yhd">
             <objects>
-                <tableViewController storyboardIdentifier="FingerManageController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iLp-vG-Pra" customClass="FingerManageController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="FingerManageController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iLp-vG-Pra" customClass="FingerManageController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Iji-fR-xFg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="tableViewBackground"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FingerManageCell" rowHeight="80" id="ue9-6b-7PH" customClass="FingerManageCell" customModule="门锁助手_极速版" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FingerManageCell" rowHeight="80" id="ue9-6b-7PH" customClass="FingerManageCell" customModule="门锁助手极速版" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ue9-6b-7PH" id="kjO-V3-q4M">
@@ -1739,7 +1739,7 @@
         <!--Home Settring Controller-->
         <scene sceneID="kUK-X6-Doz">
             <objects>
-                <tableViewController storyboardIdentifier="HomeSettringController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="l5V-n9-EXg" customClass="HomeSettringController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HomeSettringController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="l5V-n9-EXg" customClass="HomeSettringController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Gzs-gX-E6f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1855,7 +1855,7 @@
         <!--Lock Setting Controller-->
         <scene sceneID="6ia-JY-QIn">
             <objects>
-                <tableViewController storyboardIdentifier="LockSettingController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qE7-Cp-l71" customClass="LockSettingController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="LockSettingController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qE7-Cp-l71" customClass="LockSettingController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="r0n-sI-8nC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1992,23 +1992,23 @@
         <!--Sound Setting Controller-->
         <scene sceneID="I2L-yj-own">
             <objects>
-                <viewController storyboardIdentifier="SoundSettingController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aFw-dp-QHa" customClass="SoundSettingController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SoundSettingController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aFw-dp-QHa" customClass="SoundSettingController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="akK-xp-hC7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="zth-Xr-j0L">
-                                <rect key="frame" x="16" y="124" width="382" height="44"/>
+                                <rect key="frame" x="16" y="124" width="382" height="30"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock_setting_sound_bitty" translatesAutoresizingMaskIntoConstraints="NO" id="Xiy-EG-gFP">
-                                        <rect key="frame" x="0.0" y="6" width="22" height="32"/>
+                                        <rect key="frame" x="0.0" y="7" width="11" height="16"/>
                                     </imageView>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="1" maxValue="4" translatesAutoresizingMaskIntoConstraints="NO" id="dRu-Pj-IxD">
-                                        <rect key="frame" x="33" y="7" width="286" height="31"/>
+                                        <rect key="frame" x="22" y="0.0" width="323" height="31"/>
                                         <color key="minimumTrackTintColor" name="primary"/>
                                     </slider>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock_setting_sound_loud" translatesAutoresizingMaskIntoConstraints="NO" id="Bnm-8Y-o0C">
-                                        <rect key="frame" x="330" y="0.0" width="52" height="44"/>
+                                        <rect key="frame" x="356" y="4" width="26" height="22"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -2017,13 +2017,13 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJY-Gb-K4d">
-                                <rect key="frame" x="16" y="176" width="14.5" height="17"/>
+                                <rect key="frame" x="16" y="162" width="14.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <color key="textColor" name="textDescription"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSK-Em-Izx">
-                                <rect key="frame" x="383.5" y="176" width="14.5" height="17"/>
+                                <rect key="frame" x="383.5" y="162" width="14.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <color key="textColor" name="textDescription"/>
                                 <nil key="highlightedColor"/>
@@ -2052,7 +2052,7 @@
         <!--Set Building Number Controller-->
         <scene sceneID="9vT-Z6-jj5">
             <objects>
-                <tableViewController storyboardIdentifier="SetBuildingNumberController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Q39-D3-VxG" customClass="SetBuildingNumberController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SetBuildingNumberController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Q39-D3-VxG" customClass="SetBuildingNumberController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2GJ-g4-7ch">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2201,7 +2201,7 @@
         <!--No Lock View Controller-->
         <scene sceneID="dN2-tr-zwy">
             <objects>
-                <viewController storyboardIdentifier="NoLockViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zGn-Sn-Cqn" customClass="NoLockViewController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoLockViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zGn-Sn-Cqn" customClass="NoLockViewController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E70-4W-D20">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2223,7 +2223,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock_add_diagram" translatesAutoresizingMaskIntoConstraints="NO" id="AEg-ZS-wNQ">
-                                        <rect key="frame" x="-55" y="70" width="508" height="224"/>
+                                        <rect key="frame" x="72" y="70" width="254" height="112"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26J-sv-LZp">
                                         <rect key="frame" x="119" y="264" width="160" height="46"/>
@@ -2238,7 +2238,7 @@
                                         </state>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ziH-HQ-6KK">
-                                        <rect key="frame" x="123.5" y="339" width="151" height="14.5"/>
+                                        <rect key="frame" x="123.5" y="227" width="151" height="14.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nGT-A0-Diq">
                                                 <rect key="frame" x="0.0" y="3.5" width="8" height="8"/>
@@ -2295,13 +2295,13 @@
         <!--Message Center Controller-->
         <scene sceneID="ILh-VW-9ZM">
             <objects>
-                <tableViewController storyboardIdentifier="MessageCenterController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="s5R-rP-ldp" customClass="MessageCenterController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MessageCenterController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="s5R-rP-ldp" customClass="MessageCenterController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" id="XFY-ww-k9y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="tableViewBackground"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MessageCenterCell" rowHeight="118" id="hLC-bX-Eqs" customClass="MessageCenterCell" customModule="门锁助手_极速版" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MessageCenterCell" rowHeight="118" id="hLC-bX-Eqs" customClass="MessageCenterCell" customModule="门锁助手极速版" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="118"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hLC-bX-Eqs" id="VIW-Kg-1hy">
@@ -2390,7 +2390,7 @@
         <!--Lock Info Controller-->
         <scene sceneID="AI0-9l-XZ8">
             <objects>
-                <tableViewController storyboardIdentifier="LockInfoController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Bb7-vV-84P" customClass="LockInfoController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="LockInfoController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Bb7-vV-84P" customClass="LockInfoController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="JLi-xg-JUY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2570,7 +2570,7 @@
         <!--Positio Editing Controller-->
         <scene sceneID="R7X-7A-AsC">
             <objects>
-                <tableViewController storyboardIdentifier="PositioEditingController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KCo-Lq-QlT" customClass="PositioEditingController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PositioEditingController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KCo-Lq-QlT" customClass="PositioEditingController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zoE-wc-mSN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2799,7 +2799,7 @@
         <!--Search Plot Controller-->
         <scene sceneID="ctN-fP-Aex">
             <objects>
-                <viewController storyboardIdentifier="SearchPlotController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wg4-Tf-dBK" customClass="SearchPlotController" customModule="门锁助手_极速版" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchPlotController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wg4-Tf-dBK" customClass="SearchPlotController" customModule="门锁助手极速版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w09-nn-wU4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2808,10 +2808,10 @@
                                 <rect key="frame" x="16" y="52" width="382" height="40"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_lock_sreach" translatesAutoresizingMaskIntoConstraints="NO" id="noa-X0-rlc">
-                                        <rect key="frame" x="16" y="6" width="28" height="28"/>
+                                        <rect key="frame" x="16" y="13" width="14" height="14"/>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入小区名称关键字" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="V8q-YV-lhq">
-                                        <rect key="frame" x="52" y="2" width="322" height="36"/>
+                                        <rect key="frame" x="38" y="2" width="336" height="36"/>
                                         <color key="textColor" red="0.023529411760000001" green="0.10980392160000001" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
