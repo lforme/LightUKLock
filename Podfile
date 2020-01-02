@@ -1,11 +1,11 @@
 
-  platform :ios, '11.0'
-  inhibit_all_warnings!
+platform :ios, '11.0'
+inhibit_all_warnings!
 
 target 'LightSmartLock' do
-
-  use_frameworks!  
-
+  
+  use_frameworks!
+  
   # Rx
   pod 'RxDataSources'
   pod 'Action'
@@ -17,7 +17,7 @@ target 'LightSmartLock' do
   
   # DB
   pod 'SQLite.swift'
-
+  
   # Tools
   pod 'Then'
   pod 'HandyJSON'
@@ -44,5 +44,17 @@ target 'LightSmartLock' do
   
   # 动画
   pod 'lottie-ios'
+  
+end
 
+target 'LSLWidget' do
+  inherit! :search_paths
+  use_frameworks!
+  # Rx
+  pod 'RxDataSources'
+  pod 'Action'
+  pod 'Moya/RxSwift'
+  pod 'NSObject+Rx'
+ 
+  pod 'HandyJSON'
 end

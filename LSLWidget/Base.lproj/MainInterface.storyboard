@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="门锁助手" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="安装位置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcl-sN-IIH">
+                                <rect key="frame" x="20" y="56" width="49.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="textOpaque78"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lslwidget_battery" translatesAutoresizingMaskIntoConstraints="NO" id="lzX-ng-oei">
+                                <rect key="frame" x="16" y="84.5" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="6Ue-25-NQ2"/>
+                                    <constraint firstAttribute="width" constant="32" id="jY8-fC-ECZ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电池电量" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tR2-Jr-djP">
+                                <rect key="frame" x="52" y="92" width="57.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="textColor" name="textPrimary"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最近解锁记录:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkq-W4-LQ0">
+                                <rect key="frame" x="20" y="128.5" width="77.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="textOpaque78"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hwL-yG-HTG">
+                                <rect key="frame" x="0.0" y="151" width="320" height="149"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="IhD-ec-HzZ">
+                                <rect key="frame" x="141.5" y="153.5" width="37" height="37"/>
+                                <color key="color" name="primary"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="hwL-yG-HTG" firstAttribute="top" secondItem="zkq-W4-LQ0" secondAttribute="bottom" constant="8" id="0yb-AK-UhF"/>
+                            <constraint firstItem="IhD-ec-HzZ" firstAttribute="centerY" secondItem="ssy-KU-ocm" secondAttribute="centerY" id="3Qg-6A-NGn"/>
+                            <constraint firstItem="tR2-Jr-djP" firstAttribute="leading" secondItem="lzX-ng-oei" secondAttribute="trailing" constant="4" id="5ai-RF-82i"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tR2-Jr-djP" secondAttribute="trailing" symbolic="YES" id="Aec-yy-AWx"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zkq-W4-LQ0" secondAttribute="trailing" symbolic="YES" id="CtX-yv-36L"/>
+                            <constraint firstItem="hwL-yG-HTG" firstAttribute="bottom" secondItem="ssy-KU-ocm" secondAttribute="bottom" id="EXO-ZD-TAV"/>
+                            <constraint firstItem="tR2-Jr-djP" firstAttribute="centerY" secondItem="lzX-ng-oei" secondAttribute="centerY" id="GPi-NM-Ea5"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Bcl-sN-IIH" secondAttribute="trailing" symbolic="YES" id="Hl5-rC-z36"/>
+                            <constraint firstItem="lzX-ng-oei" firstAttribute="top" secondItem="Bcl-sN-IIH" secondAttribute="bottom" constant="14" id="JNz-bq-eaQ"/>
+                            <constraint firstItem="IhD-ec-HzZ" firstAttribute="centerX" secondItem="ssy-KU-ocm" secondAttribute="centerX" id="MLj-KI-c2A"/>
+                            <constraint firstItem="Bcl-sN-IIH" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" constant="12" id="Svu-ba-9pG"/>
+                            <constraint firstItem="Bcl-sN-IIH" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="20" id="TwE-gz-Xl6"/>
+                            <constraint firstItem="zkq-W4-LQ0" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="20" id="Vmw-qW-jKc"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="hwL-yG-HTG" secondAttribute="trailing" id="Xi4-UI-StR"/>
+                            <constraint firstItem="zkq-W4-LQ0" firstAttribute="top" secondItem="lzX-ng-oei" secondAttribute="bottom" constant="12" id="crM-MH-7EW"/>
+                            <constraint firstItem="lzX-ng-oei" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="ga0-Vl-bzs"/>
+                            <constraint firstItem="hwL-yG-HTG" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" id="npT-Ep-ZaZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ssy-KU-ocm"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="300"/>
+                    <connections>
+                        <outlet property="indicatorView" destination="IhD-ec-HzZ" id="eJ2-lG-duQ"/>
+                        <outlet property="powerLabel" destination="tR2-Jr-djP" id="ASZ-fu-t1R"/>
+                        <outlet property="sceneNameLabel" destination="Bcl-sN-IIH" id="LUJ-An-Gd9"/>
+                        <outlet property="tableView" destination="hwL-yG-HTG" id="91L-Jo-4Um"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="96.428571428571431"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="lslwidget_battery" width="48" height="48"/>
+        <namedColor name="primary">
+            <color red="1" green="0.67799997329711914" blue="0.054999999701976776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textOpaque78">
+            <color red="0.039000000804662704" green="0.12200000137090683" blue="0.2669999897480011" alpha="0.77999997138977051" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textPrimary">
+            <color red="0.039000000804662704" green="0.12200000137090683" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

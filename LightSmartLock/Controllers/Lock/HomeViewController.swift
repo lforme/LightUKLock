@@ -50,6 +50,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         setupRightNavigationItems()
         observerNotification()
         synchronizeTaks.synchronizeTask()
+        
     }
     
     func setupUI() {

@@ -42,6 +42,11 @@ class LSLUser: NSObject {
         NotificationCenter.default.post(name: .loginStateDidChange, object: false)
         UIApplication.shared.applicationIconBadgeNumber = 0
         
+        let shareUserDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
+        ShareUserDefaultsKey.allCases.forEach {
+            shareUserDefault?.removeObject(forKey: $0.rawValue)
+            shareUserDefault?.synchronize()
+        }
     }
     
     var token: AccessTokenModel? {
@@ -49,6 +54,9 @@ class LSLUser: NSObject {
             guard let entity = newValue?.toJSONString() else { return }
             lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.token.rawValue, value: entity)
+            let shareUserDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
+            shareUserDefault?.set(entity, forKey: ShareUserDefaultsKey.token.rawValue)
+            shareUserDefault?.synchronize()
             lock.unlock()
         }
         
@@ -80,6 +88,9 @@ class LSLUser: NSObject {
             changeableUserInfo.accept(newValue)
             lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.userInfo.rawValue, value: entity)
+            let shareUserDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
+            shareUserDefault?.set(entity, forKey: ShareUserDefaultsKey.userInfo.rawValue)
+            shareUserDefault?.synchronize()
             lock.unlock()
         }
         
@@ -96,6 +107,9 @@ class LSLUser: NSObject {
             print("用户In场景更新")
             lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.userInScene.rawValue, value: entity)
+            let shareUserDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
+            shareUserDefault?.set(entity, forKey: ShareUserDefaultsKey.userInScene.rawValue)
+            shareUserDefault?.synchronize()
             lock.unlock()
         }
         
@@ -112,6 +126,9 @@ class LSLUser: NSObject {
             changeableScene.accept(newValue)
             lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.scene.rawValue, value: newValue?.toJSONString())
+            let shareUserDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
+            shareUserDefault?.set(newValue?.toJSONString(), forKey: ShareUserDefaultsKey.scene.rawValue)
+            shareUserDefault?.synchronize()
             lock.unlock()
         }
         

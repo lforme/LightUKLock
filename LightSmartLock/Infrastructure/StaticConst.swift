@@ -32,3 +32,12 @@ extension NSNotification.Name {
 struct PlatformKey {
     static let gouda = "caed09caa3daeca4a11a9eb671294d65"
 }
+
+enum ShareUserDefaultsKey: String, CaseIterable {
+    
+    case groupId = "group.lightsmartlock.sharedata"
+    case token = "group.token"
+    case userInScene = "group.userInScene"
+    case scene = "group.scene"
+    case userInfo = "group.user"
+}

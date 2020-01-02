@@ -160,9 +160,24 @@
 		9CBD8F5D23A24DA800886519 /* BluetoothSynchronizeTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD8F5C23A24DA800886519 /* BluetoothSynchronizeTask.swift */; };
 		9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD27212382801D006A9B97 /* AppDelegate.swift */; };
 		9CDD27292382801D006A9B97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD27272382801D006A9B97 /* Main.storyboard */; };
-		9CDD272B2382801E006A9B97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD272A2382801E006A9B97 /* Assets.xcassets */; };
 		9CDD272E2382801E006A9B97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD272C2382801E006A9B97 /* LaunchScreen.storyboard */; };
 		9CDD274423829363006A9B97 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD274323829363006A9B97 /* RootViewController.swift */; };
+		9CF01D7423BD8E01007578F3 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF01D4923BD8681007578F3 /* NotificationCenter.framework */; };
+		9CF01D7723BD8E01007578F3 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF01D7623BD8E01007578F3 /* TodayViewController.swift */; };
+		9CF01D7A23BD8E01007578F3 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF01D7823BD8E01007578F3 /* MainInterface.storyboard */; };
+		9CF01D7E23BD8E01007578F3 /* 门锁助手.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9CF01D7323BD8E01007578F3 /* 门锁助手.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9CF01D8C23BD9601007578F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD272A2382801E006A9B97 /* Assets.xcassets */; };
+		9CF01D9023BD9D96007578F3 /* StaticConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC2A2383CD94005EBF95 /* StaticConst.swift */; };
+		9CF01D9123BDA7DC007578F3 /* SceneModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC362383DE6E005EBF95 /* SceneModels.swift */; };
+		9CF01D9223BDA820007578F3 /* NetworkingEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDE1FE23851E310062522E /* NetworkingEnvironment.swift */; };
+		9CF01D9323BDA874007578F3 /* LocalArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC2F2383D89A005EBF95 /* LocalArchiver.swift */; };
+		9CF01D9623BDA8A8007578F3 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF01D9523BDA8A8007578F3 /* TodayViewModel.swift */; };
+		9CF01D9723BDA92F007578F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD272A2382801E006A9B97 /* Assets.xcassets */; };
+		9CF01D9923BDAC2A007578F3 /* WidgetNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF01D9823BDAC2A007578F3 /* WidgetNetwork.swift */; };
+		9CF01D9A23BDAD6C007578F3 /* AccessTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC322383D91B005EBF95 /* AccessTokenModel.swift */; };
+		9CF01D9B23BDAD72007578F3 /* LockModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC382383E00C005EBF95 /* LockModels.swift */; };
+		9CF01DA023BDCC76007578F3 /* WidgetUnlockRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF01D9E23BDCC76007578F3 /* WidgetUnlockRecordCell.swift */; };
+		9CF01DA123BDCC76007578F3 /* WidgetUnlockRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CF01D9F23BDCC76007578F3 /* WidgetUnlockRecordCell.xib */; };
 		9CFDE1FA2384EA2A0062522E /* opendoor.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CFDE1F82384EA2A0062522E /* opendoor.json */; };
 		9CFDE1FC238513D40062522E /* bluetooth.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CFDE1FB238513D40062522E /* bluetooth.json */; };
 		9CFDE1FF23851E310062522E /* NetworkingEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDE1FE23851E310062522E /* NetworkingEnvironment.swift */; };
@@ -175,12 +190,40 @@
 		9CFDE211238537A30062522E /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDE210238537A30062522E /* NetworkAPI.swift */; };
 		9CFDE21423853C170062522E /* NetworkMetaDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDE21323853C170062522E /* NetworkMetaDb.swift */; };
 		9CFDE21623853DE60062522E /* NetworkDiskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDE21523853DE60062522E /* NetworkDiskStorage.swift */; };
+		BCE1DAD52E025E19E9AB6E91 /* Pods_LSLWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F491F2D46130205BF93BEC8 /* Pods_LSLWidget.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9CF01D7C23BD8E01007578F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9CDD27162382801C006A9B97 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9CF01D7223BD8E01007578F3;
+			remoteInfo = LSLWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9CF01D5523BD8681007578F3 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				9CF01D7E23BD8E01007578F3 /* 门锁助手.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2CC741DB4C59065DD926D509 /* Pods-LightSmartLock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightSmartLock.release.xcconfig"; path = "Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock.release.xcconfig"; sourceTree = "<group>"; };
+		32EA0E92318E018ECB8C2F46 /* Pods-LSLWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSLWidget.debug.xcconfig"; path = "Target Support Files/Pods-LSLWidget/Pods-LSLWidget.debug.xcconfig"; sourceTree = "<group>"; };
+		3F491F2D46130205BF93BEC8 /* Pods_LSLWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LSLWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56B15D3085FA9EFD559AB2C2 /* Pods-LightSmartLock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightSmartLock.debug.xcconfig"; path = "Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock.debug.xcconfig"; sourceTree = "<group>"; };
 		5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LightSmartLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A21385643D81CD6A6F2D1C7 /* Pods-LSLWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSLWidget.release.xcconfig"; path = "Target Support Files/Pods-LSLWidget/Pods-LSLWidget.release.xcconfig"; sourceTree = "<group>"; };
 		9C03B0EA239F46510001E849 /* FingerManageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerManageController.swift; sourceTree = "<group>"; };
 		9C03B0EC239F49440001E849 /* FingerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerModel.swift; sourceTree = "<group>"; };
 		9C03B0EE239F4A7B0001E849 /* FingerManageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerManageViewModel.swift; sourceTree = "<group>"; };
@@ -338,6 +381,17 @@
 		9CDD272D2382801E006A9B97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CDD272F2382801E006A9B97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CDD274323829363006A9B97 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		9CF01D4923BD8681007578F3 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		9CF01D7323BD8E01007578F3 /* 门锁助手.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "门锁助手.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CF01D7623BD8E01007578F3 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		9CF01D7923BD8E01007578F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		9CF01D7B23BD8E01007578F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CF01D8E23BD9740007578F3 /* 门锁助手极速版.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "门锁助手极速版.entitlements"; sourceTree = "<group>"; };
+		9CF01D8F23BD9BE1007578F3 /* 门锁助手.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "门锁助手.entitlements"; sourceTree = "<group>"; };
+		9CF01D9523BDA8A8007578F3 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
+		9CF01D9823BDAC2A007578F3 /* WidgetNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetNetwork.swift; sourceTree = "<group>"; };
+		9CF01D9E23BDCC76007578F3 /* WidgetUnlockRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetUnlockRecordCell.swift; sourceTree = "<group>"; };
+		9CF01D9F23BDCC76007578F3 /* WidgetUnlockRecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WidgetUnlockRecordCell.xib; sourceTree = "<group>"; };
 		9CFDE1F82384EA2A0062522E /* opendoor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = opendoor.json; sourceTree = "<group>"; };
 		9CFDE1FB238513D40062522E /* bluetooth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bluetooth.json; sourceTree = "<group>"; };
 		9CFDE1FE23851E310062522E /* NetworkingEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingEnvironment.swift; sourceTree = "<group>"; };
@@ -361,6 +415,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9CF01D7023BD8E01007578F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CF01D7423BD8E01007578F3 /* NotificationCenter.framework in Frameworks */,
+				BCE1DAD52E025E19E9AB6E91 /* Pods_LSLWidget.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -369,6 +432,8 @@
 			children = (
 				56B15D3085FA9EFD559AB2C2 /* Pods-LightSmartLock.debug.xcconfig */,
 				2CC741DB4C59065DD926D509 /* Pods-LightSmartLock.release.xcconfig */,
+				32EA0E92318E018ECB8C2F46 /* Pods-LSLWidget.debug.xcconfig */,
+				9A21385643D81CD6A6F2D1C7 /* Pods-LSLWidget.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -377,6 +442,8 @@
 			isa = PBXGroup;
 			children = (
 				5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */,
+				9CF01D4923BD8681007578F3 /* NotificationCenter.framework */,
+				3F491F2D46130205BF93BEC8 /* Pods_LSLWidget.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -615,6 +682,7 @@
 			isa = PBXGroup;
 			children = (
 				9CDD27202382801D006A9B97 /* LightSmartLock */,
+				9CF01D7523BD8E01007578F3 /* LSLWidget */,
 				9CDD271F2382801D006A9B97 /* Products */,
 				101921C344D776C9AFC98337 /* Pods */,
 				4564EFD573D1492540C35AF0 /* Frameworks */,
@@ -625,6 +693,7 @@
 			isa = PBXGroup;
 			children = (
 				9CDD271E2382801D006A9B97 /* 门锁助手极速版.app */,
+				9CF01D7323BD8E01007578F3 /* 门锁助手.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -632,6 +701,7 @@
 		9CDD27202382801D006A9B97 /* LightSmartLock */ = {
 			isa = PBXGroup;
 			children = (
+				9CF01D8E23BD9740007578F3 /* 门锁助手极速版.entitlements */,
 				9C3726CF23910C0100450757 /* Bluepapa */,
 				9C524026238E12AF00308AC4 /* InvokedProxy */,
 				9CFDE1FD23851CC40062522E /* Network */,
@@ -735,6 +805,37 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		9CF01D7523BD8E01007578F3 /* LSLWidget */ = {
+			isa = PBXGroup;
+			children = (
+				9CF01D9D23BDCC52007578F3 /* View */,
+				9CF01D9423BDA891007578F3 /* ViewModel */,
+				9CF01D8F23BD9BE1007578F3 /* 门锁助手.entitlements */,
+				9CF01D7623BD8E01007578F3 /* TodayViewController.swift */,
+				9CF01D7823BD8E01007578F3 /* MainInterface.storyboard */,
+				9CF01D7B23BD8E01007578F3 /* Info.plist */,
+			);
+			path = LSLWidget;
+			sourceTree = "<group>";
+		};
+		9CF01D9423BDA891007578F3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9CF01D9523BDA8A8007578F3 /* TodayViewModel.swift */,
+				9CF01D9823BDAC2A007578F3 /* WidgetNetwork.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9CF01D9D23BDCC52007578F3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9CF01D9E23BDCC76007578F3 /* WidgetUnlockRecordCell.swift */,
+				9CF01D9F23BDCC76007578F3 /* WidgetUnlockRecordCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		9CFDE1F62384E9FD0062522E /* AnimationSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -786,15 +887,35 @@
 				9CDD271B2382801D006A9B97 /* Frameworks */,
 				9CDD271C2382801D006A9B97 /* Resources */,
 				1CF9CF37DF08EFBB844E8A99 /* [CP] Embed Pods Frameworks */,
+				9CF01D5523BD8681007578F3 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9CF01D7D23BD8E01007578F3 /* PBXTargetDependency */,
 			);
 			name = LightSmartLock;
 			productName = LightSmartLock;
 			productReference = 9CDD271E2382801D006A9B97 /* 门锁助手极速版.app */;
 			productType = "com.apple.product-type.application";
+		};
+		9CF01D7223BD8E01007578F3 /* LSLWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CF01D8123BD8E01007578F3 /* Build configuration list for PBXNativeTarget "LSLWidget" */;
+			buildPhases = (
+				DDEEE679226C4A93115C09E8 /* [CP] Check Pods Manifest.lock */,
+				9CF01D6F23BD8E01007578F3 /* Sources */,
+				9CF01D7023BD8E01007578F3 /* Frameworks */,
+				9CF01D7123BD8E01007578F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LSLWidget;
+			productName = LSLWidget;
+			productReference = 9CF01D7323BD8E01007578F3 /* 门锁助手.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -802,12 +923,15 @@
 		9CDD27162382801C006A9B97 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1120;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = mugua;
 				TargetAttributes = {
 					9CDD271D2382801D006A9B97 = {
 						CreatedOnToolsVersion = 11.2.1;
+					};
+					9CF01D7223BD8E01007578F3 = {
+						CreatedOnToolsVersion = 11.3;
 					};
 				};
 			};
@@ -825,6 +949,7 @@
 			projectRoot = "";
 			targets = (
 				9CDD271D2382801D006A9B97 /* LightSmartLock */,
+				9CF01D7223BD8E01007578F3 /* LSLWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -855,14 +980,24 @@
 				9CBD8F4523A2103D00886519 /* TempPasswordLogView.xib in Resources */,
 				9C524021238E0E3100308AC4 /* normal.json in Resources */,
 				9C524023238E0E3F00308AC4 /* error.json in Resources */,
-				9CDD272B2382801E006A9B97 /* Assets.xcassets in Resources */,
 				9CDD27292382801D006A9B97 /* Main.storyboard in Resources */,
 				9C7AFF1E239603F00075442D /* SearchPlotCell.xib in Resources */,
 				9CBD8F5523A23ADC00886519 /* DatePickerController.xib in Resources */,
 				9C47DB79239A0B0E0019EAA0 /* SelectPopupView.xib in Resources */,
 				9C24AC442383EB96005EBF95 /* My.storyboard in Resources */,
+				9CF01D9723BDA92F007578F3 /* Assets.xcassets in Resources */,
 				9C3726CC2390CE4D00450757 /* normalDarkMode.json in Resources */,
 				9C5471A423951C1E00432ACA /* DataPickerController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CF01D7123BD8E01007578F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CF01D8C23BD9601007578F3 /* Assets.xcassets in Resources */,
+				9CF01DA123BDCC76007578F3 /* WidgetUnlockRecordCell.xib in Resources */,
+				9CF01D7A23BD8E01007578F3 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -902,6 +1037,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-LightSmartLock-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDEEE679226C4A93115C09E8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LSLWidget-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1056,7 +1213,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9CF01D6F23BD8E01007578F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CF01DA023BDCC76007578F3 /* WidgetUnlockRecordCell.swift in Sources */,
+				9CF01D9B23BDAD72007578F3 /* LockModels.swift in Sources */,
+				9CF01D9A23BDAD6C007578F3 /* AccessTokenModel.swift in Sources */,
+				9CF01D9323BDA874007578F3 /* LocalArchiver.swift in Sources */,
+				9CF01D9923BDAC2A007578F3 /* WidgetNetwork.swift in Sources */,
+				9CF01D9223BDA820007578F3 /* NetworkingEnvironment.swift in Sources */,
+				9CF01D9623BDA8A8007578F3 /* TodayViewModel.swift in Sources */,
+				9CF01D9123BDA7DC007578F3 /* SceneModels.swift in Sources */,
+				9CF01D9023BD9D96007578F3 /* StaticConst.swift in Sources */,
+				9CF01D7723BD8E01007578F3 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9CF01D7D23BD8E01007578F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9CF01D7223BD8E01007578F3 /* LSLWidget */;
+			targetProxy = 9CF01D7C23BD8E01007578F3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9CDD27272382801D006A9B97 /* Main.storyboard */ = {
@@ -1073,6 +1255,14 @@
 				9CDD272D2382801E006A9B97 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		9CF01D7823BD8E01007578F3 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9CF01D7923BD8E01007578F3 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1196,9 +1386,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 56B15D3085FA9EFD559AB2C2 /* Pods-LightSmartLock.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "LightSmartLock/门锁助手极速版.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = RBJYLDFMF8;
 				INFOPLIST_FILE = LightSmartLock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1206,7 +1398,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock;
 				PRODUCT_NAME = "门锁助手极速版";
 				SWIFT_VERSION = 5.0;
@@ -1218,9 +1410,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2CC741DB4C59065DD926D509 /* Pods-LightSmartLock.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "LightSmartLock/门锁助手极速版.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = RBJYLDFMF8;
 				INFOPLIST_FILE = LightSmartLock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1228,9 +1422,55 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock;
 				PRODUCT_NAME = "门锁助手极速版";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		9CF01D7F23BD8E01007578F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32EA0E92318E018ECB8C2F46 /* Pods-LSLWidget.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "LSLWidget/门锁助手.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = RBJYLDFMF8;
+				INFOPLIST_FILE = LSLWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock.LSLWidget;
+				PRODUCT_NAME = "门锁助手";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9CF01D8023BD8E01007578F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A21385643D81CD6A6F2D1C7 /* Pods-LSLWidget.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "LSLWidget/门锁助手.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = RBJYLDFMF8;
+				INFOPLIST_FILE = LSLWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock.LSLWidget;
+				PRODUCT_NAME = "门锁助手";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1253,6 +1493,15 @@
 			buildConfigurations = (
 				9CDD27332382801E006A9B97 /* Debug */,
 				9CDD27342382801E006A9B97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9CF01D8123BD8E01007578F3 /* Build configuration list for PBXNativeTarget "LSLWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CF01D7F23BD8E01007578F3 /* Debug */,
+				9CF01D8023BD8E01007578F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
