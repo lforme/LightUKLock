@@ -32,7 +32,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     func setupUI() {
         tableView.tableFooterView = UIView()
         tableView.register(UINib(nibName: "WidgetUnlockRecordCell", bundle: nil), forCellReuseIdentifier: "WidgetUnlockRecordCell")
-        tableView.rowHeight = 56
+        tableView.rowHeight = 76
+        tableView.separatorStyle = .none
     }
     
     func bind() {
@@ -45,6 +46,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             cell.nameLabel.text = item.customerNickName
             cell.timeLabel.text = item.UnlockTime
             cell.unlockWayLabel.text = item.KeyType.description
+            switch ip.section {
+            case 0:
+                cell.bgView.backgroundColor = #colorLiteral(red: 0.9534692168, green: 0.4842274189, blue: 0.1130582169, alpha: 1)
+            case 1:
+                cell.bgView.backgroundColor = #colorLiteral(red: 0.009328175336, green: 0.5046331882, blue: 1, alpha: 1)
+            case 2:
+                cell.bgView.backgroundColor = #colorLiteral(red: 0.611283958, green: 0.1478919685, blue: 0.6898549199, alpha: 1)
+            default: break
+            }
+            
             return cell
         })
         
@@ -68,7 +79,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         case .compact:
             preferredContentSize = maxSize
         case .expanded:
-            preferredContentSize = CGSize(width: 0.0, height: 60 * CGFloat(5))
+            preferredContentSize = CGSize(width: 0.0, height: 70 * CGFloat(5))
         @unknown default:
             fatalError()
         }
