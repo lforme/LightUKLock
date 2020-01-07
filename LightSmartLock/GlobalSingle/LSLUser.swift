@@ -104,7 +104,7 @@ class LSLUser: NSObject {
     var userInScene: UserInSceneModel? {
         set {
             guard let entity = newValue?.toJSONString() else { return }
-            print("用户In场景更新")
+            print("用户场景更新")
             lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.userInScene.rawValue, value: entity)
             let shareUserDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
