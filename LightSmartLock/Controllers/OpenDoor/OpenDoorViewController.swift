@@ -81,6 +81,7 @@ class OpenDoorViewController: UIViewController {
         self.view.backgroundColor = ColorClassification.tableViewBackground.value
         label.textColor = ColorClassification.textPrimary.value
         desLabel.textColor = ColorClassification.textOpaque78.value
+        backButton.layer.transform = CATransform3DMakeRotation(.pi * 3 / 2, 0, 0, 1)
     }
     
     @IBAction func backTap(_ sender: UIButton) {
