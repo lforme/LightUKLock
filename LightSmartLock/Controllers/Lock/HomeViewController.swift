@@ -44,8 +44,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "门锁助手"
-        
+    
         setupUI()
         setupRightNavigationItems()
         observerNotification()
@@ -64,24 +63,38 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         tableView.separatorStyle = .none
         tableView.backgroundColor = ColorClassification.tableViewBackground.value
         view.backgroundColor = ColorClassification.viewBackground.value
+        AppDelegate.changeStatusBarStyle(.lightContent)
     }
     
     func setupRightNavigationItems() {
         
-        let moreButton = UIButton(type: .custom)
-        moreButton.setImage(UIImage(named: "home_more_item"), for: UIControl.State())
-        moreButton.frame.size = CGSize(width: 32, height: 32)
-        moreButton.contentHorizontalAlignment = .right
-        moreButton.addTarget(self, action: #selector(self.gotoSettingVC), for: .touchUpInside)
-        let moreItem = UIBarButtonItem(customView: moreButton)
+        let lockSettingButton = UIButton(type: .custom)
+        lockSettingButton.setImage(UIImage(named: "home_lock_setting_item"), for: UIControl.State())
+        lockSettingButton.frame.size = CGSize(width: 32, height: 32)
+        lockSettingButton.contentHorizontalAlignment = .right
+        lockSettingButton.addTarget(self, action: #selector(self.gotoSettingVC), for: .touchUpInside)
+        let settingItem = UIBarButtonItem(customView: lockSettingButton)
         
-        let notiButton = UIButton(type: .custom)
-        notiButton.setImage(UIImage(named: "home_noti_item"), for: UIControl.State())
-        notiButton.frame.size = CGSize(width: 32, height: 32)
-        notiButton.contentHorizontalAlignment = .left
-        notiButton.addTarget(self, action: #selector(self.gotoMessageCenterVC), for: .touchUpInside)
-        let notiItem = UIBarButtonItem(customView: notiButton)
-        self.navigationItem.rightBarButtonItems = [moreItem, notiItem]
+        let sceneButton = UIButton(type: .custom)
+        sceneButton.contentHorizontalAlignment = .left
+        sceneButton.addTarget(self, action: #selector(self.gotoMessageCenterVC), for: .touchUpInside)
+        sceneButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        sceneButton.setImage(UIImage(named: "home_scene_icon"), for: UIControl.State())
+        LSLUser.current().obScene.subscribe(onNext: { (scene) in
+            if let name = scene?.sceneName {
+                sceneButton.setTitle(
+                    "  \(name)", for: UIControl.State())
+            } else {
+                sceneButton.setTitle(
+                "  暂无数据", for: UIControl.State())
+            }
+            
+        }).disposed(by: rx.disposeBag)
+        
+        let sceneItem = UIBarButtonItem(customView: sceneButton)
+        
+        self.navigationItem.leftBarButtonItems = [sceneItem]
+        self.navigationItem.rightBarButtonItems = [settingItem]
     }
     
     func bind() {
@@ -216,8 +229,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let header = tableView.dequeueReusableCell(withIdentifier: "HomeControlCell") as! HomeControlCell
             header.userButton.addTarget(self, action: #selector(self.gotoUserManagementVC), for: .touchUpInside)
             header.keyButton.addTarget(self, action: #selector(self.gotoPasswordManagementVC), for: .touchUpInside)
-            header.fingerButton.addTarget(self, action: #selector(self.gotoFingerManagementVC), for: .touchUpInside)
-            header.cardButton.addTarget(self, action: #selector(self.gotoCardManagementVC), for: .touchUpInside)
+//            header.fingerButton.addTarget(self, action: #selector(self.gotoFingerManagementVC), for: .touchUpInside)
+//            header.cardButton.addTarget(self, action: #selector(self.gotoCardManagementVC), for: .touchUpInside)
             return header
         }
         

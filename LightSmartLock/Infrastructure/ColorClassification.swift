@@ -32,12 +32,12 @@ enum ColorClassification {
                     if collection.userInterfaceStyle == .dark {
                         return #colorLiteral(red: 0.2, green: 0.2039215686, blue: 0.2078431373, alpha: 1)
                     } else {
-                        return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                        return #colorLiteral(red: 0.3254901961, green: 0.5843137255, blue: 0.9137254902, alpha: 1)
                     }
                 }
                 return color
             } else {
-                return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                return #colorLiteral(red: 0.3254901961, green: 0.5843137255, blue: 0.9137254902, alpha: 1)
             }
             
         case .navigationItem:
@@ -46,12 +46,12 @@ enum ColorClassification {
                     if collection.userInterfaceStyle == .dark {
                         return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                     } else {
-                        return #colorLiteral(red: 0.09411764706, green: 0.1725490196, blue: 0.3098039216, alpha: 1)
+                        return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                     }
                 }
                 return color
             } else {
-                return #colorLiteral(red: 0.09411764706, green: 0.1725490196, blue: 0.3098039216, alpha: 1)
+                return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             }
             
         case .viewBackground:
@@ -88,12 +88,12 @@ enum ColorClassification {
                     if collection.userInterfaceStyle == .dark {
                         return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                     } else {
-                        return #colorLiteral(red: 0.03921568627, green: 0.1215686275, blue: 0.2666666667, alpha: 1)
+                        return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                     }
                 }
                 return color
             } else {
-                return #colorLiteral(red: 0.03921568627, green: 0.1215686275, blue: 0.2666666667, alpha: 1)
+                return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             }
             
         case .textPrimary:
@@ -174,14 +174,14 @@ enum ColorClassification {
             if #available(iOS 13.0, *) {
                 let color = UIColor { (collection) -> UIColor in
                     if collection.userInterfaceStyle == .dark {
-                        return #colorLiteral(red: 1, green: 0.6784313725, blue: 0.05490196078, alpha: 1)
+                        return #colorLiteral(red: 0.3254901961, green: 0.5843137255, blue: 0.9137254902, alpha: 1)
                     } else {
-                        return #colorLiteral(red: 1, green: 0.6784313725, blue: 0.05490196078, alpha: 1)
+                        return #colorLiteral(red: 0.3254901961, green: 0.5843137255, blue: 0.9137254902, alpha: 1)
                     }
                 }
                 return color
             } else {
-                return #colorLiteral(red: 0.9982913136, green: 0.6771650314, blue: 0.05553042889, alpha: 1)
+                return #colorLiteral(red: 0.3254901961, green: 0.5843137255, blue: 0.9137254902, alpha: 1)
             }
             
         case .hudColor:

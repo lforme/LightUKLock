@@ -66,36 +66,18 @@ class RootViewController: UIViewController {
         homeTabBarVC?.tabBar.shadowImage = UIImage.from(color: #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 0.48))
         homeTabBarVC?.tabBar.backgroundImage = UIImage.from(color: ColorClassification.viewBackground.value)
         
-        homeTabBarVC?.shouldHijackHandler = { tabVC, vc, index in
-            if index == 1 {
-                return true
-            }
-            return false
-        }
-        
-        homeTabBarVC?.didHijackHandler = {[weak self] tabVC, vc, Index in
-            
-            if LSLUser.current().lockInfo?.secretKey == nil {
-                HUD.flash(.label("请先绑定门锁"), delay: 2)
-                return
-            }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                let openDoorVC: OpenDoorViewController = ViewLoader.Xib.controller()
-                self?.homeTabBarVC?.present(openDoorVC, animated: true, completion: nil)
-            }
-        }
-        
         let home: HomeViewController = ViewLoader.Storyboard.controller(from: "Home")
-        let open = UIViewController()
+        let calendar: CalendarViewController = ViewLoader.Storyboard.controller(from: "Calendar")
+        let house: HouseViewController = ViewLoader.Storyboard.controller(from: "House")
         let my: MyViewController = ViewLoader.Storyboard.controller(from: "My")
         
-        home.tabBarItem = ESTabBarItem(CustomizedTabbarItem(), title: "门锁助手", image: UIImage(named: "tabbar_home"), selectedImage: UIImage(named: "tabbar_home"), tag: 0)
-        open.tabBarItem = ESTabBarItem(CustomizedOpenDoorItem(), title: nil, image: UIImage(named: "tabbar_open_door"), selectedImage: UIImage(named: "tabbar_open_door"), tag: 1)
-        my.tabBarItem = ESTabBarItem(CustomizedTabbarItem(), title: "个人中心", image: UIImage(named: "tabbar_my"), selectedImage: UIImage(named: "tabbar_my"), tag: 2)
+        home.tabBarItem = ESTabBarItem(CustomizedTabbarItem(), title: "门锁", image: UIImage(named: "tabbar_home"), selectedImage: UIImage(named: "tabbar_home"), tag: 0)
+        calendar.tabBarItem = ESTabBarItem(CustomizedTabbarItem(), title: "日历", image: UIImage(named: "tabbar_calendar"), selectedImage: UIImage(named: "tabbar_calendar"), tag: 0)
+        house.tabBarItem = ESTabBarItem(CustomizedTabbarItem(), title: "房源", image: UIImage(named: "tabbar_asset"), selectedImage: UIImage(named: "tabbar_asset"), tag: 0)
+        my.tabBarItem = ESTabBarItem(CustomizedTabbarItem(), title: "我的", image: UIImage(named: "tabbar_my"), selectedImage: UIImage(named: "tabbar_my"), tag: 2)
        
         
-        let vcs = [home, open, my].map { BaseNavigationController(rootViewController: $0) }
+        let vcs = [home, calendar, house, my].map { BaseNavigationController(rootViewController: $0) }
         homeTabBarVC?.viewControllers = vcs
         
         self.view.addSubview(homeTabBarVC!.view)

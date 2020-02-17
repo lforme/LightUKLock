@@ -30,6 +30,10 @@
 		9C1B87CB2397942700216ADA /* LockBindViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B87CA2397942700216ADA /* LockBindViewModel.swift */; };
 		9C1B87CD23979B7200216ADA /* SelectLockTypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B87CC23979B7200216ADA /* SelectLockTypeController.swift */; };
 		9C1C838E23892C83005BB17C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C838D23892C83005BB17C /* HomeViewModel.swift */; };
+		9C218F9A23FA764A009600F7 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C218F9823FA764A009600F7 /* Calendar.storyboard */; };
+		9C218F9B23FA764A009600F7 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C218F9923FA764A009600F7 /* CalendarViewController.swift */; };
+		9C218F9F23FA765B009600F7 /* House.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C218F9D23FA765B009600F7 /* House.storyboard */; };
+		9C218FA023FA765B009600F7 /* HouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C218F9E23FA765B009600F7 /* HouseViewController.swift */; };
 		9C24AC1423838C80005EBF95 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1323838C80005EBF95 /* BaseNavigationController.swift */; };
 		9C24AC1623838CD1005EBF95 /* NavigationSettingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1523838CD1005EBF95 /* NavigationSettingStyle.swift */; };
 		9C24AC1923838E56005EBF95 /* UIFont+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1823838E56005EBF95 /* UIFont+extension.swift */; };
@@ -56,7 +60,6 @@
 		9C24AC462383EBB1005EBF95 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC452383EBB1005EBF95 /* MyViewController.swift */; };
 		9C24AC482383EBE5005EBF95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC472383EBE5005EBF95 /* HomeViewController.swift */; };
 		9C24AC4A2383F344005EBF95 /* CustomizedTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC492383F344005EBF95 /* CustomizedTabbarItem.swift */; };
-		9C24AC4C2383F639005EBF95 /* CustomizedOpenDoorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC4B2383F639005EBF95 /* CustomizedOpenDoorItem.swift */; };
 		9C3726C62390B2DD00450757 /* ChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3726C52390B2DD00450757 /* ChangePasswordController.swift */; };
 		9C3726C82390C6AD00450757 /* Empty+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3726C72390C6AD00450757 /* Empty+UIViewController.swift */; };
 		9C3726CC2390CE4D00450757 /* normalDarkMode.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C3726CB2390CE4D00450757 /* normalDarkMode.json */; };
@@ -246,6 +249,10 @@
 		9C1B87CA2397942700216ADA /* LockBindViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockBindViewModel.swift; sourceTree = "<group>"; };
 		9C1B87CC23979B7200216ADA /* SelectLockTypeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLockTypeController.swift; sourceTree = "<group>"; };
 		9C1C838D23892C83005BB17C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		9C218F9823FA764A009600F7 /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
+		9C218F9923FA764A009600F7 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		9C218F9D23FA765B009600F7 /* House.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = House.storyboard; sourceTree = "<group>"; };
+		9C218F9E23FA765B009600F7 /* HouseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseViewController.swift; sourceTree = "<group>"; };
 		9C24AC1323838C80005EBF95 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		9C24AC1523838CD1005EBF95 /* NavigationSettingStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSettingStyle.swift; sourceTree = "<group>"; };
 		9C24AC1823838E56005EBF95 /* UIFont+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+extension.swift"; sourceTree = "<group>"; };
@@ -272,7 +279,6 @@
 		9C24AC452383EBB1005EBF95 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		9C24AC472383EBE5005EBF95 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9C24AC492383F344005EBF95 /* CustomizedTabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedTabbarItem.swift; sourceTree = "<group>"; };
-		9C24AC4B2383F639005EBF95 /* CustomizedOpenDoorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedOpenDoorItem.swift; sourceTree = "<group>"; };
 		9C3726C52390B2DD00450757 /* ChangePasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordController.swift; sourceTree = "<group>"; };
 		9C3726C72390C6AD00450757 /* Empty+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Empty+UIViewController.swift"; sourceTree = "<group>"; };
 		9C3726CB2390CE4D00450757 /* normalDarkMode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = normalDarkMode.json; sourceTree = "<group>"; };
@@ -521,6 +527,24 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		9C218F9723FA764A009600F7 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				9C218F9823FA764A009600F7 /* Calendar.storyboard */,
+				9C218F9923FA764A009600F7 /* CalendarViewController.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		9C218F9C23FA765B009600F7 /* House */ = {
+			isa = PBXGroup;
+			children = (
+				9C218F9D23FA765B009600F7 /* House.storyboard */,
+				9C218F9E23FA765B009600F7 /* HouseViewController.swift */,
+			);
+			path = House;
+			sourceTree = "<group>";
+		};
 		9C24AC1023838417005EBF95 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
@@ -529,7 +553,6 @@
 				9C24AC1E2383A2C7005EBF95 /* ColorClassification.swift */,
 				9C24AC2A2383CD94005EBF95 /* StaticConst.swift */,
 				9C24AC492383F344005EBF95 /* CustomizedTabbarItem.swift */,
-				9C24AC4B2383F639005EBF95 /* CustomizedOpenDoorItem.swift */,
 				9C3726C72390C6AD00450757 /* Empty+UIViewController.swift */,
 				9C7AFF21239631930075442D /* UKRefreshStatus.swift */,
 				9C47DB82239A39070019EAA0 /* ListViewModeling.swift */,
@@ -725,6 +748,8 @@
 		9CDD2739238283D8006A9B97 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9C218F9C23FA765B009600F7 /* House */,
+				9C218F9723FA764A009600F7 /* Calendar */,
 				9C1B87C02397677300216ADA /* InitialLock */,
 				9CDD27452382AD4E006A9B97 /* Login */,
 				9CDD273E23828639006A9B97 /* OpenDoor */,
@@ -975,8 +1000,10 @@
 				9CFDE20B238531CB0062522E /* loading.json in Resources */,
 				9CBD8F4D23A21E7D00886519 /* PasswordChangeStatusCell.xib in Resources */,
 				9CDD272E2382801E006A9B97 /* LaunchScreen.storyboard in Resources */,
+				9C218F9F23FA765B009600F7 /* House.storyboard in Resources */,
 				9C24AC422383EB88005EBF95 /* Home.storyboard in Resources */,
 				9C524025238E0E5500308AC4 /* warning.json in Resources */,
+				9C218F9A23FA764A009600F7 /* Calendar.storyboard in Resources */,
 				9CBD8F4523A2103D00886519 /* TempPasswordLogView.xib in Resources */,
 				9C524021238E0E3100308AC4 /* normal.json in Resources */,
 				9C524023238E0E3F00308AC4 /* error.json in Resources */,
@@ -1118,7 +1145,6 @@
 				9CDD274423829363006A9B97 /* RootViewController.swift in Sources */,
 				9C5471A523951C1E00432ACA /* DataPickerController.swift in Sources */,
 				9CFDE207238523A80062522E /* LoadingPlugin.swift in Sources */,
-				9C24AC4C2383F639005EBF95 /* CustomizedOpenDoorItem.swift in Sources */,
 				9C03B0F1239F51240001E849 /* FingerDetailController.swift in Sources */,
 				9C5A967823A07D4E002A2B06 /* AddCardController.swift in Sources */,
 				9C7705A1238FE358008E1552 /* SingleInputController.swift in Sources */,
@@ -1129,6 +1155,7 @@
 				9C3726E52391369900450757 /* MessageCenterController.swift in Sources */,
 				9CBD8F5723A23E4700886519 /* SharePwdMultipleViewModel.swift in Sources */,
 				9C3726E32391164700450757 /* OpenDoorViewModel.swift in Sources */,
+				9C218F9B23FA764A009600F7 /* CalendarViewController.swift in Sources */,
 				9C1A4BCC238D35BA00626DB4 /* HomeUnlockRecordHeader.swift in Sources */,
 				9CFDE211238537A30062522E /* NetworkAPI.swift in Sources */,
 				9C77059E238FCC79008E1552 /* MySettingViewModel.swift in Sources */,
@@ -1186,6 +1213,7 @@
 				9C24AC392383E00C005EBF95 /* LockModels.swift in Sources */,
 				9C1B87C42397693100216ADA /* LockStartScanningController.swift in Sources */,
 				9C7AFF20239618040075442D /* SearchPlotViewModel.swift in Sources */,
+				9C218FA023FA765B009600F7 /* HouseViewController.swift in Sources */,
 				9C54719B239507DE00432ACA /* LSLWebViewController.swift in Sources */,
 				9C24AC252383C9CB005EBF95 /* UIView+Extension.swift in Sources */,
 				9C5A967A23A07F62002A2B06 /* CardManageController.swift in Sources */,
