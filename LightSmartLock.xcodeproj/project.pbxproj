@@ -21,8 +21,6 @@
 		9C1A4BC5238D0A1A00626DB4 /* AnimationHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC3238D0A1A00626DB4 /* AnimationHeaderView.xib */; };
 		9C1A4BC8238D2E7C00626DB4 /* HomeControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC6238D2E7C00626DB4 /* HomeControlCell.swift */; };
 		9C1A4BC9238D2E7C00626DB4 /* HomeControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC7238D2E7C00626DB4 /* HomeControlCell.xib */; };
-		9C1A4BCC238D35BA00626DB4 /* HomeUnlockRecordHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A4BCA238D35BA00626DB4 /* HomeUnlockRecordHeader.swift */; };
-		9C1A4BCD238D35BA00626DB4 /* HomeUnlockRecordHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A4BCB238D35BA00626DB4 /* HomeUnlockRecordHeader.xib */; };
 		9C1B87C2239767A100216ADA /* InitialLock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1B87C1239767A100216ADA /* InitialLock.storyboard */; };
 		9C1B87C42397693100216ADA /* LockStartScanningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B87C32397693100216ADA /* LockStartScanningController.swift */; };
 		9C1B87C72397701C00216ADA /* LockStartScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B87C62397701C00216ADA /* LockStartScanViewModel.swift */; };
@@ -34,6 +32,11 @@
 		9C218F9B23FA764A009600F7 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C218F9923FA764A009600F7 /* CalendarViewController.swift */; };
 		9C218F9F23FA765B009600F7 /* House.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C218F9D23FA765B009600F7 /* House.storyboard */; };
 		9C218FA023FA765B009600F7 /* HouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C218F9E23FA765B009600F7 /* HouseViewController.swift */; };
+		9C218FA223FA8495009600F7 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C218FA123FA8495009600F7 /* loading.json */; };
+		9C218FA523FA8CC9009600F7 /* LeasedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C218FA323FA8CC9009600F7 /* LeasedCell.swift */; };
+		9C218FA623FA8CC9009600F7 /* LeasedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C218FA423FA8CC9009600F7 /* LeasedCell.xib */; };
+		9C218FA923FA918E009600F7 /* NotLeasedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C218FA723FA918E009600F7 /* NotLeasedCell.swift */; };
+		9C218FAA23FA918E009600F7 /* NotLeasedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C218FA823FA918E009600F7 /* NotLeasedCell.xib */; };
 		9C24AC1423838C80005EBF95 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1323838C80005EBF95 /* BaseNavigationController.swift */; };
 		9C24AC1623838CD1005EBF95 /* NavigationSettingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1523838CD1005EBF95 /* NavigationSettingStyle.swift */; };
 		9C24AC1923838E56005EBF95 /* UIFont+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1823838E56005EBF95 /* UIFont+extension.swift */; };
@@ -188,7 +191,6 @@
 		9CFDE20323851F660062522E /* NetworkInterfaceImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDE20223851F660062522E /* NetworkInterfaceImplement.swift */; };
 		9CFDE2052385219F0062522E /* RxMoyaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDE2042385219F0062522E /* RxMoyaProvider.swift */; };
 		9CFDE207238523A80062522E /* LoadingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDE206238523A80062522E /* LoadingPlugin.swift */; };
-		9CFDE20B238531CB0062522E /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CFDE20A238531CB0062522E /* loading.json */; };
 		9CFDE20F2385346E0062522E /* AppErrorDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDE20E2385346E0062522E /* AppErrorDomain.swift */; };
 		9CFDE211238537A30062522E /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDE210238537A30062522E /* NetworkAPI.swift */; };
 		9CFDE21423853C170062522E /* NetworkMetaDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDE21323853C170062522E /* NetworkMetaDb.swift */; };
@@ -240,8 +242,6 @@
 		9C1A4BC3238D0A1A00626DB4 /* AnimationHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimationHeaderView.xib; sourceTree = "<group>"; };
 		9C1A4BC6238D2E7C00626DB4 /* HomeControlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeControlCell.swift; sourceTree = "<group>"; };
 		9C1A4BC7238D2E7C00626DB4 /* HomeControlCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeControlCell.xib; sourceTree = "<group>"; };
-		9C1A4BCA238D35BA00626DB4 /* HomeUnlockRecordHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUnlockRecordHeader.swift; sourceTree = "<group>"; };
-		9C1A4BCB238D35BA00626DB4 /* HomeUnlockRecordHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeUnlockRecordHeader.xib; sourceTree = "<group>"; };
 		9C1B87C1239767A100216ADA /* InitialLock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InitialLock.storyboard; sourceTree = "<group>"; };
 		9C1B87C32397693100216ADA /* LockStartScanningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockStartScanningController.swift; sourceTree = "<group>"; };
 		9C1B87C62397701C00216ADA /* LockStartScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockStartScanViewModel.swift; sourceTree = "<group>"; };
@@ -253,6 +253,11 @@
 		9C218F9923FA764A009600F7 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		9C218F9D23FA765B009600F7 /* House.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = House.storyboard; sourceTree = "<group>"; };
 		9C218F9E23FA765B009600F7 /* HouseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseViewController.swift; sourceTree = "<group>"; };
+		9C218FA123FA8495009600F7 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		9C218FA323FA8CC9009600F7 /* LeasedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeasedCell.swift; sourceTree = "<group>"; };
+		9C218FA423FA8CC9009600F7 /* LeasedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeasedCell.xib; sourceTree = "<group>"; };
+		9C218FA723FA918E009600F7 /* NotLeasedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotLeasedCell.swift; sourceTree = "<group>"; };
+		9C218FA823FA918E009600F7 /* NotLeasedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotLeasedCell.xib; sourceTree = "<group>"; };
 		9C24AC1323838C80005EBF95 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		9C24AC1523838CD1005EBF95 /* NavigationSettingStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSettingStyle.swift; sourceTree = "<group>"; };
 		9C24AC1823838E56005EBF95 /* UIFont+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+extension.swift"; sourceTree = "<group>"; };
@@ -405,7 +410,6 @@
 		9CFDE20223851F660062522E /* NetworkInterfaceImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterfaceImplement.swift; sourceTree = "<group>"; };
 		9CFDE2042385219F0062522E /* RxMoyaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxMoyaProvider.swift; sourceTree = "<group>"; };
 		9CFDE206238523A80062522E /* LoadingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPlugin.swift; sourceTree = "<group>"; };
-		9CFDE20A238531CB0062522E /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		9CFDE20E2385346E0062522E /* AppErrorDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrorDomain.swift; sourceTree = "<group>"; };
 		9CFDE210238537A30062522E /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
 		9CFDE21323853C170062522E /* NetworkMetaDb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMetaDb.swift; sourceTree = "<group>"; };
@@ -461,8 +465,6 @@
 				9C1A4BC3238D0A1A00626DB4 /* AnimationHeaderView.xib */,
 				9C1A4BC6238D2E7C00626DB4 /* HomeControlCell.swift */,
 				9C1A4BC7238D2E7C00626DB4 /* HomeControlCell.xib */,
-				9C1A4BCA238D35BA00626DB4 /* HomeUnlockRecordHeader.swift */,
-				9C1A4BCB238D35BA00626DB4 /* HomeUnlockRecordHeader.xib */,
 				9C52402B238E163D00308AC4 /* UnlockRecordCell.swift */,
 				9C52402C238E163D00308AC4 /* UnlockRecordCell.xib */,
 				9C7AFF1B239603F00075442D /* SearchPlotCell.swift */,
@@ -471,6 +473,10 @@
 				9CBD8F4423A2103D00886519 /* TempPasswordLogView.xib */,
 				9CBD8F4A23A21E7D00886519 /* PasswordChangeStatusCell.swift */,
 				9CBD8F4B23A21E7D00886519 /* PasswordChangeStatusCell.xib */,
+				9C218FA323FA8CC9009600F7 /* LeasedCell.swift */,
+				9C218FA423FA8CC9009600F7 /* LeasedCell.xib */,
+				9C218FA723FA918E009600F7 /* NotLeasedCell.swift */,
+				9C218FA823FA918E009600F7 /* NotLeasedCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -864,11 +870,11 @@
 		9CFDE1F62384E9FD0062522E /* AnimationSource */ = {
 			isa = PBXGroup;
 			children = (
+				9C218FA123FA8495009600F7 /* loading.json */,
 				9C524022238E0E3F00308AC4 /* error.json */,
 				9C524024238E0E5500308AC4 /* warning.json */,
 				9C3726CB2390CE4D00450757 /* normalDarkMode.json */,
 				9C524020238E0E3100308AC4 /* normal.json */,
-				9CFDE20A238531CB0062522E /* loading.json */,
 				9CFDE1FB238513D40062522E /* bluetooth.json */,
 				9CFDE1F82384EA2A0062522E /* opendoor.json */,
 				9C03B0FC239FB3620001E849 /* addFinger.json */,
@@ -985,6 +991,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C1B87C2239767A100216ADA /* InitialLock.storyboard in Resources */,
+				9C218FAA23FA918E009600F7 /* NotLeasedCell.xib in Resources */,
+				9C218FA223FA8495009600F7 /* loading.json in Resources */,
 				9C7705A2238FE358008E1552 /* SingleInputController.xib in Resources */,
 				9C03B0FD239FB3620001E849 /* addFinger.json in Resources */,
 				9C1A4BC5238D0A1A00626DB4 /* AnimationHeaderView.xib in Resources */,
@@ -994,15 +1002,14 @@
 				9CFDE1FA2384EA2A0062522E /* opendoor.json in Resources */,
 				9C770597238FA351008E1552 /* MyListCell.xib in Resources */,
 				9C24AC402383EB55005EBF95 /* OpenDoorViewController.xib in Resources */,
-				9C1A4BCD238D35BA00626DB4 /* HomeUnlockRecordHeader.xib in Resources */,
 				9C24AC212383C1C6005EBF95 /* Login.storyboard in Resources */,
 				9C52402E238E163D00308AC4 /* UnlockRecordCell.xib in Resources */,
-				9CFDE20B238531CB0062522E /* loading.json in Resources */,
 				9CBD8F4D23A21E7D00886519 /* PasswordChangeStatusCell.xib in Resources */,
 				9CDD272E2382801E006A9B97 /* LaunchScreen.storyboard in Resources */,
 				9C218F9F23FA765B009600F7 /* House.storyboard in Resources */,
 				9C24AC422383EB88005EBF95 /* Home.storyboard in Resources */,
 				9C524025238E0E5500308AC4 /* warning.json in Resources */,
+				9C218FA623FA8CC9009600F7 /* LeasedCell.xib in Resources */,
 				9C218F9A23FA764A009600F7 /* Calendar.storyboard in Resources */,
 				9CBD8F4523A2103D00886519 /* TempPasswordLogView.xib in Resources */,
 				9C524021238E0E3100308AC4 /* normal.json in Resources */,
@@ -1156,7 +1163,6 @@
 				9CBD8F5723A23E4700886519 /* SharePwdMultipleViewModel.swift in Sources */,
 				9C3726E32391164700450757 /* OpenDoorViewModel.swift in Sources */,
 				9C218F9B23FA764A009600F7 /* CalendarViewController.swift in Sources */,
-				9C1A4BCC238D35BA00626DB4 /* HomeUnlockRecordHeader.swift in Sources */,
 				9CFDE211238537A30062522E /* NetworkAPI.swift in Sources */,
 				9C77059E238FCC79008E1552 /* MySettingViewModel.swift in Sources */,
 				9CFDE21623853DE60062522E /* NetworkDiskStorage.swift in Sources */,
@@ -1199,6 +1205,7 @@
 				9C7AFF1D239603F00075442D /* SearchPlotCell.swift in Sources */,
 				9C7AFF24239636640075442D /* NSMutableAttributedString+Extention.swift in Sources */,
 				9C1B87C72397701C00216ADA /* LockStartScanViewModel.swift in Sources */,
+				9C218FA523FA8CC9009600F7 /* LeasedCell.swift in Sources */,
 				9C24AC1623838CD1005EBF95 /* NavigationSettingStyle.swift in Sources */,
 				9C3726D923910C0100450757 /* NORServiceIdentifiers.swift in Sources */,
 				9C24AC1423838C80005EBF95 /* BaseNavigationController.swift in Sources */,
@@ -1228,6 +1235,7 @@
 				9C03B0F5239F83D00001E849 /* AddFingerController.swift in Sources */,
 				9C3726C82390C6AD00450757 /* Empty+UIViewController.swift in Sources */,
 				9C770592238FA11A008E1552 /* MyInfoHeader.swift in Sources */,
+				9C218FA923FA918E009600F7 /* NotLeasedCell.swift in Sources */,
 				9C52402D238E163D00308AC4 /* UnlockRecordCell.swift in Sources */,
 				9C452F082394AA2E00144827 /* CenterMessageModel.swift in Sources */,
 				9CBD8F5D23A24DA800886519 /* BluetoothSynchronizeTask.swift in Sources */,
@@ -1418,7 +1426,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "LightSmartLock/门锁助手极速版.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = RBJYLDFMF8;
 				INFOPLIST_FILE = LightSmartLock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1426,7 +1434,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock;
 				PRODUCT_NAME = "门锁助手极速版";
 				SWIFT_VERSION = 5.0;
@@ -1442,7 +1450,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "LightSmartLock/门锁助手极速版.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = RBJYLDFMF8;
 				INFOPLIST_FILE = LightSmartLock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1450,7 +1458,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock;
 				PRODUCT_NAME = "门锁助手极速版";
 				SWIFT_VERSION = 5.0;

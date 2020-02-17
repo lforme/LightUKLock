@@ -38,7 +38,7 @@ final class LoadingPlugin: PluginType {
     private func creatAnimationView() -> UIView {
         let animation = Animation.named("loading", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)!
         let animationView = AnimationView(animation: animation)
-        animationView.frame.size = CGSize(width: 40, height: 40)
+        animationView.frame.size = CGSize(width: 50, height: 50)
         animationView.animation = animation
         animationView.loopMode = .loop
         animationView.play()

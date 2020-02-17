@@ -16,6 +16,7 @@ class HomeControlCell: UITableViewCell {
     @IBOutlet weak var userButton: UIButton!
     @IBOutlet weak var messageButton: UIButton!
     @IBOutlet weak var propertyButton: UIButton!
+    @IBOutlet weak var sectorView: UIView!
     
     private(set) var disposeBag = DisposeBag()
     
@@ -36,7 +37,7 @@ class HomeControlCell: UITableViewCell {
         [propertyButton, messageButton, userButton, keyButton].forEach { (btn) in
             btn?.setTitleColor(ColorClassification.textDescription.value, for: .normal)
         }
+        
     }
-    
     
 }
