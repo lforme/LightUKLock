@@ -19,6 +19,7 @@ class UnlockRecordCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         
         self.contentView.backgroundColor = ColorClassification.tableViewBackground.value
         nickname.textColor = ColorClassification.textPrimary.value

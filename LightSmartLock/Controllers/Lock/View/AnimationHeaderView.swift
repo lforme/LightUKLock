@@ -35,6 +35,7 @@ class AnimationHeaderView: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         
         animationError = Animation.named("error", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)
         animationLowpower = Animation.named("warning", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)
@@ -47,25 +48,13 @@ class AnimationHeaderView: UITableViewCell {
         
         contentLabel.morphingEffect = .pixelate
         self.contentView.backgroundColor = ColorClassification.viewBackground.value
-        
-        UIApplication.shared.rx
-            .didBecomeActive
-            .subscribe(onNext: {[weak self] _ in
-                self?.animationView.play()
-            })
-            .disposed(by: disposeBag)
-        
-        NotificationCenter.default.rx.notification(.animationRestart)
-            .takeUntil(rx.deallocated)
-            .subscribeOn(MainScheduler.instance).subscribe(onNext: {[weak self] (noti) in
-                self?.animationView.play()
-            }).disposed(by: disposeBag)
     }
-    
+        
     func bind(_ data: IOTLockInfoModel?) {
         guard let model = data else {
             return
         }
+        animationView.play()
         if model.OnLineState == 0 {
             animationView.animation = animationError
             animationView.play()

@@ -38,8 +38,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        NotificationCenter.default.post(name: .animationRestart, object: nil)
+        restartAnimation()
     }
     
     override func viewDidLoad() {
@@ -49,7 +48,21 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         setupRightNavigationItems()
         observerNotification()
         synchronizeTaks.synchronizeTask()
-        
+        setupaAnimationObserver()
+    }
+    
+    func setupaAnimationObserver() {
+        UIApplication.shared.rx
+            .didBecomeActive
+            .subscribe(onNext: {[weak self] _ in
+                self?.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+            })
+            .disposed(by: rx.disposeBag)
+    }
+    
+    func restartAnimation() {
+        let animationView = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? AnimationHeaderView
+        animationView?.animationView.play()
     }
     
     func setupUI() {
@@ -122,7 +135,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     }
     
     func observerNotification() {
-    NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
+        NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
             guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
             switch refreshType {
             case .addLock:
@@ -206,7 +219,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
-   
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         switch indexPath.row {

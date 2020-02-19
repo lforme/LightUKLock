@@ -94,7 +94,7 @@
 		9C47DB7F239A36560019EAA0 /* UserManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C47DB7E239A36560019EAA0 /* UserManagementViewModel.swift */; };
 		9C47DB83239A39070019EAA0 /* ListViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C47DB82239A39070019EAA0 /* ListViewModeling.swift */; };
 		9C47DB85239A526E0019EAA0 /* UserDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C47DB84239A526E0019EAA0 /* UserDetailController.swift */; };
-		9C524021238E0E3100308AC4 /* normal.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C524020238E0E3100308AC4 /* normal.json */; };
+		9C4BD28923FD217900652685 /* normal.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C4BD28823FD217900652685 /* normal.json */; };
 		9C524023238E0E3F00308AC4 /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C524022238E0E3F00308AC4 /* error.json */; };
 		9C524025238E0E5500308AC4 /* warning.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C524024238E0E5500308AC4 /* warning.json */; };
 		9C524028238E12E300308AC4 /* UIApplicationProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C524027238E12E300308AC4 /* UIApplicationProxy.swift */; };
@@ -315,7 +315,7 @@
 		9C47DB7E239A36560019EAA0 /* UserManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagementViewModel.swift; sourceTree = "<group>"; };
 		9C47DB82239A39070019EAA0 /* ListViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModeling.swift; sourceTree = "<group>"; };
 		9C47DB84239A526E0019EAA0 /* UserDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailController.swift; sourceTree = "<group>"; };
-		9C524020238E0E3100308AC4 /* normal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = normal.json; sourceTree = "<group>"; };
+		9C4BD28823FD217900652685 /* normal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = normal.json; sourceTree = "<group>"; };
 		9C524022238E0E3F00308AC4 /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
 		9C524024238E0E5500308AC4 /* warning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = warning.json; sourceTree = "<group>"; };
 		9C524027238E12E300308AC4 /* UIApplicationProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationProxy.swift; sourceTree = "<group>"; };
@@ -870,11 +870,11 @@
 		9CFDE1F62384E9FD0062522E /* AnimationSource */ = {
 			isa = PBXGroup;
 			children = (
+				9C4BD28823FD217900652685 /* normal.json */,
 				9C218FA123FA8495009600F7 /* loading.json */,
 				9C524022238E0E3F00308AC4 /* error.json */,
 				9C524024238E0E5500308AC4 /* warning.json */,
 				9C3726CB2390CE4D00450757 /* normalDarkMode.json */,
-				9C524020238E0E3100308AC4 /* normal.json */,
 				9CFDE1FB238513D40062522E /* bluetooth.json */,
 				9CFDE1F82384EA2A0062522E /* opendoor.json */,
 				9C03B0FC239FB3620001E849 /* addFinger.json */,
@@ -1012,13 +1012,13 @@
 				9C218FA623FA8CC9009600F7 /* LeasedCell.xib in Resources */,
 				9C218F9A23FA764A009600F7 /* Calendar.storyboard in Resources */,
 				9CBD8F4523A2103D00886519 /* TempPasswordLogView.xib in Resources */,
-				9C524021238E0E3100308AC4 /* normal.json in Resources */,
 				9C524023238E0E3F00308AC4 /* error.json in Resources */,
 				9CDD27292382801D006A9B97 /* Main.storyboard in Resources */,
 				9C7AFF1E239603F00075442D /* SearchPlotCell.xib in Resources */,
 				9CBD8F5523A23ADC00886519 /* DatePickerController.xib in Resources */,
 				9C47DB79239A0B0E0019EAA0 /* SelectPopupView.xib in Resources */,
 				9C24AC442383EB96005EBF95 /* My.storyboard in Resources */,
+				9C4BD28923FD217900652685 /* normal.json in Resources */,
 				9CF01D9723BDA92F007578F3 /* Assets.xcassets in Resources */,
 				9C3726CC2390CE4D00450757 /* normalDarkMode.json in Resources */,
 				9C5471A423951C1E00432ACA /* DataPickerController.xib in Resources */,
