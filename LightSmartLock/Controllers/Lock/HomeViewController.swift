@@ -35,12 +35,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     var dataSource: [UnlockRecordModel] = []
     
     private let synchronizeTaks = BluetoothSynchronizeTask()
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        restartAnimation()
-    }
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,21 +43,6 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         setupRightNavigationItems()
         observerNotification()
         synchronizeTaks.synchronizeTask()
-        setupaAnimationObserver()
-    }
-    
-    func setupaAnimationObserver() {
-        UIApplication.shared.rx
-            .didBecomeActive
-            .subscribe(onNext: {[weak self] _ in
-                self?.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
-            })
-            .disposed(by: rx.disposeBag)
-    }
-    
-    func restartAnimation() {
-        let animationView = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? AnimationHeaderView
-        animationView?.animationView.play()
     }
     
     func setupUI() {

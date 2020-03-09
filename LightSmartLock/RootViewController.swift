@@ -17,8 +17,7 @@ import PKHUD
 class RootViewController: UIViewController {
     
     var loginVC: BaseNavigationController?
-    var homeTabBarVC: ESTabBarController?
-    
+    var homeNavigationVC: BaseNavigationController?
     
     fileprivate var _statusBarStyle: UIStatusBarStyle = .default {
         didSet {
@@ -61,37 +60,21 @@ class RootViewController: UIViewController {
         loginVC?.removeFromParent()
         loginVC = nil
         
-        homeTabBarVC = ESTabBarController()
-        homeTabBarVC?.title = "主页"
-        homeTabBarVC?.tabBar.shadowImage = UIImage.from(color: #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 0.48))
-        homeTabBarVC?.tabBar.backgroundImage = UIImage.from(color: ColorClassification.viewBackground.value)
-        
-        let home: HomeViewController = ViewLoader.Storyboard.controller(from: "Home")
-        let calendar: CalendarViewController = ViewLoader.Storyboard.controller(from: "Calendar")
-        let house: HouseViewController = ViewLoader.Storyboard.controller(from: "House")
         let my: MyViewController = ViewLoader.Storyboard.controller(from: "My")
+        homeNavigationVC = BaseNavigationController(rootViewController: my)
+    
+        self.view.addSubview(homeNavigationVC!.view)
+        self.addChild(homeNavigationVC!)
         
-        home.tabBarItem = ESTabBarItem(CustomizedTabbarItem(), title: "门锁", image: UIImage(named: "tabbar_home"), selectedImage: UIImage(named: "tabbar_home"), tag: 0)
-        calendar.tabBarItem = ESTabBarItem(CustomizedTabbarItem(), title: "日历", image: UIImage(named: "tabbar_calendar"), selectedImage: UIImage(named: "tabbar_calendar"), tag: 0)
-        house.tabBarItem = ESTabBarItem(CustomizedTabbarItem(), title: "房源", image: UIImage(named: "tabbar_asset"), selectedImage: UIImage(named: "tabbar_asset"), tag: 0)
-        my.tabBarItem = ESTabBarItem(CustomizedTabbarItem(), title: "我的", image: UIImage(named: "tabbar_my"), selectedImage: UIImage(named: "tabbar_my"), tag: 2)
-       
-        
-        let vcs = [home, calendar, house, my].map { BaseNavigationController(rootViewController: $0) }
-        homeTabBarVC?.viewControllers = vcs
-        
-        self.view.addSubview(homeTabBarVC!.view)
-        self.addChild(homeTabBarVC!)
-        
-        homeTabBarVC?.view.snp.makeConstraints({ (maker) in
+        homeNavigationVC?.view.snp.makeConstraints({ (maker) in
             maker.edges.equalToSuperview()
         })
     }
     
     func showLoginVC() {
-        homeTabBarVC?.view.removeFromSuperview()
-        homeTabBarVC?.removeFromParent()
-        homeTabBarVC = nil
+        homeNavigationVC?.view.removeFromSuperview()
+        homeNavigationVC?.removeFromParent()
+        homeNavigationVC = nil
         
         let temp: LoginViewController = ViewLoader.Storyboard.controller(from: "Login")
         loginVC = BaseNavigationController(rootViewController: temp)
@@ -104,7 +87,7 @@ class RootViewController: UIViewController {
     func openDoor() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
             let openDoorVC: OpenDoorViewController = ViewLoader.Xib.controller()
-            self?.homeTabBarVC?.present(openDoorVC, animated: true, completion: nil)
+            self?.homeNavigationVC?.present(openDoorVC, animated: true, completion: nil)
         }
     }
     
