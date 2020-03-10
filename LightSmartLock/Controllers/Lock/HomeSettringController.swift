@@ -1,5 +1,5 @@
 //
-//  HomeSettringController.swift
+//  HomeSettingController.swift
 //  LightSmartLock
 //
 //  Created by mugua on 2019/12/2.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeSettringController: UITableViewController, NavigationSettingStyle {
+class HomeSettingController: UITableViewController, NavigationSettingStyle {
     
     var backgroundColor: UIColor? {
         return ColorClassification.navigationBackground.value

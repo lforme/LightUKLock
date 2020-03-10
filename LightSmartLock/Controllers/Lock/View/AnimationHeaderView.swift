@@ -14,6 +14,7 @@ class AnimationHeaderView: UITableViewCell {
     
     private(set) var disposeBag = DisposeBag()
     @IBOutlet weak var lockImageView: UIImageView!
+    @IBOutlet weak var unlockButton: UIButton!
     
     override func prepareForReuse() {
         disposeBag = DisposeBag()

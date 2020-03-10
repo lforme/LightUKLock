@@ -39,7 +39,7 @@ final class LockStartScanViewModel {
             }
             
             return Observable.create { (observer) -> Disposable in
-                
+                BluetoothPapa.shareInstance.removeAESkey()
                 BluetoothPapa.shareInstance.scanForPeripherals(true)
                 BluetoothPapa.shareInstance.peripheralsScanResult { (peripherals) in
                     guard let peripheral = peripherals.last else {

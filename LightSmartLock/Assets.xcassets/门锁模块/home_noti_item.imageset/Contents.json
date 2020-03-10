@@ -2,6 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "Daily_message_n.png",
       "scale" : "1x"
     },
     {
@@ -16,7 +17,7 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "Icon／Daily_message_Hightlight@2x.png",
+      "filename" : "Daily_message_n@2x.png",
       "scale" : "2x"
     },
     {
@@ -32,7 +33,7 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "Icon／Daily_message_Hightlight@3x.png",
+      "filename" : "Daily_message_n@3x.png",
       "scale" : "3x"
     },
     {

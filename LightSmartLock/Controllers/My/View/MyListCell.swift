@@ -51,7 +51,7 @@ class MyListCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         if selected {
-            indicator.backgroundColor = #colorLiteral(red: 0.9982913136, green: 0.6771650314, blue: 0.05553042889, alpha: 1)
+            indicator.backgroundColor = ColorClassification.primary.value
         } else {
             indicator.backgroundColor = ColorClassification.viewBackground.value
         }

@@ -35,7 +35,7 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
     }
     
     func setupNavigationRightItem() {
-        createdRightNavigationItem(title: "添加用户", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 4, color: ColorClassification.primary.value).rx.tap.subscribe(onNext: {[weak self] (_) in
+        createdRightNavigationItem(title: "添加用户", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 4, color: UIColor.white).rx.tap.subscribe(onNext: {[weak self] (_) in
             
             let addUserVC: AddUserController = ViewLoader.Storyboard.controller(from: "Home")
             self?.navigationController?.pushViewController(addUserVC, animated: true)

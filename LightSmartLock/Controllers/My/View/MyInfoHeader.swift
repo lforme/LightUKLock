@@ -14,6 +14,8 @@ class MyInfoHeader: UITableViewCell {
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var nick: UILabel!
     @IBOutlet weak var phone: UILabel!
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var settingButton: UIButton!
     
     private(set) var disposeBag = DisposeBag()
     
@@ -28,8 +30,6 @@ class MyInfoHeader: UITableViewCell {
         
         avatar.clipsToBounds = true
         avatar.layer.cornerRadius = avatar.bounds.height / 2
-        
-        nick.textColor = ColorClassification.textPrimary.value
-        phone.textColor = ColorClassification.textDescription.value
+    
     }
 }

@@ -70,9 +70,13 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         
         let sceneButton = UIButton(type: .custom)
         sceneButton.contentHorizontalAlignment = .left
-        sceneButton.addTarget(self, action: #selector(self.gotoMessageCenterVC), for: .touchUpInside)
         sceneButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         sceneButton.setImage(UIImage(named: "home_scene_icon"), for: UIControl.State())
+        
+        sceneButton.rx.tap.subscribe(onNext: {[weak self] (_) in
+            self?.navigationController?.popViewController(animated: true)
+        }).disposed(by: rx.disposeBag)
+        
         LSLUser.current().obScene.subscribe(onNext: { (scene) in
             if let name = scene?.sceneName {
                 sceneButton.setTitle(
@@ -147,7 +151,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     }
     
     @objc func gotoSettingVC() {
-        let settingVC: HomeSettringController = ViewLoader.Storyboard.controller(from: "Home")
+        let settingVC: HomeSettingController = ViewLoader.Storyboard.controller(from: "Home")
         navigationController?.pushViewController(settingVC, animated: true)
     }
     
@@ -180,16 +184,24 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let animationCell = tableView.dequeueReusableCell(withIdentifier: "AnimationHeaderView") as! AnimationHeaderView
             
+            animationCell.unlockButton.rx.tap.subscribe(onNext: {[weak self] (_) in
+                let openDoorVC: OpenDoorViewController = ViewLoader.Xib.controller()
+                self?.present(openDoorVC, animated: true, completion: nil)
+            }).disposed(by: animationCell.disposeBag)
+            
             animationCell.bind(LSLUser.current().lockIOTInfo)
             return animationCell
         case 1:
             let controlCell = tableView.dequeueReusableCell(withIdentifier: "HomeControlCell") as! HomeControlCell
             controlCell.userButton.addTarget(self, action: #selector(self.gotoUserManagementVC), for: .touchUpInside)
             controlCell.keyButton.addTarget(self, action: #selector(self.gotoPasswordManagementVC), for: .touchUpInside)
+            controlCell.messageButton.addTarget(self, action: #selector(self.gotoMessageCenterVC), for: .touchUpInside)
             return controlCell
         case 2:
-            let LeasedCell = tableView.dequeueReusableCell(withIdentifier: "LeasedCell") as! LeasedCell
-            return LeasedCell
+            let leasedCell = tableView.dequeueReusableCell(withIdentifier: "LeasedCell") as! LeasedCell
+            leasedCell.bind(unlocker: LSLUser.current().lockIOTInfo?.LastOpenDoorNikeName, lastUnlockTime: LSLUser.current().lockIOTInfo?.LastOpenDoorDate)
+            
+            return leasedCell
             
         default:
             return UITableViewCell()
@@ -208,7 +220,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return 120.0
         case 2:
-            return 100.0
+            return 150.0
         default:
             return CGFloat.leastNormalMagnitude
         }

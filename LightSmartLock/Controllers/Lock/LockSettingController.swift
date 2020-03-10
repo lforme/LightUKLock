@@ -68,6 +68,7 @@ class LockSettingController: UITableViewController {
         }, onError: { (error) in
             PKHUD.sharedHUD.rx.showError(error)
         }).disposed(by: rx.disposeBag)
+        
     }
     
     func setupUI() {

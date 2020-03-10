@@ -16,7 +16,7 @@ import MJRefresh
 class MyViewController: UIViewController, NavigationSettingStyle {
     
     var backgroundColor: UIColor? {
-        return ColorClassification.tableViewBackground.value
+        return UIColor.clear
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -28,11 +28,12 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         super.viewDidLoad()
         
         setupUI()
-        setupRightNavigationItem()
+        setupNavigation()
         observerTableViewDidScroll()
         setupTableviewRefresh()
         bind()
         observerSceneChanged()
+        
     }
     
     func observerSceneChanged() {
@@ -92,29 +93,17 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         self.tableView.separatorStyle = .none
         self.tableView.register(UINib(nibName: "MyInfoHeader", bundle: nil), forCellReuseIdentifier: "MyInfoHeader")
         self.tableView.register(UINib(nibName: "MyListCell", bundle: nil), forCellReuseIdentifier: "MyListCell")
-        self.tableView.sectionHeaderHeight = 160
+        self.tableView.sectionHeaderHeight = 220
         self.tableView.rowHeight = 136
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
     
-    func setupRightNavigationItem() {
+    func setupNavigation() {
         
-        
-        let settingButton = UIButton(type: .custom)
-        settingButton.setImage(UIImage(named: "my_setting"), for: UIControl.State())
-        settingButton.frame.size = CGSize(width: 32, height: 32)
-        settingButton.contentHorizontalAlignment = .right
-        settingButton.addTarget(self, action: #selector(self.gotoMySettingVC), for: .touchUpInside)
-        let settingItem = UIBarButtonItem(customView: settingButton)
-        
-        let addButton = UIButton(type: .custom)
-        addButton.setImage(UIImage(named: "my_add"), for: UIControl.State())
-        addButton.frame.size = CGSize(width: 32, height: 32)
-        addButton.contentHorizontalAlignment = .left
-        let addItem = UIBarButtonItem(customView: addButton)
-        addButton.addTarget(self, action: #selector(self.gotoSelectedLockVC), for: .touchUpInside)
-        self.navigationItem.rightBarButtonItems = [settingItem, addItem]
+        self.interactiveNavigationBarHidden = true
+        self.view.backgroundColor = UIColor.init(patternImage: UIImage(named: "personal_center_bg")!)
+        AppDelegate.changeStatusBarStyle(.lightContent)
     }
     
     func observerTableViewDidScroll() {
@@ -158,11 +147,12 @@ extension MyViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableCell(withIdentifier: "MyInfoHeader") as! MyInfoHeader
-        let shareInfo = LSLUser.current().obUserInfo.share(replay: 1, scope: .forever)
+        header.settingButton.addTarget(self, action: #selector(self.gotoMySettingVC), for: .touchUpInside)
+        header.addButton.addTarget(self, action: #selector(self.gotoSelectedLockVC), for: .touchUpInside)
         
+        let shareInfo = LSLUser.current().obUserInfo.share(replay: 1, scope: .forever)
         shareInfo.map { $0?.userName }.bind(to: header.nick.rx.text).disposed(by: header.disposeBag)
         shareInfo.map { $0?.phone }.bind(to: header.phone.rx.text).disposed(by: header.disposeBag)
-        
         shareInfo.map { $0?.headPic }.subscribe(onNext: { (urlString) in
             guard let str = urlString?.encodeUrl() else { return }
             header.avatar?.kf.setImage(with: URL(string: str))
@@ -174,9 +164,7 @@ extension MyViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let scene = dataSource[indexPath.row]
         LSLUser.current().scene = scene
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            HUD.flash(.label("首页场景已切换"), delay: 2)
-        }
-        tableView.reloadData()
+        let lockVC: HomeViewController = ViewLoader.Storyboard.controller(from: "Home")
+        navigationController?.pushViewController(lockVC, animated: true)
     }
 }
