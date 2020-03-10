@@ -26,8 +26,7 @@ class AnimationHeaderView: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
-        
-        self.contentView.backgroundColor = ColorClassification.viewBackground.value
+        self.contentView.backgroundColor = ColorClassification.primary.value
     }
         
     func bind(_ data: IOTLockInfoModel?) {
