@@ -82,6 +82,7 @@
                 <outlet property="messageButton" destination="A1W-OE-B5D" id="Lng-C8-f84"/>
                 <outlet property="propertyButton" destination="FTD-g9-pjc" id="Dkh-EN-9Li"/>
                 <outlet property="sectorView" destination="Ztb-BD-nia" id="2S2-1g-P5w"/>
+                <outlet property="stackView" destination="vXU-5e-6sU" id="Yts-B9-D4u"/>
                 <outlet property="userButton" destination="bQG-G6-MPB" id="cU1-dd-LxN"/>
             </connections>
             <point key="canvasLocation" x="142.75362318840581" y="109.82142857142857"/>

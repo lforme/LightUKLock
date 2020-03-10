@@ -17,6 +17,7 @@ class HomeControlCell: UITableViewCell {
     @IBOutlet weak var messageButton: UIButton!
     @IBOutlet weak var propertyButton: UIButton!
     @IBOutlet weak var sectorView: UIView!
+    @IBOutlet weak var stackView: UIStackView!
     
     private(set) var disposeBag = DisposeBag()
     
@@ -26,6 +27,9 @@ class HomeControlCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.stackView.removeArrangedSubview(propertyButton)
+        self.propertyButton.removeFromSuperview()
         
         self.contentView.backgroundColor = ColorClassification.viewBackground.value
         
