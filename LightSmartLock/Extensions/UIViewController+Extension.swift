@@ -21,6 +21,7 @@ extension UIViewController {
         
         let btn = UIButton(type: .custom)
         btn.setTitle(title, for: .normal)
+        btn.contentHorizontalAlignment = .right
         btn.titleLabel?.font = font
         btn.setTitleColor(color, for: .normal)
         btn.setTitleColor(color.withAlphaComponent(0.6), for: .disabled)

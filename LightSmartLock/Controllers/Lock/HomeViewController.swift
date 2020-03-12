@@ -71,12 +71,12 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         let notiButton = UIButton(type: .custom)
         notiButton.setImage(UIImage(named: "home_noti_navi"), for: UIControl.State())
         notiButton.frame.size = CGSize(width: 32, height: 32)
-        notiButton.contentHorizontalAlignment = .right
+        notiButton.contentHorizontalAlignment = .left
         notiButton.addTarget(self, action: #selector(self.gotoMessageCenterVC), for: .touchUpInside)
         let notiItem = UIBarButtonItem(customView: notiButton)
         
         let sceneButton = UIButton(type: .custom)
-        sceneButton.contentHorizontalAlignment = .left
+        sceneButton.contentHorizontalAlignment = .right
         sceneButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         sceneButton.setImage(UIImage(named: "home_scene_icon"), for: UIControl.State())
         
