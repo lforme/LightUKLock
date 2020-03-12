@@ -98,7 +98,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         let sceneItem = UIBarButtonItem(customView: sceneButton)
         
         self.navigationItem.leftBarButtonItems = [sceneItem]
-        self.navigationItem.rightBarButtonItems = [notiItem, settingItem]
+        self.navigationItem.rightBarButtonItems = [settingItem, notiItem]
     }
     
     func bind() {

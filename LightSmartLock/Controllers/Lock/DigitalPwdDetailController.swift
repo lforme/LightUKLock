@@ -214,7 +214,7 @@ class DigitalPasswordStatusCell: UITableViewCell {
         super.awakeFromNib()
         
         extendButton.set(image: UIImage(named: "up_arrow"), title: "展开", titlePosition: .left, additionalSpacing: 12, state: .normal)
-        extendButton.set(image: UIImage(named: "down_arrow"), title: "展开", titlePosition: .left, additionalSpacing: 12, state: .selected)
+        extendButton.set(image: UIImage(named: "down_arrow"), title: "收起", titlePosition: .left, additionalSpacing: 12, state: .selected)
     }
     
     @IBAction func extendTap(_ sender: UIButton) {
