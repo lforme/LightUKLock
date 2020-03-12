@@ -1434,7 +1434,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock;
 				PRODUCT_NAME = "门锁助手个人版";
 				SWIFT_VERSION = 5.0;
@@ -1458,7 +1458,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock;
 				PRODUCT_NAME = "门锁助手个人版";
 				SWIFT_VERSION = 5.0;
@@ -1472,6 +1472,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "LSLWidget/门锁助手.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = RBJYLDFMF8;
 				INFOPLIST_FILE = LSLWidget/Info.plist;
@@ -1481,6 +1482,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock.LSLWidget;
 				PRODUCT_NAME = "门锁助手";
 				SKIP_INSTALL = YES;
@@ -1495,6 +1497,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "LSLWidget/门锁助手.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = RBJYLDFMF8;
 				INFOPLIST_FILE = LSLWidget/Info.plist;
@@ -1504,6 +1507,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock.LSLWidget;
 				PRODUCT_NAME = "门锁助手";
 				SKIP_INSTALL = YES;
