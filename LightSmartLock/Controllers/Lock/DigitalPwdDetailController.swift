@@ -50,7 +50,7 @@ class DigitalPwdDetailController: UITableViewController, NavigationSettingStyle 
     }
     
     func setupNavigationRightItem() {
-        createdRightNavigationItem(title: "修改密码", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 8, color: ColorClassification.primary.value).rx.tap.subscribe(onNext: {[unowned self] (_) in
+        createdRightNavigationItem(title: "修改密码", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 8, color: .white).rx.tap.subscribe(onNext: {[unowned self] (_) in
             
             guard let oldPassword = self.displayModel.keySecret else {
                 HUD.flash(.label("无法获取旧密码, 请稍后再试"), delay: 2)

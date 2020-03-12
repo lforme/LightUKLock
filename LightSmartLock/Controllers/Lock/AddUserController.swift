@@ -49,7 +49,7 @@ class AddUserController: UITableViewController {
     }
     
     func setupNavigationRightItem() {
-        self.saveButton = createdRightNavigationItem(title: "保存", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 4, color: ColorClassification.primary.value)
+        self.saveButton = createdRightNavigationItem(title: "保存", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 4, color: .white)
     }
     
     func bind() {

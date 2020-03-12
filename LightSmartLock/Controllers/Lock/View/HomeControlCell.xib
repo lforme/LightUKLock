@@ -52,14 +52,14 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1W-OE-B5D">
                                 <rect key="frame" x="136" y="28" width="67" height="56"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                                <state key="normal" image="home_noti_item">
+                                <state key="normal" image="manage_finger">
                                     <color key="titleColor" red="0.039215686270000001" green="0.1215686275" blue="0.2666666667" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTD-g9-pjc">
                                 <rect key="frame" x="204" y="28" width="67" height="56"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                                <state key="normal" image="property_icon">
+                                <state key="normal" image="card_manage">
                                     <color key="titleColor" red="0.039215686270000001" green="0.1215686275" blue="0.2666666667" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                             </button>
@@ -89,10 +89,10 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="card_manage" width="56" height="56"/>
         <image name="home_control_bg" width="375" height="50"/>
-        <image name="home_noti_item" width="56" height="56"/>
+        <image name="manage_finger" width="56" height="56"/>
         <image name="manage_key" width="56" height="56"/>
-        <image name="property_icon" width="56" height="56"/>
         <image name="user_manage" width="56" height="56"/>
     </resources>
 </document>

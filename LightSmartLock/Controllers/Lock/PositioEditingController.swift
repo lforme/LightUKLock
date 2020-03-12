@@ -85,7 +85,7 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
     
     func setupNavigationRightItem() {
         
-        self.navigationRightButton = self.createdRightNavigationItem(title: "", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 0, color: ColorClassification.primary.value)
+        self.navigationRightButton = self.createdRightNavigationItem(title: "", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 0, color: .white)
         self.navigationRightButton.contentHorizontalAlignment = .trailing
         self.navigationRightButton.addTarget(self, action: #selector(self.doneActionTap), for: .touchUpInside)
         

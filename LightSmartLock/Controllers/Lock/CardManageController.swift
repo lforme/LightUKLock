@@ -90,7 +90,7 @@ class CardManageController: UITableViewController, NavigationSettingStyle {
     }
     
     func setupNavigationRightItem() {
-        createdRightNavigationItem(title: "添加门卡", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 4, color: ColorClassification.primary.value).rx.tap.subscribe(onNext: {[weak self] (_) in
+        createdRightNavigationItem(title: "添加门卡", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 4, color: .white).rx.tap.subscribe(onNext: {[weak self] (_) in
             let addCardVC: AddCardController = ViewLoader.Storyboard.controller(from: "InitialLock")
             self?.navigationController?.pushViewController(addCardVC, animated: true)
         }).disposed(by: rx.disposeBag)

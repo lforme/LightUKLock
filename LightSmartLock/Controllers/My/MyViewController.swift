@@ -102,7 +102,7 @@ class MyViewController: UIViewController, NavigationSettingStyle {
     func setupNavigation() {
         
         self.interactiveNavigationBarHidden = true
-        self.view.backgroundColor = UIColor.init(patternImage: UIImage(named: "personal_center_bg")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "personal_center_bg")!)
         AppDelegate.changeStatusBarStyle(.lightContent)
     }
     

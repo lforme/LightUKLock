@@ -58,7 +58,7 @@ class SingleTempPasswordController: UITableViewController, NavigationSettingStyl
     let shareButton = UIButton(type: .custom).then {
         $0.setImage(UIImage.init(named: "password_share"), for: UIControl.State())
         $0.setCircular(radius: $0.bounds.height / 2)
-        $0.frame = CGRect(x: UIScreen.main.bounds.width - 72, y: UIScreen.main.bounds.height - 152, width: 56, height: 56)
+        $0.frame = CGRect(x: UIScreen.main.bounds.width - 72, y: UIScreen.main.bounds.height - 182, width: 56, height: 56)
     }
     
     var dataSource: [SharePwdListModel] = []

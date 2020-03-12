@@ -35,7 +35,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     var dataSource: [UnlockRecordModel] = []
     
     private let synchronizeTaks = BluetoothSynchronizeTask()
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,9 +64,16 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         let lockSettingButton = UIButton(type: .custom)
         lockSettingButton.setImage(UIImage(named: "home_lock_setting_item"), for: UIControl.State())
         lockSettingButton.frame.size = CGSize(width: 32, height: 32)
-        lockSettingButton.contentHorizontalAlignment = .right
+        lockSettingButton.contentHorizontalAlignment = .left
         lockSettingButton.addTarget(self, action: #selector(self.gotoSettingVC), for: .touchUpInside)
         let settingItem = UIBarButtonItem(customView: lockSettingButton)
+        
+        let notiButton = UIButton(type: .custom)
+        notiButton.setImage(UIImage(named: "home_noti_navi"), for: UIControl.State())
+        notiButton.frame.size = CGSize(width: 32, height: 32)
+        notiButton.contentHorizontalAlignment = .right
+        notiButton.addTarget(self, action: #selector(self.gotoMessageCenterVC), for: .touchUpInside)
+        let notiItem = UIBarButtonItem(customView: notiButton)
         
         let sceneButton = UIButton(type: .custom)
         sceneButton.contentHorizontalAlignment = .left
@@ -91,7 +98,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         let sceneItem = UIBarButtonItem(customView: sceneButton)
         
         self.navigationItem.leftBarButtonItems = [sceneItem]
-        self.navigationItem.rightBarButtonItems = [settingItem]
+        self.navigationItem.rightBarButtonItems = [notiItem, settingItem]
     }
     
     func bind() {
@@ -195,7 +202,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let controlCell = tableView.dequeueReusableCell(withIdentifier: "HomeControlCell") as! HomeControlCell
             controlCell.userButton.addTarget(self, action: #selector(self.gotoUserManagementVC), for: .touchUpInside)
             controlCell.keyButton.addTarget(self, action: #selector(self.gotoPasswordManagementVC), for: .touchUpInside)
-            controlCell.messageButton.addTarget(self, action: #selector(self.gotoMessageCenterVC), for: .touchUpInside)
+            controlCell.messageButton.addTarget(self, action: #selector(self.gotoCardManagementVC), for: .touchUpInside)
+            controlCell.propertyButton.addTarget(self, action: #selector(self.gotoFingerManagementVC), for: .touchUpInside)
             return controlCell
         case 2:
             let leasedCell = tableView.dequeueReusableCell(withIdentifier: "LeasedCell") as! LeasedCell
@@ -223,6 +231,18 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return 150.0
         default:
             return CGFloat.leastNormalMagnitude
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == 2 {
+            guard let userCode = LSLUser.current().userInScene?.userCode else {
+                HUD.flash(.label("无法获取user code, 请稍后"), delay: 2)
+                return
+            }
+            let recordVC = RecordUnlockController(userCode: userCode)
+            self.navigationController?.pushViewController(recordVC, animated: true)
         }
     }
 }

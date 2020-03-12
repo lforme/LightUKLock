@@ -40,7 +40,7 @@ class ChangeDigitalPwdController: UITableViewController, NavigationSettingStyle 
     }
     
     func setupNavigationRightItem() {
-        saveButton = createdRightNavigationItem(title: "完成", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 12, color: ColorClassification.primary.value)
+        saveButton = createdRightNavigationItem(title: "完成", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 12, color: .white)
     }
     
     func setupUI() {

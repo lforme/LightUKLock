@@ -67,7 +67,7 @@ class SharePasswordSignleController: UITableViewController {
     }
     
     func setupNavigationRightItem() {
-        self.shareButton = createdRightNavigationItem(title: "分享", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 4, color: ColorClassification.primary.value)
+        self.shareButton = createdRightNavigationItem(title: "分享", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 4, color: .white)
     }
     
     func setupUI() {
