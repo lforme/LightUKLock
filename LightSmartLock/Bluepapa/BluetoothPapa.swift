@@ -229,8 +229,6 @@ public class BluetoothPapa: NSObject {
     @discardableResult
     public func scanForPeripherals(_ enable: Bool) -> Bool {
         
-        cancelPeripheralConnection()
-        
         DispatchQueue.main.async {[weak self] in
             guard let this = self else {
                 return

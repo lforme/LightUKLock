@@ -61,6 +61,7 @@ final class LockStartScanViewModel {
                         observer.onNext(true)
                         observer.onCompleted()
                     } else {
+                        BluetoothPapa.shareInstance.scanForPeripherals(false)
                         observer.onError(AppError.reason("没有找到蓝牙门锁"))
                     }
                 }).disposed(by: this.disposeBag)

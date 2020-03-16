@@ -16,6 +16,7 @@ final class LockBindViewModel {
     
     init(lockInfo: SmartLockInfoModel) {
         self.lockInfo = lockInfo
+        BluetoothPapa.shareInstance.scanForPeripherals(false)
     }
     
     func setPrivateKey(_ key: String) -> Observable<Step> {
