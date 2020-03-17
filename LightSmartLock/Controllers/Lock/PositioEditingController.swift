@@ -77,6 +77,10 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
         }).disposed(by: rx.disposeBag)
         
         areaTextfield.rx.text.orEmpty.changed.bind(to: vm.obArea).disposed(by: rx.disposeBag)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {[weak self] in
+            self?.areaTextfield.becomeFirstResponder()
+        }
     }
     
     func setupUI() {
