@@ -41,21 +41,10 @@ public class BluetoothPapa: NSObject {
     
     fileprivate let lock = NSRecursiveLock()
     
-    private var holdKey: String?
     /// 蓝牙门锁通信加密密匙
     fileprivate var AESkey: String? {
         get {
-            if LSLUser.current().lockInfo?.secretKey == nil {
-                return self.holdKey
-            } else {
-                return LSLUser.current().lockInfo?.secretKey
-            }
-        }
-        set {
-            var lockInfo = LSLUser.current().lockInfo
-            lockInfo?.secretKey = newValue
-            LSLUser.current().lockInfo = lockInfo
-            self.holdKey = newValue
+            return LSLUser.current().lockInfo?.secretKey
         }
     }
     
@@ -97,14 +86,10 @@ public class BluetoothPapa: NSObject {
     fileprivate func commonInit() {
         bluetoothManager = CBCentralManager(delegate: self, queue: centralQueue)
         if let blueName = LSLUser.current().lockInfo?.bluthName {
-            filterBluetoothNames = [blueName]
+            filterBluetoothNames = [blueName, "UOKO", "UOKO_BLE"]
         } else {
-            filterBluetoothNames = ["UOKO"]
+            filterBluetoothNames = ["UOKO", "UOKO_BLE"]
         }
-        
-        let array = Array(repeating: 0, count: 16).map { String($0) }.compactMap { $0 }
-        let key = array.joined(separator:"")
-        self.holdKey = key
     }
     
     fileprivate func getConnectedPeripherals() -> [CBPeripheral] {
@@ -303,7 +288,9 @@ public class BluetoothPapa: NSObject {
     public func removeAESkey() {
         let array = Array(repeating: 0, count: 16).map { String($0) }.compactMap { $0 }
         let key = array.joined(separator:"")
-        AESkey = key
+        var lockInfo = LSLUser.current().lockInfo
+        lockInfo?.secretKey = key
+        LSLUser.current().lockInfo = lockInfo
     }
     
     /// 握手
@@ -329,10 +316,12 @@ public class BluetoothPapa: NSObject {
     ///   - call: 返回结果需要用 serialize 解析
     public func set(key: String, call: @escaping BluetoothReceivedCall) {
         receiveCall = call
-        
         let command = "\(messageHeader)160E\(key)"
         encrypt(command: command)
-        self.holdKey = key
+        
+        var lockInfo = LSLUser.current().lockInfo
+        lockInfo?.secretKey = key
+        LSLUser.current().lockInfo = lockInfo
     }
     
     /// 改变蓝牙广播名
@@ -1079,8 +1068,9 @@ extension BluetoothPapa: CBCentralManagerDelegate {
                 } else {
                     self.peripherals.append(sensor)
                 }
-                print("scan bluethooth name: \(peripheral.name ?? "no name")")
-                
+                if let name = peripheral.name {
+                    print("scan bluethooth name: \(name)")
+                }
                 self.peripheralsResult?(self.peripherals)
             } else {
                 sensor = self.peripherals[self.peripherals.firstIndex(of: sensor)!]
@@ -1101,9 +1091,6 @@ extension BluetoothPapa: CBPeripheralDelegate {
                 return
             }
         }
-        
-        delegate?.peripheralNotSupported?()
-        cancelPeripheralConnection()
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
@@ -1174,6 +1161,8 @@ extension BluetoothPapa: CBPeripheralDelegate {
                     self.bufferdData += array
                 }
                 print("Notification received from: \(characteristic.uuid.uuidString), with value: 0x\(bytesReceived)")
+                print(array)
+                
             }
             
         }
