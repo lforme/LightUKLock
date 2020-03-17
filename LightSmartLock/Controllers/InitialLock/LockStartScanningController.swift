@@ -20,8 +20,17 @@ class LockStartScanningController: UIViewController, NavigationSettingStyle {
     @IBOutlet weak var desLabel: UILabel!
     @IBOutlet weak var scanButton: UIButton!
     
+    var withSceneId: Bool = false
+    
     let vm = LockStartScanViewModel()    
     var lockInfo: SmartLockInfoModel!
+    
+    fileprivate var shouldIgnorePushingViewControllers = false
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        shouldIgnorePushingViewControllers = false
+    }
     
     deinit {
         print("\(self) deinit")
@@ -40,7 +49,7 @@ class LockStartScanningController: UIViewController, NavigationSettingStyle {
         
         vm.setupAction()
         scanButton.rx.bind(to: vm.scanAction, input: ())
-
+        
         vm.scanAction.errors.subscribe(onNext: { (error) in
             PKHUD.sharedHUD.rx.showActionError(error)
         }).disposed(by: rx.disposeBag)
@@ -59,13 +68,20 @@ class LockStartScanningController: UIViewController, NavigationSettingStyle {
         
         shareConnected.delay(1, scheduler: MainScheduler.instance).subscribe(onNext: {[weak self] (success) in
             if success {
+                if self?.shouldIgnorePushingViewControllers ?? false {
+                    return
+                }
                 let setPwdVC: LockSettingPasswordController = ViewLoader.Storyboard.controller(from: "InitialLock")
                 
-                if let lastSceneId = LSLUser.current().scene?.sceneID {
-                    self?.lockInfo.sceneID = lastSceneId
+                if self?.withSceneId ?? false {
+                    if let lastSceneId = LSLUser.current().scene?.sceneID {
+                        self?.lockInfo.sceneID = lastSceneId
+                    }
                 }
+                
                 setPwdVC.lockInfo = self?.lockInfo
                 self?.navigationController?.pushViewController(setPwdVC, animated: true)
+                self?.shouldIgnorePushingViewControllers = true
                 HUD.hide(animated: true)
             } else {
                 HUD.flash(.label("未找到蓝牙门锁,请稍后再试"), delay: 2)
