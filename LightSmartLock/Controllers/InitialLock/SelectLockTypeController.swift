@@ -25,6 +25,8 @@ class SelectLockTypeController: UITableViewController, NavigationSettingStyle {
         }
     }
     
+    var withSceneId: Bool = false
+    
     var backgroundColor: UIColor? {
         return ColorClassification.navigationBackground.value
     }
@@ -52,7 +54,12 @@ class SelectLockTypeController: UITableViewController, NavigationSettingStyle {
         }
         
         let initialLockVC: LockStartScanningController = ViewLoader.Storyboard.controller(from: "InitialLock")
+        initialLockVC.withSceneId = self.withSceneId
         var lock = SmartLockInfoModel()
+        let array = Array(repeating: 0, count: 16).map { String($0) }.compactMap { $0 }
+        let key = array.joined(separator:"")
+        lock.secretKey = key
+        LSLUser.current().lockInfo = lock
         lock.lockType = type.description
         lock.UserCode = "01"
         lock.AccountID = LSLUser.current().user?.accountID
