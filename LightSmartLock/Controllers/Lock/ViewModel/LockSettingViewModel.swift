@@ -39,6 +39,14 @@ final class LockSettingViewModel: BluetoothViewModel {
         }
     }
     
+    func forceDeleteLock(_ buttonIndex: Int) -> Observable<Bool> {
+        if buttonIndex == 0 {
+            return BusinessAPI.requestMapBool(.unInstallLock)
+        } else {
+            return .empty()
+        }
+    }
+    
     func deleteLock(_ buttonIndex: Int) -> Observable<Bool> {
         
         if !self.isConnected {
@@ -69,4 +77,5 @@ final class LockSettingViewModel: BluetoothViewModel {
             return .empty()
         }
     }
+    
 }

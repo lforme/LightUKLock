@@ -21,6 +21,7 @@ class LockSettingController: UITableViewController {
     
     @IBOutlet weak var networkSwitch: UISwitch!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var forceDeleteButton: UIButton!
     
     let vm = LockSettingViewModel()
     
@@ -38,7 +39,7 @@ class LockSettingController: UITableViewController {
     }
     
     func bind() {
-        HUD.show(.label("正在连接蓝牙门锁..."))
+        
         self.vm.startConnected.subscribe(onNext: { (isConnected) in
             if isConnected {
                 HUD.flash(.label("连接成功"), delay: 2)
@@ -65,10 +66,30 @@ class LockSettingController: UITableViewController {
             } else {
                 HUD.flash(.label("删除门锁失败"), delay: 2)
             }
-        }, onError: { (error) in
-            PKHUD.sharedHUD.rx.showError(error)
+            }, onError: { (error) in
+                PKHUD.sharedHUD.rx.showError(error)
         }).disposed(by: rx.disposeBag)
         
+        
+        forceDeleteButton.rx.tap.flatMapLatest {[unowned self] (_) -> Observable<Int> in
+            self.showActionSheet(title: "确定要强制删除门锁吗?", message: "强制删除门锁并不会重置门锁设置, 需要您手动在门锁上恢复出厂设置", buttonTitles: ["强制删除", "取消"], highlightedButtonIndex: 1)
+        }.flatMapLatest {[unowned self] (buttonIndex) -> Observable<Bool> in
+            return self.vm.forceDeleteLock(buttonIndex)
+        }.subscribe(onNext: {[weak self] (success) in
+            if success {
+                self?.navigationController?.popViewController(animated: true)
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.deleteLock)
+                var updateValue = LSLUser.current().scene
+                updateValue?.IsInstallLock = false
+                LSLUser.current().scene = updateValue
+                LSLUser.current().lockInfo = nil
+                
+            } else {
+                HUD.flash(.label("删除门锁失败"), delay: 2)
+            }
+            }, onError: { (error) in
+                PKHUD.sharedHUD.rx.showError(error)
+        }).disposed(by: rx.disposeBag)
     }
     
     func setupUI() {
@@ -93,7 +114,7 @@ class LockSettingController: UITableViewController {
             let soundVC: SoundSettingController = ViewLoader.Storyboard.controller(from: "Home")
             soundVC.vm = self.vm
             navigationController?.pushViewController(soundVC, animated: true)
-        
+            
         case .firmwareUpdate:
             HUD.flash(.label("已是最新版本"), delay: 2)
         }

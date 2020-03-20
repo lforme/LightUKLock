@@ -1972,6 +1972,30 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="viewBackground"/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="wJL-YF-gtB">
+                                        <rect key="frame" x="0.0" y="314" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wJL-YF-gtB" id="a4f-Yv-zQE">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AV8-Tc-Yds">
+                                                    <rect key="frame" x="16" y="7.5" width="382" height="29"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <state key="normal" title="强制删除门锁">
+                                                        <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="AV8-Tc-Yds" firstAttribute="leading" secondItem="a4f-Yv-zQE" secondAttribute="leading" constant="16" id="0NG-Gc-H6A"/>
+                                                <constraint firstItem="AV8-Tc-Yds" firstAttribute="centerY" secondItem="a4f-Yv-zQE" secondAttribute="centerY" id="c90-ok-uYE"/>
+                                                <constraint firstAttribute="trailing" secondItem="AV8-Tc-Yds" secondAttribute="trailing" constant="16" id="jaY-um-Hd2"/>
+                                                <constraint firstItem="AV8-Tc-Yds" firstAttribute="centerX" secondItem="a4f-Yv-zQE" secondAttribute="centerX" id="qJR-bP-VOl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="viewBackground"/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1982,6 +2006,7 @@
                     </tableView>
                     <connections>
                         <outlet property="deleteButton" destination="KsZ-wB-wjQ" id="ga1-Gl-hFf"/>
+                        <outlet property="forceDeleteButton" destination="AV8-Tc-Yds" id="YQy-vM-Kc2"/>
                         <outlet property="networkSwitch" destination="RaA-0L-P5T" id="kMe-K8-WzW"/>
                     </connections>
                 </tableViewController>
