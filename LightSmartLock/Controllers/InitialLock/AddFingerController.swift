@@ -18,6 +18,8 @@ class AddFingerController: UIViewController, NavigationSettingStyle {
     @IBOutlet weak var addButton: UIButton!
     let vm = AddFingerViewModel()
     
+    fileprivate var shouldIgnorePushingViewControllers = false
+    
     deinit {
         print("\(self) deinit")
     }
@@ -41,7 +43,12 @@ class AddFingerController: UIViewController, NavigationSettingStyle {
         }
         
         vm.startAction.elements.subscribe(onNext: {[weak self] (pass) in
+            
+            if self?.shouldIgnorePushingViewControllers ?? false {
+                return
+            } 
             if pass {
+                self?.shouldIgnorePushingViewControllers = true
                 let addFingerFinishVC: AddFingerFinishController = ViewLoader.Storyboard.controller(from: "InitialLock")
                 addFingerFinishVC.vm = self?.vm
                 self?.navigationController?.pushViewController(addFingerFinishVC, animated: true)

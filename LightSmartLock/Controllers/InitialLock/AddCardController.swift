@@ -54,7 +54,7 @@ class AddCardController: UIViewController {
             
             return Observable<(String, String)>.create { (observer) -> Disposable in
                 
-                SingleInputController.rx.present(wiht: "设置指纹名称", saveTitle: "保存", placeholder: "请填写指纹名称").subscribe(onNext: { (cardName) in
+                SingleInputController.rx.present(wiht: "设置门卡称", saveTitle: "保存", placeholder: "请填写门卡备注").subscribe(onNext: { (cardName) in
                     observer.onNext((keyNumber, cardName))
                     observer.onCompleted()
                 }).disposed(by: self.rx.disposeBag)

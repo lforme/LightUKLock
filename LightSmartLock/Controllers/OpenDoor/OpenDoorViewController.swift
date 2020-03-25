@@ -68,9 +68,8 @@ class OpenDoorViewController: UIViewController {
                 return .just(false)
             }
         }.subscribe(onNext: {[weak self] (finished) in
-            if finished {
-               self?.loadOpendoorAnimationJson()
-            }
+            print("successful open")
+            self?.loadOpendoorAnimationJson()
         }, onError: {[weak self] (error) in
             PKHUD.sharedHUD.rx.showError(error)
             self?.dismiss(animated: true, completion: nil)
