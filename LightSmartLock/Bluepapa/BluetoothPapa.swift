@@ -281,7 +281,11 @@ public class BluetoothPapa: NSObject {
     ///
     /// - Returns: result
     public func isConnected() -> Bool {
-        return connected
+        if self.bluetoothPeripheral?.state == .some(.connected) && self.connected {
+            return true
+        } else {
+            return false
+        }
     }
     
     /// 删除AESkey
@@ -1068,7 +1072,7 @@ extension BluetoothPapa: CBCentralManagerDelegate {
                 } else {
                     self.peripherals.append(sensor)
                 }
-                if let name = peripheral.name {
+                if let name = peripheral.name, !self.connected {
                     print("scan bluethooth name: \(name)")
                 }
                 self.peripheralsResult?(self.peripherals)
