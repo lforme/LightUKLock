@@ -251,7 +251,7 @@ public class BluetoothPapa: NSObject {
     
     public func connect(peripheral: PPScannedPeripheral) {
         bluetoothPeripheral = peripheral.peripheral
-        print("Connecting to: \(peripheral.name())...")
+        print(" : \(peripheral.name())...")
         bluetoothManager?.connect(peripheral.peripheral, options: nil)
     }
     
