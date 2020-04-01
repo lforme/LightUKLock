@@ -104,30 +104,30 @@ private extension RxMoyaProvider {
                         self.authenticationBlock {
                             // 刷新 Token
                             
-                            let refreshTokenRequest = AuthAPI.requestMapAny(.refreshUserToken)
-                                .map { (any) -> AccessTokenModel? in
-                                    let json = any as? [String: Any]
-                                    return AccessTokenModel.deserialize(from: json)
-                            }
-                            
-                            refreshTokenRequest.do(onError: { (error) in
-                                
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                                    HUD.flash(.label("令牌过期,请重新登录"), delay: 2)
-                                    LSLUser.current().logout()
-                                })
-                                
-                            }).subscribe(onNext: { (t) in
-                                
-                                // 保存最新token
-                                LSLUser.current().refreshToken = t
-                                LSLUser.current().token = t
-                                
-                                self._request(token).subscribe({ (event) in
-                                    observer.on(event)
-                                }).disposed(by: self.rx.disposeBag)
-                                
-                            }).disposed(by: self.rx.disposeBag)
+//                            let refreshTokenRequest = AuthAPI.requestMapAny(.refreshUserToken)
+//                                .map { (any) -> AccessTokenModel? in
+//                                    let json = any as? [String: Any]
+//                                    return AccessTokenModel.deserialize(from: json)
+//                            }
+//
+//                            refreshTokenRequest.do(onError: { (error) in
+//
+//                                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+//                                    HUD.flash(.label("令牌过期,请重新登录"), delay: 2)
+//                                    LSLUser.current().logout()
+//                                })
+//
+//                            }).subscribe(onNext: { (t) in
+//
+//                                // 保存最新token
+//                                LSLUser.current().refreshToken = t
+//                                LSLUser.current().token = t
+//
+//                                self._request(token).subscribe({ (event) in
+//                                    observer.on(event)
+//                                }).disposed(by: self.rx.disposeBag)
+//
+//                            }).disposed(by: self.rx.disposeBag)
                         }
                         return Disposables.create()
                     })
@@ -135,7 +135,7 @@ private extension RxMoyaProvider {
                     return Observable.error(AppError.reason("请求过于频繁"))
                 } else if res.statusCode == 500 {
                     if let json = try? res.mapJSON(), let dict = json as? [String: Any] {
-                        let eMsg = dict["Msg"] as? String
+                        let eMsg = dict["message"] as? String
                         return Observable.error(AppError.reason(eMsg ?? "服务器出错啦"))
                     } else {
                         return Observable.error(AppError.reason("服务器出错啦"))
@@ -172,7 +172,7 @@ extension RxMoyaProvider {
             guard let json = try? response.mapJSON(failsOnEmptyData: true), let dict = json as? [String: Any] else {
                 return .error(AppError.reason(response.description))
             }
-            if let code = dict["Code"] as? Int, code == 1 {
+            if let code = dict["status"] as? Int, code == 200 {
                 return .just(true)
             } else {
                 return .just(false)
@@ -209,19 +209,19 @@ extension RxMoyaProvider {
                     return .error(AppError.reason("服务器出错啦"))
                 }
                 
-                guard let dic = json as? [String: Any], let status = dic["Code"] as? Int else {
+                guard let dic = json as? [String: Any], let status = dic["status"] as? Int else {
                     return .error(AppError.reason("服务器出错啦"))
                 }
                 
-                if status == 1  {
-                    let value = dic["Data"] as? [String: Any]
+                if status == 200 {
+                    let value = dic["data"] as? [String: Any]
                     if let object = E.deserialize(from: value) {
                         return Observable.just(object)
                     } else {
                         return Observable.empty()
                     }
                 } else {
-                    let e = dic["Msg"] as? String
+                    let e = dic["message"] as? String
                     return Observable.error(AppError.reason(e ?? ""))
                 }
             })
@@ -233,19 +233,19 @@ extension RxMoyaProvider {
                 return .error(AppError.reason("服务器出错啦"))
             }
             
-            guard let dic = json as? [String: Any], let status = dic["Code"] as? Int else {
+            guard let dic = json as? [String: Any], let status = dic["status"] as? Int else {
                 return .error(AppError.reason("服务器出错啦"))
             }
             
-            if status == 1 {
-                let value = dic["Data"] as? [String: Any]
+            if status == 200 {
+                let value = dic["data"] as? [String: Any]
                 if let object = E.deserialize(from: value) {
                     return Observable.just(object)
                 } else {
                     return Observable.empty()
                 }
             } else {
-                let e = dic["Msg"] as? String
+                let e = dic["message"] as? String
                 return Observable.error(AppError.reason(e ?? ""))
             }
         })
@@ -261,12 +261,12 @@ extension RxMoyaProvider {
                     return .error(AppError.reason("服务器出错啦"))
                 }
                 
-                guard let dic = json as? [String: Any], let code = dic["Code"] as? Int else {
+                guard let dic = json as? [String: Any], let code = dic["status"] as? Int else {
                     return .error(AppError.reason("服务器出错啦"))
                 }
                 
-                if code == 1 {
-                    let value = dic["Data"] as? [[String: Any]]
+                if code == 200 {
+                    let value = dic["data"] as? [[String: Any]]
                     
                     if let objects = [E].deserialize(from: value) {
                         return Observable.just(objects)
@@ -274,7 +274,7 @@ extension RxMoyaProvider {
                         return .error(AppError.reason("服务器出错啦"))
                     }
                 } else {
-                    let e = dic["Msg"] as? String
+                    let e = dic["message"] as? String
                     return Observable.error(AppError.reason(e ?? ""))
                 }
             })
@@ -286,13 +286,13 @@ extension RxMoyaProvider {
                 return .error(AppError.reason("服务器出错啦"))
             }
             
-            guard let dic = json as? [String: Any], let code = dic["Code"] as? Int else {
+            guard let dic = json as? [String: Any], let code = dic["status"] as? Int else {
                 return .error(AppError.reason("服务器出错啦"))
             }
             
-            if code == 1 {
+            if code == 200 {
                 
-                let value = dic["Data"] as? [[String: Any]]
+                let value = dic["data"] as? [[String: Any]]
                 
                 if let objects = [E].deserialize(from: value) {
                     
@@ -301,7 +301,7 @@ extension RxMoyaProvider {
                     return .error(AppError.reason("服务器出错啦"))
                 }
             } else {
-                let e = dic["Msg"] as? String
+                let e = dic["message"] as? String
                 return Observable.error(AppError.reason(e ?? ""))
             }
         })

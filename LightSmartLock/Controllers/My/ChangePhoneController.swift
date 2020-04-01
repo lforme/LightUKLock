@@ -48,7 +48,7 @@ class ChangePhoneController: UITableViewController {
                 return .error(AppError.reason("请填写正确手机号码"))
             }
             
-            return AuthAPI.requestMapBool(.MSMFetchCode(phone: textA))
+            return AuthAPI.requestMapBool(.verificationCode(phone: textA))
         })
         
         self.codeButton.rx.bind(to: self.getCodeAction) {[weak self] (btn) -> String? in
@@ -68,7 +68,7 @@ class ChangePhoneController: UITableViewController {
                 return .error(AppError.reason("请检查输入是否完整"))
             }
             
-            return AuthAPI.requestMapBool(.validatePhoneCode(phone: p, code: c)).map { (isValidate) -> String in
+            return AuthAPI.requestMapBool(.verificationCodeValid(code: c, phone: p)).map { (isValidate) -> String in
                 if isValidate {
                     return p
                 } else {

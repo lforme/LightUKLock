@@ -17,15 +17,16 @@ enum AMapAPI {
 
 enum AuthenticationInterface {
     
+    case verificationCode(phone: String) // 获取短信验证码
+    case registeriOS(phone: String, password: String, msmCode: String) // 验证短信验证码并登录
+    case forgetPasswordiOS(phone: String, password: String, msmCode: String) // 验证短信验证码并修改密码
     case login(userName: String, password: String) // 用户面密码登录
-    case token // 登录前获取Token, 用于平台登录
-    case MSMFetchCode(phone: String) // 获取短信
-    case validatePhoneCode(phone: String, code: String) // 注册
+    case verificationCodeValid(code: String, phone: String) // 验证短信接口
+    case refreshToken(token: String) // 刷新token
+    case logout(token: String) // 退出登录
     case getAccountInfoByPhone(phone: String) // 获取用户信息
     case updateLoginPassword(password: String, accountId: String) // 设置密码
-    case userToken(userName: String, pwd: String) // 登录成功之后获取用户token
-    case refreshPlatformToken // 401刷新token
-    case refreshUserToken // 401刷新token
+   
 }
 
 

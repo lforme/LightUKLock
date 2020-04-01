@@ -24,7 +24,7 @@ enum NetworkingEnvironment: Int, CustomStringConvertible, CaseIterable {
     var host: String {
         switch self {
         case .dev:
-            return "http://appapi.jinriwulian.com/"
+            return "http://182.151.15.16:19999"
         case .production:
             return "http://appapi.jinriwulian.com/"
         }

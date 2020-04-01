@@ -21,8 +21,8 @@ protocol RegisForgetViewModeling {
     
     var getCodeAction: Action<String?, Void> { get }
     var showPasswordAction: Action<Bool, Bool> { get }
-    var regisForgetAction: Action<Input, Bool> { get }
-    
+    var regisAction: Action<Input, Bool> { get }
+    var forgetAction: Action<Input, Bool> { get }
 }
 
 final class RegisForgetViewModel: RegisForgetViewModeling {
@@ -33,7 +33,9 @@ final class RegisForgetViewModel: RegisForgetViewModeling {
     
     var showPasswordAction: Action<Bool, Bool>
     
-    var regisForgetAction: Action<Input, Bool>
+    var regisAction: Action<Input, Bool>
+    
+    var forgetAction: Action<Input, Bool>
     
     var phone = BehaviorSubject<String?>(value: nil)
     var code = BehaviorSubject<String?>(value: nil)
@@ -45,18 +47,13 @@ final class RegisForgetViewModel: RegisForgetViewModeling {
             
             let validate = RegisAndRecoveryValidationService()
             
+            
             return validate.validatePhone(phone).flatMapLatest { (validation) -> Observable<Void> in
                 
                 if validation.isValid {
-                    return  AuthAPI.requestMapAny(.token).flatMapLatest { (json) -> Observable<Void> in
-                        let dict = json as? [String: Any]
-                        guard let token = AccessTokenModel.deserialize(from: dict) else {
-                            return Observable.error(AppError.reason("获取验证码失败"))
-                        }
-                        LSLUser.current().refreshToken = token
-                        LSLUser.current().token = token
-                        return AuthAPI.requestMapBool(.MSMFetchCode(phone: phone!)).map { _ in () }
-                    }
+                    
+                    return AuthAPI.requestMapBool(.verificationCode(phone: phone!)).map { _ in () }
+                    
                 } else {
                     return .error(AppError.reason("获取验证码失败"))
                 }
@@ -69,7 +66,7 @@ final class RegisForgetViewModel: RegisForgetViewModeling {
             return .just(isShow)
         })
         
-        regisForgetAction = Action<Input, Bool>(workFactory: { (p, c, pwd) -> Observable<Bool> in
+        forgetAction = Action<Input, Bool>(workFactory: { (p, c, pwd) -> Observable<Bool> in
             
             let validate = RegisAndRecoveryValidationService()
             let validatePhone = validate.validatePhone(p)
@@ -77,24 +74,29 @@ final class RegisForgetViewModel: RegisForgetViewModeling {
             let validatePwd = validate.validatePwd(pwd)
             
             return Observable.combineLatest(validatePhone, validateCode, validatePwd).map { $0.0.isValid && $0.1.isValid && $0.2.isValid }.flatMapLatest { (isPass) -> Observable<Bool> in
-                
                 if isPass {
-                    return AuthAPI.requestMapBool(.validatePhoneCode(phone: p!, code: c!)).flatMapLatest { (isValidate) -> Observable<Bool> in
-                        if isValidate {
-                            return AuthAPI.requestMapJSON(.getAccountInfoByPhone(phone: p!), classType: UserModel.self).flatMapLatest { (m) -> Observable<Bool> in
-                                
-                                return AuthAPI.requestMapJSON(.updateLoginPassword(password: pwd!.md5(), accountId: m.accountID), classType: UserModel.self).map { (user) -> Bool in
-                                    print(user)
-                                    LSLUser.current().user = user
-                                    return true
-                                }
-                            }
-                        } else {
-                            return .error(AppError.reason("注册失败"))
-                        }
+                    return AuthAPI.requestMapBool(.forgetPasswordiOS(phone: p!, password: pwd!, msmCode: c!))
+                } else {
+                    return .error(AppError.reason("请检查输入完整性"))
+                }
+            }
+        })
+        
+        regisAction = Action<Input, Bool>(workFactory: { (p, c, pwd) -> Observable<Bool> in
+            
+            let validate = RegisAndRecoveryValidationService()
+            let validatePhone = validate.validatePhone(p)
+            let validateCode = validate.validateSMS(c)
+            let validatePwd = validate.validatePwd(pwd)
+            
+            return Observable.combineLatest(validatePhone, validateCode, validatePwd).map { $0.0.isValid && $0.1.isValid && $0.2.isValid }.flatMapLatest { (isPass) -> Observable<Bool> in
+                if isPass {
+                    return AuthAPI.requestMapJSON(.registeriOS(phone: p!, password: pwd!, msmCode: c!), classType: AccessTokenModel.self).map { (token) -> Bool in
+                        LSLUser.current().token = token
+                        return true
                     }
                 } else {
-                    return .error(AppError.reason("注册失败"))
+                    return .error(AppError.reason("请检查输入完整性"))
                 }
             }
         })

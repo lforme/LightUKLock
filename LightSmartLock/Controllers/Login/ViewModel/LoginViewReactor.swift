@@ -59,25 +59,13 @@ final class LoginViewReactor: Reactor {
         case .login:
             return Observable.concat([
                 Observable.just(Mutation.setLoginResult(nil, nil)),
-                AuthAPI.requestMapJSON(.login(userName: self.currentState.phone, password: self.currentState.password), classType: UserModel.self)
-                    .flatMapLatest({ (user) -> Observable<AccessTokenModel?> in
+                AuthAPI.requestMapJSON(.login(userName: self.currentState.phone, password: self.currentState.password), classType: AccessTokenModel.self)
+                    .map({ (token) -> Mutation in
                         
-                    guard let userName = user.userLoginName, let pwd = user.loginPassword else {
-                        throw AppError.reason("登录失败")
-                    }
-                    
-                    LSLUser.current().user = user
-                    
-                        return AuthAPI.requestMapAny(.userToken(userName: userName, pwd: pwd)).map { (dict) -> AccessTokenModel? in
-                            let json = dict as? [String: Any]
-                            let token = AccessTokenModel.deserialize(from: json)
-                            return token
-                        }
-                        
-                }).map({ (token) -> Mutation in
-                    if token?.access_token == nil {
+                    if token.access_token == nil {
                         return Mutation.setLoginResult(false, AppError.reason("无法获取登录令牌"))
                     }
+                        
                     LSLUser.current().token = token
                     LSLUser.current().refreshToken = token
                     return Mutation.setLoginResult(true, nil)
