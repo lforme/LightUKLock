@@ -104,30 +104,30 @@ private extension RxMoyaProvider {
                         self.authenticationBlock {
                             // 刷新 Token
                             
-//                            let refreshTokenRequest = AuthAPI.requestMapAny(.refreshUserToken)
-//                                .map { (any) -> AccessTokenModel? in
-//                                    let json = any as? [String: Any]
-//                                    return AccessTokenModel.deserialize(from: json)
-//                            }
-//
-//                            refreshTokenRequest.do(onError: { (error) in
-//
-//                                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-//                                    HUD.flash(.label("令牌过期,请重新登录"), delay: 2)
-//                                    LSLUser.current().logout()
-//                                })
-//
-//                            }).subscribe(onNext: { (t) in
-//
-//                                // 保存最新token
-//                                LSLUser.current().refreshToken = t
-//                                LSLUser.current().token = t
-//
-//                                self._request(token).subscribe({ (event) in
-//                                    observer.on(event)
-//                                }).disposed(by: self.rx.disposeBag)
-//
-//                            }).disposed(by: self.rx.disposeBag)
+                            guard let oldToken = LSLUser.current().token?.access_token else {
+                                return
+                            }
+                            
+                            let refreshTokenRequest = AuthAPI.requestMapJSON(.refreshToken(token: oldToken), classType: AccessTokenModel.self)
+                            
+                            refreshTokenRequest.do(onError: { (error) in
+
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                                    HUD.flash(.label("令牌过期,请重新登录"), delay: 2)
+                                    LSLUser.current().logout()
+                                })
+
+                            }).subscribe(onNext: { (t) in
+
+                                // 保存最新token
+                                LSLUser.current().refreshToken = t
+                                LSLUser.current().token = t
+
+                                self._request(token).subscribe({ (event) in
+                                    observer.on(event)
+                                }).disposed(by: self.rx.disposeBag)
+
+                            }).disposed(by: self.rx.disposeBag)
                         }
                         return Disposables.create()
                     })

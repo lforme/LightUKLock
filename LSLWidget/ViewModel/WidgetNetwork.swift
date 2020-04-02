@@ -26,10 +26,10 @@ extension TodayExtensionInterface: TargetType {
         
         guard let entiy = AccessTokenModel.deserialize(from: jsonStr) else { return nil }
         
-        guard let type = entiy.token_type, let token = entiy.access_token else {
+        guard let token = entiy.access_token else {
             return nil
         }
-        return  ["Authorization": type + " " + token]
+        return ["Authorization": token]
     }
     
     var method: Moya.Method {

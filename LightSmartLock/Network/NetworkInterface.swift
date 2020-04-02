@@ -24,9 +24,6 @@ enum AuthenticationInterface {
     case verificationCodeValid(code: String, phone: String) // 验证短信接口
     case refreshToken(token: String) // 刷新token
     case logout(token: String) // 退出登录
-    case getAccountInfoByPhone(phone: String) // 获取用户信息
-    case updateLoginPassword(password: String, accountId: String) // 设置密码
-   
 }
 
 
@@ -67,4 +64,9 @@ enum BusinessInterface {
     case getTempKeyShareLog(shareID: String) // 获取临时密码分享记录
     case retractTempKeyShare(shareID: String) // 撤回分享内容
     case generateTempBy(input: TempPasswordShareParameter) // 分享
+    
+    
+    // 新添加的
+    case user // 获取当前用户信息
+    case getHouses // 获取资产列表
 }

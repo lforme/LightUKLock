@@ -60,8 +60,19 @@ struct SceneListModel: HandyJSON {
     var villageName: String?
     var devNoticeCount: Int?
     var IsInstallLock: Bool?
-    var lockType: String?
     var customerLockID: String?
     var assetsID: String?
     
+    
+    // 新的
+    var buildingAdress: String?
+    var buildingName: String?
+    var cityId: String?
+    var cityName: String?
+    var isTop: Int!
+    var ladderAssetHouseId: String?
+    var ladderLockId: String?
+    var lockType: String?
+    var roleType: Int!
+    var unReadMsg: Int!
 }

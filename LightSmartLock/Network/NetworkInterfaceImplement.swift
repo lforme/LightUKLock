@@ -76,23 +76,19 @@ extension AuthenticationInterface: TargetType {
         
         switch self {
         case .login:
-            return "/login"
+            return "/login/login"
         case .verificationCodeValid:
             return "/common/verification_code/valid"
-        case .getAccountInfoByPhone:
-            return "/api/User/GetAccountInfoByPhone"
-        case .updateLoginPassword:
-            return "/api/User/UpdateAccountInfo/LoginPassword"
         case let .verificationCode(phone):
             return "/common/verification_code/\(phone)"
         case .registeriOS:
-            return "/register/ios"
+            return "/login/register/ios"
         case .forgetPasswordiOS:
-            return "/forget_password/ios"
+            return "/login/forget_password/ios"
         case let .refreshToken(token):
-            return "/refresh_token/\(token)"
+            return "/login/refresh_token/\(token)"
         case let .logout(token):
-            return "/logtou/\(token)"
+            return "/login/logtou/\(token)"
         }
     }
     
@@ -104,18 +100,9 @@ extension AuthenticationInterface: TargetType {
                 "phone": phone,
                 "password": password
             ]
-            
-        case .updateLoginPassword(let password, let accountId):
-            return ["AccountID": accountId, "LoginPassword": password]
-            
-
-            
-        case .getAccountInfoByPhone(let phone):
-            return ["Phone": phone]
-            
         case let .registeriOS(phone, password, msmCode):
             return ["password": password, "phone": phone, "verificationCode": msmCode]
-        
+            
         case let .forgetPasswordiOS(phone, password, msmCode):
             return ["password": password, "phone": phone, "verificationCode": msmCode]
             
@@ -163,14 +150,16 @@ extension BusinessInterface: TargetType {
     var headers: [String : String]? {
         guard let entiy = LSLUser.current().token else { return nil }
         
-        guard let type = entiy.token_type, let token = entiy.access_token else {
+        guard let token = entiy.access_token, let type = entiy.tokenType else {
             return nil
         }
-        return  ["Authorization": type + " " + token]
+        return ["Authorization": type + token]
     }
     
     var method: Moya.Method {
         switch self {
+        case .user, .getHouses:
+            return .get
         default:
             return .post
         }
@@ -250,6 +239,11 @@ extension BusinessInterface: TargetType {
             return "api/Key/RetractTempKeyShare"
         case .generateTempBy:
             return "api/Key/ShareTempKey"
+            
+        case .user:
+            return "/user"
+        case .getHouses:
+            return "/ladder_asset_house/houses"
         }
     }
     
@@ -489,7 +483,6 @@ extension BusinessInterface: TargetType {
             var dict = input.toJSON()
             dict?.updateValue(CustomerID, forKey: "CustomerID")
             return dict
-            
         default:
             return nil
         }

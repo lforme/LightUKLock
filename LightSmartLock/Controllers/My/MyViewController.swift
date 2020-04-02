@@ -20,7 +20,7 @@ class MyViewController: UIViewController, NavigationSettingStyle {
     }
     
     @IBOutlet weak var tableView: UITableView!
-    let vm: MyViewModeling = MyViewModel()
+    let vm = MyViewModel()
     
     var dataSource: [SceneListModel] = []
     
@@ -53,16 +53,10 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         vm.requestFinished.subscribe(onNext: {[weak self] (finished) in
             if finished {
                 self?.tableView.mj_header?.endRefreshing()
-                self?.tableView.mj_footer?.endRefreshing()
                 self?.tableView.reloadData()
             }
         }).disposed(by: rx.disposeBag)
         
-        vm.nomore.delay(0.5, scheduler: MainScheduler.instance).subscribe(onNext: {[weak self] (nomore) in
-            if nomore {
-                self?.tableView.mj_footer?.endRefreshingWithNoMoreData()
-            }
-        }).disposed(by: rx.disposeBag)
         
         vm.sceneList.subscribe(onNext: {[weak self] (list) in
             self?.dataSource = list
@@ -74,16 +68,9 @@ class MyViewController: UIViewController, NavigationSettingStyle {
             self?.vm.refresh()
         })
         
-        let footer = MJRefreshAutoNormalFooter(refreshingBlock: {[weak self] in
-            self?.vm.loadMore()
-        })
-        footer.setTitle("", for: .idle)
-        tableView.mj_footer = footer
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
             self?.tableView.mj_header?.beginRefreshing()
         }
-        
     }
     
     func setupUI() {
