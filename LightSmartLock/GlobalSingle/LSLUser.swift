@@ -139,7 +139,7 @@ class LSLUser: NSObject {
         }
     }
     
-    var lockInfo: SmartLockInfoModel? {
+    var lockInfo: LockModel? {
         set {
             print("门锁信息更新")
             lock.lock()
@@ -149,7 +149,7 @@ class LSLUser: NSObject {
         
         get {
             let json = LocalArchiver.load(key: LSLUser.Keys.smartLockInfo.rawValue) as? String
-            let value = SmartLockInfoModel.deserialize(from: json)
+            let value = LockModel.deserialize(from: json)
             return value
         }
     }

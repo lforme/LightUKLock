@@ -24,6 +24,17 @@ class MyListCell: UITableViewCell {
         disposeBag = DisposeBag()
     }
     
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+//        if selected {
+//            indicator.backgroundColor = ColorClassification.primary.value
+//        } else {
+//            indicator.backgroundColor = ColorClassification.viewBackground.value
+//        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -46,32 +57,22 @@ class MyListCell: UITableViewCell {
         } else {}
     }
     
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        if selected {
-            indicator.backgroundColor = ColorClassification.primary.value
-        } else {
-            indicator.backgroundColor = ColorClassification.viewBackground.value
-        }
-    }
-    
     func bind(_ data: SceneListModel) {
-        name.text = data.villageName ?? "Name"
-        address.text = data.villageName ?? "Address Info"
+        name.text = data.buildingName ?? "未设置名称"
+        address.text = data.buildingAdress ?? "未设置名称"
         if let lockInfo = data.lockType {
             message.text = "已安装门锁, 门锁类型: \(lockInfo)"
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
-            if let localSceneId = LSLUser.current().scene?.sceneID, let sceneId = data.sceneID {
-                if localSceneId == sceneId {
-                    self?.isSelected = true
-                } else {
-                    self?.isSelected = false
-                }
-            }
+        
+        guard let currentId = LSLUser.current().scene?.ladderAssetHouseId, let id = data.ladderAssetHouseId else {
+            return
+        }
+        
+        if currentId == id {
+            indicator.backgroundColor = ColorClassification.primary.value
+        } else {
+            indicator.backgroundColor = ColorClassification.viewBackground.value
         }
     }
 }

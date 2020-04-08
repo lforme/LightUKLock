@@ -19,10 +19,26 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         return UIColor.clear
     }
     
-    @IBOutlet weak var tableView: UITableView!
+    var tableView: UITableView = {
+        let tv = UITableView(frame: .zero, style: .plain)
+        return tv
+    }()
+    
     let vm = MyViewModel()
     
     var dataSource: [SceneListModel] = []
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.tableView.frame = view.frame
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
+            self?.tableView.mj_header?.beginRefreshing()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,10 +83,6 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {[weak self] in
             self?.vm.refresh()
         })
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
-            self?.tableView.mj_header?.beginRefreshing()
-        }
     }
     
     func setupUI() {
@@ -80,16 +92,17 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         self.tableView.separatorStyle = .none
         self.tableView.register(UINib(nibName: "MyInfoHeader", bundle: nil), forCellReuseIdentifier: "MyInfoHeader")
         self.tableView.register(UINib(nibName: "MyListCell", bundle: nil), forCellReuseIdentifier: "MyListCell")
-        self.tableView.sectionHeaderHeight = 220
+        self.tableView.sectionHeaderHeight = 300
         self.tableView.rowHeight = 136
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.contentInsetAdjustmentBehavior = .never
+        self.view.addSubview(tableView)
     }
     
     func setupNavigation() {
         
         self.interactiveNavigationBarHidden = true
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "personal_center_bg")!)
         AppDelegate.changeStatusBarStyle(.lightContent)
     }
     
@@ -111,6 +124,7 @@ class MyViewController: UIViewController, NavigationSettingStyle {
     
     @objc func gotoSelectedLockVC() {
         let selectVC: SelectLockTypeController = ViewLoader.Storyboard.controller(from: "InitialLock")
+        selectVC.kind = .newAdd
         self.navigationController?.pushViewController(selectVC, animated: true)
     }
 }

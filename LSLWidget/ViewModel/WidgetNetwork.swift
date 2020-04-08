@@ -26,7 +26,7 @@ extension TodayExtensionInterface: TargetType {
         
         guard let entiy = AccessTokenModel.deserialize(from: jsonStr) else { return nil }
         
-        guard let token = entiy.access_token else {
+        guard let token = entiy.accessToken else {
             return nil
         }
         return ["Authorization": token]
@@ -61,14 +61,14 @@ extension TodayExtensionInterface: TargetType {
         case .getLockCurrentInfoFromIOTPlatform:
             let shareDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
             let sceneStr = shareDefault?.string(forKey: ShareUserDefaultsKey.scene.rawValue)
-            guard let sceneId = SceneListModel.deserialize(from: sceneStr)?.sceneID else { return  nil }
+            guard let sceneId = SceneListModel.deserialize(from: sceneStr)?.ladderAssetHouseId else { return  nil }
             return ["SceneID": sceneId]
             
         case .getUnlockLog:
             let shareDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
             let sceneStr = shareDefault?.string(forKey: ShareUserDefaultsKey.scene.rawValue)
             let userStr = shareDefault?.string(forKey: ShareUserDefaultsKey.userInScene.rawValue)
-            guard let sceneId = SceneListModel.deserialize(from: sceneStr)?.sceneID, let userCode = UserInSceneModel.deserialize(from: userStr)?.userCode else { return  nil }
+            guard let sceneId = SceneListModel.deserialize(from: sceneStr)?.ladderAssetHouseId, let userCode = UserInSceneModel.deserialize(from: userStr)?.userCode else { return  nil }
             
             return ["SceneID": sceneId, "UserCode": [userCode], "PageIndex": 1, "PageSize": 3]
             

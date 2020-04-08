@@ -9,6 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import PKHUD
 
 class AnimationHeaderView: UITableViewCell {
     
@@ -20,26 +21,26 @@ class AnimationHeaderView: UITableViewCell {
         disposeBag = DisposeBag()
     }
     
-    private let timer = Observable<Int>.timer(1, period: 3, scheduler: MainScheduler.instance)
-    private var count = true
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
         self.contentView.backgroundColor = ColorClassification.primary.value
     }
-        
-    func bind(_ data: IOTLockInfoModel?) {
-        guard let model = data else {
+    
+    func bind(openStatus: Bool?, onlineStatus: Bool?, power: Double?) {
+        guard let open = openStatus, let online = onlineStatus, let power = power else {
             return
         }
-       
-        if let power = model.PowerPercent {
-            if power < 0.20 {
-                lockImageView.image = UIImage(named: "lock_icon_power_low")
-            } else {
-                lockImageView.image = UIImage(named: "lock_icon_power_normal")
-            }
+        
+        if !online {
+            HUD.flash(.label("门锁已离线"), delay: 2)
         }
+        print(open)
+        if power < 0.20 {
+            lockImageView.image = UIImage(named: "lock_icon_power_low")
+        } else {
+            lockImageView.image = UIImage(named: "lock_icon_power_normal")
+        }
+        
     }
 }

@@ -25,7 +25,12 @@ class SelectLockTypeController: UITableViewController, NavigationSettingStyle {
         }
     }
     
-    var withSceneId: Bool = false
+    enum AddKind {
+        case newAdd
+        case edited
+    }
+    
+    var kind: AddKind!
     
     var backgroundColor: UIColor? {
         return ColorClassification.navigationBackground.value
@@ -54,15 +59,14 @@ class SelectLockTypeController: UITableViewController, NavigationSettingStyle {
         }
         
         let initialLockVC: LockStartScanningController = ViewLoader.Storyboard.controller(from: "InitialLock")
-        initialLockVC.withSceneId = self.withSceneId
-        var lock = SmartLockInfoModel()
+        initialLockVC.kind = self.kind
+        
+        var lock = LockModel()
         let array = Array(repeating: 0, count: 16).map { String($0) }.compactMap { $0 }
         let key = array.joined(separator:"")
-        lock.secretKey = key
+        lock.bluetoothPwd = key
         LSLUser.current().lockInfo = lock
         lock.lockType = type.description
-        lock.UserCode = "01"
-        lock.AccountID = LSLUser.current().user?.accountID
         initialLockVC.lockInfo = lock
         navigationController?.pushViewController(initialLockVC, animated: true)
     }

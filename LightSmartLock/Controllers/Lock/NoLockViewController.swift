@@ -33,7 +33,7 @@ class NoLockViewController: UIViewController {
     @objc func gotoSelectedLockVC() {
         
         let selectVC: SelectLockTypeController = ViewLoader.Storyboard.controller(from: "InitialLock")
-        selectVC.withSceneId = true
+        selectVC.kind = .edited
         self.navigationController?.pushViewController(selectVC, animated: true)
     }
 }

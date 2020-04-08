@@ -12,7 +12,7 @@ import HandyJSON
 struct AccessTokenModel: HandyJSON {
         
     // 新的字段
-    var access_token: String?
+    var accessToken: String?
     var license: String?
     var tokenType: String?
     var userId: String?

@@ -104,29 +104,29 @@ private extension RxMoyaProvider {
                         self.authenticationBlock {
                             // 刷新 Token
                             
-                            guard let oldToken = LSLUser.current().token?.access_token else {
+                            guard let oldToken = LSLUser.current().token?.accessToken else {
                                 return
                             }
                             
                             let refreshTokenRequest = AuthAPI.requestMapJSON(.refreshToken(token: oldToken), classType: AccessTokenModel.self)
                             
                             refreshTokenRequest.do(onError: { (error) in
-
+                                
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                                     HUD.flash(.label("令牌过期,请重新登录"), delay: 2)
                                     LSLUser.current().logout()
                                 })
-
+                                
                             }).subscribe(onNext: { (t) in
-
+                                
                                 // 保存最新token
                                 LSLUser.current().refreshToken = t
                                 LSLUser.current().token = t
-
+                                
                                 self._request(token).subscribe({ (event) in
                                     observer.on(event)
                                 }).disposed(by: self.rx.disposeBag)
-
+                                
                             }).disposed(by: self.rx.disposeBag)
                         }
                         return Disposables.create()
@@ -134,12 +134,7 @@ private extension RxMoyaProvider {
                 } else if res.statusCode == 429 {
                     return Observable.error(AppError.reason("请求过于频繁"))
                 } else if res.statusCode == 500 {
-                    if let json = try? res.mapJSON(), let dict = json as? [String: Any] {
-                        let eMsg = dict["message"] as? String
-                        return Observable.error(AppError.reason(eMsg ?? "服务器出错啦"))
-                    } else {
-                        return Observable.error(AppError.reason("服务器出错啦"))
-                    }
+                    return Observable.error(AppError.reason("服务器报500啦啦啦"))
                 } else {
                     
                     // 写入缓存
@@ -175,7 +170,8 @@ extension RxMoyaProvider {
             if let code = dict["status"] as? Int, code == 200 {
                 return .just(true)
             } else {
-                return .just(false)
+                let msg = dict["message"] as? String
+                return .error(AppError.reason(msg ?? ""))
             }
         })
     }
@@ -252,7 +248,7 @@ extension RxMoyaProvider {
     }
     
     
-    func requestMapJSONArray<E: HandyJSON>(_ token: Target, classType: E.Type, useCache: Bool = false) -> Observable<[E?]> {
+    func requestMapJSONArray<E: HandyJSON>(_ token: Target, classType: E.Type, useCache: Bool = false, isPaginating: Bool? = false) -> Observable<[E?]> {
         
         if useCache {
             return useCacheWhenErrorOccurred(token).flatMapLatest({ (response) -> Observable<[E?]> in
@@ -266,12 +262,21 @@ extension RxMoyaProvider {
                 }
                 
                 if code == 200 {
-                    let value = dic["data"] as? [[String: Any]]
-                    
-                    if let objects = [E].deserialize(from: value) {
-                        return Observable.just(objects)
+                    if isPaginating ?? false {
+                        let res = dic["data"] as? [String: Any]
+                        let value = res?["rows"] as? [[String: Any]]
+                        if let objects = [E].deserialize(from: value) {
+                            return Observable.just(objects)
+                        } else {
+                            return .error(AppError.reason("服务器出错啦"))
+                        }
                     } else {
-                        return .error(AppError.reason("服务器出错啦"))
+                        let value = dic["data"] as? [[String: Any]]
+                        if let objects = [E].deserialize(from: value) {
+                            return Observable.just(objects)
+                        } else {
+                            return .error(AppError.reason("服务器出错啦"))
+                        }
                     }
                 } else {
                     let e = dic["message"] as? String
@@ -291,14 +296,21 @@ extension RxMoyaProvider {
             }
             
             if code == 200 {
-                
-                let value = dic["data"] as? [[String: Any]]
-                
-                if let objects = [E].deserialize(from: value) {
-                    
-                    return Observable.just(objects)
+                if isPaginating ?? false {
+                    let res = dic["data"] as? [String: Any]
+                    let value = res?["rows"] as? [[String: Any]]
+                    if let objects = [E].deserialize(from: value) {
+                        return Observable.just(objects)
+                    } else {
+                        return .error(AppError.reason("服务器出错啦"))
+                    }
                 } else {
-                    return .error(AppError.reason("服务器出错啦"))
+                    let value = dic["data"] as? [[String: Any]]
+                    if let objects = [E].deserialize(from: value) {
+                        return Observable.just(objects)
+                    } else {
+                        return .error(AppError.reason("服务器出错啦"))
+                    }
                 }
             } else {
                 let e = dic["message"] as? String

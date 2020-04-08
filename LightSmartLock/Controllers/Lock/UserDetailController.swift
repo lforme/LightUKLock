@@ -55,15 +55,15 @@ class UserDetailController: UITableViewController, NavigationSettingStyle {
         
         self.vm = UserDetailViewModel(userModel: model)
         
-        nickname.text = model.customerNickName
-        role.text = model.relationType?.description
+        nickname.text = model.nickname
+        role.text = model.roleType.description
         phone.text = model.phone
         
         guard let model = self.model else {
             return
         }
         
-        if LSLUser.current().user?.accountID == model.accountID && model.relationType == .some(.superAdmin) {
+        if LSLUser.current().user?.accountID == model.lockUserAccount && model.roleType == .some(.superAdmin) {
             cell2Label.text = "永久密码"
             cell3Label.text = "指纹"
             cell4Label.text = "门卡"
@@ -78,7 +78,7 @@ class UserDetailController: UITableViewController, NavigationSettingStyle {
         guard let model = self.model else {
             return 0
         }
-        if LSLUser.current().user?.accountID == model.accountID && model.relationType == .some(.superAdmin) {
+        if LSLUser.current().user?.accountID == model.id && model.roleType == .some(.superAdmin) {
             return 4
         } else {
             return 3
@@ -88,7 +88,7 @@ class UserDetailController: UITableViewController, NavigationSettingStyle {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let model = self.model else { return }
         
-        if LSLUser.current().user?.accountID == model.accountID && model.relationType == .some(.superAdmin) {
+        if LSLUser.current().user?.accountID == model.id && model.roleType == .some(.superAdmin) {
             
             switch indexPath.row {
             case 1:
@@ -112,7 +112,7 @@ class UserDetailController: UITableViewController, NavigationSettingStyle {
             switch indexPath.row {
             case 1:
                 print("修改用户名称")
-                SingleInputController.rx.present(wiht: "修改成员昵称", saveTitle: "保存", placeholder: model.customerNickName).flatMapLatest {[weak self] (newName) -> Observable<Bool> in
+                SingleInputController.rx.present(wiht: "修改成员昵称", saveTitle: "保存", placeholder: model.nickname).flatMapLatest {[weak self] (newName) -> Observable<Bool> in
                     guard let this = self else { return .just(false) }
                     this.nickname.text = newName
                     return this.vm.changeUserName(newName)

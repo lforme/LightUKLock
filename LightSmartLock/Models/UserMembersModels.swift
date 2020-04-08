@@ -11,26 +11,25 @@ import HandyJSON
 
 struct UserMemberListModel: HandyJSON {
     
-    var customerID: String!
-    var accountID: String!
-    var sceneID: String!
-    var customerNickName: String?
+    /////////////
+    var avatar: String?
+    var bluetoothModel: Bool!
+    var cardModel: Bool!
+    var codeModel: Bool!
+    var fingerprintModel: Bool!
+    var id: String?
+    var idCard: String?
+    var idCardFront: String?
+    var idCardReverse: String?
+    var kinsfolkTag: String?
+    var lockId: String?
+    var lockUserAccount: String?
+    var nickname: String?
     var phone: String?
-    var keyID: String!
-    var headPic: String?
-    
-    var codeModel: Bool = false
-    var fingerprintModel: Bool = false
-    var cardModel: Bool = false
-    var bluetoothModel: Bool = false
-    
-    var userCode: String?
-    var createDate: String!
-    
-    var Label: String?
-    var initialSecret: String?
-    
-    var relationType: RoleModel?
+    var pressForMoney: Bool!
+    var roleType: RoleModel!
+    var state: Int!
+    var username: String?
 }
 
 struct AddUserMemberModel: HandyJSON {

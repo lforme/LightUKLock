@@ -56,7 +56,7 @@ class LockSettingController: UITableViewController {
             return this.vm.deleteLock(buttonIndex)
         }.subscribe(onNext: {[weak self] (success) in
             if success {
-                self?.navigationController?.popViewController(animated: true)
+                self?.navigationController?.popToRootViewController(animated: true)
                 NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.deleteLock)
                 var updateValue = LSLUser.current().scene
                 updateValue?.IsInstallLock = false

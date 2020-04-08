@@ -69,4 +69,12 @@ enum BusinessInterface {
     // 新添加的
     case user // 获取当前用户信息
     case getHouses // 获取资产列表
+    case deleteAssetHouse(id: String) // 删除资产
+    case getAssetHouseDetail(id: String) // 获取资产详情
+    case editAssetHouse(parameter: PositionModel) // 绑定,编辑资产
+    case addLock(parameter: LockModel) // 添加门锁
+    case getLockInfo(id: String) // 获取设备信息
+    case getHomeInfo(id: String) // 获取首页信息
+    case forceDeleteLock(id: String) // 强制删除门锁
+    case getUserList(lockId: String, pageIndex: Int, pageSize: Int?) // 用户列表
 }

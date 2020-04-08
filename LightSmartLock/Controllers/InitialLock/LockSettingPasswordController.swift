@@ -22,13 +22,15 @@ class LockSettingPasswordController: UIViewController, NavigationSettingStyle {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var individualView: UIView!
     
-    var lockInfo: SmartLockInfoModel!
+    
+    var kind: SelectLockTypeController.AddKind!
+    var lockInfo: LockModel!
     var vm: LockBindViewModel!
     fileprivate var adminPassword: String?
     fileprivate var privateKey: String {
         func randomString(length: Int) -> String {
-          let letters = "0123456789"
-          return String((0..<length).map{ _ in letters.randomElement()! })
+            let letters = "0123456789"
+            return String((0..<length).map{ _ in letters.randomElement()! })
         }
         return randomString(length: 16)
     }
@@ -95,21 +97,23 @@ class LockSettingPasswordController: UIViewController, NavigationSettingStyle {
             self?.updateUI()
             HUD.flash(.label(step.description), delay: 2)
             switch step {
-            case let .uploadInfoToServer(sceneId):
+            case let .uploadInfoToServer(id):
                 
                 NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addLock)
-                var updateValue = LSLUser.current().scene
-                if updateValue == nil {
-                    updateValue = SceneListModel()
-                    updateValue?.sceneID = sceneId
-                    updateValue?.IsInstallLock = true
-                    LSLUser.current().scene = updateValue
-                }
                 let positionVC: PositioEditingController = ViewLoader.Storyboard.controller(from: "Home")
+        
+                switch self?.kind {
+                case .edited:
+                    positionVC.id = LSLUser.current().scene?.ladderAssetHouseId
+                case .newAdd:
+                    positionVC.id = id
+                default:
+                    break
+                }
                 self?.navigationController?.pushViewController(positionVC, animated: true)
             default: break
-            }
             
+            }
             }, onError: {[weak self] (error) in
                 HUD.flash(.label("门锁配置失败, 门锁已恢复出厂设置"), delay: 2)
                 BluetoothPapa.shareInstance.factoryReset {[weak self] (_) in

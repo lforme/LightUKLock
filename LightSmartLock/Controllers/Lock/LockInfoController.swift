@@ -31,10 +31,10 @@ class LockInfoController: UITableViewController {
 
     func bind() {
         modeLabel.text = LSLUser.current().lockInfo?.lockType
-        NBLabel.text = LSLUser.current().lockInfo?.NBVersion
-        firmwareLabel.text = LSLUser.current().lockInfo?.lockVersion
-        bluetooth.text = LSLUser.current().lockInfo?.bluthName
-        finger.text = LSLUser.current().lockInfo?.fingerprintVersion
+        NBLabel.text = LSLUser.current().lockInfo?.nbVersion
+        firmwareLabel.text = LSLUser.current().lockInfo?.firmwareVersion
+        bluetooth.text = LSLUser.current().lockInfo?.bluetoothName
+        finger.text = LSLUser.current().lockInfo?.fingerVersion
     }
     
     func setupUI() {

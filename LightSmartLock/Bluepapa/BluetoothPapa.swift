@@ -44,7 +44,7 @@ public class BluetoothPapa: NSObject {
     /// 蓝牙门锁通信加密密匙
     fileprivate var AESkey: String? {
         get {
-            return LSLUser.current().lockInfo?.secretKey
+            return LSLUser.current().lockInfo?.bluetoothPwd
         }
     }
     
@@ -85,7 +85,7 @@ public class BluetoothPapa: NSObject {
     
     fileprivate func commonInit() {
         bluetoothManager = CBCentralManager(delegate: self, queue: centralQueue)
-        if let blueName = LSLUser.current().lockInfo?.bluthName {
+        if let blueName = LSLUser.current().lockInfo?.bluetoothName {
             filterBluetoothNames = [blueName, "UOKO", "UOKO_BLE"]
         } else {
             filterBluetoothNames = ["UOKO", "UOKO_BLE"]
@@ -293,7 +293,7 @@ public class BluetoothPapa: NSObject {
         let array = Array(repeating: 0, count: 16).map { String($0) }.compactMap { $0 }
         let key = array.joined(separator:"")
         var lockInfo = LSLUser.current().lockInfo
-        lockInfo?.secretKey = key
+        lockInfo?.bluetoothPwd = key
         LSLUser.current().lockInfo = lockInfo
     }
     
@@ -324,7 +324,7 @@ public class BluetoothPapa: NSObject {
         encrypt(command: command)
         
         var lockInfo = LSLUser.current().lockInfo
-        lockInfo?.secretKey = key
+        lockInfo?.bluetoothPwd = key
         LSLUser.current().lockInfo = lockInfo
     }
     

@@ -150,7 +150,7 @@ extension BusinessInterface: TargetType {
     var headers: [String : String]? {
         guard let entiy = LSLUser.current().token else { return nil }
         
-        guard let token = entiy.access_token, let type = entiy.tokenType else {
+        guard let token = entiy.accessToken, let type = entiy.tokenType else {
             return nil
         }
         return ["Authorization": type + token]
@@ -158,8 +158,11 @@ extension BusinessInterface: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .user, .getHouses:
+        case .user, .getHouses, .getAssetHouseDetail, .getLockInfo,
+             .getHomeInfo, .getUserList:
             return .get
+        case .deleteAssetHouse, .forceDeleteLock:
+            return .delete
         default:
             return .post
         }
@@ -244,6 +247,22 @@ extension BusinessInterface: TargetType {
             return "/user"
         case .getHouses:
             return "/ladder_asset_house/houses"
+        case let .deleteAssetHouse(id):
+            return "/ladder_asset_house/house/\(id)"
+        case let .getAssetHouseDetail(id):
+            return "/ladder_asset_house/house/\(id)"
+        case .editAssetHouse:
+            return "/ladder_asset_house/house"
+        case .addLock:
+            return "/ladder_lock/lock"
+        case let .getLockInfo(id):
+            return "/ladder_lock/info/\(id)"
+        case let .getHomeInfo(id):
+            return "/ladder_lock/home/\(id)"
+        case let .forceDeleteLock(id):
+            return "/ladder_lock/lock/\(id)"
+        case .getUserList:
+            return "/user/list"
         }
     }
     
@@ -347,16 +366,16 @@ extension BusinessInterface: TargetType {
             
         case let .getLockNotice(noticeTypes, noticeLevels, pageIndex, pageSize):
             
-            guard let customerId = LSLUser.current().userInScene?.customerID, let lockId = LSLUser.current().lockInfo?.customerLockID else {
-                return nil
-            }
-            let param: [String: Any] = ["CustomerID": customerId,
-                                        "CustomerLockID": lockId,
-                                        "noticeType": noticeTypes,
-                                        "noticeLevel": noticeLevels,
-                                        "pageIndex": pageIndex,
-                                        "PageSize": pageSize ?? 15]
-            return param
+//            guard let customerId = LSLUser.current().userInScene?.customerID, let lockId = LSLUser.current().lockInfo?.customerLockID else {
+//                return nil
+//            }
+//            let param: [String: Any] = ["CustomerID": customerId,
+//                                        "CustomerLockID": lockId,
+//                                        "noticeType": noticeTypes,
+//                                        "noticeLevel": noticeLevels,
+//                                        "pageIndex": pageIndex,
+//                                        "PageSize": pageSize ?? 15]
+            return nil
             
         case .unInstallLock:
             guard let sceneId = LSLUser.current().scene?.sceneID else { return nil }
@@ -407,10 +426,11 @@ extension BusinessInterface: TargetType {
             }
             
         case let .getFingerPrintKeyList(customerId, index, pageSize):
-            guard let lockId = LSLUser.current().lockInfo?.customerLockID else {
-                return nil
-            }
-            return ["CustomerID": customerId, "LockID": lockId, "PageSize":  pageSize ?? 15, "PageIndex": index]
+//            guard let lockId = LSLUser.current().lockInfo?.customerLockID else {
+//                return nil
+//            }
+//            return ["CustomerID": customerId, "LockID": lockId, "PageSize":  pageSize ?? 15, "PageIndex": index]
+            return nil
             
         case let .setFingerCoercionReminPhone(id, phone):
             return ["KeyID": id, "Phone": phone]
@@ -425,24 +445,25 @@ extension BusinessInterface: TargetType {
             return ["KeyID": id, "isRemote": isRemote]
             
         case let .addFingerPrintKey(name):
-            guard let userCode = LSLUser.current().userInScene?.userCode, let customerId = LSLUser.current().userInScene?.customerID, let lockId = LSLUser.current().lockInfo?.customerLockID, let keyId = LSLUser.current().userInScene?.pwdNumber else {
-                return nil
-            }
-            return ["UserCode": userCode, "CustomerID": customerId, "LockID": lockId, "KeyNumber": keyId, "Remark": name]
-            
+//            guard let userCode = LSLUser.current().userInScene?.userCode, let customerId = LSLUser.current().userInScene?.customerID, let lockId = LSLUser.current().lockInfo?.customerLockID, let keyId = LSLUser.current().userInScene?.pwdNumber else {
+//                return nil
+//            }
+//            return ["UserCode": userCode, "CustomerID": customerId, "LockID": lockId, "KeyNumber": keyId, "Remark": name]
+            return nil
         case let .getCustomerKeyList(keyType, index, pageSize):
             guard let customerId = LSLUser.current().userInScene?.customerID else { return nil }
             return ["CustomerID": customerId, "KeyType": keyType, "PageIndex": index, "PageSize": pageSize ?? 15]
             
         case let .addCustomerCard(KeyNumber, remark):
-            guard let userCode = LSLUser.current().userInScene?.userCode, let customerId = LSLUser.current().userInScene?.customerID, let lockId = LSLUser.current().lockInfo?.customerLockID else {
-                return nil
-            }
-            var dict: [String: Any] = ["UserCode": userCode, "CustomerID": customerId, "LockID": lockId, "KeyNumber": KeyNumber]
-            if let name = remark {
-                dict.updateValue(name, forKey: "Remark")
-            }
-            return dict
+//            guard let userCode = LSLUser.current().userInScene?.userCode, let customerId = LSLUser.current().userInScene?.customerID, let lockId = LSLUser.current().lockInfo?.customerLockID else {
+//                return nil
+//            }
+//            var dict: [String: Any] = ["UserCode": userCode, "CustomerID": customerId, "LockID": lockId, "KeyNumber": KeyNumber]
+//            if let name = remark {
+//                dict.updateValue(name, forKey: "Remark")
+//            }
+//            return dict
+            return nil
             
         case let .setCardRemark(keyId, remark):
             return ["KeyID": keyId, "Remark": remark]
@@ -483,6 +504,16 @@ extension BusinessInterface: TargetType {
             var dict = input.toJSON()
             dict?.updateValue(CustomerID, forKey: "CustomerID")
             return dict
+                        
+        case let .editAssetHouse(parameter):
+            return parameter.toJSON()
+            
+        case let .addLock(parameter):
+            return parameter.toJSON()
+            
+        case let .getUserList(lockId, pageIndex, pageSize):
+            return ["currentPage": pageIndex, "pageSize": pageSize ?? 15, "ladderLockId": lockId]
+            
         default:
             return nil
         }

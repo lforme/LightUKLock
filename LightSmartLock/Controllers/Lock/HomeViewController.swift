@@ -13,7 +13,6 @@ import RxSwift
 import RxCocoa
 import Then
 
-
 class HomeViewController: UIViewController, NavigationSettingStyle {
     
     var backgroundColor: UIColor? {
@@ -21,6 +20,8 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     }
     
     @IBOutlet weak var noLockView: UIView!
+    let notiButton = UIButton(type: .custom)
+    let lockSettingButton = UIButton(type: .custom)
     
     let vm: HomeViewModeling = HomeViewModel()
     
@@ -32,9 +33,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         $0.register(UINib(nibName: "UnlockRecordCell", bundle: nil), forCellReuseIdentifier: "UnlockRecordCell")
     }
     
-    var dataSource: [UnlockRecordModel] = []
-    
-    private let synchronizeTaks = BluetoothSynchronizeTask()
+    //    private let synchronizeTaks = BluetoothSynchronizeTask()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +41,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         setupUI()
         setupRightNavigationItems()
         observerNotification()
-        synchronizeTaks.synchronizeTask()
+        //        synchronizeTaks.synchronizeTask()
     }
     
     func setupUI() {
@@ -61,7 +60,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     
     func setupRightNavigationItems() {
         
-        let lockSettingButton = UIButton(type: .custom)
+        
         lockSettingButton.setImage(UIImage(named: "home_lock_setting_item"), for: UIControl.State())
         lockSettingButton.frame.size = CGSize(width: 32, height: 32)
         lockSettingButton.contentHorizontalAlignment = .left
@@ -85,7 +84,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         }).disposed(by: rx.disposeBag)
         
         LSLUser.current().obScene.subscribe(onNext: { (scene) in
-            if let name = scene?.sceneName {
+            if let name = scene?.buildingName {
                 sceneButton.setTitle(
                     "  \(name)", for: UIControl.State())
             } else {
@@ -103,24 +102,28 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     
     func bind() {
         
-        vm.isInstallLock.do(onNext: {[unowned self] (install) in
+        vm.lockInfo?.subscribe(onNext: { (lock) in
+            LSLUser.current().lockInfo = lock
+        }, onError: { (error) in
+            PKHUD.sharedHUD.rx.showError(error)
+        }).disposed(by: rx.disposeBag)
+        
+        vm.homeInfo?.subscribe(onNext: {[weak self] (home) in
+            guard let this = self else { return }
+            let lockCell = this.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? AnimationHeaderView
+            lockCell?.bind(openStatus: home.openStatus, onlineStatus: home.onlineStatus, power: LSLUser.current().lockInfo?.powerPercent)
+            
+            let tenantCell = this.tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? LeasedCell
+            tenantCell?.unlocker.text = home.ladderOpenLockRecordVO?.userName ?? "暂无人员解锁"
+            tenantCell?.unlockTime.text = home.ladderOpenLockRecordVO?.openTime
+            
+            this.tableView.reloadData()
+        }, onError: { (error) in
+            PKHUD.sharedHUD.rx.showError(error)
+        }).disposed(by: rx.disposeBag)
+        
+        vm.isInstallLock.subscribe(onNext: { (install) in
             self.hasLock(has: install)
-        }).flatMapLatest {[unowned self] (_) in
-            return self.vm.userInScene
-        }.delaySubscription(0.5, scheduler: MainScheduler.instance).flatMapLatest {[unowned self] (userInScene) -> Observable<SmartLockInfoModel> in
-            LSLUser.current().userInScene = userInScene
-            return self.vm.lockInfo
-        }.delaySubscription(0.5, scheduler: MainScheduler.instance).flatMapLatest {[unowned self] (lockInfo) -> Observable<IOTLockInfoModel> in
-            LSLUser.current().lockInfo = lockInfo
-            return self.vm.lockIOTInfo
-        }.delaySubscription(0.5, scheduler: MainScheduler.instance).flatMapLatest {[unowned self] (IOTLockInfo) -> Observable<[UnlockRecordModel]> in
-            LSLUser.current().lockIOTInfo = IOTLockInfo
-            return self.vm.unlockRecord
-        }.subscribe(onNext: {[unowned self] (list) in
-            self.dataSource = list
-            self.tableView.reloadData()
-            }, onError: { (error) in
-                PKHUD.sharedHUD.rx.showError(error)
         }).disposed(by: rx.disposeBag)
         
     }
@@ -196,7 +199,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 self?.present(openDoorVC, animated: true, completion: nil)
             }).disposed(by: animationCell.disposeBag)
             
-            animationCell.bind(LSLUser.current().lockIOTInfo)
             return animationCell
         case 1:
             let controlCell = tableView.dequeueReusableCell(withIdentifier: "HomeControlCell") as! HomeControlCell

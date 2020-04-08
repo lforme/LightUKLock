@@ -40,8 +40,14 @@ final class LockSettingViewModel: BluetoothViewModel {
     }
     
     func forceDeleteLock(_ buttonIndex: Int) -> Observable<Bool> {
+        
+        guard let id = LSLUser.current().lockInfo?.ladderLockId else {
+            HUD.flash(.label("无法获取门锁Id"), delay: 2)
+            return .empty()
+        }
+        
         if buttonIndex == 0 {
-            return BusinessAPI.requestMapBool(.unInstallLock)
+            return BusinessAPI.requestMapBool(.forceDeleteLock(id: id))
         } else {
             return .empty()
         }
@@ -54,8 +60,13 @@ final class LockSettingViewModel: BluetoothViewModel {
             return .empty()
         }
 
+        guard let id = LSLUser.current().lockInfo?.ladderLockId else {
+            HUD.flash(.label("无法获取门锁Id"), delay: 2)
+            return .empty()
+        }
+        
         if buttonIndex == 0 {
-            return BusinessAPI.requestMapBool(.unInstallLock).flatMapLatest { (requestSuccess) -> Observable<Bool> in
+            return BusinessAPI.requestMapBool(.forceDeleteLock(id: id)).flatMapLatest { (requestSuccess) -> Observable<Bool> in
                 
                 return Observable<Bool>.create { (observer) -> Disposable in
                     

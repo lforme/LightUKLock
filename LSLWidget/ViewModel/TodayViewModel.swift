@@ -19,7 +19,7 @@ final class TodayViewModel {
     var sceneName: Observable<String?> {
         let jsonStr = shareDefault?.string(forKey: ShareUserDefaultsKey.scene.rawValue)
         let model = SceneListModel.deserialize(from: jsonStr)
-        return .just(model?.sceneName)
+        return .just(model?.buildingName)
     }
     
     var currentPower: Observable<String?> {

@@ -20,10 +20,10 @@ class LockStartScanningController: UIViewController, NavigationSettingStyle {
     @IBOutlet weak var desLabel: UILabel!
     @IBOutlet weak var scanButton: UIButton!
     
-    var withSceneId: Bool = false
+    var kind: SelectLockTypeController.AddKind!
     
     let vm = LockStartScanViewModel()    
-    var lockInfo: SmartLockInfoModel!
+    var lockInfo: LockModel!
     
     fileprivate var shouldIgnorePushingViewControllers = false
     
@@ -60,8 +60,8 @@ class LockStartScanningController: UIViewController, NavigationSettingStyle {
             if success {
                 BluetoothPapa.shareInstance.handshake {[weak self] (data) in
                     let tuple = BluetoothPapa.serializeShake(data)
-                    self?.lockInfo.lockNum = tuple?.Mac
-                    self?.lockInfo.MAC = tuple?.Mac
+                    self?.lockInfo.bluetoothName = tuple?.Mac
+                    self?.lockInfo.blueMac = tuple?.Mac
                 }
             }
         }).disposed(by: rx.disposeBag)
@@ -73,12 +73,7 @@ class LockStartScanningController: UIViewController, NavigationSettingStyle {
                 }
                 let setPwdVC: LockSettingPasswordController = ViewLoader.Storyboard.controller(from: "InitialLock")
                 
-                if self?.withSceneId ?? false {
-                    if let lastSceneId = LSLUser.current().scene?.sceneID {
-                        self?.lockInfo.sceneID = lastSceneId
-                    }
-                }
-                
+                setPwdVC.kind = self?.kind
                 setPwdVC.lockInfo = self?.lockInfo
                 self?.navigationController?.pushViewController(setPwdVC, animated: true)
                 self?.shouldIgnorePushingViewControllers = true

@@ -29,8 +29,14 @@ final class UserManagementViewModel: ListViewModeling {
     var disposeBag: DisposeBag = DisposeBag()
     
     func refresh() {
+        
+        guard let lockId = LSLUser.current().lockInfo?.ladderLockId else {
+            HUD.flash(.label("无法获取门锁Id"), delay: 2)
+            return
+        }
+        
         pageIndex = 1
-        BusinessAPI.requestMapJSONArray(.getCustomerMemberList(pageIndex: pageIndex, pageSize: 15), classType: Item.self, useCache: true).map { $0.compactMap { $0 } }
+        BusinessAPI.requestMapJSONArray(.getUserList(lockId: lockId, pageIndex: pageIndex, pageSize: 15), classType: Item.self, useCache: true, isPaginating: true).map { $0.compactMap { $0 } }
             .do( onError: {[weak self] (_) in
                 self?.obRefreshStatus.accept(.endHeaderRefresh)
                 }, onCompleted: {[weak self] in
@@ -40,8 +46,13 @@ final class UserManagementViewModel: ListViewModeling {
     }
     
     func loadMore() {
+        guard let lockId = LSLUser.current().lockInfo?.ladderLockId else {
+            HUD.flash(.label("无法获取门锁Id"), delay: 2)
+            return
+        }
+        
         pageIndex += 1
-        BusinessAPI.requestMapJSONArray(.getCustomerMemberList(pageIndex: pageIndex, pageSize: 15), classType: Item.self, useCache: true).map { $0.compactMap { $0 } }
+        BusinessAPI.requestMapJSONArray(.getUserList(lockId: lockId, pageIndex: pageIndex, pageSize: 15), classType: Item.self, useCache: true, isPaginating: true).map { $0.compactMap { $0 } }
             .subscribe(onNext: {[weak self] (models) in
                 guard let this = self else { return }
                 

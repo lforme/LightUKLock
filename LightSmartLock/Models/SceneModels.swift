@@ -69,7 +69,7 @@ struct SceneListModel: HandyJSON {
     var buildingName: String?
     var cityId: String?
     var cityName: String?
-    var isTop: Int!
+    var isTop: Bool!
     var ladderAssetHouseId: String?
     var ladderLockId: String?
     var lockType: String?

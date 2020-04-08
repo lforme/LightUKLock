@@ -75,6 +75,7 @@
 		9C3726E32391164700450757 /* OpenDoorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3726E22391164700450757 /* OpenDoorViewModel.swift */; };
 		9C3726E52391369900450757 /* MessageCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3726E42391369900450757 /* MessageCenterController.swift */; };
 		9C3726E723913C5400450757 /* MessageCenterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3726E623913C5400450757 /* MessageCenterViewModel.swift */; };
+		9C414EDD243D7B5A002EEC1C /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C414EDC243D7B5A002EEC1C /* HomeModel.swift */; };
 		9C429767238637E3004CB999 /* LoginViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C429766238637E3004CB999 /* LoginViewReactor.swift */; };
 		9C42976B2386389B004CB999 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42976A2386389B004CB999 /* LoginService.swift */; };
 		9C42976D23866026004CB999 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42976C23866026004CB999 /* UIButton+Extension.swift */; };
@@ -296,6 +297,7 @@
 		9C3726E22391164700450757 /* OpenDoorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDoorViewModel.swift; sourceTree = "<group>"; };
 		9C3726E42391369900450757 /* MessageCenterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCenterController.swift; sourceTree = "<group>"; };
 		9C3726E623913C5400450757 /* MessageCenterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCenterViewModel.swift; sourceTree = "<group>"; };
+		9C414EDC243D7B5A002EEC1C /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		9C429766238637E3004CB999 /* LoginViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewReactor.swift; sourceTree = "<group>"; };
 		9C42976A2386389B004CB999 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		9C42976C23866026004CB999 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
@@ -620,6 +622,7 @@
 				9CB4B34A239DE8C3001197AB /* DigitalPasswordModel.swift */,
 				9C03B0EC239F49440001E849 /* FingerModel.swift */,
 				9CBD8F3E23A1ECF900886519 /* ShareModels.swift */,
+				9C414EDC243D7B5A002EEC1C /* HomeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1177,6 +1180,7 @@
 				9C429767238637E3004CB999 /* LoginViewReactor.swift in Sources */,
 				9C1B87C92397739100216ADA /* LockSettingPasswordController.swift in Sources */,
 				9C524028238E12E300308AC4 /* UIApplicationProxy.swift in Sources */,
+				9C414EDD243D7B5A002EEC1C /* HomeModel.swift in Sources */,
 				9C5A967E23A08EE4002A2B06 /* AddCardViewModel.swift in Sources */,
 				9C47DB77239A0A810019EAA0 /* SelectPopupView.swift in Sources */,
 				9CBD8F3F23A1ECF900886519 /* ShareModels.swift in Sources */,

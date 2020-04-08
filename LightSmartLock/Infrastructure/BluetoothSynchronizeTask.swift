@@ -89,7 +89,7 @@ final class BluetoothSynchronizeTask: UKBluetoothManagerDelegate {
                 }
                 
             } else {
-                if let macWithColon = LSLUser.current().lockInfo?.MAC {
+                if let macWithColon = LSLUser.current().lockInfo?.blueMac {
                     let mac = macWithColon.replacingOccurrences(of: ":", with: "")
                     let date = Date().toString(.custom("yyyyMMddHHmm"))
                     let paramBuilder = ["strMessageData": "FF00030108\(mac)00100662640000\(date)", "DevType": "kf110"]

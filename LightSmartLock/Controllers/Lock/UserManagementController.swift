@@ -103,12 +103,12 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserManagementCell", for: indexPath) as! UserManagementCell
         let data = dataSource[indexPath.row]
         
-        cell.nickname.text = data.customerNickName
-        cell.role.text = data.relationType?.description
-        if let pic = data.headPic?.encodeUrl() {
+        cell.nickname.text = data.nickname
+        cell.role.text = data.roleType?.description
+        if let pic = data.avatar?.encodeUrl() {
             cell.avatar.kf.setImage(with: URL(string: pic))
         }
-        cell.synchronizedStart(data.userCode.isNilOrEmpty)
+//        cell.synchronizedStart(data.userCode.isNilOrEmpty)
         return cell
     }
     
