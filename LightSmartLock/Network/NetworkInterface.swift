@@ -35,7 +35,6 @@ enum BusinessInterface {
     case getLockCurrentInfoFromIOTPlatform // 从物联网平台获取门锁信息
     case getUnlockLog(userCodes: [String], beginTime: String?, endTime: String?, index: Int, pageSize: Int?) //解锁记录
     case updateUserInfo(info: UserModel) // 更户信息
-    case submitBluthUnlockOperation // 上传蓝牙解锁记录
     case getLockNotice(noticeType: [Int], noticeLevel: [Int], pageIndex: Int, pageSize: Int?) // 获取消息提醒 noticeType = -1 全部  noticeLevel = -1 全部
     case unInstallLock // 删除蓝牙门锁
     case getSceneAssets // 获取资产详情
@@ -77,4 +76,6 @@ enum BusinessInterface {
     case getHomeInfo(id: String) // 获取首页信息
     case forceDeleteLock(id: String) // 强制删除门锁
     case getUserList(lockId: String, pageIndex: Int, pageSize: Int?) // 用户列表
+    case uploadOpenDoorRecord(lockId: String, time: String, type: Int) // 上传解锁记录
+    case addUserByBluethooth(parameter: UserMemberListModel) // 蓝牙添加用户
 }

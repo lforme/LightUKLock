@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import PKHUD
+import SwiftDate
 
 final class OpenDoorViewModel {
     
@@ -78,6 +79,11 @@ final class OpenDoorViewModel {
     }
     
     func uploadUnlockRecord() -> Observable<Bool> {
-        return BusinessAPI.requestMapBool(.submitBluthUnlockOperation)
+        guard let lockId = LSLUser.current().lockInfo?.ladderLockId else {
+            return .error(AppError.reason("无法获取门锁Id"))
+        }
+        let time = Date().toFormat("yyyy-MM-dd HH:mm:ss")
+        
+        return BusinessAPI.requestMapBool(.uploadOpenDoorRecord(lockId: lockId, time: time, type: 1))
     }
 }

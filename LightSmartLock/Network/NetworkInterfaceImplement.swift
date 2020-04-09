@@ -171,7 +171,7 @@ extension BusinessInterface: TargetType {
     var path: String {
         switch self {
         case .uploadImage:
-            return "api/File/UploadImage"
+            return "/attachments"
         case .getCustomerSceneList:
             return "api/Scene/GetCustomerSceneList"
         case .getCurrentCustomerInfo:
@@ -184,8 +184,6 @@ extension BusinessInterface: TargetType {
             return "api/Lock/GetUnlockLog"
         case .updateUserInfo:
             return "api/User/UpdateAccountInfo"
-        case .submitBluthUnlockOperation:
-            return "api/Lock/SubmitBluthUnlockOperation"
         case .getLockNotice:
             return "api/Lock/GetLockNotice"
         case .unInstallLock:
@@ -263,6 +261,10 @@ extension BusinessInterface: TargetType {
             return "/ladder_lock/lock/\(id)"
         case .getUserList:
             return "/user/list"
+        case let .uploadOpenDoorRecord(lockId, _, _):
+            return "/ladder_open_lock_record/record/\(lockId)"
+        case .addUserByBluethooth:
+            return "/user"
         }
     }
     
@@ -359,10 +361,6 @@ extension BusinessInterface: TargetType {
             
         case let .updateUserInfo(info):
             return info.toJSON()
-            
-        case .submitBluthUnlockOperation:
-            guard let customerId = LSLUser.current().userInScene?.customerID else { return nil }
-            return ["CustomerID": customerId]
             
         case let .getLockNotice(noticeTypes, noticeLevels, pageIndex, pageSize):
             
@@ -513,6 +511,12 @@ extension BusinessInterface: TargetType {
             
         case let .getUserList(lockId, pageIndex, pageSize):
             return ["currentPage": pageIndex, "pageSize": pageSize ?? 15, "ladderLockId": lockId]
+            
+        case let .uploadOpenDoorRecord(_, time, type):
+            return ["openTime": time, "openType": type]
+            
+        case let .addUserByBluethooth(parameter):
+            return parameter.toJSON()
             
         default:
             return nil
