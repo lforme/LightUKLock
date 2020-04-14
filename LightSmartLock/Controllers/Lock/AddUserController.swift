@@ -53,11 +53,8 @@ class AddUserController: UITableViewController {
     }
     
     func bind() {
-        guard let sceneId = LSLUser.current().userInScene?.sceneID else {
-            HUD.flash(.label("无法从服务器获取用户场景, 请稍后再试"), delay: 2)
-            return
-        }
-        self.vm = AddUserViewModel(id: sceneId)
+        
+        self.vm = AddUserViewModel()
         
         nicknameTextField.rx.text.orEmpty.changed
             .distinctUntilChanged()
@@ -70,20 +67,20 @@ class AddUserController: UITableViewController {
         
         vm.displayModel.subscribe(onNext: {[weak self] (display) in
             
-            if let tag = display.Label {
+            if let tag = display.kinsfolkTag {
                 self?.tagLabel.text = tag
                 self?.tagLabel.textColor = ColorClassification.textPrimary.value
             } else {
                 self?.tagLabel.textColor = ColorClassification.textDescription.value
             }
             
-            if let pwd = display.InitialSecret {
+            if let pwd = display.bluetoothPwd {
                 self?.passwordLabel.text = pwd
             }
             
         }).disposed(by: rx.disposeBag)
         
-        saveButton.rx.bind(to: vm.saveAtion, input: AddUserMemberModel())
+        saveButton.rx.bind(to: vm.saveAtion, input: UserMemberListModel())
         
         vm.saveAtion.errors.subscribe(onNext: { (error) in
             PKHUD.sharedHUD.rx.showActionError(error)
@@ -91,9 +88,10 @@ class AddUserController: UITableViewController {
         
         vm.saveAtion.elements.subscribe(onNext: {[weak self] (success) in
             if success {
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addUser)
                 HUD.flash(.label("添加成功"), delay: 2)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self?.navigationController?.popToRootViewController(animated: true)
+                    self?.navigationController?.popViewController(animated: true)
                 }
             }
         }).disposed(by: rx.disposeBag)

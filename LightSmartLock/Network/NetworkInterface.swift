@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import HandyJSON
 
 // 高德地图 Web API
 enum AMapAPI {
@@ -55,8 +56,6 @@ enum BusinessInterface {
     case addCustomerCard(KeyNumber: String, remark: String?) //添加门卡
     case setCardRemark(keyId: String, remark: String) // 更新门卡名称
     case deleteCustomerCard(keyId: String) // 删除门卡
-    case getCustomerSysRoleTips // 获取系统内置标签
-    case addCustomerMember(member: AddUserMemberModel) // 添加成员
     case updateCustomerNameById(id: String, name: String)
     case deleteCustomerMember(customerID: String, isRemote: Bool?) // 删除成员
     case getTempKeyShareList(customerID: String, pageIndex: Int, pageSize: Int?) // 获取临时密码列表
@@ -78,4 +77,8 @@ enum BusinessInterface {
     case getUserList(lockId: String, pageIndex: Int, pageSize: Int?) // 用户列表
     case uploadOpenDoorRecord(lockId: String, time: String, type: Int) // 上传解锁记录
     case addUserByBluethooth(parameter: UserMemberListModel) // 蓝牙添加用户
+    case getCustomerSysRoleTips // 获取系统内置标签
+    case editUser(parameter: HandyJSON) //编辑用户
+    case deleteUserBy(id: String) // 删除用户
+
 }

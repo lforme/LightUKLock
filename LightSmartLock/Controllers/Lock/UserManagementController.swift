@@ -32,6 +32,18 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
         setupTableviewRefresh()
         bind()
         setupNavigationRightItem()
+        observerNotification()
+    }
+    
+    func observerNotification() {
+        NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
+            guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
+            switch refreshType {
+            case .addUser:
+                self?.tableView.mj_header?.beginRefreshing()
+            default: break
+            }
+        }).disposed(by: rx.disposeBag)
     }
     
     func setupNavigationRightItem() {
@@ -106,7 +118,7 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
         cell.nickname.text = data.nickname
         cell.role.text = data.roleType?.description
         if let pic = data.avatar?.encodeUrl() {
-            cell.avatar.kf.setImage(with: URL(string: pic))
+            cell.avatar.kf.setImage(with: URL(string: pic), placeholder: UIImage(named: "user_default"))
         }
 //        cell.synchronizedStart(data.userCode.isNilOrEmpty)
         return cell

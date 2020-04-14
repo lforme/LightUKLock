@@ -23,11 +23,11 @@ final class AddUserViewModel: BluetoothViewModel {
         return _userTags.asObservable()
     }
     
-    var displayModel: Observable<AddUserMemberModel> {
+    var displayModel: Observable<UserMemberListModel> {
         return _submitModel.asObservable()
     }
     
-    var saveAtion: Action<AddUserMemberModel, Bool>!
+    var saveAtion: Action<UserMemberListModel, Bool>!
     
     var addWay: AddWay = .bluetooth
     
@@ -35,9 +35,9 @@ final class AddUserViewModel: BluetoothViewModel {
     let phone = BehaviorRelay<String?>(value: nil)
     
     private let _userTags = BehaviorRelay<[String]>(value: [])
-    private var _submitModel = BehaviorRelay<AddUserMemberModel>(value: AddUserMemberModel())
+    private var _submitModel = BehaviorRelay<UserMemberListModel>(value: UserMemberListModel())
     
-    init(id: String) {
+    override init() {
         super.init()
         
         self.startConnected.subscribe(onNext: { (connected) in
@@ -49,12 +49,12 @@ final class AddUserViewModel: BluetoothViewModel {
         }).disposed(by: disposeBag)
         
         var localModel = self._submitModel.value
-        localModel.SceneID = id
-        localModel.OperationType = 0
+        
+        localModel.operationType = 0
         self._submitModel.accept(localModel)
         
         BusinessAPI.requestMapAny(.getCustomerSysRoleTips).map { (data) -> [String] in
-            guard let dict = data as? [String: Any], let tagArray = dict["Data"] as? [String] else {
+            guard let dict = data as? [String: Any], let tagArray = dict["data"] as? [String] else {
                 return []
             }
             return tagArray
@@ -63,7 +63,7 @@ final class AddUserViewModel: BluetoothViewModel {
         nickname.subscribe(onNext: {[weak self] (nick) in
             guard let this = self else { return }
             var localModel = this._submitModel.value
-            localModel.CustomerNickName = nick
+            localModel.nickname = nick
             this._submitModel.accept(localModel)
             
         }).disposed(by: disposeBag)
@@ -71,7 +71,7 @@ final class AddUserViewModel: BluetoothViewModel {
         phone.subscribe(onNext: {[weak self] (p) in
             guard let this = self else { return }
             var localModel = this._submitModel.value
-            localModel.Phone = p
+            localModel.phone = p
             this._submitModel.accept(localModel)
             
         }).disposed(by: disposeBag)
@@ -82,11 +82,11 @@ final class AddUserViewModel: BluetoothViewModel {
     func pickUserAvatar(_ image: UIImage) {
         return BusinessAPI.requestMapAny(.uploadImage(image, description: "头像上传")).map { (res) -> String? in
             let json = res as? [String: Any]
-            let headPicUrl = json?["Data"] as? String
+            let headPicUrl = json?["data"] as? String
             return headPicUrl
         }.subscribe(onNext: {[unowned self] (avatarUrl) in
             var localModel = self._submitModel.value
-            localModel.HeadPic = avatarUrl
+            localModel.avatar = avatarUrl
             self._submitModel.accept(localModel)
             }, onError: { (error) in
                 PKHUD.sharedHUD.rx.showError(error)
@@ -95,7 +95,7 @@ final class AddUserViewModel: BluetoothViewModel {
     
     func setTag(_ roleTag: String) {
         var localModel = self._submitModel.value
-        localModel.Label = roleTag
+        localModel.kinsfolkTag = roleTag
         self._submitModel.accept(localModel)
     }
     
@@ -104,26 +104,32 @@ final class AddUserViewModel: BluetoothViewModel {
         let random = array.shuffled()[0..<6].map { String($0) }
         let pwd = random.joined()
         var localModel = self._submitModel.value
-        localModel.InitialSecret = pwd
+        localModel.bluetoothPwd = pwd
         self._submitModel.accept(localModel)
     }
     
     func setAddWay(_ way: Int) {
         var localModel = self._submitModel.value
-        localModel.OperationType = way
+        localModel.operationType = way
         self._submitModel.accept(localModel)
     }
     
-    private func addAction() -> Action<AddUserMemberModel, Bool> {
+    private func addAction() -> Action<UserMemberListModel, Bool> {
     
-        return Action<AddUserMemberModel, Bool> {[weak self] (_) -> Observable<Bool> in
+        return Action<UserMemberListModel, Bool> {[weak self] (_) -> Observable<Bool> in
             guard let this = self else {
                 return .empty()
             }
             
-            let localModel = this._submitModel.value
+            guard let lockId = LSLUser.current().lockInfo?.ladderLockId else {
+                return .error(AppError.reason("当前用户还无门锁"))
+            }
             
-            guard localModel.InitialSecret.isNotNilNotEmpty, localModel.Label.isNotNilNotEmpty, localModel.Phone.isNotNilNotEmpty, localModel.CustomerNickName.isNotNilNotEmpty else {
+            var localModel = this._submitModel.value
+            localModel.lockId = lockId
+            this._submitModel.accept(localModel)
+            
+            guard localModel.bluetoothPwd.isNotNilNotEmpty, localModel.kinsfolkTag.isNotNilNotEmpty, localModel.phone.isNotNilNotEmpty, localModel.nickname.isNotNilNotEmpty else {
                 
                 return .error(AppError.reason("请检查必填项是否输入完整"))
             }
@@ -136,11 +142,11 @@ final class AddUserViewModel: BluetoothViewModel {
                     if !this.isConnected {
                         observer.onError(AppError.reason("未连接到蓝牙门锁, 请稍后再试"))
                     }
-                    BluetoothPapa.shareInstance.addUserBy(this._submitModel.value.InitialSecret!) { (data) in
+                    BluetoothPapa.shareInstance.addUserBy(this._submitModel.value.bluetoothPwd!) { (data) in
                         let dict = BluetoothPapa.serializeAddUser(data)
                         if let userCode = dict?["用户编号"] as? String {
                             var localModel = this._submitModel.value
-                            localModel.UserCode = userCode
+                            localModel.lockUserAccount = userCode
                             this._submitModel.accept(localModel)
                             observer.onNext(true)
                             observer.onCompleted()
@@ -151,15 +157,15 @@ final class AddUserViewModel: BluetoothViewModel {
                     return Disposables.create()
                 }.do(onNext: {(success) in
                     if success {
-                        BusinessAPI.requestMapBool(.addCustomerMember(member: this._submitModel.value)).subscribe(onNext: { (s) in
+                        BusinessAPI.requestMapBool(.addUserByBluethooth(parameter: this._submitModel.value)).subscribe(onNext: { (s) in
                             if !s {
-                                BluetoothPapa.shareInstance.deleteUserBy(this._submitModel.value.InitialSecret!, userNumber: this._submitModel.value.UserCode!) { (data) in
+                                BluetoothPapa.shareInstance.deleteUserBy(this._submitModel.value.bluetoothPwd!, userNumber: this._submitModel.value.lockUserAccount!) { (data) in
                                     print(data ?? "", "网络请求失败删除门锁用户")
                                 }
                             }
                         }, onError: { (e) in
                             print(e)
-                            BluetoothPapa.shareInstance.deleteUserBy(this._submitModel.value.InitialSecret!, userNumber: this._submitModel.value.UserCode!) { (data) in
+                            BluetoothPapa.shareInstance.deleteUserBy(this._submitModel.value.bluetoothPwd!, userNumber: this._submitModel.value.lockUserAccount!) { (data) in
                                 print(data ?? "", "网络请求失败删除门锁用户")
                             }
                         }).disposed(by: this.disposeBag)
@@ -167,7 +173,7 @@ final class AddUserViewModel: BluetoothViewModel {
                 })
                 
             case .remote:
-                return BusinessAPI.requestMapBool(.addCustomerMember(member: this._submitModel.value))
+                return BusinessAPI.requestMapBool(.addUserByBluethooth(parameter: this._submitModel.value))
             }
         }
     }

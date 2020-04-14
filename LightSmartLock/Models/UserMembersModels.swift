@@ -30,16 +30,17 @@ struct UserMemberListModel: HandyJSON {
     var roleType: RoleModel!
     var state: Int!
     var username: String?
+    var operationType: Int! // 1 蓝牙  2远程
+    var bluetoothPwd: String? // 蓝牙密码
+    
+    struct ModifyNickname: HandyJSON {
+        var id: String?
+        var nickname: String?
+    }
+    
+    func ConvertToModifyNickname() -> ModifyNickname {
+        let model = ModifyNickname(id: self.id, nickname: self.nickname)
+        return model
+    }
 }
 
-struct AddUserMemberModel: HandyJSON {
-    
-    var SceneID: String?
-    var CustomerNickName: String?
-    var Phone: String?
-    var InitialSecret: String?
-    var UserCode: String?
-    var OperationType: Int?
-    var Label: String?
-    var HeadPic: String?
-}

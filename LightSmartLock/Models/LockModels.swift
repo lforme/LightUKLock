@@ -118,5 +118,6 @@ struct LockModel: HandyJSON {
     var powerPercent: Double?
     var signal: String?
     var ladderLockId: String?
+    var lockNum: String?
     
 }

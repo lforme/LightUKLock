@@ -62,6 +62,7 @@ class LockStartScanningController: UIViewController, NavigationSettingStyle {
                     let tuple = BluetoothPapa.serializeShake(data)
                     self?.lockInfo.bluetoothName = tuple?.Mac
                     self?.lockInfo.blueMac = tuple?.Mac
+                    self?.lockInfo.lockNum = tuple?.Mac
                 }
             }
         }).disposed(by: rx.disposeBag)
