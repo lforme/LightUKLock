@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F64F18F4FD1BF62618F8397 /* Pods_LightSmartLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */; };
+		7B76FAAA2445B01A00B6F6A5 /* AssetDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B76FAA92445B01A00B6F6A5 /* AssetDetail.storyboard */; };
 		9C03B0EB239F46510001E849 /* FingerManageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EA239F46510001E849 /* FingerManageController.swift */; };
 		9C03B0ED239F49440001E849 /* FingerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EC239F49440001E849 /* FingerModel.swift */; };
 		9C03B0EF239F4A7B0001E849 /* FingerManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EE239F4A7B0001E849 /* FingerManageViewModel.swift */; };
@@ -229,6 +230,7 @@
 		3F491F2D46130205BF93BEC8 /* Pods_LSLWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LSLWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56B15D3085FA9EFD559AB2C2 /* Pods-LightSmartLock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightSmartLock.debug.xcconfig"; path = "Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock.debug.xcconfig"; sourceTree = "<group>"; };
 		5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LightSmartLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B76FAA92445B01A00B6F6A5 /* AssetDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AssetDetail.storyboard; sourceTree = "<group>"; };
 		9A21385643D81CD6A6F2D1C7 /* Pods-LSLWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSLWidget.release.xcconfig"; path = "Target Support Files/Pods-LSLWidget/Pods-LSLWidget.release.xcconfig"; sourceTree = "<group>"; };
 		9C03B0EA239F46510001E849 /* FingerManageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerManageController.swift; sourceTree = "<group>"; };
 		9C03B0EC239F49440001E849 /* FingerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerModel.swift; sourceTree = "<group>"; };
@@ -458,6 +460,14 @@
 				3F491F2D46130205BF93BEC8 /* Pods_LSLWidget.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7B76FAA82445AFF000B6F6A5 /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				7B76FAA92445B01A00B6F6A5 /* AssetDetail.storyboard */,
+			);
+			path = Asset;
 			sourceTree = "<group>";
 		};
 		9C1A4BC1238D09CB00626DB4 /* View */ = {
@@ -757,6 +767,7 @@
 		9CDD2739238283D8006A9B97 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7B76FAA82445AFF000B6F6A5 /* Asset */,
 				9C218F9C23FA765B009600F7 /* House */,
 				9C218F9723FA764A009600F7 /* Calendar */,
 				9C1B87C02397677300216ADA /* InitialLock */,
@@ -1016,6 +1027,7 @@
 				9C218F9A23FA764A009600F7 /* Calendar.storyboard in Resources */,
 				9CBD8F4523A2103D00886519 /* TempPasswordLogView.xib in Resources */,
 				9C524023238E0E3F00308AC4 /* error.json in Resources */,
+				7B76FAAA2445B01A00B6F6A5 /* AssetDetail.storyboard in Resources */,
 				9CDD27292382801D006A9B97 /* Main.storyboard in Resources */,
 				9C7AFF1E239603F00075442D /* SearchPlotCell.xib in Resources */,
 				9CBD8F5523A23ADC00886519 /* DatePickerController.xib in Resources */,
