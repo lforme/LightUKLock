@@ -163,7 +163,8 @@ extension BusinessInterface: TargetType {
              .getAllOpenWay:
             return .get
             
-        case .deleteAssetHouse, .forceDeleteLock, .deleteCard, .deleteFinger:
+        case .deleteAssetHouse, .forceDeleteLock, .deleteCard, .deleteFinger,
+             .undoTempPassword:
             return .delete
             
         case .editUser, .editCardOrFingerName, .setAlarmFingerprint:
@@ -292,6 +293,8 @@ extension BusinessInterface: TargetType {
         case let .getTempPasswordList(lockId, _, _):
             return "/ladder_tmp_password/pwd/tmps/\(lockId)"
         case let .getTempPasswordLog(id):
+            return "/ladder_tmp_password/pwd/tmp/record/\(id)"
+        case let .undoTempPassword(id):
             return "/ladder_tmp_password/pwd/tmp/record/\(id)"
         }
     }

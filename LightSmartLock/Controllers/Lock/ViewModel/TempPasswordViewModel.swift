@@ -127,12 +127,13 @@ final class TempPasswordViewModel: ListViewModeling {
             HUD.flash(.label("无法从服务器获取Id, 请稍后再试"), delay: 2)
             return
         }
-        BusinessAPI.requestMapJSON(.getTempPasswordLog(id: id), classType: TempPasswordRecordLog.self).subscribe(onNext: {[weak self] (model) in
-            self?.setupPopLogView(model: model)
+        BusinessAPI.requestMapJSON(.getTempPasswordLog(id: id), classType: TempPasswordRecordLog.self).subscribe(onNext: {[weak self] (logs) in
+            
+            self?.setupPopLogView(model: logs, id: model.id ?? "")
         }).disposed(by: disposeBag)
     }
     
-    private func setupPopLogView(model: TempPasswordRecordLog) {
+    private func setupPopLogView(model: TempPasswordRecordLog, id: String) {
         var attributes = EKAttributes()
         attributes.name = "临时密码分享记录"
         attributes.windowLevel = .alerts
@@ -189,10 +190,9 @@ final class TempPasswordViewModel: ListViewModeling {
             }).disposed(by: view.rx.disposeBag)
             
             let undoAction = CocoaAction(workFactory: { (_) -> Observable<Void> in
-                //                return BusinessAPI.requestMapBool(.retractTempKeyShare(shareID: model.shareID)).flatMapLatest { (_) -> Observable<Void> in
-                //                    return .just(())
-                //                }
-                return .empty()
+                return BusinessAPI.requestMapBool(.undoTempPassword(id: id)).flatMapLatest { (_) -> Observable<Void> in
+                    return .just(())
+                }
             })
             view.undoButton.rx.action = undoAction
             
