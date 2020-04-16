@@ -104,7 +104,7 @@ final class AddUserViewModel: BluetoothViewModel {
         let random = array.shuffled()[0..<6].map { String($0) }
         let pwd = random.joined()
         var localModel = self._submitModel.value
-        localModel.bluetoothPwd = pwd
+        localModel.numberPwd = pwd
         self._submitModel.accept(localModel)
     }
     
@@ -129,7 +129,7 @@ final class AddUserViewModel: BluetoothViewModel {
             localModel.lockId = lockId
             this._submitModel.accept(localModel)
             
-            guard localModel.bluetoothPwd.isNotNilNotEmpty, localModel.kinsfolkTag.isNotNilNotEmpty, localModel.phone.isNotNilNotEmpty, localModel.nickname.isNotNilNotEmpty else {
+            guard localModel.numberPwd.isNotNilNotEmpty, localModel.kinsfolkTag.isNotNilNotEmpty, localModel.phone.isNotNilNotEmpty, localModel.nickname.isNotNilNotEmpty else {
                 
                 return .error(AppError.reason("请检查必填项是否输入完整"))
             }
@@ -142,7 +142,7 @@ final class AddUserViewModel: BluetoothViewModel {
                     if !this.isConnected {
                         observer.onError(AppError.reason("未连接到蓝牙门锁, 请稍后再试"))
                     }
-                    BluetoothPapa.shareInstance.addUserBy(this._submitModel.value.bluetoothPwd!) { (data) in
+                    BluetoothPapa.shareInstance.addUserBy(this._submitModel.value.numberPwd!) { (data) in
                         let dict = BluetoothPapa.serializeAddUser(data)
                         if let userCode = dict?["用户编号"] as? String {
                             var localModel = this._submitModel.value
@@ -159,13 +159,13 @@ final class AddUserViewModel: BluetoothViewModel {
                     if success {
                         BusinessAPI.requestMapBool(.addUserByBluethooth(parameter: this._submitModel.value)).subscribe(onNext: { (s) in
                             if !s {
-                                BluetoothPapa.shareInstance.deleteUserBy(this._submitModel.value.bluetoothPwd!, userNumber: this._submitModel.value.lockUserAccount!) { (data) in
+                                BluetoothPapa.shareInstance.deleteUserBy(this._submitModel.value.numberPwd!, userNumber: this._submitModel.value.lockUserAccount!) { (data) in
                                     print(data ?? "", "网络请求失败删除门锁用户")
                                 }
                             }
                         }, onError: { (e) in
                             print(e)
-                            BluetoothPapa.shareInstance.deleteUserBy(this._submitModel.value.bluetoothPwd!, userNumber: this._submitModel.value.lockUserAccount!) { (data) in
+                            BluetoothPapa.shareInstance.deleteUserBy(this._submitModel.value.numberPwd!, userNumber: this._submitModel.value.lockUserAccount!) { (data) in
                                 print(data ?? "", "网络请求失败删除门锁用户")
                             }
                         }).disposed(by: this.disposeBag)

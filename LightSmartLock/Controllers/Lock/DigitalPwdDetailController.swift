@@ -18,8 +18,8 @@ class DigitalPwdDetailController: UITableViewController, NavigationSettingStyle 
     }
     
     var vm: PasswordManagementViewModel!
-    var dataSource: [DigitalPasswordLogModel] = []
-    var displayModel: DigitalPasswordModel!
+    var dataSource: [OpenLockInfoModel.LadderNumberPasswordRecordVOList] = []
+    var displayModel: OpenLockInfoModel.LadderNumberPasswordVO?
     
     deinit {
         print("\(self) deinit")
@@ -52,7 +52,7 @@ class DigitalPwdDetailController: UITableViewController, NavigationSettingStyle 
     func setupNavigationRightItem() {
         createdRightNavigationItem(title: "修改密码", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 8, color: .white).rx.tap.subscribe(onNext: {[unowned self] (_) in
             
-            guard let oldPassword = self.displayModel.keySecret else {
+            guard let oldPassword = self.displayModel?.password else {
                 HUD.flash(.label("无法获取旧密码, 请稍后再试"), delay: 2)
                 return
             }
@@ -64,18 +64,13 @@ class DigitalPwdDetailController: UITableViewController, NavigationSettingStyle 
     }
     
     func bind() {
-        vm.passwordLogList.subscribe(onNext: {[weak self] (logList) in
-            self?.dataSource = logList
-            self?.tableView.reloadData()
-            }, onError: { (error) in
-                PKHUD.sharedHUD.rx.showError(error)
-        }).disposed(by: rx.disposeBag)
-        
-        vm.digitalPwdDisplay.subscribe(onNext: {[weak self] (model) in
-            
+        vm.info.subscribe(onNext: {[weak self] (model) in
             self?.displayModel = model
-            self?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-            
+            guard let list = model?.ladderNumberPasswordRecordVOList else {
+                return
+            }
+            self?.dataSource = list
+            self?.tableView.reloadData()
             }, onError: { (error) in
                 PKHUD.sharedHUD.rx.showError(error)
         }).disposed(by: rx.disposeBag)
@@ -118,8 +113,9 @@ class DigitalPwdDetailController: UITableViewController, NavigationSettingStyle 
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DigitalPasswordCell", for: indexPath) as! DigitalPasswordCell
-            
-            cell.bind(displayModel)
+            if let model = displayModel {
+                cell.bind(model)
+            }
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DigitalPasswordStatusCell", for: indexPath) as! DigitalPasswordStatusCell
@@ -173,8 +169,8 @@ class DigitalPasswordCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func bind(_ model: DigitalPasswordModel) {
-        guard var password = model.keySecret, password.count == 6 else {
+    func bind(_ model: OpenLockInfoModel.LadderNumberPasswordVO) {
+        guard var password = model.password, password.count == 6 else {
             return
         }
         let index = password.index(password.startIndex, offsetBy: 3)
@@ -182,11 +178,10 @@ class DigitalPasswordCell: UITableViewCell {
         password = password.replacingOccurrences(of: "--", with: " ")
         passwordLabel.text = password
         
-        guard let time = model.beginTime?.toDate() else {
+        guard let useDays = model.useDays else {
             return
         }
-        let useDay = time.date.getInterval(toDate: Date(), component: .day)
-        useDayLabel.text = "密码已使用\(useDay)天"
+        useDayLabel.text = "密码已使用\(useDays)天"
     }
 }
 
@@ -247,8 +242,8 @@ class DigitalPasswordLogCell: UITableViewCell {
         dotView.setCircular(radius: dotView.bounds.height / 2)
     }
     
-    func bind(_ data: DigitalPasswordLogModel) {
+    func bind(_ data: OpenLockInfoModel.LadderNumberPasswordRecordVOList) {
         statusLabel.text = data.statusName
-        timeLabel.text = data.createDate
+        timeLabel.text = data.triggerTime?.toDate()?.toFormat("yyyy-MM-dd HH:mm:ss")
     }
 }

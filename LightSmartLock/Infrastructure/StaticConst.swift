@@ -18,6 +18,8 @@ enum NotificationRefreshType {
     case updateScene
     case changeDigitalPwd(String?)
     case addUser
+    case addCard
+    case addFinger
 }
 
 extension NSNotification.Name {

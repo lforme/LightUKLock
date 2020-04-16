@@ -7,13 +7,12 @@
 //
 
 import UIKit
-import MJRefresh
 import PKHUD
 
 class FingerManageCell: UITableViewCell {
     
     @IBOutlet weak var fingerLabel: UILabel!
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -26,8 +25,8 @@ class FingerManageCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func bind(_ data: FingerModel) {
-        fingerLabel.text = data.mark
+    func bind(_ data: OpenLockInfoModel.Finger) {
+        fingerLabel.text = data.name
     }
 }
 
@@ -38,7 +37,7 @@ class FingerManageController: UITableViewController, NavigationSettingStyle {
     }
     
     let vm = FingerManageViewModel()
-    var dataSource: [FingerModel] = []
+    var dataSource: [OpenLockInfoModel.Finger] = []
     
     deinit {
         print("\(self) deinit")
@@ -50,28 +49,28 @@ class FingerManageController: UITableViewController, NavigationSettingStyle {
         title = "指纹管理"
         self.clearsSelectionOnViewWillAppear = true
         setupUI()
-        setupTableviewRefresh()
         setupNavigationRightItem()
+        setupTableviewRefresh()
         bind()
+        observerNotification()
+    }
+    
+    func observerNotification() {
+        NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
+            guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
+            switch refreshType {
+            case .addFinger:
+                self?.vm.refresh()
+            default: break
+            }
+        }).disposed(by: rx.disposeBag)
+    }
+    
+    func setupTableviewRefresh() {
+        vm.refresh()
     }
     
     func bind() {
-        vm.refreshStatus.subscribe(onNext: {[weak self] (status) in
-            switch status {
-            case .endFooterRefresh:
-                self?.tableView.mj_footer?.endRefreshing()
-            case .endHeaderRefresh:
-                self?.tableView.mj_header?.endRefreshing()
-                self?.tableView.mj_footer?.resetNoMoreData()
-            case .noMoreData:
-                self?.tableView.mj_footer?.endRefreshingWithNoMoreData()
-            case .none:
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
-                    self?.tableView.mj_header?.beginRefreshing()
-                }
-            }
-        }).disposed(by: rx.disposeBag)
-        
         vm.list.subscribe(onNext: {[weak self] (list) in
             self?.dataSource = list
             self?.tableView.reloadData()
@@ -92,18 +91,6 @@ class FingerManageController: UITableViewController, NavigationSettingStyle {
         tableView.tableFooterView = UIView()
         tableView.rowHeight = 80
         tableView.emptyDataSetSource = self
-    }
-    
-    func setupTableviewRefresh() {
-        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {[weak self] in
-            self?.vm.refresh()
-        })
-        
-        let footer = MJRefreshAutoNormalFooter(refreshingBlock: {[weak self] in
-            self?.vm.loadMore()
-        })
-        footer.setTitle("", for: .idle)
-        tableView.mj_footer = footer
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

@@ -45,10 +45,63 @@ struct SharePwdListModel: HandyJSON {
 }
 
 struct SharePwdLogListModel: HandyJSON {
-   
+    
     var createDate: String?
     var receiveName: String?
     var operationType: Int!
     var Content: String?
+    
+}
 
+struct TempPasswordListModel: HandyJSON {
+    
+    enum `Type`: Int, HandyJSONEnum {
+        case single = 1
+        case multiple = 2
+    }
+    
+    var endTime: String?
+    var id: String?
+    var pwd: String?
+    var remark: String?
+    var sendTime: String?
+    var startTime: String?
+    var status: String?
+    var type: `Type`!
+}
+
+struct TempPasswordRecordLog: HandyJSON {
+    
+    enum `Type`: Int, HandyJSONEnum {
+        case single = 1
+        case multiple = 2
+    }
+    
+    enum Status: Int, HandyJSONEnum, CustomStringConvertible {
+        case normal = 1
+        case withdrawing
+        case revoked
+        
+        var description: String {
+            switch self {
+            case .normal:
+                return "正常"
+            case .revoked:
+                return "已撤销"
+            case .withdrawing:
+                return "撤销中"
+            }
+        }
+    }
+    
+    struct ListModel: HandyJSON {
+        var getter: String?
+        var status: String?
+        var triggerTime: String?
+    }
+    
+    var status: Status!
+    var surplusDate: String?
+    var type: `Type`!
+    var ladderTmpPasswordStatusVOList: [ListModel]?
 }

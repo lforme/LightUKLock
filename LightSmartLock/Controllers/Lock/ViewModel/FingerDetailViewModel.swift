@@ -50,12 +50,12 @@ final class FingerDetailViewModel: BluetoothViewModel {
     
     func deleteFinger() -> Observable<Bool> {
         
-        guard let userCode = LSLUser.current().userInScene?.userCode else {
+        guard let userCode = LSLUser.current().scene?.lockUserAccount else {
             return .error(AppError.reason("无法从服务器获取用户编号, 请稍后再试"))
         }
         
         if isRemote.value {
-            return BusinessAPI.requestMapBool(.deleteFingerPrintKey(id: self.fingerId, isRemote: true))
+            return BusinessAPI.requestMapBool(.deleteFinger(id: self.fingerId, operationType: 2))
         } else {
             return Observable.create {[unowned self] (observer) -> Disposable in
                 if !self.isConnected {
@@ -63,7 +63,7 @@ final class FingerDetailViewModel: BluetoothViewModel {
                 }
                 BluetoothPapa.shareInstance.deleteFinger(userNumber: userCode, pwdNumber: self.fingerNum) {[unowned self] (_) in
                     
-                    BusinessAPI.requestMapBool(.deleteFingerPrintKey(id: self.fingerId, isRemote: false)).subscribe().disposed(by: self.disposeBag)
+                    BusinessAPI.requestMapBool(.deleteFinger(id: self.fingerId, operationType: 1)).subscribe().disposed(by: self.disposeBag)
                     
                     observer.onNext(true)
                     observer.onCompleted()
@@ -74,7 +74,7 @@ final class FingerDetailViewModel: BluetoothViewModel {
     }
     
     func setFingerName(_ name: String) -> Observable<Bool> {
-        return BusinessAPI.requestMapBool(.setFingerRemark(id: self.fingerId, fingerName: name))
+        return BusinessAPI.requestMapBool(.editCardOrFingerName(id: self.fingerId, name: name))
     }
 }
 
@@ -82,7 +82,7 @@ private extension FingerDetailViewModel {
     
     func setForceFinger(_ isOn: Bool) -> Observable<Bool> {
         
-        guard let userCode = LSLUser.current().userInScene?.userCode else {
+        guard let userCode = LSLUser.current().scene?.lockUserAccount else {
             return .error(AppError.reason("无法从服务器获取用户编号, 请稍后再试"))
         }
         
@@ -90,11 +90,9 @@ private extension FingerDetailViewModel {
             if isOn {
                 BluetoothPapa.shareInstance.changeForceFinger(userNumber: userCode, fingerNumber: self.fingerNum) { (data) in
                     
-//                    let dict = BluetoothPapa.serializeChangeForceFinger(data)
-//                    guard let userNum = dict?["用户编号"] as? String, let fNum = dict?["指纹编号"] as? String else {
-//                        observer.onError(AppError.reason("设置胁迫指纹失败, 请稍后再试"))
-//                        return
-//                    }
+                    let t = BluetoothPapa.serializeChangeForceFinger(data)
+                    print(t ?? "空")
+                    
                     observer.onNext(("userNum", "fNum"))
                     observer.onCompleted()
                 }
@@ -112,7 +110,7 @@ private extension FingerDetailViewModel {
             let (uCode, fCode) = arg
             print("用户编号", uCode)
             print("指纹编号", fCode)
-            return BusinessAPI.requestMapBool(.setFingerCoercionReminPhone(id: self.fingerId, phone: phone))
+            return BusinessAPI.requestMapBool(.setAlarmFingerprint(id: self.fingerId, phone: phone, operationType: 1))
         }
     }
 }

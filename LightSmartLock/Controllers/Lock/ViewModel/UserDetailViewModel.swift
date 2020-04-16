@@ -40,8 +40,8 @@ final class UserDetailViewModel: BluetoothViewModel {
     }
     
     func deleteUser(way: DeleteWay) -> Observable<Bool> {
-        guard let customerId = userModel.id, let oldPassword = userModel.bluetoothPwd, let userCode = userModel.lockUserAccount else {
-            return .error(AppError.reason("无法从服务器获取删除用户所必须的信息, 请稍后再试"))
+        guard let customerId = userModel.id, let oldPassword = userModel.numberPwd, let userCode = userModel.lockUserAccount else {
+            return .error(AppError.reason("无法获取用户信息, 请稍后再试"))
         }
         
         switch way {

@@ -159,13 +159,14 @@ extension BusinessInterface: TargetType {
     var method: Moya.Method {
         switch self {
         case .user, .getHouses, .getAssetHouseDetail, .getLockInfo,
-             .getHomeInfo, .getUserList, .getCustomerSysRoleTips:
+             .getHomeInfo, .getUserList, .getCustomerSysRoleTips,
+             .getAllOpenWay:
             return .get
             
-        case .deleteAssetHouse, .forceDeleteLock:
+        case .deleteAssetHouse, .forceDeleteLock, .deleteCard, .deleteFinger:
             return .delete
             
-        case .editUser:
+        case .editUser, .editCardOrFingerName, .setAlarmFingerprint:
             return .put
             
         default:
@@ -272,6 +273,26 @@ extension BusinessInterface: TargetType {
             return "/user"
         case let .deleteUserBy(id):
             return "/user/\(id)"
+        case let .getAllOpenWay(lockId):
+            return "/ladder_lock/pwd/list/\(lockId)"
+        case let .addCard(lockId, _, _):
+            return "/ladder_card_figura/pwd/card/\(lockId)"
+        case let .editCardOrFingerName(id, _):
+            return "/ladder_card_figura/pwd/name/\(id)"
+        case let .deleteCard(id, _):
+            return "/ladder_card_figura/pwd/card/\(id)"
+        case let .addFinger(lockId, _, _, _):
+            return "/ladder_card_figura/pwd/finger_print/\(lockId)"
+        case let .deleteFinger(id, _):
+            return "/ladder_card_figura/pwd/finger_print/\(id)"
+        case let .setAlarmFingerprint(id, _, _):
+            return "/ladder_card_figura/pwd/finger_print/\(id)"
+        case .addAndModifyDigitalPassword:
+            return "/ladder_number_password/pwd/number"
+        case let .getTempPasswordList(lockId, _, _):
+            return "/ladder_tmp_password/pwd/tmps/\(lockId)"
+        case let .getTempPasswordLog(id):
+            return "/ladder_tmp_password/pwd/tmp/record/\(id)"
         }
     }
     
@@ -519,6 +540,36 @@ extension BusinessInterface: TargetType {
             
         case let .editUser(parameter):
             return parameter.toJSON()
+            
+        case let .addCard(_, keyNum, name):
+            return ["keyNum": keyNum, "name": name]
+            
+        case let .editCardOrFingerName(_, name):
+            return ["name": name]
+            
+        case let .deleteCard(_, operationType):
+            return ["operationType": operationType]
+            
+        case let .addFinger(_, keyNum, name, phone):
+            var dic: [String: Any] = [:]
+            if let p = phone {
+                dic.updateValue(p, forKey: "phone")
+            }
+            dic.updateValue(keyNum, forKey: "keyNum")
+            dic.updateValue(name, forKey: "name")
+            return dic
+            
+        case let .deleteFinger(_, operationType):
+            return ["operationType": operationType]
+            
+        case let .setAlarmFingerprint(_, phone, operationType):
+            return ["operationType": operationType, "phone": phone]
+            
+        case let .addAndModifyDigitalPassword(lockId, password, operationType):
+            return ["ladderLockId": lockId, "operationType": operationType, "password": password]
+            
+        case let .getTempPasswordList(_, pageIndex, pageSize):
+            return ["currentPage": pageIndex, "pageSize": pageSize ?? 15]
             
         default:
             return nil

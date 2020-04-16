@@ -32,6 +32,7 @@ struct UserMemberListModel: HandyJSON {
     var username: String?
     var operationType: Int! // 1 蓝牙  2远程
     var bluetoothPwd: String? // 蓝牙密码
+    var numberPwd: String? // 数字密码
     
     struct ModifyNickname: HandyJSON {
         var id: String?

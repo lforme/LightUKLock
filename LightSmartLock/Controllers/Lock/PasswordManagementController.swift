@@ -42,22 +42,24 @@ class PasswordManagementController: UITableViewController, NavigationSettingStyl
     }
     
     func bind() {
-        vm.digitalPwdDisplay.subscribe(onNext: {[weak self] (model) in
+        vm.info.subscribe(onNext: {[weak self] (model) in
             
-            guard var password = model?.keySecret, password.count == 6 else {
+            guard var password = model?.password, password.count == 6 else {
                 return
             }
             let index = password.index(password.startIndex, offsetBy: 3)
             password.insert(contentsOf: "--", at: index)
             password = password.replacingOccurrences(of: "--", with: " ")
             
-            guard let time = model?.beginTime?.toDate() else {
+            guard let day = model?.useDays else {
                 return
             }
-            let useDay = time.date.getInterval(toDate: Date(), component: .day)
-            self?.longPwdDes.text = "\(password)  密码已使用\(useDay)天"
+            //            let useDay = time.date.getInterval(toDate: Date(), component: .day)
+            self?.longPwdDes.text = "\(password)  密码已使用\(day)天"
             
-            }).disposed(by: rx.disposeBag)
+        }).disposed(by: rx.disposeBag)
+        
+        vm.refresh()
     }
     
     func setupUI() {
@@ -90,7 +92,7 @@ class PasswordManagementController: UITableViewController, NavigationSettingStyl
         case .temporary:
             let temporayTempPwdVC: SingleTempPasswordController = ViewLoader.Storyboard.controller(from: "Home")
             navigationController?.pushViewController(temporayTempPwdVC, animated: true)
-     
+            
         }
     }
 }

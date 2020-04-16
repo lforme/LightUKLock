@@ -113,7 +113,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
             let lockCell = this.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? AnimationHeaderView
             lockCell?.bind(openStatus: home.openStatus, onlineStatus: home.onlineStatus, power: LSLUser.current().lockInfo?.powerPercent)
             
-            let tenantCell = this.tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? LeasedCell
+            let tenantCell = this.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? LeasedCell
             tenantCell?.unlocker.text = home.ladderOpenLockRecordVO?.userName ?? "暂无人员解锁"
             tenantCell?.unlockTime.text = home.ladderOpenLockRecordVO?.openTime
             
@@ -209,8 +209,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return controlCell
         case 2:
             let leasedCell = tableView.dequeueReusableCell(withIdentifier: "LeasedCell") as! LeasedCell
-            leasedCell.bind(unlocker: LSLUser.current().lockIOTInfo?.LastOpenDoorNikeName, lastUnlockTime: LSLUser.current().lockIOTInfo?.LastOpenDoorDate)
-            
             return leasedCell
             
         default:

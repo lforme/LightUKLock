@@ -80,5 +80,14 @@ enum BusinessInterface {
     case getCustomerSysRoleTips // 获取系统内置标签
     case editUser(parameter: HandyJSON) //编辑用户
     case deleteUserBy(id: String) // 删除用户
-
+    case getAllOpenWay(lockId: String) // 获取聚合门锁信息接口
+    case addCard(lockId: String, keyNum: String, name: String) // 添加门卡
+    case editCardOrFingerName(id: String, name: String) // 修改门卡, 指纹名称
+    case deleteCard(id: String, operationType: Int) // 删除门卡 1本地（蓝牙） 2远程（NB）
+    case addFinger(lockId: String, keyNum: String, name: String, phone: String?) // 添加指纹
+    case deleteFinger(id: String, operationType: Int) // 删除指纹
+    case setAlarmFingerprint(id: String, phone: String, operationType: Int) // 设置胁迫指纹
+    case addAndModifyDigitalPassword(lockId: String, password: String, operationType: Int) // 修改数字密码
+    case getTempPasswordList(lockId: String, pageIndex: Int, pageSize: Int?) // 获取临时密码列表
+    case getTempPasswordLog(id: String) // 获取临时密码记录
 }

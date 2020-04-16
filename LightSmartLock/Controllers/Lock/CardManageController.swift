@@ -34,7 +34,7 @@ class CardManageController: UITableViewController, NavigationSettingStyle {
     }
     
     let vm = CardManageViewModel()
-    var dataSource: [DigitalPasswordModel] = []
+    var dataSource: [OpenLockInfoModel.Card] = []
     
     deinit {
         print("\(self) deinit")
@@ -50,24 +50,21 @@ class CardManageController: UITableViewController, NavigationSettingStyle {
         bind()
         setupNavigationRightItem()
         setupTableviewRefresh()
+        observerNotification()
+    }
+    
+    func observerNotification() {
+        NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
+            guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
+            switch refreshType {
+            case .addCard:
+                self?.vm.refresh()
+            default: break
+            }
+        }).disposed(by: rx.disposeBag)
     }
     
     func bind() {
-        vm.refreshStatus.subscribe(onNext: {[weak self] (status) in
-            switch status {
-            case .endFooterRefresh:
-                self?.tableView.mj_footer?.endRefreshing()
-            case .endHeaderRefresh:
-                self?.tableView.mj_header?.endRefreshing()
-                self?.tableView.mj_footer?.resetNoMoreData()
-            case .noMoreData:
-                self?.tableView.mj_footer?.endRefreshingWithNoMoreData()
-            case .none:
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
-                    self?.tableView.mj_header?.beginRefreshing()
-                }
-            }
-        }).disposed(by: rx.disposeBag)
         
         vm.list.subscribe(onNext: {[weak self] (list) in
             self?.dataSource = list
@@ -78,15 +75,7 @@ class CardManageController: UITableViewController, NavigationSettingStyle {
     }
     
     func setupTableviewRefresh() {
-        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {[weak self] in
-            self?.vm.refresh()
-        })
-        
-        let footer = MJRefreshAutoNormalFooter(refreshingBlock: {[weak self] in
-            self?.vm.loadMore()
-        })
-        footer.setTitle("", for: .idle)
-        tableView.mj_footer = footer
+        vm.refresh()
     }
     
     func setupNavigationRightItem() {
@@ -117,18 +106,20 @@ class CardManageController: UITableViewController, NavigationSettingStyle {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CardManageCell", for: indexPath) as! CardManageCell
         
-        cell.cardName.text = dataSource[indexPath.row].mark
+        cell.cardName.text = dataSource[indexPath.row].name
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         let data = dataSource[indexPath.row]
         let cardDetailVC: CardDetailController = ViewLoader.Storyboard.controller(from: "Home")
         cardDetailVC.keyNumber = data.keyNum
-        cardDetailVC.keyId = data.keyID
-        cardDetailVC.cardName = data.mark
+        cardDetailVC.keyId = data.id
+        cardDetailVC.cardName = data.name
         navigationController?.pushViewController(cardDetailVC, animated: true)
     }
 }

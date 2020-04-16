@@ -24,7 +24,7 @@ class TempPasswordLogView: UIView {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
-    var dataSource: [SharePwdLogListModel] = [] {
+    var dataSource: [TempPasswordRecordLog.ListModel] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -75,17 +75,16 @@ class TempPasswordLogView: UIView {
         layoutIfNeeded()
     }
     
-    func updateListModel(_ model: SharePwdListModel) {
-        if let endDate = model.endTime?.toDate(), let hours = (endDate.date - Date()).hour {
+    func updateListModel(_ model: TempPasswordRecordLog) {
+        if let endDate = model.surplusDate?.toDate(), let hours = (endDate.date - Date()).hour {
             timeLeftLabel.text = "剩余时间 \(hours)小时"
         }
-        
-        if model.secretStatus != 1 {
-            undoButton.isUserInteractionEnabled = false
-            undoButton.setTitle("密码撤销中", for: .normal)
-            undoButton.setBackgroundImage(UIImage(color: #colorLiteral(red: 0.7333333333, green: 0.1921568627, blue: 0.2823529412, alpha: 1), size: undoButton.bounds.size), for: .normal)
-        } else {
+        undoButton.setTitle(model.status.description, for: .normal)
+        undoButton.setBackgroundImage(UIImage(color: #colorLiteral(red: 0.7333333333, green: 0.1921568627, blue: 0.2823529412, alpha: 1), size: undoButton.bounds.size), for: .normal)
+        if model.status == TempPasswordRecordLog.Status.normal {
             undoButton.isUserInteractionEnabled = true
+        } else {
+            undoButton.isUserInteractionEnabled = false
         }
     }
 }
@@ -102,8 +101,8 @@ extension TempPasswordLogView: UITableViewDataSource {
         
         (indexPath.row == 0) ? (cell.topLine.isHidden = true) : (cell.topLine.isHidden = false)
         let data = dataSource[indexPath.row]
-        cell.timeLabel.text = data.createDate
-        cell.remarkLabel.text = data.Content
+        cell.timeLabel.text = data.triggerTime?.toDate()?.toFormat("yyyy-MM-dd HH:mm:ss")
+        cell.remarkLabel.text = data.getter
         
         return cell
     }

@@ -143,6 +143,7 @@
 		9C7AFF22239631930075442D /* UKRefreshStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF21239631930075442D /* UKRefreshStatus.swift */; };
 		9C7AFF24239636640075442D /* NSMutableAttributedString+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF23239636640075442D /* NSMutableAttributedString+Extention.swift */; };
 		9C7AFF2623964A950075442D /* SetBuildingNumberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF2523964A950075442D /* SetBuildingNumberController.swift */; };
+		9C8FFD5D2447EEBF00527EA0 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FFD5C2447EEBF00527EA0 /* UIImageView+Extension.swift */; };
 		9CB4B347239DE08E001197AB /* PasswordManagementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4B346239DE08E001197AB /* PasswordManagementController.swift */; };
 		9CB4B349239DE774001197AB /* PasswordManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4B348239DE774001197AB /* PasswordManagementViewModel.swift */; };
 		9CB4B34B239DE8C3001197AB /* DigitalPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4B34A239DE8C3001197AB /* DigitalPasswordModel.swift */; };
@@ -365,6 +366,7 @@
 		9C7AFF21239631930075442D /* UKRefreshStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UKRefreshStatus.swift; sourceTree = "<group>"; };
 		9C7AFF23239636640075442D /* NSMutableAttributedString+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extention.swift"; sourceTree = "<group>"; };
 		9C7AFF2523964A950075442D /* SetBuildingNumberController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetBuildingNumberController.swift; sourceTree = "<group>"; };
+		9C8FFD5C2447EEBF00527EA0 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		9CB4B346239DE08E001197AB /* PasswordManagementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagementController.swift; sourceTree = "<group>"; };
 		9CB4B348239DE774001197AB /* PasswordManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagementViewModel.swift; sourceTree = "<group>"; };
 		9CB4B34A239DE8C3001197AB /* DigitalPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalPasswordModel.swift; sourceTree = "<group>"; };
@@ -576,6 +578,7 @@
 				9C24AC242383C9CB005EBF95 /* UIView+Extension.swift */,
 				9C24AC1823838E56005EBF95 /* UIFont+extension.swift */,
 				9C24AC1C23839EB9005EBF95 /* UIImage+Extension.swift */,
+				9C8FFD5C2447EEBF00527EA0 /* UIImageView+Extension.swift */,
 				9C24AC282383CB92005EBF95 /* UITextField+Extension.swift */,
 				9C24AC1A23839D74005EBF95 /* Swizzling+UIViewController.swift */,
 				9C42976C23866026004CB999 /* UIButton+Extension.swift */,
@@ -1227,6 +1230,7 @@
 				9C218FA023FA765B009600F7 /* HouseViewController.swift in Sources */,
 				9C54719B239507DE00432ACA /* LSLWebViewController.swift in Sources */,
 				9C24AC252383C9CB005EBF95 /* UIView+Extension.swift in Sources */,
+				9C8FFD5D2447EEBF00527EA0 /* UIImageView+Extension.swift in Sources */,
 				9C5A967A23A07F62002A2B06 /* CardManageController.swift in Sources */,
 				9C3726DE23910FF700450757 /* BluetoothPapa.swift in Sources */,
 				9C3726D723910C0100450757 /* NORData.swift in Sources */,

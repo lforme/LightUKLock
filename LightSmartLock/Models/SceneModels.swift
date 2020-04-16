@@ -10,7 +10,7 @@ import Foundation
 import HandyJSON
 
 enum RoleModel: Int, HandyJSONEnum, CustomStringConvertible {
-    case superAdmin = 0
+    case superAdmin = 1
     case admin
     case member
     
@@ -75,4 +75,5 @@ struct SceneListModel: HandyJSON {
     var lockType: String?
     var roleType: Int!
     var unReadMsg: Int!
+    var lockUserAccount: String?
 }
