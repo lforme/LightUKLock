@@ -296,6 +296,8 @@ extension BusinessInterface: TargetType {
             return "/ladder_tmp_password/pwd/tmp/record/\(id)"
         case let .undoTempPassword(id):
             return "/ladder_tmp_password/pwd/tmp/record/\(id)"
+        case let .addTempPassword(lockId, _):
+            return "/ladder_tmp_password/pwd/tmp/\(lockId)"
         }
     }
     
@@ -573,6 +575,9 @@ extension BusinessInterface: TargetType {
             
         case let .getTempPasswordList(_, pageIndex, pageSize):
             return ["currentPage": pageIndex, "pageSize": pageSize ?? 15]
+         
+        case let .addTempPassword(_, parameter):
+            return parameter.toJSON()
             
         default:
             return nil

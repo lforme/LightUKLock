@@ -24,7 +24,7 @@ class SharePasswordMultipleController: UITableViewController {
     @IBOutlet weak var MarkTextField: UITextField!
     @IBOutlet weak var messageButton: UIButton!
     
-    let vm = SharePwdMultipleViewModel()
+    var vm: SharePwdMultipleViewModel!
     var shareButton: UIButton!
     
     deinit {
@@ -45,6 +45,14 @@ class SharePasswordMultipleController: UITableViewController {
     }
     
     func bind() {
+        
+        guard let lockId = LSLUser.current().scene?.ladderLockId else {
+            HUD.flash(.label("无法获取门锁编号"), delay: 2)
+            return
+        }
+        
+        self.vm = SharePwdMultipleViewModel(lockId: lockId)
+        
         vm.displayStartTime.bind(to: startTime.rx.text).disposed(by: rx.disposeBag)
         vm.displayEndTime.bind(to: endTime.rx.text).disposed(by: rx.disposeBag)
         
@@ -57,7 +65,7 @@ class SharePasswordMultipleController: UITableViewController {
             }
         }).disposed(by: rx.disposeBag)
         
-        messageButton.rx.tap.map { _ in TempPasswordShareType.message }.bind(to: vm.bindShareType).disposed(by: rx.disposeBag)
+        messageButton.rx.tap.map { _ in TempPasswordShareWayType.message }.bind(to: vm.bindShareType).disposed(by: rx.disposeBag)
         
         phoneTextField.rx.text.orEmpty.changed
             .distinctUntilChanged()
@@ -75,7 +83,8 @@ class SharePasswordMultipleController: UITableViewController {
         vm.shareAction.elements.subscribe(onNext: {[weak self] (shareBody) in
             print(shareBody)
             HUD.flash(.label("分享成功"), delay: 2)
-            self?.navigationController?.popToRootViewController(animated: true)
+            self?.navigationController?.popViewController(animated: true)
+            NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.tempPassword)
         }).disposed(by: rx.disposeBag)
     }
     

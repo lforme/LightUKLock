@@ -11,11 +11,10 @@ import HandyJSON
 import SwiftDate
 
 struct ShareBodyModel: HandyJSON {
-    var Content: String?
-    var Title: String?
-    var Url: String?
-    var Img: String?
-    var ShareType: Int!
+    var content: String?
+    var title: String?
+    var url: String?
+    var img: String?
 }
 
 
@@ -100,7 +99,7 @@ struct TempPasswordRecordLog: HandyJSON {
         var triggerTime: String?
     }
     
-    var status: Status!
+    var status: Status?
     var surplusDate: String?
     var type: `Type`!
     var ladderTmpPasswordStatusVOList: [ListModel]?

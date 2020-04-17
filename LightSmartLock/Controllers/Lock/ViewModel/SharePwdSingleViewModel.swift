@@ -13,17 +13,20 @@ import Action
 
 final class SharePwdSingleViewModel {
     
-    var displayShareType: Observable<TempPasswordShareType> {
+    var displayShareType: Observable<TempPasswordShareWayType> {
         return bindShareType.asObservable()
     }
     
     let bindPhone = BehaviorRelay<String?>(value: nil)
     let bindMark = BehaviorRelay<String?>(value: nil)
-    let bindShareType = BehaviorRelay<TempPasswordShareType>(value: .message)
+    let bindShareType = BehaviorRelay<TempPasswordShareWayType>(value: .message)
     
     var shareAction: Action<TempPasswordShareParameter, ShareBodyModel>!
+    let lockId: String
     
-    init() {
+    init(lockId: String) {
+        self.lockId = lockId
+        
         self.shareAction = Action<TempPasswordShareParameter, ShareBodyModel>(workFactory: {[unowned self] (param) -> Observable<ShareBodyModel> in
             switch self.bindShareType.value {
             case .message:
@@ -31,13 +34,13 @@ final class SharePwdSingleViewModel {
                 if self.bindPhone.value.isNilOrEmpty {
                     return .error(AppError.reason("请检比填参数完整性"))
                 } else {
-                    param.Phone = self.bindPhone.value
-                    param.BeginTime = Date().toFormat("yyyy-MM-dd HH:mm:ss")
-                    param.EndTime = Date().toFormat("yyyy-MM-dd 23:59:59")
-                    param.Mark = self.bindMark.value
-                    param.ShareType = self.bindShareType.value.rawValue
-                    param.SecretType = 1
-                    return BusinessAPI.requestMapJSON(.generateTempBy(input: param), classType: ShareBodyModel.self)
+                    param.sendPhone = self.bindPhone.value
+                    param.startTime = Date().toFormat("yyyy-MM-dd HH:mm:ss")
+                    param.endTime = Date().toFormat("yyyy-MM-dd 23:59:59")
+                    param.remark = self.bindMark.value
+                    param.sendType = self.bindShareType.value
+                    param.type = 1
+                    return BusinessAPI.requestMapJSON(.addTempPassword(lockId: self.lockId, parameter: param), classType: ShareBodyModel.self)
                 }
             case .qq:
                 return .empty()

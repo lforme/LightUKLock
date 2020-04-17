@@ -18,7 +18,7 @@ class SharePasswordSignleController: UITableViewController {
     @IBOutlet weak var MarkTextField: UITextField!
     
     var shareButton: UIButton!
-    let vm = SharePwdSingleViewModel()
+    var vm: SharePwdSingleViewModel!
     
     deinit {
         print("\(self) deinit")
@@ -35,6 +35,13 @@ class SharePasswordSignleController: UITableViewController {
     
     func bind() {
         
+        guard let lockId = LSLUser.current().scene?.ladderLockId else {
+            HUD.flash(.label("无法获取门锁编号"), delay: 2)
+            return
+        }
+        
+        self.vm = SharePwdSingleViewModel(lockId: lockId)
+        
         vm.displayShareType.subscribe(onNext: {[weak self] (type) in
             switch type {
             case .message:
@@ -44,7 +51,7 @@ class SharePasswordSignleController: UITableViewController {
             }
         }).disposed(by: rx.disposeBag)
         
-        messageButton.rx.tap.map { _ in TempPasswordShareType.message }.bind(to: vm.bindShareType).disposed(by: rx.disposeBag)
+        messageButton.rx.tap.map { _ in TempPasswordShareWayType.message }.bind(to: vm.bindShareType).disposed(by: rx.disposeBag)
         
         phoneTextField.rx.text.orEmpty.changed
             .distinctUntilChanged()
@@ -62,7 +69,8 @@ class SharePasswordSignleController: UITableViewController {
         vm.shareAction.elements.subscribe(onNext: {[weak self] (shareBody) in
             print(shareBody)
             HUD.flash(.label("分享成功"), delay: 2)
-            self?.navigationController?.popToRootViewController(animated: true)
+            self?.navigationController?.popViewController(animated: true)
+            NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.tempPassword)
         }).disposed(by: rx.disposeBag)
     }
     

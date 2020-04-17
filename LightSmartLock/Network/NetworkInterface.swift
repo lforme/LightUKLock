@@ -91,4 +91,5 @@ enum BusinessInterface {
     case getTempPasswordList(lockId: String, pageIndex: Int, pageSize: Int?) // 获取临时密码列表
     case getTempPasswordLog(id: String) // 获取临时密码记录
     case undoTempPassword(id: String) // 撤销临时密码
+    case addTempPassword(lockId: String, parameter: TempPasswordShareParameter) // 添加临时密码
 }

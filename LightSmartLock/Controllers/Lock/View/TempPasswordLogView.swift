@@ -79,7 +79,7 @@ class TempPasswordLogView: UIView {
         if let endDate = model.surplusDate?.toDate(), let hours = (endDate.date - Date()).hour {
             timeLeftLabel.text = "剩余时间 \(hours)小时"
         }
-        undoButton.setTitle(model.status.description, for: .normal)
+        undoButton.setTitle(model.status?.description ?? "撤销", for: .normal)
         undoButton.setBackgroundImage(UIImage(color: #colorLiteral(red: 0.7333333333, green: 0.1921568627, blue: 0.2823529412, alpha: 1), size: undoButton.bounds.size), for: .normal)
         if model.status == TempPasswordRecordLog.Status.normal {
             undoButton.isUserInteractionEnabled = true
