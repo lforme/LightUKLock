@@ -65,7 +65,7 @@ final class DigitalChangePwdViewModel: BluetoothViewModel {
                 }
                 
             case .cloudServer:
-                return BusinessAPI.requestMapBool(.updateCustomerCodeKey(secret: pwd, isRemote: true))
+                return self.updateToServer()
             }
         })
     }

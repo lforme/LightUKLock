@@ -43,9 +43,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         tvDatasource = RxTableViewSectionedReloadDataSource(configureCell: { (ds, tv, ip, item) -> WidgetUnlockRecordCell in
             let cell = tv.dequeueReusableCell(withIdentifier: "WidgetUnlockRecordCell", for: ip) as! WidgetUnlockRecordCell
-            cell.nameLabel.text = item.customerNickName
-            cell.timeLabel.text = item.UnlockTime
-            cell.unlockWayLabel.text = item.KeyType.description
+            cell.nameLabel.text = item.userName
+            cell.timeLabel.text = item.openTime
+            cell.unlockWayLabel.text = item.openType
         
             return cell
         })

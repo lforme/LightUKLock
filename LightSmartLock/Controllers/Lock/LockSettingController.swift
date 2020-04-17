@@ -59,7 +59,7 @@ class LockSettingController: UITableViewController {
                 self?.navigationController?.popToRootViewController(animated: true)
                 NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.deleteLock)
                 var updateValue = LSLUser.current().scene
-                updateValue?.IsInstallLock = false
+                updateValue?.ladderLockId = nil
                 LSLUser.current().scene = updateValue
                 LSLUser.current().lockInfo = nil
                 
@@ -80,7 +80,7 @@ class LockSettingController: UITableViewController {
                 self?.navigationController?.popViewController(animated: true)
                 NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.deleteLock)
                 var updateValue = LSLUser.current().scene
-                updateValue?.IsInstallLock = false
+                updateValue?.ladderLockId = nil
                 LSLUser.current().scene = updateValue
                 LSLUser.current().lockInfo = nil
                 

@@ -45,16 +45,17 @@ final class TodayViewModel {
         network.request(.getLockCurrentInfoFromIOTPlatform) {[weak self] (result) in
             switch result {
             case let .success(response):
-                guard let data = try? response.filter(statusCode: 200).mapJSON() else {
-                    self?._currentPower.accept("暂时无法获取电池电量")
-                    return
-                }
-                let json = data as? [String: Any]
-                let value = json?["Data"] as? [String: Any]
-                let model = IOTLockInfoModel.deserialize(from: value)
-                if let p = model?.getPower() {
-                    self?._currentPower.accept("剩余电量: \(p)")
-                }
+                print(response)
+                //                guard let data = try? response.filter(statusCode: 200).mapJSON() else {
+                //                    self?._currentPower.accept("暂时无法获取电池电量")
+                //                    return
+                //                }
+                //                let json = data as? [String: Any]
+                //                let value = json?["Data"] as? [String: Any]
+                //                let model = IOTLockInfoModel.deserialize(from: value)
+                //                if let p = model?.getPower() {
+                self?._currentPower.accept("剩余电量: \(100)")
+                //                }
                 self?._requestExecuting.accept(false)
                 
             case .failure:
@@ -75,7 +76,7 @@ final class TodayViewModel {
                     let array = valueArray.compactMap { $0 }.map { Section(model: "Today解锁记录", items: [$0]) }
                     self?._dataSource.accept(array)
                 }
-               
+                
             case .failure:
                 break
             }

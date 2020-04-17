@@ -21,7 +21,7 @@ class RecordUnlockController: UIViewController, View {
     
     var disposeBag: DisposeBag = DisposeBag()
     
-    fileprivate var userCode: String!
+    fileprivate var lockId: String!
     
     let tableView: UITableView = UITableView(frame: .zero, style: .plain).then {
         $0.tableFooterView = UIView(frame: .zero)
@@ -30,9 +30,9 @@ class RecordUnlockController: UIViewController, View {
         $0.backgroundColor = ColorClassification.tableViewBackground.value
     }
     
-    convenience init(userCode: String) {
+    convenience init(lockId: String) {
         self.init()
-        self.userCode = userCode
+        self.lockId = lockId
     }
     
     var dataSource: RxTableViewSectionedReloadDataSource<SectionModel<String, UnlockRecordModel>>!
@@ -51,7 +51,7 @@ class RecordUnlockController: UIViewController, View {
         
         title = "解锁记录"
         setupUI()
-        self.reactor = Reactor(userCode: userCode)
+        self.reactor = Reactor(lockId: lockId)
     }
     
     func setupUI() {

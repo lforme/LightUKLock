@@ -59,19 +59,20 @@ extension TodayExtensionInterface: TargetType {
         switch self {
             
         case .getLockCurrentInfoFromIOTPlatform:
-            let shareDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
-            let sceneStr = shareDefault?.string(forKey: ShareUserDefaultsKey.scene.rawValue)
-            guard let sceneId = SceneListModel.deserialize(from: sceneStr)?.ladderAssetHouseId else { return  nil }
-            return ["SceneID": sceneId]
+//            let shareDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
+//            let sceneStr = shareDefault?.string(forKey: ShareUserDefaultsKey.scene.rawValue)
+//            guard let sceneId = SceneListModel.deserialize(from: sceneStr)?.ladderAssetHouseId else { return  nil }
+//            return ["SceneID": sceneId]
+            return nil
             
         case .getUnlockLog:
-            let shareDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
-            let sceneStr = shareDefault?.string(forKey: ShareUserDefaultsKey.scene.rawValue)
-            let userStr = shareDefault?.string(forKey: ShareUserDefaultsKey.userInScene.rawValue)
-            guard let sceneId = SceneListModel.deserialize(from: sceneStr)?.ladderAssetHouseId, let userCode = UserInSceneModel.deserialize(from: userStr)?.userCode else { return  nil }
-            
-            return ["SceneID": sceneId, "UserCode": [userCode], "PageIndex": 1, "PageSize": 3]
-            
+//            let shareDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
+//            let sceneStr = shareDefault?.string(forKey: ShareUserDefaultsKey.scene.rawValue)
+//            let userStr = shareDefault?.string(forKey: ShareUserDefaultsKey.userInScene.rawValue)
+//            guard let sceneId = SceneListModel.deserialize(from: sceneStr)?.ladderAssetHouseId, let userCode = UserInSceneModel.deserialize(from: userStr)?.userCode else { return  nil }
+//
+//            return ["SceneID": sceneId, "UserCode": [userCode], "PageIndex": 1, "PageSize": 3]
+            return nil
         }
     }
     

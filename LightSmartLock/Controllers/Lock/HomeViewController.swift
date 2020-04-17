@@ -237,11 +237,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 2 {
-            guard let userCode = LSLUser.current().userInScene?.userCode else {
+            guard let lockId = LSLUser.current().scene?.ladderLockId else {
                 HUD.flash(.label("无法获取user code, 请稍后"), delay: 2)
                 return
             }
-            let recordVC = RecordUnlockController(userCode: userCode)
+            let recordVC = RecordUnlockController(lockId: lockId)
             self.navigationController?.pushViewController(recordVC, animated: true)
         }
     }

@@ -17,41 +17,6 @@ struct ShareBodyModel: HandyJSON {
     var img: String?
 }
 
-
-struct SharePwdListModel: HandyJSON {
-    
-    enum SecretType: Int, HandyJSONEnum {
-        case single = 1
-        case multiple = 2
-    }
-    
-    var shareID: String!
-    var tempkeyID: String!
-    var shareType: Int!
-    var receiveName: String?
-    var receivePhone: String?
-    var actualReceive: String?
-    var received: Bool?
-    var mark: String?
-    var status: Int!
-    var createDate: String?
-    var endTime: String?
-    var createBy: String?
-    var secretType: SecretType!
-    var beginTime: String?
-    var statusName: String?
-    var secretStatus: Int?
-}
-
-struct SharePwdLogListModel: HandyJSON {
-    
-    var createDate: String?
-    var receiveName: String?
-    var operationType: Int!
-    var Content: String?
-    
-}
-
 struct TempPasswordListModel: HandyJSON {
     
     enum `Type`: Int, HandyJSONEnum {

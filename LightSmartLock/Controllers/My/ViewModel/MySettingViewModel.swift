@@ -22,7 +22,7 @@ final class MySettingViewModel {
             return .error(AppError.reason("获取本地用户失败"))
         }
         userInfo.phone = phone
-        return BusinessAPI.requestMapJSON(.updateUserInfo(info: userInfo), classType: UserModel.self)
+        return BusinessAPI.requestMapBool(.editUser(parameter: userInfo)).map { _ in userInfo }
     }
     
     func changePassword(_ password: String) -> Observable<UserModel> {
@@ -30,7 +30,7 @@ final class MySettingViewModel {
             return .error(AppError.reason("获取本地用户失败"))
         }
         userInfo.loginPassword = password
-        return BusinessAPI.requestMapJSON(.updateUserInfo(info: userInfo), classType: UserModel.self)
+        return .empty()
     }
     
     func changeNickname(_ name: String) -> Observable<UserModel> {
@@ -38,7 +38,7 @@ final class MySettingViewModel {
             return .error(AppError.reason("获取本地用户失败"))
         }
         userInfo.userName = name
-        return BusinessAPI.requestMapJSON(.updateUserInfo(info: userInfo), classType: UserModel.self)
+        return BusinessAPI.requestMapBool(.editUser(parameter: userInfo)).map { _ in userInfo }
     }
     
     func changeUserAvatar(_ image: UIImage) -> Observable<UserModel> {
@@ -46,8 +46,8 @@ final class MySettingViewModel {
             guard var userInfo = LSLUser.current().user else {
                 return .error(AppError.reason("获取本地用户失败"))
             }
-            userInfo.headPic = url
-            return BusinessAPI.requestMapJSON(.updateUserInfo(info: userInfo), classType: UserModel.self)
+            userInfo.avatar = url
+            return BusinessAPI.requestMapBool(.editUser(parameter: userInfo)).map { _ in userInfo }
         }
     }
     
