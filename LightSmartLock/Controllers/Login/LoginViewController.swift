@@ -124,6 +124,7 @@ class LoginViewController: UITableViewController, StoryboardView {
         cell2.backgroundColor = ColorClassification.viewBackground.value
         
         versionLabel.text = ServerHost.shared.environment.description
+        
     }
     
     @IBAction func registerTap(_ sender: UIButton) {
@@ -131,6 +132,7 @@ class LoginViewController: UITableViewController, StoryboardView {
         registerVC.styleType = .register
         registerVC.operateSuccessPhoneCall = {[weak self] (phoneNum) in
             self?.phoneTextField.text = phoneNum
+            self?.phoneTextField.becomeFirstResponder()
         }
         self.navigationController?.pushViewController(registerVC, animated: true)
     }

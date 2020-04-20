@@ -53,7 +53,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = ColorClassification.viewBackground.value
+        tableView.backgroundColor = ColorClassification.primary.value
         view.backgroundColor = ColorClassification.viewBackground.value
         AppDelegate.changeStatusBarStyle(.lightContent)
     }
@@ -132,8 +132,6 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
             guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
             switch refreshType {
-            case .addLock:
-                self?.hasLock(has: true)
             case .deleteLock, .deleteScene:
                 self?.hasLock(has: false)
             default: break
@@ -200,14 +198,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             }).disposed(by: animationCell.disposeBag)
             
             return animationCell
-        case 1:
+        case 2:
             let controlCell = tableView.dequeueReusableCell(withIdentifier: "HomeControlCell") as! HomeControlCell
             controlCell.userButton.addTarget(self, action: #selector(self.gotoUserManagementVC), for: .touchUpInside)
             controlCell.keyButton.addTarget(self, action: #selector(self.gotoPasswordManagementVC), for: .touchUpInside)
             controlCell.messageButton.addTarget(self, action: #selector(self.gotoCardManagementVC), for: .touchUpInside)
             controlCell.propertyButton.addTarget(self, action: #selector(self.gotoFingerManagementVC), for: .touchUpInside)
             return controlCell
-        case 2:
+        case 1:
             let leasedCell = tableView.dequeueReusableCell(withIdentifier: "LeasedCell") as! LeasedCell
             return leasedCell
             
@@ -228,7 +226,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return 120.0
         case 2:
-            return 150.0
+            return 200.0
         default:
             return CGFloat.leastNormalMagnitude
         }
@@ -236,7 +234,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == 2 {
+        if indexPath.row == 1 {
             guard let lockId = LSLUser.current().scene?.ladderLockId else {
                 HUD.flash(.label("无法获取user code, 请稍后"), delay: 2)
                 return

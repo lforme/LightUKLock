@@ -139,6 +139,7 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     this.navigationController?.popToRootViewController(animated: true)
                 }
+                 NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addLock)
             }
             }, onError: { (error) in
                 PKHUD.sharedHUD.rx.showError(error)

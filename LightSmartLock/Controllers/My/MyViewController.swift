@@ -33,12 +33,12 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         self.tableView.frame = view.frame
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
-            self?.tableView.mj_header?.beginRefreshing()
-        }
-    }
+    //    override func viewDidAppear(_ animated: Bool) {
+    //        super.viewDidAppear(animated)
+    //        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
+    //            self?.tableView.mj_header?.beginRefreshing()
+    //        }
+    //    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +63,15 @@ class MyViewController: UIViewController, NavigationSettingStyle {
             }
             
         }).disposed(by: rx.disposeBag)
+        
+        NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
+            guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
+            switch refreshType {
+            case .addLock, .deleteLock:
+                self?.tableView.mj_header?.beginRefreshing()
+            default: break
+            }
+        }).disposed(by: rx.disposeBag)
     }
     
     func bind() {
@@ -83,6 +92,7 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {[weak self] in
             self?.vm.refresh()
         })
+        tableView.mj_header?.beginRefreshing()
     }
     
     func setupUI() {
