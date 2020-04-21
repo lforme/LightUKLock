@@ -31,6 +31,10 @@ class LSLUser: NSObject {
     
     func logout() {
         
+        if let t = token?.accessToken {
+            AuthAPI.requestMapBool(.logout(token: t)).subscribe().disposed(by: rx.disposeBag)
+        }
+        
         let diskCache = NetworkDiskStorage(autoCleanTrash: true, path: "network")
         let deleteDb = diskCache.deleteValueBy(user?.accountID)
         print("数据库网络缓存文件删除:\(deleteDb ? "成功" : "失败")")
