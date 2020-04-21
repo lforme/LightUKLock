@@ -2727,45 +2727,8 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="viewBackground"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="fYs-Av-07t">
-                                        <rect key="frame" x="0.0" y="160" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fYs-Av-07t" id="0Q6-6P-Ziz">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朝向" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDD-KT-Kz7">
-                                                    <rect key="frame" x="16" y="13.5" width="29" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" name="textPrimary"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZp-5z-gPj">
-                                                    <rect key="frame" x="340" y="13.5" width="43" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" name="textPrimary"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJu-4e-TFC">
-                                                    <rect key="frame" x="49" y="13.5" width="7" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                                    <color key="textColor" name="primary"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="FZp-5z-gPj" secondAttribute="trailing" id="0Um-rL-3tB"/>
-                                                <constraint firstItem="FJu-4e-TFC" firstAttribute="top" secondItem="mDD-KT-Kz7" secondAttribute="top" id="1sZ-aT-qL1"/>
-                                                <constraint firstItem="FJu-4e-TFC" firstAttribute="leading" secondItem="mDD-KT-Kz7" secondAttribute="trailing" constant="4" id="I40-60-wxi"/>
-                                                <constraint firstItem="mDD-KT-Kz7" firstAttribute="centerY" secondItem="0Q6-6P-Ziz" secondAttribute="centerY" id="UHk-Pc-VxN"/>
-                                                <constraint firstItem="FZp-5z-gPj" firstAttribute="centerY" secondItem="0Q6-6P-Ziz" secondAttribute="centerY" id="dH7-uV-5s9"/>
-                                                <constraint firstItem="mDD-KT-Kz7" firstAttribute="leading" secondItem="0Q6-6P-Ziz" secondAttribute="leading" constant="16" id="hSx-lb-sUJ"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" name="viewBackground"/>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="HVo-kK-jnX">
-                                        <rect key="frame" x="0.0" y="204" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="160" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HVo-kK-jnX" id="Efl-dT-cg5">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
@@ -2814,7 +2777,6 @@
                         <outlet property="buildingNumber" destination="YW2-6d-VHw" id="IYP-Mf-47b"/>
                         <outlet property="houseType" destination="oJZ-q8-Zpk" id="XNe-Jf-jvu"/>
                         <outlet property="plotName" destination="qQc-06-jHM" id="dJD-b1-j6R"/>
-                        <outlet property="towardLabel" destination="FZp-5z-gPj" id="6Z4-ig-DlD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O74-4e-pWX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

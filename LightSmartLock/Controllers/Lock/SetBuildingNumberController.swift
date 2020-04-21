@@ -59,7 +59,7 @@ class SetBuildingNumberController: UITableViewController {
     }
     
     func setupNavigationRightItem() {
-        self.saveButton = createdRightNavigationItem(title: "完成", image: nil)
+        self.saveButton = createdRightNavigationItem(title: "完成", font: nil, image: nil, rightEdge: 8, color: UIColor.white)
     }
     
     func bind() {

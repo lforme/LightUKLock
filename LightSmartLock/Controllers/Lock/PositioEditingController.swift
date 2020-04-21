@@ -21,7 +21,6 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
         case name = 0
         case area
         case houseType
-        case towards
         case buildingNumber
     }
     
@@ -139,7 +138,7 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     this.navigationController?.popToRootViewController(animated: true)
                 }
-                 NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addLock)
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addLock)
             }
             }, onError: { (error) in
                 PKHUD.sharedHUD.rx.showError(error)
@@ -185,24 +184,13 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
                 self?.vm.setupHouseType(houseType)
             }).disposed(by: rx.disposeBag)
             
-            
-        case .towards:
-            let towards = PositionViewModel.Config.towards
-            DataPickerController.rx.present(with: "选择朝向", items: [towards]).subscribe(onNext: {[weak self] (result) in
-                let towardsStr = result.compactMap({ (r) -> String? in
-                    return r.value
-                }).reduce("", { (next, acc) -> String in
-                    return next + acc
-                })
-                self?.vm.setupTowards(towardsStr)
-            }).disposed(by: rx.disposeBag)
-            
         case .buildingNumber:
             let setBuildingNumberVC: SetBuildingNumberController = ViewLoader.Storyboard.controller(from: "Home")
             setBuildingNumberVC.fetchCallback {[weak self] (building, unit, doorplate) in
                 self?.vm.setupBuildingInfo(building, uniti: unit, doorPlate: doorplate)
             }
             navigationController?.pushViewController(setBuildingNumberVC, animated: true)
+            
         }
     }
     
