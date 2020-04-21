@@ -47,6 +47,7 @@ final class MySettingViewModel {
                 return .error(AppError.reason("获取本地用户失败"))
             }
             userInfo.avatar = url
+            print(userInfo)
             return BusinessAPI.requestMapBool(.editUser(parameter: userInfo)).map { _ in userInfo }
         }
     }
@@ -85,7 +86,7 @@ final class MySettingViewModel {
     private func uoloadImage(_ image: UIImage) -> Observable<String?> {
         return BusinessAPI.requestMapAny(.uploadImage(image, description: "头像上传")).map { (res) -> String? in
             let json = res as? [String: Any]
-            let headPicUrl = json?["Data"] as? String
+            let headPicUrl = json?["data"] as? String
             return headPicUrl
         }
     }

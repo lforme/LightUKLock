@@ -20,6 +20,11 @@ extension UIImageView {
         }
         
         
-      //  self.kf.setImage(with: <#T##Source?#>, placeholder: <#T##Placeholder?#>, options: <#T##KingfisherOptionsInfo?#>, progressBlock: <#T##DownloadProgressBlock?##DownloadProgressBlock?##(Int64, Int64) -> Void#>, completionHandler: <#T##((Result<RetrieveImageResult, KingfisherError>) -> Void)?##((Result<RetrieveImageResult, KingfisherError>) -> Void)?##(Result<RetrieveImageResult, KingfisherError>) -> Void#>)
+        guard let urlString = (ServerHost.shared.environment.host + str).encodeUrl() else {
+            print("url不合法")
+            return
+        }
+        
+        self.kf.setImage(with: URL(string: urlString), placeholder: UIImage(named: "global_empty"))
     }
 }

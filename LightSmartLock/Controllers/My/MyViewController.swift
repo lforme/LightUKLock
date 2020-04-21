@@ -82,10 +82,10 @@ class MyViewController: UIViewController, NavigationSettingStyle {
             }
         }).disposed(by: rx.disposeBag)
         
-        
         vm.sceneList.subscribe(onNext: {[weak self] (list) in
             self?.dataSource = list
         }).disposed(by: rx.disposeBag)
+        
     }
     
     func setupTableviewRefresh() {
@@ -164,9 +164,8 @@ extension MyViewController: UITableViewDataSource, UITableViewDelegate {
         let shareInfo = LSLUser.current().obUserInfo.share(replay: 1, scope: .forever)
         shareInfo.map { $0?.userName }.bind(to: header.nick.rx.text).disposed(by: header.disposeBag)
         shareInfo.map { $0?.phone }.bind(to: header.phone.rx.text).disposed(by: header.disposeBag)
-        shareInfo.map { $0?.headPic }.subscribe(onNext: { (urlString) in
-            guard let str = urlString?.encodeUrl() else { return }
-            header.avatar?.kf.setImage(with: URL(string: str))
+        shareInfo.map { $0?.avatar }.subscribe(onNext: { (urlString) in
+            header.avatar?.setUrl(urlString)
         }).disposed(by: header.disposeBag)
         
         return header
