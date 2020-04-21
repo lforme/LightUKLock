@@ -31,6 +31,7 @@
                                             <constraint firstAttribute="height" constant="76" id="t2w-OP-p3h"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="用户管理" image="user_manage">
                                             <color key="titleColor" name="textOpaque78"/>
                                         </state>
@@ -39,6 +40,7 @@
                                         <rect key="frame" x="161.5" y="0.0" width="157.5" height="76"/>
                                         <color key="backgroundColor" name="viewBackground"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="门卡管理" image="card_manage">
                                             <color key="titleColor" name="textOpaque78"/>
                                         </state>
@@ -55,6 +57,7 @@
                                             <constraint firstAttribute="height" constant="76" id="CeN-An-wif"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="密码管理" image="manage_key">
                                             <color key="titleColor" name="textOpaque78"/>
                                         </state>
@@ -63,6 +66,7 @@
                                         <rect key="frame" x="161.5" y="0.0" width="157.5" height="76"/>
                                         <color key="backgroundColor" name="viewBackground"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="指纹管理" image="manage_finger">
                                             <color key="titleColor" name="textOpaque78"/>
                                         </state>
