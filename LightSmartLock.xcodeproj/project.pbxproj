@@ -35,8 +35,6 @@
 		9C218FA223FA8495009600F7 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C218FA123FA8495009600F7 /* loading.json */; };
 		9C218FA523FA8CC9009600F7 /* LeasedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C218FA323FA8CC9009600F7 /* LeasedCell.swift */; };
 		9C218FA623FA8CC9009600F7 /* LeasedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C218FA423FA8CC9009600F7 /* LeasedCell.xib */; };
-		9C218FA923FA918E009600F7 /* NotLeasedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C218FA723FA918E009600F7 /* NotLeasedCell.swift */; };
-		9C218FAA23FA918E009600F7 /* NotLeasedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C218FA823FA918E009600F7 /* NotLeasedCell.xib */; };
 		9C24AC1423838C80005EBF95 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1323838C80005EBF95 /* BaseNavigationController.swift */; };
 		9C24AC1623838CD1005EBF95 /* NavigationSettingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1523838CD1005EBF95 /* NavigationSettingStyle.swift */; };
 		9C24AC1923838E56005EBF95 /* UIFont+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1823838E56005EBF95 /* UIFont+extension.swift */; };
@@ -258,8 +256,6 @@
 		9C218FA123FA8495009600F7 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		9C218FA323FA8CC9009600F7 /* LeasedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeasedCell.swift; sourceTree = "<group>"; };
 		9C218FA423FA8CC9009600F7 /* LeasedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeasedCell.xib; sourceTree = "<group>"; };
-		9C218FA723FA918E009600F7 /* NotLeasedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotLeasedCell.swift; sourceTree = "<group>"; };
-		9C218FA823FA918E009600F7 /* NotLeasedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotLeasedCell.xib; sourceTree = "<group>"; };
 		9C24AC1323838C80005EBF95 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		9C24AC1523838CD1005EBF95 /* NavigationSettingStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSettingStyle.swift; sourceTree = "<group>"; };
 		9C24AC1823838E56005EBF95 /* UIFont+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+extension.swift"; sourceTree = "<group>"; };
@@ -479,8 +475,6 @@
 				9CBD8F4B23A21E7D00886519 /* PasswordChangeStatusCell.xib */,
 				9C218FA323FA8CC9009600F7 /* LeasedCell.swift */,
 				9C218FA423FA8CC9009600F7 /* LeasedCell.xib */,
-				9C218FA723FA918E009600F7 /* NotLeasedCell.swift */,
-				9C218FA823FA918E009600F7 /* NotLeasedCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -997,7 +991,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C1B87C2239767A100216ADA /* InitialLock.storyboard in Resources */,
-				9C218FAA23FA918E009600F7 /* NotLeasedCell.xib in Resources */,
 				9C218FA223FA8495009600F7 /* loading.json in Resources */,
 				9C7705A2238FE358008E1552 /* SingleInputController.xib in Resources */,
 				9C03B0FD239FB3620001E849 /* addFinger.json in Resources */,
@@ -1243,7 +1236,6 @@
 				9C03B0F5239F83D00001E849 /* AddFingerController.swift in Sources */,
 				9C3726C82390C6AD00450757 /* Empty+UIViewController.swift in Sources */,
 				9C770592238FA11A008E1552 /* MyInfoHeader.swift in Sources */,
-				9C218FA923FA918E009600F7 /* NotLeasedCell.swift in Sources */,
 				9C52402D238E163D00308AC4 /* UnlockRecordCell.swift in Sources */,
 				9C452F082394AA2E00144827 /* CenterMessageModel.swift in Sources */,
 				9CBD8F5D23A24DA800886519 /* BluetoothSynchronizeTask.swift in Sources */,
