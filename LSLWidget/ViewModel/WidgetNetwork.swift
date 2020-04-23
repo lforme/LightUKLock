@@ -10,8 +10,8 @@ import Foundation
 import Moya
 
 enum TodayExtensionInterface {
-    case getLockCurrentInfoFromIOTPlatform // 从物联网平台获取门锁信息
-    case getUnlockLog // 解锁记录
+    case getUnlockRecords(lockId: String)
+    case getLockInfo(lockId: String) // 门锁信息
 }
 
 extension TodayExtensionInterface: TargetType {
@@ -34,17 +34,19 @@ extension TodayExtensionInterface: TargetType {
     
     var method: Moya.Method {
         switch self {
-        default:
+        case .getLockInfo:
+            return .get
+        case .getUnlockRecords:
             return .post
         }
     }
     
     var path: String {
         switch self {
-        case .getLockCurrentInfoFromIOTPlatform:
-            return "api/Lock/GetLockCurrentInfoFromIOTPlatform"
-        case .getUnlockLog:
-            return "api/Lock/GetUnlockLog"
+        case let .getLockInfo(lockId):
+            return "/ladder_lock/info/\(lockId)"
+        case let .getUnlockRecords(lockId):
+            return "/ladder_open_lock_record/records/\(lockId)"
         }
     }
     
@@ -57,21 +59,11 @@ extension TodayExtensionInterface: TargetType {
     
     var parameters: [String: Any]? {
         switch self {
+        case .getLockInfo:
+            return nil
             
-        case .getLockCurrentInfoFromIOTPlatform:
-            let shareDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
-            let sceneStr = shareDefault?.string(forKey: ShareUserDefaultsKey.scene.rawValue)
-            guard let sceneId = SceneListModel.deserialize(from: sceneStr)?.ladderAssetHouseId else { return  nil }
-            return ["SceneID": sceneId]
-            
-        case .getUnlockLog:
-            let shareDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
-            let sceneStr = shareDefault?.string(forKey: ShareUserDefaultsKey.scene.rawValue)
-            let userStr = shareDefault?.string(forKey: ShareUserDefaultsKey.userInScene.rawValue)
-            guard let sceneId = SceneListModel.deserialize(from: sceneStr)?.ladderAssetHouseId, let userCode = UserInSceneModel.deserialize(from: userStr)?.userCode else { return  nil }
-            
-            return ["SceneID": sceneId, "UserCode": [userCode], "PageIndex": 1, "PageSize": 3]
-            
+        case .getUnlockRecords:
+            return ["currentPage": 1, "pageSize": 15, "type": 3]
         }
     }
     

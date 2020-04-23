@@ -36,13 +36,14 @@ final class UserManagementViewModel: ListViewModeling {
         }
         
         pageIndex = 1
-        BusinessAPI.requestMapJSONArray(.getUserList(lockId: lockId, pageIndex: pageIndex, pageSize: 15), classType: Item.self, useCache: true, isPaginating: true).map { $0.compactMap { $0 } }
-            .do( onError: {[weak self] (_) in
+        BusinessAPI.requestMapJSONArray(.getUserList(lockId: lockId, pageIndex: pageIndex, pageSize: 15), classType: Item.self, useCache: true, isPaginating: true).map { $0.compactMap { $0 } }.subscribe(onNext: {[weak self] (items) in
+            self?.obList.onNext(items)
+            }, onError: {[weak self] (error) in
+                self?.obList.onError(error)
                 self?.obRefreshStatus.accept(.endHeaderRefresh)
-                }, onCompleted: {[weak self] in
-                    self?.obRefreshStatus.accept(.endHeaderRefresh)
-            })
-            .bind(to: obList).disposed(by: disposeBag)
+            }, onCompleted: {[weak self] in
+                self?.obRefreshStatus.accept(.endHeaderRefresh)
+        }).disposed(by: disposeBag)
     }
     
     func loadMore() {
@@ -64,9 +65,9 @@ final class UserManagementViewModel: ListViewModeling {
                     this.obRefreshStatus.accept(.noMoreData)
                 }
                 
-            }, onError: {[weak self] (error) in
-                self?.obRefreshStatus.accept(.endFooterRefresh)
-                PKHUD.sharedHUD.rx.showError(error)
+                }, onError: {[weak self] (error) in
+                    self?.obRefreshStatus.accept(.endFooterRefresh)
+                    PKHUD.sharedHUD.rx.showError(error)
             }).disposed(by: disposeBag)
     }
     

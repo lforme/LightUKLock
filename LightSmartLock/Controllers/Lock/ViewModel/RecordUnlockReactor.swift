@@ -36,10 +36,10 @@ final class RecordUnlockReactor: Reactor {
     
     let initialState: State
     
-    private let userCode: String
+    private let lockId: String
     
-    init(userCode: String) {
-        self.userCode = userCode
+    init(lockId: String) {
+        self.lockId = lockId
         
         self.initialState = State(pageIndex: 1, loadMoreFinished: false, requestFinished: true, recordList: [])
     }
@@ -53,7 +53,7 @@ final class RecordUnlockReactor: Reactor {
                 return .just(.setLoadMoreFinished(true))
             }
             
-            let request =  BusinessAPI.requestMapJSONArray(.getUnlockLog(userCodes: [self.userCode], beginTime: nil, endTime: nil, index: self.currentState.pageIndex + 1, pageSize: 15), classType: UnlockRecordModel.self, useCache: true).map { $0.compactMap { $0 } }.share(replay: 1, scope: .forever)
+            let request = BusinessAPI.requestMapJSONArray(.getUnlockRecords(lockId: lockId, type: 3, pageIndex: self.currentState.pageIndex + 1, pageSize: 15), classType: UnlockRecordModel.self, isPaginating: true).map { $0.compactMap { $0 } }.share(replay: 1, scope: .forever)
             
             return Observable.concat([
                 .just(.setLoadMorePageIndex(index)),
@@ -71,7 +71,8 @@ final class RecordUnlockReactor: Reactor {
             ])
             
         case let .refreshChange(index):
-            let request = BusinessAPI.requestMapJSONArray(.getUnlockLog(userCodes: [self.userCode], beginTime: nil, endTime: nil, index: index, pageSize: 15), classType: UnlockRecordModel.self, useCache: true).map { $0.compactMap { $0 } }.share(replay: 1, scope: .forever)
+            
+            let request = BusinessAPI.requestMapJSONArray(.getUnlockRecords(lockId: lockId, type: 3, pageIndex: index, pageSize: 15), classType: UnlockRecordModel.self, isPaginating: true).map { $0.compactMap { $0 } }.share(replay: 1, scope: .forever)
             
             return Observable.concat([
                 .just(.setRefreshPageIndex(index)),

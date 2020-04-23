@@ -39,23 +39,26 @@ final class TodayViewModel {
     private let network = MoyaProvider<TodayExtensionInterface>()
     private let _currentPower = BehaviorRelay<String?>(value: nil)
     private let _requestExecuting = BehaviorRelay<Bool>(value: false)
+    private let lockId: String
     
-    init() {
+    init(lockId: String) {
+        self.lockId = lockId
         _requestExecuting.accept(true)
-        network.request(.getLockCurrentInfoFromIOTPlatform) {[weak self] (result) in
+        
+        network.request(.getLockInfo(lockId: lockId)) {[weak self] (result) in
             switch result {
             case let .success(response):
                 guard let data = try? response.filter(statusCode: 200).mapJSON() else {
                     self?._currentPower.accept("暂时无法获取电池电量")
                     return
                 }
+                
                 let json = data as? [String: Any]
-                let value = json?["Data"] as? [String: Any]
-                let model = IOTLockInfoModel.deserialize(from: value)
-                if let p = model?.getPower() {
+                let value = json?["data"] as? [String: Any]
+                let model = LockModel.deserialize(from: value)
+                if let p = model?.power {
                     self?._currentPower.accept("剩余电量: \(p)")
                 }
-                self?._requestExecuting.accept(false)
                 
             case .failure:
                 self?._currentPower.accept("暂时无法获取电池电量")
@@ -63,19 +66,19 @@ final class TodayViewModel {
             }
         }
         
-        network.request(.getUnlockLog) {[weak self] (result) in
+        network.request(.getUnlockRecords(lockId: lockId)) {[weak self] (result) in
             switch result {
             case let .success(response):
                 guard let data = try? response.filter(statusCode: 200).mapJSON() else {
                     return
                 }
                 let json = data as? [String: Any]
-                let value = json?["Data"] as? [[String: Any]]
-                if let valueArray = [UnlockRecordModel].deserialize(from: value) {
-                    let array = valueArray.compactMap { $0 }.map { Section(model: "Today解锁记录", items: [$0]) }
-                    self?._dataSource.accept(array)
+                let value = json?["data"] as? [String: Any]
+                let jsonArray = value?["rows"] as? [[String: Any]]
+                if let array = [UnlockRecordModel].deserialize(from: jsonArray) {
+                    let a = array.compactMap { $0 }.map { Section(model: "Today解锁记录", items: [$0]) }
+                    self?._dataSource.accept(a)
                 }
-               
             case .failure:
                 break
             }

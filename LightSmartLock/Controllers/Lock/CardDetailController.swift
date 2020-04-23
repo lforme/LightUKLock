@@ -74,7 +74,12 @@ class CardDetailController: UITableViewController, NavigationSettingStyle {
             }.subscribe(onNext: {[weak self] (success) in
                 if success {
                     HUD.flash(.label("删除门卡成功"), delay: 2)
-                    self?.navigationController?.popToRootViewController(animated: true)
+                    NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addCard)
+                    guard let tagerVC = self?.navigationController?.children.filter({ (vc) -> Bool in
+                        return vc is CardManageController
+                    }).last else { return }
+                    self?.navigationController?.popToViewController(tagerVC, animated: true)
+                    
                 }
                 }, onError: { (error) in
                     PKHUD.sharedHUD.rx.showError(error)
@@ -83,12 +88,16 @@ class CardDetailController: UITableViewController, NavigationSettingStyle {
         case .changeName:
             SingleInputController.rx.present(wiht: "修改门卡名称", saveTitle: "保存", placeholder: self.cardName).flatMapLatest {[unowned self] (newName) -> Observable<Bool> in
                 return self.vm.changeCardName(newName)
-            }.subscribe(onNext: { (success) in
+            }.subscribe(onNext: {[weak self] (success) in
                 if success {
+                    NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addCard)
                     HUD.flash(.label("修改门卡名称成功"), delay: 2)
                 } else {
                     HUD.flash(.label("修改门卡名称失败"), delay: 2)
                 }
+                
+                self?.navigationController?.popViewController(animated: true)
+                
             }, onError: { (error) in
                 PKHUD.sharedHUD.rx.showError(error)
             }).disposed(by: rx.disposeBag)

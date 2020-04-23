@@ -11,56 +11,26 @@ import RxCocoa
 import RxSwift
 import PKHUD
 
-final class FingerManageViewModel: ListViewModeling {
+final class FingerManageViewModel {
     
-    typealias Item = FingerModel
-    
-    var refreshStatus: Observable<UKRefreshStatus> {
-        return _refreshStatus.asObservable()
-    }
-    
-    var list: Observable<[FingerModel]> {
+    var list: Observable<[OpenLockInfoModel.Finger]> {
         return _list.asObservable()
     }
-    
-    var pageIndex: Int = 1
-    
     var disposeBag: DisposeBag = DisposeBag()
     
-    private let _refreshStatus = BehaviorRelay<UKRefreshStatus>(value: .none)
-    private let _list = BehaviorSubject<[FingerModel]>(value: [])
+    private let _list = BehaviorSubject<[OpenLockInfoModel.Finger]>(value: [])
     
     func refresh() {
-        pageIndex = 1
-        guard let id = LSLUser.current().userInScene?.customerID else {
-            HUD.flash(.label("无法从服务器获取用户Id, 请稍后再试"), delay: 2)
+        guard let lockId = LSLUser.current().lockInfo?.ladderLockId else {
+            HUD.flash(.label("无法获取门锁编号"), delay: 2)
             return
         }
-        BusinessAPI.requestMapJSONArray(.getFingerPrintKeyList(customerId: id, index: pageIndex, pageSize: 15), classType: FingerModel.self, useCache: true).map { $0.compactMap { $0 } } .do( onError: {[weak self] (_) in
-            self?._refreshStatus.accept(.endHeaderRefresh)
-            }, onCompleted: {[weak self] in
-                self?._refreshStatus.accept(.endHeaderRefresh)
-        }).bind(to: _list).disposed(by: disposeBag)
-    }
-    
-    func loadMore() {
-        pageIndex += 1
-        guard let id = LSLUser.current().userInScene?.customerID else {
-            HUD.flash(.label("无法从服务器获取用户Id, 请稍后再试"), delay: 2)
-            return
-        }
-        BusinessAPI.requestMapJSONArray(.getFingerPrintKeyList(customerId: id, index: pageIndex, pageSize: 15), classType: FingerModel.self, useCache: true).map { $0.compactMap { $0 } }
-            .subscribe(onNext: {[weak self] (models) in
-                guard let this = self else { return }
-                this._refreshStatus.accept(.endFooterRefresh)
-                if models.count != 0 {
-                    this._list.onNext(try! this._list.value() + models)
-                } else {
-                    this._refreshStatus.accept(.noMoreData)
-                }
-            }, onError: {[weak self] (error) in
-                PKHUD.sharedHUD.rx.showError(error)
-                self?._refreshStatus.accept(.endFooterRefresh)
-            }).disposed(by: disposeBag)
+        
+        BusinessAPI.requestMapJSON(.getAllOpenWay(lockId: lockId), classType: OpenLockInfoModel.self).map { ($0.ladderFingerPrintVOList?.compactMap { $0 } ?? []) }.subscribe(onNext: {[weak self] (items) in
+            self?._list.onNext(items)
+            }, onError: { (error) in
+                self._list.onError(error)
+        }).disposed(by: disposeBag)
+       
     }
 }

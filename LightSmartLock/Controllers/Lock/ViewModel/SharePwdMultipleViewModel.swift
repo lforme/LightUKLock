@@ -14,26 +14,26 @@ import HandyJSON
 
 class TempPasswordShareParameter: HandyJSON {
     
-    var Mark: String?
-    var Phone: String?
-    var ShareType: Int! = 0
-    var Address: String?
-    var BeginTime: String?
-    var EndTime: String?
-    var SecretType: Int! = 1
+    var endTime: String?
+    var password: String?
+    var remark: String?
+    var sendPhone: String?
+    var sendType: TempPasswordShareWayType? = .message
+    var startTime: String?
+    var type: Int? = 1
     
     required init() {}
 }
 
-enum TempPasswordShareType: Int {
-    case weixin = 0
+enum TempPasswordShareWayType: Int, HandyJSONEnum {
+    case message = 1
+    case weixin
     case qq
-    case message
 }
 
 final class SharePwdMultipleViewModel {
     
-    var displayShareType: Observable<TempPasswordShareType> {
+    var displayShareType: Observable<TempPasswordShareWayType> {
         return bindShareType.asObservable()
     }
     
@@ -50,11 +50,15 @@ final class SharePwdMultipleViewModel {
     let bindPhone = BehaviorRelay<String?>(value: nil)
     let bindMark = BehaviorRelay<String?>(value: nil)
     
-    let bindShareType = BehaviorRelay<TempPasswordShareType>(value: .message)
+    let bindShareType = BehaviorRelay<TempPasswordShareWayType>(value: .message)
     
     var shareAction: Action<TempPasswordShareParameter, ShareBodyModel>!
+    let lockId: String
     
-    init() {
+    init(lockId: String) {
+        
+        self.lockId = lockId
+        
         self.shareAction = Action<TempPasswordShareParameter, ShareBodyModel>(workFactory: {[unowned self] (param) -> Observable<ShareBodyModel> in
             switch self.bindShareType.value {
             case .message:
@@ -62,13 +66,14 @@ final class SharePwdMultipleViewModel {
                 if self.bindPhone.value.isNilOrEmpty || self.bindStartTime.value.isNilOrEmpty || self.bindEndTime.value.isNilOrEmpty {
                     return .error(AppError.reason("请检比填参数完整性"))
                 } else {
-                    param.Phone = self.bindPhone.value
-                    param.BeginTime = self.bindStartTime.value
-                    param.EndTime = self.bindEndTime.value
-                    param.Mark = self.bindMark.value
-                    param.ShareType = self.bindShareType.value.rawValue
-                    param.SecretType = 2
-                    return BusinessAPI.requestMapJSON(.generateTempBy(input: param), classType: ShareBodyModel.self)
+                    param.sendPhone = self.bindPhone.value
+                    param.startTime = self.bindStartTime.value
+                    param.endTime = self.bindEndTime.value
+                    param.remark = self.bindMark.value
+                    param.sendType = self.bindShareType.value
+                    param.type = 2
+                    
+                    return BusinessAPI.requestMapJSON(.addTempPassword(lockId: self.lockId, parameter: param), classType: ShareBodyModel.self)
                 }
             case .qq:
                 return .empty()

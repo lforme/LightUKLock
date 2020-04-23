@@ -99,7 +99,6 @@ class LockSettingPasswordController: UIViewController, NavigationSettingStyle {
             switch step {
             case let .uploadInfoToServer(id):
                 
-                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addLock)
                 let positionVC: PositioEditingController = ViewLoader.Storyboard.controller(from: "Home")
         
                 switch self?.kind {

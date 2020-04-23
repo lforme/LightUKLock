@@ -63,7 +63,7 @@ final class AddFingerViewModel {
     
     
     func addFinger() -> Observable<(Int?, String?)> {
-        guard let userCode = LSLUser.current().userInScene?.userCode else {
+        guard let userCode = LSLUser.current().scene?.lockUserAccount else {
             return .error(AppError.reason("无法从服务器获取用户编号, 请稍后再试"))
         }
         

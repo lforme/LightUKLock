@@ -61,6 +61,7 @@ class HomeSettingController: UITableViewController, NavigationSettingStyle {
             
         case .position:
             let positionVC: PositioEditingController = ViewLoader.Storyboard.controller(from: "Home")
+            positionVC.id = LSLUser.current().scene?.ladderAssetHouseId
             navigationController?.pushViewController(positionVC, animated: true)
             
         case .privacyPolicy:

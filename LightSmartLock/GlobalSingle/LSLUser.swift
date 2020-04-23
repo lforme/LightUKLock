@@ -31,6 +31,10 @@ class LSLUser: NSObject {
     
     func logout() {
         
+        if let t = token?.accessToken {
+            AuthAPI.requestMapBool(.logout(token: t)).subscribe().disposed(by: rx.disposeBag)
+        }
+        
         let diskCache = NetworkDiskStorage(autoCleanTrash: true, path: "network")
         let deleteDb = diskCache.deleteValueBy(user?.accountID)
         print("数据库网络缓存文件删除:\(deleteDb ? "成功" : "失败")")
@@ -101,24 +105,6 @@ class LSLUser: NSObject {
         }
     }
     
-    var userInScene: UserInSceneModel? {
-        set {
-            guard let entity = newValue?.toJSONString() else { return }
-            print("用户场景更新")
-            lock.lock()
-            LocalArchiver.save(key: LSLUser.Keys.userInScene.rawValue, value: entity)
-            let shareUserDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
-            shareUserDefault?.set(entity, forKey: ShareUserDefaultsKey.userInScene.rawValue)
-            shareUserDefault?.synchronize()
-            lock.unlock()
-        }
-        
-        get {
-            let json = LocalArchiver.load(key: LSLUser.Keys.userInScene.rawValue) as? String
-            let value = UserInSceneModel.deserialize(from: json)
-            return value
-        }
-    }
     
     var scene: SceneListModel? {
         set {
@@ -154,22 +140,6 @@ class LSLUser: NSObject {
         }
     }
     
-    var lockIOTInfo: IOTLockInfoModel? {
-        set {
-            guard let entity = newValue?.toJSONString() else { return }
-            print("IOT门锁信息更新")
-            lock.lock()
-            LocalArchiver.save(key: LSLUser.Keys.lockIOTInfo.rawValue, value: entity)
-            lock.unlock()
-        }
-        
-        get {
-            let json = LocalArchiver.load(key: LSLUser.Keys.lockIOTInfo.rawValue) as? String
-            let value = IOTLockInfoModel.deserialize(from: json)
-            return value
-        }
-    }
-    
     var obUserInfo: Observable<UserModel?> {
         return changeableUserInfo.asObservable()
     }
@@ -186,7 +156,7 @@ class LSLUser: NSObject {
         guard let sceneModel = self.scene else {
             return false
         }
-        return sceneModel.IsInstallLock ?? false
+        return sceneModel.ladderLockId.isNotNilNotEmpty
     }
     
     var hasSiriShortcuts: Bool {
@@ -211,11 +181,9 @@ extension LSLUser {
     enum Keys: String, CaseIterable {
         case refreshToekn = "refreshToeknModel"
         case token = "tokenModel"
-        case userInScene = "userInSceneModel"
         case scene = "currentSceneModel"
         case userInfo = "userInfoModel"
         case smartLockInfo = "smartLockInfo"
-        case lockIOTInfo = "lockIOTInfo"
         case siriShortcuts = "siriShortcuts"
     }
 }

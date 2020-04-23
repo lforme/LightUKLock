@@ -51,33 +51,35 @@ final class MessageCenterReactor: Reactor {
                 return .empty()
             }
             
-            let request = BusinessAPI.requestMapJSONArray(.getLockNotice(noticeType: [-1], noticeLevel: [-1], pageIndex: 1, pageSize: 15), classType: CenterMessageModel.self, useCache: true).map { $0.compactMap{ $0 } }.share(replay: 1, scope: .forever)
+//            let request = BusinessAPI.requestMapJSONArray(.getLockNotice(noticeType: [-1], noticeLevel: [-1], pageIndex: 1, pageSize: 15), classType: CenterMessageModel.self, useCache: true).map { $0.compactMap{ $0 } }.share(replay: 1, scope: .forever)
+            
+//            ,
+//            request.map(Mutation.setRefreshResult),
+//            request.map { _ in Mutation.setRequestFinished(true)
             
             return Observable.concat([
                 .just(.setRefreshPageIndex(1)),
-                .just(.setNomoreData(false)),
-                request.map(Mutation.setRefreshResult),
-                request.map { _ in Mutation.setRequestFinished(true) }
-            ])
+                .just(.setNomoreData(false))])
             
         case .loadMoreBegin:
             if !self.currentState.requestFinish {
                 return .empty()
             }
             
-            let request = BusinessAPI.requestMapJSONArray(.getLockNotice(noticeType: [-1], noticeLevel: [-1], pageIndex: self.currentState.pageIndex + 1, pageSize: 15), classType: CenterMessageModel.self, useCache: true).map { $0.compactMap{ $0 } }.share(replay: 1, scope: .forever)
+//            let request = BusinessAPI.requestMapJSONArray(.getLockNotice(noticeType: [-1], noticeLevel: [-1], pageIndex: self.currentState.pageIndex + 1, pageSize: 15), classType: CenterMessageModel.self, useCache: true).map { $0.compactMap{ $0 } }.share(replay: 1, scope: .forever)
+//            ,
+//            request.map { _ in Mutation.setRequestFinished(true) },
+//            request.map({ (list) -> Mutation in
+//                if list.count == 0 {
+//                    return Mutation.setNomoreData(true)
+//                } else {
+//                    return Mutation.setNomoreData(false)
+//                }
+//            }),
+//            request.map(Mutation.setLoadMoreResult)
             
             return Observable.concat([
-                .just(.setLoadMorePageIndex(1)),
-                request.map { _ in Mutation.setRequestFinished(true) },
-                request.map({ (list) -> Mutation in
-                    if list.count == 0 {
-                        return Mutation.setNomoreData(true)
-                    } else {
-                        return Mutation.setNomoreData(false)
-                    }
-                }),
-                request.map(Mutation.setLoadMoreResult)
+                .just(.setLoadMorePageIndex(1))
             ])
             
         case .changeMessageType:

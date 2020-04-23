@@ -36,8 +36,6 @@
 		9C218FA223FA8495009600F7 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C218FA123FA8495009600F7 /* loading.json */; };
 		9C218FA523FA8CC9009600F7 /* LeasedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C218FA323FA8CC9009600F7 /* LeasedCell.swift */; };
 		9C218FA623FA8CC9009600F7 /* LeasedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C218FA423FA8CC9009600F7 /* LeasedCell.xib */; };
-		9C218FA923FA918E009600F7 /* NotLeasedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C218FA723FA918E009600F7 /* NotLeasedCell.swift */; };
-		9C218FAA23FA918E009600F7 /* NotLeasedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C218FA823FA918E009600F7 /* NotLeasedCell.xib */; };
 		9C24AC1423838C80005EBF95 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1323838C80005EBF95 /* BaseNavigationController.swift */; };
 		9C24AC1623838CD1005EBF95 /* NavigationSettingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1523838CD1005EBF95 /* NavigationSettingStyle.swift */; };
 		9C24AC1923838E56005EBF95 /* UIFont+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC1823838E56005EBF95 /* UIFont+extension.swift */; };
@@ -144,6 +142,7 @@
 		9C7AFF22239631930075442D /* UKRefreshStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF21239631930075442D /* UKRefreshStatus.swift */; };
 		9C7AFF24239636640075442D /* NSMutableAttributedString+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF23239636640075442D /* NSMutableAttributedString+Extention.swift */; };
 		9C7AFF2623964A950075442D /* SetBuildingNumberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF2523964A950075442D /* SetBuildingNumberController.swift */; };
+		9C8FFD5D2447EEBF00527EA0 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FFD5C2447EEBF00527EA0 /* UIImageView+Extension.swift */; };
 		9CB4B347239DE08E001197AB /* PasswordManagementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4B346239DE08E001197AB /* PasswordManagementController.swift */; };
 		9CB4B349239DE774001197AB /* PasswordManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4B348239DE774001197AB /* PasswordManagementViewModel.swift */; };
 		9CB4B34B239DE8C3001197AB /* DigitalPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4B34A239DE8C3001197AB /* DigitalPasswordModel.swift */; };
@@ -259,8 +258,6 @@
 		9C218FA123FA8495009600F7 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		9C218FA323FA8CC9009600F7 /* LeasedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeasedCell.swift; sourceTree = "<group>"; };
 		9C218FA423FA8CC9009600F7 /* LeasedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeasedCell.xib; sourceTree = "<group>"; };
-		9C218FA723FA918E009600F7 /* NotLeasedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotLeasedCell.swift; sourceTree = "<group>"; };
-		9C218FA823FA918E009600F7 /* NotLeasedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotLeasedCell.xib; sourceTree = "<group>"; };
 		9C24AC1323838C80005EBF95 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		9C24AC1523838CD1005EBF95 /* NavigationSettingStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSettingStyle.swift; sourceTree = "<group>"; };
 		9C24AC1823838E56005EBF95 /* UIFont+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+extension.swift"; sourceTree = "<group>"; };
@@ -367,6 +364,7 @@
 		9C7AFF21239631930075442D /* UKRefreshStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UKRefreshStatus.swift; sourceTree = "<group>"; };
 		9C7AFF23239636640075442D /* NSMutableAttributedString+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extention.swift"; sourceTree = "<group>"; };
 		9C7AFF2523964A950075442D /* SetBuildingNumberController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetBuildingNumberController.swift; sourceTree = "<group>"; };
+		9C8FFD5C2447EEBF00527EA0 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		9CB4B346239DE08E001197AB /* PasswordManagementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagementController.swift; sourceTree = "<group>"; };
 		9CB4B348239DE774001197AB /* PasswordManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagementViewModel.swift; sourceTree = "<group>"; };
 		9CB4B34A239DE8C3001197AB /* DigitalPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalPasswordModel.swift; sourceTree = "<group>"; };
@@ -487,8 +485,6 @@
 				9CBD8F4B23A21E7D00886519 /* PasswordChangeStatusCell.xib */,
 				9C218FA323FA8CC9009600F7 /* LeasedCell.swift */,
 				9C218FA423FA8CC9009600F7 /* LeasedCell.xib */,
-				9C218FA723FA918E009600F7 /* NotLeasedCell.swift */,
-				9C218FA823FA918E009600F7 /* NotLeasedCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -586,6 +582,7 @@
 				9C24AC242383C9CB005EBF95 /* UIView+Extension.swift */,
 				9C24AC1823838E56005EBF95 /* UIFont+extension.swift */,
 				9C24AC1C23839EB9005EBF95 /* UIImage+Extension.swift */,
+				9C8FFD5C2447EEBF00527EA0 /* UIImageView+Extension.swift */,
 				9C24AC282383CB92005EBF95 /* UITextField+Extension.swift */,
 				9C24AC1A23839D74005EBF95 /* Swizzling+UIViewController.swift */,
 				9C42976C23866026004CB999 /* UIButton+Extension.swift */,
@@ -1005,7 +1002,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C1B87C2239767A100216ADA /* InitialLock.storyboard in Resources */,
-				9C218FAA23FA918E009600F7 /* NotLeasedCell.xib in Resources */,
 				9C218FA223FA8495009600F7 /* loading.json in Resources */,
 				9C7705A2238FE358008E1552 /* SingleInputController.xib in Resources */,
 				9C03B0FD239FB3620001E849 /* addFinger.json in Resources */,
@@ -1239,6 +1235,7 @@
 				9C218FA023FA765B009600F7 /* HouseViewController.swift in Sources */,
 				9C54719B239507DE00432ACA /* LSLWebViewController.swift in Sources */,
 				9C24AC252383C9CB005EBF95 /* UIView+Extension.swift in Sources */,
+				9C8FFD5D2447EEBF00527EA0 /* UIImageView+Extension.swift in Sources */,
 				9C5A967A23A07F62002A2B06 /* CardManageController.swift in Sources */,
 				9C3726DE23910FF700450757 /* BluetoothPapa.swift in Sources */,
 				9C3726D723910C0100450757 /* NORData.swift in Sources */,
@@ -1251,7 +1248,6 @@
 				9C03B0F5239F83D00001E849 /* AddFingerController.swift in Sources */,
 				9C3726C82390C6AD00450757 /* Empty+UIViewController.swift in Sources */,
 				9C770592238FA11A008E1552 /* MyInfoHeader.swift in Sources */,
-				9C218FA923FA918E009600F7 /* NotLeasedCell.swift in Sources */,
 				9C52402D238E163D00308AC4 /* UnlockRecordCell.swift in Sources */,
 				9C452F082394AA2E00144827 /* CenterMessageModel.swift in Sources */,
 				9CBD8F5D23A24DA800886519 /* BluetoothSynchronizeTask.swift in Sources */,
@@ -1442,7 +1438,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "LightSmartLock/门锁助手极速版.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = RBJYLDFMF8;
 				INFOPLIST_FILE = LightSmartLock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1450,7 +1446,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock;
 				PRODUCT_NAME = "门锁助手个人版";
 				SWIFT_VERSION = 5.0;
@@ -1466,7 +1462,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "LightSmartLock/门锁助手极速版.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = RBJYLDFMF8;
 				INFOPLIST_FILE = LightSmartLock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1474,7 +1470,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock;
 				PRODUCT_NAME = "门锁助手个人版";
 				SWIFT_VERSION = 5.0;
@@ -1488,7 +1484,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "LSLWidget/门锁助手.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = RBJYLDFMF8;
 				INFOPLIST_FILE = LSLWidget/Info.plist;
@@ -1498,7 +1494,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock.LSLWidget;
 				PRODUCT_NAME = "门锁助手";
 				SKIP_INSTALL = YES;
@@ -1513,7 +1509,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "LSLWidget/门锁助手.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = RBJYLDFMF8;
 				INFOPLIST_FILE = LSLWidget/Info.plist;
@@ -1523,7 +1519,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock.LSLWidget;
 				PRODUCT_NAME = "门锁助手";
 				SKIP_INSTALL = YES;

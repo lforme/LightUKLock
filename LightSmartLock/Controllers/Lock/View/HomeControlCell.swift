@@ -30,15 +30,10 @@ class HomeControlCell: UITableViewCell {
     
         self.contentView.backgroundColor = ColorClassification.viewBackground.value
         
-        keyButton.set(image: UIImage(named: "manage_key"), title: "密码管理", titlePosition: .bottom, additionalSpacing: 20, state: UIControl.State())
-        messageButton.set(image: UIImage(named: "card_manage"), title: "门卡管理", titlePosition: .bottom, additionalSpacing: 20, state: UIControl.State())
-        propertyButton.set(image: UIImage(named: "manage_finger"), title: "指纹管理", titlePosition: .bottom, additionalSpacing: 20, state: UIControl.State())
-        userButton.set(image: UIImage(named: "user_manage"), title: "用户管理", titlePosition: .bottom, additionalSpacing: 20, state: UIControl.State())
-        
         [propertyButton, messageButton, userButton, keyButton].forEach { (btn) in
-            btn?.setTitleColor(ColorClassification.textDescription.value, for: .normal)
+            btn?.layer.setValue(true, forKey: "continuousCorners")
+            btn?.layer.cornerRadius = 3
         }
-        
     }
     
 }

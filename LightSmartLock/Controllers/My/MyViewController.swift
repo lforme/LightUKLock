@@ -33,12 +33,12 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         self.tableView.frame = view.frame
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
-            self?.tableView.mj_header?.beginRefreshing()
-        }
-    }
+    //    override func viewDidAppear(_ animated: Bool) {
+    //        super.viewDidAppear(animated)
+    //        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
+    //            self?.tableView.mj_header?.beginRefreshing()
+    //        }
+    //    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +63,15 @@ class MyViewController: UIViewController, NavigationSettingStyle {
             }
             
         }).disposed(by: rx.disposeBag)
+        
+        NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
+            guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
+            switch refreshType {
+            case .addLock, .deleteLock:
+                self?.tableView.mj_header?.beginRefreshing()
+            default: break
+            }
+        }).disposed(by: rx.disposeBag)
     }
     
     func bind() {
@@ -73,16 +82,17 @@ class MyViewController: UIViewController, NavigationSettingStyle {
             }
         }).disposed(by: rx.disposeBag)
         
-        
         vm.sceneList.subscribe(onNext: {[weak self] (list) in
             self?.dataSource = list
         }).disposed(by: rx.disposeBag)
+        
     }
     
     func setupTableviewRefresh() {
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {[weak self] in
             self?.vm.refresh()
         })
+        tableView.mj_header?.beginRefreshing()
     }
     
     func setupUI() {
@@ -154,9 +164,8 @@ extension MyViewController: UITableViewDataSource, UITableViewDelegate {
         let shareInfo = LSLUser.current().obUserInfo.share(replay: 1, scope: .forever)
         shareInfo.map { $0?.userName }.bind(to: header.nick.rx.text).disposed(by: header.disposeBag)
         shareInfo.map { $0?.phone }.bind(to: header.phone.rx.text).disposed(by: header.disposeBag)
-        shareInfo.map { $0?.headPic }.subscribe(onNext: { (urlString) in
-            guard let str = urlString?.encodeUrl() else { return }
-            header.avatar?.kf.setImage(with: URL(string: str))
+        shareInfo.map { $0?.avatar }.subscribe(onNext: { (urlString) in
+            header.avatar?.setUrl(urlString)
         }).disposed(by: header.disposeBag)
         
         return header

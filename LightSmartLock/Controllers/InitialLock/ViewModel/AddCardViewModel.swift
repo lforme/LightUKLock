@@ -66,7 +66,7 @@ final class AddCardViewModel {
     }
     
     func addCard() -> Observable<String> {
-        guard let userCode = LSLUser.current().userInScene?.userCode else {
+        guard let userCode = LSLUser.current().scene?.lockUserAccount else {
             return .error(AppError.reason("服务器没有返回用户Id, 请稍后再试"))
         }
         return Observable<String>.create { (observer) -> Disposable in
@@ -85,6 +85,12 @@ final class AddCardViewModel {
     }
     
     func setCardName(_ name: String, keyNumber: String) -> Observable<Bool> {
-        return BusinessAPI.requestMapBool(.addCustomerCard(KeyNumber: keyNumber, remark: name))
+        
+        guard let lockId = LSLUser.current().lockInfo?.ladderLockId else {
+            
+            return .error(AppError.reason("无法获取门锁编号"))
+        }
+        
+        return BusinessAPI.requestMapBool(.addCard(lockId: lockId, keyNum: keyNumber, name: name))
     }
 }

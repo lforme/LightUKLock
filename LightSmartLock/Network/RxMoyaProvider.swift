@@ -50,8 +50,8 @@ final class RxMoyaProvider<Target>: MoyaProvider<Target> where Target: TargetTyp
         
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = Manager.defaultHTTPHeaders
-        configuration.timeoutIntervalForRequest = 15
-        configuration.timeoutIntervalForResource = 15
+        configuration.timeoutIntervalForRequest = 60
+        configuration.timeoutIntervalForResource = 60
         let manager = Manager(configuration: configuration)
         manager.startRequestsImmediately = false
         self.stubScheduler = stubScheduler

@@ -30,7 +30,6 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         $0.register(UINib(nibName: "AnimationHeaderView", bundle: nil), forCellReuseIdentifier: "AnimationHeaderView")
         $0.register(UINib(nibName: "HomeControlCell", bundle: nil), forCellReuseIdentifier: "HomeControlCell")
         $0.register(UINib(nibName: "LeasedCell", bundle: nil), forCellReuseIdentifier: "LeasedCell")
-        $0.register(UINib(nibName: "UnlockRecordCell", bundle: nil), forCellReuseIdentifier: "UnlockRecordCell")
     }
     
     //    private let synchronizeTaks = BluetoothSynchronizeTask()
@@ -53,7 +52,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = ColorClassification.viewBackground.value
+        tableView.backgroundColor = ColorClassification.primary.value
         view.backgroundColor = ColorClassification.viewBackground.value
         AppDelegate.changeStatusBarStyle(.lightContent)
     }
@@ -113,13 +112,17 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
             let lockCell = this.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? AnimationHeaderView
             lockCell?.bind(openStatus: home.openStatus, onlineStatus: home.onlineStatus, power: LSLUser.current().lockInfo?.powerPercent)
             
-            let tenantCell = this.tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? LeasedCell
-            tenantCell?.unlocker.text = home.ladderOpenLockRecordVO?.userName ?? "暂无人员解锁"
+            let tenantCell = this.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? LeasedCell
+            if home.ladderOpenLockRecordVO?.userName.isNotNilNotEmpty ?? false {
+                tenantCell?.unlocker.text = home.ladderOpenLockRecordVO?.userName
+            } else {
+                tenantCell?.unlocker.text = "未知解锁人员"
+            }
             tenantCell?.unlockTime.text = home.ladderOpenLockRecordVO?.openTime
-            
             this.tableView.reloadData()
-        }, onError: { (error) in
-            PKHUD.sharedHUD.rx.showError(error)
+            
+            }, onError: { (error) in
+                PKHUD.sharedHUD.rx.showError(error)
         }).disposed(by: rx.disposeBag)
         
         vm.isInstallLock.subscribe(onNext: { (install) in
@@ -132,8 +135,6 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
             guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
             switch refreshType {
-            case .addLock:
-                self?.hasLock(has: true)
             case .deleteLock, .deleteScene:
                 self?.hasLock(has: false)
             default: break
@@ -200,16 +201,29 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             }).disposed(by: animationCell.disposeBag)
             
             return animationCell
-        case 1:
+        case 2:
             let controlCell = tableView.dequeueReusableCell(withIdentifier: "HomeControlCell") as! HomeControlCell
             controlCell.userButton.addTarget(self, action: #selector(self.gotoUserManagementVC), for: .touchUpInside)
             controlCell.keyButton.addTarget(self, action: #selector(self.gotoPasswordManagementVC), for: .touchUpInside)
             controlCell.messageButton.addTarget(self, action: #selector(self.gotoCardManagementVC), for: .touchUpInside)
             controlCell.propertyButton.addTarget(self, action: #selector(self.gotoFingerManagementVC), for: .touchUpInside)
             return controlCell
-        case 2:
+        case 1:
             let leasedCell = tableView.dequeueReusableCell(withIdentifier: "LeasedCell") as! LeasedCell
-            leasedCell.bind(unlocker: LSLUser.current().lockIOTInfo?.LastOpenDoorNikeName, lastUnlockTime: LSLUser.current().lockIOTInfo?.LastOpenDoorDate)
+            
+            leasedCell.recordDidSelected {[weak self] in
+                guard let lockId = LSLUser.current().scene?.ladderLockId else {
+                    HUD.flash(.label("无法获取user code, 请稍后"), delay: 2)
+                    return
+                }
+                let recordVC = RecordUnlockController(lockId: lockId)
+                self?.navigationController?.pushViewController(recordVC, animated: true)
+            }
+            
+            leasedCell.propertyDidSelected {[weak self] in
+                // 跳转资产页面
+                print("tap")
+            }
             
             return leasedCell
             
@@ -230,21 +244,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return 120.0
         case 2:
-            return 150.0
+            return 200.0
         default:
             return CGFloat.leastNormalMagnitude
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if indexPath.row == 2 {
-            guard let userCode = LSLUser.current().userInScene?.userCode else {
-                HUD.flash(.label("无法获取user code, 请稍后"), delay: 2)
-                return
-            }
-            let recordVC = RecordUnlockController(userCode: userCode)
-            self.navigationController?.pushViewController(recordVC, animated: true)
-        }
-    }
 }

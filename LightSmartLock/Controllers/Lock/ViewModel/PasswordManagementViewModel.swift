@@ -13,33 +13,25 @@ import PKHUD
 
 final class PasswordManagementViewModel {
     
-    var digitalPwdDisplay: Observable<DigitalPasswordModel?> {
-        return _digitalPwdDisplay.asObservable()
+    var info: Observable<OpenLockInfoModel.LadderNumberPasswordVO?> {
+        return _info.asObservable()
     }
-    
-    var passwordLogList: Observable<[DigitalPasswordLogModel]> {
-        return _passwordLogList.asObservable()
-    }
-    
     let extend = BehaviorRelay<Bool>(value: false)
+    var disposeBag: DisposeBag = DisposeBag()
     
-    private let _digitalPwdDisplay = BehaviorRelay<DigitalPasswordModel?>(value: nil)
-    private let _passwordLogList = BehaviorRelay<[DigitalPasswordLogModel]>(value: [])
-    private let disposeBag: DisposeBag = DisposeBag()
+    private let _info = BehaviorSubject<OpenLockInfoModel.LadderNumberPasswordVO?>(value: nil)
     
-    init() {
+    func refresh() {
+        guard let lockId = LSLUser.current().lockInfo?.ladderLockId else {
+            HUD.flash(.label("无法获取门锁编号"), delay: 2)
+            return
+        }
         
-        let shareRequset = BusinessAPI.requestMapJSON(.getCustomerKeyFirst(type: 1), classType: DigitalPasswordModel.self, useCache: true).do(onError: { (error) in
-            PKHUD.sharedHUD.rx.showError(error)
-        }).catchErrorJustReturn(DigitalPasswordModel()).share(replay: 1, scope: .forever)
+        BusinessAPI.requestMapJSON(.getAllOpenWay(lockId: lockId), classType: OpenLockInfoModel.self).map { $0.ladderNumberPasswordVO }.subscribe(onNext: {[weak self] (model) in
+            self?._info.onNext(model)
+            }, onError: {[weak self] (error) in
+                self?._info.onError(error)
+        }).disposed(by: disposeBag)
         
-        shareRequset.bind(to: _digitalPwdDisplay).disposed(by: disposeBag)
-        
-        shareRequset.flatMapLatest { (pwdModel) -> Observable<[DigitalPasswordLogModel]> in
-            
-            return BusinessAPI.requestMapJSONArray(.getKeyStatusChangeLogByKeyId(keyID: pwdModel.keyID, index: 1, pageSize: 50), classType: DigitalPasswordLogModel.self, useCache: true).map { $0.compactMap { $0 } }.do( onError: { (error) in
-                PKHUD.sharedHUD.rx.showError(error)
-            }).catchErrorJustReturn([])
-        }.bind(to: _passwordLogList).disposed(by: disposeBag)
     }
 }

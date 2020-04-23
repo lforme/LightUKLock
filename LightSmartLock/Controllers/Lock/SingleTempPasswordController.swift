@@ -32,12 +32,12 @@ class SingleTempPasswordCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func bind(_ data: SharePwdListModel) {
-        if let mark = data.mark {
+    func bind(_ data: TempPasswordListModel) {
+        if let mark = data.remark {
             markLabel.text = "备注: \(mark)"
         }
         
-        if let send = data.createDate?.toDate() {
+        if let send = data.startTime?.toDate() {
             if send.isToday {
                 sendTime.text = "发送时间:  今天\(send.toString(.custom("hh点mm分")))"
             } else {
@@ -49,7 +49,7 @@ class SingleTempPasswordCell: UITableViewCell {
             availableLabel.text = end.toString(.custom("MM月dd日")) + "有效"
         }
         
-        status.text = data.statusName
+        status.text = data.status
     }
 }
 
@@ -61,7 +61,7 @@ class SingleTempPasswordController: UITableViewController, NavigationSettingStyl
         $0.frame = CGRect(x: UIScreen.main.bounds.width - 72, y: UIScreen.main.bounds.height - 182, width: 56, height: 56)
     }
     
-    var dataSource: [SharePwdListModel] = []
+    var dataSource: [TempPasswordListModel] = []
     var vm: TempPasswordViewModel!
     
     var backgroundColor: UIColor? {
@@ -80,6 +80,18 @@ class SingleTempPasswordController: UITableViewController, NavigationSettingStyl
         setupUI()
         bind()
         setupTableviewRefresh()
+        observerNotification()
+    }
+    
+    func observerNotification() {
+        NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
+            guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
+            switch refreshType {
+            case .tempPassword:
+                self?.vm.refresh()
+            default: break
+            }
+        }).disposed(by: rx.disposeBag)
     }
     
     func bind() {

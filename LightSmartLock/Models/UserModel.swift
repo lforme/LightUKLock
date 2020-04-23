@@ -33,5 +33,6 @@ struct UserModel: HandyJSON {
     var fingerprintModel: Bool!
     var cardModel: Bool!
     var state: Int!
+    var lockUserAccount: String?
 }
 

@@ -62,6 +62,11 @@ class SelectLockTypeController: UITableViewController, NavigationSettingStyle {
         initialLockVC.kind = self.kind
         
         var lock = LockModel()
+        
+        if self.kind == .some(.edited) {
+            lock.ladderAssetHouseId = LSLUser.current().scene?.ladderAssetHouseId
+        }
+        
         let array = Array(repeating: 0, count: 16).map { String($0) }.compactMap { $0 }
         let key = array.joined(separator:"")
         lock.bluetoothPwd = key

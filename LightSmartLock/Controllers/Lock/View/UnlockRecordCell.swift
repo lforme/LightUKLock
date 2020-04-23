@@ -31,11 +31,8 @@ class UnlockRecordCell: UITableViewCell {
     }
 
     func bind(_ data: UnlockRecordModel) {
-        self.nickname.text = data.customerNickName
-        self.time.text = data.UnlockTime.toDate()?.toString(.custom("MM / dd  HH:mm"))
-        if let headerPicURL = data.headPic?.encodeUrl() {
-            self.avatar.kf.setImage(with: URL(string: headerPicURL))
-        }
-        self.unlockType.text = data.KeyType.description
+        self.nickname.text = data.userName
+        self.time.text = data.openTime
+        self.unlockType.text = data.openType
     }
 }

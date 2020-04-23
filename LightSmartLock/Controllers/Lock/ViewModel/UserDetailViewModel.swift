@@ -17,7 +17,7 @@ final class UserDetailViewModel: BluetoothViewModel {
         case remote
     }
     
-    private let userModel: UserMemberListModel
+    private var userModel: UserMemberListModel
     
     init(userModel: UserMemberListModel) {
         self.userModel = userModel
@@ -34,15 +34,14 @@ final class UserDetailViewModel: BluetoothViewModel {
     
     
     func changeUserName(_ name: String) -> Observable<Bool> {
-        guard let id = userModel.id else {
-            return .error(AppError.reason("无法从服务器获取用户Id, 请稍后再试"))
-        }
-        return BusinessAPI.requestMapBool(.updateCustomerNameById(id: id, name: name))
+        userModel.nickname = name
+        let param = userModel.ConvertToModifyNickname()
+        return BusinessAPI.requestMapBool(.editUser(parameter: param))
     }
     
     func deleteUser(way: DeleteWay) -> Observable<Bool> {
-        guard let customerId = userModel.id, let oldPassword = userModel.id, let userCode = userModel.id else {
-            return .error(AppError.reason("无法从服务器获取删除用户所必须的信息, 请稍后再试"))
+        guard let customerId = userModel.id, let oldPassword = userModel.numberPwd, let userCode = userModel.lockUserAccount else {
+            return .error(AppError.reason("无法获取用户信息, 请稍后再试"))
         }
         
         switch way {
@@ -71,7 +70,7 @@ final class UserDetailViewModel: BluetoothViewModel {
     }
     
     private func updateDeletInto(customerId: String, isRemote: Bool?) -> Observable<Bool> {
-        return BusinessAPI.requestMapBool(.deleteCustomerMember(customerID: customerId, isRemote: isRemote))
+        return BusinessAPI.requestMapBool(.deleteUserBy(id: customerId))
     }
     
 }

@@ -159,10 +159,17 @@ extension BusinessInterface: TargetType {
     var method: Moya.Method {
         switch self {
         case .user, .getHouses, .getAssetHouseDetail, .getLockInfo,
-             .getHomeInfo, .getUserList:
+             .getHomeInfo, .getUserList, .getCustomerSysRoleTips,
+             .getAllOpenWay:
             return .get
-        case .deleteAssetHouse, .forceDeleteLock:
+            
+        case .deleteAssetHouse, .forceDeleteLock, .deleteCard, .deleteFinger,
+             .undoTempPassword:
             return .delete
+            
+        case .editUser, .editCardOrFingerName, .setAlarmFingerprint:
+            return .put
+            
         default:
             return .post
         }
@@ -172,75 +179,6 @@ extension BusinessInterface: TargetType {
         switch self {
         case .uploadImage:
             return "/attachments"
-        case .getCustomerSceneList:
-            return "api/Scene/GetCustomerSceneList"
-        case .getCurrentCustomerInfo:
-            return "api/Scene/GetCurrentCustomerInfo"
-        case .getLockInfoBySceneID:
-            return "api/Lock/GetLockInfoBySceneID"
-        case .getLockCurrentInfoFromIOTPlatform:
-            return "api/Lock/GetLockCurrentInfoFromIOTPlatform"
-        case .getUnlockLog:
-            return "api/Lock/GetUnlockLog"
-        case .updateUserInfo:
-            return "api/User/UpdateAccountInfo"
-        case .getLockNotice:
-            return "api/Lock/GetLockNotice"
-        case .unInstallLock:
-            return "api/Lock/UnInstallLock"
-        case .getSceneAssets:
-            return "api/Scene/GetSceneAssets"
-        case .addOrUpdateSceneAsset:
-            return "api/Scene/AddOrUpdateSceneAssets"
-        case .deleteSceneAssetsBySceneId:
-            return "api/Scene/DeleteSceneAssetsBySceneID"
-        case .uploadLockConfigInfo:
-            return "api/Lock/UploadLockConfigInfo"
-        case .getCustomerMemberList:
-            return "api/CustomerMember/GetCustomerMemberList"
-        case .getCustomerKeyFirst:
-            return "api/Key/GetCustomerKeyFirst"
-        case .getKeyStatusChangeLogByKeyId:
-            return "api/Key/GetKeyStatusChangeLogByKeyId"
-        case .updateCustomerCodeKey:
-            return "api/Key/UpdateCustomerCodeKey"
-        case .getFingerPrintKeyList:
-            return "api/FingerPrint/GetFingerPrintKeyList"
-        case .setFingerCoercionReminPhone:
-            return "api/FingerPrint/SetFingerCoercionReminPhone"
-        case .setFingerCoercionToNormal:
-            return "api/FingerPrint/SetFingerCoercionToNormal"
-        case .setFingerRemark:
-            return "api/FingerPrint/SetFingerRemark"
-        case .deleteFingerPrintKey:
-            return "api/FingerPrint/DeleteFingerPrintKey"
-        case .addFingerPrintKey:
-            return "api/FingerPrint/AddFingerPrintKey"
-        case .getCustomerKeyList:
-            return "api/Key/GetCustomerKeyList"
-        case .addCustomerCard:
-            return "api/Card/AddCustomerCard"
-        case .setCardRemark:
-            return "api/Card/SetCardRemark"
-        case .deleteCustomerCard:
-            return "api/Card/DeleteCustomerCard"
-        case .getCustomerSysRoleTips:
-            return "api/CustomerMember/GetCustomerSysRoleTips"
-        case .addCustomerMember:
-            return "api/CustomerMember/AddCustomerMember"
-        case .updateCustomerNameById:
-            return "api/CustomerMember/UpdateCustomerNameById"
-        case .deleteCustomerMember:
-            return "api/CustomerMember/DeleteCustomerMember"
-        case .getTempKeyShareList:
-            return "api/Key/GetTempKeyShareContainLogList"
-        case .getTempKeyShareLog:
-            return "api/Key/GetTempKeyShareLog"
-        case .retractTempKeyShare:
-            return "api/Key/RetractTempKeyShare"
-        case .generateTempBy:
-            return "api/Key/ShareTempKey"
-            
         case .user:
             return "/user"
         case .getHouses:
@@ -265,6 +203,38 @@ extension BusinessInterface: TargetType {
             return "/ladder_open_lock_record/record/\(lockId)"
         case .addUserByBluethooth:
             return "/user"
+        case .getCustomerSysRoleTips:
+            return "/user/kinsfolk_config"
+        case .editUser:
+            return "/user"
+        case let .deleteUserBy(id):
+            return "/user/\(id)"
+        case let .getAllOpenWay(lockId):
+            return "/ladder_lock/pwd/list/\(lockId)"
+        case let .addCard(lockId, _, _):
+            return "/ladder_card_figura/pwd/card/\(lockId)"
+        case let .editCardOrFingerName(id, _):
+            return "/ladder_card_figura/pwd/name/\(id)"
+        case let .deleteCard(id, _):
+            return "/ladder_card_figura/pwd/card/\(id)"
+        case let .addFinger(lockId, _, _, _):
+            return "/ladder_card_figura/pwd/finger_print/\(lockId)"
+        case let .deleteFinger(id, _):
+            return "/ladder_card_figura/pwd/finger_print/\(id)"
+        case let .setAlarmFingerprint(id, _, _):
+            return "/ladder_card_figura/pwd/finger_print/\(id)"
+        case .addAndModifyDigitalPassword:
+            return "/ladder_number_password/pwd/number"
+        case let .getTempPasswordList(lockId, _, _):
+            return "/ladder_tmp_password/pwd/tmps/\(lockId)"
+        case let .getTempPasswordLog(id):
+            return "/ladder_tmp_password/pwd/tmp/record/\(id)"
+        case let .undoTempPassword(id):
+            return "/ladder_tmp_password/pwd/tmp/record/\(id)"
+        case let .addTempPassword(lockId, _):
+            return "/ladder_tmp_password/pwd/tmp/\(lockId)"
+        case let .getUnlockRecords(lockId, _, _, _):
+            return "/ladder_open_lock_record/records/\(lockId)"
         }
     }
     
@@ -313,196 +283,7 @@ extension BusinessInterface: TargetType {
     var parameters: [String: Any]? {
         
         switch self {
-        case let .getCustomerSceneList(pageIndex, pageSize, Sort):
-            guard let accountId = LSLUser.current().user?.accountID else {
-                HUD.flash(.label("无法获取 accountID"), delay: 2)
-                return nil
-            }
-            
-            return  ["AccountID": accountId,
-                     "PageIndex": pageIndex,
-                     "PageSize": pageSize ?? 5,
-                     "Sort": Sort ?? 1]
-            
-        case let .getCurrentCustomerInfo(sceneID):
-            guard let accountID = LSLUser.current().user?.accountID else { return nil }
-            var param: [String: Any] = ["AccountID": accountID]
-            
-            if let sID = LSLUser.current().scene?.sceneID {
-                param.updateValue(sID, forKey: "SceneID")
-            } else {
-                param.updateValue(sceneID, forKey: "SceneID")
-            }
-            return param
-            
-        case .getLockInfoBySceneID:
-            guard let sceneId = LSLUser.current().scene?.sceneID else { return nil }
-            return ["SceneID": sceneId]
-            
-        case .getLockCurrentInfoFromIOTPlatform:
-            guard let sceneId = LSLUser.current().scene?.sceneID else { return  nil }
-            return ["SceneID": sceneId]
-            
-        case let .getUnlockLog(userCodes, beginTime, endTime, index, pageSize):
-            guard let sceneId = LSLUser.current().scene?.sceneID else { return nil }
-            var dict: [String: Any] = ["SceneID": sceneId, "UserCode": userCodes, "PageIndex": index]
-            
-            if let begin = beginTime {
-                dict.updateValue(begin, forKey: "BeginTime")
-            }
-            if let end = endTime {
-                dict.updateValue(end, forKey: "EndTime")
-            }
-            if let size = pageSize {
-                dict.updateValue(size, forKey: "PageSize")
-            }
-            
-            return dict
-            
-        case let .updateUserInfo(info):
-            return info.toJSON()
-            
-        case let .getLockNotice(noticeTypes, noticeLevels, pageIndex, pageSize):
-            
-//            guard let customerId = LSLUser.current().userInScene?.customerID, let lockId = LSLUser.current().lockInfo?.customerLockID else {
-//                return nil
-//            }
-//            let param: [String: Any] = ["CustomerID": customerId,
-//                                        "CustomerLockID": lockId,
-//                                        "noticeType": noticeTypes,
-//                                        "noticeLevel": noticeLevels,
-//                                        "pageIndex": pageIndex,
-//                                        "PageSize": pageSize ?? 15]
-            return nil
-            
-        case .unInstallLock:
-            guard let sceneId = LSLUser.current().scene?.sceneID else { return nil }
-            return ["SceneID": sceneId]
-            
-        case .getSceneAssets:
-            guard let sceneId = LSLUser.current().scene?.sceneID else { return nil }
-            return ["SceneID": sceneId]
-            
-        case let .addOrUpdateSceneAsset(parameter):
-            guard let accountId = LSLUser.current().user?.accountID else {
-                return nil
-            }
-            var param = parameter.toJSON()
-            param?.updateValue(accountId, forKey: "accountID")
-            return param
-            
-        case let .deleteSceneAssetsBySceneId(id):
-            return ["SceneID": id]
-            
-        case let .uploadLockConfigInfo(info):
-            return info.toJSON()
-            
-        case let .getCustomerMemberList(pageIndex, pageSize):
-            guard let accountId = LSLUser.current().user?.accountID, let sceneId = LSLUser.current().scene?.sceneID else {
-                return nil
-            }
-            return ["AccountID": accountId, "SceneID": sceneId, "PageIndex": pageIndex, "PageSize": pageSize ?? 15]
-            
-        case let .getCustomerKeyFirst(type):
-            guard let customerId = LSLUser.current().userInScene?.customerID else {
-                return nil
-            }
-            return ["CustomerID": customerId, "KeyType": type]
-            
-        case let .getKeyStatusChangeLogByKeyId(keyID, index, pageSize):
-            return ["KeyID": keyID, "PageIndex": index, "PageSize": pageSize ?? 15]
-            
-            
-        case let .updateCustomerCodeKey(secret, isRemote):
-            guard let customerId = LSLUser.current().userInScene?.customerID else {
-                return nil
-            }
-            if let remote = isRemote {
-                return ["CustomerID": customerId, "Secret": secret, "isRemote": remote]
-            } else {
-                return ["CustomerID": customerId, "Secret": secret]
-            }
-            
-        case let .getFingerPrintKeyList(customerId, index, pageSize):
-//            guard let lockId = LSLUser.current().lockInfo?.customerLockID else {
-//                return nil
-//            }
-//            return ["CustomerID": customerId, "LockID": lockId, "PageSize":  pageSize ?? 15, "PageIndex": index]
-            return nil
-            
-        case let .setFingerCoercionReminPhone(id, phone):
-            return ["KeyID": id, "Phone": phone]
-            
-        case let .setFingerCoercionToNormal(id):
-            return ["KeyID": id]
-            
-        case let .setFingerRemark(id, fingerName):
-            return ["KeyID": id, "Remark": fingerName]
-            
-        case let .deleteFingerPrintKey(id, isRemote):
-            return ["KeyID": id, "isRemote": isRemote]
-            
-        case let .addFingerPrintKey(name):
-//            guard let userCode = LSLUser.current().userInScene?.userCode, let customerId = LSLUser.current().userInScene?.customerID, let lockId = LSLUser.current().lockInfo?.customerLockID, let keyId = LSLUser.current().userInScene?.pwdNumber else {
-//                return nil
-//            }
-//            return ["UserCode": userCode, "CustomerID": customerId, "LockID": lockId, "KeyNumber": keyId, "Remark": name]
-            return nil
-        case let .getCustomerKeyList(keyType, index, pageSize):
-            guard let customerId = LSLUser.current().userInScene?.customerID else { return nil }
-            return ["CustomerID": customerId, "KeyType": keyType, "PageIndex": index, "PageSize": pageSize ?? 15]
-            
-        case let .addCustomerCard(KeyNumber, remark):
-//            guard let userCode = LSLUser.current().userInScene?.userCode, let customerId = LSLUser.current().userInScene?.customerID, let lockId = LSLUser.current().lockInfo?.customerLockID else {
-//                return nil
-//            }
-//            var dict: [String: Any] = ["UserCode": userCode, "CustomerID": customerId, "LockID": lockId, "KeyNumber": KeyNumber]
-//            if let name = remark {
-//                dict.updateValue(name, forKey: "Remark")
-//            }
-//            return dict
-            return nil
-            
-        case let .setCardRemark(keyId, remark):
-            return ["KeyID": keyId, "Remark": remark]
-            
-        case let .deleteCustomerCard(keyId):
-            return ["KeyID": keyId]
-            
-        case let .addCustomerMember(member):
-            
-            var param = member.toJSON()
-            if let customerId = LSLUser.current().userInScene?.customerID {
-                param?.updateValue(customerId, forKey: "CustomerId")
-            }
-            return param
-            
-        case let .updateCustomerNameById(id, name):
-            return ["customerID": id, "customerNickName": name]
-            
-        case let .deleteCustomerMember(id, isRemote):
-            if let remote = isRemote {
-                return ["customerID": id, "isRemote": remote]
-            }
-            return ["customerID": id]
-            
-        case let .getTempKeyShareList(customerId, pageIndex, pageSize):
-            return  ["CustomerID": customerId,
-                     "PageIndex": pageIndex,
-                     "PageSize": pageSize ?? 15]
-            
-        case let .getTempKeyShareLog(shareID):
-            return ["ShareID": shareID, "PageIndex": 1, "PageSize": 20]
-            
-        case let .retractTempKeyShare(shareID):
-            return ["ShareID": shareID]
-            
-        case let .generateTempBy(input):
-            guard let CustomerID = LSLUser.current().userInScene?.customerID else { return nil }
-            var dict = input.toJSON()
-            dict?.updateValue(CustomerID, forKey: "CustomerID")
-            return dict
-                        
+       
         case let .editAssetHouse(parameter):
             return parameter.toJSON()
             
@@ -517,6 +298,45 @@ extension BusinessInterface: TargetType {
             
         case let .addUserByBluethooth(parameter):
             return parameter.toJSON()
+            
+        case let .editUser(parameter):
+            return parameter.toJSON()
+            
+        case let .addCard(_, keyNum, name):
+            return ["keyNum": keyNum, "name": name]
+            
+        case let .editCardOrFingerName(_, name):
+            return ["name": name]
+            
+        case let .deleteCard(_, operationType):
+            return ["operationType": operationType]
+            
+        case let .addFinger(_, keyNum, name, phone):
+            var dic: [String: Any] = [:]
+            if let p = phone {
+                dic.updateValue(p, forKey: "phone")
+            }
+            dic.updateValue(keyNum, forKey: "keyNum")
+            dic.updateValue(name, forKey: "name")
+            return dic
+            
+        case let .deleteFinger(_, operationType):
+            return ["operationType": operationType]
+            
+        case let .setAlarmFingerprint(_, phone, operationType):
+            return ["operationType": operationType, "phone": phone]
+            
+        case let .addAndModifyDigitalPassword(lockId, password, operationType):
+            return ["ladderLockId": lockId, "operationType": operationType, "password": password]
+            
+        case let .getTempPasswordList(_, pageIndex, pageSize):
+            return ["currentPage": pageIndex, "pageSize": pageSize ?? 15]
+         
+        case let .addTempPassword(_, parameter):
+            return parameter.toJSON()
+            
+        case let .getUnlockRecords(_, type, pageIndex, pageSize):
+            return ["currentPage": pageIndex, "pageSize": pageSize ?? 15, "type": type]
             
         default:
             return nil

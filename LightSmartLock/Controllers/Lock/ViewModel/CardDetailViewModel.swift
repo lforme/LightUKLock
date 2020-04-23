@@ -49,7 +49,8 @@ final class CardDetailViewModel: BluetoothViewModel {
                     observer.onError(AppError.reason("蓝牙未连接成功, 请稍后再试"))
                 }
                 
-                guard let userCode = LSLUser.current().userInScene?.userCode else {
+                guard let userCode = LSLUser.current().scene?.lockUserAccount else {
+                    observer.onError(AppError.reason("无法获取门锁编号"))
                     return Disposables.create()
                 }
                 
@@ -66,18 +67,18 @@ final class CardDetailViewModel: BluetoothViewModel {
                 return Disposables.create()
             }.flatMapLatest {[unowned self] (deleteSuccess) -> Observable<Bool> in
                 if deleteSuccess {
-                    return BusinessAPI.requestMapBool(.deleteCustomerCard(keyId: self.keyId))
+                    return BusinessAPI.requestMapBool(.deleteCard(id: self.keyId, operationType: 1))
                 } else {
                     return .error(AppError.reason("删除门卡失败"))
                 }
             }
             
         case .remote:
-            return BusinessAPI.requestMapBool(.deleteCustomerCard(keyId: self.keyId))
+            return BusinessAPI.requestMapBool(.deleteCard(id: self.keyId, operationType: 2))
         }
     }
     
     func changeCardName(_ name: String) -> Observable<Bool> {
-        return BusinessAPI.requestMapBool(.setCardRemark(keyId: self.keyId, remark: name))
+        return BusinessAPI.requestMapBool(.editCardOrFingerName(id: self.keyId, name: name))
     }
 }
