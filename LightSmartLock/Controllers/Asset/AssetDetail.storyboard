@@ -642,9 +642,8 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="umz-TK-l2A">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="36"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qra-6P-hc7">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qra-6P-hc7" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="74" height="36"/>
-                                                                <color key="backgroundColor" name="primary"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="74" id="ZVt-uC-vrY"/>
                                                                     <constraint firstAttribute="height" constant="36" id="b3p-5R-zaj"/>

@@ -37,7 +37,7 @@ extension UIView {
     }
 }
 
-@IBDesignable
+//@IBDesignable
 extension UIView {
     
     @IBInspectable
