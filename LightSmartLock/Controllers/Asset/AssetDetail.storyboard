@@ -79,6 +79,11 @@
 </string>
                                                                     <color key="titleColor" name="primary"/>
                                                                 </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="12"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <segue destination="bbH-fm-LQe" kind="show" id="71a-xM-OXr"/>
                                                                 </connections>
@@ -151,12 +156,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Qf-f6-IiC">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="128"/>
                                         <subviews>
-                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="c4K-b2-OwQ">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="c4K-b2-OwQ">
                                                 <rect key="frame" x="168.5" y="31.5" width="57.5" height="65"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1F5-IC-T6y">
                                                         <rect key="frame" x="0.0" y="0.0" width="57.5" height="40"/>
                                                         <state key="normal" image="add"/>
+                                                        <connections>
+                                                            <segue destination="U7n-NG-VIi" kind="show" id="d4q-r6-ILA"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="添加租客" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ogr-gf-3zT">
                                                         <rect key="frame" x="0.0" y="48" width="57.5" height="17"/>
@@ -166,7 +174,7 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="aMe-dh-Ajt">
+                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="aMe-dh-Ajt">
                                                 <rect key="frame" x="16" y="16" width="362" height="96"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结余" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qf7-h3-xSW">
@@ -280,6 +288,11 @@
                                             <constraint firstAttribute="bottom" secondItem="aMe-dh-Ajt" secondAttribute="bottom" constant="16" id="gQr-kC-LrR"/>
                                             <constraint firstAttribute="height" constant="128" id="jp6-3z-kuG"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7e-i9-Tft">
                                         <rect key="frame" x="0.0" y="138" width="394" height="44"/>
@@ -323,10 +336,15 @@
                                             <constraint firstItem="zBa-tM-ots" firstAttribute="leading" secondItem="V7e-i9-Tft" secondAttribute="leading" id="eFD-Mj-fDA"/>
                                             <constraint firstAttribute="trailing" secondItem="zBa-tM-ots" secondAttribute="trailing" id="lQJ-5j-cuJ"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFq-7X-geu">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFq-7X-geu" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="806" width="414" height="56"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="j4m-6B-npe">
@@ -339,6 +357,11 @@
                                                 <state key="normal" title="发布房源">
                                                     <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LaP-7c-VyV">
                                                 <rect key="frame" x="201" y="0.0" width="181" height="46"/>
@@ -348,6 +371,11 @@
                                                 <state key="normal" title="添加租客">
                                                     <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <segue destination="U7n-NG-VIi" kind="show" id="6vt-KP-OVi"/>
                                                 </connections>
@@ -484,7 +512,7 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2u8-eK-pGZ">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2u8-eK-pGZ" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="673" width="414" height="56"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="68p-86-mOR">
@@ -496,6 +524,17 @@
                                                         <state key="normal" title="发送给租客">
                                                             <color key="titleColor" name="primary"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="24"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="primary"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3E-Qg-wO9">
                                                         <rect key="frame" x="201" y="0.0" width="181" height="46"/>
@@ -504,6 +543,11 @@
                                                         <state key="normal" title="保存">
                                                             <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="24"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -777,7 +821,7 @@
                                             <constraint firstAttribute="height" constant="44" id="Gsy-OH-Lnw"/>
                                         </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FIY-lN-3Ch">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FIY-lN-3Ch" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="489" width="414" height="56"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="TBG-2y-DnN">
@@ -790,6 +834,11 @@
                                                         <state key="normal" title="保存">
                                                             <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="24"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -922,6 +971,11 @@
                                             <constraint firstAttribute="bottom" secondItem="0EG-30-lqU" secondAttribute="bottom" id="P2d-zc-vrI"/>
                                             <constraint firstItem="0EG-30-lqU" firstAttribute="leading" secondItem="mzQ-iX-Pbt" secondAttribute="leading" constant="16" id="oeE-vW-WnC"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hka-gh-Iv6">
                                         <rect key="frame" x="8" y="60" width="398" height="88"/>
@@ -974,8 +1028,13 @@
                                             <constraint firstItem="mCr-Cd-VyY" firstAttribute="top" secondItem="hka-gh-Iv6" secondAttribute="top" id="m2a-jl-PIX"/>
                                             <constraint firstAttribute="height" constant="88" id="qXJ-LN-LSU"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aos-xc-OdC">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aos-xc-OdC" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="665" width="414" height="56"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NRx-ll-7nT">
@@ -988,6 +1047,11 @@
                                                         <state key="normal" title="记一笔">
                                                             <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="24"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <segue destination="9nK-bn-hTn" kind="show" id="Rww-sH-TKf"/>
                                                         </connections>
@@ -1563,7 +1627,7 @@
                                     <constraint firstAttribute="trailing" secondItem="jxD-Yp-jK8" secondAttribute="trailing" id="jRF-YP-lZ8"/>
                                 </constraints>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2yp-Au-RR0">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2yp-Au-RR0" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="806" width="414" height="56"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Dv8-0J-TR2">
@@ -1576,6 +1640,11 @@
                                                 <state key="normal" title="保存">
                                                     <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -2377,7 +2446,7 @@
                                     <constraint firstAttribute="bottom" secondItem="nf6-7b-mhR" secondAttribute="bottom" id="biB-aQ-tvf"/>
                                 </constraints>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yqo-r8-vRr">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yqo-r8-vRr" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="806" width="414" height="56"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NSI-8E-2Hb">
@@ -2390,6 +2459,11 @@
                                                 <state key="normal" title="下一步">
                                                     <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <segue destination="I9Z-qh-wAZ" kind="show" id="4tB-gc-TNA"/>
                                                 </connections>
@@ -2657,7 +2731,7 @@
                                             </tableView>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DwP-OT-R07">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DwP-OT-R07" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="658" width="414" height="56"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Vkx-iZ-J4T">
@@ -2678,8 +2752,18 @@
                                                         <state key="normal" title="保存">
                                                             <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="24"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </button>
                                                 </subviews>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -3036,7 +3120,7 @@
                                     <constraint firstAttribute="trailing" secondItem="igG-bX-Y2C" secondAttribute="trailing" id="XQ3-Tf-iOz"/>
                                 </constraints>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VaF-Go-K32">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VaF-Go-K32" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="806" width="414" height="56"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="drF-QO-qAZ">
@@ -3049,6 +3133,11 @@
                                                 <state key="normal" title="保存">
                                                     <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -3148,6 +3237,11 @@
                                                                     <constraint firstAttribute="trailing" secondItem="yJd-FQ-cot" secondAttribute="trailing" constant="16" id="gu5-z5-2os"/>
                                                                     <constraint firstAttribute="bottom" secondItem="yJd-FQ-cot" secondAttribute="bottom" constant="16" id="ybe-v1-Tgl"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="8"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3377,7 +3471,7 @@
                                     <constraint firstAttribute="trailing" secondItem="XN1-cb-fdK" secondAttribute="trailing" id="ufH-c0-jfE"/>
                                 </constraints>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYe-UG-RqR">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYe-UG-RqR" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="806" width="414" height="56"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pYF-ud-Qv1">
@@ -3390,6 +3484,11 @@
                                                 <state key="normal" title="保存">
                                                     <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -3427,6 +3526,9 @@
             <point key="canvasLocation" x="2025" y="646"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="6vt-KP-OVi"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="add" width="40" height="40"/>
         <image name="auth" width="16" height="16"/>

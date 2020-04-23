@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1F64F18F4FD1BF62618F8397 /* Pods_LightSmartLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */; };
 		7B76FAAA2445B01A00B6F6A5 /* AssetDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B76FAA92445B01A00B6F6A5 /* AssetDetail.storyboard */; };
+		7B7EB4B32451361E002DC436 /* ButtonContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7EB4B22451361E002DC436 /* ButtonContainerView.swift */; };
+		7B7EB4B724513F9A002DC436 /* ConfigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7EB4B624513F9A002DC436 /* ConfigButton.swift */; };
 		9C03B0EB239F46510001E849 /* FingerManageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EA239F46510001E849 /* FingerManageController.swift */; };
 		9C03B0ED239F49440001E849 /* FingerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EC239F49440001E849 /* FingerModel.swift */; };
 		9C03B0EF239F4A7B0001E849 /* FingerManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EE239F4A7B0001E849 /* FingerManageViewModel.swift */; };
@@ -230,6 +232,8 @@
 		56B15D3085FA9EFD559AB2C2 /* Pods-LightSmartLock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightSmartLock.debug.xcconfig"; path = "Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock.debug.xcconfig"; sourceTree = "<group>"; };
 		5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LightSmartLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B76FAA92445B01A00B6F6A5 /* AssetDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AssetDetail.storyboard; sourceTree = "<group>"; };
+		7B7EB4B22451361E002DC436 /* ButtonContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonContainerView.swift; sourceTree = "<group>"; };
+		7B7EB4B624513F9A002DC436 /* ConfigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigButton.swift; sourceTree = "<group>"; };
 		9A21385643D81CD6A6F2D1C7 /* Pods-LSLWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSLWidget.release.xcconfig"; path = "Target Support Files/Pods-LSLWidget/Pods-LSLWidget.release.xcconfig"; sourceTree = "<group>"; };
 		9C03B0EA239F46510001E849 /* FingerManageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerManageController.swift; sourceTree = "<group>"; };
 		9C03B0EC239F49440001E849 /* FingerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerModel.swift; sourceTree = "<group>"; };
@@ -464,6 +468,8 @@
 			isa = PBXGroup;
 			children = (
 				7B76FAA92445B01A00B6F6A5 /* AssetDetail.storyboard */,
+				7B7EB4B22451361E002DC436 /* ButtonContainerView.swift */,
+				7B7EB4B624513F9A002DC436 /* ConfigButton.swift */,
 			);
 			path = Asset;
 			sourceTree = "<group>";
@@ -1147,6 +1153,7 @@
 				9C452F0A2394C38800144827 /* HomeSettringController.swift in Sources */,
 				9C24AC482383EBE5005EBF95 /* HomeViewController.swift in Sources */,
 				9C1A4BC8238D2E7C00626DB4 /* HomeControlCell.swift in Sources */,
+				7B7EB4B724513F9A002DC436 /* ConfigButton.swift in Sources */,
 				9C03B0EB239F46510001E849 /* FingerManageController.swift in Sources */,
 				9C7AFF162395FC870075442D /* CLLocationManager+Rx.swift in Sources */,
 				9CFDE20123851EE80062522E /* NetworkInterface.swift in Sources */,
@@ -1179,6 +1186,7 @@
 				9CFDE21623853DE60062522E /* NetworkDiskStorage.swift in Sources */,
 				9C5A968623A0DFCC002A2B06 /* AddUserViewModel.swift in Sources */,
 				9C24AC3F2383EB55005EBF95 /* OpenDoorViewController.swift in Sources */,
+				7B7EB4B32451361E002DC436 /* ButtonContainerView.swift in Sources */,
 				9C752FD0238794BE000FEA73 /* CountdownButton.swift in Sources */,
 				9C47DB83239A39070019EAA0 /* ListViewModeling.swift in Sources */,
 				9C7AFF1A239600830075442D /* SearchPlotController.swift in Sources */,
