@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="-1103" y="50"/>
         </scene>
-        <!--View Controller-->
+        <!--Asset Detail View Controller-->
         <scene sceneID="Vbx-1d-CWl">
             <objects>
-                <viewController id="H2S-CP-QUh" sceneMemberID="viewController">
+                <viewController id="H2S-CP-QUh" customClass="AssetDetailViewController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LVz-32-MZ0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -409,18 +409,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xa4-81-PIR"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zQ0-nT-MfI"/>
+                    <navigationItem key="navigationItem" id="zQ0-nT-MfI">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="TA8-IM-pAr">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jUV-NF-H1o">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="moreButton" destination="jUV-NF-H1o" id="35p-sE-W3K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szz-oY-oVx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="Bmz-LC-cSd">
-                    <rect key="frame" x="0.0" y="0.0" width="382" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="128" id="gZa-0f-qXg"/>
-                    </constraints>
-                    <viewLayoutGuide key="safeArea" id="LUi-SP-qaV"/>
-                </view>
             </objects>
             <point key="canvasLocation" x="-157" y="50"/>
         </scene>

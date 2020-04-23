@@ -13,6 +13,7 @@
 		7B7EB4B724513F9A002DC436 /* ConfigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7EB4B624513F9A002DC436 /* ConfigButton.swift */; };
 		7B7EB4BB24516EAF002DC436 /* AssetFacilityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7EB4BA24516EAF002DC436 /* AssetFacilityListViewController.swift */; };
 		7B7EB4BD24516ECB002DC436 /* AddAssetFacilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7EB4BC24516ECB002DC436 /* AddAssetFacilityViewController.swift */; };
+		7B7EB4C12451A000002DC436 /* AssetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7EB4C02451A000002DC436 /* AssetDetailViewController.swift */; };
 		9C03B0EB239F46510001E849 /* FingerManageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EA239F46510001E849 /* FingerManageController.swift */; };
 		9C03B0ED239F49440001E849 /* FingerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EC239F49440001E849 /* FingerModel.swift */; };
 		9C03B0EF239F4A7B0001E849 /* FingerManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EE239F4A7B0001E849 /* FingerManageViewModel.swift */; };
@@ -238,6 +239,7 @@
 		7B7EB4B624513F9A002DC436 /* ConfigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigButton.swift; sourceTree = "<group>"; };
 		7B7EB4BA24516EAF002DC436 /* AssetFacilityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetFacilityListViewController.swift; sourceTree = "<group>"; };
 		7B7EB4BC24516ECB002DC436 /* AddAssetFacilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAssetFacilityViewController.swift; sourceTree = "<group>"; };
+		7B7EB4C02451A000002DC436 /* AssetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDetailViewController.swift; sourceTree = "<group>"; };
 		9A21385643D81CD6A6F2D1C7 /* Pods-LSLWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSLWidget.release.xcconfig"; path = "Target Support Files/Pods-LSLWidget/Pods-LSLWidget.release.xcconfig"; sourceTree = "<group>"; };
 		9C03B0EA239F46510001E849 /* FingerManageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerManageController.swift; sourceTree = "<group>"; };
 		9C03B0EC239F49440001E849 /* FingerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerModel.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 				7B7EB4B624513F9A002DC436 /* ConfigButton.swift */,
 				7B7EB4BA24516EAF002DC436 /* AssetFacilityListViewController.swift */,
 				7B7EB4BC24516ECB002DC436 /* AddAssetFacilityViewController.swift */,
+				7B7EB4C02451A000002DC436 /* AssetDetailViewController.swift */,
 			);
 			path = Asset;
 			sourceTree = "<group>";
@@ -1189,6 +1192,7 @@
 				9C3726E32391164700450757 /* OpenDoorViewModel.swift in Sources */,
 				9C218F9B23FA764A009600F7 /* CalendarViewController.swift in Sources */,
 				9CFDE211238537A30062522E /* NetworkAPI.swift in Sources */,
+				7B7EB4C12451A000002DC436 /* AssetDetailViewController.swift in Sources */,
 				9C77059E238FCC79008E1552 /* MySettingViewModel.swift in Sources */,
 				9CFDE21623853DE60062522E /* NetworkDiskStorage.swift in Sources */,
 				9C5A968623A0DFCC002A2B06 /* AddUserViewModel.swift in Sources */,
