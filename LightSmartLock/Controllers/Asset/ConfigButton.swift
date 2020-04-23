@@ -15,7 +15,7 @@ class ConfigButton: UIButton {
         cornerRadius = 4
         setTitleColor(.white, for: .selected)
         setTitleColor(.black, for: .normal)
-        tintColor = #colorLiteral(red: 0.3254901961, green: 0.5843137255, blue: 0.9137254902, alpha: 1)
+        tintColor = .clear
         isSelected = false
     }
     
@@ -33,5 +33,7 @@ class ConfigButton: UIButton {
             }
         }
     }
+    
+    
 
 }

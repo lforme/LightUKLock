@@ -424,10 +424,10 @@
             </objects>
             <point key="canvasLocation" x="-157" y="50"/>
         </scene>
-        <!--View Controller-->
+        <!--Asset Facility List View Controller-->
         <scene sceneID="Wde-2X-kiY">
             <objects>
-                <viewController id="Ky6-cz-ymB" sceneMemberID="viewController">
+                <viewController id="Ky6-cz-ymB" customClass="AssetFacilityListViewController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y1o-1k-2vS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -441,43 +441,56 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDg-sZ-Jxp">
                                 <rect key="frame" x="0.0" y="133" width="414" height="729"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9F-9Z-Gye">
-                                        <rect key="frame" x="16" y="0.0" width="382" height="44"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="配置信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAK-MO-aBq">
-                                                <rect key="frame" x="0.0" y="0.0" width="57.5" height="44"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" name="textPrimary"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdp-lg-lwW">
-                                                <rect key="frame" x="57.5" y="0.0" width="324.5" height="44"/>
-                                                <state key="normal" image="config_add"/>
-                                                <connections>
-                                                    <segue destination="2J5-Pp-4bg" kind="show" id="KmO-k6-Js0"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="BGR-td-UYJ"/>
-                                        </constraints>
-                                    </stackView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rBS-NL-TrR">
-                                        <rect key="frame" x="0.0" y="44" width="414" height="629"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rBS-NL-TrR">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="673"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <view key="tableHeaderView" contentMode="scaleToFill" id="7GQ-vk-cIL">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9F-9Z-Gye">
+                                                    <rect key="frame" x="16" y="0.0" width="382" height="44"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="配置信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAK-MO-aBq">
+                                                            <rect key="frame" x="0.0" y="0.0" width="57.5" height="44"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" name="textPrimary"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdp-lg-lwW">
+                                                            <rect key="frame" x="57.5" y="0.0" width="324.5" height="44"/>
+                                                            <state key="normal" image="config_add"/>
+                                                            <connections>
+                                                                <segue destination="2J5-Pp-4bg" kind="show" identifier="AddAssetFacility" id="KmO-k6-Js0"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="BGR-td-UYJ"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" name="tableViewBackground"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="d9F-9Z-Gye" secondAttribute="trailing" constant="16" id="TEZ-Yr-sSx"/>
+                                                <constraint firstItem="d9F-9Z-Gye" firstAttribute="leading" secondItem="7GQ-vk-cIL" secondAttribute="leading" constant="16" id="ct1-9N-4gH"/>
+                                                <constraint firstAttribute="bottom" secondItem="d9F-9Z-Gye" secondAttribute="bottom" id="gev-bU-5QI"/>
+                                                <constraint firstItem="d9F-9Z-Gye" firstAttribute="top" secondItem="7GQ-vk-cIL" secondAttribute="top" id="syZ-AQ-IvW"/>
+                                            </constraints>
+                                        </view>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="6Ni-o0-yLK">
-                                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AssetFacilityListCell" id="6Ni-o0-yLK" customClass="AssetFacilityListCell" customModule="门锁助手个人版" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="72" width="414" height="46.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Ni-o0-yLK" id="odo-rj-OLO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="46.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KiC-hr-e29">
-                                                            <rect key="frame" x="16" y="0.0" width="382" height="44"/>
+                                                            <rect key="frame" x="16" y="8" width="382" height="30.5"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rZJ-tH-1DI">
-                                                                    <rect key="frame" x="0.0" y="10" width="100" height="24"/>
+                                                                    <rect key="frame" x="0.0" y="3.5" width="100" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="100" id="Zcv-bo-uVs"/>
                                                                     </constraints>
@@ -488,15 +501,15 @@
                                                                     </state>
                                                                 </button>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hee-vt-FXT">
-                                                                    <rect key="frame" x="110" y="7" width="2" height="30"/>
+                                                                    <rect key="frame" x="110" y="0.5" width="1" height="30"/>
                                                                     <color key="backgroundColor" name="tableViewBackground"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="2" id="19p-wi-GAt"/>
+                                                                        <constraint firstAttribute="width" constant="1" id="19p-wi-GAt"/>
                                                                         <constraint firstAttribute="height" constant="30" id="TbK-jq-M2V"/>
                                                                     </constraints>
                                                                 </view>
                                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入品牌/新旧程度/数量等" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDc-G7-4ac">
-                                                                    <rect key="frame" x="122" y="13" width="260" height="18.5"/>
+                                                                    <rect key="frame" x="121" y="6" width="261" height="18.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
@@ -504,12 +517,16 @@
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="KiC-hr-e29" firstAttribute="top" secondItem="odo-rj-OLO" secondAttribute="top" id="8od-tk-Ozt"/>
+                                                        <constraint firstItem="KiC-hr-e29" firstAttribute="top" secondItem="odo-rj-OLO" secondAttribute="top" constant="8" id="8od-tk-Ozt"/>
                                                         <constraint firstAttribute="trailing" secondItem="KiC-hr-e29" secondAttribute="trailing" constant="16" id="96Z-gi-si8"/>
                                                         <constraint firstItem="KiC-hr-e29" firstAttribute="leading" secondItem="odo-rj-OLO" secondAttribute="leading" constant="16" id="CbN-VK-fPu"/>
-                                                        <constraint firstAttribute="bottom" secondItem="KiC-hr-e29" secondAttribute="bottom" id="zZc-Kb-TCc"/>
+                                                        <constraint firstAttribute="bottom" secondItem="KiC-hr-e29" secondAttribute="bottom" constant="8" id="zZc-Kb-TCc"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="deleteButton" destination="rZJ-tH-1DI" id="6w4-1j-xKz"/>
+                                                    <outlet property="remarkTF" destination="hDc-G7-4ac" id="eaI-pU-MCm"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -563,18 +580,14 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" name="tableViewBackground"/>
                                 <constraints>
-                                    <constraint firstItem="rBS-NL-TrR" firstAttribute="top" secondItem="d9F-9Z-Gye" secondAttribute="bottom" id="IQK-1C-Sl0"/>
                                     <constraint firstAttribute="trailing" secondItem="rBS-NL-TrR" secondAttribute="trailing" id="JnK-sX-rfW"/>
                                     <constraint firstItem="rBS-NL-TrR" firstAttribute="leading" secondItem="SDg-sZ-Jxp" secondAttribute="leading" id="Uvs-Gv-lWO"/>
                                     <constraint firstAttribute="trailing" secondItem="2u8-eK-pGZ" secondAttribute="trailing" id="YLs-aH-5PE"/>
                                     <constraint firstItem="2u8-eK-pGZ" firstAttribute="leading" secondItem="SDg-sZ-Jxp" secondAttribute="leading" id="cbo-gI-qO4"/>
                                     <constraint firstItem="2u8-eK-pGZ" firstAttribute="top" secondItem="rBS-NL-TrR" secondAttribute="bottom" id="d4c-T9-AuJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="d9F-9Z-Gye" secondAttribute="trailing" constant="16" id="fwF-fU-hzk"/>
                                     <constraint firstAttribute="bottom" secondItem="2u8-eK-pGZ" secondAttribute="bottom" id="g99-1w-yjz"/>
-                                    <constraint firstItem="d9F-9Z-Gye" firstAttribute="top" secondItem="SDg-sZ-Jxp" secondAttribute="top" id="qbx-yM-ncg"/>
-                                    <constraint firstItem="d9F-9Z-Gye" firstAttribute="leading" secondItem="SDg-sZ-Jxp" secondAttribute="leading" constant="16" id="vHA-0e-g5X"/>
+                                    <constraint firstItem="rBS-NL-TrR" firstAttribute="top" secondItem="SDg-sZ-Jxp" secondAttribute="top" id="jvE-Uq-Yfh"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -591,15 +604,21 @@
                         <viewLayoutGuide key="safeArea" id="fIV-yQ-qjf"/>
                     </view>
                     <navigationItem key="navigationItem" id="lPk-tM-Ql4"/>
+                    <connections>
+                        <outlet property="bottomContainer" destination="2u8-eK-pGZ" id="cqY-rw-S5W"/>
+                        <outlet property="saveButton" destination="o3E-Qg-wO9" id="vcZ-dT-RdY"/>
+                        <outlet property="sendButton" destination="rQB-OL-QG3" id="FQH-84-FVB"/>
+                        <outlet property="tableView" destination="rBS-NL-TrR" id="j2Y-Rd-PO9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwL-EO-arY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1187" y="-686"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Asset Facility View Controller-->
         <scene sceneID="4P6-hm-m26">
             <objects>
-                <viewController id="2J5-Pp-4bg" sceneMemberID="viewController">
+                <viewController id="2J5-Pp-4bg" customClass="AddAssetFacilityViewController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rc5-WP-S9W">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -611,7 +630,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="D9X-1G-Jg5">
-                                <rect key="frame" x="0.0" y="133" width="414" height="184"/>
+                                <rect key="frame" x="0.0" y="133" width="414" height="216"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bxT-xU-2zh">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -635,10 +654,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ot-gw-NGj">
-                                        <rect key="frame" x="0.0" y="44" width="414" height="140"/>
+                                        <rect key="frame" x="0.0" y="44" width="414" height="172"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RIx-bA-c3q">
-                                                <rect key="frame" x="16" y="16" width="382" height="108"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="RIx-bA-c3q">
+                                                <rect key="frame" x="16" y="16" width="382" height="140"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="umz-TK-l2A">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="36"/>
@@ -653,8 +672,11 @@
                                                                 <state key="normal" title="空调">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="jzX-vO-aF2"/>
+                                                                </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUz-Kg-b6G">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUz-Kg-b6G" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="102.5" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="74" id="af3-yT-pB3"/>
@@ -664,8 +686,11 @@
                                                                 <state key="normal" title="冰箱">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="gwp-5T-oom"/>
+                                                                </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ae1-eA-xWY">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ae1-eA-xWY" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="205.5" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="74" id="AHw-2m-YNw"/>
@@ -675,8 +700,11 @@
                                                                 <state key="normal" title="电视机">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="V04-Eg-pIc"/>
+                                                                </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2B-7C-wRh">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2B-7C-wRh" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="308" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="36" id="CPd-sx-Koa"/>
@@ -686,13 +714,16 @@
                                                                 <state key="normal" title="洗衣机">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="6gJ-61-zM7"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="agP-hK-4Yq">
-                                                        <rect key="frame" x="0.0" y="36" width="382" height="36"/>
+                                                        <rect key="frame" x="0.0" y="52" width="382" height="36"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEc-4c-eZj">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEc-4c-eZj" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="74" id="403-ZG-rpC"/>
@@ -702,8 +733,11 @@
                                                                 <state key="normal" title="热水器">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="NUZ-ez-mjT"/>
+                                                                </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJE-85-aEa">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJE-85-aEa" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="102.5" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="36" id="Af7-ej-HRR"/>
@@ -713,8 +747,11 @@
                                                                 <state key="normal" title="油烟机">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="YZq-E4-fjk"/>
+                                                                </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="276-FB-ebx">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="276-FB-ebx" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="205.5" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="74" id="2hK-rY-ibm"/>
@@ -724,8 +761,11 @@
                                                                 <state key="normal" title="沙发">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="60G-k8-12P"/>
+                                                                </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qle-tp-9uy">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qle-tp-9uy" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="308" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="74" id="D12-Hn-Qmy"/>
@@ -735,13 +775,16 @@
                                                                 <state key="normal" title="桌子">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="JRR-wp-oOF"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="3Ao-Eo-Fg4">
-                                                        <rect key="frame" x="0.0" y="72" width="382" height="36"/>
+                                                        <rect key="frame" x="0.0" y="104" width="382" height="36"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MuX-2X-Tt4">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MuX-2X-Tt4" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="36" id="Tzm-3S-WDU"/>
@@ -751,8 +794,11 @@
                                                                 <state key="normal" title="椅子">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="CNe-Fp-35g"/>
+                                                                </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgi-Xp-9gt">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgi-Xp-9gt" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="102.5" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="74" id="MwC-fn-Qbq"/>
@@ -762,8 +808,11 @@
                                                                 <state key="normal" title="床">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="SSG-VF-vBk"/>
+                                                                </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QW9-ZY-ehx">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QW9-ZY-ehx" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="205.5" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="36" id="iO9-zF-Q1y"/>
@@ -773,8 +822,11 @@
                                                                 <state key="normal" title="衣柜">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="kxD-Zh-GLn"/>
+                                                                </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPe-0E-ZVC">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPe-0E-ZVC" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="308" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="74" id="Tu0-Hr-j5x"/>
@@ -784,6 +836,9 @@
                                                                 <state key="normal" title="梳妆台">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="Pi0-lF-sgn"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -801,7 +856,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ta-CW-HyQ">
-                                <rect key="frame" x="0.0" y="317" width="414" height="545"/>
+                                <rect key="frame" x="0.0" y="349" width="414" height="513"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sff-yX-kb8">
                                         <rect key="frame" x="16" y="0.0" width="382" height="44"/>
@@ -822,42 +877,54 @@
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rW6-2b-wg8">
-                                        <rect key="frame" x="0.0" y="44" width="414" height="445"/>
+                                        <rect key="frame" x="0.0" y="44" width="414" height="413"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Df-3q-1cL">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="445"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="413"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uno-oR-EPl">
+                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="5" minimumInteritemSpacing="5" id="uno-oR-EPl" customClass="AlignedCollectionViewFlowLayout" customModule="AlignedCollectionViewFlowLayout">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="sa9-qX-ybm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86" height="48"/>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddAssetFacilityCell" id="sa9-qX-ybm" customClass="AddAssetFacilityCell" customModule="门锁助手个人版" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="10" width="86" height="48"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="b3l-IX-feR">
                                                             <rect key="frame" x="0.0" y="0.0" width="86" height="48"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="衣柜" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2GG-dA-Ylt">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfZ-Hf-3pO">
                                                                     <rect key="frame" x="12" y="12" width="62" height="24"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="衣柜" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2GG-dA-Ylt">
+                                                                            <rect key="frame" x="8" y="4" width="46" height="16"/>
+                                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                                            <color key="textColor" name="textPrimary"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstItem="2GG-dA-Ylt" firstAttribute="leading" secondItem="xfZ-Hf-3pO" secondAttribute="leading" constant="8" id="3im-6j-IxY"/>
+                                                                        <constraint firstItem="2GG-dA-Ylt" firstAttribute="top" secondItem="xfZ-Hf-3pO" secondAttribute="top" constant="4" id="kTA-ad-fo5"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="2GG-dA-Ylt" secondAttribute="bottom" constant="4" id="l4i-No-OGm"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="2GG-dA-Ylt" secondAttribute="trailing" constant="8" id="sgC-Ec-pde"/>
+                                                                    </constraints>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                             <real key="value" value="4"/>
                                                                         </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                            <color key="value" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                             <real key="value" value="1"/>
                                                                         </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                            <color key="value" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
-                                                                </label>
+                                                                </view>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UuP-iH-Bno">
                                                                     <rect key="frame" x="62" y="0.0" width="24" height="24"/>
                                                                     <constraints>
@@ -868,15 +935,19 @@
                                                                 </button>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="2GG-dA-Ylt" firstAttribute="top" secondItem="b3l-IX-feR" secondAttribute="top" constant="12" id="D39-Cs-zzc"/>
+                                                                <constraint firstItem="xfZ-Hf-3pO" firstAttribute="top" secondItem="b3l-IX-feR" secondAttribute="top" constant="12" id="Mo0-3r-CFG"/>
+                                                                <constraint firstAttribute="trailing" secondItem="xfZ-Hf-3pO" secondAttribute="trailing" constant="12" id="S3a-Ll-N0b"/>
                                                                 <constraint firstAttribute="trailing" secondItem="UuP-iH-Bno" secondAttribute="trailing" id="SJe-St-Wt6"/>
-                                                                <constraint firstAttribute="bottom" secondItem="2GG-dA-Ylt" secondAttribute="bottom" constant="12" id="Uu4-Za-6Rh"/>
-                                                                <constraint firstItem="2GG-dA-Ylt" firstAttribute="leading" secondItem="b3l-IX-feR" secondAttribute="leading" constant="12" id="avH-e5-U0L"/>
-                                                                <constraint firstAttribute="trailing" secondItem="2GG-dA-Ylt" secondAttribute="trailing" constant="12" id="rr8-bF-LZS"/>
+                                                                <constraint firstItem="xfZ-Hf-3pO" firstAttribute="leading" secondItem="b3l-IX-feR" secondAttribute="leading" constant="12" id="aNS-jO-uU9"/>
+                                                                <constraint firstAttribute="bottom" secondItem="xfZ-Hf-3pO" secondAttribute="bottom" constant="12" id="lIU-K5-Gfc"/>
                                                                 <constraint firstItem="UuP-iH-Bno" firstAttribute="top" secondItem="b3l-IX-feR" secondAttribute="top" id="yCB-Ds-S93"/>
                                                             </constraints>
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="86" height="48"/>
+                                                        <connections>
+                                                            <outlet property="deleteButton" destination="UuP-iH-Bno" id="AIN-Mi-8IC"/>
+                                                            <outlet property="textLabel" destination="2GG-dA-Ylt" id="5y9-dM-Yi0"/>
+                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
@@ -890,7 +961,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FIY-lN-3Ch" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="489" width="414" height="56"/>
+                                        <rect key="frame" x="0.0" y="457" width="414" height="56"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="TBG-2y-DnN">
                                                 <rect key="frame" x="16" y="5" width="382" height="46"/>
@@ -907,6 +978,9 @@
                                                                 <integer key="value" value="24"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="save:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="imq-Kr-Lzl"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -952,6 +1026,22 @@
                         <viewLayoutGuide key="safeArea" id="Z4v-HQ-zZw"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZL7-OT-3rn"/>
+                    <connections>
+                        <outlet property="addButton" destination="3IB-Mc-Lop" id="zab-0f-dfL"/>
+                        <outlet property="collectionView" destination="3Df-3q-1cL" id="jUA-ca-f2B"/>
+                        <outletCollection property="configButtons" destination="Qra-6P-hc7" collectionClass="NSMutableArray" id="RLJ-OJ-zf3"/>
+                        <outletCollection property="configButtons" destination="ae1-eA-xWY" collectionClass="NSMutableArray" id="iQy-Q1-U5u"/>
+                        <outletCollection property="configButtons" destination="wUz-Kg-b6G" collectionClass="NSMutableArray" id="Koq-gK-RFF"/>
+                        <outletCollection property="configButtons" destination="g2B-7C-wRh" collectionClass="NSMutableArray" id="oGr-3R-rQg"/>
+                        <outletCollection property="configButtons" destination="MEc-4c-eZj" collectionClass="NSMutableArray" id="Lts-bq-fcr"/>
+                        <outletCollection property="configButtons" destination="KJE-85-aEa" collectionClass="NSMutableArray" id="PSN-AS-YSH"/>
+                        <outletCollection property="configButtons" destination="276-FB-ebx" collectionClass="NSMutableArray" id="9dt-F1-pAa"/>
+                        <outletCollection property="configButtons" destination="Qle-tp-9uy" collectionClass="NSMutableArray" id="uf7-Ic-ma6"/>
+                        <outletCollection property="configButtons" destination="MuX-2X-Tt4" collectionClass="NSMutableArray" id="Qki-OR-JdT"/>
+                        <outletCollection property="configButtons" destination="kgi-Xp-9gt" collectionClass="NSMutableArray" id="nWE-nc-cqf"/>
+                        <outletCollection property="configButtons" destination="QW9-ZY-ehx" collectionClass="NSMutableArray" id="kqA-OR-mMO"/>
+                        <outletCollection property="configButtons" destination="YPe-0E-ZVC" collectionClass="NSMutableArray" id="gxb-Mv-6V8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xr-kI-Lc3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
