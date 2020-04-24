@@ -10,6 +10,35 @@ import UIKit
 import RxCocoa
 import RxSwift
 
+enum UtilitiesType: Int, Codable {
+    case water = 1
+    case elec
+    case gas
+    
+    var text: String {
+        switch self {
+        case .water:
+            return "水"
+        case .elec:
+            return "电"
+        case .gas:
+            return "气"
+        }
+    }
+    
+    var unit: String {
+         switch self {
+         case .water:
+             return "吨"
+         case .elec:
+             return "度"
+         case .gas:
+             return "方"
+         }
+     }
+    
+}
+
 struct UtilitiesRecordsModel: Codable {
     let totalFee: Int?
     let totalUse: Int?
@@ -67,6 +96,7 @@ class UtilitiesRecordsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private let listRelay = PublishRelay<[UtilitiesRecordsModel.YearVOList]>()
+    private let typeRelay = BehaviorRelay<UtilitiesType>.init(value: .water)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,11 +105,13 @@ class UtilitiesRecordsViewController: UIViewController {
         
         waterButton.rx.tap
             .startWith(())
-            .do(onNext: { [weak self](_) in
+            .map { UtilitiesType.water}
+            .do(onNext: { [weak self](type) in
                 self?.waterButton.isSelected = true
                 self?.elecButton.isSelected = false
                 self?.gasButton.isSelected = false
-                self?.totalUseUnitLabel.text = "总消耗量(吨)"
+                self?.totalUseUnitLabel.text = "总消耗量(\(type.unit))"
+                self?.typeRelay.accept(type)
             })
             .subscribe(onNext: { (_) in
                 print("water")
@@ -87,11 +119,13 @@ class UtilitiesRecordsViewController: UIViewController {
             .disposed(by: rx.disposeBag)
         
         elecButton.rx.tap
-            .do(onNext: { [weak self](_) in
+            .map { UtilitiesType.elec}
+            .do(onNext: { [weak self](type) in
                 self?.waterButton.isSelected = false
                 self?.elecButton.isSelected = true
                 self?.gasButton.isSelected = false
-                self?.totalUseUnitLabel.text = "总消耗量(度)"
+                self?.totalUseUnitLabel.text = "总消耗量(\(type.unit))"
+                self?.typeRelay.accept(type)
             })
             .subscribe(onNext: { (_) in
                 print("elec")
@@ -99,11 +133,13 @@ class UtilitiesRecordsViewController: UIViewController {
             .disposed(by: rx.disposeBag)
         
         gasButton.rx.tap
-            .do(onNext: { [weak self](_) in
+            .map { UtilitiesType.gas}
+            .do(onNext: { [weak self](type) in
                 self?.waterButton.isSelected = false
                 self?.elecButton.isSelected = false
                 self?.gasButton.isSelected = true
-                self?.totalUseUnitLabel.text = "总消耗量(方)"
+                self?.totalUseUnitLabel.text = "总消耗量(\(type.unit))"
+                self?.typeRelay.accept(type)
             })
             .subscribe(onNext: { (_) in
                 print("gas")
@@ -115,6 +151,9 @@ class UtilitiesRecordsViewController: UIViewController {
                 cell.config(with: element)
         }
         .disposed(by: rx.disposeBag)
+        
+        
+    
     }
     
     func config(with model: UtilitiesRecordsModel) {
@@ -123,7 +162,12 @@ class UtilitiesRecordsViewController: UIViewController {
         self.listRelay.accept(model.yearVOList ?? [])
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddUtilitiesRecord",
+            let vc = segue.destination as? AddUtilitiesRecordViewController {
+            vc.type = self.typeRelay.value
+        }
+    }
     
     
 }

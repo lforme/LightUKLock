@@ -411,10 +411,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="zQ0-nT-MfI">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="TA8-IM-pAr">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jUV-NF-H1o">
-                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jUV-NF-H1o">
+                                <rect key="frame" x="302" y="7" width="44" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="more"/>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -1302,7 +1303,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <segue destination="9nK-bn-hTn" kind="show" id="Rww-sH-TKf"/>
+                                                            <segue destination="9nK-bn-hTn" kind="show" identifier="AddUtilitiesRecord" id="Rww-sH-TKf"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1363,10 +1364,10 @@
             </objects>
             <point key="canvasLocation" x="1187" y="-13"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Utilities Record View Controller-->
         <scene sceneID="GAX-iN-CNQ">
             <objects>
-                <viewController id="9nK-bn-hTn" sceneMemberID="viewController">
+                <viewController id="9nK-bn-hTn" customClass="AddUtilitiesRecordViewController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="05H-ga-lnb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1380,7 +1381,7 @@
                                 <color key="textColor" name="textPrimary"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="12C-vT-vLF">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="12C-vT-vLF">
                                 <rect key="frame" x="0.0" y="140" width="414" height="666"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jxD-Yp-jK8">
@@ -1546,7 +1547,7 @@
                                                                                     <constraint firstAttribute="width" constant="100" id="E38-To-FEr"/>
                                                                                 </constraints>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                                             </textField>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元/度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzh-TA-kgu">
                                                                                 <rect key="frame" x="108" y="0.0" width="33.5" height="18.5"/>
@@ -1589,7 +1590,7 @@
                                                                             <constraint firstAttribute="width" constant="150" id="I3c-mu-Leq"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                                     </textField>
                                                                 </subviews>
                                                                 <constraints>
@@ -1617,7 +1618,7 @@
                                                                             <constraint firstAttribute="width" constant="150" id="mqQ-wJ-qXt"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                                     </textField>
                                                                 </subviews>
                                                                 <constraints>
@@ -1666,7 +1667,7 @@
                                                                         <color key="textColor" name="textPrimary"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qsq-eP-9H0">
+                                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qsq-eP-9H0">
                                                                         <rect key="frame" x="282" y="13" width="100" height="18.5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="100" id="E3G-w6-W9G"/>
@@ -1724,8 +1725,9 @@
                                                                 <color key="textColor" name="textPrimary"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rFV-Qp-LH1">
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rFV-Qp-LH1">
                                                                 <rect key="frame" x="333" y="6.5" width="51" height="31"/>
+                                                                <color key="onTintColor" name="primary"/>
                                                             </switch>
                                                         </subviews>
                                                         <constraints>
@@ -1845,6 +1847,21 @@
                         <viewLayoutGuide key="safeArea" id="gsB-Yj-5f3"/>
                     </view>
                     <navigationItem key="navigationItem" id="F17-Xq-wHT"/>
+                    <connections>
+                        <outlet property="actualFeeTF" destination="Qsq-eP-9H0" id="pUd-X2-Yaw"/>
+                        <outlet property="codeTF" destination="1Hg-Zb-qPB" id="xey-a5-ZaB"/>
+                        <outlet property="companyTF" destination="k9t-0m-Aop" id="Fc6-Qi-8it"/>
+                        <outlet property="companyTypeLabel" destination="tI3-LZ-ydb" id="Lmd-UD-M1I"/>
+                        <outlet property="currentGageTF" destination="YcP-50-6cO" id="VFa-ED-dg6"/>
+                        <outlet property="currentUseLabel" destination="T6V-tM-TMN" id="BMS-jg-weR"/>
+                        <outlet property="guaranteeFee" destination="rFV-Qp-LH1" id="Zhd-Zv-QXW"/>
+                        <outlet property="lastGageTF" destination="DGr-JK-R3J" id="ym2-jm-Ajb"/>
+                        <outlet property="priceTF" destination="h1Q-h4-x6W" id="4BX-ah-8va"/>
+                        <outlet property="priceUnitLabel" destination="rzh-TA-kgu" id="a2c-Sc-Ilk"/>
+                        <outlet property="recordDateLabel" destination="6lp-BU-bu3" id="4QO-Tw-eNv"/>
+                        <outlet property="saveButton" destination="GA6-rP-NFO" id="IEp-cf-UpC"/>
+                        <outlet property="typeLabel" destination="Z1P-L6-dQt" id="em8-m7-u2j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HjH-Ec-4Bk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3687,6 +3704,7 @@
         <image name="config_remove" width="24" height="24"/>
         <image name="id_back" width="56" height="56"/>
         <image name="id_front" width="56" height="56"/>
+        <image name="more" width="18" height="4"/>
         <image name="rent" width="48" height="48"/>
         <image name="water" width="16" height="16"/>
         <namedColor name="primary">
