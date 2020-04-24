@@ -29,6 +29,7 @@ PODS:
   - "NSObject+Rx (4.4.1)":
     - RxSwift (~> 4.3)
   - PKHUD (5.3.0)
+  - Popover (1.3.0)
   - PPBadgeViewSwift (3.1.0)
   - QuickLayout (3.0.0)
   - ReachabilitySwift (5.0.0)
@@ -70,6 +71,7 @@ DEPENDENCIES:
   - Moya/RxSwift
   - "NSObject+Rx"
   - PKHUD
+  - Popover
   - PPBadgeViewSwift
   - ReachabilitySwift
   - ReactorKit
@@ -102,6 +104,7 @@ SPEC REPOS:
     - Moya
     - "NSObject+Rx"
     - PKHUD
+    - Popover
     - PPBadgeViewSwift
     - QuickLayout
     - ReachabilitySwift
@@ -137,6 +140,7 @@ SPEC CHECKSUMS:
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   "NSObject+Rx": 9884a92f19b610795c431e10b4e601913b59c9e9
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
+  Popover: 10e1d9528f81d9504df984b7b3f491292bc1822d
   PPBadgeViewSwift: 18a219a9897f418342c22dd1a54f7b18ac56546b
   QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
@@ -153,6 +157,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 821b81f83594a736e831a018f2a2ce31822ddf0b
   "UITextView+Placeholder": c407b27599ea23cca425946fee3cf1db5d547008
 
-PODFILE CHECKSUM: 75f41171097a2d027945e85fa0e6f9d0f78ded5d
+PODFILE CHECKSUM: 4aed10aedca6e29398ed88c62253d34e7a9a67d5
 
 COCOAPODS: 1.8.3

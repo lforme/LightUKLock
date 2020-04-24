@@ -41,6 +41,7 @@ target 'LightSmartLock' do
   pod 'ESTabBarController-swift'
   pod 'LTMorphingLabel'
   pod 'CBPinEntryView'
+  pod "Popover"
   
   # 动画
   pod 'lottie-ios'

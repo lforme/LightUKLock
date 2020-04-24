@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="-1103" y="50"/>
         </scene>
-        <!--View Controller-->
+        <!--Asset Detail View Controller-->
         <scene sceneID="Vbx-1d-CWl">
             <objects>
-                <viewController id="H2S-CP-QUh" sceneMemberID="viewController">
+                <viewController id="H2S-CP-QUh" customClass="AssetDetailViewController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LVz-32-MZ0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -79,6 +80,11 @@
 </string>
                                                                     <color key="titleColor" name="primary"/>
                                                                 </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="12"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <segue destination="bbH-fm-LQe" kind="show" id="71a-xM-OXr"/>
                                                                 </connections>
@@ -151,12 +157,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Qf-f6-IiC">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="128"/>
                                         <subviews>
-                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="c4K-b2-OwQ">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="c4K-b2-OwQ">
                                                 <rect key="frame" x="168.5" y="31.5" width="57.5" height="65"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1F5-IC-T6y">
                                                         <rect key="frame" x="0.0" y="0.0" width="57.5" height="40"/>
                                                         <state key="normal" image="add"/>
+                                                        <connections>
+                                                            <segue destination="U7n-NG-VIi" kind="show" id="d4q-r6-ILA"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="添加租客" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ogr-gf-3zT">
                                                         <rect key="frame" x="0.0" y="48" width="57.5" height="17"/>
@@ -166,7 +175,7 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="aMe-dh-Ajt">
+                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="aMe-dh-Ajt">
                                                 <rect key="frame" x="16" y="16" width="362" height="96"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结余" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qf7-h3-xSW">
@@ -280,6 +289,11 @@
                                             <constraint firstAttribute="bottom" secondItem="aMe-dh-Ajt" secondAttribute="bottom" constant="16" id="gQr-kC-LrR"/>
                                             <constraint firstAttribute="height" constant="128" id="jp6-3z-kuG"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7e-i9-Tft">
                                         <rect key="frame" x="0.0" y="138" width="394" height="44"/>
@@ -323,10 +337,15 @@
                                             <constraint firstItem="zBa-tM-ots" firstAttribute="leading" secondItem="V7e-i9-Tft" secondAttribute="leading" id="eFD-Mj-fDA"/>
                                             <constraint firstAttribute="trailing" secondItem="zBa-tM-ots" secondAttribute="trailing" id="lQJ-5j-cuJ"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFq-7X-geu">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFq-7X-geu" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="806" width="414" height="56"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="j4m-6B-npe">
@@ -339,6 +358,11 @@
                                                 <state key="normal" title="发布房源">
                                                     <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LaP-7c-VyV">
                                                 <rect key="frame" x="201" y="0.0" width="181" height="46"/>
@@ -348,6 +372,11 @@
                                                 <state key="normal" title="添加租客">
                                                     <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <segue destination="U7n-NG-VIi" kind="show" id="6vt-KP-OVi"/>
                                                 </connections>
@@ -380,25 +409,27 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xa4-81-PIR"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zQ0-nT-MfI"/>
+                    <navigationItem key="navigationItem" id="zQ0-nT-MfI">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="TA8-IM-pAr">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jUV-NF-H1o">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="moreButton" destination="jUV-NF-H1o" id="35p-sE-W3K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szz-oY-oVx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="Bmz-LC-cSd">
-                    <rect key="frame" x="0.0" y="0.0" width="382" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="128" id="gZa-0f-qXg"/>
-                    </constraints>
-                    <viewLayoutGuide key="safeArea" id="LUi-SP-qaV"/>
-                </view>
             </objects>
             <point key="canvasLocation" x="-157" y="50"/>
         </scene>
-        <!--View Controller-->
+        <!--Asset Facility List View Controller-->
         <scene sceneID="Wde-2X-kiY">
             <objects>
-                <viewController id="Ky6-cz-ymB" sceneMemberID="viewController">
+                <viewController id="Ky6-cz-ymB" customClass="AssetFacilityListViewController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y1o-1k-2vS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -412,43 +443,56 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDg-sZ-Jxp">
                                 <rect key="frame" x="0.0" y="133" width="414" height="729"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9F-9Z-Gye">
-                                        <rect key="frame" x="16" y="0.0" width="382" height="44"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="配置信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAK-MO-aBq">
-                                                <rect key="frame" x="0.0" y="0.0" width="57.5" height="44"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" name="textPrimary"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdp-lg-lwW">
-                                                <rect key="frame" x="57.5" y="0.0" width="324.5" height="44"/>
-                                                <state key="normal" image="config_add"/>
-                                                <connections>
-                                                    <segue destination="2J5-Pp-4bg" kind="show" id="KmO-k6-Js0"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="BGR-td-UYJ"/>
-                                        </constraints>
-                                    </stackView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rBS-NL-TrR">
-                                        <rect key="frame" x="0.0" y="44" width="414" height="629"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rBS-NL-TrR">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="673"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <view key="tableHeaderView" contentMode="scaleToFill" id="7GQ-vk-cIL">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9F-9Z-Gye">
+                                                    <rect key="frame" x="16" y="0.0" width="382" height="44"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="配置信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAK-MO-aBq">
+                                                            <rect key="frame" x="0.0" y="0.0" width="57.5" height="44"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" name="textPrimary"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdp-lg-lwW">
+                                                            <rect key="frame" x="57.5" y="0.0" width="324.5" height="44"/>
+                                                            <state key="normal" image="config_add"/>
+                                                            <connections>
+                                                                <segue destination="2J5-Pp-4bg" kind="show" identifier="AddAssetFacility" id="KmO-k6-Js0"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="BGR-td-UYJ"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" name="tableViewBackground"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="d9F-9Z-Gye" secondAttribute="trailing" constant="16" id="TEZ-Yr-sSx"/>
+                                                <constraint firstItem="d9F-9Z-Gye" firstAttribute="leading" secondItem="7GQ-vk-cIL" secondAttribute="leading" constant="16" id="ct1-9N-4gH"/>
+                                                <constraint firstAttribute="bottom" secondItem="d9F-9Z-Gye" secondAttribute="bottom" id="gev-bU-5QI"/>
+                                                <constraint firstItem="d9F-9Z-Gye" firstAttribute="top" secondItem="7GQ-vk-cIL" secondAttribute="top" id="syZ-AQ-IvW"/>
+                                            </constraints>
+                                        </view>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="6Ni-o0-yLK">
-                                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AssetFacilityListCell" id="6Ni-o0-yLK" customClass="AssetFacilityListCell" customModule="门锁助手个人版" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="72" width="414" height="46.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Ni-o0-yLK" id="odo-rj-OLO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="46.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KiC-hr-e29">
-                                                            <rect key="frame" x="16" y="0.0" width="382" height="44"/>
+                                                            <rect key="frame" x="16" y="8" width="382" height="30.5"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rZJ-tH-1DI">
-                                                                    <rect key="frame" x="0.0" y="10" width="100" height="24"/>
+                                                                    <rect key="frame" x="0.0" y="3.5" width="100" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="100" id="Zcv-bo-uVs"/>
                                                                     </constraints>
@@ -459,15 +503,15 @@
                                                                     </state>
                                                                 </button>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hee-vt-FXT">
-                                                                    <rect key="frame" x="110" y="7" width="2" height="30"/>
+                                                                    <rect key="frame" x="110" y="0.5" width="1" height="30"/>
                                                                     <color key="backgroundColor" name="tableViewBackground"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="2" id="19p-wi-GAt"/>
+                                                                        <constraint firstAttribute="width" constant="1" id="19p-wi-GAt"/>
                                                                         <constraint firstAttribute="height" constant="30" id="TbK-jq-M2V"/>
                                                                     </constraints>
                                                                 </view>
                                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入品牌/新旧程度/数量等" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDc-G7-4ac">
-                                                                    <rect key="frame" x="122" y="13" width="260" height="18.5"/>
+                                                                    <rect key="frame" x="121" y="6" width="261" height="18.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
@@ -475,16 +519,20 @@
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="KiC-hr-e29" firstAttribute="top" secondItem="odo-rj-OLO" secondAttribute="top" id="8od-tk-Ozt"/>
+                                                        <constraint firstItem="KiC-hr-e29" firstAttribute="top" secondItem="odo-rj-OLO" secondAttribute="top" constant="8" id="8od-tk-Ozt"/>
                                                         <constraint firstAttribute="trailing" secondItem="KiC-hr-e29" secondAttribute="trailing" constant="16" id="96Z-gi-si8"/>
                                                         <constraint firstItem="KiC-hr-e29" firstAttribute="leading" secondItem="odo-rj-OLO" secondAttribute="leading" constant="16" id="CbN-VK-fPu"/>
-                                                        <constraint firstAttribute="bottom" secondItem="KiC-hr-e29" secondAttribute="bottom" id="zZc-Kb-TCc"/>
+                                                        <constraint firstAttribute="bottom" secondItem="KiC-hr-e29" secondAttribute="bottom" constant="8" id="zZc-Kb-TCc"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="deleteButton" destination="rZJ-tH-1DI" id="6w4-1j-xKz"/>
+                                                    <outlet property="remarkTF" destination="hDc-G7-4ac" id="eaI-pU-MCm"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2u8-eK-pGZ">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2u8-eK-pGZ" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="673" width="414" height="56"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="68p-86-mOR">
@@ -496,6 +544,17 @@
                                                         <state key="normal" title="发送给租客">
                                                             <color key="titleColor" name="primary"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="24"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="primary"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3E-Qg-wO9">
                                                         <rect key="frame" x="201" y="0.0" width="181" height="46"/>
@@ -504,6 +563,11 @@
                                                         <state key="normal" title="保存">
                                                             <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="24"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -518,18 +582,14 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" name="tableViewBackground"/>
                                 <constraints>
-                                    <constraint firstItem="rBS-NL-TrR" firstAttribute="top" secondItem="d9F-9Z-Gye" secondAttribute="bottom" id="IQK-1C-Sl0"/>
                                     <constraint firstAttribute="trailing" secondItem="rBS-NL-TrR" secondAttribute="trailing" id="JnK-sX-rfW"/>
                                     <constraint firstItem="rBS-NL-TrR" firstAttribute="leading" secondItem="SDg-sZ-Jxp" secondAttribute="leading" id="Uvs-Gv-lWO"/>
                                     <constraint firstAttribute="trailing" secondItem="2u8-eK-pGZ" secondAttribute="trailing" id="YLs-aH-5PE"/>
                                     <constraint firstItem="2u8-eK-pGZ" firstAttribute="leading" secondItem="SDg-sZ-Jxp" secondAttribute="leading" id="cbo-gI-qO4"/>
                                     <constraint firstItem="2u8-eK-pGZ" firstAttribute="top" secondItem="rBS-NL-TrR" secondAttribute="bottom" id="d4c-T9-AuJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="d9F-9Z-Gye" secondAttribute="trailing" constant="16" id="fwF-fU-hzk"/>
                                     <constraint firstAttribute="bottom" secondItem="2u8-eK-pGZ" secondAttribute="bottom" id="g99-1w-yjz"/>
-                                    <constraint firstItem="d9F-9Z-Gye" firstAttribute="top" secondItem="SDg-sZ-Jxp" secondAttribute="top" id="qbx-yM-ncg"/>
-                                    <constraint firstItem="d9F-9Z-Gye" firstAttribute="leading" secondItem="SDg-sZ-Jxp" secondAttribute="leading" constant="16" id="vHA-0e-g5X"/>
+                                    <constraint firstItem="rBS-NL-TrR" firstAttribute="top" secondItem="SDg-sZ-Jxp" secondAttribute="top" id="jvE-Uq-Yfh"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -546,15 +606,21 @@
                         <viewLayoutGuide key="safeArea" id="fIV-yQ-qjf"/>
                     </view>
                     <navigationItem key="navigationItem" id="lPk-tM-Ql4"/>
+                    <connections>
+                        <outlet property="bottomContainer" destination="2u8-eK-pGZ" id="cqY-rw-S5W"/>
+                        <outlet property="saveButton" destination="o3E-Qg-wO9" id="vcZ-dT-RdY"/>
+                        <outlet property="sendButton" destination="rQB-OL-QG3" id="FQH-84-FVB"/>
+                        <outlet property="tableView" destination="rBS-NL-TrR" id="j2Y-Rd-PO9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwL-EO-arY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1187" y="-686"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Asset Facility View Controller-->
         <scene sceneID="4P6-hm-m26">
             <objects>
-                <viewController id="2J5-Pp-4bg" sceneMemberID="viewController">
+                <viewController id="2J5-Pp-4bg" customClass="AddAssetFacilityViewController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rc5-WP-S9W">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -566,7 +632,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="D9X-1G-Jg5">
-                                <rect key="frame" x="0.0" y="133" width="414" height="184"/>
+                                <rect key="frame" x="0.0" y="133" width="414" height="216"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bxT-xU-2zh">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -590,17 +656,16 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ot-gw-NGj">
-                                        <rect key="frame" x="0.0" y="44" width="414" height="140"/>
+                                        <rect key="frame" x="0.0" y="44" width="414" height="172"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RIx-bA-c3q">
-                                                <rect key="frame" x="16" y="16" width="382" height="108"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="RIx-bA-c3q">
+                                                <rect key="frame" x="16" y="16" width="382" height="140"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="umz-TK-l2A">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="36"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qra-6P-hc7">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qra-6P-hc7" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="74" height="36"/>
-                                                                <color key="backgroundColor" name="primary"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="74" id="ZVt-uC-vrY"/>
                                                                     <constraint firstAttribute="height" constant="36" id="b3p-5R-zaj"/>
@@ -609,8 +674,11 @@
                                                                 <state key="normal" title="空调">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="jzX-vO-aF2"/>
+                                                                </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUz-Kg-b6G">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUz-Kg-b6G" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="102.5" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="74" id="af3-yT-pB3"/>
@@ -620,8 +688,11 @@
                                                                 <state key="normal" title="冰箱">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="gwp-5T-oom"/>
+                                                                </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ae1-eA-xWY">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ae1-eA-xWY" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="205.5" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="74" id="AHw-2m-YNw"/>
@@ -631,8 +702,11 @@
                                                                 <state key="normal" title="电视机">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="V04-Eg-pIc"/>
+                                                                </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2B-7C-wRh">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2B-7C-wRh" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="308" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="36" id="CPd-sx-Koa"/>
@@ -642,13 +716,16 @@
                                                                 <state key="normal" title="洗衣机">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="6gJ-61-zM7"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="agP-hK-4Yq">
-                                                        <rect key="frame" x="0.0" y="36" width="382" height="36"/>
+                                                        <rect key="frame" x="0.0" y="52" width="382" height="36"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEc-4c-eZj">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEc-4c-eZj" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="74" id="403-ZG-rpC"/>
@@ -658,8 +735,11 @@
                                                                 <state key="normal" title="热水器">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="NUZ-ez-mjT"/>
+                                                                </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJE-85-aEa">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJE-85-aEa" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="102.5" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="36" id="Af7-ej-HRR"/>
@@ -669,8 +749,11 @@
                                                                 <state key="normal" title="油烟机">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="YZq-E4-fjk"/>
+                                                                </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="276-FB-ebx">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="276-FB-ebx" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="205.5" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="74" id="2hK-rY-ibm"/>
@@ -680,8 +763,11 @@
                                                                 <state key="normal" title="沙发">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="60G-k8-12P"/>
+                                                                </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qle-tp-9uy">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qle-tp-9uy" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="308" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="74" id="D12-Hn-Qmy"/>
@@ -691,13 +777,16 @@
                                                                 <state key="normal" title="桌子">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="JRR-wp-oOF"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="3Ao-Eo-Fg4">
-                                                        <rect key="frame" x="0.0" y="72" width="382" height="36"/>
+                                                        <rect key="frame" x="0.0" y="104" width="382" height="36"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MuX-2X-Tt4">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MuX-2X-Tt4" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="36" id="Tzm-3S-WDU"/>
@@ -707,8 +796,11 @@
                                                                 <state key="normal" title="椅子">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="CNe-Fp-35g"/>
+                                                                </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgi-Xp-9gt">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgi-Xp-9gt" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="102.5" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="74" id="MwC-fn-Qbq"/>
@@ -718,8 +810,11 @@
                                                                 <state key="normal" title="床">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="SSG-VF-vBk"/>
+                                                                </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QW9-ZY-ehx">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QW9-ZY-ehx" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="205.5" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="36" id="iO9-zF-Q1y"/>
@@ -729,8 +824,11 @@
                                                                 <state key="normal" title="衣柜">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="kxD-Zh-GLn"/>
+                                                                </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPe-0E-ZVC">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPe-0E-ZVC" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="308" y="0.0" width="74" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="74" id="Tu0-Hr-j5x"/>
@@ -740,6 +838,9 @@
                                                                 <state key="normal" title="梳妆台">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="Pi0-lF-sgn"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -757,7 +858,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ta-CW-HyQ">
-                                <rect key="frame" x="0.0" y="317" width="414" height="545"/>
+                                <rect key="frame" x="0.0" y="349" width="414" height="513"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sff-yX-kb8">
                                         <rect key="frame" x="16" y="0.0" width="382" height="44"/>
@@ -777,8 +878,92 @@
                                             <constraint firstAttribute="height" constant="44" id="Gsy-OH-Lnw"/>
                                         </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FIY-lN-3Ch">
-                                        <rect key="frame" x="0.0" y="489" width="414" height="56"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rW6-2b-wg8">
+                                        <rect key="frame" x="0.0" y="44" width="414" height="413"/>
+                                        <subviews>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Df-3q-1cL">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="413"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="5" minimumInteritemSpacing="5" id="uno-oR-EPl" customClass="AlignedCollectionViewFlowLayout" customModule="AlignedCollectionViewFlowLayout">
+                                                    <size key="itemSize" width="128" height="128"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddAssetFacilityCell" id="sa9-qX-ybm" customClass="AddAssetFacilityCell" customModule="门锁助手个人版" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="10" width="86" height="48"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="b3l-IX-feR">
+                                                            <rect key="frame" x="0.0" y="0.0" width="86" height="48"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfZ-Hf-3pO">
+                                                                    <rect key="frame" x="12" y="12" width="62" height="24"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="衣柜" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2GG-dA-Ylt">
+                                                                            <rect key="frame" x="8" y="4" width="46" height="16"/>
+                                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                                            <color key="textColor" name="textPrimary"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstItem="2GG-dA-Ylt" firstAttribute="leading" secondItem="xfZ-Hf-3pO" secondAttribute="leading" constant="8" id="3im-6j-IxY"/>
+                                                                        <constraint firstItem="2GG-dA-Ylt" firstAttribute="top" secondItem="xfZ-Hf-3pO" secondAttribute="top" constant="4" id="kTA-ad-fo5"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="2GG-dA-Ylt" secondAttribute="bottom" constant="4" id="l4i-No-OGm"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="2GG-dA-Ylt" secondAttribute="trailing" constant="8" id="sgC-Ec-pde"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <real key="value" value="4"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                            <real key="value" value="1"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                            <color key="value" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </view>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UuP-iH-Bno">
+                                                                    <rect key="frame" x="62" y="0.0" width="24" height="24"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="24" id="0IZ-zI-LaB"/>
+                                                                        <constraint firstAttribute="height" constant="24" id="pqE-Te-8WM"/>
+                                                                    </constraints>
+                                                                    <state key="normal" image="close"/>
+                                                                </button>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="xfZ-Hf-3pO" firstAttribute="top" secondItem="b3l-IX-feR" secondAttribute="top" constant="12" id="Mo0-3r-CFG"/>
+                                                                <constraint firstAttribute="trailing" secondItem="xfZ-Hf-3pO" secondAttribute="trailing" constant="12" id="S3a-Ll-N0b"/>
+                                                                <constraint firstAttribute="trailing" secondItem="UuP-iH-Bno" secondAttribute="trailing" id="SJe-St-Wt6"/>
+                                                                <constraint firstItem="xfZ-Hf-3pO" firstAttribute="leading" secondItem="b3l-IX-feR" secondAttribute="leading" constant="12" id="aNS-jO-uU9"/>
+                                                                <constraint firstAttribute="bottom" secondItem="xfZ-Hf-3pO" secondAttribute="bottom" constant="12" id="lIU-K5-Gfc"/>
+                                                                <constraint firstItem="UuP-iH-Bno" firstAttribute="top" secondItem="b3l-IX-feR" secondAttribute="top" id="yCB-Ds-S93"/>
+                                                            </constraints>
+                                                        </collectionViewCellContentView>
+                                                        <size key="customSize" width="86" height="48"/>
+                                                        <connections>
+                                                            <outlet property="deleteButton" destination="UuP-iH-Bno" id="AIN-Mi-8IC"/>
+                                                            <outlet property="textLabel" destination="2GG-dA-Ylt" id="5y9-dM-Yi0"/>
+                                                        </connections>
+                                                    </collectionViewCell>
+                                                </cells>
+                                            </collectionView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="3Df-3q-1cL" firstAttribute="top" secondItem="rW6-2b-wg8" secondAttribute="top" id="2CT-Fg-FvF"/>
+                                            <constraint firstAttribute="trailing" secondItem="3Df-3q-1cL" secondAttribute="trailing" id="JYF-FT-8JC"/>
+                                            <constraint firstAttribute="bottom" secondItem="3Df-3q-1cL" secondAttribute="bottom" id="VXv-O6-7f6"/>
+                                            <constraint firstItem="3Df-3q-1cL" firstAttribute="leading" secondItem="rW6-2b-wg8" secondAttribute="leading" id="tVq-6m-vGd"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FIY-lN-3Ch" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="457" width="414" height="56"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="TBG-2y-DnN">
                                                 <rect key="frame" x="16" y="5" width="382" height="46"/>
@@ -790,6 +975,14 @@
                                                         <state key="normal" title="保存">
                                                             <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="24"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="save:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="imq-Kr-Lzl"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -801,13 +994,6 @@
                                             <constraint firstAttribute="height" constant="56" id="ZN1-Oh-p8a"/>
                                             <constraint firstItem="TBG-2y-DnN" firstAttribute="top" secondItem="FIY-lN-3Ch" secondAttribute="top" constant="5" id="f1p-mz-ybh"/>
                                             <constraint firstAttribute="trailing" secondItem="TBG-2y-DnN" secondAttribute="trailing" constant="16" id="kOH-ep-ivU"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rW6-2b-wg8">
-                                        <rect key="frame" x="0.0" y="44" width="414" height="128"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="128" id="nAB-Xx-fiZ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -822,6 +1008,7 @@
                                     <constraint firstAttribute="trailing" secondItem="rW6-2b-wg8" secondAttribute="trailing" id="gD3-3J-lru"/>
                                     <constraint firstItem="rW6-2b-wg8" firstAttribute="top" secondItem="sff-yX-kb8" secondAttribute="bottom" id="kPo-vF-Hrp"/>
                                     <constraint firstAttribute="trailing" secondItem="sff-yX-kb8" secondAttribute="trailing" constant="16" id="opI-UI-F6U"/>
+                                    <constraint firstItem="FIY-lN-3Ch" firstAttribute="top" secondItem="rW6-2b-wg8" secondAttribute="bottom" id="qL4-1b-Bhi"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -841,6 +1028,22 @@
                         <viewLayoutGuide key="safeArea" id="Z4v-HQ-zZw"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZL7-OT-3rn"/>
+                    <connections>
+                        <outlet property="addButton" destination="3IB-Mc-Lop" id="zab-0f-dfL"/>
+                        <outlet property="collectionView" destination="3Df-3q-1cL" id="jUA-ca-f2B"/>
+                        <outletCollection property="configButtons" destination="Qra-6P-hc7" collectionClass="NSMutableArray" id="RLJ-OJ-zf3"/>
+                        <outletCollection property="configButtons" destination="ae1-eA-xWY" collectionClass="NSMutableArray" id="iQy-Q1-U5u"/>
+                        <outletCollection property="configButtons" destination="wUz-Kg-b6G" collectionClass="NSMutableArray" id="Koq-gK-RFF"/>
+                        <outletCollection property="configButtons" destination="g2B-7C-wRh" collectionClass="NSMutableArray" id="oGr-3R-rQg"/>
+                        <outletCollection property="configButtons" destination="MEc-4c-eZj" collectionClass="NSMutableArray" id="Lts-bq-fcr"/>
+                        <outletCollection property="configButtons" destination="KJE-85-aEa" collectionClass="NSMutableArray" id="PSN-AS-YSH"/>
+                        <outletCollection property="configButtons" destination="276-FB-ebx" collectionClass="NSMutableArray" id="9dt-F1-pAa"/>
+                        <outletCollection property="configButtons" destination="Qle-tp-9uy" collectionClass="NSMutableArray" id="uf7-Ic-ma6"/>
+                        <outletCollection property="configButtons" destination="MuX-2X-Tt4" collectionClass="NSMutableArray" id="Qki-OR-JdT"/>
+                        <outletCollection property="configButtons" destination="kgi-Xp-9gt" collectionClass="NSMutableArray" id="nWE-nc-cqf"/>
+                        <outletCollection property="configButtons" destination="QW9-ZY-ehx" collectionClass="NSMutableArray" id="kqA-OR-mMO"/>
+                        <outletCollection property="configButtons" destination="YPe-0E-ZVC" collectionClass="NSMutableArray" id="gxb-Mv-6V8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xr-kI-Lc3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -922,6 +1125,11 @@
                                             <constraint firstAttribute="bottom" secondItem="0EG-30-lqU" secondAttribute="bottom" id="P2d-zc-vrI"/>
                                             <constraint firstItem="0EG-30-lqU" firstAttribute="leading" secondItem="mzQ-iX-Pbt" secondAttribute="leading" constant="16" id="oeE-vW-WnC"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hka-gh-Iv6">
                                         <rect key="frame" x="8" y="60" width="398" height="88"/>
@@ -974,8 +1182,13 @@
                                             <constraint firstItem="mCr-Cd-VyY" firstAttribute="top" secondItem="hka-gh-Iv6" secondAttribute="top" id="m2a-jl-PIX"/>
                                             <constraint firstAttribute="height" constant="88" id="qXJ-LN-LSU"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aos-xc-OdC">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aos-xc-OdC" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="665" width="414" height="56"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NRx-ll-7nT">
@@ -988,6 +1201,11 @@
                                                         <state key="normal" title="记一笔">
                                                             <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="24"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <segue destination="9nK-bn-hTn" kind="show" id="Rww-sH-TKf"/>
                                                         </connections>
@@ -1262,10 +1480,11 @@
                                                                 <color key="textColor" red="1" green="0.67843137254901964" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lp-BU-bu3">
-                                                                <rect key="frame" x="64" y="7.5" width="318" height="29"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lp-BU-bu3">
+                                                                <rect key="frame" x="64" y="13.5" width="318" height="17"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <state key="normal" title="2019-11-10">
+                                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
+                                                                <state key="normal" title="2019-11-10" image="arrow">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
                                                             </button>
@@ -1563,7 +1782,7 @@
                                     <constraint firstAttribute="trailing" secondItem="jxD-Yp-jK8" secondAttribute="trailing" id="jRF-YP-lZ8"/>
                                 </constraints>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2yp-Au-RR0">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2yp-Au-RR0" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="806" width="414" height="56"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Dv8-0J-TR2">
@@ -1576,6 +1795,11 @@
                                                 <state key="normal" title="保存">
                                                     <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1685,18 +1909,10 @@
                                                                         <color key="textColor" name="textPrimary"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuF-1r-iAg">
-                                                                        <rect key="frame" x="57.5" y="13.5" width="6.5" height="17"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSE-FV-bfa">
-                                                                        <rect key="frame" x="64" y="0.0" width="318" height="44"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <state key="normal">
-                                                                            <string key="title">合租房源请选择
-</string>
+                                                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSE-FV-bfa">
+                                                                        <rect key="frame" x="57.5" y="14" width="324.5" height="16"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                        <state key="normal" title="合租房源请选择" image="arrow">
                                                                             <color key="titleColor" name="textPrimary"/>
                                                                         </state>
                                                                     </button>
@@ -1922,15 +2138,15 @@
                                                                         <state key="normal" image="config_remove"/>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="王林 18587677754" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vm-Ax-3qK">
-                                                                        <rect key="frame" x="32" y="13.5" width="249" height="17"/>
+                                                                        <rect key="frame" x="32" y="13.5" width="235" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <color key="textColor" name="textPrimary"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OzJ-I7-ZHb">
-                                                                        <rect key="frame" x="289" y="8" width="93" height="28"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                        <state key="normal" title="未填写身份证号">
+                                                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OzJ-I7-ZHb">
+                                                                        <rect key="frame" x="275" y="13.5" width="107" height="17"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <state key="normal" title="未填写身份证号" image="arrow">
                                                                             <color key="titleColor" name="textPrimary"/>
                                                                         </state>
                                                                     </button>
@@ -1985,15 +2201,15 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JR-8m-mit">
-                                                                        <rect key="frame" x="57.5" y="13.5" width="281.5" height="17"/>
+                                                                        <rect key="frame" x="57.5" y="13.5" width="274.5" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keV-U1-F98">
-                                                                        <rect key="frame" x="339" y="7.5" width="43" height="29"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keV-U1-F98">
+                                                                        <rect key="frame" x="332" y="13.5" width="50" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <state key="normal" title="请选择">
+                                                                        <state key="normal" title="请选择" image="arrow">
                                                                             <color key="titleColor" name="textPrimary"/>
                                                                         </state>
                                                                     </button>
@@ -2012,15 +2228,15 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xr-T5-pb4">
-                                                                        <rect key="frame" x="57.5" y="13.5" width="281.5" height="17"/>
+                                                                        <rect key="frame" x="57.5" y="13.5" width="274.5" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKS-bP-6dh">
-                                                                        <rect key="frame" x="339" y="7.5" width="43" height="29"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKS-bP-6dh">
+                                                                        <rect key="frame" x="332" y="13.5" width="50" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <state key="normal" title="请选择">
+                                                                        <state key="normal" title="请选择" image="arrow">
                                                                             <color key="titleColor" name="textPrimary"/>
                                                                         </state>
                                                                     </button>
@@ -2099,15 +2315,15 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i66-JK-thU">
-                                                                        <rect key="frame" x="57.5" y="13.5" width="284.5" height="17"/>
+                                                                        <rect key="frame" x="57.5" y="13.5" width="277.5" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJl-u4-Gbj">
-                                                                        <rect key="frame" x="342" y="0.0" width="40" height="44"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJl-u4-Gbj">
+                                                                        <rect key="frame" x="335" y="5" width="47" height="34"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <state key="normal">
+                                                                        <state key="normal" image="arrow">
                                                                             <string key="title">1月/次
 </string>
                                                                             <color key="titleColor" name="textPrimary"/>
@@ -2189,17 +2405,15 @@
                                                                 <rect key="frame" x="0.0" y="306" width="382" height="44"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="租金递增" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vF3-Ce-pt9">
-                                                                        <rect key="frame" x="0.0" y="13.5" width="310" height="17"/>
+                                                                        <rect key="frame" x="0.0" y="13.5" width="303" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <color key="textColor" name="textPrimary"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZ2-Ce-NGl">
-                                                                        <rect key="frame" x="310" y="0.0" width="72" height="44"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZ2-Ce-NGl">
+                                                                        <rect key="frame" x="303" y="13.5" width="79" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <state key="normal">
-                                                                            <string key="title">无递增设置
-</string>
+                                                                        <state key="normal" title="无递增设置" image="arrow">
                                                                             <color key="titleColor" name="textPrimary"/>
                                                                         </state>
                                                                         <connections>
@@ -2275,15 +2489,15 @@
                                                                 <rect key="frame" x="0.0" y="44" width="382" height="44"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="提前时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08M-0v-s91">
-                                                                        <rect key="frame" x="0.0" y="13.5" width="352" height="17"/>
+                                                                        <rect key="frame" x="0.0" y="13.5" width="345" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <color key="textColor" name="textPrimary"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yg2-a2-Oc6">
-                                                                        <rect key="frame" x="352" y="7.5" width="30" height="29"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yg2-a2-Oc6">
+                                                                        <rect key="frame" x="345" y="13.5" width="37" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <state key="normal" title="15天">
+                                                                        <state key="normal" title="15天" image="arrow">
                                                                             <color key="titleColor" name="textPrimary"/>
                                                                         </state>
                                                                     </button>
@@ -2377,7 +2591,7 @@
                                     <constraint firstAttribute="bottom" secondItem="nf6-7b-mhR" secondAttribute="bottom" id="biB-aQ-tvf"/>
                                 </constraints>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yqo-r8-vRr">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yqo-r8-vRr" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="806" width="414" height="56"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NSI-8E-2Hb">
@@ -2390,6 +2604,11 @@
                                                 <state key="normal" title="下一步">
                                                     <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <segue destination="I9Z-qh-wAZ" kind="show" id="4tB-gc-TNA"/>
                                                 </connections>
@@ -2484,15 +2703,15 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3l-un-Rdj">
-                                                                <rect key="frame" x="86" y="13.5" width="256" height="17"/>
+                                                                <rect key="frame" x="86" y="13.5" width="249" height="17"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0k-VN-MYF">
-                                                                <rect key="frame" x="342" y="7.5" width="40" height="29"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0k-VN-MYF">
+                                                                <rect key="frame" x="335" y="13.5" width="47" height="17"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <state key="normal" title="1月/次">
+                                                                <state key="normal" title="1月/次" image="arrow">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
                                                             </button>
@@ -2657,7 +2876,7 @@
                                             </tableView>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DwP-OT-R07">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DwP-OT-R07" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="658" width="414" height="56"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Vkx-iZ-J4T">
@@ -2678,8 +2897,18 @@
                                                         <state key="normal" title="保存">
                                                             <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="24"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </button>
                                                 </subviews>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -2769,10 +2998,11 @@
                                                                         <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mo0-lT-Bcf">
-                                                                        <rect key="frame" x="35.5" y="7.5" width="346.5" height="29"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mo0-lT-Bcf">
+                                                                        <rect key="frame" x="35.5" y="13.5" width="346.5" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <state key="normal" title="成都">
+                                                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
+                                                                        <state key="normal" title="成都" image="arrow">
                                                                             <color key="titleColor" name="textPrimary"/>
                                                                         </state>
                                                                     </button>
@@ -2811,12 +3041,11 @@
                                                                                 <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npv-D5-aWT">
-                                                                                <rect key="frame" x="68.5" y="0.0" width="313.5" height="44"/>
+                                                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="249" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npv-D5-aWT">
+                                                                                <rect key="frame" x="68.5" y="13.5" width="313.5" height="17"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <state key="normal">
-                                                                                    <string key="title">保利中心二期
-</string>
+                                                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
+                                                                                <state key="normal" title="保利中心二期" image="arrow">
                                                                                     <color key="titleColor" name="textPrimary"/>
                                                                                 </state>
                                                                             </button>
@@ -2836,17 +3065,11 @@
                                                                         <rect key="frame" x="0.0" y="55" width="382" height="44"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufE-MY-SeB">
-                                                                                <rect key="frame" x="0.0" y="13.5" width="71.5" height="17"/>
+                                                                                <rect key="frame" x="0.0" y="13.5" width="232" height="17"/>
                                                                                 <string key="text">楼栋单元号
 </string>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <color key="textColor" name="textPrimary"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUz-tb-U1C">
-                                                                                <rect key="frame" x="71.5" y="13.5" width="160.5" height="17"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1栋1单元" placeholder="填写上期读数" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mb7-d7-pEu">
@@ -2873,15 +3096,9 @@
                                                                         <rect key="frame" x="0.0" y="110" width="382" height="44"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="楼层" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SS-fV-2gC">
-                                                                                <rect key="frame" x="0.0" y="13.5" width="29" height="17"/>
+                                                                                <rect key="frame" x="0.0" y="13.5" width="232" height="17"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <color key="textColor" name="textPrimary"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZh-Iu-Upi">
-                                                                                <rect key="frame" x="29" y="13.5" width="203" height="17"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12层" placeholder="填写本期读数" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wjr-Ry-Vdb">
@@ -2990,10 +3207,11 @@
                                                                                 <color key="textColor" name="textPrimary"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gx5-b1-8fq">
-                                                                                <rect key="frame" x="80" y="7.5" width="302" height="29"/>
+                                                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="249" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gx5-b1-8fq">
+                                                                                <rect key="frame" x="80" y="13.5" width="302" height="17"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <state key="normal" title="4室2厅2卫">
+                                                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
+                                                                                <state key="normal" title="4室2厅2卫" image="arrow">
                                                                                     <color key="titleColor" name="textPrimary"/>
                                                                                 </state>
                                                                             </button>
@@ -3036,7 +3254,7 @@
                                     <constraint firstAttribute="trailing" secondItem="igG-bX-Y2C" secondAttribute="trailing" id="XQ3-Tf-iOz"/>
                                 </constraints>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VaF-Go-K32">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VaF-Go-K32" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="806" width="414" height="56"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="drF-QO-qAZ">
@@ -3049,6 +3267,11 @@
                                                 <state key="normal" title="保存">
                                                     <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -3148,6 +3371,11 @@
                                                                     <constraint firstAttribute="trailing" secondItem="yJd-FQ-cot" secondAttribute="trailing" constant="16" id="gu5-z5-2os"/>
                                                                     <constraint firstAttribute="bottom" secondItem="yJd-FQ-cot" secondAttribute="bottom" constant="16" id="ybe-v1-Tgl"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="8"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3246,10 +3474,10 @@
                                                                                 <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tx0-2b-Npx">
-                                                                                <rect key="frame" x="64" y="0.0" width="318" height="44"/>
+                                                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="249" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tx0-2b-Npx">
+                                                                                <rect key="frame" x="64" y="5" width="318" height="34"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <state key="normal">
+                                                                                <state key="normal" image="arrow">
                                                                                     <string key="title">保利中心二期
 </string>
                                                                                     <color key="titleColor" name="textPrimary"/>
@@ -3284,10 +3512,10 @@
                                                                                 <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q38-P7-zrl">
-                                                                                <rect key="frame" x="64" y="0.0" width="318" height="44"/>
+                                                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="249" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q38-P7-zrl">
+                                                                                <rect key="frame" x="64" y="5" width="318" height="34"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <state key="normal">
+                                                                                <state key="normal" image="arrow">
                                                                                     <string key="title">按金额
 </string>
                                                                                     <color key="titleColor" name="textPrimary"/>
@@ -3377,7 +3605,7 @@
                                     <constraint firstAttribute="trailing" secondItem="XN1-cb-fdK" secondAttribute="trailing" id="ufH-c0-jfE"/>
                                 </constraints>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYe-UG-RqR">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYe-UG-RqR" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="806" width="414" height="56"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pYF-ud-Qv1">
@@ -3390,6 +3618,11 @@
                                                 <state key="normal" title="保存">
                                                     <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -3427,9 +3660,14 @@
             <point key="canvasLocation" x="2025" y="646"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="6vt-KP-OVi"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="add" width="40" height="40"/>
+        <image name="arrow" width="7" height="11"/>
         <image name="auth" width="16" height="16"/>
+        <image name="close" width="24" height="24"/>
         <image name="config" width="16" height="16"/>
         <image name="config_add" width="24" height="24"/>
         <image name="config_remove" width="24" height="24"/>
