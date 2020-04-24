@@ -1049,10 +1049,10 @@
             </objects>
             <point key="canvasLocation" x="2025" y="-686"/>
         </scene>
-        <!--View Controller-->
+        <!--Utilities Records View Controller-->
         <scene sceneID="Obs-8e-feX">
             <objects>
-                <viewController id="mKa-E3-O0H" sceneMemberID="viewController">
+                <viewController id="mKa-E3-O0H" customClass="UtilitiesRecordsViewController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rEu-i5-W5H">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1075,7 +1075,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mKP-qf-FXc">
                                                         <rect key="frame" x="0.0" y="0.0" width="139" height="44"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nwz-tE-zT2">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nwz-tE-zT2" customClass="UtilitiesButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="7.5" width="30" height="29"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <state key="normal" title="水费">
@@ -1090,7 +1090,7 @@
                                                                     <constraint firstAttribute="height" constant="20" id="KPW-dZ-c7G"/>
                                                                 </constraints>
                                                             </view>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gST-Ed-koJ">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gST-Ed-koJ" customClass="UtilitiesButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="48" y="7.5" width="30" height="29"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <state key="normal" title="电费">
@@ -1105,7 +1105,7 @@
                                                                     <constraint firstAttribute="height" constant="20" id="t3M-ny-V1B"/>
                                                                 </constraints>
                                                             </view>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1F-sb-bz7">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1F-sb-bz7" customClass="UtilitiesButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="96" y="7.5" width="43" height="29"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <state key="normal" title="燃气费">
@@ -1188,40 +1188,6 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aos-xc-OdC" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="665" width="414" height="56"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NRx-ll-7nT">
-                                                <rect key="frame" x="16" y="5" width="382" height="46"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOn-gI-EyX">
-                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="46"/>
-                                                        <color key="backgroundColor" name="primary"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <state key="normal" title="记一笔">
-                                                            <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                        </state>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="24"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <segue destination="9nK-bn-hTn" kind="show" id="Rww-sH-TKf"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="56" id="G9e-aZ-r39"/>
-                                            <constraint firstAttribute="trailing" secondItem="NRx-ll-7nT" secondAttribute="trailing" constant="16" id="Pb5-4t-Jqh"/>
-                                            <constraint firstItem="NRx-ll-7nT" firstAttribute="leading" secondItem="aos-xc-OdC" secondAttribute="leading" constant="16" id="Vmw-Ju-6i3"/>
-                                            <constraint firstAttribute="bottom" secondItem="NRx-ll-7nT" secondAttribute="bottom" constant="5" id="Xb3-ys-aXe"/>
-                                            <constraint firstItem="NRx-ll-7nT" firstAttribute="top" secondItem="aos-xc-OdC" secondAttribute="top" constant="5" id="hVf-A9-1BX"/>
-                                        </constraints>
-                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lVU-tg-uqR">
                                         <rect key="frame" x="0.0" y="156" width="414" height="509"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1269,7 +1235,7 @@
                                             </constraints>
                                         </view>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="os5-xp-RdU">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UtilitiesRecordsCell" rowHeight="44" id="os5-xp-RdU" customClass="UtilitiesRecordsCell" customModule="门锁助手个人版" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="os5-xp-RdU" id="TGR-bn-bqA">
@@ -1309,9 +1275,48 @@
                                                         <constraint firstAttribute="trailing" secondItem="dQ6-i5-dpw" secondAttribute="trailing" constant="16" id="yJm-nT-P1j"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="gageLabel" destination="2lA-jF-Ywc" id="bMa-Eq-hF6"/>
+                                                    <outlet property="payFeeLabel" destination="h3x-SZ-Ffg" id="v6w-Ea-3TO"/>
+                                                    <outlet property="recordDateLabel" destination="niD-Ac-1lr" id="LSI-iW-7td"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aos-xc-OdC" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="665" width="414" height="56"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NRx-ll-7nT">
+                                                <rect key="frame" x="16" y="5" width="382" height="46"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOn-gI-EyX">
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="46"/>
+                                                        <color key="backgroundColor" name="primary"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <state key="normal" title="记一笔">
+                                                            <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="24"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <segue destination="9nK-bn-hTn" kind="show" id="Rww-sH-TKf"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="G9e-aZ-r39"/>
+                                            <constraint firstAttribute="trailing" secondItem="NRx-ll-7nT" secondAttribute="trailing" constant="16" id="Pb5-4t-Jqh"/>
+                                            <constraint firstItem="NRx-ll-7nT" firstAttribute="leading" secondItem="aos-xc-OdC" secondAttribute="leading" constant="16" id="Vmw-Ju-6i3"/>
+                                            <constraint firstAttribute="bottom" secondItem="NRx-ll-7nT" secondAttribute="bottom" constant="5" id="Xb3-ys-aXe"/>
+                                            <constraint firstItem="NRx-ll-7nT" firstAttribute="top" secondItem="aos-xc-OdC" secondAttribute="top" constant="5" id="hVf-A9-1BX"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" name="tableViewBackground"/>
                                 <constraints>
@@ -1344,6 +1349,15 @@
                         <viewLayoutGuide key="safeArea" id="fZH-9t-E2f"/>
                     </view>
                     <navigationItem key="navigationItem" id="Cuy-qf-Uws"/>
+                    <connections>
+                        <outlet property="elecButton" destination="gST-Ed-koJ" id="tzL-dh-6Qh"/>
+                        <outlet property="gasButton" destination="b1F-sb-bz7" id="Y9W-Oy-RAJ"/>
+                        <outlet property="tableView" destination="lVU-tg-uqR" id="Dgx-0b-LlB"/>
+                        <outlet property="totalFeeLabel" destination="1ul-Qk-HhN" id="Uw7-fN-H0x"/>
+                        <outlet property="totalUseLabel" destination="qvT-4V-hBw" id="urB-0E-JvC"/>
+                        <outlet property="totalUseUnitLabel" destination="eSG-99-9v0" id="pHG-UL-utn"/>
+                        <outlet property="waterButton" destination="Nwz-tE-zT2" id="SoN-ca-hAv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8X-SA-oWG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

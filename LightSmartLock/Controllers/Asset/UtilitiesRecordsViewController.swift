@@ -1,0 +1,129 @@
+//
+//  UtilitiesRecordsViewController.swift
+//  LightSmartLock
+//
+//  Created by changjun on 2020/4/24.
+//  Copyright © 2020 mugua. All rights reserved.
+//
+
+import UIKit
+import RxCocoa
+import RxSwift
+
+struct UtilitiesRecordsModel: Codable {
+    let totalFee: Int?
+    let totalUse: Int?
+    struct YearVOList: Codable {
+        let gage: String?
+        let payFee: String?
+        let recordDate: String?
+    }
+    let yearVOList: [YearVOList]?
+}
+
+class UtilitiesRecordsCell: UITableViewCell {
+    
+    @IBOutlet weak var recordDateLabel: UILabel!
+    
+    @IBOutlet weak var gageLabel: UILabel!
+    
+    @IBOutlet weak var payFeeLabel: UILabel!
+    
+    func config(with model: UtilitiesRecordsModel.YearVOList) {
+        recordDateLabel.text = model.recordDate
+        gageLabel.text = model.gage
+        payFeeLabel.text = model.payFee
+    }
+    
+}
+
+class UtilitiesButton: UIButton {
+
+    override func awakeFromNib() {
+          super.awakeFromNib()
+          cornerRadius = 4
+          setTitleColor(#colorLiteral(red: 0.3254901961, green: 0.5843137255, blue: 0.9137254902, alpha: 1), for: .selected)
+          setTitleColor(.black, for: .normal)
+          tintColor = .clear
+      }
+}
+
+
+class UtilitiesRecordsViewController: UIViewController {
+    
+    
+    @IBOutlet weak var waterButton: UtilitiesButton!
+    
+    @IBOutlet weak var elecButton: UtilitiesButton!
+    
+    @IBOutlet weak var gasButton: UtilitiesButton!
+    
+    @IBOutlet weak var totalUseLabel: UILabel!
+    
+    @IBOutlet weak var totalUseUnitLabel: UILabel!
+    
+    @IBOutlet weak var totalFeeLabel: UILabel!
+        
+    @IBOutlet weak var tableView: UITableView!
+    
+    private let listRelay = PublishRelay<[UtilitiesRecordsModel.YearVOList]>()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.tableFooterView = UIView()
+        
+        waterButton.rx.tap
+            .startWith(())
+            .do(onNext: { [weak self](_) in
+                self?.waterButton.isSelected = true
+                self?.elecButton.isSelected = false
+                self?.gasButton.isSelected = false
+                self?.totalUseUnitLabel.text = "总消耗量(吨)"
+            })
+            .subscribe(onNext: { (_) in
+                print("water")
+            })
+            .disposed(by: rx.disposeBag)
+        
+        elecButton.rx.tap
+            .do(onNext: { [weak self](_) in
+                self?.waterButton.isSelected = false
+                self?.elecButton.isSelected = true
+                self?.gasButton.isSelected = false
+                self?.totalUseUnitLabel.text = "总消耗量(度)"
+            })
+            .subscribe(onNext: { (_) in
+                print("elec")
+            })
+            .disposed(by: rx.disposeBag)
+        
+        gasButton.rx.tap
+            .do(onNext: { [weak self](_) in
+                self?.waterButton.isSelected = false
+                self?.elecButton.isSelected = false
+                self?.gasButton.isSelected = true
+                self?.totalUseUnitLabel.text = "总消耗量(方)"
+            })
+            .subscribe(onNext: { (_) in
+                print("gas")
+            })
+            .disposed(by: rx.disposeBag)
+        
+        listRelay
+            .bind(to: tableView.rx.items(cellIdentifier: "UtilitiesRecordsCell", cellType: UtilitiesRecordsCell.self)) { (row, element, cell) in
+                cell.config(with: element)
+        }
+        .disposed(by: rx.disposeBag)
+    }
+    
+    func config(with model: UtilitiesRecordsModel) {
+        self.totalUseLabel.text = "\(model.totalUse ?? 0)"
+        self.totalFeeLabel.text = "\(model.totalFee ?? 0)"
+        self.listRelay.accept(model.yearVOList ?? [])
+    }
+    
+    
+    
+    
+}
