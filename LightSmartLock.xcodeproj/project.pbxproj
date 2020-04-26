@@ -16,6 +16,10 @@
 		7B7EB4C324528E52002DC436 /* UtilitiesRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7EB4C224528E52002DC436 /* UtilitiesRecordsViewController.swift */; };
 		7B7EB4C724529AE6002DC436 /* AddUtilitiesRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7EB4C624529AE6002DC436 /* AddUtilitiesRecordViewController.swift */; };
 		7B7EB4C92452D24B002DC436 /* AddTenant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B7EB4C82452D24B002DC436 /* AddTenant.storyboard */; };
+		7BB2FEA82455632100D835BA /* AddTenantFellowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB2FEA72455632100D835BA /* AddTenantFellowViewController.swift */; };
+		7BB2FEAA245565F100D835BA /* AddTenantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB2FEA9245565F100D835BA /* AddTenantViewController.swift */; };
+		7BB2FEAC24557AB800D835BA /* TenantFellowInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BB2FEAB24557AB800D835BA /* TenantFellowInfoView.xib */; };
+		7BB2FEAE24557AC700D835BA /* TenantFellowInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB2FEAD24557AC700D835BA /* TenantFellowInfoView.swift */; };
 		9C03B0EB239F46510001E849 /* FingerManageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EA239F46510001E849 /* FingerManageController.swift */; };
 		9C03B0ED239F49440001E849 /* FingerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EC239F49440001E849 /* FingerModel.swift */; };
 		9C03B0EF239F4A7B0001E849 /* FingerManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EE239F4A7B0001E849 /* FingerManageViewModel.swift */; };
@@ -244,6 +248,10 @@
 		7B7EB4C224528E52002DC436 /* UtilitiesRecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesRecordsViewController.swift; sourceTree = "<group>"; };
 		7B7EB4C624529AE6002DC436 /* AddUtilitiesRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUtilitiesRecordViewController.swift; sourceTree = "<group>"; };
 		7B7EB4C82452D24B002DC436 /* AddTenant.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddTenant.storyboard; sourceTree = "<group>"; };
+		7BB2FEA72455632100D835BA /* AddTenantFellowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTenantFellowViewController.swift; sourceTree = "<group>"; };
+		7BB2FEA9245565F100D835BA /* AddTenantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTenantViewController.swift; sourceTree = "<group>"; };
+		7BB2FEAB24557AB800D835BA /* TenantFellowInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TenantFellowInfoView.xib; sourceTree = "<group>"; };
+		7BB2FEAD24557AC700D835BA /* TenantFellowInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenantFellowInfoView.swift; sourceTree = "<group>"; };
 		9A21385643D81CD6A6F2D1C7 /* Pods-LSLWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSLWidget.release.xcconfig"; path = "Target Support Files/Pods-LSLWidget/Pods-LSLWidget.release.xcconfig"; sourceTree = "<group>"; };
 		9C03B0EA239F46510001E849 /* FingerManageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerManageController.swift; sourceTree = "<group>"; };
 		9C03B0EC239F49440001E849 /* FingerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerModel.swift; sourceTree = "<group>"; };
@@ -479,6 +487,10 @@
 			children = (
 				7B76FAA92445B01A00B6F6A5 /* AssetDetail.storyboard */,
 				7B7EB4C82452D24B002DC436 /* AddTenant.storyboard */,
+				7BB2FEA72455632100D835BA /* AddTenantFellowViewController.swift */,
+				7BB2FEA9245565F100D835BA /* AddTenantViewController.swift */,
+				7BB2FEAB24557AB800D835BA /* TenantFellowInfoView.xib */,
+				7BB2FEAD24557AC700D835BA /* TenantFellowInfoView.swift */,
 				7B7EB4B22451361E002DC436 /* ButtonContainerView.swift */,
 				7B7EB4BA24516EAF002DC436 /* AssetFacilityListViewController.swift */,
 				7B7EB4BC24516ECB002DC436 /* AddAssetFacilityViewController.swift */,
@@ -1043,6 +1055,7 @@
 				9C218FA623FA8CC9009600F7 /* LeasedCell.xib in Resources */,
 				9C218F9A23FA764A009600F7 /* Calendar.storyboard in Resources */,
 				9CBD8F4523A2103D00886519 /* TempPasswordLogView.xib in Resources */,
+				7BB2FEAC24557AB800D835BA /* TenantFellowInfoView.xib in Resources */,
 				9C524023238E0E3F00308AC4 /* error.json in Resources */,
 				7B7EB4C92452D24B002DC436 /* AddTenant.storyboard in Resources */,
 				7B76FAAA2445B01A00B6F6A5 /* AssetDetail.storyboard in Resources */,
@@ -1188,6 +1201,7 @@
 				9CFDE207238523A80062522E /* LoadingPlugin.swift in Sources */,
 				9C03B0F1239F51240001E849 /* FingerDetailController.swift in Sources */,
 				9C5A967823A07D4E002A2B06 /* AddCardController.swift in Sources */,
+				7BB2FEAA245565F100D835BA /* AddTenantViewController.swift in Sources */,
 				9C7705A1238FE358008E1552 /* SingleInputController.swift in Sources */,
 				9CBD8F4C23A21E7D00886519 /* PasswordChangeStatusCell.swift in Sources */,
 				9CBD8F5923A2496700886519 /* SharePasswordSignleController.swift in Sources */,
@@ -1220,6 +1234,7 @@
 				9C47DB77239A0A810019EAA0 /* SelectPopupView.swift in Sources */,
 				9CBD8F3F23A1ECF900886519 /* ShareModels.swift in Sources */,
 				9CB4B347239DE08E001197AB /* PasswordManagementController.swift in Sources */,
+				7BB2FEA82455632100D835BA /* AddTenantFellowViewController.swift in Sources */,
 				9C42976D23866026004CB999 /* UIButton+Extension.swift in Sources */,
 				9C54719D2395107E00432ACA /* PositioEditingController.swift in Sources */,
 				9C5A968023A09813002A2B06 /* CardDetailController.swift in Sources */,
@@ -1254,6 +1269,7 @@
 				9CFDE20F2385346E0062522E /* AppErrorDomain.swift in Sources */,
 				9C452F122394EC3E00144827 /* SoundSettingController.swift in Sources */,
 				9C03B0EF239F4A7B0001E849 /* FingerManageViewModel.swift in Sources */,
+				7BB2FEAE24557AC700D835BA /* TenantFellowInfoView.swift in Sources */,
 				9C7AFF182395FD2C0075442D /* GoudaMapModel.swift in Sources */,
 				9C524030238E56A700308AC4 /* UIViewController+Extension.swift in Sources */,
 				9C24AC392383E00C005EBF95 /* LockModels.swift in Sources */,

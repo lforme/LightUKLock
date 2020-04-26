@@ -36,6 +36,11 @@ PODS:
   - ReactorKit (1.2.1):
     - RxSwift (>= 4.0.0)
   - Result (4.1.0)
+  - Reusable (4.1.1):
+    - Reusable/Storyboard (= 4.1.1)
+    - Reusable/View (= 4.1.1)
+  - Reusable/Storyboard (4.1.1)
+  - Reusable/View (4.1.1)
   - RxCocoa (4.5.0):
     - RxSwift (>= 4.4.2, ~> 4.4)
   - RxDataSources (3.1.0):
@@ -75,6 +80,7 @@ DEPENDENCIES:
   - PPBadgeViewSwift
   - ReachabilitySwift
   - ReactorKit
+  - Reusable
   - RxDataSources
   - SnapKit
   - SQLite.swift
@@ -110,6 +116,7 @@ SPEC REPOS:
     - ReachabilitySwift
     - ReactorKit
     - Result
+    - Reusable
     - RxCocoa
     - RxDataSources
     - RxSwift
@@ -146,6 +153,7 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   ReactorKit: 8be57f0527ad1ac2963cd5c338274a46a01e57a3
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  Reusable: 53a9acf5c536f229b31b5865782414b508252ddb
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
@@ -157,6 +165,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 821b81f83594a736e831a018f2a2ce31822ddf0b
   "UITextView+Placeholder": c407b27599ea23cca425946fee3cf1db5d547008
 
-PODFILE CHECKSUM: 4aed10aedca6e29398ed88c62253d34e7a9a67d5
+PODFILE CHECKSUM: 30095db6c8831de0fe5a5802783f546868b30804
 
 COCOAPODS: 1.9.1

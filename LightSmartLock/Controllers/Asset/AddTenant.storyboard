@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Add Tenant View Controller-->
         <scene sceneID="vE5-13-eT5">
             <objects>
-                <viewController id="U7n-NG-VIi" sceneMemberID="viewController">
+                <viewController id="U7n-NG-VIi" customClass="AddTenantViewController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kcg-Hb-jFc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -179,7 +179,7 @@
                                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="填写承租人手机号" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oV4-TO-UHY">
                                                                         <rect key="frame" x="49.5" y="13" width="332.5" height="18.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                                     </textField>
                                                                 </subviews>
                                                                 <constraints>
@@ -197,14 +197,8 @@
                                                                         <color key="textColor" name="textPrimary"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tx-5a-70M">
-                                                                        <rect key="frame" x="71.5" y="13.5" width="6.5" height="17"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
                                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="填写承租人身份证号" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eS6-wC-for">
-                                                                        <rect key="frame" x="78" y="13" width="304" height="18.5"/>
+                                                                        <rect key="frame" x="71.5" y="13" width="310.5" height="18.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                     </textField>
@@ -275,7 +269,7 @@
                                                                         <rect key="frame" x="210.5" y="8" width="171.5" height="24"/>
                                                                         <state key="normal" image="config_add"/>
                                                                         <connections>
-                                                                            <segue destination="dBI-C6-iif" kind="show" id="n8w-d7-bUa"/>
+                                                                            <segue destination="dBI-C6-iif" kind="show" identifier="AddTenantFellow" id="n8w-d7-bUa"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -306,30 +300,35 @@
                                                                     <constraint firstAttribute="height" constant="44" id="GnN-gZ-PvL"/>
                                                                 </constraints>
                                                             </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="t06-UZ-AiQ">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2tJ-Tp-4Ss">
                                                                 <rect key="frame" x="0.0" y="100" width="382" height="44"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0pS-Qc-Nxv">
-                                                                        <rect key="frame" x="0.0" y="10" width="24" height="24"/>
-                                                                        <state key="normal" image="config_remove"/>
-                                                                    </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="王林 18587677754" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vm-Ax-3qK">
-                                                                        <rect key="frame" x="32" y="13.5" width="235" height="17"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <color key="textColor" name="textPrimary"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OzJ-I7-ZHb">
-                                                                        <rect key="frame" x="275" y="13.5" width="107" height="17"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <state key="normal" title="未填写身份证号" image="arrow">
-                                                                            <color key="titleColor" name="textPrimary"/>
-                                                                        </state>
-                                                                    </button>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="t06-UZ-AiQ">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
+                                                                        <subviews>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0pS-Qc-Nxv">
+                                                                                <rect key="frame" x="0.0" y="10" width="24" height="24"/>
+                                                                                <state key="normal" image="config_remove"/>
+                                                                            </button>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="王林 18587677754" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vm-Ax-3qK">
+                                                                                <rect key="frame" x="32" y="13.5" width="235" height="17"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                <color key="textColor" name="textPrimary"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OzJ-I7-ZHb">
+                                                                                <rect key="frame" x="275" y="13.5" width="107" height="17"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                <state key="normal" title="未填写身份证号" image="arrow">
+                                                                                    <color key="titleColor" name="textPrimary"/>
+                                                                                </state>
+                                                                            </button>
+                                                                        </subviews>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="44" id="OPE-tf-W9f"/>
+                                                                        </constraints>
+                                                                    </stackView>
                                                                 </subviews>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="44" id="OPE-tf-W9f"/>
-                                                                </constraints>
                                                             </stackView>
                                                         </subviews>
                                                     </stackView>
@@ -786,6 +785,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="nextStepAction:" destination="U7n-NG-VIi" eventType="touchUpInside" id="uhX-Xa-0nD"/>
                                                     <segue destination="I9Z-qh-wAZ" kind="show" id="4tB-gc-TNA"/>
                                                 </connections>
                                             </button>
@@ -819,6 +819,15 @@
                         <viewLayoutGuide key="safeArea" id="nBp-v8-wfi"/>
                     </view>
                     <navigationItem key="navigationItem" id="40t-c4-CZF"/>
+                    <connections>
+                        <outlet property="fellowContainerView" destination="2tJ-Tp-4Ss" id="oah-ew-FUq"/>
+                        <outlet property="idCardFrontBtn" destination="weY-7w-9LF" id="nYm-fW-96O"/>
+                        <outlet property="idCardReverseBtn" destination="ErJ-ru-Y6k" id="bUl-Rf-cVv"/>
+                        <outlet property="idCardTF" destination="eS6-wC-for" id="fgI-xx-pau"/>
+                        <outlet property="noFellowView" destination="FUJ-dC-cWi" id="LgK-yC-VWR"/>
+                        <outlet property="phoneTF" destination="oV4-TO-UHY" id="sds-CZ-UKL"/>
+                        <outlet property="userNameTF" destination="eDA-x0-jKX" id="Qbg-Xi-X3R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NKy-1P-lDG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1489,10 +1498,10 @@
             </objects>
             <point key="canvasLocation" x="2325" y="1130"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Tenant Fellow View Controller-->
         <scene sceneID="8Mn-xp-itt">
             <objects>
-                <viewController id="dBI-C6-iif" sceneMemberID="viewController">
+                <viewController id="dBI-C6-iif" customClass="AddTenantFellowViewController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jbn-ev-M5q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1575,7 +1584,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="填写同住人手机号" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fb4-80-im7">
                                                         <rect key="frame" x="49.5" y="13" width="332.5" height="18.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -1593,14 +1602,8 @@
                                                         <color key="textColor" name="textPrimary"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgv-Mz-20l">
-                                                        <rect key="frame" x="71.5" y="13.5" width="6.5" height="17"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="填写同住人身份证号" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dED-I1-sxu">
-                                                        <rect key="frame" x="78" y="13" width="304" height="18.5"/>
+                                                        <rect key="frame" x="71.5" y="13" width="310.5" height="18.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -1670,6 +1673,9 @@
                                                         <integer key="value" value="24"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="saveAction:" destination="dBI-C6-iif" eventType="touchUpInside" id="Tyr-CE-eKs"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1699,6 +1705,14 @@
                         <viewLayoutGuide key="safeArea" id="4dc-fp-9gr"/>
                     </view>
                     <navigationItem key="navigationItem" id="UYJ-nV-Hrr"/>
+                    <connections>
+                        <outlet property="idCardFrontBtn" destination="fbq-pZ-JWQ" id="dix-UH-gkL"/>
+                        <outlet property="idCardReverseBtn" destination="WA6-5c-1be" id="gGe-1R-DHU"/>
+                        <outlet property="idCardTF" destination="dED-I1-sxu" id="5BJ-6i-IPz"/>
+                        <outlet property="phoneTF" destination="fb4-80-im7" id="BgZ-yi-qA3"/>
+                        <outlet property="titleLabel" destination="5p7-9k-p2W" id="d9C-3x-Mgd"/>
+                        <outlet property="userNameTF" destination="1Es-Cq-tYQ" id="r0Y-XO-ciX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ytk-3J-rov" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2315,7 +2329,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uEE-Jt-SNj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3357" y="1741"/>
+            <point key="canvasLocation" x="3336" y="1789"/>
         </scene>
     </scenes>
     <resources>
