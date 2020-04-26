@@ -26,12 +26,7 @@ class TenantContractInfo: Codable {
         var unit: Int?
     }
     var contractCostSettingDTOList: [ContractCostSettingDTOList]?
-    class ContractRentalRecordDTOList: Codable {
-        var increaseType: Int?
-        var ratio: Int?
-        var startDate: Date?
-    }
-    var contractRentalRecordDTOList: [ContractRentalRecordDTOList]?
+    var contractRentalRecordDTOList: [ContractRentalRecord] = []
     var costCollectRatio: Int?
     var costCollectType: Int?
     var deposit: Int?
@@ -88,8 +83,17 @@ class AddTenantViewController: UIViewController {
                 }
                 self?.reloadFellowView()
             }
-            
         }
+        
+        if segue.identifier == "SettingRentalRecord",
+            let vc = segue.destination as? SettingRentalRecordViewController {
+            
+            vc.records = self.tenantContractInfo.contractRentalRecordDTOList
+            vc.didSaved = { [weak self] newRecords in
+                self?.tenantContractInfo.contractRentalRecordDTOList = newRecords
+            }
+        }
+        
     }
     
     func reloadFellowView() {

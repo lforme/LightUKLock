@@ -20,6 +20,9 @@
 		7BB2FEAA245565F100D835BA /* AddTenantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB2FEA9245565F100D835BA /* AddTenantViewController.swift */; };
 		7BB2FEAC24557AB800D835BA /* TenantFellowInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BB2FEAB24557AB800D835BA /* TenantFellowInfoView.xib */; };
 		7BB2FEAE24557AC700D835BA /* TenantFellowInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB2FEAD24557AC700D835BA /* TenantFellowInfoView.swift */; };
+		7BB2FEB0245595DD00D835BA /* SettingRentalRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB2FEAF245595DD00D835BA /* SettingRentalRecordViewController.swift */; };
+		7BB2FEB2245596B700D835BA /* ContractRentalRecordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BB2FEB1245596B700D835BA /* ContractRentalRecordView.xib */; };
+		7BB2FEB4245596C400D835BA /* ContractRentalRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB2FEB3245596C400D835BA /* ContractRentalRecordView.swift */; };
 		9C03B0EB239F46510001E849 /* FingerManageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EA239F46510001E849 /* FingerManageController.swift */; };
 		9C03B0ED239F49440001E849 /* FingerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EC239F49440001E849 /* FingerModel.swift */; };
 		9C03B0EF239F4A7B0001E849 /* FingerManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EE239F4A7B0001E849 /* FingerManageViewModel.swift */; };
@@ -252,6 +255,9 @@
 		7BB2FEA9245565F100D835BA /* AddTenantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTenantViewController.swift; sourceTree = "<group>"; };
 		7BB2FEAB24557AB800D835BA /* TenantFellowInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TenantFellowInfoView.xib; sourceTree = "<group>"; };
 		7BB2FEAD24557AC700D835BA /* TenantFellowInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenantFellowInfoView.swift; sourceTree = "<group>"; };
+		7BB2FEAF245595DD00D835BA /* SettingRentalRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRentalRecordViewController.swift; sourceTree = "<group>"; };
+		7BB2FEB1245596B700D835BA /* ContractRentalRecordView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContractRentalRecordView.xib; sourceTree = "<group>"; };
+		7BB2FEB3245596C400D835BA /* ContractRentalRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractRentalRecordView.swift; sourceTree = "<group>"; };
 		9A21385643D81CD6A6F2D1C7 /* Pods-LSLWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSLWidget.release.xcconfig"; path = "Target Support Files/Pods-LSLWidget/Pods-LSLWidget.release.xcconfig"; sourceTree = "<group>"; };
 		9C03B0EA239F46510001E849 /* FingerManageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerManageController.swift; sourceTree = "<group>"; };
 		9C03B0EC239F49440001E849 /* FingerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerModel.swift; sourceTree = "<group>"; };
@@ -489,8 +495,8 @@
 				7B7EB4C82452D24B002DC436 /* AddTenant.storyboard */,
 				7BB2FEA72455632100D835BA /* AddTenantFellowViewController.swift */,
 				7BB2FEA9245565F100D835BA /* AddTenantViewController.swift */,
-				7BB2FEAB24557AB800D835BA /* TenantFellowInfoView.xib */,
-				7BB2FEAD24557AC700D835BA /* TenantFellowInfoView.swift */,
+				7BB2FEAF245595DD00D835BA /* SettingRentalRecordViewController.swift */,
+				7BB2FEB5245596D300D835BA /* View */,
 				7B7EB4B22451361E002DC436 /* ButtonContainerView.swift */,
 				7B7EB4BA24516EAF002DC436 /* AssetFacilityListViewController.swift */,
 				7B7EB4BC24516ECB002DC436 /* AddAssetFacilityViewController.swift */,
@@ -499,6 +505,17 @@
 				7B7EB4C624529AE6002DC436 /* AddUtilitiesRecordViewController.swift */,
 			);
 			path = Asset;
+			sourceTree = "<group>";
+		};
+		7BB2FEB5245596D300D835BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7BB2FEAB24557AB800D835BA /* TenantFellowInfoView.xib */,
+				7BB2FEAD24557AC700D835BA /* TenantFellowInfoView.swift */,
+				7BB2FEB1245596B700D835BA /* ContractRentalRecordView.xib */,
+				7BB2FEB3245596C400D835BA /* ContractRentalRecordView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		9C1A4BC1238D09CB00626DB4 /* View */ = {
@@ -1067,6 +1084,7 @@
 				9C4BD28923FD217900652685 /* normal.json in Resources */,
 				9CF01D9723BDA92F007578F3 /* Assets.xcassets in Resources */,
 				9C3726CC2390CE4D00450757 /* normalDarkMode.json in Resources */,
+				7BB2FEB2245596B700D835BA /* ContractRentalRecordView.xib in Resources */,
 				9C5471A423951C1E00432ACA /* DataPickerController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1172,6 +1190,7 @@
 				9CBD8F5B23A24A9900886519 /* SharePwdSingleViewModel.swift in Sources */,
 				9C24AC2B2383CD94005EBF95 /* StaticConst.swift in Sources */,
 				9C752FCD238774A9000FEA73 /* RegisterForgetController.swift in Sources */,
+				7BB2FEB0245595DD00D835BA /* SettingRentalRecordViewController.swift in Sources */,
 				9C452F0E2394E84A00144827 /* BluetoothViewModel.swift in Sources */,
 				9C03B0F3239F6E8F0001E849 /* FingerDetailViewModel.swift in Sources */,
 				9C5A967C23A082F1002A2B06 /* CardManageViewModel.swift in Sources */,
@@ -1182,6 +1201,7 @@
 				9C54719F239517F000432ACA /* PositionViewModel.swift in Sources */,
 				9C452F0A2394C38800144827 /* HomeSettringController.swift in Sources */,
 				9C24AC482383EBE5005EBF95 /* HomeViewController.swift in Sources */,
+				7BB2FEB4245596C400D835BA /* ContractRentalRecordView.swift in Sources */,
 				9C1A4BC8238D2E7C00626DB4 /* HomeControlCell.swift in Sources */,
 				9C03B0EB239F46510001E849 /* FingerManageController.swift in Sources */,
 				9C7AFF162395FC870075442D /* CLLocationManager+Rx.swift in Sources */,
