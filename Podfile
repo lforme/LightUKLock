@@ -11,6 +11,7 @@ target 'LightSmartLock' do
   pod 'Action'
   pod 'Moya/RxSwift'
   pod 'NSObject+Rx'
+  pod 'RxOptional'
   
   # 架构
   pod 'ReactorKit'
