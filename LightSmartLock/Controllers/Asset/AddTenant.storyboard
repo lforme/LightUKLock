@@ -1095,6 +1095,9 @@
                                                                 <integer key="value" value="24"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <segue destination="9QG-lw-7tz" kind="show" id="5qG-n3-roA"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <userDefinedRuntimeAttributes>
@@ -2345,7 +2348,178 @@
             </objects>
             <point key="canvasLocation" x="3336" y="1789"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jOH-CC-QmW">
+            <objects>
+                <navigationController id="CTh-hw-KkN" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nED-TH-nct">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9QG-lw-7tz" kind="relationship" relationship="rootViewController" id="23y-xh-1Ac"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XOI-pX-Wqs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="313" y="2502"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="9qm-Sa-8gZ">
+            <objects>
+                <viewController id="9QG-lw-7tz" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="am0-cv-dk6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="入住成功" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oyp-Wy-dwe">
+                                <rect key="frame" x="16" y="96" width="382" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="SJo-pw-KSF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" name="textPrimary"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fFO-FE-g33">
+                                <rect key="frame" x="0.0" y="148" width="414" height="714"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUr-jR-lXz">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="286.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tBf-HG-vLM">
+                                                <rect key="frame" x="16" y="20" width="382" height="246.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜！入住成功" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvT-vP-ZdS">
+                                                        <rect key="frame" x="106" y="0.0" width="170.5" height="29"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UFB-vA-Vog">
+                                                        <rect key="frame" x="138" y="49" width="106" height="106"/>
+                                                        <color key="backgroundColor" red="0.41176470590000003" green="0.78823529410000004" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="106" id="unZ-8s-8gb"/>
+                                                            <constraint firstAttribute="width" constant="106" id="vP8-rW-ogl"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="pvw-um-jg7">
+                                                        <rect key="frame" x="77" y="175" width="228.5" height="71.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJh-6D-S9B">
+                                                                <rect key="frame" x="0.0" y="0.0" width="228.5" height="33.5"/>
+                                                                <string key="text">租客扫描二维码，下载门锁助手APP
+方便管理门锁、查收账单、便捷交租</string>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="urO-tH-XHk">
+                                                                <rect key="frame" x="56.5" y="42.5" width="115" height="29"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <state key="normal" title="分享二维码给租客">
+                                                                    <color key="titleColor" name="primary"/>
+                                                                </state>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="tBf-HG-vLM" firstAttribute="leading" secondItem="CUr-jR-lXz" secondAttribute="leading" constant="16" id="KUb-fQ-tQq"/>
+                                            <constraint firstAttribute="trailing" secondItem="tBf-HG-vLM" secondAttribute="trailing" constant="16" id="QWB-rj-iwy"/>
+                                            <constraint firstAttribute="bottom" secondItem="tBf-HG-vLM" secondAttribute="bottom" constant="20" id="inD-Q8-Blh"/>
+                                            <constraint firstItem="tBf-HG-vLM" firstAttribute="top" secondItem="CUr-jR-lXz" secondAttribute="top" constant="20" id="kaZ-2h-Kna"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbl-KN-eor" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="658" width="414" height="56"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WlG-yR-OY5">
+                                                <rect key="frame" x="16" y="5" width="382" height="46"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mm7-ot-FGB">
+                                                        <rect key="frame" x="0.0" y="0.0" width="181" height="46"/>
+                                                        <color key="backgroundColor" red="0.32549019610000002" green="0.58431372550000005" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <state key="normal" title="签电子合同">
+                                                            <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="24"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UuD-6V-RYe">
+                                                        <rect key="frame" x="201" y="0.0" width="181" height="46"/>
+                                                        <color key="backgroundColor" red="0.41176470590000003" green="0.78823529410000004" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <state key="normal" title="去收租">
+                                                            <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="24"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </subviews>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="WlG-yR-OY5" secondAttribute="trailing" constant="16" id="3eY-nE-8hY"/>
+                                            <constraint firstItem="WlG-yR-OY5" firstAttribute="top" secondItem="xbl-KN-eor" secondAttribute="top" constant="5" id="723-eo-NZw"/>
+                                            <constraint firstAttribute="bottom" secondItem="WlG-yR-OY5" secondAttribute="bottom" constant="5" id="7PB-L2-sdN"/>
+                                            <constraint firstAttribute="height" constant="56" id="Q2T-iH-EoK"/>
+                                            <constraint firstItem="WlG-yR-OY5" firstAttribute="leading" secondItem="xbl-KN-eor" secondAttribute="leading" constant="16" id="fsN-m7-n9A"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="tableViewBackground"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="CUr-jR-lXz" secondAttribute="trailing" id="3IS-FL-tQ4"/>
+                                    <constraint firstItem="CUr-jR-lXz" firstAttribute="top" secondItem="fFO-FE-g33" secondAttribute="top" id="61L-jZ-pW1"/>
+                                    <constraint firstItem="xbl-KN-eor" firstAttribute="leading" secondItem="fFO-FE-g33" secondAttribute="leading" id="Cdw-Nv-zVb"/>
+                                    <constraint firstItem="CUr-jR-lXz" firstAttribute="leading" secondItem="fFO-FE-g33" secondAttribute="leading" id="Jyk-yB-PNI"/>
+                                    <constraint firstAttribute="bottom" secondItem="xbl-KN-eor" secondAttribute="bottom" id="bH3-9S-7sP"/>
+                                    <constraint firstAttribute="trailing" secondItem="xbl-KN-eor" secondAttribute="trailing" id="sQg-vs-Ftl"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Fyd-un-iaP" firstAttribute="trailing" secondItem="fFO-FE-g33" secondAttribute="trailing" id="63Q-rT-NeI"/>
+                            <constraint firstItem="fFO-FE-g33" firstAttribute="leading" secondItem="Fyd-un-iaP" secondAttribute="leading" id="A0L-3t-aj0"/>
+                            <constraint firstItem="Oyp-Wy-dwe" firstAttribute="top" secondItem="Fyd-un-iaP" secondAttribute="top" constant="8" id="GX8-SO-Deo"/>
+                            <constraint firstItem="Fyd-un-iaP" firstAttribute="trailing" secondItem="Oyp-Wy-dwe" secondAttribute="trailing" constant="16" id="O9D-Si-Xby"/>
+                            <constraint firstItem="fFO-FE-g33" firstAttribute="top" secondItem="Oyp-Wy-dwe" secondAttribute="bottom" constant="8" id="iff-CA-Fe3"/>
+                            <constraint firstItem="Oyp-Wy-dwe" firstAttribute="leading" secondItem="Fyd-un-iaP" secondAttribute="leading" constant="16" id="lKg-bQ-NVh"/>
+                            <constraint firstItem="Fyd-un-iaP" firstAttribute="bottom" secondItem="fFO-FE-g33" secondAttribute="bottom" id="vh6-eJ-OnK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Fyd-un-iaP"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NG0-Af-nFH">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="3B2-u2-ics"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uPI-vg-j3o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1222" y="2502"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="23y-xh-1Ac"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="add_s" width="31" height="31"/>
         <image name="arrow" width="7" height="11"/>
