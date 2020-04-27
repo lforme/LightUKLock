@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icon／公安.png",
+      "filename" : "公安_2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icon／公安@2x.png",
+      "filename" : "公安_2@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icon／公安@3x.png",
+      "filename" : "公安_2@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
