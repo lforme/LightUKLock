@@ -50,6 +50,7 @@ class DataSelectionButton: UIButton {
         }
         .subscribe(onNext: { [weak self](result) in
             self?.result = result
+            print(result)
         })
             .disposed(by: rx.disposeBag)
         

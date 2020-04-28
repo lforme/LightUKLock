@@ -595,7 +595,7 @@
                                                                                 <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="248" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJl-u4-Gbj">
+                                                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="248" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJl-u4-Gbj" customClass="DataSelectionButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                                 <rect key="frame" x="64" y="5" width="318" height="34"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <state key="normal" image="arrow">
@@ -754,6 +754,7 @@
                                                                             </label>
                                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CXb-ST-QVb">
                                                                                 <rect key="frame" x="333" y="6.5" width="51" height="31"/>
+                                                                                <color key="onTintColor" name="primary"/>
                                                                             </switch>
                                                                         </subviews>
                                                                         <constraints>
@@ -907,13 +908,21 @@
                     </view>
                     <navigationItem key="navigationItem" id="40t-c4-CZF"/>
                     <connections>
+                        <outlet property="advanceDayBtn" destination="yg2-a2-Oc6" id="Y9g-C4-w7B"/>
+                        <outlet property="depositTF" destination="UWM-uI-oFz" id="t07-cg-QHB"/>
+                        <outlet property="endDateBtn" destination="TKS-bP-6dh" id="qUw-a4-VZG"/>
                         <outlet property="fellowContainerView" destination="2tJ-Tp-4Ss" id="oah-ew-FUq"/>
                         <outlet property="idCardFrontView" destination="JBK-An-bf4" id="jDt-au-Xs6"/>
                         <outlet property="idCardReverseView" destination="3fv-ct-i9G" id="lrt-Cx-hoL"/>
                         <outlet property="idCardTF" destination="hI6-dz-gNS" id="mf2-Cs-bfu"/>
+                        <outlet property="isRemindSW" destination="CXb-ST-QVb" id="oYv-9Q-NbW"/>
                         <outlet property="noFellowView" destination="FUJ-dC-cWi" id="LgK-yC-VWR"/>
                         <outlet property="phoneTF" destination="drI-WH-M5f" id="hRZ-xZ-m6k"/>
+                        <outlet property="remarkTF" destination="E8e-6s-a0i" id="qsa-Y7-5O2"/>
+                        <outlet property="rentCollectTypeBtn" destination="TJl-u4-Gbj" id="2L4-cc-3I3"/>
+                        <outlet property="rentalTF" destination="et9-fP-WKD" id="D9H-8T-FwX"/>
                         <outlet property="roomNumBtn" destination="XSE-FV-bfa" id="myg-lF-std"/>
+                        <outlet property="startDateBtn" destination="keV-U1-F98" id="DBl-Tk-qrt"/>
                         <outlet property="userNameTF" destination="FRZ-nc-WBb" id="NzJ-W0-ggE"/>
                     </connections>
                 </viewController>

@@ -29,8 +29,8 @@ class TenantContractInfo: Codable {
     var contractRentalRecordDTOList: [ContractRentalRecord] = []
     var costCollectRatio: Int?
     var costCollectType: Int?
-    var deposit: Int?
-    var endDate: Date?
+    var deposit: Double?
+    var endDate: String?
     var isIncrease: Int?
     var isRelatedRental: Int?
     var isRemind: Int?
@@ -38,9 +38,9 @@ class TenantContractInfo: Codable {
     var remark: String?
     var rentCollectRate: Int?
     var rentCollectType: Int?
-    var rental: Int?
+    var rental: Double?
     var roomNum: String?
-    var startDate: Date?
+    var startDate: String?
     var tenantFellowDTOList: [TenantMember] = []
     var tenantInfo = TenantMember()
     var userId: String?
@@ -68,6 +68,22 @@ class AddTenantViewController: UIViewController {
     
     @IBOutlet weak var fellowContainerView: UIStackView!
     
+    @IBOutlet weak var startDateBtn: DateSelectionButton!
+    
+    @IBOutlet weak var endDateBtn: DateSelectionButton!
+    
+    @IBOutlet weak var rentCollectTypeBtn: DataSelectionButton!
+    
+    @IBOutlet weak var rentalTF: UITextField!
+    
+    @IBOutlet weak var depositTF: UITextField!
+    
+    @IBOutlet weak var isRemindSW: UISwitch!
+    
+    @IBOutlet weak var advanceDayBtn: DataSelectionButton!
+    
+    @IBOutlet weak var remarkTF: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -78,6 +94,12 @@ class AddTenantViewController: UIViewController {
         idCardReverseView.placeImage = #imageLiteral(resourceName: "id_back")
         
         reloadFellowView()
+    
+        rentCollectTypeBtn.title = "请选择收租周期"
+        rentCollectTypeBtn.items = [["年/次", "月/次", "日/次"]]
+        
+        advanceDayBtn.title = "请选择提前时间"
+        advanceDayBtn.items = [Array(1...15).map { $0.description + "天" }]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -138,8 +160,30 @@ class AddTenantViewController: UIViewController {
         self.tenantContractInfo.tenantInfo.idCardFront = idCardFrontView.urlStr
         self.tenantContractInfo.tenantInfo.idCardReverse = idCardReverseView.urlStr
         
+        // 日期
+        self.tenantContractInfo.startDate = startDateBtn.selectedDateStr
+        self.tenantContractInfo.endDate = endDateBtn.selectedDateStr
         
+        // 收租周期
+        self.tenantContractInfo.rentCollectType = rentCollectTypeBtn.result?.first?.row
         
+        // 租金
+        self.tenantContractInfo.rental = self.rentalTF.text?.toDouble()
+        // 押金
+        self.tenantContractInfo.deposit = self.depositTF.text?.toDouble()
+        
+        // 收款账号
+        
+        // 收租提醒
+        self.tenantContractInfo.isRemind = self.isRemindSW.isOn ? 1 : 0
+        
+        // 提前时间
+        var str = self.advanceDayBtn.resultStr
+        str?.removeLast()
+        self.tenantContractInfo.advanceDay = str?.toInt()
+        
+        // 备注
+        self.tenantContractInfo.remark = self.remarkTF.text
     }
     
 }

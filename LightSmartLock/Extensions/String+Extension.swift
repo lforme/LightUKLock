@@ -65,3 +65,13 @@ extension Optional where Wrapped == String {
         return str
     }
 }
+
+extension String {
+    func toDouble() -> Double? {
+        return Double.init(self)
+    }
+    
+    func toInt() -> Int? {
+        return Int.init(self)
+    }
+}
