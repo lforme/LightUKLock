@@ -13,6 +13,11 @@ PODS:
   - DZNEmptyDataSet (1.8.1)
   - ESTabBarController-swift (2.7)
   - HandyJSON (5.0.1)
+  - IGListKit (3.4.0):
+    - IGListKit/Default (= 3.4.0)
+  - IGListKit/Default (3.4.0):
+    - IGListKit/Diffing
+  - IGListKit/Diffing (3.4.0)
   - IQKeyboardManager (6.5.4)
   - Kingfisher (5.10.0):
     - Kingfisher/Core (= 5.10.0)
@@ -63,6 +68,7 @@ DEPENDENCIES:
   - DZNEmptyDataSet
   - ESTabBarController-swift
   - HandyJSON
+  - IGListKit
   - IQKeyboardManager
   - Kingfisher
   - lottie-ios
@@ -96,6 +102,7 @@ SPEC REPOS:
     - DZNEmptyDataSet
     - ESTabBarController-swift
     - HandyJSON
+    - IGListKit
     - IQKeyboardManager
     - Kingfisher
     - lottie-ios
@@ -132,6 +139,7 @@ SPEC CHECKSUMS:
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   ESTabBarController-swift: 4fb52ad03d94d0717ef97bc9eb09a5abfdded0a2
   HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
+  IGListKit: 7a5d788e9fb746bcd402baa8e8b24bc3bd2a5a07
   IQKeyboardManager: 72b359cd7e777e3a984cedbe05f8da45320cbb63
   Kingfisher: 0bf6eae7c2193f15719915fecb7c2c1c03855f3d
   lottie-ios: 32bf84389337d86fbc8b12266e88452e0abf1dee
@@ -157,6 +165,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 821b81f83594a736e831a018f2a2ce31822ddf0b
   "UITextView+Placeholder": c407b27599ea23cca425946fee3cf1db5d547008
 
-PODFILE CHECKSUM: 4aed10aedca6e29398ed88c62253d34e7a9a67d5
+PODFILE CHECKSUM: 40eede9db0879e49db81263ffac0e11f3180604b
 
 COCOAPODS: 1.8.3

@@ -42,6 +42,8 @@ target 'LightSmartLock' do
   pod 'LTMorphingLabel'
   pod 'CBPinEntryView'
   pod "Popover"
+  pod 'IGListKit'
+  pod 'AloeStackView'
   
   # 动画
   pod 'lottie-ios'
