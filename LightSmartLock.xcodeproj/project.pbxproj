@@ -20,6 +20,8 @@
 		7B92D0CB2456CBF600F195A9 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92D0C92456CBF500F195A9 /* DatePickerViewController.swift */; };
 		7B92D0CD2456CC6900F195A9 /* DateSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92D0CC2456CC6900F195A9 /* DateSelectionButton.swift */; };
 		7B92D0CF2456CC7900F195A9 /* DataSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92D0CE2456CC7900F195A9 /* DataSelectionButton.swift */; };
+		7B92D0D12457C66700F195A9 /* IDCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B92D0D02457C66700F195A9 /* IDCardView.xib */; };
+		7B92D0D32457C67800F195A9 /* IDCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92D0D22457C67800F195A9 /* IDCardView.swift */; };
 		7BB2FEA82455632100D835BA /* AddTenantFellowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB2FEA72455632100D835BA /* AddTenantFellowViewController.swift */; };
 		7BB2FEAA245565F100D835BA /* AddTenantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB2FEA9245565F100D835BA /* AddTenantViewController.swift */; };
 		7BB2FEAC24557AB800D835BA /* TenantFellowInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BB2FEAB24557AB800D835BA /* TenantFellowInfoView.xib */; };
@@ -259,6 +261,8 @@
 		7B92D0C92456CBF500F195A9 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		7B92D0CC2456CC6900F195A9 /* DateSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionButton.swift; sourceTree = "<group>"; };
 		7B92D0CE2456CC7900F195A9 /* DataSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSelectionButton.swift; sourceTree = "<group>"; };
+		7B92D0D02457C66700F195A9 /* IDCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IDCardView.xib; sourceTree = "<group>"; };
+		7B92D0D22457C67800F195A9 /* IDCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDCardView.swift; sourceTree = "<group>"; };
 		7BB2FEA72455632100D835BA /* AddTenantFellowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTenantFellowViewController.swift; sourceTree = "<group>"; };
 		7BB2FEA9245565F100D835BA /* AddTenantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTenantViewController.swift; sourceTree = "<group>"; };
 		7BB2FEAB24557AB800D835BA /* TenantFellowInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TenantFellowInfoView.xib; sourceTree = "<group>"; };
@@ -526,6 +530,8 @@
 				7BB2FEB3245596C400D835BA /* ContractRentalRecordView.swift */,
 				7B92D0CC2456CC6900F195A9 /* DateSelectionButton.swift */,
 				7B92D0CE2456CC7900F195A9 /* DataSelectionButton.swift */,
+				7B92D0D02457C66700F195A9 /* IDCardView.xib */,
+				7B92D0D22457C67800F195A9 /* IDCardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1072,6 +1078,7 @@
 				9C770593238FA11A008E1552 /* MyInfoHeader.xib in Resources */,
 				9CFDE1FC238513D40062522E /* bluetooth.json in Resources */,
 				9CFDE1FA2384EA2A0062522E /* opendoor.json in Resources */,
+				7B92D0D12457C66700F195A9 /* IDCardView.xib in Resources */,
 				9C770597238FA351008E1552 /* MyListCell.xib in Resources */,
 				9C24AC402383EB55005EBF95 /* OpenDoorViewController.xib in Resources */,
 				9C24AC212383C1C6005EBF95 /* Login.storyboard in Resources */,
@@ -1209,6 +1216,7 @@
 				9C24AC1D23839EB9005EBF95 /* UIImage+Extension.swift in Sources */,
 				7B92D0CD2456CC6900F195A9 /* DateSelectionButton.swift in Sources */,
 				9C03B0FB239F88860001E849 /* AddFingerFinishController.swift in Sources */,
+				7B92D0D32457C67800F195A9 /* IDCardView.swift in Sources */,
 				9C24AC3B2383E736005EBF95 /* ViewLoader.swift in Sources */,
 				9CFDE21423853C170062522E /* NetworkMetaDb.swift in Sources */,
 				9C54719F239517F000432ACA /* PositionViewModel.swift in Sources */,

@@ -27,9 +27,9 @@ class AddTenantFellowViewController: UIViewController {
     
     @IBOutlet weak var idCardTF: UITextField!
     
-    @IBOutlet weak var idCardFrontBtn: UIButton!
+    @IBOutlet weak var idCardFrontView: IDCardView!
     
-    @IBOutlet weak var idCardReverseBtn: UIButton!
+    @IBOutlet weak var idCardReverseView: IDCardView!
     
     var addFellow: ((TenantMember, Bool) -> Void)?
     
@@ -46,6 +46,9 @@ class AddTenantFellowViewController: UIViewController {
         userNameTF.text = member.userName
         phoneTF.text = member.phone
         idCardTF.text = member.idCard
+        
+        idCardFrontView.placeImage = #imageLiteral(resourceName: "id_front")
+        idCardReverseView.placeImage = #imageLiteral(resourceName: "id_back")
     }
     
 
@@ -53,6 +56,8 @@ class AddTenantFellowViewController: UIViewController {
         member.userName = userNameTF.text
         member.phone = phoneTF.text
         member.idCard = idCardTF.text
+        member.idCardFront = idCardFrontView.urlStr
+        member.idCardReverse = idCardReverseView.urlStr
         addFellow?(member, isEdit)
         self.navigationController?.popViewController(animated: true)
         

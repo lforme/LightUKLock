@@ -50,15 +50,19 @@ class AddTenantViewController: UIViewController {
     
     let tenantContractInfo = TenantContractInfo()
     
+    
+    @IBOutlet weak var roomNumBtn: DataSelectionButton!
+    
+    
     @IBOutlet weak var userNameTF: UITextField!
     
     @IBOutlet weak var phoneTF: UITextField!
     
     @IBOutlet weak var idCardTF: UITextField!
     
-    @IBOutlet weak var idCardFrontBtn: UIButton!
+    @IBOutlet weak var idCardFrontView: IDCardView!
     
-    @IBOutlet weak var idCardReverseBtn: UIButton!
+    @IBOutlet weak var idCardReverseView: IDCardView!
     
     @IBOutlet weak var noFellowView: UIStackView!
     
@@ -66,6 +70,12 @@ class AddTenantViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        roomNumBtn.title = "请选择房间"
+        roomNumBtn.items = [["A", "B", "C", "D", "E"]]
+        
+        idCardFrontView.placeImage = #imageLiteral(resourceName: "id_front")
+        idCardReverseView.placeImage = #imageLiteral(resourceName: "id_back")
         
         reloadFellowView()
     }
@@ -119,10 +129,16 @@ class AddTenantViewController: UIViewController {
     
     
     @IBAction func nextStepAction(_ sender: Any) {
+        // 房间编号
+        self.tenantContractInfo.roomNum = roomNumBtn.resultStr
         // 承租人身份证
         self.tenantContractInfo.tenantInfo.userName = userNameTF.text
         self.tenantContractInfo.tenantInfo.phone = phoneTF.text
         self.tenantContractInfo.tenantInfo.idCard = idCardTF.text
+        self.tenantContractInfo.tenantInfo.idCardFront = idCardFrontView.urlStr
+        self.tenantContractInfo.tenantInfo.idCardReverse = idCardReverseView.urlStr
+        
+        
         
     }
     

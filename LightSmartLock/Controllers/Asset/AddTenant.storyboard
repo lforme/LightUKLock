@@ -85,7 +85,7 @@
                                                                                 <color key="textColor" name="textPrimary"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSE-FV-bfa">
+                                                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSE-FV-bfa" customClass="DataSelectionButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                                 <rect key="frame" x="57.5" y="14" width="324.5" height="16"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                                 <state key="normal" title="合租房源请选择" image="arrow">
@@ -313,14 +313,22 @@
                                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="b3x-f2-V9d">
                                                                                 <rect key="frame" x="246" y="16" width="136" height="56"/>
                                                                                 <subviews>
-                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfu-kz-Pyr">
+                                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JBK-An-bf4" customClass="IDCardView" customModule="门锁助手个人版" customModuleProvider="target">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
-                                                                                        <state key="normal" image="id_front"/>
-                                                                                    </button>
-                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTa-o4-fhE">
+                                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="height" constant="56" id="ECp-t6-fmi"/>
+                                                                                            <constraint firstAttribute="width" constant="56" id="rAD-2b-JNF"/>
+                                                                                        </constraints>
+                                                                                    </view>
+                                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3fv-ct-i9G" customClass="IDCardView" customModule="门锁助手个人版" customModuleProvider="target">
                                                                                         <rect key="frame" x="80" y="0.0" width="56" height="56"/>
-                                                                                        <state key="normal" image="id_back"/>
-                                                                                    </button>
+                                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="height" constant="56" id="JSz-ai-pIX"/>
+                                                                                            <constraint firstAttribute="width" constant="56" id="xLv-Pw-Ryy"/>
+                                                                                        </constraints>
+                                                                                    </view>
                                                                                 </subviews>
                                                                             </stackView>
                                                                         </subviews>
@@ -403,13 +411,13 @@
                                                                                         <state key="normal" image="config_remove"/>
                                                                                     </button>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="王林 18587677754" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vm-Ax-3qK">
-                                                                                        <rect key="frame" x="32" y="13.5" width="235" height="17"/>
+                                                                                        <rect key="frame" x="32" y="13.5" width="122.5" height="17"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <color key="textColor" name="textPrimary"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
-                                                                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OzJ-I7-ZHb">
-                                                                                        <rect key="frame" x="275" y="13.5" width="107" height="17"/>
+                                                                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="248" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OzJ-I7-ZHb">
+                                                                                        <rect key="frame" x="162.5" y="13.5" width="219.5" height="17"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <state key="normal" title="未填写身份证号" image="arrow">
                                                                                             <color key="titleColor" name="textPrimary"/>
@@ -582,13 +590,13 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i66-JK-thU">
-                                                                                <rect key="frame" x="57.5" y="13.5" width="277.5" height="17"/>
+                                                                                <rect key="frame" x="57.5" y="13.5" width="6.5" height="17"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJl-u4-Gbj">
-                                                                                <rect key="frame" x="335" y="5" width="47" height="34"/>
+                                                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="248" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJl-u4-Gbj">
+                                                                                <rect key="frame" x="64" y="5" width="318" height="34"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <state key="normal" image="arrow">
                                                                                     <string key="title">1月/次
@@ -672,13 +680,13 @@
                                                                         <rect key="frame" x="0.0" y="306" width="382" height="44"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="租金递增" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vF3-Ce-pt9">
-                                                                                <rect key="frame" x="0.0" y="13.5" width="303" height="17"/>
+                                                                                <rect key="frame" x="0.0" y="13.5" width="57.5" height="17"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <color key="textColor" name="textPrimary"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZ2-Ce-NGl">
-                                                                                <rect key="frame" x="303" y="13.5" width="79" height="17"/>
+                                                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="248" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZ2-Ce-NGl">
+                                                                                <rect key="frame" x="57.5" y="13.5" width="324.5" height="17"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <state key="normal" title="无递增设置" image="arrow">
                                                                                     <color key="titleColor" name="textPrimary"/>
@@ -696,15 +704,15 @@
                                                                         <rect key="frame" x="0.0" y="355" width="382" height="44"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="收款账号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBE-Pc-X7j">
-                                                                                <rect key="frame" x="0.0" y="13.5" width="339" height="17"/>
+                                                                                <rect key="frame" x="0.0" y="13.5" width="57.5" height="17"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <color key="textColor" name="textPrimary"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdO-Jw-8vE">
-                                                                                <rect key="frame" x="339" y="0.0" width="43" height="44"/>
+                                                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="248" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdO-Jw-8vE">
+                                                                                <rect key="frame" x="57.5" y="5" width="324.5" height="34"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <state key="normal">
+                                                                                <state key="normal" image="arrow">
                                                                                     <string key="title">请添加
 </string>
                                                                                     <color key="titleColor" name="textPrimary"/>
@@ -900,11 +908,12 @@
                     <navigationItem key="navigationItem" id="40t-c4-CZF"/>
                     <connections>
                         <outlet property="fellowContainerView" destination="2tJ-Tp-4Ss" id="oah-ew-FUq"/>
-                        <outlet property="idCardFrontBtn" destination="dfu-kz-Pyr" id="Xuw-eW-90k"/>
-                        <outlet property="idCardReverseBtn" destination="bTa-o4-fhE" id="E6d-kM-tpg"/>
+                        <outlet property="idCardFrontView" destination="JBK-An-bf4" id="jDt-au-Xs6"/>
+                        <outlet property="idCardReverseView" destination="3fv-ct-i9G" id="lrt-Cx-hoL"/>
                         <outlet property="idCardTF" destination="hI6-dz-gNS" id="mf2-Cs-bfu"/>
                         <outlet property="noFellowView" destination="FUJ-dC-cWi" id="LgK-yC-VWR"/>
                         <outlet property="phoneTF" destination="drI-WH-M5f" id="hRZ-xZ-m6k"/>
+                        <outlet property="roomNumBtn" destination="XSE-FV-bfa" id="myg-lF-std"/>
                         <outlet property="userNameTF" destination="FRZ-nc-WBb" id="NzJ-W0-ggE"/>
                     </connections>
                 </viewController>
@@ -1813,14 +1822,22 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="0wG-TQ-SSs">
                                                         <rect key="frame" x="246" y="16" width="136" height="56"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbq-pZ-JWQ">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OqE-JY-atd" customClass="IDCardView" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
-                                                                <state key="normal" image="id_front"/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WA6-5c-1be">
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="56" id="1Ii-l3-Klj"/>
+                                                                    <constraint firstAttribute="height" constant="56" id="NE7-1g-Zcl"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHv-zg-6Er" customClass="IDCardView" customModule="门锁助手个人版" customModuleProvider="target">
                                                                 <rect key="frame" x="80" y="0.0" width="56" height="56"/>
-                                                                <state key="normal" image="id_back"/>
-                                                            </button>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="56" id="GeQ-oC-uek"/>
+                                                                    <constraint firstAttribute="height" constant="56" id="wtZ-2h-l4V"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
@@ -1893,8 +1910,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="UYJ-nV-Hrr"/>
                     <connections>
-                        <outlet property="idCardFrontBtn" destination="fbq-pZ-JWQ" id="dix-UH-gkL"/>
-                        <outlet property="idCardReverseBtn" destination="WA6-5c-1be" id="gGe-1R-DHU"/>
+                        <outlet property="idCardFrontView" destination="OqE-JY-atd" id="FWD-0t-B6b"/>
+                        <outlet property="idCardReverseView" destination="dHv-zg-6Er" id="o2d-qF-W4p"/>
                         <outlet property="idCardTF" destination="dED-I1-sxu" id="5BJ-6i-IPz"/>
                         <outlet property="phoneTF" destination="fb4-80-im7" id="BgZ-yi-qA3"/>
                         <outlet property="titleLabel" destination="5p7-9k-p2W" id="d9C-3x-Mgd"/>
@@ -2697,8 +2714,6 @@
         <image name="config_remove" width="24" height="24"/>
         <image name="dian_n" width="32" height="32"/>
         <image name="ding_n" width="32" height="32"/>
-        <image name="id_back" width="56" height="56"/>
-        <image name="id_front" width="56" height="56"/>
         <image name="police_n" width="22" height="24"/>
         <image name="ran_n" width="32" height="32"/>
         <image name="recognize" width="16" height="16"/>

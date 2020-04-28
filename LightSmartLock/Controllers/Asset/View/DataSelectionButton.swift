@@ -13,9 +13,10 @@ import RxOptional
 
 class DataSelectionButton: UIButton {
     
-    var items: [[String]] = [["1", "2", "3"], ["年", "月", "日"]]
+    var items: [[String]] = [[]]
+    
     var result: [PickerResult]?  {
-           didSet {
+        didSet {
             guard let result = result, !result.isEmpty else {
                 return
             }
@@ -24,19 +25,28 @@ class DataSelectionButton: UIButton {
             }).reduce("", { (next, acc) -> String in
                 return next + acc
             })
-            self.setTitle(str, for: .normal)
-           }
-       }
-       
-    var title: String = "请选择"
+            self.resultStr = str
+        }
+    }
+    
+    var resultStr: String? {
+        didSet {
+            self.setTitle(resultStr, for: .normal)
+        }
+    }
+    
+    var title: String = "请选择" {
+        didSet {
+            setTitle(title, for: .normal)
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setTitle(title, for: .normal)
         rx.tap
             .asObservable()
             .flatMapFirst { [unowned self]_ -> Observable<[PickerResult]> in
-               return DataPickerController.rx.present(with: self.title, items: self.items)
+                return DataPickerController.rx.present(with: self.title, items: self.items)
         }
         .subscribe(onNext: { [weak self](result) in
             self?.result = result
