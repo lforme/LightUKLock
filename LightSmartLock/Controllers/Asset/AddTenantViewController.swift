@@ -53,7 +53,6 @@ class AddTenantViewController: UIViewController {
     
     @IBOutlet weak var roomNumBtn: DataSelectionButton!
     
-    
     @IBOutlet weak var userNameTF: UITextField!
     
     @IBOutlet weak var phoneTF: UITextField!
@@ -122,6 +121,7 @@ class AddTenantViewController: UIViewController {
             
             vc.records = self.tenantContractInfo.contractRentalRecordDTOList
             vc.didSaved = { [weak self] newRecords in
+                // 租金递增
                 self?.tenantContractInfo.contractRentalRecordDTOList = newRecords
             }
         }

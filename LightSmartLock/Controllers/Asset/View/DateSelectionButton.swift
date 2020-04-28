@@ -17,9 +17,16 @@ class DateSelectionButton: UIButton {
     var minDate: Date?
     var selectedDateStr: String? {
         didSet {
+            guard let selectedDateStr = selectedDateStr else {
+                return
+            }
             self.setTitle(selectedDateStr, for: .normal)
+            self.didUpdated?(selectedDateStr)
         }
     }
+    
+    var didUpdated: ((String?) -> Void)?
+
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -26,8 +26,11 @@ class DataSelectionButton: UIButton {
                 return next + acc
             })
             self.resultStr = str
+            self.didUpdated?(result)
         }
     }
+    
+    var didUpdated: (([PickerResult]) -> Void)?
     
     var resultStr: String? {
         didSet {

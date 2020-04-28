@@ -10,7 +10,7 @@ import UIKit
 
 class ContractRentalRecord: Codable {
     var increaseType: Int?
-    var ratio: Int?
+    var ratio: Double?
     var startDate: String?
 }
 
@@ -37,10 +37,7 @@ class SettingRentalRecordViewController: UIViewController {
         
         for (index, record) in records.enumerated() {
             let view = ContractRentalRecordView.loadFromNib()
-            view.snp.makeConstraints { (make) in
-                make.height.equalTo(194)
-            }
-            view.config(with: record, index: index) { [weak self] in
+            view.config(with: record, baseAmount: 1000, index: index) { [weak self] in
                 self?.records.remove(at: index)
             }
             recordContainerView.addArrangedSubview(view)

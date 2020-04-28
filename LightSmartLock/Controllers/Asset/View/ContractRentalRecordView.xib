@@ -72,7 +72,7 @@
                                             <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="249" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Xv-kM-MAF">
+                                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="249" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Xv-kM-MAF" customClass="DateSelectionButton" customModule="门锁助手个人版" customModuleProvider="target">
                                             <rect key="frame" x="64" y="5" width="318" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <state key="normal" image="arrow">
@@ -110,7 +110,7 @@
                                             <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="249" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Dd-bi-c0h">
+                                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="249" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Dd-bi-c0h" customClass="DataSelectionButton" customModule="门锁助手个人版" customModuleProvider="target">
                                             <rect key="frame" x="64" y="5" width="318" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <state key="normal" image="arrow">
@@ -124,50 +124,61 @@
                                         <constraint firstAttribute="height" constant="44" id="bvk-CE-aNx"/>
                                     </constraints>
                                 </stackView>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lt5-KS-ug1">
-                                    <rect key="frame" x="0.0" y="104" width="382" height="1"/>
-                                    <color key="backgroundColor" name="tableViewBackground"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="1" id="qjr-dS-hcZ"/>
-                                    </constraints>
-                                </view>
-                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2U1-aK-Hoh">
-                                    <rect key="frame" x="0.0" y="110" width="382" height="44"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Pqu-fh-ssh">
+                                    <rect key="frame" x="0.0" y="104" width="382" height="50"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFK-gT-TQQ">
-                                            <rect key="frame" x="0.0" y="13.5" width="57.5" height="17"/>
-                                            <string key="text">涨租金额
-</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" name="textPrimary"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uT-6y-F4M">
-                                            <rect key="frame" x="57.5" y="13.5" width="145" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3pc-o2-qP4">
-                                            <rect key="frame" x="202.5" y="13" width="179.5" height="18.5"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lt5-KS-ug1">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="1"/>
+                                            <color key="backgroundColor" name="tableViewBackground"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="qjr-dS-hcZ"/>
+                                            </constraints>
+                                        </view>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2U1-aK-Hoh">
+                                            <rect key="frame" x="0.0" y="6" width="382" height="44"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="涨为1100.00元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sW-kO-oNm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="93.5" height="18.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFK-gT-TQQ">
+                                                    <rect key="frame" x="0.0" y="13.5" width="57.5" height="17"/>
+                                                    <string key="text">涨租金额
+</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" name="textDescription"/>
+                                                    <color key="textColor" name="textPrimary"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100元" placeholder="填写本期读数" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4dO-Da-6sz">
-                                                    <rect key="frame" x="93.5" y="0.0" width="86" height="18.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uT-6y-F4M">
+                                                    <rect key="frame" x="57.5" y="13.5" width="161.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                    <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="3pc-o2-qP4">
+                                                    <rect key="frame" x="219" y="13" width="163" height="18.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="涨为1100.00元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sW-kO-oNm">
+                                                            <rect key="frame" x="0.0" y="0.0" width="93.5" height="18.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" name="textDescription"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4dO-Da-6sz">
+                                                            <rect key="frame" x="99.5" y="0.0" width="43" height="18.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                        </textField>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smx-QR-90C">
+                                                            <rect key="frame" x="148.5" y="0.0" width="14.5" height="18.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" name="textPrimary"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="3pA-Jf-gcF"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="44" id="3pA-Jf-gcF"/>
-                                    </constraints>
                                 </stackView>
                             </subviews>
                         </stackView>
@@ -194,10 +205,14 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="amountContainer" destination="Pqu-fh-ssh" id="7ap-qK-uFG"/>
                 <outlet property="amountTF" destination="4dO-Da-6sz" id="QgJ-Bo-2TU"/>
-                <outlet property="increaseTypeBtn" destination="9Dd-bi-c0h" id="eif-Hs-eIG"/>
+                <outlet property="amountTitleLabel" destination="QFK-gT-TQQ" id="R0i-1h-hTv"/>
+                <outlet property="increaseTypeBtn" destination="9Dd-bi-c0h" id="Mf0-Wv-QvO"/>
+                <outlet property="resultLabel" destination="5sW-kO-oNm" id="oBb-ql-W3S"/>
                 <outlet property="sectionTitle" destination="EhF-P3-Eiv" id="0TQ-i2-vIb"/>
-                <outlet property="startDateBtn" destination="9Xv-kM-MAF" id="AiI-vf-ue4"/>
+                <outlet property="startDateBtn" destination="9Xv-kM-MAF" id="cF4-Jf-g4j"/>
+                <outlet property="unitLabel" destination="smx-QR-90C" id="7tM-gB-BrT"/>
             </connections>
             <point key="canvasLocation" x="132" y="96"/>
         </view>
