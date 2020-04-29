@@ -170,6 +170,9 @@
 		9CB4B34D239DF519001197AB /* DigitalPwdDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4B34C239DF519001197AB /* DigitalPwdDetailController.swift */; };
 		9CB4B34F239E31FC001197AB /* ChangeDigitalPwdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4B34E239E31FC001197AB /* ChangeDigitalPwdController.swift */; };
 		9CB4B351239E3AA2001197AB /* DigitalChangePwdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4B350239E3AA2001197AB /* DigitalChangePwdViewModel.swift */; };
+		9CBAF5FB24592BF700197450 /* BillClearingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBAF5FA24592BF700197450 /* BillClearingController.swift */; };
+		9CBAF5FD2459326E00197450 /* BillDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBAF5FC2459326E00197450 /* BillDescriptionCell.swift */; };
+		9CBAF5FF245932C800197450 /* BillDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBAF5FE245932C800197450 /* BillDescriptionCell.xib */; };
 		9CBD8F3923A1D67A00886519 /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD8F3823A1D67A00886519 /* UserDetailViewModel.swift */; };
 		9CBD8F3B23A1E21400886519 /* MultipleTempPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD8F3A23A1E21400886519 /* MultipleTempPasswordController.swift */; };
 		9CBD8F3F23A1ECF900886519 /* ShareModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD8F3E23A1ECF900886519 /* ShareModels.swift */; };
@@ -414,6 +417,9 @@
 		9CB4B34C239DF519001197AB /* DigitalPwdDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalPwdDetailController.swift; sourceTree = "<group>"; };
 		9CB4B34E239E31FC001197AB /* ChangeDigitalPwdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDigitalPwdController.swift; sourceTree = "<group>"; };
 		9CB4B350239E3AA2001197AB /* DigitalChangePwdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalChangePwdViewModel.swift; sourceTree = "<group>"; };
+		9CBAF5FA24592BF700197450 /* BillClearingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillClearingController.swift; sourceTree = "<group>"; };
+		9CBAF5FC2459326E00197450 /* BillDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDescriptionCell.swift; sourceTree = "<group>"; };
+		9CBAF5FE245932C800197450 /* BillDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BillDescriptionCell.xib; sourceTree = "<group>"; };
 		9CBD8F3823A1D67A00886519 /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
 		9CBD8F3A23A1E21400886519 /* MultipleTempPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleTempPasswordController.swift; sourceTree = "<group>"; };
 		9CBD8F3E23A1ECF900886519 /* ShareModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareModels.swift; sourceTree = "<group>"; };
@@ -730,6 +736,8 @@
 				9C3F93E2245599940040005D /* BillFlowCellItemCell.xib */,
 				9C3F93E524559C930040005D /* BillContractCell.swift */,
 				9C3F93E624559C930040005D /* BillContractCell.xib */,
+				9CBAF5FC2459326E00197450 /* BillDescriptionCell.swift */,
+				9CBAF5FE245932C800197450 /* BillDescriptionCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -781,6 +789,7 @@
 				9C323BCD2456BEE900214256 /* BookKeepingController.swift */,
 				9C323BCF2456D10F00214256 /* BillFlowContractDetailController.swift */,
 				9CEC3F9324580056002ADA39 /* BillFlowLeaseRenewController.swift */,
+				9CBAF5FA24592BF700197450 /* BillClearingController.swift */,
 				9C76099D2452DBAA0042C88D /* Bill.storyboard */,
 			);
 			path = Bill;
@@ -1106,6 +1115,7 @@
 				9C3F93DC24558D050040005D /* BillReportCell.xib in Resources */,
 				9C24AC212383C1C6005EBF95 /* Login.storyboard in Resources */,
 				9C52402E238E163D00308AC4 /* UnlockRecordCell.xib in Resources */,
+				9CBAF5FF245932C800197450 /* BillDescriptionCell.xib in Resources */,
 				9CBD8F4D23A21E7D00886519 /* PasswordChangeStatusCell.xib in Resources */,
 				9CDD272E2382801E006A9B97 /* LaunchScreen.storyboard in Resources */,
 				9C218F9F23FA765B009600F7 /* House.storyboard in Resources */,
@@ -1271,6 +1281,7 @@
 				9CBD8F5923A2496700886519 /* SharePasswordSignleController.swift in Sources */,
 				7B7EB4BD24516ECB002DC436 /* AddAssetFacilityViewController.swift in Sources */,
 				9C524038238E66B500308AC4 /* RecordUnlockReactor.swift in Sources */,
+				9CBAF5FD2459326E00197450 /* BillDescriptionCell.swift in Sources */,
 				9CBD8F5423A23ADC00886519 /* DatePickerController.swift in Sources */,
 				9C3726E52391369900450757 /* MessageCenterController.swift in Sources */,
 				9CBD8F5723A23E4700886519 /* SharePwdMultipleViewModel.swift in Sources */,
@@ -1323,6 +1334,7 @@
 				9C03B0ED239F49440001E849 /* FingerModel.swift in Sources */,
 				9CEC3F9424580056002ADA39 /* BillFlowLeaseRenewController.swift in Sources */,
 				9C47DB7D239A36320019EAA0 /* UserMembersModels.swift in Sources */,
+				9CBAF5FB24592BF700197450 /* BillClearingController.swift in Sources */,
 				9CB4B34F239E31FC001197AB /* ChangeDigitalPwdController.swift in Sources */,
 				9C524034238E64C000308AC4 /* RecordUnlockController.swift in Sources */,
 				9C7AFF1D239603F00075442D /* SearchPlotCell.swift in Sources */,

@@ -10,7 +10,10 @@ import UIKit
 import IGListKit
 
 class BillFlowController: UIViewController {
-
+    
+    @IBOutlet weak var bookkeepingButton: UIButton!
+    @IBOutlet weak var collectionViewBottomOffset: NSLayoutConstraint!
+    
     @IBOutlet weak var collectionView: ListCollectionView! = {
         let layout = ListCollectionViewLayout(stickyHeaders: false, scrollDirection: .vertical, topContentInset: 0, stretchToEdge: true)
         let view = ListCollectionView(frame: .zero, listCollectionViewLayout: layout)
@@ -33,6 +36,12 @@ class BillFlowController: UIViewController {
         adapter.collectionView = collectionView
         collectionView.emptyDataSetSource = self
         adapter.dataSource = self
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {[weak self] in
+            guard let this = self else { return }
+            this.view.bringSubviewToFront(this.bookkeepingButton)
+            this.collectionViewBottomOffset.constant = 60
+        }
     }
 }
 
