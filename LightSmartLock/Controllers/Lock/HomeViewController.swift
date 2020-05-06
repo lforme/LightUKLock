@@ -33,6 +33,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     }
     
     //    private let synchronizeTaks = BluetoothSynchronizeTask()
+    private let currentScene = BehaviorRelay<SceneListModel?>.init(value: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +83,8 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
             self?.navigationController?.popViewController(animated: true)
         }).disposed(by: rx.disposeBag)
         
-        LSLUser.current().obScene.subscribe(onNext: { (scene) in
+        LSLUser.current().obScene.subscribe(onNext: { [weak self](scene) in
+            self?.currentScene.accept(scene)
             if let name = scene?.buildingName {
                 sceneButton.setTitle(
                     "  \(name)", for: UIControl.State())
@@ -223,6 +225,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             leasedCell.propertyDidSelected {[weak self] in
                 // 跳转资产页面
                 print("tap")
+                let vc: AssetDetailViewController = ViewLoader.Storyboard.controller(from: "AssetDetail")
+                vc.model = self?.currentScene.value
+                self?.navigationController?.pushViewController(vc, animated: true)
             }
             
             return leasedCell

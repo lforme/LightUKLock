@@ -33,8 +33,28 @@ class AssetDetailViewController: UIViewController {
     
     @IBOutlet weak var moreButton: UIButton!
     
+    @IBOutlet weak var buildingNameLabel: UILabel!
+    
+    @IBOutlet weak var buildingAdressLabel: UILabel!
+    
+    @IBOutlet weak var houseStructLabel: UILabel!
+    
+    var model: SceneListModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let getAssetHouseDetail = BusinessAPI.requestMapJSON(.getAssetHouseDetail(id: model.ladderAssetHouseId ?? ""), classType: PositionModel.self).share(replay: 1, scope: .forever).catchErrorJustReturn(PositionModel())
+        
+        getAssetHouseDetail.subscribe(onNext: { [weak self](detail) in
+            
+            self?.buildingNameLabel.text = detail.buildingName
+            self?.buildingAdressLabel.text = detail.address
+            self?.houseStructLabel.text = "\(detail.houseStruct ?? "") | \(detail.area?.description ?? "")㎡"
+        })
+            .disposed(by: rx.disposeBag)
+        
+
         
         moreButton.rx
             .tap
