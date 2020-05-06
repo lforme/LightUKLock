@@ -100,6 +100,15 @@
 		9C42976D23866026004CB999 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42976C23866026004CB999 /* UIButton+Extension.swift */; };
 		9C42976F23866088004CB999 /* PKHud+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42976E23866088004CB999 /* PKHud+Rx.swift */; };
 		9C4297782386A64C004CB999 /* RegistrationRecoveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4297772386A64C004CB999 /* RegistrationRecoveryService.swift */; };
+		9C44905D24626B7800A859CC /* LiquidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44905C24626B7800A859CC /* LiquidationViewController.swift */; };
+		9C44905F246270EA00A859CC /* MyBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44905E246270EA00A859CC /* MyBillViewController.swift */; };
+		9C449064246272DE00A859CC /* MyBillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C449062246272DE00A859CC /* MyBillCell.swift */; };
+		9C449065246272DE00A859CC /* MyBillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C449063246272DE00A859CC /* MyBillCell.xib */; };
+		9C44906724628E1F00A859CC /* FeeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44906624628E1F00A859CC /* FeeItemView.swift */; };
+		9C44906924628E6300A859CC /* FeeItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C44906824628E6300A859CC /* FeeItemView.xib */; };
+		9C4490732462AEF100A859CC /* CreateBillController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4490722462AEF100A859CC /* CreateBillController.swift */; };
+		9C4490752462CA3800A859CC /* BillFeesDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4490742462CA3800A859CC /* BillFeesDeleteView.swift */; };
+		9C4490772462CA6E00A859CC /* BillFeesDeleteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C4490762462CA6E00A859CC /* BillFeesDeleteView.xib */; };
 		9C452F082394AA2E00144827 /* CenterMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452F072394AA2E00144827 /* CenterMessageModel.swift */; };
 		9C452F0A2394C38800144827 /* HomeSettringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452F092394C38800144827 /* HomeSettringController.swift */; };
 		9C452F0C2394E2BE00144827 /* LockSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452F0B2394E2BE00144827 /* LockSettingController.swift */; };
@@ -347,6 +356,15 @@
 		9C42976C23866026004CB999 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		9C42976E23866088004CB999 /* PKHud+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PKHud+Rx.swift"; sourceTree = "<group>"; };
 		9C4297772386A64C004CB999 /* RegistrationRecoveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRecoveryService.swift; sourceTree = "<group>"; };
+		9C44905C24626B7800A859CC /* LiquidationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidationViewController.swift; sourceTree = "<group>"; };
+		9C44905E246270EA00A859CC /* MyBillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBillViewController.swift; sourceTree = "<group>"; };
+		9C449062246272DE00A859CC /* MyBillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBillCell.swift; sourceTree = "<group>"; };
+		9C449063246272DE00A859CC /* MyBillCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyBillCell.xib; sourceTree = "<group>"; };
+		9C44906624628E1F00A859CC /* FeeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeItemView.swift; sourceTree = "<group>"; };
+		9C44906824628E6300A859CC /* FeeItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeeItemView.xib; sourceTree = "<group>"; };
+		9C4490722462AEF100A859CC /* CreateBillController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBillController.swift; sourceTree = "<group>"; };
+		9C4490742462CA3800A859CC /* BillFeesDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillFeesDeleteView.swift; sourceTree = "<group>"; };
+		9C4490762462CA6E00A859CC /* BillFeesDeleteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BillFeesDeleteView.xib; sourceTree = "<group>"; };
 		9C452F072394AA2E00144827 /* CenterMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterMessageModel.swift; sourceTree = "<group>"; };
 		9C452F092394C38800144827 /* HomeSettringController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSettringController.swift; sourceTree = "<group>"; };
 		9C452F0B2394E2BE00144827 /* LockSettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSettingController.swift; sourceTree = "<group>"; };
@@ -738,6 +756,12 @@
 				9C3F93E624559C930040005D /* BillContractCell.xib */,
 				9CBAF5FC2459326E00197450 /* BillDescriptionCell.swift */,
 				9CBAF5FE245932C800197450 /* BillDescriptionCell.xib */,
+				9C449062246272DE00A859CC /* MyBillCell.swift */,
+				9C449063246272DE00A859CC /* MyBillCell.xib */,
+				9C44906624628E1F00A859CC /* FeeItemView.swift */,
+				9C44906824628E6300A859CC /* FeeItemView.xib */,
+				9C4490742462CA3800A859CC /* BillFeesDeleteView.swift */,
+				9C4490762462CA6E00A859CC /* BillFeesDeleteView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -790,6 +814,9 @@
 				9C323BCF2456D10F00214256 /* BillFlowContractDetailController.swift */,
 				9CEC3F9324580056002ADA39 /* BillFlowLeaseRenewController.swift */,
 				9CBAF5FA24592BF700197450 /* BillClearingController.swift */,
+				9C44905C24626B7800A859CC /* LiquidationViewController.swift */,
+				9C44905E246270EA00A859CC /* MyBillViewController.swift */,
+				9C4490722462AEF100A859CC /* CreateBillController.swift */,
 				9C76099D2452DBAA0042C88D /* Bill.storyboard */,
 			);
 			path = Bill;
@@ -1110,6 +1137,8 @@
 				9CFDE1FC238513D40062522E /* bluetooth.json in Resources */,
 				9CFDE1FA2384EA2A0062522E /* opendoor.json in Resources */,
 				9C770597238FA351008E1552 /* MyListCell.xib in Resources */,
+				9C4490772462CA6E00A859CC /* BillFeesDeleteView.xib in Resources */,
+				9C44906924628E6300A859CC /* FeeItemView.xib in Resources */,
 				9C24AC402383EB55005EBF95 /* OpenDoorViewController.xib in Resources */,
 				9C76099E2452DBAA0042C88D /* Bill.storyboard in Resources */,
 				9C3F93DC24558D050040005D /* BillReportCell.xib in Resources */,
@@ -1117,6 +1146,7 @@
 				9C52402E238E163D00308AC4 /* UnlockRecordCell.xib in Resources */,
 				9CBAF5FF245932C800197450 /* BillDescriptionCell.xib in Resources */,
 				9CBD8F4D23A21E7D00886519 /* PasswordChangeStatusCell.xib in Resources */,
+				9C449065246272DE00A859CC /* MyBillCell.xib in Resources */,
 				9CDD272E2382801E006A9B97 /* LaunchScreen.storyboard in Resources */,
 				9C218F9F23FA765B009600F7 /* House.storyboard in Resources */,
 				9C24AC422383EB88005EBF95 /* Home.storyboard in Resources */,
@@ -1228,6 +1258,7 @@
 				9C3726C62390B2DD00450757 /* ChangePasswordController.swift in Sources */,
 				9CB4B34B239DE8C3001197AB /* DigitalPasswordModel.swift in Sources */,
 				9C3726E723913C5400450757 /* MessageCenterViewModel.swift in Sources */,
+				9C4490752462CA3800A859CC /* BillFeesDeleteView.swift in Sources */,
 				9C24AC232383C206005EBF95 /* LoginViewController.swift in Sources */,
 				9C1B87CB2397942700216ADA /* LockBindViewModel.swift in Sources */,
 				9C47DB85239A526E0019EAA0 /* UserDetailController.swift in Sources */,
@@ -1276,6 +1307,7 @@
 				9CFDE207238523A80062522E /* LoadingPlugin.swift in Sources */,
 				9C03B0F1239F51240001E849 /* FingerDetailController.swift in Sources */,
 				9C5A967823A07D4E002A2B06 /* AddCardController.swift in Sources */,
+				9C44905D24626B7800A859CC /* LiquidationViewController.swift in Sources */,
 				9C7705A1238FE358008E1552 /* SingleInputController.swift in Sources */,
 				9CBD8F4C23A21E7D00886519 /* PasswordChangeStatusCell.swift in Sources */,
 				9CBD8F5923A2496700886519 /* SharePasswordSignleController.swift in Sources */,
@@ -1284,6 +1316,7 @@
 				9CBAF5FD2459326E00197450 /* BillDescriptionCell.swift in Sources */,
 				9CBD8F5423A23ADC00886519 /* DatePickerController.swift in Sources */,
 				9C3726E52391369900450757 /* MessageCenterController.swift in Sources */,
+				9C449064246272DE00A859CC /* MyBillCell.swift in Sources */,
 				9CBD8F5723A23E4700886519 /* SharePwdMultipleViewModel.swift in Sources */,
 				9C3726E32391164700450757 /* OpenDoorViewModel.swift in Sources */,
 				9C3F93ED2455ACF90040005D /* BillFlowSection.swift in Sources */,
@@ -1314,6 +1347,7 @@
 				9CBD8F3F23A1ECF900886519 /* ShareModels.swift in Sources */,
 				9CB4B347239DE08E001197AB /* PasswordManagementController.swift in Sources */,
 				9C42976D23866026004CB999 /* UIButton+Extension.swift in Sources */,
+				9C4490732462AEF100A859CC /* CreateBillController.swift in Sources */,
 				9C54719D2395107E00432ACA /* PositioEditingController.swift in Sources */,
 				9C5A968023A09813002A2B06 /* CardDetailController.swift in Sources */,
 				9C752FD42388080A000FEA73 /* NoLockViewController.swift in Sources */,
@@ -1344,6 +1378,7 @@
 				9C24AC1623838CD1005EBF95 /* NavigationSettingStyle.swift in Sources */,
 				9C3726D923910C0100450757 /* NORServiceIdentifiers.swift in Sources */,
 				9C24AC1423838C80005EBF95 /* BaseNavigationController.swift in Sources */,
+				9C44905F246270EA00A859CC /* MyBillViewController.swift in Sources */,
 				9CBD8F5123A2376C00886519 /* SharePasswordMultipleController.swift in Sources */,
 				9C24AC292383CB92005EBF95 /* UITextField+Extension.swift in Sources */,
 				9C5A968223A09A73002A2B06 /* CardDetailViewModel.swift in Sources */,
@@ -1361,6 +1396,7 @@
 				9C24AC252383C9CB005EBF95 /* UIView+Extension.swift in Sources */,
 				9C8FFD5D2447EEBF00527EA0 /* UIImageView+Extension.swift in Sources */,
 				9C5A967A23A07F62002A2B06 /* CardManageController.swift in Sources */,
+				9C44906724628E1F00A859CC /* FeeItemView.swift in Sources */,
 				9C3726DE23910FF700450757 /* BluetoothPapa.swift in Sources */,
 				9C3726D723910C0100450757 /* NORData.swift in Sources */,
 				9C24AC2E2383D5D9005EBF95 /* LSLUser.swift in Sources */,
