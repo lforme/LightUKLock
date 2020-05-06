@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1F64F18F4FD1BF62618F8397 /* Pods_LightSmartLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */; };
+		7B4B9E2F2462B7CD00F6C18C /* NetworkInterface2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B9E2E2462B6E500F6C18C /* NetworkInterface2.swift */; };
+		7B4B9E322462C17200F6C18C /* TenantContractDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B9E312462C17200F6C18C /* TenantContractDTO.swift */; };
+		7B4B9E342462C22B00F6C18C /* TenantContractAndBillsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B9E332462C22B00F6C18C /* TenantContractAndBillsDTO.swift */; };
 		7B76FAAA2445B01A00B6F6A5 /* AssetDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B76FAA92445B01A00B6F6A5 /* AssetDetail.storyboard */; };
 		7B7EB4B32451361E002DC436 /* ButtonContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7EB4B22451361E002DC436 /* ButtonContainerView.swift */; };
 		7B7EB4BB24516EAF002DC436 /* AssetFacilityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7EB4BA24516EAF002DC436 /* AssetFacilityListViewController.swift */; };
@@ -249,6 +252,9 @@
 		3F491F2D46130205BF93BEC8 /* Pods_LSLWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LSLWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56B15D3085FA9EFD559AB2C2 /* Pods-LightSmartLock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightSmartLock.debug.xcconfig"; path = "Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock.debug.xcconfig"; sourceTree = "<group>"; };
 		5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LightSmartLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B4B9E2E2462B6E500F6C18C /* NetworkInterface2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterface2.swift; sourceTree = "<group>"; };
+		7B4B9E312462C17200F6C18C /* TenantContractDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenantContractDTO.swift; sourceTree = "<group>"; };
+		7B4B9E332462C22B00F6C18C /* TenantContractAndBillsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenantContractAndBillsDTO.swift; sourceTree = "<group>"; };
 		7B76FAA92445B01A00B6F6A5 /* AssetDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AssetDetail.storyboard; sourceTree = "<group>"; };
 		7B7EB4B22451361E002DC436 /* ButtonContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonContainerView.swift; sourceTree = "<group>"; };
 		7B7EB4BA24516EAF002DC436 /* AssetFacilityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetFacilityListViewController.swift; sourceTree = "<group>"; };
@@ -500,6 +506,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7B4B9E302462C0B300F6C18C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7B4B9E312462C17200F6C18C /* TenantContractDTO.swift */,
+				7B4B9E332462C22B00F6C18C /* TenantContractAndBillsDTO.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		7B76FAA82445AFF000B6F6A5 /* Asset */ = {
 			isa = PBXGroup;
 			children = (
@@ -508,6 +523,7 @@
 				7BB2FEA72455632100D835BA /* AddTenantFellowViewController.swift */,
 				7BB2FEA9245565F100D835BA /* AddTenantViewController.swift */,
 				7BB2FEAF245595DD00D835BA /* SettingRentalRecordViewController.swift */,
+				7B4B9E302462C0B300F6C18C /* Models */,
 				7BB2FEB5245596D300D835BA /* View */,
 				7B7EB4B22451361E002DC436 /* ButtonContainerView.swift */,
 				7B7EB4BA24516EAF002DC436 /* AssetFacilityListViewController.swift */,
@@ -967,6 +983,7 @@
 				9CFDE21223853A330062522E /* NetworkDiskCache */,
 				9CFDE1FE23851E310062522E /* NetworkingEnvironment.swift */,
 				9CFDE20023851EE80062522E /* NetworkInterface.swift */,
+				7B4B9E2E2462B6E500F6C18C /* NetworkInterface2.swift */,
 				9CFDE20223851F660062522E /* NetworkInterfaceImplement.swift */,
 				9CFDE2042385219F0062522E /* RxMoyaProvider.swift */,
 				9CFDE206238523A80062522E /* LoadingPlugin.swift */,
@@ -1189,6 +1206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B4B9E2F2462B7CD00F6C18C /* NetworkInterface2.swift in Sources */,
 				9CB4B349239DE774001197AB /* PasswordManagementViewModel.swift in Sources */,
 				9C7AFF142395FAF70075442D /* GeolocationService.swift in Sources */,
 				9CBD8F4323A20FD500886519 /* TempPasswordLogView.swift in Sources */,
@@ -1293,6 +1311,7 @@
 				9C52402A238E132900308AC4 /* UIApplication+Rx.swift in Sources */,
 				9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */,
 				9C3726E02391108400450757 /* PPBluetoothScanEntity.swift in Sources */,
+				7B4B9E322462C17200F6C18C /* TenantContractDTO.swift in Sources */,
 				9C770596238FA351008E1552 /* MyListCell.swift in Sources */,
 				7B92D0CF2456CC7900F195A9 /* DataSelectionButton.swift in Sources */,
 				9C03B0ED239F49440001E849 /* FingerModel.swift in Sources */,
@@ -1301,6 +1320,7 @@
 				9C524034238E64C000308AC4 /* RecordUnlockController.swift in Sources */,
 				9C7AFF1D239603F00075442D /* SearchPlotCell.swift in Sources */,
 				9C7AFF24239636640075442D /* NSMutableAttributedString+Extention.swift in Sources */,
+				7B4B9E342462C22B00F6C18C /* TenantContractAndBillsDTO.swift in Sources */,
 				9C1B87C72397701C00216ADA /* LockStartScanViewModel.swift in Sources */,
 				9C218FA523FA8CC9009600F7 /* LeasedCell.swift in Sources */,
 				9C24AC1623838CD1005EBF95 /* NavigationSettingStyle.swift in Sources */,
