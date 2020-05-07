@@ -343,3 +343,20 @@ extension BusinessInterface: TargetType {
         }
     }
 }
+
+
+struct JsonArrayEncoding: Moya.ParameterEncoding {
+    
+    public static var `default`: JsonArrayEncoding { return JsonArrayEncoding() }
+    
+    
+    func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
+        
+        var req = try urlRequest.asURLRequest()
+        let json = try JSONSerialization.data(withJSONObject: parameters!["jsonArray"]!, options: JSONSerialization.WritingOptions.prettyPrinted)
+        req.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        req.httpBody = json
+        return req
+    }
+    
+}

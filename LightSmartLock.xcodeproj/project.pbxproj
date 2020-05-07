@@ -124,6 +124,11 @@
 		9C47DB83239A39070019EAA0 /* ListViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C47DB82239A39070019EAA0 /* ListViewModeling.swift */; };
 		9C47DB85239A526E0019EAA0 /* UserDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C47DB84239A526E0019EAA0 /* UserDetailController.swift */; };
 		9C4BD28923FD217900652685 /* normal.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C4BD28823FD217900652685 /* normal.json */; };
+		9C4D10B92463F0E4005D0C6F /* ReceivingAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4D10B82463F0E4005D0C6F /* ReceivingAccountController.swift */; };
+		9C4D10BC2463F1F1005D0C6F /* ReceivingAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4D10BA2463F1F1005D0C6F /* ReceivingAccountCell.swift */; };
+		9C4D10BD2463F1F1005D0C6F /* ReceivingAccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C4D10BB2463F1F1005D0C6F /* ReceivingAccountCell.xib */; };
+		9C4D10BF2464095E005D0C6F /* PayWayBindController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4D10BE2464095E005D0C6F /* PayWayBindController.swift */; };
+		9C4D10C124641219005D0C6F /* BankCardBindController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4D10C024641219005D0C6F /* BankCardBindController.swift */; };
 		9C524023238E0E3F00308AC4 /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C524022238E0E3F00308AC4 /* error.json */; };
 		9C524025238E0E5500308AC4 /* warning.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C524024238E0E5500308AC4 /* warning.json */; };
 		9C524028238E12E300308AC4 /* UIApplicationProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C524027238E12E300308AC4 /* UIApplicationProxy.swift */; };
@@ -380,6 +385,11 @@
 		9C47DB82239A39070019EAA0 /* ListViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModeling.swift; sourceTree = "<group>"; };
 		9C47DB84239A526E0019EAA0 /* UserDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailController.swift; sourceTree = "<group>"; };
 		9C4BD28823FD217900652685 /* normal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = normal.json; sourceTree = "<group>"; };
+		9C4D10B82463F0E4005D0C6F /* ReceivingAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivingAccountController.swift; sourceTree = "<group>"; };
+		9C4D10BA2463F1F1005D0C6F /* ReceivingAccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivingAccountCell.swift; sourceTree = "<group>"; };
+		9C4D10BB2463F1F1005D0C6F /* ReceivingAccountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceivingAccountCell.xib; sourceTree = "<group>"; };
+		9C4D10BE2464095E005D0C6F /* PayWayBindController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWayBindController.swift; sourceTree = "<group>"; };
+		9C4D10C024641219005D0C6F /* BankCardBindController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardBindController.swift; sourceTree = "<group>"; };
 		9C524022238E0E3F00308AC4 /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
 		9C524024238E0E5500308AC4 /* warning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = warning.json; sourceTree = "<group>"; };
 		9C524027238E12E300308AC4 /* UIApplicationProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationProxy.swift; sourceTree = "<group>"; };
@@ -762,6 +772,8 @@
 				9C44906824628E6300A859CC /* FeeItemView.xib */,
 				9C4490742462CA3800A859CC /* BillFeesDeleteView.swift */,
 				9C4490762462CA6E00A859CC /* BillFeesDeleteView.xib */,
+				9C4D10BA2463F1F1005D0C6F /* ReceivingAccountCell.swift */,
+				9C4D10BB2463F1F1005D0C6F /* ReceivingAccountCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -817,6 +829,9 @@
 				9C44905C24626B7800A859CC /* LiquidationViewController.swift */,
 				9C44905E246270EA00A859CC /* MyBillViewController.swift */,
 				9C4490722462AEF100A859CC /* CreateBillController.swift */,
+				9C4D10B82463F0E4005D0C6F /* ReceivingAccountController.swift */,
+				9C4D10BE2464095E005D0C6F /* PayWayBindController.swift */,
+				9C4D10C024641219005D0C6F /* BankCardBindController.swift */,
 				9C76099D2452DBAA0042C88D /* Bill.storyboard */,
 			);
 			path = Bill;
@@ -1145,6 +1160,7 @@
 				9C24AC212383C1C6005EBF95 /* Login.storyboard in Resources */,
 				9C52402E238E163D00308AC4 /* UnlockRecordCell.xib in Resources */,
 				9CBAF5FF245932C800197450 /* BillDescriptionCell.xib in Resources */,
+				9C4D10BD2463F1F1005D0C6F /* ReceivingAccountCell.xib in Resources */,
 				9CBD8F4D23A21E7D00886519 /* PasswordChangeStatusCell.xib in Resources */,
 				9C449065246272DE00A859CC /* MyBillCell.xib in Resources */,
 				9CDD272E2382801E006A9B97 /* LaunchScreen.storyboard in Resources */,
@@ -1264,11 +1280,13 @@
 				9C47DB85239A526E0019EAA0 /* UserDetailController.swift in Sources */,
 				9C24AC272383CB78005EBF95 /* ObjectAssociation.swift in Sources */,
 				9C24AC1B23839D75005EBF95 /* Swizzling+UIViewController.swift in Sources */,
+				9C4D10B92463F0E4005D0C6F /* ReceivingAccountController.swift in Sources */,
 				9C323BD02456D10F00214256 /* BillFlowContractDetailController.swift in Sources */,
 				9CB4B34D239DF519001197AB /* DigitalPwdDetailController.swift in Sources */,
 				9CB4B351239E3AA2001197AB /* DigitalChangePwdViewModel.swift in Sources */,
 				9C3F93E3245599940040005D /* BillFlowCellItemCell.swift in Sources */,
 				9C47DB73239A0A220019EAA0 /* Popups.swift in Sources */,
+				9C4D10C124641219005D0C6F /* BankCardBindController.swift in Sources */,
 				9C47DB7F239A36560019EAA0 /* UserManagementViewModel.swift in Sources */,
 				9C1B87CD23979B7200216ADA /* SelectLockTypeController.swift in Sources */,
 				9CBD8F5B23A24A9900886519 /* SharePwdSingleViewModel.swift in Sources */,
@@ -1383,6 +1401,7 @@
 				9C24AC292383CB92005EBF95 /* UITextField+Extension.swift in Sources */,
 				9C5A968223A09A73002A2B06 /* CardDetailViewModel.swift in Sources */,
 				9CFDE20F2385346E0062522E /* AppErrorDomain.swift in Sources */,
+				9C4D10BF2464095E005D0C6F /* PayWayBindController.swift in Sources */,
 				9C452F122394EC3E00144827 /* SoundSettingController.swift in Sources */,
 				9C03B0EF239F4A7B0001E849 /* FingerManageViewModel.swift in Sources */,
 				9C7AFF182395FD2C0075442D /* GoudaMapModel.swift in Sources */,
@@ -1409,6 +1428,7 @@
 				9C3726C82390C6AD00450757 /* Empty+UIViewController.swift in Sources */,
 				9C770592238FA11A008E1552 /* MyInfoHeader.swift in Sources */,
 				9C52402D238E163D00308AC4 /* UnlockRecordCell.swift in Sources */,
+				9C4D10BC2463F1F1005D0C6F /* ReceivingAccountCell.swift in Sources */,
 				9C452F082394AA2E00144827 /* CenterMessageModel.swift in Sources */,
 				9CBD8F5D23A24DA800886519 /* BluetoothSynchronizeTask.swift in Sources */,
 				9C7AFF2623964A950075442D /* SetBuildingNumberController.swift in Sources */,

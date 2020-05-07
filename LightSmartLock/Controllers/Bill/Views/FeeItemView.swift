@@ -26,6 +26,6 @@ class FeeItemView: UIView {
     }
     
     private func commonInit() {
-        self.bounds.size.height = 54
+     
     }
 }

@@ -47,7 +47,7 @@
                                             </imageView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="299" placeholderIntrinsicHeight="48.5" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="tLr-4W-oRK">
+                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="299" placeholderIntrinsicHeight="48.5" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tLr-4W-oRK">
                                         <rect key="frame" x="0.0" y="37" width="299" height="89.5"/>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3cg-WK-vcQ">

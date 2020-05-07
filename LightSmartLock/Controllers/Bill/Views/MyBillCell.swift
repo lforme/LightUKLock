@@ -21,6 +21,9 @@ class MyBillCell: UITableViewCell {
         for _ in 0..<Int.random(in: 2...7) {
             let v: FeeItemView = ViewLoader.Xib.view()
             stackView.addArrangedSubview(v)
+            v.snp.makeConstraints { (maker) in
+                maker.left.right.equalTo(v.superview!)
+            }
         }
         
         self.layoutIfNeeded()
