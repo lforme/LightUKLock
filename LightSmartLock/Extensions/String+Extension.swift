@@ -75,3 +75,13 @@ extension String {
         return Int.init(self)
     }
 }
+
+extension Double {
+    var twoPoint: String {
+        return String(format: "%.2f", self)
+    }
+    
+    var yuanSymbol: String {
+        return "¥" + twoPoint
+    }
+}

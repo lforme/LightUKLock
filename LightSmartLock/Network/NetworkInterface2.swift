@@ -19,6 +19,8 @@ enum BusinessInterface2 {
     // 房东获取资产下的合同列表及账单列表
     case getAssetContracts(assetId: String)
     
+    // 获取资产下的流水统计
+    case getStatistics(assetId: String)
     
     
 }
@@ -42,7 +44,8 @@ extension BusinessInterface2: TargetType {
     var method: Moya.Method {
         switch self {
         case .getAssetContract,
-             .getAssetContracts:
+             .getAssetContracts,
+             .getStatistics:
             
             return .get
         }
@@ -54,6 +57,8 @@ extension BusinessInterface2: TargetType {
             return "/tenant_contract_info/asset_contract"
         case .getAssetContracts:
             return "/tenant_contract_info/asset_contracts"
+        case .getStatistics(assetId: let assetId):
+            return "/base_turnover_info/statistics/\(assetId)"
             
         }
     }
@@ -74,6 +79,9 @@ extension BusinessInterface2: TargetType {
             
         case .getAssetContracts(assetId: let assetId):
             return .requestParameters(parameters: ["assetId": assetId], encoding: URLEncoding.queryString)
+            
+        case .getStatistics:
+            return .requestPlain
         }
     }
 }

@@ -39,12 +39,27 @@ class AssetDetailViewController: UIViewController {
     
     @IBOutlet weak var houseStructLabel: UILabel!
     
+    
+    @IBOutlet weak var balanceLabel: UILabel!
+    
+    @IBOutlet weak var incomeAmountLabel: UILabel!
+    
+    @IBOutlet weak var incomeCountLabel: UILabel!
+    
+    @IBOutlet weak var expenseAmountLabel: UILabel!
+    
+    @IBOutlet weak var expenseCountLabel: UILabel!
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    
     var model: SceneListModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let getAssetHouseDetail = BusinessAPI.requestMapJSON(.getAssetHouseDetail(id: model.ladderAssetHouseId ?? ""), classType: PositionModel.self).share(replay: 1, scope: .forever).catchErrorJustReturn(PositionModel())
+        let getAssetHouseDetail = BusinessAPI.requestMapJSON(.getAssetHouseDetail(id: model.ladderAssetHouseId ?? ""), classType: PositionModel.self)
         
         getAssetHouseDetail.subscribe(onNext: { [weak self](detail) in
             
@@ -54,7 +69,30 @@ class AssetDetailViewController: UIViewController {
         })
             .disposed(by: rx.disposeBag)
         
+        
+        
+        let statistics = BusinessAPI2.requestMapJSON(.getStatistics(assetId: model.ladderAssetHouseId ?? ""), classType: TurnoverStatisticsDTO.self)
+        
+        statistics.subscribe(onNext: { [weak self](model) in
+            self?.balanceLabel.text = model.balance?.twoPoint
+            self?.incomeAmountLabel.text = model.incomeAmount?.yuanSymbol
+            self?.incomeCountLabel.text = "共\(model.incomeCount?.description ?? "")笔"
+            self?.expenseAmountLabel.text = model.expenseAmount?.yuanSymbol
+            self?.expenseCountLabel.text = "共\(model.expenseCount?.description ?? "")笔" 
 
+        })
+            .disposed(by: rx.disposeBag)
+        
+
+        let items =         BusinessAPI2.requestMapJSONArray(.getAssetContract(assetId: model.ladderAssetHouseId ?? "", year: "2020"), classType: TenantContractDTO.self)
+        
+        items
+            .bind(to: tableView.rx.items(cellIdentifier: "TenantContractCell", cellType: TenantContractCell.self)) { (row, element, cell) in
+                cell.model = element
+        }
+        .disposed(by: rx.disposeBag)
+        
+        
         
         moreButton.rx
             .tap
