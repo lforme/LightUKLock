@@ -38,3 +38,4 @@ struct HomeModel: HandyJSON {
     var ladderOpenLockRecordVO: LadderOpenLockRecordVO?
     var unReadMsg: Int?
 }
+

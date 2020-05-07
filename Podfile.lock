@@ -1,56 +1,61 @@
 PODS:
-  - Action (3.11.0):
-    - RxCocoa (~> 4.0)
-    - RxSwift (~> 4.0)
-  - Alamofire (4.9.1)
+  - Action (4.0.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - Alamofire (5.1.0)
   - AlignedCollectionViewFlowLayout (1.1.2)
+  - AloeStackView (1.2.0)
   - CBPinEntryView (1.7.1)
   - ChameleonFramework (2.1.0):
     - ChameleonFramework/Default (= 2.1.0)
   - ChameleonFramework/Default (2.1.0)
-  - CryptoSwift (1.1.3)
-  - Differentiator (3.1.0)
+  - CryptoSwift (1.3.0)
+  - Differentiator (4.0.1)
   - DZNEmptyDataSet (1.8.1)
-  - ESTabBarController-swift (2.7)
+  - ESTabBarController-swift (2.8.0)
   - HandyJSON (5.0.1)
-  - IQKeyboardManager (6.5.4)
-  - Kingfisher (5.10.0):
-    - Kingfisher/Core (= 5.10.0)
-  - Kingfisher/Core (5.10.0)
-  - lottie-ios (3.1.5)
+  - IGListDiffKit (4.0.0)
+  - IGListKit (4.0.0):
+    - IGListDiffKit (= 4.0.0)
+  - IQKeyboardManager (6.5.5)
+  - Kingfisher (5.13.4):
+    - Kingfisher/Core (= 5.13.4)
+  - Kingfisher/Core (5.13.4)
+  - lottie-ios (3.1.6)
   - LTMorphingLabel (0.7.0)
-  - MJRefresh (3.2.2)
-  - Moya/Core (13.0.1):
-    - Alamofire (~> 4.1)
-    - Result (~> 4.1)
-  - Moya/RxSwift (13.0.1):
+  - MJRefresh (3.4.1)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - Moya/RxSwift (14.0.0):
     - Moya/Core
-    - RxSwift (~> 4.0)
-  - "NSObject+Rx (4.4.1)":
-    - RxSwift (~> 4.3)
+    - RxSwift (~> 5.0)
+  - "NSObject+Rx (5.1.0)":
+    - RxSwift (~> 5.1)
   - PKHUD (5.3.0)
   - Popover (1.3.0)
   - PPBadgeViewSwift (3.1.0)
   - QuickLayout (3.0.0)
   - ReachabilitySwift (5.0.0)
-  - ReactorKit (1.2.1):
-    - RxSwift (>= 4.0.0)
-  - Result (4.1.0)
+  - ReactorKit (2.0.1):
+    - RxSwift (~> 5.0)
   - Reusable (4.1.1):
     - Reusable/Storyboard (= 4.1.1)
     - Reusable/View (= 4.1.1)
   - Reusable/Storyboard (4.1.1)
   - Reusable/View (4.1.1)
-  - RxCocoa (4.5.0):
-    - RxSwift (>= 4.4.2, ~> 4.4)
-  - RxDataSources (3.1.0):
-    - Differentiator (~> 3.0)
-    - RxCocoa (~> 4.0)
-    - RxSwift (~> 4.0)
-  - RxOptional (3.6.2):
-    - RxCocoa (~> 4.0)
-    - RxSwift (~> 4.0)
-  - RxSwift (4.5.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxOptional (4.1.0):
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
   - SnapKit (5.0.1)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
@@ -59,18 +64,20 @@ PODS:
   - SwiftEntryKit (1.2.3):
     - QuickLayout (= 3.0.0)
   - Then (2.6.0)
-  - TZImagePickerController (3.2.7)
-  - "UITextView+Placeholder (1.3.3)"
+  - TZImagePickerController (3.3.1)
+  - "UITextView+Placeholder (1.4.0)"
 
 DEPENDENCIES:
   - Action
   - AlignedCollectionViewFlowLayout
+  - AloeStackView
   - CBPinEntryView
   - ChameleonFramework
   - CryptoSwift
   - DZNEmptyDataSet
   - ESTabBarController-swift
   - HandyJSON
+  - IGListKit
   - IQKeyboardManager
   - Kingfisher
   - lottie-ios
@@ -99,6 +106,7 @@ SPEC REPOS:
     - Action
     - Alamofire
     - AlignedCollectionViewFlowLayout
+    - AloeStackView
     - CBPinEntryView
     - ChameleonFramework
     - CryptoSwift
@@ -106,6 +114,8 @@ SPEC REPOS:
     - DZNEmptyDataSet
     - ESTabBarController-swift
     - HandyJSON
+    - IGListDiffKit
+    - IGListKit
     - IQKeyboardManager
     - Kingfisher
     - lottie-ios
@@ -119,11 +129,11 @@ SPEC REPOS:
     - QuickLayout
     - ReachabilitySwift
     - ReactorKit
-    - Result
     - Reusable
     - RxCocoa
     - RxDataSources
     - RxOptional
+    - RxRelay
     - RxSwift
     - SnapKit
     - SQLite.swift
@@ -134,43 +144,46 @@ SPEC REPOS:
     - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
-  Action: 689181e4c3f6566844178d8a7da6fef39a9597fc
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Action: 0d14986aad0f1330aa27ce65d0cdeaacbb63d91c
+  Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
   AlignedCollectionViewFlowLayout: ee2ef451e741ec08f8e0967d828001e2f051c20a
+  AloeStackView: 8a4ce0efa08128dd78d538372f60c76c224034bb
   CBPinEntryView: 5a91ba422bd8a38eea587511c92c89b19be78454
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  CryptoSwift: 6b6e488df0598b3e9fa49254ed1a65e8c1b1e10b
-  Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
+  CryptoSwift: 1283821600233bdbeb96d7b389c3288c3bf77211
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  ESTabBarController-swift: 4fb52ad03d94d0717ef97bc9eb09a5abfdded0a2
+  ESTabBarController-swift: 05593a6ad64700b03c0eb60ff625916370aa4136
   HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
-  IQKeyboardManager: 72b359cd7e777e3a984cedbe05f8da45320cbb63
-  Kingfisher: 0bf6eae7c2193f15719915fecb7c2c1c03855f3d
-  lottie-ios: 32bf84389337d86fbc8b12266e88452e0abf1dee
+  IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
+  IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
+  IQKeyboardManager: 3a8b9e603f8b0eeaf5f096a1f2b2cfcf121992ef
+  Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
+  lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
   LTMorphingLabel: 22147fb1ec2b0306537ccc348b36ea8617179b03
-  MJRefresh: 72a46ecaa2a0feaf48fc5198dff95f25f8bb27c6
-  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
-  "NSObject+Rx": 9884a92f19b610795c431e10b4e601913b59c9e9
+  MJRefresh: 3153c59a363159092c08b2177ec3a7d09f90bfaf
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   Popover: 10e1d9528f81d9504df984b7b3f491292bc1822d
   PPBadgeViewSwift: 18a219a9897f418342c22dd1a54f7b18ac56546b
   QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  ReactorKit: 8be57f0527ad1ac2963cd5c338274a46a01e57a3
-  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  ReactorKit: a63c5e11e0fd32d59d672e54178b0ed2876b764b
   Reusable: 53a9acf5c536f229b31b5865782414b508252ddb
-  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
-  RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
-  RxOptional: 80426a0ddbd092573e4c482d8cc13302078c4d5e
-  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxOptional: b1fcd60856807a564c0215c2184b8d33e7826dc2
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
   SwiftEntryKit: 340713c2e4a6662c5149629990bf1088bf5f0389
   Then: 90cd104fd951cec1980a03f57704ad8f784d4d79
-  TZImagePickerController: 821b81f83594a736e831a018f2a2ce31822ddf0b
-  "UITextView+Placeholder": c407b27599ea23cca425946fee3cf1db5d547008
+  TZImagePickerController: 99f03b64145a8c92c55b9b1b931410967d9be4cb
+  "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: 6b4fdb4ea1d117965160c93ccaa0a46aa74390d0
+PODFILE CHECKSUM: 9f58d4d98338de3a2184d90dabf750f9b9172dd8
 
 COCOAPODS: 1.9.1

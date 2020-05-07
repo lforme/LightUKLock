@@ -16,8 +16,8 @@ class HomeControlCell: UITableViewCell {
     @IBOutlet weak var userButton: UIButton!
     @IBOutlet weak var messageButton: UIButton!
     @IBOutlet weak var propertyButton: UIButton!
-    @IBOutlet weak var sectorView: UIView!
-    @IBOutlet weak var stackView: UIStackView!
+    
+    
     
     private(set) var disposeBag = DisposeBag()
     
@@ -27,9 +27,7 @@ class HomeControlCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    
-        self.contentView.backgroundColor = ColorClassification.viewBackground.value
-        
+   
         [propertyButton, messageButton, userButton, keyButton].forEach { (btn) in
             btn?.layer.setValue(true, forKey: "continuousCorners")
             btn?.layer.cornerRadius = 3

@@ -35,6 +35,7 @@ final class RxMoyaProvider<Target>: MoyaProvider<Target> where Target: TargetTyp
     init(endpointClosure: @escaping EndpointClosure = MoyaProvider.defaultEndpointMapping,
          requestClosure: @escaping RequestClosure = MoyaProvider<Target>.defaultRequestMapping,
          stubClosure: @escaping StubClosure = MoyaProvider.neverStub,
+         
          plugins: [PluginType] = [LoadingPlugin(), NetworkLoggerPlugin(verbose: true, responseDataFormatter: { (data) -> (Data) in
         do {
             let dataAsJSON = try JSONSerialization.jsonObject(with: data)
