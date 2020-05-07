@@ -9,10 +9,12 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import HandyJSON
 
-class AssetFacilityListModel: Codable {
+class LadderAssetFacilityVO: HandyJSON {
+
     var facilityName: String?
-    let id: String?
+    var id: String?
     var remark: String?
     
     init(facilityName: String?) {
@@ -20,6 +22,10 @@ class AssetFacilityListModel: Codable {
         self.id = nil
         self.remark = nil
     }
+    
+    required init() {
+    }
+    
 }
 
 class AssetFacilityListCell: UITableViewCell {
@@ -30,7 +36,7 @@ class AssetFacilityListCell: UITableViewCell {
     
     var disposeBag = DisposeBag()
     
-    var model: AssetFacilityListModel! {
+    var model: LadderAssetFacilityVO! {
         didSet {
             deleteButton.setTitle(model.facilityName, for: .normal)
             remarkTF.text = model.remark
@@ -57,13 +63,18 @@ class AssetFacilityListViewController: UIViewController {
     
     @IBOutlet weak var bottomContainer: ButtonContainerView!
     
-    var items = BehaviorRelay<[AssetFacilityListModel]>.init(value: [])
+    var assetId: String!
+    
+    var items = BehaviorRelay<[LadderAssetFacilityVO]>.init(value: [])
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
+        
+        
+        let items =         BusinessAPI2.requestMapJSONArray(.getFacilities(assetId: assetId), classType: LadderAssetFacilityVO.self)
         
         items
             .do(onNext: { [weak self](models) in

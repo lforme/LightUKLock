@@ -309,7 +309,7 @@
                                                             <color key="titleColor" name="primary"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="Ky6-cz-ymB" kind="show" id="rS0-8t-Zw4"/>
+                                                            <segue destination="Ky6-cz-ymB" kind="show" identifier="AssetFacilityList" id="rS0-8t-Zw4"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VN3-0l-krZ">

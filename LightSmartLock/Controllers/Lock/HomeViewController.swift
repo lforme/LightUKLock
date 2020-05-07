@@ -226,7 +226,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 // 跳转资产页面
                 print("tap")
                 let vc: AssetDetailViewController = ViewLoader.Storyboard.controller(from: "AssetDetail")
-                vc.model = self?.currentScene.value
+                vc.assetId = self?.currentScene.value?.ladderAssetHouseId ?? ""
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
             

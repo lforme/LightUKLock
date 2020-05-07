@@ -53,13 +53,12 @@ class AssetDetailViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    
-    var model: SceneListModel!
+    var assetId: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let getAssetHouseDetail = BusinessAPI.requestMapJSON(.getAssetHouseDetail(id: model.ladderAssetHouseId ?? ""), classType: PositionModel.self)
+        let getAssetHouseDetail = BusinessAPI.requestMapJSON(.getAssetHouseDetail(id: assetId), classType: PositionModel.self)
         
         getAssetHouseDetail.subscribe(onNext: { [weak self](detail) in
             
@@ -71,20 +70,20 @@ class AssetDetailViewController: UIViewController {
         
         
         
-        let statistics = BusinessAPI2.requestMapJSON(.getStatistics(assetId: model.ladderAssetHouseId ?? ""), classType: TurnoverStatisticsDTO.self)
+        let statistics = BusinessAPI2.requestMapJSON(.getStatistics(assetId: assetId), classType: TurnoverStatisticsDTO.self)
         
         statistics.subscribe(onNext: { [weak self](model) in
             self?.balanceLabel.text = model.balance?.twoPoint
             self?.incomeAmountLabel.text = model.incomeAmount?.yuanSymbol
             self?.incomeCountLabel.text = "共\(model.incomeCount?.description ?? "")笔"
             self?.expenseAmountLabel.text = model.expenseAmount?.yuanSymbol
-            self?.expenseCountLabel.text = "共\(model.expenseCount?.description ?? "")笔" 
+            self?.expenseCountLabel.text = "共\(model.expenseCount?.description ?? "")笔"
 
         })
             .disposed(by: rx.disposeBag)
         
 
-        let items =         BusinessAPI2.requestMapJSONArray(.getAssetContract(assetId: model.ladderAssetHouseId ?? "", year: "2020"), classType: TenantContractDTO.self)
+        let items =         BusinessAPI2.requestMapJSONArray(.getAssetContract(assetId: assetId, year: "2020"), classType: TenantContractDTO.self)
         
         items
             .bind(to: tableView.rx.items(cellIdentifier: "TenantContractCell", cellType: TenantContractCell.self)) { (row, element, cell) in
@@ -118,4 +117,11 @@ class AssetDetailViewController: UIViewController {
             .disposed(by: rx.disposeBag)
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AssetFacilityList",
+            let vc = segue.destination as? AssetFacilityListViewController {
+            vc.assetId = assetId
+        }
+    }
 }

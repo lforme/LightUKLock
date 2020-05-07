@@ -62,7 +62,7 @@ class AddAssetFacilityViewController: UIViewController {
     
     var items = BehaviorRelay<[String]>.init(value: [])
     
-    var addAssetFacilities: (([AssetFacilityListModel]) -> Void)?
+    var addAssetFacilities: (([LadderAssetFacilityVO]) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,8 +114,8 @@ class AddAssetFacilityViewController: UIViewController {
         let buttonModels = configButtons
             .filter { $0.isSelected }
             .compactMap { $0.title(for: .normal)}
-            .map(AssetFacilityListModel.init)
-        let addModels = items.value            .map(AssetFacilityListModel.init)
+            .map(LadderAssetFacilityVO.init)
+        let addModels = items.value            .map(LadderAssetFacilityVO.init)
         let all = buttonModels + addModels
         addAssetFacilities?(all)
         self.navigationController?.popViewController(animated: true)

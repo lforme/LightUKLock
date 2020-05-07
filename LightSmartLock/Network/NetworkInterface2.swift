@@ -22,6 +22,12 @@ enum BusinessInterface2 {
     // 获取资产下的流水统计
     case getStatistics(assetId: String)
     
+    // 查询资产配套
+    case getFacilities(assetId: String)
+
+    // 资产里添加/编辑/删除配套 传当前所有的最新的
+    case saveFacilities(assetId: String, models: [LadderAssetFacilityVO])
+    
     
 }
 
@@ -45,9 +51,13 @@ extension BusinessInterface2: TargetType {
         switch self {
         case .getAssetContract,
              .getAssetContracts,
-             .getStatistics:
+             .getStatistics,
+             .getFacilities:
             
             return .get
+            
+        case .saveFacilities:
+            return .post
         }
     }
     
@@ -59,6 +69,9 @@ extension BusinessInterface2: TargetType {
             return "/tenant_contract_info/asset_contracts"
         case .getStatistics(assetId: let assetId):
             return "/base_turnover_info/statistics/\(assetId)"
+        case .getFacilities(assetId: let assetId),
+             .saveFacilities(assetId: let assetId, _):
+            return "/ladder_asset_facility/facility/\(assetId)"
             
         }
     }
@@ -80,8 +93,13 @@ extension BusinessInterface2: TargetType {
         case .getAssetContracts(assetId: let assetId):
             return .requestParameters(parameters: ["assetId": assetId], encoding: URLEncoding.queryString)
             
-        case .getStatistics:
+        case .getStatistics,
+             .getFacilities:
             return .requestPlain
+            
+        case .saveFacilities(_, models: let models):
+//            let param = [:]
+//            return .requestParameters(parameters: param, encoding: JSONEncoding.default)
         }
     }
 }
