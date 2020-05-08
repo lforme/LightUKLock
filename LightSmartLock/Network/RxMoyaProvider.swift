@@ -52,8 +52,23 @@ final class RxMoyaProvider<Target>: MoyaProvider<Target> where Target: TargetTyp
         dateFormatter.locale = Locale.current
         dateFormatter.timeZone = TimeZone.current
         
-        super.init(endpointClosure: endpointClosure, requestClosure: requestClosure, stubClosure: stubClosure, callbackQueue: nil, session: manager, plugins: plugins, trackInflights: trackInflights)
+        var mutablePlugins = plugins
         
+        mutablePlugins += [NetworkLoggerPlugin(configuration: .init(formatter: .init(responseData: RxMoyaProvider<Target>.JSONResponseDataFormatter),
+        logOptions: .verbose))]
+        
+        super.init(endpointClosure: endpointClosure, requestClosure: requestClosure, stubClosure: stubClosure, callbackQueue: nil, session: manager, plugins: mutablePlugins, trackInflights: trackInflights)
+        
+    }
+    
+    private static func JSONResponseDataFormatter(_ data: Data) -> String {
+        do {
+            let dataAsJSON = try JSONSerialization.jsonObject(with: data)
+            let prettyData = try JSONSerialization.data(withJSONObject: dataAsJSON, options: .prettyPrinted)
+            return String(data: prettyData, encoding: .utf8) ?? String(data: data, encoding: .utf8) ?? ""
+        } catch {
+            return String(data: data, encoding: .utf8) ?? ""
+        }
     }
 }
 
