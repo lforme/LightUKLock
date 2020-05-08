@@ -98,9 +98,8 @@ extension BusinessInterface2: TargetType {
             return .requestPlain
             
         case .saveFacilities(_, models: let models):
-            return .requestPlain
-//            let param = [:]
-//            return .requestParameters(parameters: param, encoding: JSONEncoding.default)
+            let param = ["jsonArray": models]
+            return .requestParameters(parameters: param, encoding: JsonArrayEncoding.default)
         }
     }
 }
