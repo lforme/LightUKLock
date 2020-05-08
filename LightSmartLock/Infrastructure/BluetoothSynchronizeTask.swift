@@ -47,7 +47,7 @@ final class BluetoothSynchronizeTask: UKBluetoothManagerDelegate {
                     }
                 }
                 return Disposables.create()
-            }.delaySubscription(5, scheduler: MainScheduler.instance)
+            }.delaySubscription(.seconds(5), scheduler: MainScheduler.instance)
         })
     }
     
@@ -81,7 +81,7 @@ final class BluetoothSynchronizeTask: UKBluetoothManagerDelegate {
             let headers: HTTPHeaders = ["Content-Type": "application/json"]
             
             if let p = param {
-                Alamofire.request("http://deviceapi.jinriwulian.com/api/IOTDeviceAPI/APPGet", method: HTTPMethod.get, parameters: ["strMessageData": p, "DevType": "kf110"], encoding: URLEncoding.default, headers: headers).responseJSON {[weak self] (response) in
+                AF.request("http://deviceapi.jinriwulian.com/api/IOTDeviceAPI/APPGet", method: HTTPMethod.get, parameters: ["strMessageData": p, "DevType": "kf110"], encoding: URLEncoding.default, headers: headers).responseJSON {[weak self] (response) in
                     let dict = response.value as? [String: Any]
                     if let taskStr = dict?["Data"] as? String {
                         self?.serverCommand.onNext(taskStr)
@@ -94,7 +94,7 @@ final class BluetoothSynchronizeTask: UKBluetoothManagerDelegate {
                     let date = Date().toString(.custom("yyyyMMddHHmm"))
                     let paramBuilder = ["strMessageData": "FF00030108\(mac)00100662640000\(date)", "DevType": "kf110"]
                     
-                    Alamofire.request("http://deviceapi.jinriwulian.com/api/IOTDeviceAPI/APPGet", method: HTTPMethod.get, parameters: paramBuilder, encoding: URLEncoding.default, headers: headers).responseJSON {[weak self] (response) in
+                    AF.request("http://deviceapi.jinriwulian.com/api/IOTDeviceAPI/APPGet", method: HTTPMethod.get, parameters: paramBuilder, encoding: URLEncoding.default, headers: headers).responseJSON {[weak self] (response) in
                         
                         let dict = response.value as? [String: Any]
                         if let taskStr = dict?["Data"] as? String {

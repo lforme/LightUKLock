@@ -10,7 +10,6 @@ import Foundation
 import Moya
 import PKHUD
 import Lottie
-import Result
 
 final class LoadingPlugin: PluginType {
     

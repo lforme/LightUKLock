@@ -35,25 +35,16 @@ final class RxMoyaProvider<Target>: MoyaProvider<Target> where Target: TargetTyp
     init(endpointClosure: @escaping EndpointClosure = MoyaProvider.defaultEndpointMapping,
          requestClosure: @escaping RequestClosure = MoyaProvider<Target>.defaultRequestMapping,
          stubClosure: @escaping StubClosure = MoyaProvider.neverStub,
-         plugins: [PluginType] = [LoadingPlugin(), NetworkLoggerPlugin(verbose: true, responseDataFormatter: { (data) -> (Data) in
-        do {
-            let dataAsJSON = try JSONSerialization.jsonObject(with: data)
-            let prettyData =  try JSONSerialization.data(withJSONObject: dataAsJSON, options: .prettyPrinted)
-            return prettyData
-        } catch {
-            return data
-        }
-        
-    })],
+         plugins: [PluginType] = [LoadingPlugin()],
          stubScheduler: SchedulerType? = nil,
          trackInflights: Bool = false) {
         
-        let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = Manager.defaultHTTPHeaders
+        let configuration = URLSessionConfiguration.af.default
+        configuration.headers = .default
         configuration.timeoutIntervalForRequest = 60
         configuration.timeoutIntervalForResource = 60
-        let manager = Manager(configuration: configuration)
-        manager.startRequestsImmediately = false
+        let manager = Session(configuration: configuration)
+        
         self.stubScheduler = stubScheduler
         
         dateFormatter = DateFormatter()
@@ -61,7 +52,8 @@ final class RxMoyaProvider<Target>: MoyaProvider<Target> where Target: TargetTyp
         dateFormatter.locale = Locale.current
         dateFormatter.timeZone = TimeZone.current
         
-        super.init(endpointClosure: endpointClosure, requestClosure: requestClosure, stubClosure: stubClosure, callbackQueue: nil, manager: manager, plugins: plugins, trackInflights: trackInflights)
+        super.init(endpointClosure: endpointClosure, requestClosure: requestClosure, stubClosure: stubClosure, callbackQueue: nil, session: manager, plugins: plugins, trackInflights: trackInflights)
+        
     }
 }
 
@@ -96,7 +88,7 @@ private extension RxMoyaProvider {
         
         return self.rx.request(token)
             .asObservable()
-            .throttle(1, scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+            .throttle(.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .flatMapLatest {[unowned self] (res) -> Observable<Response> in
                 
                 if res.statusCode == 401 {
