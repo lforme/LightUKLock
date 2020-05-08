@@ -55,7 +55,7 @@ class AddFingerFinishController: UIViewController {
                     observer.onNext((true, arg.1))
                     observer.onCompleted()
                     return Disposables.create()
-                }.delaySubscription(0.5, scheduler: MainScheduler.instance)
+                }.delaySubscription(.seconds(1), scheduler: MainScheduler.instance)
             } else {
                 return .empty()
             }

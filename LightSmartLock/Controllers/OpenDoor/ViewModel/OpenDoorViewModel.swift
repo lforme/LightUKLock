@@ -17,7 +17,7 @@ final class OpenDoorViewModel {
     var startConnected: Observable<Bool> {
         return obConnected.asObserver()
     }
-    private let timer = Observable<Int>.timer(0, period: 1, scheduler: MainScheduler.instance).share(replay: 1, scope: .forever)
+    private let timer = Observable<Int>.timer(.seconds(0), period: .seconds(1), scheduler: MainScheduler.instance).share(replay: 1, scope: .forever)
     private let disposeBag = DisposeBag()
     private let obConnected = BehaviorSubject<Bool>(value: BluetoothPapa.shareInstance.isConnected())
     

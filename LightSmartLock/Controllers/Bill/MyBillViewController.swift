@@ -32,12 +32,13 @@ class MyBillViewController: UIViewController {
         tableView.estimatedRowHeight = 250
         tableView.register(UINib(nibName: "MyBillCell", bundle: nil), forCellReuseIdentifier: "MyBillCell")
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.separatorStyle = .none
        
     }
 }
 
-extension MyBillViewController: UITableViewDataSource {
+extension MyBillViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
@@ -46,5 +47,12 @@ extension MyBillViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyBillCell", for: indexPath) as! MyBillCell
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let billDetailVC = BillDetailController()
+        self.navigationController?.pushViewController(billDetailVC, animated: true)
     }
 }

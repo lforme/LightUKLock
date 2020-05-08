@@ -178,6 +178,27 @@
 		9C7AFF24239636640075442D /* NSMutableAttributedString+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF23239636640075442D /* NSMutableAttributedString+Extention.swift */; };
 		9C7AFF2623964A950075442D /* SetBuildingNumberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF2523964A950075442D /* SetBuildingNumberController.swift */; };
 		9C8FFD5D2447EEBF00527EA0 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FFD5C2447EEBF00527EA0 /* UIImageView+Extension.swift */; };
+		9CABF4902464FD9E0001AAE3 /* BillDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF48F2464FD9E0001AAE3 /* BillDetailController.swift */; };
+		9CABF492246501040001AAE3 /* BillDetailSectionOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF491246501040001AAE3 /* BillDetailSectionOne.swift */; };
+		9CABF495246501A40001AAE3 /* BillDetailSectionOneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF493246501A40001AAE3 /* BillDetailSectionOneCell.swift */; };
+		9CABF496246501A40001AAE3 /* BillDetailSectionOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CABF494246501A40001AAE3 /* BillDetailSectionOneCell.xib */; };
+		9CABF498246506A00001AAE3 /* BillDetailFeesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF497246506A00001AAE3 /* BillDetailFeesSection.swift */; };
+		9CABF49D2465075E0001AAE3 /* BillDetailFeesSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF49B2465075E0001AAE3 /* BillDetailFeesSectionCell.swift */; };
+		9CABF49E2465075E0001AAE3 /* BillDetailFeesSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CABF49C2465075E0001AAE3 /* BillDetailFeesSectionCell.xib */; };
+		9CABF4A1246508A10001AAE3 /* BillDetailFeesFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF49F246508A10001AAE3 /* BillDetailFeesFootView.swift */; };
+		9CABF4A2246508A10001AAE3 /* BillDetailFeesFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CABF4A0246508A10001AAE3 /* BillDetailFeesFootView.xib */; };
+		9CABF4A5246514A60001AAE3 /* BillDetailTenantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF4A3246514A60001AAE3 /* BillDetailTenantCell.swift */; };
+		9CABF4A6246514A60001AAE3 /* BillDetailTenantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CABF4A4246514A60001AAE3 /* BillDetailTenantCell.xib */; };
+		9CABF4A8246515F30001AAE3 /* BillDetailTenantSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF4A7246515F30001AAE3 /* BillDetailTenantSection.swift */; };
+		9CABF4AD24653BFA0001AAE3 /* PaymentDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF4AB24653BFA0001AAE3 /* PaymentDetailsHeaderView.swift */; };
+		9CABF4AE24653BFA0001AAE3 /* PaymentDetailsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CABF4AC24653BFA0001AAE3 /* PaymentDetailsHeaderView.xib */; };
+		9CABF4B124653CC50001AAE3 /* PaymentDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF4AF24653CC50001AAE3 /* PaymentDetailsCell.swift */; };
+		9CABF4B224653CC50001AAE3 /* PaymentDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CABF4B024653CC50001AAE3 /* PaymentDetailsCell.xib */; };
+		9CABF4B4246541F60001AAE3 /* BillDetailPaymentSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF4B3246541F60001AAE3 /* BillDetailPaymentSection.swift */; };
+		9CABF4B7246544130001AAE3 /* BillDetailButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF4B5246544130001AAE3 /* BillDetailButtonCell.swift */; };
+		9CABF4B8246544130001AAE3 /* BillDetailButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CABF4B6246544130001AAE3 /* BillDetailButtonCell.xib */; };
+		9CABF4BA24654DBC0001AAE3 /* BillDetailButtonSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF4B924654DBC0001AAE3 /* BillDetailButtonSection.swift */; };
+		9CABF4BC246550B30001AAE3 /* ConfirmArrivalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF4BB246550B30001AAE3 /* ConfirmArrivalController.swift */; };
 		9CB4B347239DE08E001197AB /* PasswordManagementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4B346239DE08E001197AB /* PasswordManagementController.swift */; };
 		9CB4B349239DE774001197AB /* PasswordManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4B348239DE774001197AB /* PasswordManagementViewModel.swift */; };
 		9CB4B34B239DE8C3001197AB /* DigitalPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4B34A239DE8C3001197AB /* DigitalPasswordModel.swift */; };
@@ -439,6 +460,27 @@
 		9C7AFF23239636640075442D /* NSMutableAttributedString+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extention.swift"; sourceTree = "<group>"; };
 		9C7AFF2523964A950075442D /* SetBuildingNumberController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetBuildingNumberController.swift; sourceTree = "<group>"; };
 		9C8FFD5C2447EEBF00527EA0 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		9CABF48F2464FD9E0001AAE3 /* BillDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailController.swift; sourceTree = "<group>"; };
+		9CABF491246501040001AAE3 /* BillDetailSectionOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailSectionOne.swift; sourceTree = "<group>"; };
+		9CABF493246501A40001AAE3 /* BillDetailSectionOneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailSectionOneCell.swift; sourceTree = "<group>"; };
+		9CABF494246501A40001AAE3 /* BillDetailSectionOneCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BillDetailSectionOneCell.xib; sourceTree = "<group>"; };
+		9CABF497246506A00001AAE3 /* BillDetailFeesSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailFeesSection.swift; sourceTree = "<group>"; };
+		9CABF49B2465075E0001AAE3 /* BillDetailFeesSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailFeesSectionCell.swift; sourceTree = "<group>"; };
+		9CABF49C2465075E0001AAE3 /* BillDetailFeesSectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BillDetailFeesSectionCell.xib; sourceTree = "<group>"; };
+		9CABF49F246508A10001AAE3 /* BillDetailFeesFootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailFeesFootView.swift; sourceTree = "<group>"; };
+		9CABF4A0246508A10001AAE3 /* BillDetailFeesFootView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BillDetailFeesFootView.xib; sourceTree = "<group>"; };
+		9CABF4A3246514A60001AAE3 /* BillDetailTenantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailTenantCell.swift; sourceTree = "<group>"; };
+		9CABF4A4246514A60001AAE3 /* BillDetailTenantCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BillDetailTenantCell.xib; sourceTree = "<group>"; };
+		9CABF4A7246515F30001AAE3 /* BillDetailTenantSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailTenantSection.swift; sourceTree = "<group>"; };
+		9CABF4AB24653BFA0001AAE3 /* PaymentDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsHeaderView.swift; sourceTree = "<group>"; };
+		9CABF4AC24653BFA0001AAE3 /* PaymentDetailsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentDetailsHeaderView.xib; sourceTree = "<group>"; };
+		9CABF4AF24653CC50001AAE3 /* PaymentDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsCell.swift; sourceTree = "<group>"; };
+		9CABF4B024653CC50001AAE3 /* PaymentDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentDetailsCell.xib; sourceTree = "<group>"; };
+		9CABF4B3246541F60001AAE3 /* BillDetailPaymentSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailPaymentSection.swift; sourceTree = "<group>"; };
+		9CABF4B5246544130001AAE3 /* BillDetailButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailButtonCell.swift; sourceTree = "<group>"; };
+		9CABF4B6246544130001AAE3 /* BillDetailButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BillDetailButtonCell.xib; sourceTree = "<group>"; };
+		9CABF4B924654DBC0001AAE3 /* BillDetailButtonSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailButtonSection.swift; sourceTree = "<group>"; };
+		9CABF4BB246550B30001AAE3 /* ConfirmArrivalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmArrivalController.swift; sourceTree = "<group>"; };
 		9CB4B346239DE08E001197AB /* PasswordManagementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagementController.swift; sourceTree = "<group>"; };
 		9CB4B348239DE774001197AB /* PasswordManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagementViewModel.swift; sourceTree = "<group>"; };
 		9CB4B34A239DE8C3001197AB /* DigitalPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalPasswordModel.swift; sourceTree = "<group>"; };
@@ -774,6 +816,20 @@
 				9C4490762462CA6E00A859CC /* BillFeesDeleteView.xib */,
 				9C4D10BA2463F1F1005D0C6F /* ReceivingAccountCell.swift */,
 				9C4D10BB2463F1F1005D0C6F /* ReceivingAccountCell.xib */,
+				9CABF493246501A40001AAE3 /* BillDetailSectionOneCell.swift */,
+				9CABF494246501A40001AAE3 /* BillDetailSectionOneCell.xib */,
+				9CABF49B2465075E0001AAE3 /* BillDetailFeesSectionCell.swift */,
+				9CABF49C2465075E0001AAE3 /* BillDetailFeesSectionCell.xib */,
+				9CABF49F246508A10001AAE3 /* BillDetailFeesFootView.swift */,
+				9CABF4A0246508A10001AAE3 /* BillDetailFeesFootView.xib */,
+				9CABF4A3246514A60001AAE3 /* BillDetailTenantCell.swift */,
+				9CABF4A4246514A60001AAE3 /* BillDetailTenantCell.xib */,
+				9CABF4AB24653BFA0001AAE3 /* PaymentDetailsHeaderView.swift */,
+				9CABF4AC24653BFA0001AAE3 /* PaymentDetailsHeaderView.xib */,
+				9CABF4AF24653CC50001AAE3 /* PaymentDetailsCell.swift */,
+				9CABF4B024653CC50001AAE3 /* PaymentDetailsCell.xib */,
+				9CABF4B5246544130001AAE3 /* BillDetailButtonCell.swift */,
+				9CABF4B6246544130001AAE3 /* BillDetailButtonCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -784,6 +840,11 @@
 				9C3F93EA2455AAB10040005D /* BillFlowReportSection.swift */,
 				9C3F93EC2455ACF90040005D /* BillFlowSection.swift */,
 				9C323BC9245676CA00214256 /* BillContractSection.swift */,
+				9CABF491246501040001AAE3 /* BillDetailSectionOne.swift */,
+				9CABF497246506A00001AAE3 /* BillDetailFeesSection.swift */,
+				9CABF4A7246515F30001AAE3 /* BillDetailTenantSection.swift */,
+				9CABF4B3246541F60001AAE3 /* BillDetailPaymentSection.swift */,
+				9CABF4B924654DBC0001AAE3 /* BillDetailButtonSection.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -832,6 +893,8 @@
 				9C4D10B82463F0E4005D0C6F /* ReceivingAccountController.swift */,
 				9C4D10BE2464095E005D0C6F /* PayWayBindController.swift */,
 				9C4D10C024641219005D0C6F /* BankCardBindController.swift */,
+				9CABF48F2464FD9E0001AAE3 /* BillDetailController.swift */,
+				9CABF4BB246550B30001AAE3 /* ConfirmArrivalController.swift */,
 				9C76099D2452DBAA0042C88D /* Bill.storyboard */,
 			);
 			path = Bill;
@@ -1144,13 +1207,16 @@
 			files = (
 				9C1B87C2239767A100216ADA /* InitialLock.storyboard in Resources */,
 				9C218FA223FA8495009600F7 /* loading.json in Resources */,
+				9CABF4A2246508A10001AAE3 /* BillDetailFeesFootView.xib in Resources */,
 				9C7705A2238FE358008E1552 /* SingleInputController.xib in Resources */,
 				9C03B0FD239FB3620001E849 /* addFinger.json in Resources */,
 				9C1A4BC5238D0A1A00626DB4 /* AnimationHeaderView.xib in Resources */,
 				9C1A4BC9238D2E7C00626DB4 /* HomeControlCell.xib in Resources */,
 				9C770593238FA11A008E1552 /* MyInfoHeader.xib in Resources */,
 				9CFDE1FC238513D40062522E /* bluetooth.json in Resources */,
+				9CABF4A6246514A60001AAE3 /* BillDetailTenantCell.xib in Resources */,
 				9CFDE1FA2384EA2A0062522E /* opendoor.json in Resources */,
+				9CABF496246501A40001AAE3 /* BillDetailSectionOneCell.xib in Resources */,
 				9C770597238FA351008E1552 /* MyListCell.xib in Resources */,
 				9C4490772462CA6E00A859CC /* BillFeesDeleteView.xib in Resources */,
 				9C44906924628E6300A859CC /* FeeItemView.xib in Resources */,
@@ -1161,6 +1227,8 @@
 				9C52402E238E163D00308AC4 /* UnlockRecordCell.xib in Resources */,
 				9CBAF5FF245932C800197450 /* BillDescriptionCell.xib in Resources */,
 				9C4D10BD2463F1F1005D0C6F /* ReceivingAccountCell.xib in Resources */,
+				9CABF49E2465075E0001AAE3 /* BillDetailFeesSectionCell.xib in Resources */,
+				9CABF4AE24653BFA0001AAE3 /* PaymentDetailsHeaderView.xib in Resources */,
 				9CBD8F4D23A21E7D00886519 /* PasswordChangeStatusCell.xib in Resources */,
 				9C449065246272DE00A859CC /* MyBillCell.xib in Resources */,
 				9CDD272E2382801E006A9B97 /* LaunchScreen.storyboard in Resources */,
@@ -1177,9 +1245,11 @@
 				7B76FAAA2445B01A00B6F6A5 /* AssetDetail.storyboard in Resources */,
 				9CDD27292382801D006A9B97 /* Main.storyboard in Resources */,
 				9C7AFF1E239603F00075442D /* SearchPlotCell.xib in Resources */,
+				9CABF4B8246544130001AAE3 /* BillDetailButtonCell.xib in Resources */,
 				9CBD8F5523A23ADC00886519 /* DatePickerController.xib in Resources */,
 				9C47DB79239A0B0E0019EAA0 /* SelectPopupView.xib in Resources */,
 				9C24AC442383EB96005EBF95 /* My.storyboard in Resources */,
+				9CABF4B224653CC50001AAE3 /* PaymentDetailsCell.xib in Resources */,
 				9C4BD28923FD217900652685 /* normal.json in Resources */,
 				9CF01D9723BDA92F007578F3 /* Assets.xcassets in Resources */,
 				9C3726CC2390CE4D00450757 /* normalDarkMode.json in Resources */,
@@ -1271,12 +1341,15 @@
 				9CB4B349239DE774001197AB /* PasswordManagementViewModel.swift in Sources */,
 				9C7AFF142395FAF70075442D /* GeolocationService.swift in Sources */,
 				9CBD8F4323A20FD500886519 /* TempPasswordLogView.swift in Sources */,
+				9CABF4B7246544130001AAE3 /* BillDetailButtonCell.swift in Sources */,
 				9C3726C62390B2DD00450757 /* ChangePasswordController.swift in Sources */,
 				9CB4B34B239DE8C3001197AB /* DigitalPasswordModel.swift in Sources */,
+				9CABF4902464FD9E0001AAE3 /* BillDetailController.swift in Sources */,
 				9C3726E723913C5400450757 /* MessageCenterViewModel.swift in Sources */,
 				9C4490752462CA3800A859CC /* BillFeesDeleteView.swift in Sources */,
 				9C24AC232383C206005EBF95 /* LoginViewController.swift in Sources */,
 				9C1B87CB2397942700216ADA /* LockBindViewModel.swift in Sources */,
+				9CABF4B4246541F60001AAE3 /* BillDetailPaymentSection.swift in Sources */,
 				9C47DB85239A526E0019EAA0 /* UserDetailController.swift in Sources */,
 				9C24AC272383CB78005EBF95 /* ObjectAssociation.swift in Sources */,
 				9C24AC1B23839D75005EBF95 /* Swizzling+UIViewController.swift in Sources */,
@@ -1293,6 +1366,7 @@
 				9C24AC2B2383CD94005EBF95 /* StaticConst.swift in Sources */,
 				9C752FCD238774A9000FEA73 /* RegisterForgetController.swift in Sources */,
 				9C452F0E2394E84A00144827 /* BluetoothViewModel.swift in Sources */,
+				9CABF4BC246550B30001AAE3 /* ConfirmArrivalController.swift in Sources */,
 				9C3F93D72455890F0040005D /* BillFlowController.swift in Sources */,
 				9C03B0F3239F6E8F0001E849 /* FingerDetailViewModel.swift in Sources */,
 				9C5A967C23A082F1002A2B06 /* CardManageViewModel.swift in Sources */,
@@ -1310,6 +1384,7 @@
 				9C03B0EB239F46510001E849 /* FingerManageController.swift in Sources */,
 				9C7AFF162395FC870075442D /* CLLocationManager+Rx.swift in Sources */,
 				9CFDE20123851EE80062522E /* NetworkInterface.swift in Sources */,
+				9CABF4A8246515F30001AAE3 /* BillDetailTenantSection.swift in Sources */,
 				9CFDE20323851F660062522E /* NetworkInterfaceImplement.swift in Sources */,
 				9C24AC462383EBB1005EBF95 /* MyViewController.swift in Sources */,
 				9C3726CE2390D29900450757 /* ChangePhoneController.swift in Sources */,
@@ -1339,6 +1414,7 @@
 				9C3726E32391164700450757 /* OpenDoorViewModel.swift in Sources */,
 				9C3F93ED2455ACF90040005D /* BillFlowSection.swift in Sources */,
 				9C218F9B23FA764A009600F7 /* CalendarViewController.swift in Sources */,
+				9CABF495246501A40001AAE3 /* BillDetailSectionOneCell.swift in Sources */,
 				9CFDE211238537A30062522E /* NetworkAPI.swift in Sources */,
 				9C323BCC24567F9700214256 /* BillReportDetailController.swift in Sources */,
 				7B7EB4C12451A000002DC436 /* AssetDetailViewController.swift in Sources */,
@@ -1349,10 +1425,14 @@
 				7B7EB4B32451361E002DC436 /* ButtonContainerView.swift in Sources */,
 				7B7EB4BB24516EAF002DC436 /* AssetFacilityListViewController.swift in Sources */,
 				9C752FD0238794BE000FEA73 /* CountdownButton.swift in Sources */,
+				9CABF4A5246514A60001AAE3 /* BillDetailTenantCell.swift in Sources */,
+				9CABF4A1246508A10001AAE3 /* BillDetailFeesFootView.swift in Sources */,
 				9C47DB83239A39070019EAA0 /* ListViewModeling.swift in Sources */,
+				9CABF4B124653CC50001AAE3 /* PaymentDetailsCell.swift in Sources */,
 				9C7AFF1A239600830075442D /* SearchPlotController.swift in Sources */,
 				9C24AC372383DE6E005EBF95 /* SceneModels.swift in Sources */,
 				9C77059C238FBFC6008E1552 /* MySettingViewController.swift in Sources */,
+				9CABF4BA24654DBC0001AAE3 /* BillDetailButtonSection.swift in Sources */,
 				9C5471A12395184400432ACA /* PositionModel.swift in Sources */,
 				9C429767238637E3004CB999 /* LoginViewReactor.swift in Sources */,
 				9C1B87C92397739100216ADA /* LockSettingPasswordController.swift in Sources */,
@@ -1360,6 +1440,7 @@
 				9C414EDD243D7B5A002EEC1C /* HomeModel.swift in Sources */,
 				9C5A967E23A08EE4002A2B06 /* AddCardViewModel.swift in Sources */,
 				9C3F93DF2455958E0040005D /* BillFlowCell.swift in Sources */,
+				9CABF4AD24653BFA0001AAE3 /* PaymentDetailsHeaderView.swift in Sources */,
 				9C47DB77239A0A810019EAA0 /* SelectPopupView.swift in Sources */,
 				9C323BCA245676CA00214256 /* BillContractSection.swift in Sources */,
 				9CBD8F3F23A1ECF900886519 /* ShareModels.swift in Sources */,
@@ -1392,6 +1473,7 @@
 				9C7AFF1D239603F00075442D /* SearchPlotCell.swift in Sources */,
 				9C7AFF24239636640075442D /* NSMutableAttributedString+Extention.swift in Sources */,
 				9C1B87C72397701C00216ADA /* LockStartScanViewModel.swift in Sources */,
+				9CABF49D2465075E0001AAE3 /* BillDetailFeesSectionCell.swift in Sources */,
 				9C218FA523FA8CC9009600F7 /* LeasedCell.swift in Sources */,
 				9C24AC1623838CD1005EBF95 /* NavigationSettingStyle.swift in Sources */,
 				9C3726D923910C0100450757 /* NORServiceIdentifiers.swift in Sources */,
@@ -1405,6 +1487,7 @@
 				9C452F122394EC3E00144827 /* SoundSettingController.swift in Sources */,
 				9C03B0EF239F4A7B0001E849 /* FingerManageViewModel.swift in Sources */,
 				9C7AFF182395FD2C0075442D /* GoudaMapModel.swift in Sources */,
+				9CABF492246501040001AAE3 /* BillDetailSectionOne.swift in Sources */,
 				9C524030238E56A700308AC4 /* UIViewController+Extension.swift in Sources */,
 				9C3F93DB24558D050040005D /* BillReportCell.swift in Sources */,
 				9C24AC392383E00C005EBF95 /* LockModels.swift in Sources */,
@@ -1431,6 +1514,7 @@
 				9C4D10BC2463F1F1005D0C6F /* ReceivingAccountCell.swift in Sources */,
 				9C452F082394AA2E00144827 /* CenterMessageModel.swift in Sources */,
 				9CBD8F5D23A24DA800886519 /* BluetoothSynchronizeTask.swift in Sources */,
+				9CABF498246506A00001AAE3 /* BillDetailFeesSection.swift in Sources */,
 				9C7AFF2623964A950075442D /* SetBuildingNumberController.swift in Sources */,
 				9C752FD223879546000FEA73 /* RegisPwdViewModel.swift in Sources */,
 				9C42976F23866088004CB999 /* PKHud+Rx.swift in Sources */,

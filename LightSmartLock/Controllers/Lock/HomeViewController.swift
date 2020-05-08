@@ -141,7 +141,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
             }
         }).disposed(by: rx.disposeBag)
         
-        LSLUser.current().obScene.throttle(2, scheduler: MainScheduler.instance).subscribe(onNext: {[weak self] (model) in
+        LSLUser.current().obScene.throttle(.seconds(2), scheduler: MainScheduler.instance).subscribe(onNext: {[weak self] (model) in
             self?.bind()
         }).disposed(by: rx.disposeBag)
     }

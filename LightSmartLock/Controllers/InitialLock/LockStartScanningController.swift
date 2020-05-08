@@ -67,7 +67,7 @@ class LockStartScanningController: UIViewController, NavigationSettingStyle {
             }
         }).disposed(by: rx.disposeBag)
         
-        shareConnected.delay(1, scheduler: MainScheduler.instance).subscribe(onNext: {[weak self] (success) in
+        shareConnected.delay(.seconds(1), scheduler: MainScheduler.instance).subscribe(onNext: {[weak self] (success) in
             if success {
                 if self?.shouldIgnorePushingViewControllers ?? false {
                     return
