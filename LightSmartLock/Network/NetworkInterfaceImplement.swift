@@ -160,7 +160,7 @@ extension BusinessInterface: TargetType {
         switch self {
         case .user, .getHouses, .getAssetHouseDetail, .getLockInfo,
              .getHomeInfo, .getUserList, .getCustomerSysRoleTips,
-             .getAllOpenWay:
+             .getAllOpenWay, .reportAsset:
             return .get
             
         case .deleteAssetHouse, .forceDeleteLock, .deleteCard, .deleteFinger,
@@ -235,6 +235,8 @@ extension BusinessInterface: TargetType {
             return "/ladder_tmp_password/pwd/tmp/\(lockId)"
         case let .getUnlockRecords(lockId, _, _, _):
             return "/ladder_open_lock_record/records/\(lockId)"
+        case let .reportAsset:
+            return "/report/asset_report"
         }
     }
     
@@ -337,6 +339,9 @@ extension BusinessInterface: TargetType {
             
         case let .getUnlockRecords(_, type, pageIndex, pageSize):
             return ["currentPage": pageIndex, "pageSize": pageSize ?? 15, "type": type]
+            
+        case let .reportAsset(assetId, year):
+            return ["assetId": assetId, "year": year]
             
         default:
             return nil

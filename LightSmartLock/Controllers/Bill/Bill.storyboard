@@ -15,15 +15,15 @@
             <objects>
                 <viewController storyboardIdentifier="ReceivingAccountController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HrZ-0C-um2" customClass="ReceivingAccountController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g1y-Su-aL3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pdn-k0-XJX">
-                                <rect key="frame" x="0.0" y="148" width="414" height="654"/>
+                                <rect key="frame" x="0.0" y="8" width="414" height="740"/>
                                 <color key="backgroundColor" name="tableViewBackground"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nzL-B6-BoO">
-                                <rect key="frame" x="0.0" y="802" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="748" width="414" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pN-3E-OJ6">
                                         <rect key="frame" x="16" y="6" width="382" height="48"/>
@@ -312,11 +312,11 @@
             <objects>
                 <viewController storyboardIdentifier="CreateBillController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="58I-fw-1MR" customClass="CreateBillController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="51o-TA-XKI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDw-uH-LnI">
-                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Qt-FA-sWO">
                                         <rect key="frame" x="0.0" y="8" width="414" height="140"/>
@@ -708,7 +708,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f9h-j3-JOy">
-                                <rect key="frame" x="8" y="148" width="398" height="44"/>
+                                <rect key="frame" x="8" y="52" width="398" height="44"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="Ecg-rq-dSy">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="44"/>
@@ -759,7 +759,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Atw-Im-dsv">
-                                <rect key="frame" x="0.0" y="192" width="414" height="608"/>
+                                <rect key="frame" x="0.0" y="96" width="414" height="704"/>
                                 <color key="backgroundColor" name="tableViewBackground"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5g-5X-sKz">
@@ -831,7 +831,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="zts-7K-aE6" kind="relationship" relationship="rootViewController" id="oJn-Bz-Kbe"/>
+                        <segue destination="6PC-G8-SAt" kind="relationship" relationship="rootViewController" id="fs0-DC-Ssm"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nF2-pg-hRd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -847,7 +847,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YgP-IT-bGR">
-                                <rect key="frame" x="8" y="52" width="398" height="128"/>
+                                <rect key="frame" x="8" y="148" width="398" height="128"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结余" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvK-AI-OzW">
                                         <rect key="frame" x="16" y="16" width="29" height="17"/>
@@ -948,12 +948,12 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WCD-DM-hcF">
-                                <rect key="frame" x="0.0" y="188" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="284" width="414" height="44"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UiG-pv-rp5">
                                         <rect key="frame" x="16" y="7.5" width="133" height="29"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="At9-Cx-ARt">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="At9-Cx-ARt">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="报表">
@@ -966,7 +966,7 @@
                                                 <color key="textColor" name="textDescription"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaP-Vf-F2E">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaP-Vf-F2E">
                                                 <rect key="frame" x="51.5" y="0.0" width="30" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="流水">
@@ -979,7 +979,7 @@
                                                 <color key="textColor" name="textDescription"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91W-v1-Xx4">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91W-v1-Xx4">
                                                 <rect key="frame" x="103" y="0.0" width="30" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="合同">
@@ -1016,7 +1016,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XEj-RQ-lQE" customClass="IGListCollectionView">
-                                <rect key="frame" x="0.0" y="240" width="414" height="622"/>
+                                <rect key="frame" x="0.0" y="336" width="414" height="526"/>
                                 <color key="backgroundColor" name="tableViewBackground"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cU9-jw-8CS">
                                     <size key="itemSize" width="50" height="50"/>
@@ -1059,6 +1059,9 @@
                         <outlet property="bookkeepingButton" destination="fdK-ae-GkH" id="4NN-m4-mPs"/>
                         <outlet property="collectionView" destination="XEj-RQ-lQE" id="DPy-i9-LnQ"/>
                         <outlet property="collectionViewBottomOffset" destination="fOn-7r-4Qj" id="iwc-Wv-mg5"/>
+                        <outlet property="contractButton" destination="91W-v1-Xx4" id="nzW-in-O8V"/>
+                        <outlet property="flowButton" destination="TaP-Vf-F2E" id="Y4L-HE-UK9"/>
+                        <outlet property="reportButton" destination="At9-Cx-ARt" id="wfb-8B-lRP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cf-hW-PSq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1534,7 +1537,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="BookKeepingController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wr1-kR-prr" customClass="BookKeepingController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="PBm-bZ-oJg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="tableViewBackground"/>
                         <prototypes>

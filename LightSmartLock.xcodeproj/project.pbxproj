@@ -199,6 +199,8 @@
 		9CABF4B8246544130001AAE3 /* BillDetailButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CABF4B6246544130001AAE3 /* BillDetailButtonCell.xib */; };
 		9CABF4BA24654DBC0001AAE3 /* BillDetailButtonSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF4B924654DBC0001AAE3 /* BillDetailButtonSection.swift */; };
 		9CABF4BC246550B30001AAE3 /* ConfirmArrivalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF4BB246550B30001AAE3 /* ConfirmArrivalController.swift */; };
+		9CABF4BE246563A80001AAE3 /* AssetReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF4BD246563A80001AAE3 /* AssetReportModel.swift */; };
+		9CABF4C0246564A50001AAE3 /* BillFlowVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF4BF246564A50001AAE3 /* BillFlowVIewModel.swift */; };
 		9CB4B347239DE08E001197AB /* PasswordManagementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4B346239DE08E001197AB /* PasswordManagementController.swift */; };
 		9CB4B349239DE774001197AB /* PasswordManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4B348239DE774001197AB /* PasswordManagementViewModel.swift */; };
 		9CB4B34B239DE8C3001197AB /* DigitalPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4B34A239DE8C3001197AB /* DigitalPasswordModel.swift */; };
@@ -481,6 +483,8 @@
 		9CABF4B6246544130001AAE3 /* BillDetailButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BillDetailButtonCell.xib; sourceTree = "<group>"; };
 		9CABF4B924654DBC0001AAE3 /* BillDetailButtonSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailButtonSection.swift; sourceTree = "<group>"; };
 		9CABF4BB246550B30001AAE3 /* ConfirmArrivalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmArrivalController.swift; sourceTree = "<group>"; };
+		9CABF4BD246563A80001AAE3 /* AssetReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetReportModel.swift; sourceTree = "<group>"; };
+		9CABF4BF246564A50001AAE3 /* BillFlowVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillFlowVIewModel.swift; sourceTree = "<group>"; };
 		9CB4B346239DE08E001197AB /* PasswordManagementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagementController.swift; sourceTree = "<group>"; };
 		9CB4B348239DE774001197AB /* PasswordManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagementViewModel.swift; sourceTree = "<group>"; };
 		9CB4B34A239DE8C3001197AB /* DigitalPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalPasswordModel.swift; sourceTree = "<group>"; };
@@ -755,6 +759,7 @@
 				9C03B0EC239F49440001E849 /* FingerModel.swift */,
 				9CBD8F3E23A1ECF900886519 /* ShareModels.swift */,
 				9C414EDC243D7B5A002EEC1C /* HomeModel.swift */,
+				9CABF4BD246563A80001AAE3 /* AssetReportModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -845,6 +850,7 @@
 				9CABF4A7246515F30001AAE3 /* BillDetailTenantSection.swift */,
 				9CABF4B3246541F60001AAE3 /* BillDetailPaymentSection.swift */,
 				9CABF4B924654DBC0001AAE3 /* BillDetailButtonSection.swift */,
+				9CABF4BF246564A50001AAE3 /* BillFlowVIewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1371,6 +1377,7 @@
 				9C03B0F3239F6E8F0001E849 /* FingerDetailViewModel.swift in Sources */,
 				9C5A967C23A082F1002A2B06 /* CardManageViewModel.swift in Sources */,
 				9C323BCE2456BEE900214256 /* BookKeepingController.swift in Sources */,
+				9CABF4C0246564A50001AAE3 /* BillFlowVIewModel.swift in Sources */,
 				9C24AC1D23839EB9005EBF95 /* UIImage+Extension.swift in Sources */,
 				9C03B0FB239F88860001E849 /* AddFingerFinishController.swift in Sources */,
 				9C3F93EB2455AAB10040005D /* BillFlowReportSection.swift in Sources */,
@@ -1508,6 +1515,7 @@
 				9CBD8F4123A1EEAF00886519 /* TempPasswordViewModel.swift in Sources */,
 				9C24AC1F2383A2C7005EBF95 /* ColorClassification.swift in Sources */,
 				9C03B0F5239F83D00001E849 /* AddFingerController.swift in Sources */,
+				9CABF4BE246563A80001AAE3 /* AssetReportModel.swift in Sources */,
 				9C3726C82390C6AD00450757 /* Empty+UIViewController.swift in Sources */,
 				9C770592238FA11A008E1552 /* MyInfoHeader.swift in Sources */,
 				9C52402D238E163D00308AC4 /* UnlockRecordCell.swift in Sources */,
