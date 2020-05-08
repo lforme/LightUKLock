@@ -127,7 +127,7 @@ extension BusinessInterface2: TargetType {
         case .addFacility(assetId: let assetId, name: let name):
             let param = ["ladderAssetHouseId": assetId,
                          "facilityName": name]
-            return .requestParameters(parameters: param, encoding: URLEncoding.httpBody)
+            return .requestParameters(parameters: param, encoding: JSONEncoding.default)
         }
     }
 }

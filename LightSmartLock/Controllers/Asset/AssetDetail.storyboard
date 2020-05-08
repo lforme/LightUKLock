@@ -465,6 +465,12 @@
                                                 <constraint firstAttribute="trailing" secondItem="biO-qD-0Om" secondAttribute="trailing" id="nRZ-OT-94y"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="detailBtn" destination="ETb-Ai-rsL" id="g57-zD-CXw"/>
+                                            <outlet property="endDateLabel" destination="ceo-at-3O1" id="k4H-oM-JHH"/>
+                                            <outlet property="nameLabel" destination="hzd-Qq-tK6" id="5By-iR-v8p"/>
+                                            <outlet property="startDateLabel" destination="H35-te-cyT" id="tak-Cg-ZI8"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -797,15 +803,15 @@
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="n53-2F-mp7">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="172"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="5" minimumInteritemSpacing="5" id="Hc0-Pt-tHD" customClass="AlignedCollectionViewFlowLayout" customModule="AlignedCollectionViewFlowLayout">
+                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="16" minimumInteritemSpacing="16" id="Hc0-Pt-tHD" customClass="AlignedCollectionViewFlowLayout" customModule="AlignedCollectionViewFlowLayout">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
+                                                    <inset key="sectionInset" minX="16" minY="16" maxX="16" maxY="16"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddAssetFacilityCell" id="oSq-TH-lxY" customClass="AddAssetFacilityCell" customModule="门锁助手个人版" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="10" width="86" height="48"/>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ConstantAssetFacilityCell" id="oSq-TH-lxY" customClass="ConstantAssetFacilityCell" customModule="门锁助手个人版" customModuleProvider="target">
+                                                        <rect key="frame" x="16" y="16" width="86" height="48"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kMn-xx-o9B">
                                                             <rect key="frame" x="0.0" y="0.0" width="86" height="48"/>
@@ -813,16 +819,13 @@
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZD5-Dz-xcB" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="86" height="48"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="74" id="KFz-BN-eXw"/>
-                                                                        <constraint firstAttribute="height" constant="36" id="Pax-vW-brM"/>
-                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <inset key="contentEdgeInsets" minX="16" minY="8" maxX="16" maxY="8"/>
                                                                     <state key="normal" title="空调">
                                                                         <color key="titleColor" name="textPrimary"/>
                                                                     </state>
                                                                     <connections>
-                                                                        <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="GkY-8k-ZYs"/>
+                                                                        <action selector="selectAction:" destination="oSq-TH-lxY" eventType="touchUpInside" id="Jox-wn-nr9"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
@@ -834,6 +837,9 @@
                                                             </constraints>
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="86" height="48"/>
+                                                        <connections>
+                                                            <outlet property="configBtn" destination="ZD5-Dz-xcB" id="saL-9z-6ov"/>
+                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
@@ -893,31 +899,25 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfZ-Hf-3pO">
                                                                     <rect key="frame" x="12" y="12" width="62" height="24"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="衣柜" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2GG-dA-Ylt">
-                                                                            <rect key="frame" x="8" y="4" width="46" height="16"/>
-                                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                                                            <color key="textColor" name="textPrimary"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RuU-rD-0EB" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="62" height="24"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                            <inset key="contentEdgeInsets" minX="16" minY="8" maxX="16" maxY="8"/>
+                                                                            <state key="normal" title="空调">
+                                                                                <color key="titleColor" name="textPrimary"/>
+                                                                            </state>
+                                                                            <connections>
+                                                                                <action selector="selectAction:" destination="sa9-qX-ybm" eventType="touchUpInside" id="u8I-9X-VBe"/>
+                                                                            </connections>
+                                                                        </button>
                                                                     </subviews>
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                     <constraints>
-                                                                        <constraint firstItem="2GG-dA-Ylt" firstAttribute="leading" secondItem="xfZ-Hf-3pO" secondAttribute="leading" constant="8" id="3im-6j-IxY"/>
-                                                                        <constraint firstItem="2GG-dA-Ylt" firstAttribute="top" secondItem="xfZ-Hf-3pO" secondAttribute="top" constant="4" id="kTA-ad-fo5"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="2GG-dA-Ylt" secondAttribute="bottom" constant="4" id="l4i-No-OGm"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="2GG-dA-Ylt" secondAttribute="trailing" constant="8" id="sgC-Ec-pde"/>
+                                                                        <constraint firstItem="RuU-rD-0EB" firstAttribute="leading" secondItem="xfZ-Hf-3pO" secondAttribute="leading" id="9zU-Qc-YBe"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="RuU-rD-0EB" secondAttribute="bottom" id="Rwy-6c-4Vc"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="RuU-rD-0EB" secondAttribute="trailing" id="oOs-Ff-BsA"/>
+                                                                        <constraint firstItem="RuU-rD-0EB" firstAttribute="top" secondItem="xfZ-Hf-3pO" secondAttribute="top" id="swo-jW-CCu"/>
                                                                     </constraints>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                            <real key="value" value="4"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                            <real key="value" value="1"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                            <color key="value" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UuP-iH-Bno">
                                                                     <rect key="frame" x="62" y="0.0" width="24" height="24"/>
@@ -939,8 +939,8 @@
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="86" height="48"/>
                                                         <connections>
+                                                            <outlet property="configButton" destination="RuU-rD-0EB" id="OjI-Ja-Hu1"/>
                                                             <outlet property="deleteButton" destination="UuP-iH-Bno" id="AIN-Mi-8IC"/>
-                                                            <outlet property="textLabel" destination="2GG-dA-Ylt" id="5y9-dM-Yi0"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
@@ -973,7 +973,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="save:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="imq-Kr-Lzl"/>
+                                                            <action selector="save:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="zvr-p7-WlF"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1022,7 +1022,9 @@
                     <navigationItem key="navigationItem" id="ZL7-OT-3rn"/>
                     <connections>
                         <outlet property="addButton" destination="3IB-Mc-Lop" id="zab-0f-dfL"/>
-                        <outlet property="collectionView" destination="3Df-3q-1cL" id="jUA-ca-f2B"/>
+                        <outlet property="constansCollectionView" destination="n53-2F-mp7" id="FYl-vl-cQy"/>
+                        <outlet property="customCollectionView" destination="3Df-3q-1cL" id="4dp-69-yH2"/>
+                        <outlet property="saveButton" destination="bbo-SD-WAq" id="t6T-by-4IS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xr-kI-Lc3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

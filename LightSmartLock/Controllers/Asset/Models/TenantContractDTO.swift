@@ -12,13 +12,13 @@ import HandyJSON
 struct TenantContractDTO: HandyJSON {
     var assetId: String?
     var contractNumber: String?
-    var endDate: Date?
+    var endDate: String?
     var gender: String?
     var houseName: String?
     var id: String?
     var payMethod: String?
     var rental: Double?
-    var startDate: Date?
+    var startDate: String?
     var tenantName: String?
     var tenantPhone: String?
     var tenantUserId: String?

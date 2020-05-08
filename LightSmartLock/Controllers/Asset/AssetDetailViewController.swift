@@ -83,7 +83,7 @@ class AssetDetailViewController: UIViewController {
             .disposed(by: rx.disposeBag)
         
 
-        let items =         BusinessAPI2.requestMapJSONArray(.getAssetContract(assetId: assetId, year: "2020"), classType: TenantContractDTO.self)
+        let items = BusinessAPI2.requestMapJSONArray(.getAssetContracts(assetId: assetId), classType: TenantContractAndBillsDTO.self)
         
         items
             .bind(to: tableView.rx.items(cellIdentifier: "TenantContractCell", cellType: TenantContractCell.self)) { (row, element, cell) in

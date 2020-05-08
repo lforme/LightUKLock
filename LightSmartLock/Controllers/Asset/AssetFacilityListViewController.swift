@@ -19,6 +19,8 @@ class LadderAssetFacilityVO: HandyJSON {
     var id: String?
     var remark: String?
     
+    var isSelected = false
+    
     init(facilityName: String?) {
         self.facilityName = facilityName
         self.id = nil
@@ -129,6 +131,7 @@ class AssetFacilityListViewController: UIViewController {
                 let all = (self?.items.value ?? []) + newItems
                 self?.items.accept(all)
             }
+            vc.assetId = assetId
         }
     }
     
