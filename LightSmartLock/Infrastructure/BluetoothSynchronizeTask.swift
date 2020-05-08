@@ -47,7 +47,7 @@ final class BluetoothSynchronizeTask: UKBluetoothManagerDelegate {
                     }
                 }
                 return Disposables.create()
-            }.delaySubscription(5, scheduler: MainScheduler.instance)
+            }.delaySubscription(.seconds(5), scheduler: MainScheduler.instance)
         })
     }
     
@@ -71,7 +71,45 @@ final class BluetoothSynchronizeTask: UKBluetoothManagerDelegate {
     
     func didConnectPeripheral(deviceName aName: String?) {
         
-//        self.fetchTask(param: nil).subscribe().disposed(by: self.disposeBag)
+        self.fetchTask(param: nil).subscribe().disposed(by: self.disposeBag)
+        
+    }
+    
+    private func fetchTask(param: String?) -> Observable<String> {
+        
+        return Observable<String>.create { (obs) -> Disposable in
+            let headers: HTTPHeaders = ["Content-Type": "application/json"]
+            
+            if let p = param {
+                AF.request("http://deviceapi.jinriwulian.com/api/IOTDeviceAPI/APPGet", method: HTTPMethod.get, parameters: ["strMessageData": p, "DevType": "kf110"], encoding: URLEncoding.default, headers: headers).responseJSON {[weak self] (response) in
+                    let dict = response.value as? [String: Any]
+                    if let taskStr = dict?["Data"] as? String {
+                        self?.serverCommand.onNext(taskStr)
+                    }
+                }
+                
+            } else {
+                if let macWithColon = LSLUser.current().lockInfo?.blueMac {
+                    let mac = macWithColon.replacingOccurrences(of: ":", with: "")
+                    let date = Date().toString(.custom("yyyyMMddHHmm"))
+                    let paramBuilder = ["strMessageData": "FF00030108\(mac)00100662640000\(date)", "DevType": "kf110"]
+                    
+                    AF.request("http://deviceapi.jinriwulian.com/api/IOTDeviceAPI/APPGet", method: HTTPMethod.get, parameters: paramBuilder, encoding: URLEncoding.default, headers: headers).responseJSON {[weak self] (response) in
+                        
+                        let dict = response.value as? [String: Any]
+                        if let taskStr = dict?["Data"] as? String {
+                            self?.serverCommand.onNext(taskStr)
+                        }
+                    }
+                    
+                } else {
+                    obs.onError(AppError.reason("无法获取蓝牙Mac地址信息"))
+                }
+            }
+            
+            return Disposables.create()
+        }
+
         
     }
 //
