@@ -10,9 +10,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 import HandyJSON
+import PKHUD
+import RxRelay
 
 class LadderAssetFacilityVO: HandyJSON {
-
+    
     var facilityName: String?
     var id: String?
     var remark: String?
@@ -74,7 +76,10 @@ class AssetFacilityListViewController: UIViewController {
         tableView.tableFooterView = UIView()
         
         
-        let items =         BusinessAPI2.requestMapJSONArray(.getFacilities(assetId: assetId), classType: LadderAssetFacilityVO.self)
+        BusinessAPI2.requestMapJSONArray(.getFacilities(assetId: assetId), classType: LadderAssetFacilityVO.self)
+            .map { $0.compactMap { $0 }}
+            .bind(to: items)
+            .disposed(by: rx.disposeBag)
         
         items
             .do(onNext: { [weak self](models) in
@@ -92,6 +97,28 @@ class AssetFacilityListViewController: UIViewController {
                     .disposed(by: cell.disposeBag)
         }
         .disposed(by: rx.disposeBag)
+        
+        saveButton.rx.tap
+            .asObservable()
+            .flatMapLatest { [unowned self]_ in
+                return BusinessAPI2.requestMapAny(.saveFacilities(assetId: self.assetId, models: self.items.value))
+                    .catchErrorJustReturn("保存失败，请重试！")
+        }
+        .subscribe(onNext: { (response) in
+            var message: String?
+            if let response = response as? [String: Any] {
+                if let status = response["status"] as? Int, status == 200 {
+                    message = "保存成功"
+                } else {
+                    message = response["message"] as? String
+                }
+                
+            } else {
+                message = response as? String
+            }
+            HUD.show(.label(message))
+        })
+            .disposed(by: rx.disposeBag)
         
     }
     

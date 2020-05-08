@@ -794,201 +794,57 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ot-gw-NGj">
                                         <rect key="frame" x="0.0" y="44" width="414" height="172"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="RIx-bA-c3q">
-                                                <rect key="frame" x="16" y="16" width="382" height="140"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="umz-TK-l2A">
-                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="36"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qra-6P-hc7" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="74" height="36"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="74" id="ZVt-uC-vrY"/>
-                                                                    <constraint firstAttribute="height" constant="36" id="b3p-5R-zaj"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <state key="normal" title="空调">
-                                                                    <color key="titleColor" name="textPrimary"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="jzX-vO-aF2"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUz-Kg-b6G" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
-                                                                <rect key="frame" x="102.5" y="0.0" width="74" height="36"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="74" id="af3-yT-pB3"/>
-                                                                    <constraint firstAttribute="height" constant="36" id="k1Q-v8-DmA"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <state key="normal" title="冰箱">
-                                                                    <color key="titleColor" name="textPrimary"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="gwp-5T-oom"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ae1-eA-xWY" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
-                                                                <rect key="frame" x="205.5" y="0.0" width="74" height="36"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="74" id="AHw-2m-YNw"/>
-                                                                    <constraint firstAttribute="height" constant="36" id="tAW-zl-RUr"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <state key="normal" title="电视机">
-                                                                    <color key="titleColor" name="textPrimary"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="V04-Eg-pIc"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2B-7C-wRh" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
-                                                                <rect key="frame" x="308" y="0.0" width="74" height="36"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="36" id="CPd-sx-Koa"/>
-                                                                    <constraint firstAttribute="width" constant="74" id="jsq-Ty-7X1"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <state key="normal" title="洗衣机">
-                                                                    <color key="titleColor" name="textPrimary"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="6gJ-61-zM7"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="agP-hK-4Yq">
-                                                        <rect key="frame" x="0.0" y="52" width="382" height="36"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEc-4c-eZj" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="74" height="36"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="74" id="403-ZG-rpC"/>
-                                                                    <constraint firstAttribute="height" constant="36" id="Why-4Q-ZOe"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <state key="normal" title="热水器">
-                                                                    <color key="titleColor" name="textPrimary"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="NUZ-ez-mjT"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJE-85-aEa" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
-                                                                <rect key="frame" x="102.5" y="0.0" width="74" height="36"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="36" id="Af7-ej-HRR"/>
-                                                                    <constraint firstAttribute="width" constant="74" id="nEG-0H-35b"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <state key="normal" title="油烟机">
-                                                                    <color key="titleColor" name="textPrimary"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="YZq-E4-fjk"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="276-FB-ebx" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
-                                                                <rect key="frame" x="205.5" y="0.0" width="74" height="36"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="74" id="2hK-rY-ibm"/>
-                                                                    <constraint firstAttribute="height" constant="36" id="Hku-FP-hNi"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <state key="normal" title="沙发">
-                                                                    <color key="titleColor" name="textPrimary"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="60G-k8-12P"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qle-tp-9uy" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
-                                                                <rect key="frame" x="308" y="0.0" width="74" height="36"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="74" id="D12-Hn-Qmy"/>
-                                                                    <constraint firstAttribute="height" constant="36" id="coo-tn-hlM"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <state key="normal" title="桌子">
-                                                                    <color key="titleColor" name="textPrimary"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="JRR-wp-oOF"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="3Ao-Eo-Fg4">
-                                                        <rect key="frame" x="0.0" y="104" width="382" height="36"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MuX-2X-Tt4" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="74" height="36"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="36" id="Tzm-3S-WDU"/>
-                                                                    <constraint firstAttribute="width" constant="74" id="s6w-93-MK7"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <state key="normal" title="椅子">
-                                                                    <color key="titleColor" name="textPrimary"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="CNe-Fp-35g"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgi-Xp-9gt" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
-                                                                <rect key="frame" x="102.5" y="0.0" width="74" height="36"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="74" id="MwC-fn-Qbq"/>
-                                                                    <constraint firstAttribute="height" constant="36" id="lVo-mP-PQM"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <state key="normal" title="床">
-                                                                    <color key="titleColor" name="textPrimary"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="SSG-VF-vBk"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QW9-ZY-ehx" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
-                                                                <rect key="frame" x="205.5" y="0.0" width="74" height="36"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="36" id="iO9-zF-Q1y"/>
-                                                                    <constraint firstAttribute="width" constant="74" id="ueJ-vQ-PPx"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <state key="normal" title="衣柜">
-                                                                    <color key="titleColor" name="textPrimary"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="kxD-Zh-GLn"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPe-0E-ZVC" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
-                                                                <rect key="frame" x="308" y="0.0" width="74" height="36"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="74" id="Tu0-Hr-j5x"/>
-                                                                    <constraint firstAttribute="height" constant="36" id="UF0-aI-OjW"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <state key="normal" title="梳妆台">
-                                                                    <color key="titleColor" name="textPrimary"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="Pi0-lF-sgn"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                </subviews>
-                                            </stackView>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="n53-2F-mp7">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="172"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="5" minimumInteritemSpacing="5" id="Hc0-Pt-tHD" customClass="AlignedCollectionViewFlowLayout" customModule="AlignedCollectionViewFlowLayout">
+                                                    <size key="itemSize" width="128" height="128"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddAssetFacilityCell" id="oSq-TH-lxY" customClass="AddAssetFacilityCell" customModule="门锁助手个人版" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="10" width="86" height="48"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kMn-xx-o9B">
+                                                            <rect key="frame" x="0.0" y="0.0" width="86" height="48"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZD5-Dz-xcB" customClass="ConfigButton" customModule="门锁助手个人版" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="86" height="48"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="74" id="KFz-BN-eXw"/>
+                                                                        <constraint firstAttribute="height" constant="36" id="Pax-vW-brM"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <state key="normal" title="空调">
+                                                                        <color key="titleColor" name="textPrimary"/>
+                                                                    </state>
+                                                                    <connections>
+                                                                        <action selector="selectAction:" destination="2J5-Pp-4bg" eventType="touchUpInside" id="GkY-8k-ZYs"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="ZD5-Dz-xcB" firstAttribute="leading" secondItem="kMn-xx-o9B" secondAttribute="leading" id="5yb-Ib-zx7"/>
+                                                                <constraint firstAttribute="bottom" secondItem="ZD5-Dz-xcB" secondAttribute="bottom" id="gb9-qm-Y67"/>
+                                                                <constraint firstItem="ZD5-Dz-xcB" firstAttribute="top" secondItem="kMn-xx-o9B" secondAttribute="top" id="jif-gj-wnJ"/>
+                                                                <constraint firstAttribute="trailing" secondItem="ZD5-Dz-xcB" secondAttribute="trailing" id="rbL-so-16S"/>
+                                                            </constraints>
+                                                        </collectionViewCellContentView>
+                                                        <size key="customSize" width="86" height="48"/>
+                                                    </collectionViewCell>
+                                                </cells>
+                                            </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="RIx-bA-c3q" firstAttribute="leading" secondItem="5Ot-gw-NGj" secondAttribute="leading" constant="16" id="QJk-HF-kht"/>
-                                            <constraint firstItem="RIx-bA-c3q" firstAttribute="top" secondItem="5Ot-gw-NGj" secondAttribute="top" constant="16" id="Y8x-Vv-iFG"/>
-                                            <constraint firstAttribute="trailing" secondItem="RIx-bA-c3q" secondAttribute="trailing" constant="16" id="oRY-AM-bpf"/>
-                                            <constraint firstAttribute="bottom" secondItem="RIx-bA-c3q" secondAttribute="bottom" constant="16" id="rfa-Ux-I1q"/>
+                                            <constraint firstItem="n53-2F-mp7" firstAttribute="top" secondItem="5Ot-gw-NGj" secondAttribute="top" id="BWE-Oj-dmJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="n53-2F-mp7" secondAttribute="trailing" id="RNA-wW-ipa"/>
+                                            <constraint firstAttribute="height" constant="172" id="gwb-cn-kUq"/>
+                                            <constraint firstItem="n53-2F-mp7" firstAttribute="leading" secondItem="5Ot-gw-NGj" secondAttribute="leading" id="kTP-9u-KZt"/>
+                                            <constraint firstAttribute="bottom" secondItem="n53-2F-mp7" secondAttribute="bottom" id="ove-oM-w7i"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1167,23 +1023,11 @@
                     <connections>
                         <outlet property="addButton" destination="3IB-Mc-Lop" id="zab-0f-dfL"/>
                         <outlet property="collectionView" destination="3Df-3q-1cL" id="jUA-ca-f2B"/>
-                        <outletCollection property="configButtons" destination="Qra-6P-hc7" collectionClass="NSMutableArray" id="RLJ-OJ-zf3"/>
-                        <outletCollection property="configButtons" destination="ae1-eA-xWY" collectionClass="NSMutableArray" id="iQy-Q1-U5u"/>
-                        <outletCollection property="configButtons" destination="wUz-Kg-b6G" collectionClass="NSMutableArray" id="Koq-gK-RFF"/>
-                        <outletCollection property="configButtons" destination="g2B-7C-wRh" collectionClass="NSMutableArray" id="oGr-3R-rQg"/>
-                        <outletCollection property="configButtons" destination="MEc-4c-eZj" collectionClass="NSMutableArray" id="Lts-bq-fcr"/>
-                        <outletCollection property="configButtons" destination="KJE-85-aEa" collectionClass="NSMutableArray" id="PSN-AS-YSH"/>
-                        <outletCollection property="configButtons" destination="276-FB-ebx" collectionClass="NSMutableArray" id="9dt-F1-pAa"/>
-                        <outletCollection property="configButtons" destination="Qle-tp-9uy" collectionClass="NSMutableArray" id="uf7-Ic-ma6"/>
-                        <outletCollection property="configButtons" destination="MuX-2X-Tt4" collectionClass="NSMutableArray" id="Qki-OR-JdT"/>
-                        <outletCollection property="configButtons" destination="kgi-Xp-9gt" collectionClass="NSMutableArray" id="nWE-nc-cqf"/>
-                        <outletCollection property="configButtons" destination="QW9-ZY-ehx" collectionClass="NSMutableArray" id="kqA-OR-mMO"/>
-                        <outletCollection property="configButtons" destination="YPe-0E-ZVC" collectionClass="NSMutableArray" id="gxb-Mv-6V8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xr-kI-Lc3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2414" y="-29"/>
+            <point key="canvasLocation" x="2413.04347826087" y="-29.464285714285712"/>
         </scene>
         <!--Utilities Records View Controller-->
         <scene sceneID="Obs-8e-feX">

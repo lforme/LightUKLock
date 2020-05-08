@@ -24,9 +24,20 @@ enum BusinessInterface2 {
     
     // 查询资产配套
     case getFacilities(assetId: String)
-
+    
     // 资产里添加/编辑/删除配套 传当前所有的最新的
     case saveFacilities(assetId: String, models: [LadderAssetFacilityVO])
+    
+    // 添加自定义配套
+    case addFacility(assetId: String, name: String)
+    
+    // 查询配套（枚举+自定义）
+    case getFacilityList(assetId: String)
+    
+    // 删除自定义配套
+    case deleteFacility(id: String)
+    
+    
     
     
 }
@@ -52,12 +63,17 @@ extension BusinessInterface2: TargetType {
         case .getAssetContract,
              .getAssetContracts,
              .getStatistics,
-             .getFacilities:
+             .getFacilities,
+             .getFacilityList:
             
             return .get
             
-        case .saveFacilities:
+        case .saveFacilities,
+             .addFacility:
             return .post
+            
+        case .deleteFacility:
+            return .delete
         }
     }
     
@@ -72,7 +88,12 @@ extension BusinessInterface2: TargetType {
         case .getFacilities(assetId: let assetId),
              .saveFacilities(assetId: let assetId, _):
             return "/ladder_asset_facility/facility/\(assetId)"
-            
+        case .addFacility:
+            return "/ladder_facility/facility"
+        case .getFacilityList(assetId: let id):
+            return "/ladder_facility/facility/\(id)"
+        case .deleteFacility(id: let id):
+            return "/ladder_facility/facility/\(id)"
         }
     }
     
@@ -94,12 +115,19 @@ extension BusinessInterface2: TargetType {
             return .requestParameters(parameters: ["assetId": assetId], encoding: URLEncoding.queryString)
             
         case .getStatistics,
-             .getFacilities:
+             .getFacilities,
+             .getFacilityList,
+             .deleteFacility:
             return .requestPlain
             
         case .saveFacilities(_, models: let models):
-            let param = ["jsonArray": models]
+            let param = ["jsonArray": models.toJSON()]
             return .requestParameters(parameters: param, encoding: JsonArrayEncoding.default)
+            
+        case .addFacility(assetId: let assetId, name: let name):
+            let param = ["ladderAssetHouseId": assetId,
+                         "facilityName": name]
+            return .requestParameters(parameters: param, encoding: URLEncoding.httpBody)
         }
     }
 }
