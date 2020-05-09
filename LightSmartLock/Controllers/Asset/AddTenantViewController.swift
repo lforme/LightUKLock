@@ -51,6 +51,8 @@ class AddTenantViewController: UIViewController {
     let tenantContractInfo = TenantContractInfo()
     
     
+    @IBOutlet weak var buildingNameLabel: UILabel!
+    
     @IBOutlet weak var roomNumBtn: DataSelectionButton!
     
     @IBOutlet weak var userNameTF: UITextField!
@@ -83,11 +85,17 @@ class AddTenantViewController: UIViewController {
     
     @IBOutlet weak var remarkTF: UITextView!
     
+    
+    var buildingName: String!
+    var assetId: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        buildingNameLabel.text = buildingName
+        
         roomNumBtn.title = "请选择房间"
-        roomNumBtn.items = [["A", "B", "C", "D", "E"]]
+        roomNumBtn.items = [["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]]
         
         idCardFrontView.placeImage = #imageLiteral(resourceName: "id_front")
         idCardReverseView.placeImage = #imageLiteral(resourceName: "id_back")
@@ -95,7 +103,9 @@ class AddTenantViewController: UIViewController {
         reloadFellowView()
     
         rentCollectTypeBtn.title = "请选择收租周期"
-        rentCollectTypeBtn.items = [["年/次", "月/次", "日/次"]]
+        let nums = Array(1...30).map { $0.description }
+        let units = ["日/次", "月/次", "年/次"]
+        rentCollectTypeBtn.items = [nums, units]
         
         advanceDayBtn.title = "请选择提前时间"
         advanceDayBtn.items = [Array(1...15).map { $0.description + "天" }]

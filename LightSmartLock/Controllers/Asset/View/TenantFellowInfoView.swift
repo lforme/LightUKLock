@@ -22,11 +22,6 @@ class TenantFellowInfoView: UIView, NibLoadable {
     
     func config(with fellow: TenantMember, didDeleted: (() -> Void)?, didEdited: (() -> Void)?) {
         infoLabel.text = (fellow.userName ?? "") + " " + (fellow.phone ?? "")
-        var idCard = fellow.idCard ?? ""
-        if idCard.isEmpty {
-           idCard = "未填写身份证号"
-        }
-        statusBtn.setTitle(idCard, for: .normal)
         self.didDeleted = didDeleted
         self.didEdited = didEdited
     }

@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -50,14 +50,8 @@
                                                                                 <color key="textColor" name="textPrimary"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTd-TN-xjI">
-                                                                                <rect key="frame" x="57.5" y="13.5" width="6.5" height="17"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQA-3i-Fd1">
-                                                                                <rect key="frame" x="64" y="13.5" width="318" height="17"/>
+                                                                                <rect key="frame" x="57.5" y="13.5" width="324.5" height="17"/>
                                                                                 <string key="text">保利心语1单元1102
 </string>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -419,7 +413,7 @@
                                                                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="248" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OzJ-I7-ZHb">
                                                                                         <rect key="frame" x="162.5" y="13.5" width="219.5" height="17"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                        <state key="normal" title="未填写身份证号" image="arrow">
+                                                                                        <state key="normal" image="arrow">
                                                                                             <color key="titleColor" name="textPrimary"/>
                                                                                         </state>
                                                                                     </button>
@@ -909,6 +903,7 @@
                     <navigationItem key="navigationItem" id="40t-c4-CZF"/>
                     <connections>
                         <outlet property="advanceDayBtn" destination="yg2-a2-Oc6" id="Y9g-C4-w7B"/>
+                        <outlet property="buildingNameLabel" destination="xQA-3i-Fd1" id="noa-9g-I8Y"/>
                         <outlet property="depositTF" destination="UWM-uI-oFz" id="t07-cg-QHB"/>
                         <outlet property="endDateBtn" destination="TKS-bP-6dh" id="qUw-a4-VZG"/>
                         <outlet property="fellowContainerView" destination="2tJ-Tp-4Ss" id="oah-ew-FUq"/>

@@ -123,6 +123,9 @@ class AssetDetailViewController: UIViewController {
             vc.assetId = assetId
         } else if let vc = segue.destination as? UtilitiesRecordsViewController {
             vc.assetId = assetId
+        } else if let vc = segue.destination as? AddTenantViewController {
+            vc.assetId = assetId
+            vc.buildingName = buildingNameLabel.text
         }
     }
 }
