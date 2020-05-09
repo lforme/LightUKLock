@@ -49,6 +49,17 @@ class AddTenantFellowViewController: UIViewController {
         
         idCardFrontView.placeImage = #imageLiteral(resourceName: "id_front")
         idCardReverseView.placeImage = #imageLiteral(resourceName: "id_back")
+        
+        idCardFrontView.isFront = true
+        idCardReverseView.isFront = false
+
+        idCardFrontView.updateIDCard = { [weak self] id in
+            self?.idCardTF.text = id
+        }
+        
+        idCardReverseView.updateIDCard = { [weak self] id in
+            self?.idCardTF.text = id
+        }
     }
     
 

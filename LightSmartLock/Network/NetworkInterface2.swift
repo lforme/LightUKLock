@@ -43,6 +43,9 @@ enum BusinessInterface2 {
     // 添加水电气抄表
     case addUtilitiesRecord(assetId: String, model: AddUtilitiesRecordModel)
     
+    // 身份证照OCR识别
+    case recognizeIDCard(url: String)
+    
 }
 
 
@@ -74,7 +77,8 @@ extension BusinessInterface2: TargetType {
         case .saveFacilities,
              .addFacility,
              .getUtilitiesRecords,
-             .addUtilitiesRecord:
+             .addUtilitiesRecord,
+             .recognizeIDCard:
             return .post
             
         case .deleteFacility:
@@ -103,6 +107,8 @@ extension BusinessInterface2: TargetType {
             return "/ladder_utilities_record/utilities/records/\(assetId)"
         case .addUtilitiesRecord(assetId: let assetId, _):
             return "/ladder_utilities_record/utilities/\(assetId)"
+        case .recognizeIDCard:
+            return "/common/ocr"
         }
     }
     
@@ -143,6 +149,8 @@ extension BusinessInterface2: TargetType {
             return .requestParameters(parameters: param, encoding: JSONEncoding.default)
         case .addUtilitiesRecord(_, model: let model):
             return .requestParameters(parameters: model.toJSON() ?? [:], encoding: JSONEncoding.default)
+        case .recognizeIDCard(url: let url):
+            return .requestParameters(parameters: ["imageUrl": url], encoding: URLEncoding.queryString)
         }
     }
 }
