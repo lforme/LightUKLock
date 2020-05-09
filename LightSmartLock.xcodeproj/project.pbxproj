@@ -19,6 +19,7 @@
 		7B7EB4C324528E52002DC436 /* UtilitiesRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7EB4C224528E52002DC436 /* UtilitiesRecordsViewController.swift */; };
 		7B7EB4C724529AE6002DC436 /* AddUtilitiesRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7EB4C624529AE6002DC436 /* AddUtilitiesRecordViewController.swift */; };
 		7B7EB4C92452D24B002DC436 /* AddTenant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B7EB4C82452D24B002DC436 /* AddTenant.storyboard */; };
+		7B89842D2466429500625819 /* LadderUtilitiesRecordDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89842C2466429500625819 /* LadderUtilitiesRecordDTO.swift */; };
 		7B92D0CA2456CBF600F195A9 /* DataPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92D0C82456CBF500F195A9 /* DataPickerViewController.swift */; };
 		7B92D0CB2456CBF600F195A9 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92D0C92456CBF500F195A9 /* DatePickerViewController.swift */; };
 		7B92D0CD2456CC6900F195A9 /* DateSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92D0CC2456CC6900F195A9 /* DateSelectionButton.swift */; };
@@ -299,6 +300,7 @@
 		7B7EB4C224528E52002DC436 /* UtilitiesRecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesRecordsViewController.swift; sourceTree = "<group>"; };
 		7B7EB4C624529AE6002DC436 /* AddUtilitiesRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUtilitiesRecordViewController.swift; sourceTree = "<group>"; };
 		7B7EB4C82452D24B002DC436 /* AddTenant.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddTenant.storyboard; sourceTree = "<group>"; };
+		7B89842C2466429500625819 /* LadderUtilitiesRecordDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LadderUtilitiesRecordDTO.swift; sourceTree = "<group>"; };
 		7B92D0C82456CBF500F195A9 /* DataPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPickerViewController.swift; sourceTree = "<group>"; };
 		7B92D0C92456CBF500F195A9 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		7B92D0CC2456CC6900F195A9 /* DateSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionButton.swift; sourceTree = "<group>"; };
@@ -584,6 +586,7 @@
 				7B4B9E312462C17200F6C18C /* TenantContractDTO.swift */,
 				7B4B9E332462C22B00F6C18C /* TenantContractAndBillsDTO.swift */,
 				7BC0B53C2464083300B38CA8 /* TurnoverStatisticsDTO.swift */,
+				7B89842C2466429500625819 /* LadderUtilitiesRecordDTO.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1456,6 +1459,7 @@
 				9C414EDD243D7B5A002EEC1C /* HomeModel.swift in Sources */,
 				9C5A967E23A08EE4002A2B06 /* AddCardViewModel.swift in Sources */,
 				9C3F93DF2455958E0040005D /* BillFlowCell.swift in Sources */,
+				7B89842D2466429500625819 /* LadderUtilitiesRecordDTO.swift in Sources */,
 				9C47DB77239A0A810019EAA0 /* SelectPopupView.swift in Sources */,
 				9C323BCA245676CA00214256 /* BillContractSection.swift in Sources */,
 				9CBD8F3F23A1ECF900886519 /* ShareModels.swift in Sources */,

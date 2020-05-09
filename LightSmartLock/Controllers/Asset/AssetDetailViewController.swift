@@ -119,8 +119,9 @@ class AssetDetailViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AssetFacilityList",
-            let vc = segue.destination as? AssetFacilityListViewController {
+        if let vc = segue.destination as? AssetFacilityListViewController {
+            vc.assetId = assetId
+        } else if let vc = segue.destination as? UtilitiesRecordsViewController {
             vc.assetId = assetId
         }
     }

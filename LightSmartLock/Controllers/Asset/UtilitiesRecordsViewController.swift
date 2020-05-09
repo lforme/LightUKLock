@@ -9,6 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import HandyJSON
 
 enum UtilitiesType: Int, Codable {
     case water = 1
@@ -27,27 +28,27 @@ enum UtilitiesType: Int, Codable {
     }
     
     var unit: String {
-         switch self {
-         case .water:
-             return "吨"
-         case .elec:
-             return "度"
-         case .gas:
-             return "方"
-         }
-     }
+        switch self {
+        case .water:
+            return "吨"
+        case .elec:
+            return "度"
+        case .gas:
+            return "方"
+        }
+    }
     
 }
 
-struct UtilitiesRecordsModel: Codable {
-    let totalFee: Int?
-    let totalUse: Int?
-    struct YearVOList: Codable {
-        let gage: String?
-        let payFee: String?
-        let recordDate: String?
+struct UtilitiesRecordsModel: HandyJSON {
+    var totalFee: Double?
+    var totalUse: Double?
+    struct YearVOList: HandyJSON {
+        var gage: String?
+        var payFee: String?
+        var recordDate: String?
     }
-    let yearVOList: [YearVOList]?
+    var yearVOList: [YearVOList]?
 }
 
 class UtilitiesRecordsCell: UITableViewCell {
@@ -61,20 +62,20 @@ class UtilitiesRecordsCell: UITableViewCell {
     func config(with model: UtilitiesRecordsModel.YearVOList) {
         recordDateLabel.text = model.recordDate
         gageLabel.text = model.gage
-        payFeeLabel.text = model.payFee
+        payFeeLabel.text = "¥\(model.payFee ?? "0")"
     }
     
 }
 
 class UtilitiesButton: UIButton {
-
+    
     override func awakeFromNib() {
-          super.awakeFromNib()
-          cornerRadius = 4
-          setTitleColor(#colorLiteral(red: 0.3254901961, green: 0.5843137255, blue: 0.9137254902, alpha: 1), for: .selected)
-          setTitleColor(.black, for: .normal)
-          tintColor = .clear
-      }
+        super.awakeFromNib()
+        cornerRadius = 4
+        setTitleColor(#colorLiteral(red: 0.3254901961, green: 0.5843137255, blue: 0.9137254902, alpha: 1), for: .selected)
+        setTitleColor(.black, for: .normal)
+        tintColor = .clear
+    }
 }
 
 
@@ -92,18 +93,38 @@ class UtilitiesRecordsViewController: UIViewController {
     @IBOutlet weak var totalUseUnitLabel: UILabel!
     
     @IBOutlet weak var totalFeeLabel: UILabel!
-        
+    
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var yearButton: DataSelectionButton!
+    
     
     private let listRelay = PublishRelay<[UtilitiesRecordsModel.YearVOList]>()
     private let typeRelay = BehaviorRelay<UtilitiesType>.init(value: .water)
+    private let yearRelay = BehaviorRelay<Int>.init(value: 2020)
+    
+    var assetId: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        yearButton.items = [["2019", "2020", "2021"]]
+        yearButton.didUpdated = { [weak self]results in
+            if let row = results.first?.value,
+                let value = Int(row){
+                self?.yearRelay.accept(value)
+                self?.yearButton.setTitle("\(value)年", for: .normal)
+            }
+        }
         tableView.tableFooterView = UIView()
         
-        waterButton.rx.tap
+        listRelay
+            .bind(to: tableView.rx.items(cellIdentifier: "UtilitiesRecordsCell", cellType: UtilitiesRecordsCell.self)) { (row, element, cell) in
+                cell.config(with: element)
+        }
+        .disposed(by: rx.disposeBag)
+        
+        let water = waterButton.rx.tap
             .startWith(())
             .map { UtilitiesType.water}
             .do(onNext: { [weak self](type) in
@@ -113,12 +134,9 @@ class UtilitiesRecordsViewController: UIViewController {
                 self?.totalUseUnitLabel.text = "总消耗量(\(type.unit))"
                 self?.typeRelay.accept(type)
             })
-            .subscribe(onNext: { (_) in
-                print("water")
-            })
-            .disposed(by: rx.disposeBag)
         
-        elecButton.rx.tap
+        
+        let elec = elecButton.rx.tap
             .map { UtilitiesType.elec}
             .do(onNext: { [weak self](type) in
                 self?.waterButton.isSelected = false
@@ -127,12 +145,9 @@ class UtilitiesRecordsViewController: UIViewController {
                 self?.totalUseUnitLabel.text = "总消耗量(\(type.unit))"
                 self?.typeRelay.accept(type)
             })
-            .subscribe(onNext: { (_) in
-                print("elec")
-            })
-            .disposed(by: rx.disposeBag)
         
-        gasButton.rx.tap
+        
+        let gas = gasButton.rx.tap
             .map { UtilitiesType.gas}
             .do(onNext: { [weak self](type) in
                 self?.waterButton.isSelected = false
@@ -141,30 +156,27 @@ class UtilitiesRecordsViewController: UIViewController {
                 self?.totalUseUnitLabel.text = "总消耗量(\(type.unit))"
                 self?.typeRelay.accept(type)
             })
-            .subscribe(onNext: { (_) in
-                print("gas")
-            })
+        
+        Observable.combineLatest(Observable.merge(water, elec, gas), yearRelay.asObservable())
+            .flatMapLatest { [unowned self]type, year -> Observable<UtilitiesRecordsModel> in
+                return BusinessAPI2.requestMapJSON(.getUtilitiesRecords(assetId: self.assetId, year: year, type: type), classType: UtilitiesRecordsModel.self)
+        }
+        .subscribe(onNext: { [weak self](model) in
+            self?.config(with: model)
+        })
             .disposed(by: rx.disposeBag)
         
-        listRelay
-            .bind(to: tableView.rx.items(cellIdentifier: "UtilitiesRecordsCell", cellType: UtilitiesRecordsCell.self)) { (row, element, cell) in
-                cell.config(with: element)
-        }
-        .disposed(by: rx.disposeBag)
-        
-        
-    
     }
+    
     
     func config(with model: UtilitiesRecordsModel) {
         self.totalUseLabel.text = "\(model.totalUse ?? 0)"
-        self.totalFeeLabel.text = "\(model.totalFee ?? 0)"
+        self.totalFeeLabel.text = "¥\(model.totalFee ?? 0)"
         self.listRelay.accept(model.yearVOList ?? [])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddUtilitiesRecord",
-            let vc = segue.destination as? AddUtilitiesRecordViewController {
+        if let vc = segue.destination as? AddUtilitiesRecordViewController {
             vc.type = self.typeRelay.value
         }
     }

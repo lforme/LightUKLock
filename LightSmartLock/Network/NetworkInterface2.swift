@@ -37,8 +37,11 @@ enum BusinessInterface2 {
     // 删除自定义配套
     case deleteFacility(id: String)
     
+    //查询水电气记录
+    case getUtilitiesRecords(assetId: String, year: Int, type: UtilitiesType)
     
-    
+    // 添加水电气抄表
+    case addUtilitiesRecord(assetId: String, model: LadderUtilitiesRecordDTO)
     
 }
 
@@ -69,7 +72,9 @@ extension BusinessInterface2: TargetType {
             return .get
             
         case .saveFacilities,
-             .addFacility:
+             .addFacility,
+             .getUtilitiesRecords,
+             .addUtilitiesRecord:
             return .post
             
         case .deleteFacility:
@@ -94,6 +99,10 @@ extension BusinessInterface2: TargetType {
             return "/ladder_facility/facility/\(id)"
         case .deleteFacility(id: let id):
             return "/ladder_facility/facility/\(id)"
+        case .getUtilitiesRecords(assetId: let assetId, _, _):
+            return "/ladder_utilities_record/utilities/records/\(assetId)"
+        case .addUtilitiesRecord(assetId: let assetId, _):
+            return "/ladder_utilities_record/utilities/\(assetId)"
         }
     }
     
@@ -128,6 +137,12 @@ extension BusinessInterface2: TargetType {
             let param = ["ladderAssetHouseId": assetId,
                          "facilityName": name]
             return .requestParameters(parameters: param, encoding: JSONEncoding.default)
+        case .getUtilitiesRecords(_, year: let year, type: let type):
+            let param = ["year": year,
+                         "type": type.rawValue]
+            return .requestParameters(parameters: param, encoding: JSONEncoding.default)
+        case .addUtilitiesRecord(_, model: let model):
+            return .requestParameters(parameters: model.toJSON() ?? [:], encoding: JSONEncoding.default)
         }
     }
 }
