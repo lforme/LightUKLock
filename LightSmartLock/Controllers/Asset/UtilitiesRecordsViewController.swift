@@ -132,7 +132,6 @@ class UtilitiesRecordsViewController: UIViewController {
                 self?.elecButton.isSelected = false
                 self?.gasButton.isSelected = false
                 self?.totalUseUnitLabel.text = "总消耗量(\(type.unit))"
-                self?.typeRelay.accept(type)
             })
         
         
@@ -143,7 +142,6 @@ class UtilitiesRecordsViewController: UIViewController {
                 self?.elecButton.isSelected = true
                 self?.gasButton.isSelected = false
                 self?.totalUseUnitLabel.text = "总消耗量(\(type.unit))"
-                self?.typeRelay.accept(type)
             })
         
         
@@ -154,10 +152,15 @@ class UtilitiesRecordsViewController: UIViewController {
                 self?.elecButton.isSelected = false
                 self?.gasButton.isSelected = true
                 self?.totalUseUnitLabel.text = "总消耗量(\(type.unit))"
-                self?.typeRelay.accept(type)
             })
         
-        Observable.combineLatest(Observable.merge(water, elec, gas), yearRelay.asObservable())
+        Observable.merge(water, elec, gas)
+            .bind(to: self.typeRelay)
+            .disposed(by: rx.disposeBag)
+        
+        
+        Observable.combineLatest(typeRelay, yearRelay)
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
             .flatMapLatest { [unowned self]type, year -> Observable<UtilitiesRecordsModel> in
                 return BusinessAPI2.requestMapJSON(.getUtilitiesRecords(assetId: self.assetId, year: year, type: type), classType: UtilitiesRecordsModel.self)
         }
@@ -178,6 +181,11 @@ class UtilitiesRecordsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? AddUtilitiesRecordViewController {
             vc.type = self.typeRelay.value
+            vc.assetId = self.assetId
+            vc.saveSuccess = { [unowned self] in
+                let value = self.typeRelay.value
+                self.typeRelay.accept(value)
+            }
         }
     }
     

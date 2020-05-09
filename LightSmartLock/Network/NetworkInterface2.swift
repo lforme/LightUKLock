@@ -41,7 +41,7 @@ enum BusinessInterface2 {
     case getUtilitiesRecords(assetId: String, year: Int, type: UtilitiesType)
     
     // 添加水电气抄表
-    case addUtilitiesRecord(assetId: String, model: LadderUtilitiesRecordDTO)
+    case addUtilitiesRecord(assetId: String, model: AddUtilitiesRecordModel)
     
 }
 

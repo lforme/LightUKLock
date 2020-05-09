@@ -60,7 +60,7 @@ class AddAssetFacilityCell: UICollectionViewCell {
                     message = response as? String
                 }
                 
-                HUD.show(.label(message))
+                HUD.flash(.label(message))
                 
             })
                 .disposed(by: disposeBag)
@@ -224,7 +224,7 @@ class AddAssetFacilityViewController: UIViewController {
                 message = response as? String
             }
             
-            HUD.show(.label(message))
+            HUD.flash(.label(message))
             
         })
             .disposed(by: rx.disposeBag)

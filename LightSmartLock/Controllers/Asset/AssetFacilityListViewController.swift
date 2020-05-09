@@ -118,7 +118,7 @@ class AssetFacilityListViewController: UIViewController {
             } else {
                 message = response as? String
             }
-            HUD.show(.label(message))
+            HUD.flash(.label(message))
         })
             .disposed(by: rx.disposeBag)
         
