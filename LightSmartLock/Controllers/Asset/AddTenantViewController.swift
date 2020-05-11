@@ -7,23 +7,36 @@
 //
 
 import UIKit
+import HandyJSON
+import PKHUD
 
-class TenantContractInfo: Codable {
+class TenantContractInfo: HandyJSON {
     var advanceDay: Int?
     var assetId: String?
-    class ContractCostSettingDTOList: Codable {
-        var amount: Int?
-        var baseProfitAmount: Int?
+    class ContractCostSettingDTOList: HandyJSON {
+        var amount: Double?
+        var baseProfitAmount: Double?
         var costCategoryId: String?
+        // 收费方式（0：固定金额 1：抄表计算 2：手动填写）
         var costCollectType: Int?
         var id: String?
-        var initialNumber: Int?
+        var initialNumber: Double?
+        // 是否保底（限于抄表费用）
         var isBaseProfit: Int?
+        // 是否保底（0：否 1：是）
         var isBottomProfit: Int?
+        // 是否固定金额（抄表类型的为0：固定金额：1，手动填写：2）
         var isFixed: Int?
+        // 是否首期账单费用（0：否 1：是）
         var isInitialCharge: Int?
-        var price: Int?
+        // 单价（只限于抄表计算）
+        var price: Double?
+        // 单位（只限于抄表使用）1：元/度 2：元/吨 3: 元/立方
         var unit: Int?
+        
+        required init() {
+            
+        }
     }
     var contractCostSettingDTOList: [ContractCostSettingDTOList]?
     var contractRentalRecordDTOList: [ContractRentalRecord] = []
@@ -44,6 +57,35 @@ class TenantContractInfo: Codable {
     var tenantFellowDTOList: [TenantMember] = []
     var tenantInfo = TenantMember()
     var userId: String?
+    
+    required init() {
+        
+    }
+}
+
+
+class DateRangeButton: UIButton {
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        cornerRadius = 4
+        setTitleColor(#colorLiteral(red: 0.3254901961, green: 0.5843137255, blue: 0.9137254902, alpha: 1), for: .selected)
+        setTitleColor(#colorLiteral(red: 0.02352941176, green: 0.1098039216, blue: 0.2470588235, alpha: 1), for: .normal)
+        tintColor = .clear
+        isSelected = false
+        borderWidth = 1
+        
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                borderColor = #colorLiteral(red: 0.3254901961, green: 0.5843137255, blue: 0.9137254902, alpha: 1)
+            } else {
+                borderColor = #colorLiteral(red: 0.8823529412, green: 0.8941176471, blue: 0.9098039216, alpha: 1)
+            }
+        }
+    }
 }
 
 class AddTenantViewController: UIViewController {
@@ -73,6 +115,10 @@ class AddTenantViewController: UIViewController {
     
     @IBOutlet weak var endDateBtn: DateSelectionButton!
     
+    @IBOutlet var dateRangeBtns: [DateRangeButton]!
+    
+    @IBOutlet weak var dateRangeContainer: UIStackView!
+    
     @IBOutlet weak var rentCollectTypeBtn: DataSelectionButton!
     
     @IBOutlet weak var rentalTF: UITextField!
@@ -88,6 +134,10 @@ class AddTenantViewController: UIViewController {
     
     var buildingName: String!
     var assetId: String!
+    
+    var selectedDateRangeMonth: Int? {
+        return dateRangeBtns.filter { $0.isSelected }.first?.tag
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,7 +162,15 @@ class AddTenantViewController: UIViewController {
         }
         
         reloadFellowView()
-    
+        
+        dateRangeContainer.isHidden = true
+        startDateBtn.didUpdated = { [weak self] startDateStr in
+            if let startDateStr = startDateStr {
+                self?.dateRangeContainer.isHidden = false
+                self?.calculateEndDateStr(startDateStr: startDateStr)
+            }
+        }
+                
         rentCollectTypeBtn.title = "请选择收租周期"
         let nums = Array(1...30).map { $0.description }
         let units = ["日/次", "月/次", "年/次"]
@@ -121,6 +179,29 @@ class AddTenantViewController: UIViewController {
         advanceDayBtn.title = "请选择提前时间"
         advanceDayBtn.items = [Array(1...15).map { $0.description + "天" }]
     }
+    
+    func calculateEndDateStr(startDateStr: String) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        if let startDate = formatter.date(from: startDateStr), let months = self.selectedDateRangeMonth,
+            let endDate = Calendar.current.date(byAdding: .month, value: months, to: startDate) {
+            
+            let endDateStr = formatter.string(from: endDate)
+            endDateBtn.selectedDateStr = endDateStr
+        }
+        
+    }
+    
+    @IBAction func tapAction(_ sender: DateRangeButton) {
+        dateRangeBtns.forEach { $0.isSelected = false }
+        sender.isSelected = true
+        if let selectedDateStr = startDateBtn.selectedDateStr {
+            calculateEndDateStr(startDateStr: selectedDateStr)
+        }
+    }
+    
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddTenantFellow",
@@ -186,7 +267,8 @@ class AddTenantViewController: UIViewController {
         self.tenantContractInfo.endDate = endDateBtn.selectedDateStr
         
         // 收租周期
-        self.tenantContractInfo.rentCollectType = rentCollectTypeBtn.result?.first?.row
+        self.tenantContractInfo.rentCollectRate = rentCollectTypeBtn.result?.first?.row
+        self.tenantContractInfo.rentCollectType = rentCollectTypeBtn.result?.last?.row
         
         // 租金
         self.tenantContractInfo.rental = self.rentalTF.text?.toDouble()
@@ -205,6 +287,34 @@ class AddTenantViewController: UIViewController {
         
         // 备注
         self.tenantContractInfo.remark = self.remarkTF.text
+        
+        if self.tenantContractInfo.tenantInfo.userName == nil || self.tenantContractInfo.tenantInfo.userName?.isEmpty == true {
+            HUD.flash(.label("请填写同住人姓名"))
+            return
+        }
+        if self.tenantContractInfo.tenantInfo.phone == nil || self.tenantContractInfo.tenantInfo.phone?.count != 11 {
+            HUD.flash(.label("请填写同住人手机号"))
+            return
+        }
+        
+        if self.tenantContractInfo.startDate == nil {
+            HUD.flash(.label("请选择起租日期"))
+            return
+        }
+        if self.tenantContractInfo.endDate == nil {
+            HUD.flash(.label("请选择到租日期"))
+            return
+        }
+        
+        if self.tenantContractInfo.rentCollectRate == nil || self.tenantContractInfo.rentCollectType == nil {
+            HUD.flash(.label("请选择收租日期"))
+            return
+        }
+        
+        if self.tenantContractInfo.rental == nil {
+            HUD.flash(.label("请填写每期租金"))
+            return
+        }
     }
     
 }

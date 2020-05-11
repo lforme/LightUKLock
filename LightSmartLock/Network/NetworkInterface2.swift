@@ -46,6 +46,9 @@ enum BusinessInterface2 {
     // 身份证照OCR识别
     case recognizeIDCard(url: String)
     
+    // 新增租客（创建租客合同
+    case addNewTenantContractInfo(info: TenantContractInfo)
+    
 }
 
 
@@ -78,7 +81,8 @@ extension BusinessInterface2: TargetType {
              .addFacility,
              .getUtilitiesRecords,
              .addUtilitiesRecord,
-             .recognizeIDCard:
+             .recognizeIDCard,
+             .addNewTenantContractInfo:
             return .post
             
         case .deleteFacility:
@@ -109,6 +113,8 @@ extension BusinessInterface2: TargetType {
             return "/ladder_utilities_record/utilities/\(assetId)"
         case .recognizeIDCard:
             return "/common/ocr"
+        case .addNewTenantContractInfo:
+            return "/tenant_contract_info/"
         }
     }
     
@@ -151,6 +157,8 @@ extension BusinessInterface2: TargetType {
             return .requestParameters(parameters: model.toJSON() ?? [:], encoding: JSONEncoding.default)
         case .recognizeIDCard(url: let url):
             return .requestParameters(parameters: ["imageUrl": url], encoding: URLEncoding.queryString)
+        case .addNewTenantContractInfo(info: let info):
+            return .requestParameters(parameters: info.toJSON() ?? [:], encoding: JSONEncoding.default)
         }
     }
 }

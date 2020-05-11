@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import HandyJSON
 
-class ContractRentalRecord: Codable {
+class ContractRentalRecord: HandyJSON {
     var increaseType: Int?
     var ratio: Double?
     var startDate: String?
+    
+    required init() {
+        
+    }
 }
 
 class SettingRentalRecordViewController: UIViewController {

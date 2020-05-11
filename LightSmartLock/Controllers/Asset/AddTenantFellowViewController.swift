@@ -7,14 +7,20 @@
 //
 
 import UIKit
+import HandyJSON
+import PKHUD
 
-class TenantMember: Codable {
+class TenantMember: HandyJSON {
     var id: String?
     var idCard: String?
     var idCardFront: String?
     var idCardReverse: String?
     var phone: String?
     var userName: String?
+    
+    required init() {
+        
+    }
 }
 
 class AddTenantFellowViewController: UIViewController {
@@ -69,6 +75,14 @@ class AddTenantFellowViewController: UIViewController {
         member.idCard = idCardTF.text
         member.idCardFront = idCardFrontView.urlStr
         member.idCardReverse = idCardReverseView.urlStr
+        if member.userName == nil || member.userName?.isEmpty == true {
+            HUD.flash(.label("请填写同住人姓名"))
+            return
+        }
+        if member.phone == nil || member.phone?.count != 11 {
+            HUD.flash(.label("请填写同住人手机号"))
+            return
+        }
         addFellow?(member, isEdit)
         self.navigationController?.popViewController(animated: true)
         

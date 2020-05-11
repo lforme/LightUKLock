@@ -523,33 +523,45 @@
                                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OEr-nF-8uG">
                                                                                         <rect key="frame" x="16" y="0.0" width="350" height="44"/>
                                                                                         <subviews>
-                                                                                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azh-H3-LJ0">
+                                                                                            <button opaque="NO" alpha="0.5" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZD-mx-r65" customClass="DateRangeButton" customModule="门锁助手个人版" customModuleProvider="target">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="81.5" height="44"/>
+                                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                                <state key="normal" title="3个月">
+                                                                                                    <color key="titleColor" name="textPrimary"/>
+                                                                                                </state>
+                                                                                                <connections>
+                                                                                                    <action selector="tapAction:" destination="U7n-NG-VIi" eventType="touchUpInside" id="KKx-Bb-7Os"/>
+                                                                                                </connections>
+                                                                                            </button>
+                                                                                            <button opaque="NO" alpha="0.5" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azh-H3-LJ0" customClass="DateRangeButton" customModule="门锁助手个人版" customModuleProvider="target">
+                                                                                                <rect key="frame" x="89.5" y="0.0" width="81.5" height="44"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                 <state key="normal" title="半年">
                                                                                                     <color key="titleColor" name="textPrimary"/>
                                                                                                 </state>
+                                                                                                <connections>
+                                                                                                    <action selector="tapAction:" destination="U7n-NG-VIi" eventType="touchUpInside" id="Wn6-qP-zQe"/>
+                                                                                                </connections>
                                                                                             </button>
-                                                                                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cta-7Q-UcT">
-                                                                                                <rect key="frame" x="89.5" y="0.0" width="81.5" height="44"/>
+                                                                                            <button opaque="NO" alpha="0.5" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cta-7Q-UcT" customClass="DateRangeButton" customModule="门锁助手个人版" customModuleProvider="target">
+                                                                                                <rect key="frame" x="179" y="0.0" width="81.5" height="44"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                 <state key="normal" title="一年">
                                                                                                     <color key="titleColor" name="textPrimary"/>
                                                                                                 </state>
+                                                                                                <connections>
+                                                                                                    <action selector="tapAction:" destination="U7n-NG-VIi" eventType="touchUpInside" id="dGv-O7-r3e"/>
+                                                                                                </connections>
                                                                                             </button>
-                                                                                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgJ-sk-QpN">
-                                                                                                <rect key="frame" x="179" y="0.0" width="81.5" height="44"/>
+                                                                                            <button opaque="NO" alpha="0.5" tag="24" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgJ-sk-QpN" customClass="DateRangeButton" customModule="门锁助手个人版" customModuleProvider="target">
+                                                                                                <rect key="frame" x="268.5" y="0.0" width="81.5" height="44"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                 <state key="normal" title="两年">
                                                                                                     <color key="titleColor" name="textPrimary"/>
                                                                                                 </state>
-                                                                                            </button>
-                                                                                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZD-mx-r65">
-                                                                                                <rect key="frame" x="268.5" y="0.0" width="81.5" height="44"/>
-                                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                                <state key="normal" title="其他">
-                                                                                                    <color key="titleColor" name="textPrimary"/>
-                                                                                                </state>
+                                                                                                <connections>
+                                                                                                    <action selector="tapAction:" destination="U7n-NG-VIi" eventType="touchUpInside" id="TIt-da-Yej"/>
+                                                                                                </connections>
                                                                                             </button>
                                                                                         </subviews>
                                                                                     </stackView>
@@ -606,7 +618,7 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="73S-Ai-noR">
                                                                         <rect key="frame" x="0.0" y="202" width="382" height="44"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每期交租" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npz-B7-6zO">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每期租金" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npz-B7-6zO">
                                                                                 <rect key="frame" x="0.0" y="13.5" width="57.5" height="17"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <color key="textColor" name="textPrimary"/>
@@ -618,13 +630,11 @@
                                                                                 <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="填写本期读数" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="et9-fP-WKD">
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="填写每期租金" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="et9-fP-WKD">
                                                                                 <rect key="frame" x="232" y="13" width="150" height="18.5"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="150" id="UxA-fq-bni"/>
                                                                                 </constraints>
-                                                                                <string key="text">0.00
-</string>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -637,24 +647,16 @@
                                                                         <rect key="frame" x="0.0" y="251" width="382" height="44"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="押金" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IlU-Mp-xq5">
-                                                                                <rect key="frame" x="0.0" y="13.5" width="29" height="17"/>
+                                                                                <rect key="frame" x="0.0" y="13.5" width="232" height="17"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <color key="textColor" name="textPrimary"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TbL-Ae-ALD">
-                                                                                <rect key="frame" x="29" y="13.5" width="203" height="17"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="填写本期读数" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UWM-uI-oFz">
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请填写押金" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UWM-uI-oFz">
                                                                                 <rect key="frame" x="232" y="13" width="150" height="18.5"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="150" id="rQl-df-ZEQ"/>
                                                                                 </constraints>
-                                                                                <string key="text">0.00
-</string>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -758,7 +760,7 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VTt-N8-mpp">
                                                                         <rect key="frame" x="0.0" y="44" width="382" height="44"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="提前时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08M-0v-s91">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="提前天数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08M-0v-s91">
                                                                                 <rect key="frame" x="0.0" y="13.5" width="57.5" height="17"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <color key="textColor" name="textPrimary"/>
@@ -809,7 +811,7 @@
                                                                     <constraint firstAttribute="bottom" secondItem="bki-gS-2IL" secondAttribute="bottom" id="sZx-IR-43q"/>
                                                                 </constraints>
                                                             </view>
-                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="这个租客是熟人介绍的，给个折扣，9.8折" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="E8e-6s-a0i">
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="E8e-6s-a0i">
                                                                 <rect key="frame" x="16" y="32" width="382" height="88"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -904,6 +906,7 @@
                     <connections>
                         <outlet property="advanceDayBtn" destination="yg2-a2-Oc6" id="Y9g-C4-w7B"/>
                         <outlet property="buildingNameLabel" destination="xQA-3i-Fd1" id="noa-9g-I8Y"/>
+                        <outlet property="dateRangeContainer" destination="JVF-az-KK3" id="7kY-iY-MW6"/>
                         <outlet property="depositTF" destination="UWM-uI-oFz" id="t07-cg-QHB"/>
                         <outlet property="endDateBtn" destination="TKS-bP-6dh" id="qUw-a4-VZG"/>
                         <outlet property="fellowContainerView" destination="2tJ-Tp-4Ss" id="oah-ew-FUq"/>
@@ -919,6 +922,10 @@
                         <outlet property="roomNumBtn" destination="XSE-FV-bfa" id="myg-lF-std"/>
                         <outlet property="startDateBtn" destination="keV-U1-F98" id="DBl-Tk-qrt"/>
                         <outlet property="userNameTF" destination="FRZ-nc-WBb" id="NzJ-W0-ggE"/>
+                        <outletCollection property="dateRangeBtns" destination="QZD-mx-r65" collectionClass="NSMutableArray" id="wrD-Yd-F8T"/>
+                        <outletCollection property="dateRangeBtns" destination="azh-H3-LJ0" collectionClass="NSMutableArray" id="vhy-JJ-0ip"/>
+                        <outletCollection property="dateRangeBtns" destination="Cta-7Q-UcT" collectionClass="NSMutableArray" id="MTb-tP-LFx"/>
+                        <outletCollection property="dateRangeBtns" destination="xgJ-sk-QpN" collectionClass="NSMutableArray" id="BWr-KM-2tZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NKy-1P-lDG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
