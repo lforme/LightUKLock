@@ -9,7 +9,6 @@
 import Foundation
 import HandyJSON
 
-
 struct AssetReportModel: HandyJSON {
     var costCategoryId: String?
     var costCategoryName: String?
@@ -18,4 +17,14 @@ struct AssetReportModel: HandyJSON {
     var paidCount: Int! // 到款笔数
     var ratio: Int! // 资金占比
     var totalAmount: Int! // 总收入金额
+}
+
+
+struct ReportFeesModel: HandyJSON {
+    var costCategoryName: String?
+    var userName: String?
+    var cycleStartDate: String?
+    var cycleEndDate: String?
+    var billType: Int! //账单类型（1：收款 -1 付款账单）
+    var amount: Double?
 }

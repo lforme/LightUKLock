@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,26 +35,23 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yuan_icon" translatesAutoresizingMaskIntoConstraints="NO" id="kYN-az-5VE">
-                        <rect key="frame" x="64" y="20" width="32" height="32"/>
+                        <rect key="frame" x="64" y="20" width="16" height="16"/>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yuan_huang_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ST3-tE-J9r">
-                        <rect key="frame" x="64" y="28" width="32" height="32"/>
+                        <rect key="frame" x="64" y="44" width="16" height="16"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 4800.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofo-xa-aUX">
-                        <rect key="frame" x="104" y="28.5" width="52" height="15"/>
+                        <rect key="frame" x="88" y="20.5" width="52" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" name="textOpaque78"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 4800.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4l-Ch-zbO">
-                        <rect key="frame" x="106" y="36.5" width="52" height="15"/>
+                        <rect key="frame" x="90" y="44.5" width="52" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" name="textOpaque78"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="rWg-SN-CcQ">
-                        <rect key="frame" x="329" y="32" width="30" height="16"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 4800.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cz-Jk-7Kx">
                         <rect key="frame" x="260.5" y="43" width="68.5" height="20"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
@@ -67,6 +64,14 @@
                         <color key="textColor" name="textOpaque78"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AnH-dg-4Yh">
+                        <rect key="frame" x="319" y="47" width="40" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="EkU-if-rxZ"/>
+                            <constraint firstAttribute="width" constant="40" id="VN8-9j-KIX"/>
+                        </constraints>
+                        <state key="normal" image="down_arrow"/>
+                    </button>
                 </subviews>
             </view>
             <color key="backgroundColor" name="viewBackground"/>
@@ -76,19 +81,26 @@
                 <constraint firstItem="l4l-Ch-zbO" firstAttribute="centerY" secondItem="ST3-tE-J9r" secondAttribute="centerY" id="AuT-HT-BHe"/>
                 <constraint firstItem="l4l-Ch-zbO" firstAttribute="leading" secondItem="ST3-tE-J9r" secondAttribute="trailing" constant="10" id="Caa-tl-4Qt"/>
                 <constraint firstItem="ST3-tE-J9r" firstAttribute="leading" secondItem="hNu-bj-e8y" secondAttribute="trailing" constant="8" id="Ehu-8d-dHR"/>
+                <constraint firstAttribute="trailing" secondItem="AnH-dg-4Yh" secondAttribute="trailing" constant="16" id="Jkx-nA-Aw7"/>
                 <constraint firstItem="hNu-bj-e8y" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="LVg-dq-tB9"/>
                 <constraint firstItem="kYN-az-5VE" firstAttribute="leading" secondItem="hNu-bj-e8y" secondAttribute="trailing" constant="8" id="QfZ-XU-X8E"/>
-                <constraint firstAttribute="trailing" secondItem="rWg-SN-CcQ" secondAttribute="trailing" constant="16" id="S7I-sO-g61"/>
+                <constraint firstItem="AnH-dg-4Yh" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="Ric-Gt-jhC"/>
                 <constraint firstItem="cM3-Ba-0pz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="XaO-ve-GjG"/>
                 <constraint firstAttribute="trailing" secondItem="cM3-Ba-0pz" secondAttribute="trailing" constant="46" id="fRR-Mu-yAM"/>
                 <constraint firstItem="7cz-Jk-7Kx" firstAttribute="trailing" secondItem="cM3-Ba-0pz" secondAttribute="trailing" id="gX4-dk-kz6"/>
                 <constraint firstItem="ofo-xa-aUX" firstAttribute="leading" secondItem="kYN-az-5VE" secondAttribute="trailing" constant="8" id="nFm-Im-Qbj"/>
-                <constraint firstItem="rWg-SN-CcQ" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="nKo-AP-gYc"/>
                 <constraint firstItem="kYN-az-5VE" firstAttribute="top" secondItem="hNu-bj-e8y" secondAttribute="top" id="pGz-HX-D2V"/>
                 <constraint firstItem="hNu-bj-e8y" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="pgi-1i-m1T"/>
                 <constraint firstItem="ofo-xa-aUX" firstAttribute="centerY" secondItem="kYN-az-5VE" secondAttribute="centerY" id="uiC-95-AFb"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="balance" destination="7cz-Jk-7Kx" id="TYu-Fz-3PO"/>
+                <outlet property="expenedButton" destination="AnH-dg-4Yh" id="Kx4-Df-n71"/>
+                <outlet property="inPrice" destination="ofo-xa-aUX" id="7GC-v2-O8N"/>
+                <outlet property="month" destination="hNu-bj-e8y" id="3Am-r9-atx"/>
+                <outlet property="outPrice" destination="l4l-Ch-zbO" id="eTA-lm-p6T"/>
+            </connections>
             <point key="canvasLocation" x="131.15942028985509" y="105.80357142857143"/>
         </collectionViewCell>
     </objects>

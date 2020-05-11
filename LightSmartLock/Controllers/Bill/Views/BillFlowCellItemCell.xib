@@ -53,6 +53,11 @@
                 <constraint firstAttribute="trailing" secondItem="cCd-Ie-gAZ" secondAttribute="trailing" constant="16" id="nha-J4-rYd"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="dateAndName" destination="6Dj-EE-M1I" id="YWF-vV-0sS"/>
+                <outlet property="name" destination="U1d-Km-6ic" id="giI-58-KHA"/>
+                <outlet property="price" destination="cCd-Ie-gAZ" id="buB-Mv-pxg"/>
+            </connections>
             <point key="canvasLocation" x="131.15942028985509" y="105.80357142857143"/>
         </collectionViewCell>
     </objects>

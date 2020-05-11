@@ -8,6 +8,7 @@
 
 import UIKit
 import IGListKit
+import PKHUD
 
 class BillFlowController: UIViewController {
     
@@ -30,6 +31,7 @@ class BillFlowController: UIViewController {
     }()
     
     let vm = BillFlowViewModel(assetId: "4671384247706058755")
+    var dataSource = [ListDiffable]()
     
     deinit {
         print(self)
@@ -37,7 +39,7 @@ class BillFlowController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = "账单流水"
         setupUI()
         bind()
@@ -76,6 +78,20 @@ class BillFlowController: UIViewController {
                 self.contractButton.isSelected = true
             }
         }).disposed(by: rx.disposeBag)
+        
+        vm.collectionViewDataSource.subscribe(onNext: {[weak self] (list) in
+            self?.dataSource = list
+            self?.adapter.reloadData(completion: nil)
+        }).disposed(by: rx.disposeBag)
+        
+        NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
+            guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
+            switch refreshType {
+            case .billFlow:
+                self?.adapter.reloadData(completion: nil)
+            default: break
+            }
+        }).disposed(by: rx.disposeBag)
     }
     
     func setupUI() {
@@ -92,13 +108,15 @@ class BillFlowController: UIViewController {
 extension BillFlowController: ListAdapterDataSource {
     
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return [BillFlowReportSection.Data()]
+        return dataSource
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         
         if object is BillFlowReportSection.Data {
-            return BillFlowReportSection()
+            let section = BillFlowReportSection()
+            section.assetId = self.vm.assetId
+            return section
         }
         
         if object is BillFlowSection.Data {
@@ -114,5 +132,16 @@ extension BillFlowController: ListAdapterDataSource {
     
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return nil
+    }
+}
+
+extension BillFlowController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is BookKeepingController {
+            let bookKeepingVC = segue.destination as! BookKeepingController
+            bookKeepingVC.assetId = "4672365253421433859"
+            bookKeepingVC.contractId = "4673814997878439939"
+        }
     }
 }
