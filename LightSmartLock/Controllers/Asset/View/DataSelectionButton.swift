@@ -52,7 +52,9 @@ class DataSelectionButton: UIButton {
                 return DataPickerController.rx.present(with: self.title, items: self.items)
         }
         .subscribe(onNext: { [weak self](result) in
-            self?.result = result
+            if !result.isEmpty {
+              self?.result = result
+            }
             print(result)
         })
             .disposed(by: rx.disposeBag)

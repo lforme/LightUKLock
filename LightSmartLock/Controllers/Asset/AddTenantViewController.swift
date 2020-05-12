@@ -12,6 +12,9 @@ import PKHUD
 import UITextView_Placeholder
 
 class TenantContractInfo: HandyJSON {
+    
+    var buildingName: String?
+    
     var advanceDay: Int?
     var assetId: String?
     var contractCostSettingDTOList: [ContractCostSettingDTOList]?
@@ -120,7 +123,7 @@ class AddTenantViewController: UIViewController {
         
         buildingNameLabel.text = buildingName
         
-        roomNumBtn.title = "请选择房间"
+        roomNumBtn.title = "请选择"
         roomNumBtn.items = [["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]]
         
         idCardFrontView.placeImage = #imageLiteral(resourceName: "id_front")
@@ -147,12 +150,12 @@ class AddTenantViewController: UIViewController {
             }
         }
         
-        rentCollectTypeBtn.title = "请选择收租周期"
+        rentCollectTypeBtn.title = "请选择"
         let nums = Array(1...30).map { $0.description }
         let units = ["日/次", "月/次", "年/次"]
         rentCollectTypeBtn.items = [nums, units]
         
-        advanceDayBtn.title = "请选择提前天数"
+        advanceDayBtn.title = "请选择"
         advanceDayBtn.items = [Array(1...15).map { $0.description + "天" }]
         
         self.remarkTF.placeholder = "请输入备注内容"
@@ -257,6 +260,8 @@ class AddTenantViewController: UIViewController {
     
     
     @IBAction func nextStepAction(_ sender: Any) {
+        self.tenantContractInfo.buildingName = buildingName
+        self.tenantContractInfo.assetId = assetId
         // 房间编号
         self.tenantContractInfo.roomNum = roomNumBtn.resultStr
         // 承租人身份证

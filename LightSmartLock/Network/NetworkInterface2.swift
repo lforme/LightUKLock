@@ -49,6 +49,8 @@ enum BusinessInterface2 {
     // 新增租客（创建租客合同
     case addNewTenantContractInfo(info: TenantContractInfo)
     
+    // 获取下载地址
+    case getDownloadAddress
 }
 
 
@@ -73,7 +75,8 @@ extension BusinessInterface2: TargetType {
              .getAssetContracts,
              .getStatistics,
              .getFacilities,
-             .getFacilityList:
+             .getFacilityList,
+             .getDownloadAddress:
             
             return .get
             
@@ -115,6 +118,8 @@ extension BusinessInterface2: TargetType {
             return "/common/ocr"
         case .addNewTenantContractInfo:
             return "/tenant_contract_info/"
+        case .getDownloadAddress:
+            return "/common/download/address"
         }
     }
     
@@ -138,7 +143,8 @@ extension BusinessInterface2: TargetType {
         case .getStatistics,
              .getFacilities,
              .getFacilityList,
-             .deleteFacility:
+             .deleteFacility,
+             .getDownloadAddress:
             return .requestPlain
             
         case .saveFacilities(_, models: let models):

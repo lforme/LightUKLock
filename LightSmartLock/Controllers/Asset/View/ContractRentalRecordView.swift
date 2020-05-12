@@ -38,7 +38,7 @@ class ContractRentalRecordView: UIView, NibLoadable {
         sectionTitle.text = "递增\(record.index)"
         self.record = record
         
-        increaseTypeBtn.title = "请选择涨租方式"
+        increaseTypeBtn.title = "请选择"
         increaseTypeBtn.items = [["按金额", "按百分比"]]
         
         startDateBtn.didUpdated = { [weak self]selectedDateStr in

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F64F18F4FD1BF62618F8397 /* Pods_LightSmartLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */; };
+		7B1B831F246AA3A30061A53A /* AddTenantSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B831E246AA3A30061A53A /* AddTenantSuccessViewController.swift */; };
 		7B4B9E2F2462B7CD00F6C18C /* NetworkInterface2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B9E2E2462B6E500F6C18C /* NetworkInterface2.swift */; };
 		7B4B9E322462C17200F6C18C /* TenantContractDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B9E312462C17200F6C18C /* TenantContractDTO.swift */; };
 		7B4B9E342462C22B00F6C18C /* TenantContractAndBillsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B9E332462C22B00F6C18C /* TenantContractAndBillsDTO.swift */; };
@@ -290,6 +291,7 @@
 		3F491F2D46130205BF93BEC8 /* Pods_LSLWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LSLWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56B15D3085FA9EFD559AB2C2 /* Pods-LightSmartLock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightSmartLock.debug.xcconfig"; path = "Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock.debug.xcconfig"; sourceTree = "<group>"; };
 		5927D6F125DE487DAA43F786 /* Pods_LightSmartLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LightSmartLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B1B831E246AA3A30061A53A /* AddTenantSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTenantSuccessViewController.swift; sourceTree = "<group>"; };
 		7B4B9E2E2462B6E500F6C18C /* NetworkInterface2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterface2.swift; sourceTree = "<group>"; };
 		7B4B9E312462C17200F6C18C /* TenantContractDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenantContractDTO.swift; sourceTree = "<group>"; };
 		7B4B9E332462C22B00F6C18C /* TenantContractAndBillsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenantContractAndBillsDTO.swift; sourceTree = "<group>"; };
@@ -603,6 +605,7 @@
 				7BB2FEAF245595DD00D835BA /* SettingRentalRecordViewController.swift */,
 				7BCDE4F0246A433400334FCF /* SettingRentalAndOtherViewController.swift */,
 				7BCDE4F2246A46CE00334FCF /* AddOtherViewController.swift */,
+				7B1B831E246AA3A30061A53A /* AddTenantSuccessViewController.swift */,
 				7B4B9E302462C0B300F6C18C /* Models */,
 				7BB2FEB5245596D300D835BA /* View */,
 				7B7EB4B22451361E002DC436 /* ButtonContainerView.swift */,
@@ -1421,6 +1424,7 @@
 				9C24AC302383D89A005EBF95 /* LocalArchiver.swift in Sources */,
 				9CDD274423829363006A9B97 /* RootViewController.swift in Sources */,
 				9C5471A523951C1E00432ACA /* DataPickerController.swift in Sources */,
+				7B1B831F246AA3A30061A53A /* AddTenantSuccessViewController.swift in Sources */,
 				9CFDE207238523A80062522E /* LoadingPlugin.swift in Sources */,
 				9C03B0F1239F51240001E849 /* FingerDetailController.swift in Sources */,
 				9C5A967823A07D4E002A2B06 /* AddCardController.swift in Sources */,

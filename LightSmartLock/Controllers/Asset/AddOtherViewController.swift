@@ -8,32 +8,33 @@
 
 import UIKit
 import HandyJSON
+import PKHUD
 
 class ContractCostSettingDTOList: HandyJSON {
-       var amount: Double?
-       var baseProfitAmount: Double?
-       var costCategoryId: String?
-       // 收费方式（0：固定金额 1：抄表计算 2：手动填写）
-       var costCollectType: Int?
-       var id: String?
-       var initialNumber: Double?
-       // 是否保底（限于抄表费用）
-       var isBaseProfit: Int?
-       // 是否保底（0：否 1：是）
-       var isBottomProfit: Int?
-       // 是否固定金额（抄表类型的为0：固定金额：1，手动填写：2）
-       var isFixed: Int?
-       // 是否首期账单费用（0：否 1：是）
-       var isInitialCharge: Int?
-       // 单价（只限于抄表计算）
-       var price: Double?
-       // 单位（只限于抄表使用）1：元/度 2：元/吨 3: 元/立方
-       var unit: Int?
-       
-       required init() {
-           
-       }
-   }
+    var amount: Double?
+    var baseProfitAmount: Double?
+    var costCategoryId: String?
+    // 收费方式（0：固定金额 1：抄表计算 2：手动填写）
+    var costCollectType: Int?
+    var id: String?
+    var initialNumber: Double?
+    // 是否保底（限于抄表费用）
+    var isBaseProfit: Int?
+    // 是否保底（0：否 1：是）
+    var isBottomProfit: Int?
+    // 是否固定金额（抄表类型的为0：固定金额：1，手动填写：2）
+    var isFixed: Int?
+    // 是否首期账单费用（0：否 1：是）
+    var isInitialCharge: Int?
+    // 单价（只限于抄表计算）
+    var price: Double?
+    // 单位（只限于抄表使用）1：元/度 2：元/吨 3: 元/立方
+    var unit: Int?
+    
+    required init() {
+        
+    }
+}
 
 class AddOtherViewController: UIViewController {
     
@@ -46,21 +47,33 @@ class AddOtherViewController: UIViewController {
     
     @IBOutlet weak var priceTF: UITextField!
     
+    
+    @IBOutlet weak var unitBtn: DataSelectionButton!
+    
+    
+    @IBOutlet weak var initialNumberTF: UITextField!
+    
     @IBOutlet weak var unitContainer: UIStackView!
     
     @IBOutlet weak var bottomContainer: UIStackView!
     
+    @IBOutlet weak var isBaseProfitSW: UISwitch!
     
+    @IBOutlet weak var baseProfitAmountTF: UITextField!
     @IBOutlet weak var baseProfitAmountContainer: UIStackView!
     
     @IBOutlet weak var tipLabel: UILabel!
     
+    @IBOutlet weak var amountContainer: UIStackView!
+    var didSaved: ((ContractCostSettingDTOList) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        costCollectTypeBtn.title = "请选择收费方式"
+        costCollectTypeBtn.title = "请选择"
         costCollectTypeBtn.items = [["固定金额", "抄表计算", "手动填写"]]
         costCollectTypeBtn.didUpdated = { [weak self] results in
+            self?.amountContainer.isHidden = false
             if let row = results.first?.row {
                 if row == 0 {
                     self?.priceNameLabel.text = "金额"
@@ -87,8 +100,14 @@ class AddOtherViewController: UIViewController {
             }
         }
         
-        costCollectTypeBtn.result = [(0, 0, "固定金额")]
-         baseProfitAmountContainer.isHidden = true
+        amountContainer.isHidden = true
+        unitContainer.isHidden = true
+        bottomContainer.isHidden = true
+        baseProfitAmountContainer.isHidden = true
+        tipLabel.isHidden = true
+        
+        unitBtn.title = "请选择"
+        unitBtn.items = [["元/度", "元/吨", "元/立方"]]
     }
     
     
@@ -98,8 +117,40 @@ class AddOtherViewController: UIViewController {
     
     
     @IBAction func saveAction(_ sender: Any) {
-        
+        // 费用类型
+        //        other.costCategoryId =
+        guard let costCollectType = self.costCollectTypeBtn.result?.first?.row else {
+            return HUD.flash(.label("请选择收费方式"))
+        }
+        other.costCollectType = costCollectType
+        if other.costCollectType == 0 { // 固定金额
+            guard let amount = self.priceTF.text?.toDouble() else {
+                return HUD.flash(.label("请填写金额")) }
+            other.amount = amount
+        } else if other.costCollectType == 2 { // 手动填写
+            guard let amount = self.priceTF.text?.toDouble() else {
+                return HUD.flash(.label("请填写金额")) }
+            other.amount = amount
+        } else { // 抄表计算
+            guard let amount = self.priceTF.text?.toDouble() else {
+                return HUD.flash(.label("请填写单价")) }
+            other.price = amount
+            guard let row = self.unitBtn.result?.first?.row else {
+                return HUD.flash(.label("请选择单位")) }
+            other.unit = row + 1
+            
+            other.initialNumber = self.initialNumberTF.text?.toDouble()
+            
+            other.isBaseProfit = self.isBaseProfitSW.isOn ? 1 : 0
+            
+            if other.isBaseProfit == 1 {
+                guard let amount = self.baseProfitAmountTF.text?.toDouble() else {
+                    return HUD.flash(.label("请填写单价")) }
+                other.baseProfitAmount = amount
+            }
+            
+        }
+        self.didSaved?(other)
+        self.navigationController?.popViewController(animated: true)
     }
-    
-    
 }
