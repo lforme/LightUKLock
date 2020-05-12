@@ -65,4 +65,5 @@ enum BusinessInterface {
     case tenantContractInfoAssetContract(assetId: String, year: String) // 资产合同列表
     case reportReportItems(assetId: String, costId: String) // 获取报名费用类型明细
     case baseTurnoverInfo(assetId: String, contractId: String, payTime: String, itemList: [AddFlowParameter])
+    case costCategory // 获取用户的费用类型集合
 }

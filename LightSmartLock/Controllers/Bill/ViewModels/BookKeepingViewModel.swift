@@ -39,9 +39,10 @@ extension BookKeepingViewModel {
         let obAmount = BehaviorRelay<String?>(value: nil)
         let obCostCategoryId = BehaviorRelay<String?>(value: nil)
         let obType = BehaviorRelay<Int?>(value: nil)
+        let obCostName = BehaviorRelay<String?>(value: nil)
         
         func convertToAddFlowParameter() -> AddFlowParameter {
-            AddFlowParameter(amount: obAmount.value, costCategoryId: obCostCategoryId.value, turnoverType: obType.value)
+            AddFlowParameter(amount: obAmount.value, costCategoryId: obCostCategoryId.value, turnoverType: obType.value, costName: obCostName.value)
         }
     }
     

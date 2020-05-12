@@ -88,17 +88,18 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SelectorFeesCell" id="hR6-oY-tKa" customClass="SelectorFeesCell" customModule="门锁助手个人版" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                <rect key="frame" x="0.0" y="0.0" width="51.5" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Bcd-lq-Jwr">
-                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="51.5" height="73"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wNy-TQ-Lqu">
-                                            <rect key="frame" x="46.5" y="35.5" width="35.5" height="57"/>
+                                            <rect key="frame" x="8" y="8" width="35.5" height="57"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bCT-t8-P5F">
-                                                    <rect key="frame" x="1.5" y="0.0" width="32" height="32"/>
+                                                    <rect key="frame" x="2" y="0.0" width="32" height="32"/>
+                                                    <color key="backgroundColor" name="textPlaceholder"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="32" id="l3c-mc-346"/>
                                                         <constraint firstAttribute="height" constant="32" id="xRX-Bf-ODI"/>
@@ -114,10 +115,17 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="wNy-TQ-Lqu" firstAttribute="centerY" secondItem="Bcd-lq-Jwr" secondAttribute="centerY" id="Mka-aa-em7"/>
-                                        <constraint firstItem="wNy-TQ-Lqu" firstAttribute="centerX" secondItem="Bcd-lq-Jwr" secondAttribute="centerX" id="aEP-mP-nMt"/>
+                                        <constraint firstItem="wNy-TQ-Lqu" firstAttribute="top" secondItem="Bcd-lq-Jwr" secondAttribute="top" constant="8" id="FxP-h4-oed"/>
+                                        <constraint firstItem="wNy-TQ-Lqu" firstAttribute="leading" secondItem="Bcd-lq-Jwr" secondAttribute="leading" constant="8" id="JSo-R5-Ebn"/>
+                                        <constraint firstAttribute="trailing" secondItem="wNy-TQ-Lqu" secondAttribute="trailing" constant="8" id="Uur-uh-Qev"/>
+                                        <constraint firstAttribute="bottom" secondItem="wNy-TQ-Lqu" secondAttribute="bottom" constant="8" id="rwC-zc-luZ"/>
                                     </constraints>
                                 </collectionViewCellContentView>
+                                <color key="backgroundColor" name="viewBackground"/>
+                                <connections>
+                                    <outlet property="iconView" destination="bCT-t8-P5F" id="mqZ-jk-CLh"/>
+                                    <outlet property="name" destination="pD1-dL-K8q" id="3Us-nm-S8s"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -1645,7 +1653,7 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                             <state key="normal" title="请选择">
-                                                <color key="titleColor" name="textDescription"/>
+                                                <color key="titleColor" name="textOpaque78"/>
                                             </state>
                                         </button>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="d0A-cg-MNo">
@@ -1675,6 +1683,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="JP1-xs-1Cb"/>
                                             </constraints>
+                                            <color key="textColor" name="textOpaque78"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             <userDefinedRuntimeAttributes>
@@ -1711,7 +1720,7 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                             <state key="normal" title="请选择">
-                                                <color key="titleColor" name="textDescription"/>
+                                                <color key="titleColor" name="textOpaque78"/>
                                             </state>
                                         </button>
                                     </subviews>
@@ -1807,7 +1816,7 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                             <state key="normal" title="请选择">
-                                                <color key="titleColor" name="textDescription"/>
+                                                <color key="titleColor" name="textOpaque78"/>
                                             </state>
                                         </button>
                                     </subviews>

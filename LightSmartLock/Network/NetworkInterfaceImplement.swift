@@ -168,7 +168,8 @@ extension BusinessInterface: TargetType {
              .getAllOpenWay,
              .reportAsset,
              .tenantContractInfoAssetContract,
-             .reportReportItems:
+             .reportReportItems,
+             .costCategory:
             return .get
             
         case .deleteAssetHouse,
@@ -258,6 +259,8 @@ extension BusinessInterface: TargetType {
             return "/report/report_items"
         case .baseTurnoverInfo:
             return "/base_turnover_info/"
+        case .costCategory:
+            return "/cost_category/"
         }
     }
     

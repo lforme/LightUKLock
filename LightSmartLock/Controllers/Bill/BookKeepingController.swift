@@ -38,6 +38,11 @@ class BookKeepingAddCell: UITableViewCell {
 class BookKeepingTimeCell: UITableViewCell {
     
     @IBOutlet weak var timePickButton: UIButton!
+    private(set) var disposeBag = DisposeBag()
+    
+    override func prepareForReuse() {
+        disposeBag = DisposeBag()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -135,6 +140,19 @@ class BookKeepingController: UITableViewController {
             vm?.addItem {[weak self] in
                 self?.tableView.reloadSections([0], animationStyle: .automatic)
             }
+        case 2:
+            guard let vm = self.vm else {
+                return
+            }
+            let cell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 2)) as! BookKeepingTimeCell
+            DatePickerController.rx.present(with: "yyyy-MM-dd", mode: .date, maxDate: nil, miniDate: nil).bind(to: vm.obTime).disposed(by: cell.disposeBag)
+            vm.obTime.subscribe(onNext: { (date) in
+                if let value = date {
+                    cell.timePickButton.setTitle(value, for: UIControl.State())
+                } else {
+                    cell.timePickButton.setTitle("请选择", for: UIControl.State())
+                }
+            }).disposed(by: cell.disposeBag)
         default: break
         }
     }
@@ -151,6 +169,47 @@ class BookKeepingController: UITableViewController {
                     .disposed(by: cell.disposeBag)
                 if let price = bindModel.convertToAddFlowParameter().amount {
                     cell.priceTextField.text = price
+                }
+                
+                cell.feesButton.rx.tap.subscribe(onNext: {[weak self] (_) in
+                    guard let this = self else { return }
+                    let selectedVC: SelectorFeesController = ViewLoader.Storyboard.controller(from: "Bill")
+                    this.navigationController?.pushViewController(selectedVC, animated: true)
+                    
+                    selectedVC.didSelected = {[weak self] (name, id) in
+                        bindModel.obCostCategoryId.accept(id)
+                        bindModel.obCostName.accept(name)
+                        self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+                    }
+                }).disposed(by: cell.disposeBag)
+                
+                if let feesName = bindModel.convertToAddFlowParameter().costName {
+                    cell.feesButton.setTitle(feesName, for: UIControl.State())
+                } else {
+                    cell.feesButton.setTitle("请选择", for: UIControl.State())
+                }
+                
+                cell.typeButton.rx.tap.flatMapLatest { (_) -> Observable<Int> in
+                    return DataPickerController.rx.present(with: "选择流水类型", items: [["收入水流", "支出流水"]]).map {
+                        if let v = $0.last?.value, v == "收入水流" {
+                            return 1
+                        } else {
+                            return -1
+                        }
+                    }
+                }.subscribe(onNext: {[weak self] (value) in
+                    bindModel.obType.accept(value)
+                    self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+                }).disposed(by: cell.disposeBag)
+                
+                if let type = bindModel.convertToAddFlowParameter().turnoverType {
+                    if type == 1 {
+                        cell.typeButton.setTitle("收入流水", for: UIControl.State())
+                    } else {
+                        cell.typeButton.setTitle("支出流水", for: UIControl.State())
+                    }
+                } else {
+                    cell.typeButton.setTitle("请选择", for: UIControl.State())
                 }
             }
             return cell

@@ -7,9 +7,14 @@
 //
 
 import UIKit
-
+import AlignedCollectionViewFlowLayout
+import PKHUD
 
 class SelectorFeesCell: UICollectionViewCell {
+    
+    @IBOutlet weak var iconView: UIImageView!
+    @IBOutlet weak var name: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -19,77 +24,53 @@ class SelectorFeesCell: UICollectionViewCell {
 
 class SelectorFeesController: UICollectionViewController {
     
+    var dataSrouce = [FeesKindModel]()
+    var didSelected: ((_ name: String, _ categoryId: String) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "费用选择"
-        
+        setupUI()
+        bind()
+    }
+    
+    func bind() {
+        BusinessAPI.requestMapJSONArray(.costCategory, classType: FeesKindModel.self, useCache: true).subscribe(onNext: {[weak self] (list) in
+            self?.dataSrouce = list.compactMap { $0 }
+            self?.collectionView.reloadData()
+            }, onError: { (error) in
+                PKHUD.sharedHUD.rx.showError(error)
+        }).disposed(by: rx.disposeBag)
     }
     
     func setupUI() {
-        
+        let alignedFlowLayout = AlignedCollectionViewFlowLayout(horizontalAlignment: .justified, verticalAlignment: .center)
+        alignedFlowLayout.minimumLineSpacing = 8
+        alignedFlowLayout.minimumInteritemSpacing = 8
+        alignedFlowLayout.estimatedItemSize = CGSize(width: 80, height: 80)
+        collectionView.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        collectionView.collectionViewLayout = alignedFlowLayout
+        collectionView.emptyDataSetSource = self
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using [segue destinationViewController].
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    // MARK: UICollectionViewDataSource
-    
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return self.dataSrouce.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectorFeesCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectorFeesCell", for: indexPath) as! SelectorFeesCell
         
-        // Configure the cell
-        
+        let data = dataSrouce[indexPath.item]
+        cell.name.text = data.name
+        cell.iconView.setUrl(data.icon)
         return cell
     }
     
-    // MARK: UICollectionViewDelegate
-    
-    /*
-     // Uncomment this method to specify if the specified item should be highlighted during tracking
-     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-     return true
-     }
-     */
-    
-    /*
-     // Uncomment this method to specify if the specified item should be selected
-     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-     return true
-     }
-     */
-    
-    /*
-     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-     return false
-     }
-     
-     override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-     return false
-     }
-     
-     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-     
-     }
-     */
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let data = dataSrouce[indexPath.item]
+        self.didSelected?(data.name ?? "", data.categoryCode ?? "")
+        self.navigationController?.popViewController(animated: true)
+    }
     
 }

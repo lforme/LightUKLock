@@ -30,4 +30,14 @@ struct AddFlowParameter: HandyJSON {
     var amount: String?
     var costCategoryId: String?
     var turnoverType: Int?
+    var costName: String?
+}
+
+
+struct FeesKindModel: HandyJSON {
+    var categoryCode: String?
+    var icon: String?
+    var id: String?
+    var isCustomized: Bool!
+    var name: String?
 }
