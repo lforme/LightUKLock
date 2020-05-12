@@ -34,6 +34,8 @@
 		7BB2FEB4245596C400D835BA /* ContractRentalRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB2FEB3245596C400D835BA /* ContractRentalRecordView.swift */; };
 		7BC0B53B246401F800B38CA8 /* TenantContractCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC0B53A246401F800B38CA8 /* TenantContractCell.swift */; };
 		7BC0B53D2464083300B38CA8 /* TurnoverStatisticsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC0B53C2464083300B38CA8 /* TurnoverStatisticsDTO.swift */; };
+		7BCDE4F1246A433400334FCF /* SettingRentalAndOtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDE4F0246A433400334FCF /* SettingRentalAndOtherViewController.swift */; };
+		7BCDE4F3246A46CE00334FCF /* AddOtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDE4F2246A46CE00334FCF /* AddOtherViewController.swift */; };
 		9C03B0EB239F46510001E849 /* FingerManageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EA239F46510001E849 /* FingerManageController.swift */; };
 		9C03B0ED239F49440001E849 /* FingerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EC239F49440001E849 /* FingerModel.swift */; };
 		9C03B0EF239F4A7B0001E849 /* FingerManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EE239F4A7B0001E849 /* FingerManageViewModel.swift */; };
@@ -314,6 +316,8 @@
 		7BB2FEB3245596C400D835BA /* ContractRentalRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractRentalRecordView.swift; sourceTree = "<group>"; };
 		7BC0B53A246401F800B38CA8 /* TenantContractCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenantContractCell.swift; sourceTree = "<group>"; };
 		7BC0B53C2464083300B38CA8 /* TurnoverStatisticsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnoverStatisticsDTO.swift; sourceTree = "<group>"; };
+		7BCDE4F0246A433400334FCF /* SettingRentalAndOtherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRentalAndOtherViewController.swift; sourceTree = "<group>"; };
+		7BCDE4F2246A46CE00334FCF /* AddOtherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOtherViewController.swift; sourceTree = "<group>"; };
 		9A21385643D81CD6A6F2D1C7 /* Pods-LSLWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSLWidget.release.xcconfig"; path = "Target Support Files/Pods-LSLWidget/Pods-LSLWidget.release.xcconfig"; sourceTree = "<group>"; };
 		9C03B0EA239F46510001E849 /* FingerManageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerManageController.swift; sourceTree = "<group>"; };
 		9C03B0EC239F49440001E849 /* FingerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerModel.swift; sourceTree = "<group>"; };
@@ -597,6 +601,8 @@
 				7BB2FEA72455632100D835BA /* AddTenantFellowViewController.swift */,
 				7BB2FEA9245565F100D835BA /* AddTenantViewController.swift */,
 				7BB2FEAF245595DD00D835BA /* SettingRentalRecordViewController.swift */,
+				7BCDE4F0246A433400334FCF /* SettingRentalAndOtherViewController.swift */,
+				7BCDE4F2246A46CE00334FCF /* AddOtherViewController.swift */,
 				7B4B9E302462C0B300F6C18C /* Models */,
 				7BB2FEB5245596D300D835BA /* View */,
 				7B7EB4B22451361E002DC436 /* ButtonContainerView.swift */,
@@ -1445,6 +1451,7 @@
 				9C752FD0238794BE000FEA73 /* CountdownButton.swift in Sources */,
 				7B92D0CA2456CBF600F195A9 /* DataPickerViewController.swift in Sources */,
 				9C47DB83239A39070019EAA0 /* ListViewModeling.swift in Sources */,
+				7BCDE4F3246A46CE00334FCF /* AddOtherViewController.swift in Sources */,
 				9C7AFF1A239600830075442D /* SearchPlotController.swift in Sources */,
 				9C24AC372383DE6E005EBF95 /* SceneModels.swift in Sources */,
 				7BC0B53B246401F800B38CA8 /* TenantContractCell.swift in Sources */,
@@ -1476,6 +1483,7 @@
 				9C24AC1923838E56005EBF95 /* UIFont+extension.swift in Sources */,
 				9C452F0C2394E2BE00144827 /* LockSettingController.swift in Sources */,
 				9C52402A238E132900308AC4 /* UIApplication+Rx.swift in Sources */,
+				7BCDE4F1246A433400334FCF /* SettingRentalAndOtherViewController.swift in Sources */,
 				9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */,
 				9C3726E02391108400450757 /* PPBluetoothScanEntity.swift in Sources */,
 				7B4B9E322462C17200F6C18C /* TenantContractDTO.swift in Sources */,

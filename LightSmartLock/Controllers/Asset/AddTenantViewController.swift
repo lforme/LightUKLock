@@ -14,31 +14,6 @@ import UITextView_Placeholder
 class TenantContractInfo: HandyJSON {
     var advanceDay: Int?
     var assetId: String?
-    class ContractCostSettingDTOList: HandyJSON {
-        var amount: Double?
-        var baseProfitAmount: Double?
-        var costCategoryId: String?
-        // 收费方式（0：固定金额 1：抄表计算 2：手动填写）
-        var costCollectType: Int?
-        var id: String?
-        var initialNumber: Double?
-        // 是否保底（限于抄表费用）
-        var isBaseProfit: Int?
-        // 是否保底（0：否 1：是）
-        var isBottomProfit: Int?
-        // 是否固定金额（抄表类型的为0：固定金额：1，手动填写：2）
-        var isFixed: Int?
-        // 是否首期账单费用（0：否 1：是）
-        var isInitialCharge: Int?
-        // 单价（只限于抄表计算）
-        var price: Double?
-        // 单位（只限于抄表使用）1：元/度 2：元/吨 3: 元/立方
-        var unit: Int?
-        
-        required init() {
-            
-        }
-    }
     var contractCostSettingDTOList: [ContractCostSettingDTOList]?
     var contractRentalRecordDTOList: [ContractRentalRecord] = []
     var costCollectRatio: Int?
@@ -232,6 +207,11 @@ class AddTenantViewController: UIViewController {
             }
         }
         
+        if segue.identifier == "SettingRentalAndOther",
+            let vc = segue.destination as? SettingRentalAndOtherViewController {
+            vc.tenantContractInfo = sender as? TenantContractInfo
+        }
+        
     }
     
     func reloadFellowView() {
@@ -313,11 +293,11 @@ class AddTenantViewController: UIViewController {
         self.tenantContractInfo.remark = self.remarkTF.text
         
         if self.tenantContractInfo.tenantInfo.userName == nil || self.tenantContractInfo.tenantInfo.userName?.isEmpty == true {
-            HUD.flash(.label("请填写同住人姓名"))
+            HUD.flash(.label("请填写承租人姓名"))
             return
         }
         if self.tenantContractInfo.tenantInfo.phone == nil || self.tenantContractInfo.tenantInfo.phone?.count != 11 {
-            HUD.flash(.label("请填写同住人手机号"))
+            HUD.flash(.label("请填写承租人手机号"))
             return
         }
         
@@ -339,6 +319,8 @@ class AddTenantViewController: UIViewController {
             HUD.flash(.label("请填写每期租金"))
             return
         }
+        
+        self.performSegue(withIdentifier: "SettingRentalAndOther", sender: self.tenantContractInfo)
     }
     
 }
