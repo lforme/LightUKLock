@@ -208,6 +208,7 @@
                 <outlet property="amountContainer" destination="Pqu-fh-ssh" id="7ap-qK-uFG"/>
                 <outlet property="amountTF" destination="4dO-Da-6sz" id="QgJ-Bo-2TU"/>
                 <outlet property="amountTitleLabel" destination="QFK-gT-TQQ" id="R0i-1h-hTv"/>
+                <outlet property="deleteBtn" destination="idn-tF-mMP" id="Ek4-WY-fm4"/>
                 <outlet property="increaseTypeBtn" destination="9Dd-bi-c0h" id="Mf0-Wv-QvO"/>
                 <outlet property="resultLabel" destination="5sW-kO-oNm" id="oBb-ql-W3S"/>
                 <outlet property="sectionTitle" destination="EhF-P3-Eiv" id="0TQ-i2-vIb"/>

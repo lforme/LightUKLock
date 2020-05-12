@@ -9,6 +9,7 @@
 import UIKit
 import HandyJSON
 import PKHUD
+import UITextView_Placeholder
 
 class TenantContractInfo: HandyJSON {
     var advanceDay: Int?
@@ -170,14 +171,16 @@ class AddTenantViewController: UIViewController {
                 self?.calculateEndDateStr(startDateStr: startDateStr)
             }
         }
-                
+        
         rentCollectTypeBtn.title = "请选择收租周期"
         let nums = Array(1...30).map { $0.description }
         let units = ["日/次", "月/次", "年/次"]
         rentCollectTypeBtn.items = [nums, units]
         
-        advanceDayBtn.title = "请选择提前时间"
+        advanceDayBtn.title = "请选择提前天数"
         advanceDayBtn.items = [Array(1...15).map { $0.description + "天" }]
+        
+        self.remarkTF.placeholder = "请输入备注内容"
     }
     
     func calculateEndDateStr(startDateStr: String) {
@@ -221,6 +224,7 @@ class AddTenantViewController: UIViewController {
         if segue.identifier == "SettingRentalRecord",
             let vc = segue.destination as? SettingRentalRecordViewController {
             
+            vc.rentalCollect = sender as? (String?, Double)
             vc.records = self.tenantContractInfo.contractRentalRecordDTOList
             vc.didSaved = { [weak self] newRecords in
                 // 租金递增
@@ -252,6 +256,26 @@ class AddTenantViewController: UIViewController {
     }
     
     
+    @IBAction func setRentalRecord(_ sender: Any) {
+        
+        var collect: String?
+        if let rate = rentCollectTypeBtn.result?.first?.value,
+            let collectType = rentCollectTypeBtn.result?.last?.value {
+            collect = rate + collectType
+        } else {
+            HUD.flash(.label("请先选择收租日期"))
+            return
+        }
+        
+        if let rental = self.rentalTF.text?.toDouble(),
+            rental != 0 {
+            self.performSegue(withIdentifier: "SettingRentalRecord", sender: (collect, rental))
+        } else {
+            HUD.flash(.label("请先填写每期租金"))
+        }
+    }
+    
+    
     @IBAction func nextStepAction(_ sender: Any) {
         // 房间编号
         self.tenantContractInfo.roomNum = roomNumBtn.resultStr
@@ -267,7 +291,7 @@ class AddTenantViewController: UIViewController {
         self.tenantContractInfo.endDate = endDateBtn.selectedDateStr
         
         // 收租周期
-        self.tenantContractInfo.rentCollectRate = rentCollectTypeBtn.result?.first?.row
+        self.tenantContractInfo.rentCollectRate = rentCollectTypeBtn.result?.first?.value.toInt()
         self.tenantContractInfo.rentCollectType = rentCollectTypeBtn.result?.last?.row
         
         // 租金

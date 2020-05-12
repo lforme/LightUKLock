@@ -636,7 +636,7 @@
                                                                                     <constraint firstAttribute="width" constant="150" id="UxA-fq-bni"/>
                                                                                 </constraints>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                                             </textField>
                                                                         </subviews>
                                                                         <constraints>
@@ -658,7 +658,7 @@
                                                                                     <constraint firstAttribute="width" constant="150" id="rQl-df-ZEQ"/>
                                                                                 </constraints>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                                             </textField>
                                                                         </subviews>
                                                                         <constraints>
@@ -688,7 +688,7 @@
                                                                                     <color key="titleColor" name="textPrimary"/>
                                                                                 </state>
                                                                                 <connections>
-                                                                                    <segue destination="g90-oq-yLb" kind="show" identifier="SettingRentalRecord" id="j5w-v3-epE"/>
+                                                                                    <action selector="setRentalRecord:" destination="U7n-NG-VIi" eventType="touchUpInside" id="Di9-JS-8bm"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
@@ -926,6 +926,7 @@
                         <outletCollection property="dateRangeBtns" destination="azh-H3-LJ0" collectionClass="NSMutableArray" id="vhy-JJ-0ip"/>
                         <outletCollection property="dateRangeBtns" destination="Cta-7Q-UcT" collectionClass="NSMutableArray" id="MTb-tP-LFx"/>
                         <outletCollection property="dateRangeBtns" destination="xgJ-sk-QpN" collectionClass="NSMutableArray" id="BWr-KM-2tZ"/>
+                        <segue destination="g90-oq-yLb" kind="show" identifier="SettingRentalRecord" id="tu7-hg-Yc6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NKy-1P-lDG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1294,10 +1295,8 @@
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9AP-rT-egm">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收租周期：1月/次" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9AP-rT-egm">
                                                                                 <rect key="frame" x="0.0" y="32" width="366" height="17"/>
-                                                                                <string key="text">收租周期：1月/次
-</string>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <color key="textColor" name="textPrimary"/>
                                                                                 <nil key="highlightedColor"/>
@@ -1608,6 +1607,8 @@
                     <navigationItem key="navigationItem" id="DyV-FV-oIS"/>
                     <connections>
                         <outlet property="recordContainerView" destination="VgG-Gi-IVE" id="KAb-0v-bXf"/>
+                        <outlet property="rentalCollectLabel" destination="9AP-rT-egm" id="N8v-2w-86z"/>
+                        <outlet property="rentalLabel" destination="Qhu-bv-aed" id="bPI-IN-KPs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qNR-0g-400" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

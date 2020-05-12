@@ -28,13 +28,14 @@ class ContractRentalRecordView: UIView, NibLoadable {
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var amountContainer: UIStackView!
     
+    @IBOutlet weak var deleteBtn: UIButton!
     var didDeleted: (() -> Void)?
     
     var record: ContractRentalRecord?
     
     func config(with record: ContractRentalRecord, baseAmount: Double, index: Int, didDeleted: (() -> Void)?) {
         self.didDeleted = didDeleted
-        sectionTitle.text = "递增\(index + 1)"
+        sectionTitle.text = "递增\(record.index)"
         self.record = record
         
         increaseTypeBtn.title = "请选择涨租方式"
