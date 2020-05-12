@@ -19,7 +19,7 @@ final class BillContractSection: ListSectionController {
     }
     
     override func numberOfItems() -> Int {
-        return 3
+        return 1
     }
     
     override func sizeForItem(at index: Int) -> CGSize {

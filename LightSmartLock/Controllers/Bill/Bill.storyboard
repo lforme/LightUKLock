@@ -1809,11 +1809,8 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="fEj-EB-oiJ">
                                             <rect key="frame" x="390" y="14.5" width="8" height="15"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BEA-Er-lgH">
-                                            <rect key="frame" x="260" y="7.5" width="120" height="29"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="120" id="ASJ-8S-3jS"/>
-                                            </constraints>
+                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BEA-Er-lgH">
+                                            <rect key="frame" x="337" y="7.5" width="43" height="29"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                             <state key="normal" title="请选择">
                                                 <color key="titleColor" name="textOpaque78"/>

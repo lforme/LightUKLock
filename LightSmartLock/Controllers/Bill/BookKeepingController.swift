@@ -85,9 +85,10 @@ class BookKeepingController: UITableViewController {
             return
         }
         if vm.verificationParameters() {
-            vm.parametersBuilder().subscribe(onNext: { (success) in
+            vm.parametersBuilder().subscribe(onNext: {[weak self] (success) in
                 if success {
                     HUD.flash(.label("成功"), delay: 2)
+                    self?.navigationController?.popViewController(animated: true)
                 } else {
                     HUD.flash(.label("失败"), delay: 2)
                 }
@@ -167,7 +168,7 @@ class BookKeepingController: UITableViewController {
                 return
             }
             let cell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 2)) as! BookKeepingTimeCell
-            DatePickerController.rx.present(with: "yyyy-MM-dd", mode: .date, maxDate: nil, miniDate: nil).bind(to: vm.obTime).disposed(by: cell.disposeBag)
+            DatePickerController.rx.present(with: "yyyy-MM-dd hh:mm:ss", mode: .date, maxDate: nil, miniDate: nil).bind(to: vm.obTime).disposed(by: cell.disposeBag)
             vm.obTime.subscribe(onNext: { (date) in
                 if let value = date {
                     cell.timePickButton.setTitle(value, for: UIControl.State())
