@@ -31,6 +31,32 @@ final class BookKeepingViewModel {
         itemList.remove(at: index)
         complete()
     }
+    
+    func verificationParameters() -> Bool {
+        var relust = true
+        let parameters = itemList.map { $0.convertToAddFlowParameter() }
+        parameters.forEach { (item) in
+            if item.amount == nil {
+                relust = false
+                HUD.flash(.label("金额未填写完整"), delay: 2)
+            } else if item.costName == nil {
+                relust = false
+                HUD.flash(.label("未选择费用类型"), delay: 2)
+            } else if item.turnoverType == nil {
+                relust = false
+                HUD.flash(.label("未选择流水类型"), delay: 2)
+            }
+        }
+        if obTime.value.isNilOrEmpty {
+            relust = false
+        }
+        return relust
+    }
+    
+    func parametersBuilder() -> Observable<Bool> {
+        let list = self.itemList.map { $0.convertToAddFlowParameter() }
+       return BusinessAPI.requestMapBool(.baseTurnoverInfo(assetId: self.assetId, contractId: self.contractId, payTime: self.obTime.value!, itemList: list))
+    }
 }
 
 extension BookKeepingViewModel {

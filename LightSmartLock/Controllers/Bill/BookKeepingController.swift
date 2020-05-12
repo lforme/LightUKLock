@@ -63,6 +63,7 @@ class BookKeepingController: UITableViewController {
         title = "记一笔"
         setupUI()
         bind()
+        setupNavigationRightItem()
     }
     
     func bind() {
@@ -72,7 +73,28 @@ class BookKeepingController: UITableViewController {
         }
         self.vm = BookKeepingViewModel(assetId: assetId, contractId: contractId)
         tableView.reloadData()
-        
+    }
+    
+    func setupNavigationRightItem() {
+        let saveButton = createdRightNavigationItem(title: "保存", font: nil, image: nil, rightEdge: 8, color: ColorClassification.primary.value)
+        saveButton.addTarget(self, action: #selector(saveButtonTap), for: .touchUpInside)
+    }
+    
+    @objc func saveButtonTap() {
+        guard let vm = self.vm else {
+            return
+        }
+        if vm.verificationParameters() {
+            vm.parametersBuilder().subscribe(onNext: { (success) in
+                if success {
+                    HUD.flash(.label("成功"), delay: 2)
+                } else {
+                    HUD.flash(.label("失败"), delay: 2)
+                }
+            }, onError: { (error) in
+                PKHUD.sharedHUD.rx.showError(error)
+            }).disposed(by: rx.disposeBag)
+        }
     }
     
     func setupUI() {

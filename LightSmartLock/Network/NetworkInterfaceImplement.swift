@@ -297,8 +297,8 @@ extension BusinessInterface: TargetType {
             
             return .requestParameters(parameters: requestParameters, encoding: encoding)
         
-        case .baseTurnoverInfo:
-            return .requestParameters(parameters: requestParameters, encoding: JsonArrayEncoding.default)
+//        case .baseTurnoverInfo:
+//            return .requestParameters(parameters: requestParameters, encoding: JsonArrayEncoding.default)
             
         default:
             if self.method == .get {
@@ -380,7 +380,9 @@ extension BusinessInterface: TargetType {
             return ["assetId": assetId, "costCategoryId": costId]
             
         case let .baseTurnoverInfo(assetId, contractId, payTime, itemList):
-            return ["assetId": assetId, "contractId": contractId, "payTime": payTime, "turnoverItemDTOList": itemList]
+            let array = itemList.toJSON().compactMap { $0 }
+            
+            return ["assetId": assetId, "contractId": contractId, "payTime": payTime, "turnoverItemDTOList": array]
             
         default:
             return nil

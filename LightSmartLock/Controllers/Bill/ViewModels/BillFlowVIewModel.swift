@@ -52,25 +52,34 @@ final class BillFlowViewModel {
                     return .just([])
                 })
                     .map { (models) -> [BillContractSection.Data] in
-                    models.compactMap { BillContractSection.Data.init(id: $0?.assetId ?? "", phone: $0?.tenantPhone ?? "", name: $0?.tenantName ?? "", house: $0?.houseName ?? "", start: $0?.startDate ?? "", end: $0?.endDate ?? "") }
-                               }
+                        models.compactMap { BillContractSection.Data.init(id: $0?.assetId ?? "", phone: $0?.tenantPhone ?? "", name: $0?.tenantName ?? "", house: $0?.houseName ?? "", start: $0?.startDate ?? "", end: $0?.endDate ?? "") }
+                }
             case .flow:
                 var i = -1
-                return BusinessAPI.requestMapJSONArray(.baseTurnoverInfoList(assetId: self.assetId, year: self.year.value), classType: AssetFlowModel.self, useCache: true).map { (models) -> [BillFlowSection.Data] in
-                    models.compactMap {
-                        i += 1
-                        return BillFlowSection.Data(balance: $0?.balance ?? 0, date: $0?.yearAndMonth ?? "", expense: $0?.expense ?? 0, income: $0?.income ?? 0, list: $0?.turnoverDTOList ?? [], isExtend: (false, i))
-                        
-                    }
+                return BusinessAPI.requestMapJSONArray(.baseTurnoverInfoList(assetId: self.assetId, year: self.year.value), classType: AssetFlowModel.self, useCache: true)
+                    .catchError({ (error) -> Observable<[AssetFlowModel?]> in
+                        PKHUD.sharedHUD.rx.showError(error)
+                        return .just([])
+                    })
+                    .map { (models) -> [BillFlowSection.Data] in
+                        models.compactMap {
+                            i += 1
+                            return BillFlowSection.Data(balance: $0?.balance ?? 0, date: $0?.yearAndMonth ?? "", expense: $0?.expense ?? 0, income: $0?.income ?? 0, list: $0?.turnoverDTOList ?? [], isExtend: (false, i))
+                            
+                        }
                 }
                 
             case .report:
-                return BusinessAPI.requestMapJSONArray(.reportAsset(assetId: self.assetId, year: self.year.value), classType: AssetReportModel.self, useCache: true).map { (models) -> [BillFlowReportSection.Data] in
-                    models.compactMap { BillFlowReportSection.Data(id: $0?.costCategoryId ?? "", name: $0?.costCategoryName, count: $0?.count ?? 0, paidCount: $0?.paidCount ?? 0, totalAmount: $0?.totalAmount ?? 0) }
+                return BusinessAPI.requestMapJSONArray(.reportAsset(assetId: self.assetId, year: self.year.value), classType: AssetReportModel.self, useCache: true)
+                    .catchError({ (error) -> Observable<[AssetReportModel?]> in
+                        PKHUD.sharedHUD.rx.showError(error)
+                        return .just([])
+                    })
+                    .map { (models) -> [BillFlowReportSection.Data] in
+                        models.compactMap { BillFlowReportSection.Data(id: $0?.costCategoryId ?? "", name: $0?.costCategoryName, count: $0?.count ?? 0, paidCount: $0?.paidCount ?? 0, totalAmount: $0?.totalAmount ?? 0) }
                 }
             }
         }.bind(to: _collectionViewDataSource).disposed(by: disposeBag)
         
     }
-    
 }
