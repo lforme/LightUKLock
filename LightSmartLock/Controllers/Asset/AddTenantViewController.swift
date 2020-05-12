@@ -277,7 +277,9 @@ class AddTenantViewController: UIViewController {
         
         // 收租周期
         self.tenantContractInfo.rentCollectRate = rentCollectTypeBtn.result?.first?.value.toInt()
-        self.tenantContractInfo.rentCollectType = rentCollectTypeBtn.result?.last?.row
+        if let row = rentCollectTypeBtn.result?.last?.row {
+            self.tenantContractInfo.rentCollectType = row + 1
+        }
         
         // 租金
         self.tenantContractInfo.rental = self.rentalTF.text?.toDouble()
