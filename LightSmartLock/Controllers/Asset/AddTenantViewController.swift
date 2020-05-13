@@ -262,6 +262,18 @@ class AddTenantViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func receiveAccountAction(_ sender: UIButton) {
+        let receiveAccountVC: ReceivingAccountController = ViewLoader.Storyboard.controller(from: "Bill")
+        navigationController?.pushViewController(receiveAccountVC, animated: true)
+        
+//        receiveAccountVC.didSelected = {[weak self] (name, id) in
+//            sender.setTitle(name, for: .normal)
+//            self?.other.costCategoryId = id
+//            self?.other.costCategoryName = name
+//        }
+    }
+    
 
     @IBAction func advanceSwitchAction(_ sender: UISwitch) {
         self.advanceContainer.isHidden = !sender.isOn

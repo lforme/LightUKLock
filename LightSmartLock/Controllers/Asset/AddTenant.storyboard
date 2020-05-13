@@ -713,6 +713,9 @@
 </string>
                                                                                     <color key="titleColor" name="textPrimary"/>
                                                                                 </state>
+                                                                                <connections>
+                                                                                    <action selector="receiveAccountAction:" destination="U7n-NG-VIi" eventType="touchUpInside" id="zWW-Z7-19U"/>
+                                                                                </connections>
                                                                             </button>
                                                                         </subviews>
                                                                         <constraints>
