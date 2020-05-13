@@ -169,7 +169,8 @@ extension BusinessInterface: TargetType {
              .reportAsset,
              .tenantContractInfoAssetContract,
              .reportReportItems,
-             .costCategory:
+             .costCategory,
+             .tenantContractInfo:
             return .get
             
         case .deleteAssetHouse,
@@ -261,6 +262,8 @@ extension BusinessInterface: TargetType {
             return "/base_turnover_info/"
         case .costCategory:
             return "/cost_category/"
+        case let .tenantContractInfo(contractId):
+            return "/tenant_contract_info/\(contractId)"
         }
     }
     
