@@ -34,6 +34,7 @@ class BillFlowContractDetailController: UITableViewController {
         title = "合同详情"
         setupUI()
         bind()
+        
     }
     
     func bind() {
