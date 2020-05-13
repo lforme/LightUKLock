@@ -108,6 +108,9 @@ class AddTenantViewController: UIViewController {
     
     @IBOutlet weak var advanceDayBtn: DataSelectionButton!
     
+    
+    @IBOutlet weak var advanceContainer: UIStackView!
+    
     @IBOutlet weak var remarkTF: UITextView!
     
     
@@ -157,6 +160,7 @@ class AddTenantViewController: UIViewController {
         
         advanceDayBtn.title = "请选择"
         advanceDayBtn.items = [Array(1...15).map { $0.description + "天" }]
+        advanceContainer.isHidden = true
         
         self.remarkTF.placeholder = "请输入备注内容"
     }
@@ -258,6 +262,10 @@ class AddTenantViewController: UIViewController {
         }
     }
     
+
+    @IBAction func advanceSwitchAction(_ sender: UISwitch) {
+        self.advanceContainer.isHidden = !sender.isOn
+    }
     
     @IBAction func nextStepAction(_ sender: Any) {
         self.tenantContractInfo.buildingName = buildingName
@@ -291,10 +299,12 @@ class AddTenantViewController: UIViewController {
         // 收租提醒
         self.tenantContractInfo.isRemind = self.isRemindSW.isOn ? 1 : 0
         
-        // 提前时间
-        var str = self.advanceDayBtn.resultStr
-        str?.removeLast()
-        self.tenantContractInfo.advanceDay = str?.toInt()
+        if self.tenantContractInfo.isRemind == 1 {
+            // 提前时间
+            var str = self.advanceDayBtn.resultStr
+            str?.removeLast()
+            self.tenantContractInfo.advanceDay = str?.toInt()
+        }
         
         // 备注
         self.tenantContractInfo.remark = self.remarkTF.text

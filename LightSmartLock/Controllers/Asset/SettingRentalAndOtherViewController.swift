@@ -27,7 +27,7 @@ class OtherFeeCell: UITableViewCell {
     
     func config(with model: ContractCostSettingDTOList, index: Int) {
         self.index = index
-        nameBtn.setTitle(model.costCategoryId, for: .normal)
+        nameBtn.setTitle(model.costCategoryName, for: .normal)
         if model.costCollectType == 1 {
             amountLabel.text = model.price?.description
             if let unit = model.unit {

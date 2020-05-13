@@ -14,6 +14,7 @@ class ContractCostSettingDTOList: HandyJSON {
     var amount: Double?
     var baseProfitAmount: Double?
     var costCategoryId: String?
+    var costCategoryName: String?
     // 收费方式（0：固定金额 1：抄表计算 2：手动填写）
     var costCollectType: Int?
     var id: String?
@@ -42,6 +43,8 @@ class AddOtherViewController: UIViewController {
     
     @IBOutlet weak var costCollectTypeBtn: DataSelectionButton!
     
+    
+    @IBOutlet weak var selectFeeBtn: UIButton!
     
     @IBOutlet weak var priceNameLabel: UILabel!
     
@@ -111,6 +114,17 @@ class AddOtherViewController: UIViewController {
     }
     
     
+    @IBAction func selectFeeAction(_ sender: UIButton) {
+        
+        let selectedVC: SelectorFeesController = ViewLoader.Storyboard.controller(from: "Bill")
+        navigationController?.pushViewController(selectedVC, animated: true)
+        
+        selectedVC.didSelected = {[weak self] (name, id) in
+            sender.setTitle(name, for: .normal)
+            self?.other.costCategoryId = id
+            self?.other.costCategoryName = name
+        }
+    }
     @IBAction func baseSwitchAction(_ sender: UISwitch) {
         baseProfitAmountContainer.isHidden = !sender.isOn
     }
