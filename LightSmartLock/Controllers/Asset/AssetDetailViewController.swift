@@ -9,6 +9,10 @@
 import UIKit
 import Popover
 
+extension Notification.Name {
+    static let gotoAssetDetail = Notification.Name("gotoAssetDetail")
+}
+
 class AssetDetailViewController: UIViewController {
     
     lazy var deleteBtn: UIButton = {
@@ -78,11 +82,11 @@ class AssetDetailViewController: UIViewController {
             self?.incomeCountLabel.text = "共\(model.incomeCount?.description ?? "")笔"
             self?.expenseAmountLabel.text = model.expenseAmount?.yuanSymbol
             self?.expenseCountLabel.text = "共\(model.expenseCount?.description ?? "")笔"
-
+            
         })
             .disposed(by: rx.disposeBag)
         
-
+        
         let items = BusinessAPI2.requestMapJSONArray(.getAssetContracts(assetId: assetId), classType: TenantContractAndBillsDTO.self)
         
         items
@@ -115,6 +119,14 @@ class AssetDetailViewController: UIViewController {
                 self?.present(alertController, animated: true, completion: nil)
             })
             .disposed(by: rx.disposeBag)
+        
+        NotificationCenter.default.rx
+            .notification(.gotoAssetDetail)
+            .subscribe(onNext: {[unowned self] (_) in
+                self.navigationController?.popToViewController(self, animated: true)
+            })
+            .disposed(by: rx.disposeBag)
+        
     }
     
     

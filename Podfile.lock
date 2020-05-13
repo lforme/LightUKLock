@@ -12,6 +12,9 @@ PODS:
   - CryptoSwift (1.3.0)
   - Differentiator (4.0.1)
   - DZNEmptyDataSet (1.8.1)
+  - EFQRCode (5.1.6):
+    - EFQRCode/Core (= 5.1.6)
+  - EFQRCode/Core (5.1.6)
   - ESTabBarController-swift (2.8.0)
   - HandyJSON (5.0.1)
   - IGListDiffKit (4.0.0)
@@ -75,6 +78,7 @@ DEPENDENCIES:
   - ChameleonFramework
   - CryptoSwift
   - DZNEmptyDataSet
+  - EFQRCode
   - ESTabBarController-swift
   - HandyJSON
   - IGListKit
@@ -112,6 +116,7 @@ SPEC REPOS:
     - CryptoSwift
     - Differentiator
     - DZNEmptyDataSet
+    - EFQRCode
     - ESTabBarController-swift
     - HandyJSON
     - IGListDiffKit
@@ -153,6 +158,7 @@ SPEC CHECKSUMS:
   CryptoSwift: 1283821600233bdbeb96d7b389c3288c3bf77211
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  EFQRCode: a7ea2e517912f5bf6ba258b631327a83cd8084a5
   ESTabBarController-swift: 05593a6ad64700b03c0eb60ff625916370aa4136
   HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
   IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
@@ -184,6 +190,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 99f03b64145a8c92c55b9b1b931410967d9be4cb
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: 9f58d4d98338de3a2184d90dabf750f9b9172dd8
+PODFILE CHECKSUM: 1b6a8ea9f27b3a328353d9fb5b5839ef42281c7f
 
 COCOAPODS: 1.9.1

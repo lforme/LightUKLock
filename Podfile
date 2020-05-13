@@ -47,6 +47,7 @@ target 'LightSmartLock' do
   pod "Popover"
   pod 'IGListKit'
   pod 'AloeStackView'
+  pod 'EFQRCode'
   
   # 动画
   pod 'lottie-ios'

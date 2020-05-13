@@ -1162,8 +1162,8 @@
 				9CDD271A2382801D006A9B97 /* Sources */,
 				9CDD271B2382801D006A9B97 /* Frameworks */,
 				9CDD271C2382801D006A9B97 /* Resources */,
-				1CF9CF37DF08EFBB844E8A99 /* [CP] Embed Pods Frameworks */,
 				9CF01D5523BD8681007578F3 /* Embed App Extensions */,
+				ABFDD727832FA9CB6020503F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1297,23 +1297,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1CF9CF37DF08EFBB844E8A99 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2C563FE540223424BF222EE8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1334,6 +1317,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ABFDD727832FA9CB6020503F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DDEEE679226C4A93115C09E8 /* [CP] Check Pods Manifest.lock */ = {

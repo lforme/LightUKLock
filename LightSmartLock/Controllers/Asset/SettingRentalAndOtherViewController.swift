@@ -120,7 +120,7 @@ class SettingRentalAndOtherViewController: UIViewController {
         }
         .subscribe(onNext: { [weak self](message) in
             if message == "保存成功" {
-                HUD.flash(.label("保存成功"), onView: nil, delay: 1) { _ in
+                HUD.flash(.label("保存成功"), onView: nil, delay: 0.5) { _ in
                     self?.performSegue(withIdentifier: "AddTenantSuccess", sender: nil)
                 }
             } else {

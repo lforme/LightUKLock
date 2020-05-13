@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EFQRCode
 
 class TenantSuccessInfo {
     var houseNum: String?
@@ -43,15 +44,15 @@ class AddTenantSuccessViewController: UIViewController {
             .subscribe(onNext: { [weak self](response) in
                 if let response = response as? [String: Any],
                     let urlStr = response["data"] as? String,
-                    let url = URL.init(string: urlStr){
-                    self?.QRCodeImageView.kf.setImage(with: url)
+                    let image = EFQRCode.generate(content: urlStr) {
+                    self?.QRCodeImageView.image = UIImage.init(cgImage: image)
                 }
             })
             .disposed(by: rx.disposeBag)
     }
     
     @IBAction func getRentalAction(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
+        NotificationCenter.default.post(name: .gotoAssetDetail, object: nil)
     }
     
 }
