@@ -49,7 +49,7 @@ class OpenDoorViewController: UIViewController {
             }
         }).disposed(by: rx.disposeBag)
         
-        shareConnected.delaySubscription(2, scheduler: MainScheduler.instance).flatMapLatest {[weak self] (isConnected) -> Observable<Bool> in
+        shareConnected.delaySubscription(.seconds(2), scheduler: MainScheduler.instance).flatMapLatest {[weak self] (isConnected) -> Observable<Bool> in
             guard let this = self else {
                 return .error(AppError.reason("解锁失败"))
             }

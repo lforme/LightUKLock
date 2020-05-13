@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="BillDetailSectionOneCell" customModule="门锁助手个人版" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="应收" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H80-c9-Kec">
+                        <rect key="frame" x="16" y="16" width="29" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <color key="textColor" name="textPrimary"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 1200.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abu-Kx-Mft">
+                        <rect key="frame" x="53" y="15" width="77" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                        <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="R4Q-2L-ngP">
+                        <rect key="frame" x="16" y="50.5" width="183.5" height="14.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" text="应收金额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATQ-Mk-sJl">
+                                <rect key="frame" x="0.0" y="0.0" width="49.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="textOpaque78"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" text="$ 100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsg-iv-fmb">
+                                <rect key="frame" x="57.5" y="0.0" width="32" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="textOpaque78"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="剩余应收" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lka-LI-dgn">
+                                <rect key="frame" x="97.5" y="0.0" width="49.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="textOpaque78"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcf-a6-3Yn">
+                                <rect key="frame" x="155" y="0.0" width="28.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="textOpaque78"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="部分到账" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdj-KZ-h5j">
+                        <rect key="frame" x="293.5" y="48" width="65.5" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" name="textPrimary"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rbM-c7-M4t">
+                        <rect key="frame" x="16" y="73" width="303" height="39"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="中海国际社区3栋2单元1001A 租客收款账单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2I-Gl-UTS">
+                                <rect key="frame" x="0.0" y="0.0" width="236.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="textOpaque78"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账单编号SK2018121203123456" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkp-1y-oiE">
+                                <rect key="frame" x="0.0" y="24.5" width="177" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="textOpaque78"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaL-Bv-ESB">
+                        <rect key="frame" x="329" y="85" width="30" height="27"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                        <state key="normal" title="提醒"/>
+                    </button>
+                </subviews>
+            </view>
+            <color key="backgroundColor" name="viewBackground"/>
+            <constraints>
+                <constraint firstItem="abu-Kx-Mft" firstAttribute="centerY" secondItem="H80-c9-Kec" secondAttribute="centerY" id="2dU-VR-J1M"/>
+                <constraint firstItem="abu-Kx-Mft" firstAttribute="leading" secondItem="H80-c9-Kec" secondAttribute="trailing" constant="8" id="EsO-fk-eKQ"/>
+                <constraint firstItem="Bdj-KZ-h5j" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="R4Q-2L-ngP" secondAttribute="trailing" constant="10" id="KQY-tP-jzA"/>
+                <constraint firstItem="R4Q-2L-ngP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="Pu4-DC-yAv"/>
+                <constraint firstItem="R4Q-2L-ngP" firstAttribute="top" secondItem="abu-Kx-Mft" secondAttribute="bottom" constant="16" id="SCB-en-bWA"/>
+                <constraint firstAttribute="trailing" secondItem="Bdj-KZ-h5j" secondAttribute="trailing" constant="16" id="V08-Xu-wuB"/>
+                <constraint firstAttribute="trailing" secondItem="xaL-Bv-ESB" secondAttribute="trailing" constant="16" id="X38-vn-7yY"/>
+                <constraint firstItem="H80-c9-Kec" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="Zop-Ne-5cy"/>
+                <constraint firstItem="H80-c9-Kec" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="fhj-fD-m3e"/>
+                <constraint firstItem="rbM-c7-M4t" firstAttribute="top" secondItem="R4Q-2L-ngP" secondAttribute="bottom" constant="8" id="gsd-jD-Npg"/>
+                <constraint firstItem="xaL-Bv-ESB" firstAttribute="bottom" secondItem="rbM-c7-M4t" secondAttribute="bottom" id="hWQ-R7-33Z"/>
+                <constraint firstItem="Bdj-KZ-h5j" firstAttribute="centerY" secondItem="R4Q-2L-ngP" secondAttribute="centerY" id="m5H-Z9-Byv"/>
+                <constraint firstAttribute="bottom" secondItem="rbM-c7-M4t" secondAttribute="bottom" constant="16" id="mb0-eu-c0R"/>
+                <constraint firstItem="rbM-c7-M4t" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="pTq-pE-XyR"/>
+                <constraint firstItem="xaL-Bv-ESB" firstAttribute="leading" secondItem="rbM-c7-M4t" secondAttribute="trailing" constant="10" id="rg0-AN-Cum"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <point key="canvasLocation" x="133" y="139"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="textOpaque78">
+            <color red="0.039000000804662704" green="0.12200000137090683" blue="0.2669999897480011" alpha="0.77999997138977051" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textPrimary">
+            <color red="0.039000000804662704" green="0.12200000137090683" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="viewBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

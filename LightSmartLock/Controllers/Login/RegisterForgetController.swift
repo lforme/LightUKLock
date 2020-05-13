@@ -89,19 +89,19 @@ class RegisterForgetController: UITableViewController, NavigationSettingStyle {
     func bind() {
         
         phoneTextField.rx.text.orEmpty.changed
-            .throttle(0.3, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
             .distinctUntilChanged().bind(to: vm.phone)
             .disposed(by: rx.disposeBag)
         
         
         codeTextField.rx.text.orEmpty.changed
-            .throttle(0.3, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .bind(to: vm.code)
             .disposed(by: rx.disposeBag)
         
         pwdTextField.rx.text.orEmpty.changed
-            .throttle(0.3, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .bind(to: vm.paassword)
             .disposed(by: rx.disposeBag)

@@ -12,7 +12,7 @@ import RxCocoa
 
 class CountdownButton: UIButton {
     
-    private var count = Observable<Int>.timer(0, period: 1, scheduler: MainScheduler.instance).share()
+    private var count = Observable<Int>.timer(.seconds(0), period: .seconds(1), scheduler: MainScheduler.instance).share()
     private var cancelDisposable: Disposable?
     
     func startCount() {

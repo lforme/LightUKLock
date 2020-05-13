@@ -158,16 +158,30 @@ extension BusinessInterface: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .user, .getHouses, .getAssetHouseDetail, .getLockInfo,
-             .getHomeInfo, .getUserList, .getCustomerSysRoleTips,
-             .getAllOpenWay:
+        case .user,
+             .getHouses,
+             .getAssetHouseDetail,
+             .getLockInfo,
+             .getHomeInfo,
+             .getUserList,
+             .getCustomerSysRoleTips,
+             .getAllOpenWay,
+             .reportAsset,
+             .tenantContractInfoAssetContract,
+             .reportReportItems,
+             .costCategory:
             return .get
             
-        case .deleteAssetHouse, .forceDeleteLock, .deleteCard, .deleteFinger,
+        case .deleteAssetHouse,
+             .forceDeleteLock,
+             .deleteCard,
+             .deleteFinger,
              .undoTempPassword:
             return .delete
             
-        case .editUser, .editCardOrFingerName, .setAlarmFingerprint:
+        case .editUser,
+             .editCardOrFingerName,
+             .setAlarmFingerprint:
             return .put
             
         default:
@@ -235,6 +249,18 @@ extension BusinessInterface: TargetType {
             return "/ladder_tmp_password/pwd/tmp/\(lockId)"
         case let .getUnlockRecords(lockId, _, _, _):
             return "/ladder_open_lock_record/records/\(lockId)"
+        case .reportAsset:
+            return "/report/asset_report"
+        case .baseTurnoverInfoList:
+            return "/base_turnover_info/list"
+        case .tenantContractInfoAssetContract:
+            return "/tenant_contract_info/asset_contract"
+        case .reportReportItems:
+            return "/report/report_items"
+        case .baseTurnoverInfo:
+            return "/base_turnover_info/"
+        case .costCategory:
+            return "/cost_category/"
         }
     }
     
@@ -270,6 +296,9 @@ extension BusinessInterface: TargetType {
             }
             
             return .requestParameters(parameters: requestParameters, encoding: encoding)
+        
+//        case .baseTurnoverInfo:
+//            return .requestParameters(parameters: requestParameters, encoding: JsonArrayEncoding.default)
             
         default:
             if self.method == .get {
@@ -337,6 +366,23 @@ extension BusinessInterface: TargetType {
             
         case let .getUnlockRecords(_, type, pageIndex, pageSize):
             return ["currentPage": pageIndex, "pageSize": pageSize ?? 15, "type": type]
+            
+        case let .reportAsset(assetId, year):
+            return ["assetId": assetId, "year": year]
+            
+        case let .baseTurnoverInfoList(assetId, year):
+            return ["assetId": assetId, "year": year]
+            
+        case let .tenantContractInfoAssetContract(assetId, year):
+            return ["assetId": assetId, "year": year]
+            
+        case let .reportReportItems(assetId, costId):
+            return ["assetId": assetId, "costCategoryId": costId]
+            
+        case let .baseTurnoverInfo(assetId, contractId, payTime, itemList):
+            let array = itemList.toJSON().compactMap { $0 }
+            
+            return ["assetId": assetId, "contractId": contractId, "payTime": payTime, "turnoverItemDTOList": array]
             
         default:
             return nil

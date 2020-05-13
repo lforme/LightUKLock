@@ -16,8 +16,9 @@ final class LoadingPlugin: PluginType {
     init() {}
     
     func willSend(_ request: RequestType, target: TargetType) {
-        if !HUD.isVisible {
-            DispatchQueue.main.async {[weak self] in
+        
+        DispatchQueue.main.async {[weak self] in
+            if !HUD.isVisible {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = true
                 guard let this = self else { return }
                 HUD.show(.customView(view: this.creatAnimationView()))
@@ -29,10 +30,10 @@ final class LoadingPlugin: PluginType {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            HUD.hide(afterDelay: 1)
         }
-        HUD.hide(afterDelay: 1)
+        
     }
-    
     
     private func creatAnimationView() -> UIView {
         let animation = Animation.named("loading", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)!

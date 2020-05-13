@@ -12,6 +12,7 @@ import IGListKit
 final class BillFlowReportSection: ListSectionController {
     
     private var data: Data?
+    var assetId: String?
     
     override init() {
         super.init()
@@ -30,12 +31,17 @@ final class BillFlowReportSection: ListSectionController {
         guard let cell = collectionContext?.dequeueReusableCell(withNibName: "BillReportCell", bundle: nil, for: self, at: index) as? BillReportCell else {
             fatalError()
         }
-        
+        if let d = data {
+            cell.bind(d)
+        }
         return cell
     }
     
     override func didSelectItem(at index: Int) {
         let reportDetailVC: BillReportDetailController = ViewLoader.Storyboard.controller(from: "Bill")
+        reportDetailVC.costName = data?.costCategoryName
+        reportDetailVC.assetId = assetId
+        reportDetailVC.costCategoryId = data?.costCategoryId
         self.viewController?.navigationController?.pushViewController(reportDetailVC, animated: true)
     }
     
@@ -47,6 +53,20 @@ final class BillFlowReportSection: ListSectionController {
 extension BillFlowReportSection {
     
     final class Data: NSObject, ListDiffable {
+        
+        let costCategoryId: String
+        let costCategoryName: String?
+        let count: Int
+        let paidCount: Int
+        let totalAmount: Int
+        
+        init(id: String, name: String?, count: Int, paidCount: Int, totalAmount: Int) {
+            self.costCategoryId = id
+            self.costCategoryName = name
+            self.count = count
+            self.paidCount = paidCount
+            self.totalAmount = totalAmount
+        }
         
         func diffIdentifier() -> NSObjectProtocol {
             return self

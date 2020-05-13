@@ -21,6 +21,7 @@ enum NotificationRefreshType {
     case addCard
     case addFinger
     case tempPassword
+    case billFlow
 }
 
 extension NSNotification.Name {

@@ -140,7 +140,7 @@ class FingerDetailController: UITableViewController {
             
             share.bind(to: vm.isRemote).disposed(by: rx.disposeBag)
             
-            share.delay(1, scheduler: MainScheduler.instance).flatMapLatest {[unowned self] _ in self.vm.deleteFinger() }.subscribe(onNext: {[weak self] (success) in
+            share.delay(.seconds(1), scheduler: MainScheduler.instance).flatMapLatest {[unowned self] _ in self.vm.deleteFinger() }.subscribe(onNext: {[weak self] (success) in
                 if success {
                     HUD.flash(.label("删除成功"), delay: 2)
                     NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addFinger)

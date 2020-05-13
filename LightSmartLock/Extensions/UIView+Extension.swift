@@ -10,18 +10,20 @@ import Foundation
 import UIKit
 
 extension UIView {
-    
+  
     func setCircular(radius: CGFloat) {
-        clipsToBounds = true
-        layer.cornerRadius = radius
+        self.layer.setValue(true, forKey: "continuousCorners")
+        self.layer.cornerRadius = radius
     }
     
+//    layerMinXMinYCorner  左上
+//    layerMaxXMinYCorner  右上
+//    layerMinXMaxYCorner  左下
+//    layerMaxXMaxYCorner  右下
     
-//    [.layerMaxXMinYCorner, .layerMinXMinYCorner] 左右下
-//    [.layerMaxXMinYCorner, .layerMinXMinYCorner] 左右上
     // https://stackoverflow.com/questions/4847163/round-two-corners-in-uiview
     func roundCorners(_ corners: CACornerMask, radius: CGFloat) {
-        self.clipsToBounds = true
+        self.layer.setValue(true, forKey: "continuousCorners")
         self.layer.cornerRadius = radius
         self.layer.maskedCorners = corners
     }
@@ -46,6 +48,7 @@ extension UIView {
             return layer.cornerRadius
         }
         set {
+            layer.setValue(true, forKey: "continuousCorners")
             layer.cornerRadius = newValue
         }
     }

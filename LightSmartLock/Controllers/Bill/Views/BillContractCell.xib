@@ -43,8 +43,8 @@
                         <color key="textColor" name="textOpaque78"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="短租    2019-12-1至2020-12-12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgy-3p-uwr">
-                        <rect key="frame" x="16" y="74.5" width="175" height="14.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="房源    xxxxxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgy-3p-uwr">
+                        <rect key="frame" x="16" y="74.5" width="76" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" name="textOpaque78"/>
                         <nil key="highlightedColor"/>
@@ -67,6 +67,13 @@
                 <constraint firstItem="1pz-8N-3VO" firstAttribute="centerY" secondItem="MiG-4N-lhA" secondAttribute="centerY" id="obB-q9-UBq"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="date" destination="Nks-5Z-Ab5" id="Trk-KZ-u3e"/>
+                <outlet property="house" destination="rgy-3p-uwr" id="UqT-xr-vfE"/>
+                <outlet property="name" destination="1pz-8N-3VO" id="8wY-En-zaB"/>
+                <outlet property="phone" destination="Ejh-4s-LGF" id="FUR-E7-VRA"/>
+                <outlet property="phoneButton" destination="MiG-4N-lhA" id="Evr-VN-f9K"/>
+            </connections>
             <point key="canvasLocation" x="131.15942028985509" y="105.80357142857143"/>
         </collectionViewCell>
     </objects>

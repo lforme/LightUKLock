@@ -46,7 +46,7 @@ class SearchPlotController: UIViewController {
     }
     
     func bind() {
-        searchTextField.rx.text.orEmpty.changed.throttle(2, scheduler: MainScheduler.instance).bind(to: vm.searchText).disposed(by: rx.disposeBag)
+        searchTextField.rx.text.orEmpty.changed.throttle(.seconds(2), scheduler: MainScheduler.instance).bind(to: vm.searchText).disposed(by: rx.disposeBag)
         
         Observable.zip(tableView.rx.itemSelected, tableView.rx.modelSelected(GoudaMapItemModel.self))
             .observeOn(MainScheduler.instance)

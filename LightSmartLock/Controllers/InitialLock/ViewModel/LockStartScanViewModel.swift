@@ -16,7 +16,7 @@ final class LockStartScanViewModel {
     
     var scanAction: Action<Void, Bool>!
     
-    private let timer = Observable<Int>.timer(0, period: 1, scheduler: MainScheduler.instance).share(replay: 1, scope: .forever)
+    private let timer = Observable<Int>.timer(.seconds(1), period: .seconds(1), scheduler: MainScheduler.instance).share(replay: 1, scope: .forever)
     
     var disposeBag = DisposeBag()
     

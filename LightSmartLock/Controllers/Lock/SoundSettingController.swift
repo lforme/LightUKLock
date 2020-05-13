@@ -30,7 +30,7 @@ class SoundSettingController: UIViewController {
     
     func bind() {
         
-        sliderView.rx.value.throttle(1.5, scheduler: MainScheduler.instance).map { Int($0) }.subscribe(onNext: {[weak self] (volume) in
+        sliderView.rx.value.throttle(.seconds(1), scheduler: MainScheduler.instance).map { Int($0) }.subscribe(onNext: {[weak self] (volume) in
             self?.vm.setVolume(volume)
         }).disposed(by: rx.disposeBag)
     }

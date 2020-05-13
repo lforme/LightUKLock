@@ -30,7 +30,6 @@ enum AuthenticationInterface {
 
 enum BusinessInterface {
    
-
     // 新添加的
     case uploadImage(UIImage, description: String) // 图片上传
     case user // 获取当前用户信息
@@ -61,5 +60,10 @@ enum BusinessInterface {
     case undoTempPassword(id: String) // 撤销临时密码
     case addTempPassword(lockId: String, parameter: TempPasswordShareParameter) // 添加临时密码
     case getUnlockRecords(lockId: String, type: Int, pageIndex: Int, pageSize: Int?) // 获取开门记录 1今天 2昨天 3全部
-
+    case reportAsset(assetId: String, year: String) // 获取报表列表
+    case baseTurnoverInfoList(assetId: String, year: String) // 获取流水列表
+    case tenantContractInfoAssetContract(assetId: String, year: String) // 资产合同列表
+    case reportReportItems(assetId: String, costId: String) // 获取报名费用类型明细
+    case baseTurnoverInfo(assetId: String, contractId: String, payTime: String, itemList: [AddFlowParameter])
+    case costCategory // 获取用户的费用类型集合
 }
