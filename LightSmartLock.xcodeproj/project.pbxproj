@@ -20,6 +20,7 @@
 		7B7EB4C324528E52002DC436 /* UtilitiesRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7EB4C224528E52002DC436 /* UtilitiesRecordsViewController.swift */; };
 		7B7EB4C724529AE6002DC436 /* AddUtilitiesRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7EB4C624529AE6002DC436 /* AddUtilitiesRecordViewController.swift */; };
 		7B7EB4C92452D24B002DC436 /* AddTenant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B7EB4C82452D24B002DC436 /* AddTenant.storyboard */; };
+		7B82FEB9246BE7FD0066ED24 /* InviteBindingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B82FEB8246BE7FD0066ED24 /* InviteBindingViewController.swift */; };
 		7B92D0CA2456CBF600F195A9 /* DataPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92D0C82456CBF500F195A9 /* DataPickerViewController.swift */; };
 		7B92D0CB2456CBF600F195A9 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92D0C92456CBF500F195A9 /* DatePickerViewController.swift */; };
 		7B92D0CD2456CC6900F195A9 /* DateSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92D0CC2456CC6900F195A9 /* DateSelectionButton.swift */; };
@@ -330,6 +331,7 @@
 		7B7EB4C224528E52002DC436 /* UtilitiesRecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesRecordsViewController.swift; sourceTree = "<group>"; };
 		7B7EB4C624529AE6002DC436 /* AddUtilitiesRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUtilitiesRecordViewController.swift; sourceTree = "<group>"; };
 		7B7EB4C82452D24B002DC436 /* AddTenant.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddTenant.storyboard; sourceTree = "<group>"; };
+		7B82FEB8246BE7FD0066ED24 /* InviteBindingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteBindingViewController.swift; sourceTree = "<group>"; };
 		7B92D0C82456CBF500F195A9 /* DataPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPickerViewController.swift; sourceTree = "<group>"; };
 		7B92D0C92456CBF500F195A9 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		7B92D0CC2456CC6900F195A9 /* DateSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionButton.swift; sourceTree = "<group>"; };
@@ -654,6 +656,7 @@
 				7BC0B539246401D000B38CA8 /* Cells */,
 				7B76FAA92445B01A00B6F6A5 /* AssetDetail.storyboard */,
 				7B7EB4C82452D24B002DC436 /* AddTenant.storyboard */,
+				7B82FEB8246BE7FD0066ED24 /* InviteBindingViewController.swift */,
 				7BB2FEA72455632100D835BA /* AddTenantFellowViewController.swift */,
 				7BB2FEA9245565F100D835BA /* AddTenantViewController.swift */,
 				7BB2FEAF245595DD00D835BA /* SettingRentalRecordViewController.swift */,
@@ -1524,6 +1527,7 @@
 				9CFDE207238523A80062522E /* LoadingPlugin.swift in Sources */,
 				9C03B0F1239F51240001E849 /* FingerDetailController.swift in Sources */,
 				9C5A967823A07D4E002A2B06 /* AddCardController.swift in Sources */,
+				7B82FEB9246BE7FD0066ED24 /* InviteBindingViewController.swift in Sources */,
 				7BB2FEAA245565F100D835BA /* AddTenantViewController.swift in Sources */,
 				9C44905D24626B7800A859CC /* LiquidationViewController.swift in Sources */,
 				9C7705A1238FE358008E1552 /* SingleInputController.swift in Sources */,

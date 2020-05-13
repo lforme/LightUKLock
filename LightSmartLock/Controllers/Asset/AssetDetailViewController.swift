@@ -23,9 +23,19 @@ class AssetDetailViewController: UIViewController {
         return btn
     }()
     
+    lazy var inviteBindingBtn: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("邀请绑定", for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        btn.titleLabel?.textColor = .white
+        return btn
+    }()
+    
     lazy var popView: UIView = {
-        let view = UIStackView(arrangedSubviews: [self.deleteBtn])
-        view.frame = CGRect(x: 0, y: 0, width: 64, height: 34)
+        let view = UIStackView(arrangedSubviews: [self.inviteBindingBtn, self.deleteBtn])
+        view.axis = .vertical
+        view.distribution = .fillEqually
+        view.frame = CGRect(x: 0, y: 0, width: 80, height: 64)
         return view
     }()
     
@@ -101,6 +111,14 @@ class AssetDetailViewController: UIViewController {
             .tap
             .subscribe(onNext: { [unowned self](_) in
                 self.popover.show(self.popView, fromView: self.moreButton)
+            })
+            .disposed(by: rx.disposeBag)
+        
+        inviteBindingBtn.rx
+            .tap
+            .subscribe(onNext: { [weak self](_) in
+                self?.popover.dismiss()
+                self?.performSegue(withIdentifier: "InviteBinding", sender: nil)
             })
             .disposed(by: rx.disposeBag)
         

@@ -562,6 +562,7 @@
                         <outlet property="incomeCountLabel" destination="2BB-Et-0Mf" id="ORa-IG-AWg"/>
                         <outlet property="moreButton" destination="jUV-NF-H1o" id="35p-sE-W3K"/>
                         <outlet property="tableView" destination="L3o-zO-iru" id="7hZ-2V-huI"/>
+                        <segue destination="Cjd-Rf-lGj" kind="show" identifier="InviteBinding" id="aeX-hI-ebs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szz-oY-oVx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2265,6 +2266,138 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvF-FQ-4TZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-158" y="655"/>
+        </scene>
+        <!--Invite Binding View Controller-->
+        <scene sceneID="F7s-Yp-uPf">
+            <objects>
+                <viewController id="Cjd-Rf-lGj" customClass="InviteBindingViewController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eKs-Wf-iun">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邀请绑定" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G26-mD-bAE">
+                                <rect key="frame" x="16" y="96" width="382" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="bdr-W0-m74"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" name="textPrimary"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mj0-8G-yN3">
+                                <rect key="frame" x="0.0" y="148" width="414" height="714"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="CiY-Gw-YV1">
+                                        <rect key="frame" x="93" y="194.5" width="228.5" height="213.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kQV-uW-VA3">
+                                                <rect key="frame" x="34" y="0.0" width="160" height="160"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="160" id="Xqw-Am-9hB"/>
+                                                    <constraint firstAttribute="height" constant="160" id="zj2-4y-jL1"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0I-9i-cfL">
+                                                <rect key="frame" x="0.0" y="180" width="228.5" height="33.5"/>
+                                                <string key="text">租客扫描二维码，下载门锁助手APP
+方便管理门锁、查收账单、便捷交租</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sAT-Hh-buW" customClass="ButtonContainerView" customModule="门锁助手个人版" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="658" width="414" height="56"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="FoU-dM-1XP">
+                                                <rect key="frame" x="16" y="5" width="382" height="46"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1K-En-her">
+                                                        <rect key="frame" x="0.0" y="0.0" width="181" height="46"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <state key="normal" title="保存到相册">
+                                                            <color key="titleColor" name="primary"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="24"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="primary"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="saveAction:" destination="Cjd-Rf-lGj" eventType="touchUpInside" id="HnM-yj-qs2"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygz-05-M3k">
+                                                        <rect key="frame" x="201" y="0.0" width="181" height="46"/>
+                                                        <color key="backgroundColor" name="primary"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <state key="normal" title="发送给租客">
+                                                            <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="24"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="sendAction:" destination="Cjd-Rf-lGj" eventType="touchUpInside" id="qRv-ks-RgX"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="FoU-dM-1XP" secondAttribute="bottom" constant="5" id="6D3-hm-zfp"/>
+                                            <constraint firstAttribute="trailing" secondItem="FoU-dM-1XP" secondAttribute="trailing" constant="16" id="8j2-AY-oSB"/>
+                                            <constraint firstAttribute="height" constant="56" id="Wyb-8W-soY"/>
+                                            <constraint firstItem="FoU-dM-1XP" firstAttribute="top" secondItem="sAT-Hh-buW" secondAttribute="top" constant="5" id="tkg-90-cQu"/>
+                                            <constraint firstItem="FoU-dM-1XP" firstAttribute="leading" secondItem="sAT-Hh-buW" secondAttribute="leading" constant="16" id="yte-dI-i0M"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="tableViewBackground"/>
+                                <constraints>
+                                    <constraint firstItem="CiY-Gw-YV1" firstAttribute="centerY" secondItem="mj0-8G-yN3" secondAttribute="centerY" constant="-56" id="594-84-xdl"/>
+                                    <constraint firstAttribute="bottom" secondItem="sAT-Hh-buW" secondAttribute="bottom" id="5iV-7e-mOV"/>
+                                    <constraint firstAttribute="trailing" secondItem="sAT-Hh-buW" secondAttribute="trailing" id="GYb-Vi-5rr"/>
+                                    <constraint firstItem="sAT-Hh-buW" firstAttribute="leading" secondItem="mj0-8G-yN3" secondAttribute="leading" id="Ijm-WO-MzJ"/>
+                                    <constraint firstItem="CiY-Gw-YV1" firstAttribute="centerX" secondItem="mj0-8G-yN3" secondAttribute="centerX" id="M7D-JA-Tfd"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="G26-mD-bAE" firstAttribute="top" secondItem="Ves-aA-tqO" secondAttribute="top" constant="8" id="0kU-1X-g2h"/>
+                            <constraint firstItem="Ves-aA-tqO" firstAttribute="bottom" secondItem="mj0-8G-yN3" secondAttribute="bottom" id="CdA-ke-Edb"/>
+                            <constraint firstItem="mj0-8G-yN3" firstAttribute="leading" secondItem="Ves-aA-tqO" secondAttribute="leading" id="NjT-Gg-VDt"/>
+                            <constraint firstItem="mj0-8G-yN3" firstAttribute="top" secondItem="G26-mD-bAE" secondAttribute="bottom" constant="8" id="aAL-wq-L0n"/>
+                            <constraint firstItem="Ves-aA-tqO" firstAttribute="trailing" secondItem="G26-mD-bAE" secondAttribute="trailing" constant="16" id="lCX-Xb-mPD"/>
+                            <constraint firstItem="Ves-aA-tqO" firstAttribute="trailing" secondItem="mj0-8G-yN3" secondAttribute="trailing" id="n6C-Ac-zia"/>
+                            <constraint firstItem="G26-mD-bAE" firstAttribute="leading" secondItem="Ves-aA-tqO" secondAttribute="leading" constant="16" id="yJV-0b-nLe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ves-aA-tqO"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="LIW-xW-sF4"/>
+                    <connections>
+                        <outlet property="QRCodeImageView" destination="kQV-uW-VA3" id="XK8-yw-a2N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Jp-tI-CVR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-159" y="-698"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
