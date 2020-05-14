@@ -47,4 +47,5 @@ struct AssetContractDetailModel: HandyJSON {
     var isRemind: Bool?
     var isSeparate: Bool?
     var remark: String?
+    var assetId: String?
 }

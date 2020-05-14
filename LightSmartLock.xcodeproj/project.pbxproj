@@ -23,6 +23,7 @@
 		9C03B0F9239F87B60001E849 /* AddFingerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0F8239F87B60001E849 /* AddFingerViewModel.swift */; };
 		9C03B0FB239F88860001E849 /* AddFingerFinishController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0FA239F88860001E849 /* AddFingerFinishController.swift */; };
 		9C03B0FD239FB3620001E849 /* addFinger.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C03B0FC239FB3620001E849 /* addFinger.json */; };
+		9C11E6E9246D300E008E0A60 /* BillLiquidationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C11E6E8246D300E008E0A60 /* BillLiquidationModel.swift */; };
 		9C1A4BC4238D0A1A00626DB4 /* AnimationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC2238D0A1A00626DB4 /* AnimationHeaderView.swift */; };
 		9C1A4BC5238D0A1A00626DB4 /* AnimationHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC3238D0A1A00626DB4 /* AnimationHeaderView.xib */; };
 		9C1A4BC8238D2E7C00626DB4 /* HomeControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC6238D2E7C00626DB4 /* HomeControlCell.swift */; };
@@ -311,6 +312,7 @@
 		9C03B0F8239F87B60001E849 /* AddFingerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFingerViewModel.swift; sourceTree = "<group>"; };
 		9C03B0FA239F88860001E849 /* AddFingerFinishController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFingerFinishController.swift; sourceTree = "<group>"; };
 		9C03B0FC239FB3620001E849 /* addFinger.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = addFinger.json; sourceTree = "<group>"; };
+		9C11E6E8246D300E008E0A60 /* BillLiquidationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillLiquidationModel.swift; sourceTree = "<group>"; };
 		9C1A4BC2238D0A1A00626DB4 /* AnimationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHeaderView.swift; sourceTree = "<group>"; };
 		9C1A4BC3238D0A1A00626DB4 /* AnimationHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimationHeaderView.xib; sourceTree = "<group>"; };
 		9C1A4BC6238D2E7C00626DB4 /* HomeControlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeControlCell.swift; sourceTree = "<group>"; };
@@ -770,6 +772,7 @@
 				9CABF4BD246563A80001AAE3 /* AssetReportModel.swift */,
 				9CB09C752468F5B500F3891D /* AssetFlowModel.swift */,
 				9CB09C77246930E100F3891D /* AssetContractModel.swift */,
+				9C11E6E8246D300E008E0A60 /* BillLiquidationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1543,6 +1546,7 @@
 				9C5471992395047200432ACA /* LockInfoController.swift in Sources */,
 				9CB09C7A2469520600F3891D /* BookKeepingViewModel.swift in Sources */,
 				9C24AC4A2383F344005EBF95 /* CustomizedTabbarItem.swift in Sources */,
+				9C11E6E9246D300E008E0A60 /* BillLiquidationModel.swift in Sources */,
 				9CFDE2052385219F0062522E /* RxMoyaProvider.swift in Sources */,
 				9CB09C78246930E100F3891D /* AssetContractModel.swift in Sources */,
 				9CFDE1FF23851E310062522E /* NetworkingEnvironment.swift in Sources */,

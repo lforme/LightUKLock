@@ -27,6 +27,10 @@ class SelectorFeesController: UICollectionViewController {
     var dataSrouce = [FeesKindModel]()
     var didSelected: ((_ name: String, _ categoryId: String) -> Void)?
     
+    deinit {
+        print(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

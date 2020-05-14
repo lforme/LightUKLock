@@ -27,6 +27,10 @@ class BillReportDetailController: UITableViewController {
     var costName: String?
     var dataSource = [ReportFeesModel]()
     
+    deinit {
+        print(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

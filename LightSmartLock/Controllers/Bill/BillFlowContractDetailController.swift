@@ -9,6 +9,9 @@
 import UIKit
 import PKHUD
 import Kingfisher
+import Action
+import RxSwift
+import RxCocoa
 
 class BillFlowContractDetailController: UITableViewController {
     
@@ -28,6 +31,17 @@ class BillFlowContractDetailController: UITableViewController {
     @IBOutlet weak var isRemind: UILabel!
     @IBOutlet weak var isSeparate: UILabel!
     @IBOutlet weak var remark: UILabel!
+    @IBOutlet weak var leaseBackButton: UIButton!
+    @IBOutlet weak var leaseRenewButton: UIButton!
+    
+    var contractId = "4672476535362420739"
+    
+    private var assetId = ""
+    private var startTime = ""
+    private var endTime = ""
+    deinit {
+        print(self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +52,10 @@ class BillFlowContractDetailController: UITableViewController {
     }
     
     func bind() {
-        BusinessAPI.requestMapJSON(.tenantContractInfo(contractId: "4672476535362420739"), classType: AssetContractDetailModel.self).subscribe(onNext: {[weak self] (model) in
+        BusinessAPI.requestMapJSON(.tenantContractInfo(contractId: self.contractId), classType: AssetContractDetailModel.self).subscribe(onNext: {[weak self] (model) in
+            self?.assetId = model.assetId ?? ""
+            self?.startTime = model.startDate ?? ""
+            self?.endTime = model.endDate ?? ""
             self?.houseName.text = model.houseName
             self?.tenantName.text = model.tenantName
             self?.tenantPhone.text = model.tenantInfo?.phone
@@ -65,16 +82,15 @@ class BillFlowContractDetailController: UITableViewController {
             
             if let roommateList = model.fellowInfoList {
                 roommateList.forEach { (item) in
-                    if let name = item.userName, let phone =
-                        item.phone {
-                        let label = UILabel()
-                        label.sizeToFit()
-                        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-                        label.textColor = ColorClassification.textPrimary.value
-                        label.text = "\(name) \(phone)"
-                        
-                        self?.roommateContainer.addArrangedSubview(label)
-                    }
+                    let name = item.userName ?? "正在加载"
+                    let phone = item.phone ?? "正在加载"
+                    let label = UILabel()
+                    label.sizeToFit()
+                    label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+                    label.textColor = ColorClassification.textPrimary.value
+                    label.text = "\(name)  \(phone)"
+                    
+                    self?.roommateContainer.addArrangedSubview(label)
                 }
             }
             
@@ -82,6 +98,35 @@ class BillFlowContractDetailController: UITableViewController {
             
             }, onError: { (error) in
                 PKHUD.sharedHUD.rx.showError(error)
+        }).disposed(by: rx.disposeBag)
+        
+        let leaseBackAction = Action<Void, Bool> {[unowned self] (_) -> Observable<Bool> in
+            return BusinessAPI.requestMapBool(.checkTerminationTenantContract(contractId: self.contractId))
+        }
+        
+        leaseBackButton.rx.bind(to: leaseBackAction, input: ())
+        
+        leaseBackAction.errors.subscribe(onNext: { (error) in
+            PKHUD.sharedHUD.rx.showActionError(error)
+        }).disposed(by: rx.disposeBag)
+        
+        leaseBackAction.elements.subscribe(onNext: {[weak self] (pass) in
+            guard let this = self else { return }
+            if !pass {
+                let liquidationVC: LiquidationViewController = ViewLoader.Storyboard.controller(from: "Bill")
+                this.navigationController?.pushViewController(liquidationVC, animated: true)
+            } else {
+                this.showAlert(title: "退租失败", message: "点前有何有部分账单未清算", buttonTitles: ["取消", "去结清"], highlightedButtonIndex: 1).subscribe(onNext: { (index) in
+                    if index == 1 {
+                        let clearVC: BillClearingController = ViewLoader.Storyboard.controller(from: "Bill")
+                        clearVC.assetId = this.assetId
+                        clearVC.contractId = this.contractId
+                        clearVC.startTime = this.startTime
+                        clearVC.endTime = this.endTime
+                        this.navigationController?.pushViewController(clearVC, animated: true)
+                    }
+                }).disposed(by: this.rx.disposeBag)
+            }
         }).disposed(by: rx.disposeBag)
     }
     
