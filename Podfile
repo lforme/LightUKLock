@@ -48,6 +48,7 @@ target 'LightSmartLock' do
   pod 'IGListKit'
   pod 'AloeStackView'
   pod 'EFQRCode'
+  pod 'GradientProgressBar'
   
   # 动画
   pod 'lottie-ios'

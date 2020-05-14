@@ -16,6 +16,8 @@ PODS:
     - EFQRCode/Core (= 5.1.6)
   - EFQRCode/Core (5.1.6)
   - ESTabBarController-swift (2.8.0)
+  - GradientProgressBar (2.0.3):
+    - LightweightObservable (~> 2.0)
   - HandyJSON (5.0.1)
   - IGListDiffKit (4.0.0)
   - IGListKit (4.0.0):
@@ -24,6 +26,7 @@ PODS:
   - Kingfisher (5.13.4):
     - Kingfisher/Core (= 5.13.4)
   - Kingfisher/Core (5.13.4)
+  - LightweightObservable (2.1.1)
   - lottie-ios (3.1.6)
   - LTMorphingLabel (0.7.0)
   - MJRefresh (3.4.1)
@@ -80,6 +83,7 @@ DEPENDENCIES:
   - DZNEmptyDataSet
   - EFQRCode
   - ESTabBarController-swift
+  - GradientProgressBar
   - HandyJSON
   - IGListKit
   - IQKeyboardManager
@@ -118,11 +122,13 @@ SPEC REPOS:
     - DZNEmptyDataSet
     - EFQRCode
     - ESTabBarController-swift
+    - GradientProgressBar
     - HandyJSON
     - IGListDiffKit
     - IGListKit
     - IQKeyboardManager
     - Kingfisher
+    - LightweightObservable
     - lottie-ios
     - LTMorphingLabel
     - MJRefresh
@@ -160,11 +166,13 @@ SPEC CHECKSUMS:
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   EFQRCode: a7ea2e517912f5bf6ba258b631327a83cd8084a5
   ESTabBarController-swift: 05593a6ad64700b03c0eb60ff625916370aa4136
+  GradientProgressBar: f11fb57cffc615a4794da558ce283171a992130a
   HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
   IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
   IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
   IQKeyboardManager: 3a8b9e603f8b0eeaf5f096a1f2b2cfcf121992ef
   Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
+  LightweightObservable: 52abe2a01c8273921b1f66cd66526eb3328ca35a
   lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
   LTMorphingLabel: 22147fb1ec2b0306537ccc348b36ea8617179b03
   MJRefresh: 3153c59a363159092c08b2177ec3a7d09f90bfaf
@@ -190,6 +198,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 99f03b64145a8c92c55b9b1b931410967d9be4cb
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: 1b6a8ea9f27b3a328353d9fb5b5839ef42281c7f
+PODFILE CHECKSUM: dde712d724fe149b29eb3544e3959ca78e2e40ad
 
 COCOAPODS: 1.9.1

@@ -84,9 +84,6 @@ class AssetFacilityListViewController: UIViewController {
             .disposed(by: rx.disposeBag)
         
         items
-            .do(onNext: { [weak self](models) in
-                self?.bottomContainer.isHidden = models.isEmpty
-            })
             .bind(to: tableView.rx.items(cellIdentifier: "AssetFacilityListCell", cellType: AssetFacilityListCell.self)) { (row, element, cell) in
                 cell.model = element
                 cell.disposeBag = DisposeBag()

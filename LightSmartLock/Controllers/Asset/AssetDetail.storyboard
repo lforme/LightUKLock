@@ -427,11 +427,41 @@
                                                                 <constraint firstAttribute="height" constant="56" id="jAT-k0-ibF"/>
                                                             </constraints>
                                                         </stackView>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6TX-Vb-MXp">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6TX-Vb-MXp" customClass="GradientProgressBar" customModule="GradientProgressBar">
                                                             <rect key="frame" x="61" y="88.5" width="292" height="12"/>
                                                             <color key="backgroundColor" name="primary"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="12" id="8BO-MG-Zli"/>
+                                                                <constraint firstAttribute="height" constant="6" id="8BO-MG-Zli"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="3"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a4E-xd-yOu">
+                                                            <rect key="frame" x="28.5" y="66.5" width="65" height="21"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tip" translatesAutoresizingMaskIntoConstraints="NO" id="DWP-zR-Zgg">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="65" height="21"/>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="还剩1399天" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRA-no-rH0">
+                                                                    <rect key="frame" x="5" y="3" width="55" height="12"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                    <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstItem="DWP-zR-Zgg" firstAttribute="leading" secondItem="a4E-xd-yOu" secondAttribute="leading" id="15u-ea-r1l"/>
+                                                                <constraint firstAttribute="bottom" secondItem="rRA-no-rH0" secondAttribute="bottom" constant="6" id="AF8-yf-HiV"/>
+                                                                <constraint firstAttribute="trailing" secondItem="rRA-no-rH0" secondAttribute="trailing" constant="5" id="EWO-eg-2rz"/>
+                                                                <constraint firstAttribute="bottom" secondItem="DWP-zR-Zgg" secondAttribute="bottom" id="FTs-92-p1s"/>
+                                                                <constraint firstAttribute="trailing" secondItem="DWP-zR-Zgg" secondAttribute="trailing" id="NEa-1C-5MU"/>
+                                                                <constraint firstItem="rRA-no-rH0" firstAttribute="top" secondItem="a4E-xd-yOu" secondAttribute="top" constant="3" id="XiJ-Tk-dof"/>
+                                                                <constraint firstItem="rRA-no-rH0" firstAttribute="leading" secondItem="a4E-xd-yOu" secondAttribute="leading" constant="5" id="hp3-EN-AOz"/>
+                                                                <constraint firstItem="DWP-zR-Zgg" firstAttribute="top" secondItem="a4E-xd-yOu" secondAttribute="top" id="k6X-HT-SYz"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -439,9 +469,11 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="200" id="4im-Fl-8az"/>
                                                         <constraint firstItem="i8q-cv-ZJ4" firstAttribute="centerY" secondItem="3NU-gI-EdL" secondAttribute="centerY" id="4n3-Be-dsi"/>
+                                                        <constraint firstItem="6TX-Vb-MXp" firstAttribute="top" secondItem="a4E-xd-yOu" secondAttribute="bottom" constant="2" id="9fM-tQ-evV"/>
                                                         <constraint firstItem="8il-kq-28g" firstAttribute="top" secondItem="biO-qD-0Om" secondAttribute="top" id="Ay9-gi-IVW"/>
                                                         <constraint firstItem="PGR-zM-SLG" firstAttribute="top" secondItem="H35-te-cyT" secondAttribute="bottom" constant="16" id="E4j-3N-ZwI"/>
                                                         <constraint firstItem="ceo-at-3O1" firstAttribute="centerY" secondItem="H35-te-cyT" secondAttribute="centerY" id="Fdx-3i-9xv"/>
+                                                        <constraint firstItem="a4E-xd-yOu" firstAttribute="centerX" secondItem="6TX-Vb-MXp" secondAttribute="leading" id="Mwo-OV-WjV"/>
                                                         <constraint firstItem="3NU-gI-EdL" firstAttribute="top" secondItem="8il-kq-28g" secondAttribute="bottom" constant="30" id="TdJ-xs-thZ"/>
                                                         <constraint firstAttribute="trailing" secondItem="i8q-cv-ZJ4" secondAttribute="trailing" constant="16" id="Xxr-vz-TFh"/>
                                                         <constraint firstItem="3NU-gI-EdL" firstAttribute="leading" secondItem="biO-qD-0Om" secondAttribute="leading" constant="16" id="Ywp-FQ-UrI"/>
@@ -468,8 +500,11 @@
                                         <connections>
                                             <outlet property="detailBtn" destination="ETb-Ai-rsL" id="g57-zD-CXw"/>
                                             <outlet property="endDateLabel" destination="ceo-at-3O1" id="k4H-oM-JHH"/>
+                                            <outlet property="gradientProgressView" destination="6TX-Vb-MXp" id="OmD-b6-bjX"/>
                                             <outlet property="nameLabel" destination="hzd-Qq-tK6" id="5By-iR-v8p"/>
                                             <outlet property="startDateLabel" destination="H35-te-cyT" id="tak-Cg-ZI8"/>
+                                            <outlet property="tipConstraint" destination="Mwo-OV-WjV" id="mcb-yy-A0q"/>
+                                            <outlet property="tipLabel" destination="rRA-no-rH0" id="5aq-Tp-sW1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2415,6 +2450,7 @@
         <image name="config_remove" width="24" height="24"/>
         <image name="more" width="18" height="4"/>
         <image name="rent" width="48" height="48"/>
+        <image name="tip" width="64" height="21"/>
         <image name="water" width="16" height="16"/>
         <namedColor name="primary">
             <color red="0.32499998807907104" green="0.58399999141693115" blue="0.91399997472763062" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
