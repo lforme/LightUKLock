@@ -74,6 +74,7 @@ class AddUtilitiesRecordViewController: UIViewController {
         companyTypeLabel.text = "供\(type.text)公司"
         priceUnitLabel.text = "元/\(type.unit)"
         useUnitLabel.text = type.unit
+        guarenteeFeeTF.isHidden = true
         
         let price = priceTF.rx.text.orEmpty.asObservable().map(Double.init)
         let lastGage = lastGageTF.rx.text.orEmpty.asObservable().map(Double.init)

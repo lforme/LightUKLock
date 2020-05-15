@@ -428,7 +428,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6TX-Vb-MXp" customClass="GradientProgressBar" customModule="GradientProgressBar">
-                                                            <rect key="frame" x="61" y="88.5" width="292" height="12"/>
+                                                            <rect key="frame" x="61" y="91.5" width="292" height="6"/>
                                                             <color key="backgroundColor" name="primary"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="6" id="8BO-MG-Zli"/>
@@ -440,7 +440,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a4E-xd-yOu">
-                                                            <rect key="frame" x="28.5" y="66.5" width="65" height="21"/>
+                                                            <rect key="frame" x="28.5" y="68.5" width="65" height="21"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tip" translatesAutoresizingMaskIntoConstraints="NO" id="DWP-zR-Zgg">
                                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="21"/>
@@ -1419,7 +1419,7 @@
                                 <rect key="frame" x="0.0" y="140" width="414" height="666"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jxD-Yp-jK8">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lik-xd-wWh">
                                                 <rect key="frame" x="0.0" y="8" width="414" height="44"/>
@@ -1765,10 +1765,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFx-GY-zeP">
-                                                <rect key="frame" x="0.0" y="547" width="414" height="44"/>
+                                                <rect key="frame" x="0.0" y="547" width="414" height="88"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ydM-LT-pzo">
-                                                        <rect key="frame" x="16" y="0.0" width="382" height="44"/>
+                                                        <rect key="frame" x="16" y="0.0" width="382" height="88"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yKl-Xh-GsG">
                                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
@@ -1793,11 +1793,10 @@
                                                                     <constraint firstAttribute="height" constant="44" id="wTH-BG-Ozk"/>
                                                                 </constraints>
                                                             </stackView>
-                                                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入保底费用" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QA5-AN-OQc">
-                                                                <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入保底费用" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QA5-AN-OQc">
+                                                                <rect key="frame" x="0.0" y="44" width="382" height="44"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="44" id="Ww8-Vs-9ok"/>
-                                                                    <constraint firstAttribute="width" constant="150" id="ydd-X2-y1S"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -1814,7 +1813,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5LD-bj-HZE">
-                                                <rect key="frame" x="0.0" y="591" width="414" height="44"/>
+                                                <rect key="frame" x="0.0" y="635" width="414" height="44"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="实际费用小于保底金额时，账单以保底金额为准。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdR-8U-1xI">
                                                         <rect key="frame" x="16" y="0.0" width="398" height="44"/>
