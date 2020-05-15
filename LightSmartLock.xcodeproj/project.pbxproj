@@ -27,6 +27,8 @@
 		7B92D0CF2456CC7900F195A9 /* DataSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92D0CE2456CC7900F195A9 /* DataSelectionButton.swift */; };
 		7B92D0D12457C66700F195A9 /* IDCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B92D0D02457C66700F195A9 /* IDCardView.xib */; };
 		7B92D0D32457C67800F195A9 /* IDCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92D0D22457C67800F195A9 /* IDCardView.swift */; };
+		7BA8BDDF246E852100CDC5C9 /* CitySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA8BDDD246E852100CDC5C9 /* CitySelectViewController.swift */; };
+		7BB029BF246E7C4600879F0A /* BindingOrEditAssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB029BE246E7C4600879F0A /* BindingOrEditAssetViewController.swift */; };
 		7BB2FEA82455632100D835BA /* AddTenantFellowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB2FEA72455632100D835BA /* AddTenantFellowViewController.swift */; };
 		7BB2FEAA245565F100D835BA /* AddTenantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB2FEA9245565F100D835BA /* AddTenantViewController.swift */; };
 		7BB2FEAC24557AB800D835BA /* TenantFellowInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BB2FEAB24557AB800D835BA /* TenantFellowInfoView.xib */; };
@@ -36,6 +38,7 @@
 		7BB2FEB4245596C400D835BA /* ContractRentalRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB2FEB3245596C400D835BA /* ContractRentalRecordView.swift */; };
 		7BC0B53B246401F800B38CA8 /* TenantContractCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC0B53A246401F800B38CA8 /* TenantContractCell.swift */; };
 		7BC0B53D2464083300B38CA8 /* TurnoverStatisticsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC0B53C2464083300B38CA8 /* TurnoverStatisticsDTO.swift */; };
+		7BC62243246E829C00E24366 /* zh_city.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BC62242246E829C00E24366 /* zh_city.json */; };
 		7BCDE4F1246A433400334FCF /* SettingRentalAndOtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDE4F0246A433400334FCF /* SettingRentalAndOtherViewController.swift */; };
 		7BCDE4F3246A46CE00334FCF /* AddOtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDE4F2246A46CE00334FCF /* AddOtherViewController.swift */; };
 		9C03B0EB239F46510001E849 /* FingerManageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0EA239F46510001E849 /* FingerManageController.swift */; };
@@ -339,6 +342,8 @@
 		7B92D0CE2456CC7900F195A9 /* DataSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSelectionButton.swift; sourceTree = "<group>"; };
 		7B92D0D02457C66700F195A9 /* IDCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IDCardView.xib; sourceTree = "<group>"; };
 		7B92D0D22457C67800F195A9 /* IDCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDCardView.swift; sourceTree = "<group>"; };
+		7BA8BDDD246E852100CDC5C9 /* CitySelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySelectViewController.swift; sourceTree = "<group>"; };
+		7BB029BE246E7C4600879F0A /* BindingOrEditAssetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingOrEditAssetViewController.swift; sourceTree = "<group>"; };
 		7BB2FEA72455632100D835BA /* AddTenantFellowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTenantFellowViewController.swift; sourceTree = "<group>"; };
 		7BB2FEA9245565F100D835BA /* AddTenantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTenantViewController.swift; sourceTree = "<group>"; };
 		7BB2FEAB24557AB800D835BA /* TenantFellowInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TenantFellowInfoView.xib; sourceTree = "<group>"; };
@@ -348,6 +353,7 @@
 		7BB2FEB3245596C400D835BA /* ContractRentalRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractRentalRecordView.swift; sourceTree = "<group>"; };
 		7BC0B53A246401F800B38CA8 /* TenantContractCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenantContractCell.swift; sourceTree = "<group>"; };
 		7BC0B53C2464083300B38CA8 /* TurnoverStatisticsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnoverStatisticsDTO.swift; sourceTree = "<group>"; };
+		7BC62242246E829C00E24366 /* zh_city.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zh_city.json; sourceTree = "<group>"; };
 		7BCDE4F0246A433400334FCF /* SettingRentalAndOtherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRentalAndOtherViewController.swift; sourceTree = "<group>"; };
 		7BCDE4F2246A46CE00334FCF /* AddOtherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOtherViewController.swift; sourceTree = "<group>"; };
 		9A21385643D81CD6A6F2D1C7 /* Pods-LSLWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSLWidget.release.xcconfig"; path = "Target Support Files/Pods-LSLWidget/Pods-LSLWidget.release.xcconfig"; sourceTree = "<group>"; };
@@ -665,6 +671,8 @@
 				7BCDE4F0246A433400334FCF /* SettingRentalAndOtherViewController.swift */,
 				7BCDE4F2246A46CE00334FCF /* AddOtherViewController.swift */,
 				7B1B831E246AA3A30061A53A /* AddTenantSuccessViewController.swift */,
+				7BB029BE246E7C4600879F0A /* BindingOrEditAssetViewController.swift */,
+				7BA8BDDD246E852100CDC5C9 /* CitySelectViewController.swift */,
 				7B4B9E302462C0B300F6C18C /* Models */,
 				7BB2FEB5245596D300D835BA /* View */,
 				7B7EB4B22451361E002DC436 /* ButtonContainerView.swift */,
@@ -690,6 +698,7 @@
 				7B92D0CE2456CC7900F195A9 /* DataSelectionButton.swift */,
 				7B92D0D02457C66700F195A9 /* IDCardView.xib */,
 				7B92D0D22457C67800F195A9 /* IDCardView.swift */,
+				7BC62241246E829C00E24366 /* Resources */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -700,6 +709,14 @@
 				7BC0B53A246401F800B38CA8 /* TenantContractCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		7BC62241246E829C00E24366 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7BC62242246E829C00E24366 /* zh_city.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		9C1A4BC1238D09CB00626DB4 /* View */ = {
@@ -1343,6 +1360,7 @@
 				9C3F93DC24558D050040005D /* BillReportCell.xib in Resources */,
 				9C24AC212383C1C6005EBF95 /* Login.storyboard in Resources */,
 				9C52402E238E163D00308AC4 /* UnlockRecordCell.xib in Resources */,
+				7BC62243246E829C00E24366 /* zh_city.json in Resources */,
 				9CBAF5FF245932C800197450 /* BillDescriptionCell.xib in Resources */,
 				9C4D10BD2463F1F1005D0C6F /* ReceivingAccountCell.xib in Resources */,
 				9CABF49E2465075E0001AAE3 /* BillDetailFeesSectionCell.xib in Resources */,
@@ -1476,6 +1494,7 @@
 				9C47DB85239A526E0019EAA0 /* UserDetailController.swift in Sources */,
 				9C24AC272383CB78005EBF95 /* ObjectAssociation.swift in Sources */,
 				9C24AC1B23839D75005EBF95 /* Swizzling+UIViewController.swift in Sources */,
+				7BA8BDDF246E852100CDC5C9 /* CitySelectViewController.swift in Sources */,
 				9C4D10B92463F0E4005D0C6F /* ReceivingAccountController.swift in Sources */,
 				9C323BD02456D10F00214256 /* BillFlowContractDetailController.swift in Sources */,
 				9CB4B34D239DF519001197AB /* DigitalPwdDetailController.swift in Sources */,
@@ -1546,6 +1565,7 @@
 				9C3726E32391164700450757 /* OpenDoorViewModel.swift in Sources */,
 				9C3F93ED2455ACF90040005D /* BillFlowSection.swift in Sources */,
 				9C218F9B23FA764A009600F7 /* CalendarViewController.swift in Sources */,
+				7BB029BF246E7C4600879F0A /* BindingOrEditAssetViewController.swift in Sources */,
 				9CABF495246501A40001AAE3 /* BillDetailSectionOneCell.swift in Sources */,
 				9CFDE211238537A30062522E /* NetworkAPI.swift in Sources */,
 				9C323BCC24567F9700214256 /* BillReportDetailController.swift in Sources */,
