@@ -171,7 +171,8 @@ extension BusinessInterface: TargetType {
              .reportReportItems,
              .costCategory,
              .tenantContractInfo,
-             .checkTerminationTenantContract:
+             .checkTerminationTenantContract,
+             .billInfoDetail:
             return .get
             
         case .deleteAssetHouse,
@@ -277,6 +278,11 @@ extension BusinessInterface: TargetType {
             return "/base_bill_info/\(billId)"
         case .editBillInfoClear:
             return "/base_bill_info/clearing"
+        case .billLandlordList:
+            return "/base_bill_info/landlord"
+        case let .billInfoDetail(billId):
+            return "/base_bill_info/\(billId)"
+            
         }
     }
     
@@ -405,6 +411,13 @@ extension BusinessInterface: TargetType {
             
         case let .editBillInfoClear(parameter):
             return parameter.toJSON()
+            
+        case let .billLandlordList(assetId, billStatus, pageIndex, pageSize):
+            var dict = ["assetId": assetId, "currentPage": pageIndex, "pageSize": pageSize] as [String : Any]
+            if let status = billStatus {
+                dict.updateValue(status, forKey: "billStatus")
+            }
+            return dict
             
         default:
             return nil

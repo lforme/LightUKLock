@@ -52,6 +52,11 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="amount" destination="mab-ws-FDT" id="6VS-9T-csp"/>
+                <outlet property="cotegoryName" destination="NVr-82-Acl" id="eg7-9v-2VH"/>
+                <outlet property="date" destination="Z2m-Rv-74y" id="GNB-sr-8B8"/>
+            </connections>
             <point key="canvasLocation" x="150.72463768115944" y="118.19196428571428"/>
         </view>
     </objects>

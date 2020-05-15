@@ -72,4 +72,6 @@ enum BusinessInterface {
     case billInfoClearing(assetId: String, contractId: String, startDate: String, endDate: String) //获取清算账单明细
     case deleteBillInfo(billId: String) // 删除账单
     case editBillInfoClear(parameter: BillLiquidationModel) // 编辑清算账单明细
+    case billLandlordList(assetId: String, billStatus: Int?, pageIndex: Int, pageSize: Int)
+    case billInfoDetail(billId: String) // 获取账单详情
 }

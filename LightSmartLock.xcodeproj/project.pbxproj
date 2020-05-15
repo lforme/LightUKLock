@@ -68,6 +68,7 @@
 		9C24AC462383EBB1005EBF95 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC452383EBB1005EBF95 /* MyViewController.swift */; };
 		9C24AC482383EBE5005EBF95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC472383EBE5005EBF95 /* HomeViewController.swift */; };
 		9C24AC4A2383F344005EBF95 /* CustomizedTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC492383F344005EBF95 /* CustomizedTabbarItem.swift */; };
+		9C282D6B246E7319008CC165 /* MyBillModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C282D6A246E7319008CC165 /* MyBillModel.swift */; };
 		9C323BCA245676CA00214256 /* BillContractSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C323BC9245676CA00214256 /* BillContractSection.swift */; };
 		9C323BCC24567F9700214256 /* BillReportDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C323BCB24567F9700214256 /* BillReportDetailController.swift */; };
 		9C323BCE2456BEE900214256 /* BookKeepingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C323BCD2456BEE900214256 /* BookKeepingController.swift */; };
@@ -357,6 +358,7 @@
 		9C24AC452383EBB1005EBF95 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		9C24AC472383EBE5005EBF95 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9C24AC492383F344005EBF95 /* CustomizedTabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedTabbarItem.swift; sourceTree = "<group>"; };
+		9C282D6A246E7319008CC165 /* MyBillModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBillModel.swift; sourceTree = "<group>"; };
 		9C323BC9245676CA00214256 /* BillContractSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillContractSection.swift; sourceTree = "<group>"; };
 		9C323BCB24567F9700214256 /* BillReportDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillReportDetailController.swift; sourceTree = "<group>"; };
 		9C323BCD2456BEE900214256 /* BookKeepingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookKeepingController.swift; sourceTree = "<group>"; };
@@ -773,6 +775,7 @@
 				9CB09C752468F5B500F3891D /* AssetFlowModel.swift */,
 				9CB09C77246930E100F3891D /* AssetContractModel.swift */,
 				9C11E6E8246D300E008E0A60 /* BillLiquidationModel.swift */,
+				9C282D6A246E7319008CC165 /* MyBillModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1397,6 +1400,7 @@
 				9C03B0FB239F88860001E849 /* AddFingerFinishController.swift in Sources */,
 				9C3F93EB2455AAB10040005D /* BillFlowReportSection.swift in Sources */,
 				9C24AC3B2383E736005EBF95 /* ViewLoader.swift in Sources */,
+				9C282D6B246E7319008CC165 /* MyBillModel.swift in Sources */,
 				9CFDE21423853C170062522E /* NetworkMetaDb.swift in Sources */,
 				9C54719F239517F000432ACA /* PositionViewModel.swift in Sources */,
 				9C452F0A2394C38800144827 /* HomeSettringController.swift in Sources */,

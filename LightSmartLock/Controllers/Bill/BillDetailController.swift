@@ -8,8 +8,11 @@
 
 import UIKit
 import IGListKit
+import PKHUD
 
 class BillDetailController: UIViewController {
+    
+    var assetId: String?
     
     var collectionView: ListCollectionView = {
         let layout = ListCollectionViewLayout(stickyHeaders: false, scrollDirection: .vertical, topContentInset: 0, stretchToEdge: false)
@@ -27,6 +30,7 @@ class BillDetailController: UIViewController {
         
         title = "账单明细"
         setupUI()
+        fetchData()
     }
     
     func setupUI() {
@@ -74,5 +78,20 @@ extension BillDetailController: ListAdapterDataSource {
     
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return nil
+    }
+}
+
+extension BillDetailController {
+    
+    func fetchData() {
+        guard let id = self.assetId else {
+            HUD.flash(.label("无法获取资产Id"), delay: 2)
+            return
+        }
+        BusinessAPI.requestMapJSON(.billInfoDetail(billId: id), classType: BillInfoDetail.self).subscribe(onNext: { (model) in
+            
+        }, onError: { (error) in
+            PKHUD.sharedHUD.rx.showError(error)
+        }).disposed(by: rx.disposeBag)
     }
 }

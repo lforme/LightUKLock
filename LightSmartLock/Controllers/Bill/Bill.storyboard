@@ -15,15 +15,15 @@
             <objects>
                 <viewController storyboardIdentifier="ReceivingAccountController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HrZ-0C-um2" customClass="ReceivingAccountController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g1y-Su-aL3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pdn-k0-XJX">
-                                <rect key="frame" x="0.0" y="8" width="414" height="740"/>
+                                <rect key="frame" x="0.0" y="148" width="414" height="654"/>
                                 <color key="backgroundColor" name="tableViewBackground"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nzL-B6-BoO">
-                                <rect key="frame" x="0.0" y="748" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="802" width="414" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pN-3E-OJ6">
                                         <rect key="frame" x="16" y="6" width="382" height="48"/>
@@ -378,11 +378,11 @@
             <objects>
                 <viewController storyboardIdentifier="CreateBillController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="58I-fw-1MR" customClass="CreateBillController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="51o-TA-XKI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDw-uH-LnI">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Qt-FA-sWO">
                                         <rect key="frame" x="0.0" y="8" width="414" height="140"/>
@@ -774,38 +774,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f9h-j3-JOy">
-                                <rect key="frame" x="8" y="52" width="398" height="44"/>
+                                <rect key="frame" x="8" y="148" width="398" height="44"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="Ecg-rq-dSy">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="44"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNa-ZH-fad">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNa-ZH-fad">
                                                 <rect key="frame" x="0.0" y="7.5" width="80" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                 <state key="normal" title="全部">
                                                     <color key="titleColor" name="textOpaque78"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="allButtonTap:" destination="zts-7K-aE6" eventType="touchUpInside" id="95E-Zl-txm"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AVB-GU-Iml">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AVB-GU-Iml">
                                                 <rect key="frame" x="106" y="7.5" width="80" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                 <state key="normal" title="代收款">
                                                     <color key="titleColor" name="textOpaque78"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="collectionTap:" destination="zts-7K-aE6" eventType="touchUpInside" id="jGe-ae-8rO"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTS-8M-w7G">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTS-8M-w7G">
                                                 <rect key="frame" x="212" y="7.5" width="80" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                 <state key="normal" title="已收款">
                                                     <color key="titleColor" name="textOpaque78"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="paidTap:" destination="zts-7K-aE6" eventType="touchUpInside" id="Y5k-AP-t5m"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOh-98-1Ia">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOh-98-1Ia">
                                                 <rect key="frame" x="318" y="7.5" width="80" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                                <state key="normal" title="已退租">
+                                                <state key="normal" title="已欠租">
                                                     <color key="titleColor" name="textOpaque78"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="rentTap:" destination="zts-7K-aE6" eventType="touchUpInside" id="CEa-u0-HVs"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -825,7 +837,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Atw-Im-dsv">
-                                <rect key="frame" x="0.0" y="96" width="414" height="704"/>
+                                <rect key="frame" x="0.0" y="192" width="414" height="608"/>
                                 <color key="backgroundColor" name="tableViewBackground"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5g-5X-sKz">
@@ -878,9 +890,9 @@
                     <navigationItem key="navigationItem" id="1JK-Ho-CNh"/>
                     <connections>
                         <outlet property="allButton" destination="wNa-ZH-fad" id="AjQ-T0-pns"/>
-                        <outlet property="leasedButton" destination="hOh-98-1Ia" id="fAx-Z2-PiI"/>
-                        <outlet property="paidButton" destination="JTS-8M-w7G" id="Nas-2z-JPG"/>
-                        <outlet property="pendingButton" destination="AVB-GU-Iml" id="ySw-W7-8Hd"/>
+                        <outlet property="collectionButton" destination="AVB-GU-Iml" id="Jn1-Ur-enG"/>
+                        <outlet property="paidButton" destination="JTS-8M-w7G" id="GTh-Lg-FVy"/>
+                        <outlet property="rentOwedButton" destination="hOh-98-1Ia" id="Uw8-MU-QIK"/>
                         <outlet property="tableView" destination="Atw-Im-dsv" id="TLa-qX-D1p"/>
                     </connections>
                 </viewController>
@@ -897,7 +909,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="6PC-G8-SAt" kind="relationship" relationship="rootViewController" id="fs0-DC-Ssm"/>
+                        <segue destination="zts-7K-aE6" kind="relationship" relationship="rootViewController" id="xuh-k9-SwI"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nF2-pg-hRd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -913,7 +925,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YgP-IT-bGR">
-                                <rect key="frame" x="8" y="148" width="398" height="128"/>
+                                <rect key="frame" x="8" y="52" width="398" height="128"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结余" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvK-AI-OzW">
                                         <rect key="frame" x="16" y="16" width="29" height="17"/>
@@ -1014,7 +1026,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WCD-DM-hcF">
-                                <rect key="frame" x="0.0" y="284" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="188" width="414" height="44"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UiG-pv-rp5">
                                         <rect key="frame" x="16" y="7.5" width="133" height="29"/>
@@ -1082,7 +1094,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XEj-RQ-lQE" customClass="IGListCollectionView">
-                                <rect key="frame" x="0.0" y="336" width="414" height="526"/>
+                                <rect key="frame" x="0.0" y="240" width="414" height="622"/>
                                 <color key="backgroundColor" name="tableViewBackground"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cU9-jw-8CS">
                                     <size key="itemSize" width="50" height="50"/>
@@ -1609,7 +1621,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="BookKeepingController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wr1-kR-prr" customClass="BookKeepingController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="PBm-bZ-oJg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="tableViewBackground"/>
                         <prototypes>
