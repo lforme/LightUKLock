@@ -31,6 +31,8 @@ class TenantContractCell: UITableViewCell {
             
             startDateLabel.text = model?.tenantContractDTO?.startDate
             endDateLabel.text = model?.tenantContractDTO?.endDate
+            
+            empytBillContainer.isHidden = !(model?.billDTO?.billItemDTOList ?? []).isEmpty
                         
         }
     }
@@ -72,6 +74,8 @@ class TenantContractCell: UITableViewCell {
     @IBOutlet weak var tipConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var gradientProgressView: GradientProgressBar!
+    
+    @IBOutlet weak var empytBillContainer: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
