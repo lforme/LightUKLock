@@ -57,6 +57,10 @@ class BookKeepingController: UITableViewController {
     var contractId: String?
     var vm: BookKeepingViewModel?
     
+    deinit {
+        print(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

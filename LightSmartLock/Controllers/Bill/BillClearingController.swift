@@ -9,11 +9,30 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import PKHUD
+import Action
 
 class BillClearingController: UIViewController {
     
     @IBOutlet weak var dynamicContainer: UIStackView!
-    let testCan = BehaviorRelay<Bool>(value: false)
+    @IBOutlet weak var phoneButton: UIButton!
+    @IBOutlet weak var payAmount: UILabel!
+    @IBOutlet weak var nameOfTenantAsset: UILabel!
+    @IBOutlet weak var startDate: UILabel!
+    @IBOutlet weak var endDate: UILabel!
+    @IBOutlet weak var leaseBackButton: UIButton!
+    
+    var assetId: String! = ""
+    var contractId: String! = ""
+    var startTime: String! = ""
+    var endTime: String! = ""
+    
+    var phone: String?
+    var billId: String?
+    var submitArray = [BillLiquidationModel.BindModel]()
+    var originalModel: BillLiquidationModel?
+    
+    private let canEditing = BehaviorRelay<Bool>(value: false)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,16 +40,46 @@ class BillClearingController: UIViewController {
         title = "清算账单"
         setupUI()
         setupNavigationItems()
-        testCode()
+        bind()
+        
     }
     
-    func testCode() {
-        for _ in 0...10 {
-            let v: BillDescriptionCell = ViewLoader.Xib.view()
-            dynamicContainer.addArrangedSubview(v)
-        }
-
-        testCan.subscribe(onNext: {[weak self] (editing) in
+    func bind() {
+        BusinessAPI.requestMapJSON(.billInfoClearing(assetId: self.assetId, contractId: self.contractId, startDate: self.startTime, endDate: self.endTime), classType: BillLiquidationModel.self).subscribe(onNext: {[weak self] (model) in
+            self?.originalModel = model
+            self?.billId = model.billId
+            let money = model.payableAmount ?? 0.00
+            self?.payAmount.text = "￥ \(money.description)"
+            let aseetName = model.assetName ?? "正在加载..."
+            let tenant = model.tenantName ?? "正在加载..."
+            self?.nameOfTenantAsset.text = "\(aseetName)--\(tenant)"
+            self?.phone = model.phone
+            self?.startDate.text = model.clearStartSate ?? "正在加载..."
+            self?.endDate.text = model.clearEndSate ?? "正在加载"
+            
+            if let list = model.billClearingItemDTOList {
+                self?.submitArray = list.map { BillLiquidationModel.BindModel(costCategoryId: $0.costCategoryId ?? "", costInfo: $0.costInfo ?? "", costName: $0.costName ?? "正在加载", amount: $0.amount ?? 0.00) }
+                
+                self?.submitArray.forEach { (bindModel) in
+                    
+                    let itemView: BillDescriptionCell = ViewLoader.Xib.view()
+                    itemView.nameLabel.text = bindModel.costName
+                    itemView.valueLabel.text = String(bindModel.amount.value ?? "")
+                    itemView.textField.rx.text.orEmpty.changed
+                        .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
+                        .distinctUntilChanged().bind(to: bindModel.amount)
+                        .disposed(by: itemView.rx.disposeBag)
+                    self?.dynamicContainer.addArrangedSubview(itemView)
+                }
+            }
+            
+            }, onError: { (error) in
+                PKHUD.sharedHUD.rx.showError(error)
+        }).disposed(by: rx.disposeBag)
+        
+        let shareEditing = canEditing.share()
+        
+        shareEditing.subscribe(onNext: {[weak self] (editing) in
             guard let this = self else{ return }
             
             if editing {
@@ -39,7 +88,6 @@ class BillClearingController: UIViewController {
                     cell?.editingIcon.isHidden = false
                     cell?.textField.isUserInteractionEnabled = true
                 }
-                
             } else {
                 this.dynamicContainer.arrangedSubviews.forEach { (v) in
                     let cell = v as? BillDescriptionCell
@@ -52,6 +100,7 @@ class BillClearingController: UIViewController {
     
     func setupUI() {
         self.view.backgroundColor = ColorClassification.viewBackground.value
+        self.leaseBackButton.addTarget(self, action: #selector(leaseBackButtonTap(_:)), for: .touchUpInside)
     }
     
     func setupNavigationItems() {
@@ -61,8 +110,40 @@ class BillClearingController: UIViewController {
         
     }
     
+    @objc func leaseBackButtonTap(_ btn: UIButton) {
+        if var param = originalModel {
+            let items = submitArray.map { $0.convertTo() }
+            param.billClearingItemDTOList = items
+            BusinessAPI.requestMapBool(.editBillInfoClear(parameter: param)).subscribe(onNext: {[weak self] (success) in
+                if success {
+                    
+                }
+            }, onError: { (error) in
+                PKHUD.sharedHUD.rx.showError(error)
+            }).disposed(by: rx.disposeBag)
+        } else {
+            HUD.flash(.label("清算失败"), delay: 2)
+        }
+    }
+    
     @objc func rightNavigationTap(_ btn: UIButton) {
-        btn.isSelected = !btn.isSelected
-        testCan.accept(!btn.isSelected)
+        
+        self.showActionSheet(title: nil, message: nil, buttonTitles: ["编辑", "删除"], highlightedButtonIndex: nil).subscribe(onNext: {[weak self] (index) in
+            guard let this = self else { return }
+            if index == 0 {
+                btn.isSelected = !btn.isSelected
+                this.canEditing.accept(!btn.isSelected)
+            } else {
+                guard let id = this.billId else {
+                    HUD.flash(.label("没有账单Id,无法删除"), delay: 2)
+                    return
+                }
+                BusinessAPI.requestMapBool(.deleteBillInfo(billId: id)).subscribe(onNext: {[weak self] (success) in
+                    if success {
+                        self?.navigationController?.popViewController(animated: true)
+                    }
+                }).disposed(by: this.rx.disposeBag)
+            }
+        }).disposed(by: rx.disposeBag)
     }
 }

@@ -17,3 +17,35 @@ struct AssetContractModel: HandyJSON {
     var startDate: String?
     var endDate: String?
 }
+
+struct AssetContractDetailModel: HandyJSON {
+    
+    struct TenantInfo: HandyJSON {
+        var id: String?
+        var idCard: String?
+        var idCardFront: String?
+        var idCardReverse: String?
+        var phone: String?
+        var userName: String?
+    }
+    
+    struct FellowInfoList: HandyJSON {
+        var userName: String?
+        var phone: String?
+    }
+    
+    var houseName: String?
+    var tenantName: String?
+    var tenantInfo: TenantInfo?
+    var fellowInfoList: [FellowInfoList]?
+    var startDate: String?
+    var endDate: String?
+    var payMethod: String?
+    var rental: String?
+    var deposit: String?
+    var isIncrease: Bool?
+    var isRemind: Bool?
+    var isSeparate: Bool?
+    var remark: String?
+    var assetId: String?
+}

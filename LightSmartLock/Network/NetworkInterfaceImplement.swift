@@ -169,19 +169,23 @@ extension BusinessInterface: TargetType {
              .reportAsset,
              .tenantContractInfoAssetContract,
              .reportReportItems,
-             .costCategory:
+             .costCategory,
+             .tenantContractInfo,
+             .checkTerminationTenantContract:
             return .get
             
         case .deleteAssetHouse,
              .forceDeleteLock,
              .deleteCard,
              .deleteFinger,
-             .undoTempPassword:
+             .undoTempPassword,
+             .deleteBillInfo:
             return .delete
             
         case .editUser,
              .editCardOrFingerName,
-             .setAlarmFingerprint:
+             .setAlarmFingerprint,
+             .editBillInfoClear:
             return .put
             
         default:
@@ -261,6 +265,18 @@ extension BusinessInterface: TargetType {
             return "/base_turnover_info/"
         case .costCategory:
             return "/cost_category/"
+        case let .tenantContractInfo(contractId):
+            return "/tenant_contract_info/\(contractId)"
+        case let .checkTerminationTenantContract(contractId):
+            return "/tenant_contract_info/termination/check/\(contractId)"
+        case .terminationContract:
+            return "/tenant_contract_info/termination"
+        case .billInfoClearing:
+            return "/base_bill_info/clearing"
+        case let .deleteBillInfo(billId):
+            return "/base_bill_info/\(billId)"
+        case .editBillInfoClear:
+            return "/base_bill_info/clearing"
         }
     }
     
@@ -297,9 +313,6 @@ extension BusinessInterface: TargetType {
             
             return .requestParameters(parameters: requestParameters, encoding: encoding)
         
-//        case .baseTurnoverInfo:
-//            return .requestParameters(parameters: requestParameters, encoding: JsonArrayEncoding.default)
-            
         default:
             if self.method == .get {
                 encoding = URLEncoding.default
@@ -383,6 +396,15 @@ extension BusinessInterface: TargetType {
             let array = itemList.toJSON().compactMap { $0 }
             
             return ["assetId": assetId, "contractId": contractId, "payTime": payTime, "turnoverItemDTOList": array]
+            
+        case let .terminationContract(billId, accountType, clearDate):
+            return ["accountType": accountType, "billId": billId, "clearDate": clearDate]
+            
+        case let .billInfoClearing(assetId, contractId, startDate, endDate):
+            return ["assetId": assetId, "contractId": contractId, "startDate": startDate, "endDate": endDate]
+            
+        case let .editBillInfoClear(parameter):
+            return parameter.toJSON()
             
         default:
             return nil
