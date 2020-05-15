@@ -39,7 +39,14 @@ class LiquidationViewController: UIViewController {
         self.liquidationWayLabel.text = liquidationWays.keys.reversed().first
         
         let confirmAction = Action<(), Bool> {[unowned self] (_) -> Observable<Bool> in
-            return BusinessAPI.requestMapBool(.terminationContract(billId: self.billId, accountType: self.liquidationWays[self.liquidationWayLabel.text!]!, clearDate: self.dateLabel.text!))
+            
+            if self.dateLabel.text.isNilOrEmpty {
+                return .error(AppError.reason("请选择时间"))
+            } else if self.liquidationWayLabel.text.isNilOrEmpty {
+                return .error(AppError.reason("请选择清算方式"))
+            } else {
+                return BusinessAPI.requestMapBool(.terminationContract(billId: self.billId, accountType: self.liquidationWays[self.liquidationWayLabel.text!]!, clearDate: self.dateLabel.text!))
+            }
         }
         
         confirmButton.rx.bind(to: confirmAction, input: ())

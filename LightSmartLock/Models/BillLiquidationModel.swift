@@ -8,10 +8,13 @@
 
 import Foundation
 import HandyJSON
+import RxCocoa
+import RxSwift
 
 struct BillLiquidationModel: HandyJSON {
     
-    struct ListItem: HandyJSON {
+    class ListItem: HandyJSON {
+        required init() {}
         var amount: Double?
         var costCategoryId: String?
         var costInfo: String?
@@ -27,4 +30,27 @@ struct BillLiquidationModel: HandyJSON {
     var tenantName: String?
     var phone: String?
     var billClearingItemDTOList: [ListItem]?
+    
+    class BindModel {
+        let amount = BehaviorRelay<String?>(value: nil)
+        let costCategoryId: String
+        let costInfo: String
+        let costName: String
+        
+        init(costCategoryId: String, costInfo: String, costName: String, amount: Double) {
+            self.amount.accept(String(amount))
+            self.costCategoryId = costCategoryId
+            self.costInfo = costInfo
+            self.costName = costName
+        }
+        
+        func convertTo() -> ListItem {
+            let item = ListItem()
+            item.amount = Double(amount.value ?? "0.00")
+            item.costCategoryId = self.costCategoryId
+            item.costInfo = self.costInfo
+            item.costName = self.costName
+            return item
+        }
+    }
 }

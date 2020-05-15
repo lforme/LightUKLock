@@ -184,7 +184,8 @@ extension BusinessInterface: TargetType {
             
         case .editUser,
              .editCardOrFingerName,
-             .setAlarmFingerprint:
+             .setAlarmFingerprint,
+             .editBillInfoClear:
             return .put
             
         default:
@@ -274,6 +275,8 @@ extension BusinessInterface: TargetType {
             return "/base_bill_info/clearing"
         case let .deleteBillInfo(billId):
             return "/base_bill_info/\(billId)"
+        case .editBillInfoClear:
+            return "/base_bill_info/clearing"
         }
     }
     
@@ -399,6 +402,9 @@ extension BusinessInterface: TargetType {
             
         case let .billInfoClearing(assetId, contractId, startDate, endDate):
             return ["assetId": assetId, "contractId": contractId, "startDate": startDate, "endDate": endDate]
+            
+        case let .editBillInfoClear(parameter):
+            return parameter.toJSON()
             
         default:
             return nil

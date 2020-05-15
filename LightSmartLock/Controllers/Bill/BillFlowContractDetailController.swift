@@ -112,7 +112,7 @@ class BillFlowContractDetailController: UITableViewController {
         
         leaseBackAction.elements.subscribe(onNext: {[weak self] (pass) in
             guard let this = self else { return }
-            if !pass {
+            if pass {
                 let liquidationVC: LiquidationViewController = ViewLoader.Storyboard.controller(from: "Bill")
                 this.navigationController?.pushViewController(liquidationVC, animated: true)
             } else {
