@@ -48,7 +48,7 @@ class OtherFeeCell: UITableViewCell {
     
 }
 
-class SettingRentalAndOtherViewController: UIViewController {
+class SettingRentalAndOtherViewController: AssetBaseViewController {
     
     
     @IBOutlet weak var seperateSW: UISwitch!

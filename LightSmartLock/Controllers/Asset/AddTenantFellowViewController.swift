@@ -23,7 +23,7 @@ class TenantMember: HandyJSON {
     }
 }
 
-class AddTenantFellowViewController: UIViewController {
+class AddTenantFellowViewController: AssetBaseViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     

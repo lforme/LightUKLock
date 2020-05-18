@@ -37,7 +37,7 @@ class ContractCostSettingDTOList: HandyJSON {
     }
 }
 
-class AddOtherViewController: UIViewController {
+class AddOtherViewController: AssetBaseViewController {
     
     let other = ContractCostSettingDTOList()
     

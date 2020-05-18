@@ -67,7 +67,7 @@ class DateRangeButton: UIButton {
     }
 }
 
-class AddTenantViewController: UIViewController {
+class AddTenantViewController: AssetBaseViewController {
     
     let tenantContractInfo = TenantContractInfo()
     

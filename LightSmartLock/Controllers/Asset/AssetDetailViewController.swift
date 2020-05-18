@@ -15,7 +15,7 @@ extension Notification.Name {
     static let gotoAssetDetail = Notification.Name("gotoAssetDetail")
 }
 
-class AssetDetailViewController: UIViewController {
+class AssetDetailViewController: AssetBaseViewController {
     
     lazy var deleteBtn: UIButton = {
         let btn = UIButton()

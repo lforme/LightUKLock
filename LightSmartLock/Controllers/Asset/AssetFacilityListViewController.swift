@@ -58,7 +58,7 @@ class AssetFacilityListCell: UITableViewCell {
 }
 
 
-class AssetFacilityListViewController: UIViewController {
+class AssetFacilityListViewController: AssetBaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     

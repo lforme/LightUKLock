@@ -122,7 +122,7 @@ class LadderFacilityQueryVO: HandyJSON {
 }
 
 
-class AddAssetFacilityViewController: UIViewController {
+class AddAssetFacilityViewController: AssetBaseViewController {
     
     @IBOutlet weak var constansCollectionView: UICollectionView!
     

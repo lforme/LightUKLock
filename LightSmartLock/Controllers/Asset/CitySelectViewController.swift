@@ -68,7 +68,7 @@ struct CityDTO: HandyJSON {
     var regeocode: Regeocode?
 }
 
-class CitySelectViewController: UIViewController {
+class CitySelectViewController: AssetBaseViewController {
     
     
     @IBOutlet weak var searchBar: UISearchBar!

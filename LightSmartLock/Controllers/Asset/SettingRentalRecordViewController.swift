@@ -22,7 +22,7 @@ class ContractRentalRecord: HandyJSON {
     }
 }
 
-class SettingRentalRecordViewController: UIViewController {
+class SettingRentalRecordViewController: AssetBaseViewController {
     
     @IBOutlet weak var rentalLabel: UILabel!
     

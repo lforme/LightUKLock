@@ -30,7 +30,7 @@ class AddUtilitiesRecordModel: HandyJSON {
     }
 }
 
-class AddUtilitiesRecordViewController: UIViewController {
+class AddUtilitiesRecordViewController: AssetBaseViewController {
     
     @IBOutlet weak var typeLabel: UILabel!
     

@@ -16,7 +16,7 @@ class TenantSuccessInfo {
     var rental: String?
 }
 
-class AddTenantSuccessViewController: UIViewController {
+class AddTenantSuccessViewController: AssetBaseViewController {
     
     var successInfo: TenantSuccessInfo!
     

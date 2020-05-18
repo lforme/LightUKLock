@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import PKHUD
 
-class BindingOrEditAssetViewController: UIViewController {
+class BindingOrEditAssetViewController: AssetBaseViewController {
     
     var asset = PositionModel()
     

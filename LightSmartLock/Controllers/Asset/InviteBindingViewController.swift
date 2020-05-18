@@ -9,7 +9,7 @@
 import UIKit
 import EFQRCode
 
-class InviteBindingViewController: UIViewController {
+class InviteBindingViewController: AssetBaseViewController {
     
     
     @IBOutlet weak var QRCodeImageView: UIImageView!

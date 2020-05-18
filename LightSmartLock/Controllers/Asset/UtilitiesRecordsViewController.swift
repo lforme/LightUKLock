@@ -79,7 +79,7 @@ class UtilitiesButton: UIButton {
 }
 
 
-class UtilitiesRecordsViewController: UIViewController {
+class UtilitiesRecordsViewController: AssetBaseViewController {
     
     
     @IBOutlet weak var waterButton: UtilitiesButton!
