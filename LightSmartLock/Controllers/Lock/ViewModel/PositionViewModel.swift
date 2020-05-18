@@ -61,7 +61,7 @@ final class PositionViewModel {
         
         obArea.subscribe(onNext: {[weak self] (area) in
             var param = self?._obPositionModel.value
-            param?.area = Int(area ?? "")
+            param?.area = Double(area ?? "")
             self?._obPositionModel.accept(param)
         }).disposed(by: disposeBag)
         

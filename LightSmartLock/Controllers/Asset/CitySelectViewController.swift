@@ -11,6 +11,8 @@ import RxSwift
 import RxCocoa
 import HandyJSON
 import Reusable
+import CoreLocation
+import Moya
 
 struct CityModel: HandyJSON {
     var code: Int!
@@ -39,12 +41,52 @@ class HotCityCell: UICollectionViewCell, NibReusable {
     }
 }
 
+struct CityDTO: HandyJSON {
+    var status: String?
+    var info: String?
+    struct Regeocode: HandyJSON {
+        struct AddressComponent: HandyJSON {
+            var province: String?
+            var city: String?
+            var citycode: String?
+            var adcode: String?
+            var district: String?
+            struct StreetNumber: HandyJSON {
+                var distance: String?
+                var number: String?
+                var street: String?
+                var location: String?
+                var direction: String?
+            }
+            var streetNumber: StreetNumber?
+            var towncode: String?
+            var country: String?
+            var township: String?
+        }
+        var addressComponent: AddressComponent?
+    }
+    var regeocode: Regeocode?
+}
+
 class CitySelectViewController: UIViewController {
+    
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    @IBOutlet weak var iconImageView: UIImageView!
+    
+    @IBOutlet weak var currentCityBtn: UIButton!
+    
+    @IBOutlet weak var relocationBtn: UIButton!
     
     @IBOutlet weak var hotCityCollectionView: UICollectionView!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
+    
+    private let locationServer = GeolocationService()
+    private let service: RxMoyaProvider<AMapAPI> = RxMoyaProvider(endpointClosure: MoyaProvider.defaultEndpointMapping)
+    
     
     let hotCityRelay = BehaviorRelay<[CityModel]>.init(value: [])
     
@@ -52,11 +94,32 @@ class CitySelectViewController: UIViewController {
     var dataSrouce: [[CityModel]] = []
     var didSelectCitt: ((CityModel)->Void)?
     
+    var selectedCity: CityModel? {
+        didSet {
+            if let model = selectedCity {
+                iconImageView.image = #imageLiteral(resourceName: "location")
+                currentCityBtn.setTitle(model.name, for: .normal)
+                relocationBtn.isHidden = true
+            } else {
+                iconImageView.image = #imageLiteral(resourceName: "no_location")
+                currentCityBtn.setTitle("无法定位到当前位置", for: .normal)
+                relocationBtn.isHidden = false
+            }
+        }
+    }
+    
     static let hotCities = [
         "北京","上海","广州","深圳",
         "成都","重庆","杭州","武汉",
         "南京","西安","长沙","厦门"
     ]
+    
+    
+    @IBAction func selectLocationCity(_ sender: UIButton) {
+        if let city = selectedCity {
+            select(city: city)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +138,34 @@ class CitySelectViewController: UIViewController {
             .disposed(by: rx.disposeBag)
         
         loadCityJsonFile()
+        
+        relocationBtn.rx.tap
+            .startWith(())
+            .flatMapLatest { [unowned self]_ -> Observable<CLLocationCoordinate2D>  in
+                return self.locationServer.location.asObservable().take(1)
+        }
+        .flatMap { [unowned self] location in
+            return self.service.requestMapAny(.geoCode(location: location))
+        }
+        .map {  (data) -> CityModel? in
+            guard let json = data as? [String: Any],
+                let model = CityDTO.deserialize(from: json)
+                else { return nil }
+            
+            var city = CityModel()
+            city.code = model.regeocode?.addressComponent?.citycode?.toInt()
+            city.lat = model.regeocode?.addressComponent?.streetNumber?.location?.components(separatedBy: ",").last?.toInt()
+            city.lng = model.regeocode?.addressComponent?.streetNumber?.location?.components(separatedBy: ",").first?.toInt()
+            city.name = model.regeocode?.addressComponent?.city
+            city.isSelected = true
+            return city
+        }
+        .startWith(nil)
+        .subscribe(onNext: { [weak self](cityModel) in
+            self?.selectedCity = cityModel
+        })
+            .disposed(by: rx.disposeBag)
+        
     }
     
     func loadCityJsonFile() {
@@ -147,5 +238,7 @@ extension CitySelectViewController: UITableViewDelegate, UITableViewDataSource {
         didSelectCitt?(city)
         navigationController?.popViewController(animated: true)
     }
+    
+    
     
 }

@@ -8,6 +8,8 @@
 
 import UIKit
 import Popover
+import RxCocoa
+import RxSwift
 
 extension Notification.Name {
     static let gotoAssetDetail = Notification.Name("gotoAssetDetail")
@@ -64,48 +66,16 @@ class AssetDetailViewController: UIViewController {
     
     @IBOutlet weak var expenseCountLabel: UILabel!
     
-    
     @IBOutlet weak var tableView: UITableView!
+    
+    let currentAsset = BehaviorRelay<PositionModel?>.init(value: nil)
     
     var assetId: String!
     
+    var disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let getAssetHouseDetail = BusinessAPI.requestMapJSON(.getAssetHouseDetail(id: assetId), classType: PositionModel.self)
-        
-        getAssetHouseDetail.subscribe(onNext: { [weak self](detail) in
-            
-            self?.buildingNameLabel.text = detail.buildingName
-            self?.buildingAdressLabel.text = detail.address
-            self?.houseStructLabel.text = "\(detail.houseStruct ?? "") | \(detail.area?.description ?? "")㎡"
-        })
-            .disposed(by: rx.disposeBag)
-        
-        
-        
-        let statistics = BusinessAPI2.requestMapJSON(.getStatistics(assetId: assetId), classType: TurnoverStatisticsDTO.self)
-        
-        statistics.subscribe(onNext: { [weak self](model) in
-            self?.balanceLabel.text = model.balance?.twoPoint
-            self?.incomeAmountLabel.text = model.incomeAmount?.yuanSymbol
-            self?.incomeCountLabel.text = "共\(model.incomeCount?.description ?? "")笔"
-            self?.expenseAmountLabel.text = model.expenseAmount?.yuanSymbol
-            self?.expenseCountLabel.text = "共\(model.expenseCount?.description ?? "")笔"
-            
-        })
-            .disposed(by: rx.disposeBag)
-        
-        
-        let items = BusinessAPI2.requestMapJSONArray(.getAssetContracts(assetId: assetId), classType: TenantContractAndBillsDTO.self)
-        
-        items
-            .bind(to: tableView.rx.items(cellIdentifier: "TenantContractCell", cellType: TenantContractCell.self)) { (row, element, cell) in
-                cell.model = element
-        }
-        .disposed(by: rx.disposeBag)
-        
-        
         
         moreButton.rx
             .tap
@@ -147,6 +117,46 @@ class AssetDetailViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        disposeBag = DisposeBag()
+        
+        let getAssetHouseDetail = BusinessAPI.requestMapJSON(.getAssetHouseDetail(id: assetId), classType: PositionModel.self)
+        
+        getAssetHouseDetail.subscribe(onNext: { [weak self](detail) in
+            self?.currentAsset.accept(detail)
+            self?.buildingNameLabel.text = detail.buildingName
+            self?.buildingAdressLabel.text = detail.address
+            self?.houseStructLabel.text = "\(detail.houseStruct ?? "") | \(detail.area?.description ?? "")㎡"
+        })
+            .disposed(by: disposeBag)
+        
+        
+        
+        let statistics = BusinessAPI2.requestMapJSON(.getStatistics(assetId: assetId), classType: TurnoverStatisticsDTO.self)
+        
+        statistics.subscribe(onNext: { [weak self](model) in
+            self?.balanceLabel.text = model.balance?.twoPoint
+            self?.incomeAmountLabel.text = model.incomeAmount?.yuanSymbol
+            self?.incomeCountLabel.text = "共\(model.incomeCount?.description ?? "")笔"
+            self?.expenseAmountLabel.text = model.expenseAmount?.yuanSymbol
+            self?.expenseCountLabel.text = "共\(model.expenseCount?.description ?? "")笔"
+            
+        })
+            .disposed(by: disposeBag)
+        
+        
+        let items = BusinessAPI2.requestMapJSONArray(.getAssetContracts(assetId: assetId), classType: TenantContractAndBillsDTO.self)
+        
+        items
+            .bind(to: tableView.rx.items(cellIdentifier: "TenantContractCell", cellType: TenantContractCell.self)) { (row, element, cell) in
+                cell.model = element
+        }
+        .disposed(by: disposeBag)
+        
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? AssetFacilityListViewController {
@@ -156,6 +166,10 @@ class AssetDetailViewController: UIViewController {
         } else if let vc = segue.destination as? AddTenantViewController {
             vc.assetId = assetId
             vc.buildingName = buildingNameLabel.text
+        } else if let vc = segue.destination as? BindingOrEditAssetViewController,
+            let asset = currentAsset.value {
+            vc.asset = asset
         }
     }
 }
+

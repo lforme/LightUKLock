@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Base Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="nI0-eM-ZlT">
             <objects>
-                <navigationController id="hMv-sZ-Xmm" customClass="BaseNavigationController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="hMv-sZ-Xmm" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QtD-nQ-GbG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -91,11 +91,11 @@
                                                             </button>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="105" translatesAutoresizingMaskIntoConstraints="NO" id="Sy7-x3-amA">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sy7-x3-amA">
                                                         <rect key="frame" x="0.0" y="32" width="382" height="17"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8b-2c-VIC">
-                                                                <rect key="frame" x="0.0" y="0.0" width="181.5" height="17"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="286.5" height="17"/>
                                                                 <string key="text">13栋-1单元-3201
 </string>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2031,7 +2031,7 @@
                                                                         <rect key="frame" x="35.5" y="13.5" width="346.5" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
-                                                                        <state key="normal" title="成都" image="arrow">
+                                                                        <state key="normal" title="请选择" image="arrow">
                                                                             <color key="titleColor" name="textPrimary"/>
                                                                         </state>
                                                                         <connections>
@@ -2077,9 +2077,12 @@
                                                                                 <rect key="frame" x="68.5" y="13.5" width="313.5" height="17"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
-                                                                                <state key="normal" title="保利中心二期" image="arrow">
+                                                                                <state key="normal" title="请选择" image="arrow">
                                                                                     <color key="titleColor" name="textPrimary"/>
                                                                                 </state>
+                                                                                <connections>
+                                                                                    <action selector="searchPlotAction:" destination="bbH-fm-LQe" eventType="touchUpInside" id="dXH-aU-nQ1"/>
+                                                                                </connections>
                                                                             </button>
                                                                         </subviews>
                                                                         <constraints>
@@ -2104,7 +2107,7 @@
                                                                                 <color key="textColor" name="textPrimary"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1栋1单元" placeholder="填写上期读数" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mb7-d7-pEu">
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请填写单元号" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mb7-d7-pEu">
                                                                                 <rect key="frame" x="232" y="13" width="150" height="18.5"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="150" id="NIh-yF-4j9"/>
@@ -2133,13 +2136,13 @@
                                                                                 <color key="textColor" name="textPrimary"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12" placeholder="填写本期读数" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wjr-Ry-Vdb">
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请填写楼层" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wjr-Ry-Vdb">
                                                                                 <rect key="frame" x="213.5" y="13" width="150" height="18.5"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="150" id="juS-gv-cUY"/>
                                                                                 </constraints>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                             </textField>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="层" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCz-dk-iBO">
                                                                                 <rect key="frame" x="367.5" y="13.5" width="14.5" height="17"/>
@@ -2174,7 +2177,7 @@
                                                                                 <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1201" placeholder="填写本期读数" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EU9-vu-iDK">
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请填写房号" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EU9-vu-iDK">
                                                                                 <rect key="frame" x="232" y="13" width="150" height="18.5"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="150" id="S41-xw-lei"/>
@@ -2216,10 +2219,10 @@
                                                                                 <color key="textColor" name="textPrimary"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="138.09" placeholder="请输入机构名称" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R7D-XV-S87">
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入面积" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R7D-XV-S87">
                                                                                 <rect key="frame" x="84" y="13" width="279.5" height="18.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                                             </textField>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="㎡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTq-Qj-Xsg">
                                                                                 <rect key="frame" x="367.5" y="13.5" width="14.5" height="17"/>
@@ -2255,9 +2258,12 @@
                                                                                 <rect key="frame" x="80" y="13.5" width="302" height="17"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
-                                                                                <state key="normal" title="4室2厅2卫" image="arrow">
+                                                                                <state key="normal" title="请选择" image="arrow">
                                                                                     <color key="titleColor" name="textPrimary"/>
                                                                                 </state>
+                                                                                <connections>
+                                                                                    <action selector="selectHouseStructAction:" destination="bbH-fm-LQe" eventType="touchUpInside" id="jVz-42-0a6"/>
+                                                                                </connections>
                                                                             </button>
                                                                         </subviews>
                                                                         <constraints>
@@ -2347,6 +2353,16 @@
                         <viewLayoutGuide key="safeArea" id="scm-Hb-RMe"/>
                     </view>
                     <navigationItem key="navigationItem" id="TEJ-TG-cmc"/>
+                    <connections>
+                        <outlet property="areaTF" destination="R7D-XV-S87" id="Gn4-Lp-zRp"/>
+                        <outlet property="buildingNameBtn" destination="Npv-D5-aWT" id="rnS-6i-lZA"/>
+                        <outlet property="buildingNoTF" destination="mb7-d7-pEu" id="zfA-Vx-PMJ"/>
+                        <outlet property="cityBtn" destination="mo0-lT-Bcf" id="jtr-97-eWL"/>
+                        <outlet property="floorTF" destination="Wjr-Ry-Vdb" id="eEH-KC-S6B"/>
+                        <outlet property="houseNumTF" destination="EU9-vu-iDK" id="29c-1C-uSJ"/>
+                        <outlet property="houseStructBtn" destination="gx5-b1-8fq" id="nwW-JO-BIr"/>
+                        <outlet property="saveBtn" destination="XGQ-DX-7PO" id="Wms-df-65e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zeX-ym-RhS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2361,10 +2377,53 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Zfd-fC-4mi">
-                                <rect key="frame" x="0.0" y="88" width="414" height="216"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="316"/>
                                 <subviews>
+                                    <searchBar contentMode="redraw" placeholder="请输入城市名称" translatesAutoresizingMaskIntoConstraints="NO" id="GTw-P2-e7W">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ga-c0-THE">
+                                        <rect key="frame" x="0.0" y="56" width="414" height="44"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="n0C-N4-F6i">
+                                                <rect key="frame" x="16" y="0.0" width="382" height="44"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="MpB-AU-G4K">
+                                                        <rect key="frame" x="0.0" y="14" width="16" height="16"/>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGC-yj-3sH">
+                                                        <rect key="frame" x="24" y="7.5" width="288" height="29"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                        <state key="normal" title="定位中...">
+                                                            <color key="titleColor" name="textPrimary"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="selectLocationCity:" destination="Nl4-a3-Xz0" eventType="touchUpInside" id="Vqi-jd-7qi"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Td-2j-iTz">
+                                                        <rect key="frame" x="320" y="7" width="62" height="30"/>
+                                                        <state key="normal" title="重新定位">
+                                                            <color key="titleColor" name="primary"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="y8j-5t-0fK"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="n0C-N4-F6i" firstAttribute="top" secondItem="6ga-c0-THE" secondAttribute="top" id="55H-bY-rI3"/>
+                                            <constraint firstItem="n0C-N4-F6i" firstAttribute="leading" secondItem="6ga-c0-THE" secondAttribute="leading" constant="16" id="eYd-Je-7y6"/>
+                                            <constraint firstAttribute="bottom" secondItem="n0C-N4-F6i" secondAttribute="bottom" id="veK-as-oUj"/>
+                                            <constraint firstAttribute="trailing" secondItem="n0C-N4-F6i" secondAttribute="trailing" constant="16" id="wbt-6Y-MYx"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGl-J4-d7X">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="100" width="414" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="热门城市" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZlN-qs-WqS">
                                                 <rect key="frame" x="16" y="0.0" width="398" height="44"/>
@@ -2385,7 +2444,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kp-7G-SrC">
-                                        <rect key="frame" x="0.0" y="44" width="414" height="172"/>
+                                        <rect key="frame" x="0.0" y="144" width="414" height="172"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sJc-gt-X7c">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="172"/>
@@ -2440,7 +2499,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hUj-NQ-h2M">
-                                <rect key="frame" x="0.0" y="304" width="414" height="558"/>
+                                <rect key="frame" x="0.0" y="404" width="414" height="458"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicCell" textLabel="tKA-ai-fuG" style="IBUITableViewCellStyleDefault" id="mGI-n9-9td">
@@ -2486,8 +2545,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="BaA-ln-7vu"/>
                     <connections>
+                        <outlet property="currentCityBtn" destination="aGC-yj-3sH" id="elH-h4-IBU"/>
                         <outlet property="hotCityCollectionView" destination="sJc-gt-X7c" id="ZB2-sh-Fg3"/>
+                        <outlet property="iconImageView" destination="MpB-AU-G4K" id="WX7-40-ztw"/>
                         <outlet property="indicatorView" destination="T1N-oY-ofR" id="zkw-UN-Loq"/>
+                        <outlet property="relocationBtn" destination="9Td-2j-iTz" id="5oh-nX-NYa"/>
+                        <outlet property="searchBar" destination="GTw-P2-e7W" id="DOu-ec-MAD"/>
                         <outlet property="tableView" destination="hUj-NQ-h2M" id="1e8-EQ-ndV"/>
                     </connections>
                 </viewController>
@@ -2652,6 +2715,7 @@
         <image name="config_add" width="24" height="24"/>
         <image name="config_remove" width="24" height="24"/>
         <image name="empty_bill" width="24" height="24"/>
+        <image name="location" width="16" height="16"/>
         <image name="more" width="18" height="4"/>
         <image name="rent" width="48" height="48"/>
         <image name="tip" width="64" height="21"/>

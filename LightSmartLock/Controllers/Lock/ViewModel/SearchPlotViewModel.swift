@@ -41,7 +41,7 @@ final class SearchPlotViewModel {
     init() {
         
         let shareText = searchText.share(replay: 1, scope: .forever)
-        let shareLocation = locationServer.location.asObservable().share(replay: 1, scope: .forever)
+        let shareLocation = locationServer.location.asObservable().share(replay: 1, scope: .forever).take(1)
         
         shareText.filter { $0?.isEmpty ?? false }.map { _ in Void() }.subscribe(onNext: {[weak self] (_) in
             self?.obSearchItems.onNext([])

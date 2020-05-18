@@ -13,10 +13,12 @@ struct PositionModel: HandyJSON {
     
     // 新字段
     var address: String?
-    var area: Int?
+    var area: Double?
     var buildingId: String?
     var buildingName: String?
     var buildingNo: String?
+    var cityId: String?
+    var cityName: String?
     var floor: Int?
     var houseNum: String?
     var houseStruct: String?

@@ -18,6 +18,7 @@ extension AMapAPI: TargetType {
     var path: String {
         switch self {
         case .searchByKeyWords: return "/place/around"
+        case .geoCode: return "/geocode/regeo"
         }
     }
     
@@ -46,6 +47,11 @@ extension AMapAPI: TargetType {
             param.updateValue("\(currentLoction.0),\(currentLoction.1)", forKey: "location")
             param.updateValue(index, forKey: "page")
             return param
+            
+        case .geoCode(location: let loc):
+            return ["location": "\(loc.longitude),\(loc.latitude)",
+                "key": PlatformKey.gouda
+            ]
         }
     }
 }

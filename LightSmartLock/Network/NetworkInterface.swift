@@ -9,10 +9,12 @@
 import Foundation
 import UIKit
 import HandyJSON
+import CoreLocation
 
 // 高德地图 Web API
 enum AMapAPI {
     case searchByKeyWords(_ keyWords: String, currentLoction:(Double, Double), index: Int) // 搜索周边
+    case geoCode(location: CLLocationCoordinate2D)
 }
 
 
