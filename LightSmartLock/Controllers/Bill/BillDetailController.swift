@@ -12,7 +12,7 @@ import PKHUD
 
 class BillDetailController: UIViewController {
     
-    var assetId: String?
+    var billId: String?
     
     var collectionView: ListCollectionView = {
         let layout = ListCollectionViewLayout(stickyHeaders: false, scrollDirection: .vertical, topContentInset: 0, stretchToEdge: false)
@@ -24,6 +24,8 @@ class BillDetailController: UIViewController {
     lazy var adapter: ListAdapter = {
         return ListAdapter(updater: ListAdapterUpdater(), viewController: self)
     }()
+    
+    var dataSource = [ListDiffable]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +50,7 @@ class BillDetailController: UIViewController {
 extension BillDetailController: ListAdapterDataSource {
     
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return [BillDetailSectionOne.Data(), BillDetailFeesSection.Data(), BillDetailTenantSection.Data(), BillDetailPaymentSection.Data(), BillDetailButtonSection.Data()]
+        return self.dataSource
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
@@ -84,12 +86,28 @@ extension BillDetailController: ListAdapterDataSource {
 extension BillDetailController {
     
     func fetchData() {
-        guard let id = self.assetId else {
+        guard let id = self.billId else {
             HUD.flash(.label("无法获取资产Id"), delay: 2)
             return
         }
-        BusinessAPI.requestMapJSON(.billInfoDetail(billId: id), classType: BillInfoDetail.self).subscribe(onNext: { (model) in
+        BusinessAPI.requestMapJSON(.billInfoDetail(billId: id), classType: BillInfoDetail.self).subscribe(onNext: {[weak self] (model) in
             
+            let A = BillDetailSectionOne.Data(amountPayable: model.amountPaid ?? 0.00, amountPaid: model.amountPaid ?? 0.00, assetName: model.assetName ?? "正在加载...", billNumber: model.billNumber ?? "正在加载")
+            self?.dataSource.append(A)
+            
+            let B = BillDetailFeesSection.Data(totalMoney: model.amountPayable ?? 0.00, list: model.billItemDTOList ?? [])
+            self?.dataSource.append(B)
+            
+            let C = BillDetailTenantSection.Data(tenantName: model.tenantName ?? "正在加载...", gender: model.gender ?? "正在加载...", age: model.age ?? 0, start: model.contractStartDate ?? "正在加载...", end: model.contractEndDate ?? "正在加载...", phone: "1589827362")
+            self?.dataSource.append(C)
+            
+            let E = BillDetailPaymentSection.Data(list: model.billPaymentLogDTOList ?? [])
+            self?.dataSource.append(E)
+            
+            let F = BillDetailButtonSection.Data(status: model.billStatus ?? 0, billId: self?.billId ?? "", totalMoney: model.amountPayable ?? 0.00)
+            self?.dataSource.append(F)
+            
+            self?.adapter.reloadData(completion: nil)
         }, onError: { (error) in
             PKHUD.sharedHUD.rx.showError(error)
         }).disposed(by: rx.disposeBag)

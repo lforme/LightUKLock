@@ -11,7 +11,7 @@ import IGListKit
 
 final class BillDetailButtonSection: ListSectionController {
     
-    private var data: Data?
+    private var data: Data!
     
     override init() {
         super.init()
@@ -31,22 +31,43 @@ final class BillDetailButtonSection: ListSectionController {
             fatalError()
         }
         
+        if data.billStatus == 0 {
+            cell.confirmButton.isHidden = true
+            cell.rushRentButton.isHidden = false
+        } else if data.billStatus == 999 {
+            cell.rushRentButton.isHidden = true
+            cell.confirmButton.isHidden = false
+        }
+        
+        cell.confirmButton.rx.tap.subscribe(onNext: {[weak self] (_) in
+            guard let this = self else { return }
+            let confirmVC: ConfirmArrivalController = ViewLoader.Storyboard.controller(from: "Bill")
+            confirmVC.totalMoney = this.data.totalMoney
+            confirmVC.billId = this.data.billId
+            this.viewController?.navigationController?.pushViewController(confirmVC, animated: true)
+        }).disposed(by: cell.disposeBag)
+        
         return cell
     }
     
     override func didUpdate(to object: Any) {
         data = object as? Data
     }
-    
-    override func didSelectItem(at index: Int) {
-        let confirmVC: ConfirmArrivalController = ViewLoader.Storyboard.controller(from: "Bill")
-        self.viewController?.navigationController?.pushViewController(confirmVC, animated: true)
-    }
 }
 
 extension BillDetailButtonSection {
     
     final class Data: NSObject, ListDiffable {
+        
+        let billStatus: Int
+        let billId: String
+        let totalMoney: Double
+        
+        init(status: Int, billId: String, totalMoney: Double) {
+            self.billStatus = status
+            self.billId = billId
+            self.totalMoney = totalMoney
+        }
         
         func diffIdentifier() -> NSObjectProtocol {
             return self

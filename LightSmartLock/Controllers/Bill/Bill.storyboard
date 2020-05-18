@@ -65,6 +65,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="CML-eH-eLH"/>
                     <connections>
+                        <outlet property="addAccountButton" destination="3pN-3E-OJ6" id="CpO-PA-Fs0"/>
                         <outlet property="tableView" destination="Pdn-k0-XJX" id="u9g-g0-89u"/>
                     </connections>
                 </viewController>
@@ -1288,6 +1289,11 @@
                             <outlet property="delegate" destination="CfM-VG-MLQ" id="kRf-hc-AVL"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="accountWayLabel" destination="ntt-Mr-bqt" id="R8Q-Kj-kRV"/>
+                        <outlet property="dateLabel" destination="4GB-aY-WUx" id="ogO-jy-btI"/>
+                        <outlet property="moneyLabel" destination="sl5-Ll-9vJ" id="FTb-KB-oDZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="smq-B2-65W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1370,7 +1376,7 @@
                                                     <rect key="frame" x="102.5" y="13" width="295.5" height="18.5"/>
                                                     <color key="textColor" name="textPrimary"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                                             <color key="value" name="textPlaceholder"/>
@@ -1485,7 +1491,7 @@
                                                     <color key="textColor" name="textPrimary"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RWM-iv-PsR">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RWM-iv-PsR">
                                                     <rect key="frame" x="349" y="6.5" width="51" height="31"/>
                                                     <color key="onTintColor" name="primary"/>
                                                 </switch>
@@ -1543,6 +1549,14 @@
                             <outlet property="delegate" destination="oKb-bj-j3t" id="txT-rh-KDX"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="accountField" destination="GNd-7S-fJC" id="FV8-cC-io1"/>
+                        <outlet property="bankNameField" destination="kqf-0z-vqR" id="VGY-Ne-upI"/>
+                        <outlet property="bankNumberField" destination="IZC-as-jzj" id="xCl-BO-Z6w"/>
+                        <outlet property="defaultSwitch" destination="RWM-iv-PsR" id="lC7-ZA-EGx"/>
+                        <outlet property="saveButton" destination="ckF-oe-fFB" id="mcu-D3-BDb"/>
+                        <outlet property="subranchField" destination="OCt-gy-gf8" id="2le-n4-m1j"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8WU-hC-u9x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,6 +8,8 @@
 
 import UIKit
 import SnapKit
+import RxCocoa
+import RxSwift
 
 class MyBillCell: UITableViewCell {
 
@@ -18,6 +20,12 @@ class MyBillCell: UITableViewCell {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var rushRentButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
+    
+    private(set) var disposeBag = DisposeBag()
+    
+    override func prepareForReuse() {
+        disposeBag = DisposeBag()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,15 +54,15 @@ class MyBillCell: UITableViewCell {
             }
         }
         
-        if let status = data.billStatus {
-            if status == 0 {
-                confirmButton.isHidden = true
-                rushRentButton.isHidden = false
-            } else if status == 999 {
-                rushRentButton.isHidden = true
-                confirmButton.isHidden = false
-            }
-        }
+//        if let status = data.billStatus {
+//            if status == 0 {
+//                confirmButton.isHidden = true
+//                rushRentButton.isHidden = false
+//            } else if status == 999 {
+//                rushRentButton.isHidden = true
+//                confirmButton.isHidden = false
+//            }
+//        }
         self.layoutIfNeeded()
     }
 }

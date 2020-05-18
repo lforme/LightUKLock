@@ -100,6 +100,11 @@
                 <constraint firstItem="MJA-Hp-36R" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rfo-Ai-AxC"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="confirmButton" destination="2Mv-Zx-423" id="4Oj-Po-6Sd"/>
+                <outlet property="rushRentButton" destination="yON-ax-LoV" id="jbn-N3-hJH"/>
+                <outlet property="sendButton" destination="SH7-A2-XeH" id="AdI-1S-D50"/>
+            </connections>
             <point key="canvasLocation" x="133" y="139"/>
         </collectionViewCell>
     </objects>

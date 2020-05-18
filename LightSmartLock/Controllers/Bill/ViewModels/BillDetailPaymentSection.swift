@@ -11,7 +11,7 @@ import IGListKit
 
 final class BillDetailPaymentSection: ListSectionController {
     
-    private var data: Data?
+    private var data: Data!
     
     override init() {
         super.init()
@@ -20,7 +20,7 @@ final class BillDetailPaymentSection: ListSectionController {
     }
     
     override func numberOfItems() -> Int {
-        return 3
+        return data.list.count
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
@@ -31,10 +31,16 @@ final class BillDetailPaymentSection: ListSectionController {
         guard let cell = collectionContext?.dequeueReusableCell(withNibName: "PaymentDetailsCell", bundle: nil, for: self, at: index) as? PaymentDetailsCell else {
             fatalError()
         }
-        if index == 3 - 1 {
+        if index == data.list.count - 1 {
             cell.roundCorners([.layerMinXMaxYCorner, .layerMaxXMaxYCorner], radius: 7)
         }
         
+        let cellData = data.list[index]
+        cell.payTime.text = cellData.createTime
+        cell.flowNumber.text = cellData.paymentSerial
+        cell.payWay.text = cellData.accountType?.description
+        let money = cellData.amount ?? 0.00
+        cell.payMoney.text = "￥ \(money)"
         return cell
     }
     
@@ -76,6 +82,12 @@ extension BillDetailPaymentSection: ListSupplementaryViewSource {
 extension BillDetailPaymentSection {
     
     final class Data: NSObject, ListDiffable {
+        
+        let list: [BillInfoDetail.BillPaymentItemList]
+        
+        init(list: [BillInfoDetail.BillPaymentItemList]) {
+            self.list = list
+        }
         
         func diffIdentifier() -> NSObjectProtocol {
             return self

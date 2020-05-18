@@ -180,7 +180,8 @@ extension BusinessInterface: TargetType {
              .deleteCard,
              .deleteFinger,
              .undoTempPassword,
-             .deleteBillInfo:
+             .deleteBillInfo,
+             .deleteReceivingAcount:
             return .delete
             
         case .editUser,
@@ -282,7 +283,14 @@ extension BusinessInterface: TargetType {
             return "/base_bill_info/landlord"
         case let .billInfoDetail(billId):
             return "/base_bill_info/\(billId)"
-            
+        case .billInfoConfirm:
+            return "/base_bill_info/confirm"
+        case .receivingAccountList:
+            return "/receiving_account_info/list"
+        case .addReceivingAccount:
+             return "/receiving_account_info/receiving_account"
+        case let .deleteReceivingAcount(id):
+            return "/receiving_account_info/\(id)"
         }
     }
     
@@ -418,6 +426,12 @@ extension BusinessInterface: TargetType {
                 dict.updateValue(status, forKey: "billStatus")
             }
             return dict
+            
+        case let .billInfoConfirm(accountType, amount, billId, payTime, receivingAccountId):
+            return ["accountType": accountType, "amount": amount, "billId": billId, "payTime": payTime, "receivingAccountId": receivingAccountId]
+        
+        case let .addReceivingAccount(parameter):
+            return parameter.toJSON()
             
         default:
             return nil

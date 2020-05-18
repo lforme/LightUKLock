@@ -106,6 +106,12 @@ extension MyBillViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyBillCell", for: indexPath) as! MyBillCell
         let data = dataSource[indexPath.row]
         cell.bind(data)
+        cell.confirmButton.rx.tap.subscribe(onNext: {[weak self] (_) in
+            let confirmVC: ConfirmArrivalController = ViewLoader.Storyboard.controller(from: "Bill")
+            confirmVC.billId = data.id ?? ""
+            confirmVC.totalMoney = data.amount ?? 0.00
+            self?.navigationController?.pushViewController(confirmVC, animated: true)
+        }).disposed(by: cell.disposeBag)
         return cell
     }
     
@@ -113,13 +119,17 @@ extension MyBillViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let billDetailVC = BillDetailController()
-        billDetailVC.assetId = dataSource[indexPath.row].id
+        billDetailVC.billId = dataSource[indexPath.row].id
         self.navigationController?.pushViewController(billDetailVC, animated: true)
     }
 }
 
 
 extension MyBillViewController {
+    
+    @objc func sendBillTap() {
+        
+    }
     
     func bind() {
         Observable.combineLatest(obBillStatus, obIndex).flatMapLatest { (status, index) -> Observable<[MyBillModel]> in

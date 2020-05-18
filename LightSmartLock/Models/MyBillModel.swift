@@ -34,6 +34,29 @@ struct MyBillModel: HandyJSON {
 
 struct BillInfoDetail: HandyJSON {
     
+    enum Payway: Int, HandyJSONEnum, CustomStringConvertible {
+        case bank = 1
+        case weixin = 2
+        case alipay = 3
+        case pos = 4
+        case other = 999
+        
+        var description: String {
+            switch self {
+            case .bank:
+                return "银行转账"
+            case .weixin:
+                return "微信支付"
+            case .alipay:
+                return "支付宝支付"
+            case .pos:
+                return "POS机"
+            case .other:
+                return "其他"
+            }
+        }
+    }
+    
     struct BillItemList: HandyJSON {
         var amount: Double?
         var costCategoryName: String?
@@ -44,7 +67,7 @@ struct BillInfoDetail: HandyJSON {
     struct BillPaymentItemList: HandyJSON {
         var createTime: String?
         var paymentSerial: String?
-        var accountType: Int?
+        var accountType: Payway?
         var amount: Double?
     }
     
@@ -56,6 +79,8 @@ struct BillInfoDetail: HandyJSON {
     var tenantName: String?
     var contractEndDate: String?
     var contractStartDate: String?
+    var gender: String?
+    var age: Int?
     
     var billItemDTOList: [BillItemList]?
     var billPaymentLogDTOList: [BillPaymentItemList]?

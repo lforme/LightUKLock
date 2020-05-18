@@ -10,6 +10,11 @@ import UIKit
 
 class ReceivingAccountCell: UITableViewCell {
 
+    @IBOutlet weak var icon: UIButton!
+    @IBOutlet weak var defaultLabel: UILabel!
+    @IBOutlet weak var accountName: UILabel!
+    @IBOutlet weak var accountTypeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

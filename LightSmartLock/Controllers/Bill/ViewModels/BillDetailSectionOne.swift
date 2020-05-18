@@ -11,7 +11,7 @@ import IGListKit
 
 final class BillDetailSectionOne: ListSectionController {
     
-    private var data: Data?
+    private var data: Data!
     
     override init() {
         super.init()
@@ -30,6 +30,14 @@ final class BillDetailSectionOne: ListSectionController {
         guard let cell = collectionContext?.dequeueReusableCell(withNibName: "BillDetailSectionOneCell", bundle: nil, for: self, at: index) as? BillDetailSectionOneCell else {
             fatalError()
         }
+        
+        cell.receiveableLabel.text = data.amountPayable.description
+        cell.actualPayment.text = data.amountPaid.description
+        let remaining = data.amountPayable - data.amountPaid
+        cell.remainingLabel.text = remaining.description
+        cell.addressAndTenant.text = data.assetName
+        cell.billNumber.text = "账单编号: \(data.billNumber)"
+    
         return cell
     }
     
@@ -46,6 +54,18 @@ final class BillDetailSectionOne: ListSectionController {
 extension BillDetailSectionOne {
     
     final class Data: NSObject, ListDiffable {
+        
+        let amountPayable: Double
+        let amountPaid: Double
+        let assetName: String
+        let billNumber: String
+        
+        init(amountPayable: Double, amountPaid: Double, assetName: String, billNumber: String) {
+            self.amountPayable = amountPayable
+            self.amountPaid = amountPaid
+            self.assetName = assetName
+            self.billNumber = billNumber
+        }
         
         func diffIdentifier() -> NSObjectProtocol {
             return self

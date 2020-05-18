@@ -12,6 +12,10 @@ class CreateBillController: UIViewController {
     
     @IBOutlet weak var stackViewAdd: UIStackView!
     
+    deinit {
+        print(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
