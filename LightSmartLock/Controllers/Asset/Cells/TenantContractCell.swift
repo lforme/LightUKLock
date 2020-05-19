@@ -17,6 +17,8 @@ class TenantContractCell: UITableViewCell {
         return formatter
     }()
     
+    weak var nav: UINavigationController?
+    
     var model: TenantContractAndBillsDTO? {
         didSet {
             let houseName = model?.tenantContractDTO?.houseName ?? ""
@@ -84,5 +86,13 @@ class TenantContractCell: UITableViewCell {
         gradientProgressView.gradientLayer.cornerRadius = 3
     }
     
+    @IBAction func moreBill(_ sender: Any) {
+        
+        let vc: MyBillViewController = ViewLoader.Storyboard.controller(from: "Bill")
+
+        vc.assetId = model?.tenantContractDTO?.assetId ?? ""
+        vc.contractId = model?.tenantContractDTO?.contractNumber ?? ""
+        nav?.pushViewController(vc, animated: true)
+    }
     
 }

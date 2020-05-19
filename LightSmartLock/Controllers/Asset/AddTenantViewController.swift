@@ -265,6 +265,9 @@ class AddTenantViewController: AssetBaseViewController {
     
     @IBAction func receiveAccountAction(_ sender: UIButton) {
         let receiveAccountVC: ReceivingAccountController = ViewLoader.Storyboard.controller(from: "Bill")
+        receiveAccountVC.selectedHandle { [weak self] (account) in
+            
+        }
         navigationController?.pushViewController(receiveAccountVC, animated: true)
         
 //        receiveAccountVC.didSelected = {[weak self] (name, id) in

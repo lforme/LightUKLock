@@ -21,8 +21,8 @@ class MyBillViewController: UIViewController {
     @IBOutlet weak var createBillButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
-    var assetId = "4672365253421433859"
-    var contractId = ""
+    var assetId: String!
+    var contractId: String!
     let obBillStatus = BehaviorRelay<Int?>(value: nil)
     let obIndex = BehaviorRelay<Int>(value: 1)
     var dataSource = [MyBillModel]()

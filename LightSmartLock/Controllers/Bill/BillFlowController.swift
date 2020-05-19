@@ -19,6 +19,16 @@ class BillFlowController: UIViewController {
     @IBOutlet weak var flowButton: UIButton!
     @IBOutlet weak var contractButton: UIButton!
     
+    @IBOutlet weak var balanceLabel: UILabel!
+    
+    @IBOutlet weak var incomeAmountLabel: UILabel!
+    
+    @IBOutlet weak var incomeCountLabel: UILabel!
+    
+    @IBOutlet weak var expenseAmountLabel: UILabel!
+    
+    @IBOutlet weak var expenseCountLabel: UILabel!
+    
     @IBOutlet weak var collectionView: ListCollectionView! = {
         let layout = ListCollectionViewLayout(stickyHeaders: false, scrollDirection: .vertical, topContentInset: 0, stretchToEdge: true)
         let view = ListCollectionView(frame: .zero, listCollectionViewLayout: layout)
@@ -30,7 +40,8 @@ class BillFlowController: UIViewController {
         return ListAdapter(updater: ListAdapterUpdater(), viewController: self)
     }()
     
-    let vm = BillFlowViewModel(assetId: "4671384247706058755")
+    var vm: BillFlowViewModel!
+    var statistics: TurnoverStatisticsDTO!
     var dataSource = [ListDiffable]()
     
     deinit {
@@ -102,6 +113,12 @@ class BillFlowController: UIViewController {
         [flowButton, reportButton, contractButton].forEach { (btn) in
             btn?.setTitleColor(ColorClassification.primary.value, for: .selected)
         }
+        
+        balanceLabel.text = statistics.balance?.twoPoint
+        incomeAmountLabel.text = statistics.incomeAmount?.yuanSymbol
+        incomeCountLabel.text = "共\(statistics.incomeCount?.description ?? "")笔"
+        expenseAmountLabel.text = statistics.expenseAmount?.yuanSymbol
+        expenseCountLabel.text = "共\(statistics.expenseCount?.description ?? "")笔"
     }
 }
 

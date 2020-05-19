@@ -70,7 +70,7 @@ class AssetDetailViewController: AssetBaseViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let currentAsset = BehaviorRelay<PositionModel?>.init(value: nil)
-    
+    let currentStatistics = BehaviorRelay<TurnoverStatisticsDTO?>.init(value: nil)
     var assetId: String!
     
     var disposeBag = DisposeBag()
@@ -160,6 +160,7 @@ class AssetDetailViewController: AssetBaseViewController {
             let statistics = BusinessAPI2.requestMapJSON(.getStatistics(assetId: assetId), classType: TurnoverStatisticsDTO.self)
             
             statistics.subscribe(onNext: { [weak self](model) in
+                self?.currentStatistics.accept(model)
                 self?.balanceLabel.text = model.balance?.twoPoint
                 self?.incomeAmountLabel.text = model.incomeAmount?.yuanSymbol
                 self?.incomeCountLabel.text = "共\(model.incomeCount?.description ?? "")笔"
@@ -173,10 +174,19 @@ class AssetDetailViewController: AssetBaseViewController {
             let items = BusinessAPI2.requestMapJSONArray(.getAssetContracts(assetId: assetId), classType: TenantContractAndBillsDTO.self)
             
             items
-                .bind(to: tableView.rx.items(cellIdentifier: "TenantContractCell", cellType: TenantContractCell.self)) { (row, element, cell) in
+                .bind(to: tableView.rx.items(cellIdentifier: "TenantContractCell", cellType: TenantContractCell.self)) {[weak self] (row, element, cell) in
                     cell.model = element
+                    cell.nav = self?.navigationController
             }
             .disposed(by: disposeBag)
+    }
+    
+    
+    @IBAction func flowAction(_ sender: Any) {
+        let billFlowVC: BillFlowController = ViewLoader.Storyboard.controller(from: "Bill")
+        billFlowVC.vm = BillFlowViewModel(assetId: self.assetId)
+        billFlowVC.statistics = currentStatistics.value
+        navigationController?.pushViewController(billFlowVC, animated: true)
     }
     
     

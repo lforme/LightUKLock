@@ -199,6 +199,9 @@
                                                                 <state key="normal" title="收支流水" image="arrow">
                                                                     <color key="titleColor" name="textPrimary"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="flowAction:" destination="H2S-CP-QUh" eventType="touchUpInside" id="X5i-B2-J8l"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -480,6 +483,9 @@
                                                                     <state key="normal" title="更多账单" image="arrow">
                                                                         <color key="titleColor" name="primary"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="moreBill:" destination="2uk-Gr-qNx" eventType="touchUpInside" id="kJE-yz-ulU"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <constraints>
