@@ -73,6 +73,7 @@ class BindingOrEditAssetViewController: AssetBaseViewController {
             if let response = response as? [String: Any] {
                 if let status = response["status"] as? Int, status == 200 {
                     HUD.flash(.label("操作成功"), onView: nil, delay: 0.5) { _ in
+                        NotificationCenter.default.post(name: .refreshAssetDetail, object: nil)
                         self?.navigationController?.popViewController(animated: true)
                     }
                 } else {

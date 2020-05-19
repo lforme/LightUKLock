@@ -10,11 +10,11 @@ import Foundation
 import HandyJSON
 
 struct TenantContractAndBillsDTO: HandyJSON {
-    struct BillDTO: Codable {
+    struct BillDTO: HandyJSON {
         var amount: Double?
         var assetId: String?
         var assetName: String? 
-        struct BillItemDTOList: Codable {
+        struct BillItemDTOList: HandyJSON {
             var amount: Double?
             var costCategoryId: String?
             var costCategoryName: String?
@@ -28,7 +28,7 @@ struct TenantContractAndBillsDTO: HandyJSON {
         var deadlineDays: Int?
         var id: String?
     }
-    var billDTO: BillDTO?
+    var billDTO: [BillDTO]?
     var tenantContractDTO: TenantContractDTO?
 
 }

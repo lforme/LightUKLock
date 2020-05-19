@@ -32,7 +32,7 @@ class TenantContractCell: UITableViewCell {
             startDateLabel.text = model?.tenantContractDTO?.startDate
             endDateLabel.text = model?.tenantContractDTO?.endDate
             
-            empytBillContainer.isHidden = !(model?.billDTO?.billItemDTOList ?? []).isEmpty
+            empytBillContainer.isHidden = !(model?.billDTO ?? []).isEmpty
                         
         }
     }
