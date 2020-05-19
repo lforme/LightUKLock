@@ -174,4 +174,3 @@ class AddUserController: UITableViewController {
     }
 }
 
-extension AddUserController: TZImagePickerControllerDelegate {}

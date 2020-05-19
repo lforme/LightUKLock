@@ -74,9 +74,10 @@ enum BusinessInterface {
     case editBillInfoClear(parameter: BillLiquidationModel) // 编辑清算账单明细
     case billLandlordList(assetId: String, billStatus: Int?, pageIndex: Int, pageSize: Int)
     case billInfoDetail(billId: String) // 获取账单详情
-    case billInfoConfirm(accountType: Int, amount: Int, billId: String, payTime: String, receivingAccountId: String) // 确认到账
+    case billInfoConfirm(accountType: Int, amount: Double, billId: String, payTime: String, receivingAccountId: String) // 确认到账
     case receivingAccountList // 获取收款账号列表
     case addReceivingAccount(parameter: CollectionAccountModel) // 添加收款账号
     case deleteReceivingAcount(id: String) // 删除收款账号
+    case addBillInfo(parameter: CreateBillController.Parameter) // 发起账单
 
 }

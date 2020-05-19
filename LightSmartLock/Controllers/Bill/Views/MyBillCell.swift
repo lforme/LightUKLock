@@ -54,15 +54,15 @@ class MyBillCell: UITableViewCell {
             }
         }
         
-//        if let status = data.billStatus {
-//            if status == 0 {
-//                confirmButton.isHidden = true
-//                rushRentButton.isHidden = false
-//            } else if status == 999 {
-//                rushRentButton.isHidden = true
-//                confirmButton.isHidden = false
-//            }
-//        }
+        if let status = data.billStatus {
+            if status == 0 {
+                confirmButton.isHidden = true
+                rushRentButton.isHidden = false
+            } else if status == 999 {
+                rushRentButton.isHidden = true
+                confirmButton.isHidden = false
+            }
+        }
         self.layoutIfNeeded()
     }
 }

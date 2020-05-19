@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pdn-k0-XJX">
-                                <rect key="frame" x="0.0" y="148" width="414" height="654"/>
+                                <rect key="frame" x="0.0" y="52" width="414" height="750"/>
                                 <color key="backgroundColor" name="tableViewBackground"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nzL-B6-BoO">
@@ -268,13 +268,24 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uc0-S2-LLF">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uc0-S2-LLF">
                                                     <rect key="frame" x="151" y="24" width="112" height="112"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="112" id="Yuq-nS-Nnz"/>
                                                         <constraint firstAttribute="width" constant="112" id="qiE-fn-kcc"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                                    <state key="normal" title="+">
+                                                        <color key="titleColor" name="primary"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" name="primary"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -301,7 +312,7 @@
                                                     <color key="textColor" name="textPrimary"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="czk-LX-Ypi">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="czk-LX-Ypi">
                                                     <rect key="frame" x="349" y="6.5" width="51" height="31"/>
                                                     <color key="onTintColor" name="primary"/>
                                                 </switch>
@@ -383,7 +394,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDw-uH-LnI">
-                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Qt-FA-sWO">
                                         <rect key="frame" x="0.0" y="8" width="414" height="140"/>
@@ -472,10 +483,7 @@
                                                 <rect key="frame" x="390" y="105" width="8" height="15"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0V-w3-5r5">
-                                                <rect key="frame" x="222" y="98" width="160" height="29"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="160" id="TzZ-xa-nia"/>
-                                                </constraints>
+                                                <rect key="frame" x="75" y="98" width="307" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                 <state key="normal" title="请选择">
                                                     <color key="titleColor" name="textDescription"/>
@@ -515,6 +523,7 @@
                                             <constraint firstItem="TIf-JV-ylN" firstAttribute="leading" secondItem="Y0s-Jx-0qZ" secondAttribute="trailing" constant="8" id="rpu-7f-tbG"/>
                                             <constraint firstItem="xWE-CW-fwc" firstAttribute="centerY" secondItem="jTu-q0-csG" secondAttribute="centerY" id="sNY-KV-4d4"/>
                                             <constraint firstAttribute="trailing" secondItem="rZl-4v-lot" secondAttribute="trailing" constant="16" id="uPG-Nh-ZM3"/>
+                                            <constraint firstItem="s0V-w3-5r5" firstAttribute="leading" secondItem="II6-VF-kBB" secondAttribute="trailing" constant="20" id="umH-V2-nAQ"/>
                                             <constraint firstItem="s0V-w3-5r5" firstAttribute="centerY" secondItem="DlK-5d-esJ" secondAttribute="centerY" id="xBE-bh-kM1"/>
                                         </constraints>
                                     </view>
@@ -595,8 +604,8 @@
                                                 <color key="textColor" name="textPrimary"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DIg-wl-m4K">
-                                                <rect key="frame" x="361" y="57.5" width="29" height="18.5"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DIg-wl-m4K">
+                                                <rect key="frame" x="347" y="57.5" width="43" height="18.5"/>
                                                 <color key="textColor" name="textPrimary"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -630,9 +639,6 @@
                                                 <state key="normal" title="请选择">
                                                     <color key="titleColor" name="textDescription"/>
                                                 </state>
-                                                <connections>
-                                                    <segue destination="HrZ-0C-um2" kind="show" id="wv4-6A-Qz8"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" name="viewBackground"/>
@@ -710,6 +716,9 @@
                                                         <real key="value" value="24"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="saveButtonTap:" destination="58I-fw-1MR" eventType="touchUpInside" id="kH5-eK-X7K"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" name="viewBackground"/>
@@ -759,6 +768,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="1xj-da-LPl"/>
                     <connections>
+                        <outlet property="accountPickButton" destination="lbb-AH-SyX" id="JIw-nc-V7f"/>
+                        <outlet property="addButton" destination="L0G-Hg-uE7" id="bet-sm-e1g"/>
+                        <outlet property="deadLinePickButton" destination="pN2-An-M4k" id="9ql-ap-j6f"/>
+                        <outlet property="defaultCycleButton" destination="s0V-w3-5r5" id="0Gq-6f-11a"/>
+                        <outlet property="defaultField" destination="xWE-CW-fwc" id="04I-oh-BRg"/>
+                        <outlet property="defaultPickFeeButton" destination="Y0s-Jx-0qZ" id="FRw-N5-s7p"/>
+                        <outlet property="phoneField" destination="DIg-wl-m4K" id="kco-l9-hq0"/>
                         <outlet property="stackViewAdd" destination="U1v-Me-FKF" id="Tde-OV-Iw3"/>
                     </connections>
                 </viewController>
@@ -859,9 +875,6 @@
                                                 <real key="value" value="24"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="58I-fw-1MR" kind="show" id="NuW-us-VQU"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -892,6 +905,7 @@
                     <connections>
                         <outlet property="allButton" destination="wNa-ZH-fad" id="AjQ-T0-pns"/>
                         <outlet property="collectionButton" destination="AVB-GU-Iml" id="Jn1-Ur-enG"/>
+                        <outlet property="createBillButton" destination="7KF-F9-vPv" id="An0-eF-aMl"/>
                         <outlet property="paidButton" destination="JTS-8M-w7G" id="GTh-Lg-FVy"/>
                         <outlet property="rentOwedButton" destination="hOh-98-1Ia" id="Uw8-MU-QIK"/>
                         <outlet property="tableView" destination="Atw-Im-dsv" id="TLa-qX-D1p"/>
@@ -1200,8 +1214,8 @@
                                                     <color key="textColor" name="textPrimary"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntt-Mr-bqt">
-                                                    <rect key="frame" x="346" y="13.5" width="29" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntt-Mr-bqt">
+                                                    <rect key="frame" x="332" y="13.5" width="43" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" name="textPrimary"/>
                                                     <nil key="highlightedColor"/>
@@ -1291,6 +1305,7 @@
                     </tableView>
                     <connections>
                         <outlet property="accountWayLabel" destination="ntt-Mr-bqt" id="R8Q-Kj-kRV"/>
+                        <outlet property="confirmButton" destination="SBI-5k-py3" id="jBh-PU-1Ra"/>
                         <outlet property="dateLabel" destination="4GB-aY-WUx" id="ogO-jy-btI"/>
                         <outlet property="moneyLabel" destination="sl5-Ll-9vJ" id="FTb-KB-oDZ"/>
                     </connections>

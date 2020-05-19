@@ -18,10 +18,11 @@ class MyBillViewController: UIViewController {
     @IBOutlet weak var collectionButton: UIButton!
     @IBOutlet weak var paidButton: UIButton!
     @IBOutlet weak var rentOwedButton: UIButton!
-    
+    @IBOutlet weak var createBillButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     var assetId = "4672365253421433859"
+    var contractId = ""
     let obBillStatus = BehaviorRelay<Int?>(value: nil)
     let obIndex = BehaviorRelay<Int>(value: 1)
     var dataSource = [MyBillModel]()
@@ -37,6 +38,28 @@ class MyBillViewController: UIViewController {
         setupUI()
         setupTableViewRefresh()
         bind()
+        setupObserver()
+        setupButtonTap()
+    }
+    
+    func setupButtonTap() {
+        createBillButton.rx.tap.subscribe(onNext: {[unowned self] (_) in
+            
+            let createBillVC: CreateBillController = ViewLoader.Storyboard.controller(from: "Bill")
+            self.navigationController?.pushViewController(createBillVC, animated: true)
+            
+        }).disposed(by: rx.disposeBag)
+    }
+    
+    func setupObserver() {
+        NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
+            guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
+            switch refreshType {
+            case .accountWay:
+                self?.allButton.sendActions(for: .touchUpInside)
+            default: break
+            }
+        }).disposed(by: rx.disposeBag)
     }
     
     func setupTableViewRefresh() {

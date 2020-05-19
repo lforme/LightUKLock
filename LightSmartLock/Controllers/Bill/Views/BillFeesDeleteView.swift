@@ -10,6 +10,11 @@ import UIKit
 
 class BillFeesDeleteView: UIView {
 
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var feeButton: UIButton!
+    @IBOutlet weak var feeField: UITextField!
+    @IBOutlet weak var cycleButton: UIButton!
+    
     override init(frame: CGRect) {
          super.init(frame: frame)
          commonInit()

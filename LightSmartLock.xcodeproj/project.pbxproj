@@ -23,6 +23,9 @@
 		9C03B0F9239F87B60001E849 /* AddFingerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0F8239F87B60001E849 /* AddFingerViewModel.swift */; };
 		9C03B0FB239F88860001E849 /* AddFingerFinishController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03B0FA239F88860001E849 /* AddFingerFinishController.swift */; };
 		9C03B0FD239FB3620001E849 /* addFinger.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C03B0FC239FB3620001E849 /* addFinger.json */; };
+		9C0B86E62473840800864DE6 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0B86E52473840800864DE6 /* ImagePicker.swift */; };
+		9C0B86E92473B94300864DE6 /* DateCyclePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0B86E72473B94300864DE6 /* DateCyclePickerController.swift */; };
+		9C0B86EA2473B94300864DE6 /* DateCyclePickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0B86E82473B94300864DE6 /* DateCyclePickerController.xib */; };
 		9C11E6E9246D300E008E0A60 /* BillLiquidationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C11E6E8246D300E008E0A60 /* BillLiquidationModel.swift */; };
 		9C1A4BC4238D0A1A00626DB4 /* AnimationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC2238D0A1A00626DB4 /* AnimationHeaderView.swift */; };
 		9C1A4BC5238D0A1A00626DB4 /* AnimationHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC3238D0A1A00626DB4 /* AnimationHeaderView.xib */; };
@@ -314,6 +317,9 @@
 		9C03B0F8239F87B60001E849 /* AddFingerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFingerViewModel.swift; sourceTree = "<group>"; };
 		9C03B0FA239F88860001E849 /* AddFingerFinishController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFingerFinishController.swift; sourceTree = "<group>"; };
 		9C03B0FC239FB3620001E849 /* addFinger.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = addFinger.json; sourceTree = "<group>"; };
+		9C0B86E52473840800864DE6 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		9C0B86E72473B94300864DE6 /* DateCyclePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCyclePickerController.swift; sourceTree = "<group>"; };
+		9C0B86E82473B94300864DE6 /* DateCyclePickerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateCyclePickerController.xib; sourceTree = "<group>"; };
 		9C11E6E8246D300E008E0A60 /* BillLiquidationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillLiquidationModel.swift; sourceTree = "<group>"; };
 		9C1A4BC2238D0A1A00626DB4 /* AnimationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHeaderView.swift; sourceTree = "<group>"; };
 		9C1A4BC3238D0A1A00626DB4 /* AnimationHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimationHeaderView.xib; sourceTree = "<group>"; };
@@ -754,6 +760,9 @@
 				9C47DB78239A0B0E0019EAA0 /* SelectPopupView.xib */,
 				9CBD8F5223A23ADC00886519 /* DatePickerController.swift */,
 				9CBD8F5323A23ADC00886519 /* DatePickerController.xib */,
+				9C0B86E72473B94300864DE6 /* DateCyclePickerController.swift */,
+				9C0B86E82473B94300864DE6 /* DateCyclePickerController.xib */,
+				9C0B86E52473840800864DE6 /* ImagePicker.swift */,
 			);
 			path = GlobalSingle;
 			sourceTree = "<group>";
@@ -1274,6 +1283,7 @@
 				9C7AFF1E239603F00075442D /* SearchPlotCell.xib in Resources */,
 				9CABF4B8246544130001AAE3 /* BillDetailButtonCell.xib in Resources */,
 				9CBD8F5523A23ADC00886519 /* DatePickerController.xib in Resources */,
+				9C0B86EA2473B94300864DE6 /* DateCyclePickerController.xib in Resources */,
 				9C47DB79239A0B0E0019EAA0 /* SelectPopupView.xib in Resources */,
 				9C24AC442383EB96005EBF95 /* My.storyboard in Resources */,
 				9CABF4B224653CC50001AAE3 /* PaymentDetailsCell.xib in Resources */,
@@ -1436,6 +1446,7 @@
 				9CBD8F4C23A21E7D00886519 /* PasswordChangeStatusCell.swift in Sources */,
 				9CBD8F5923A2496700886519 /* SharePasswordSignleController.swift in Sources */,
 				7B7EB4BD24516ECB002DC436 /* AddAssetFacilityViewController.swift in Sources */,
+				9C0B86E92473B94300864DE6 /* DateCyclePickerController.swift in Sources */,
 				9C524038238E66B500308AC4 /* RecordUnlockReactor.swift in Sources */,
 				9CBAF5FD2459326E00197450 /* BillDescriptionCell.swift in Sources */,
 				9CBD8F5423A23ADC00886519 /* DatePickerController.swift in Sources */,
@@ -1452,6 +1463,7 @@
 				9C77059E238FCC79008E1552 /* MySettingViewModel.swift in Sources */,
 				9CFDE21623853DE60062522E /* NetworkDiskStorage.swift in Sources */,
 				9C5A968623A0DFCC002A2B06 /* AddUserViewModel.swift in Sources */,
+				9C0B86E62473840800864DE6 /* ImagePicker.swift in Sources */,
 				9C24AC3F2383EB55005EBF95 /* OpenDoorViewController.swift in Sources */,
 				7B7EB4B32451361E002DC436 /* ButtonContainerView.swift in Sources */,
 				7B7EB4BB24516EAF002DC436 /* AssetFacilityListViewController.swift in Sources */,
