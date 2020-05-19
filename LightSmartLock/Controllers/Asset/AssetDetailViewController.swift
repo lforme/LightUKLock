@@ -115,10 +115,22 @@ class AssetDetailViewController: AssetBaseViewController {
             })
             .disposed(by: rx.disposeBag)
         
+        buildingNameLabel.text = nil
+        buildingAdressLabel.text = nil
+        houseStructLabel.text = nil
+        
+        balanceLabel.text = nil
+        incomeAmountLabel.text = nil
+        incomeCountLabel.text = nil
+        expenseAmountLabel.text = nil
+        expenseCountLabel.text = nil
+        
+        tableView.tableFooterView = UIView()
+        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         disposeBag = DisposeBag()
         
