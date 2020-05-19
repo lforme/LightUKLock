@@ -65,6 +65,12 @@
             </tableViewCellContentView>
             <color key="backgroundColor" name="viewBackground"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="accountName" destination="lgg-Pu-nXH" id="Onx-0g-lNw"/>
+                <outlet property="accountTypeLabel" destination="Mkc-lQ-VFv" id="mVC-Km-Zzi"/>
+                <outlet property="defaultLabel" destination="aih-nZ-Zez" id="QnK-nM-88l"/>
+                <outlet property="icon" destination="ec1-HJ-Lt8" id="5Bu-5e-Hvc"/>
+            </connections>
             <point key="canvasLocation" x="131.8840579710145" y="105.80357142857143"/>
         </tableViewCell>
     </objects>

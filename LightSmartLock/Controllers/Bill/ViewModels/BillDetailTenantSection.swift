@@ -11,7 +11,7 @@ import IGListKit
 
 final class BillDetailTenantSection: ListSectionController {
     
-    private var data: Data?
+    private var data: Data!
     
     override init() {
         super.init()
@@ -42,6 +42,22 @@ final class BillDetailTenantSection: ListSectionController {
 extension BillDetailTenantSection {
     
     final class Data: NSObject, ListDiffable {
+        
+        let tenantName: String
+        let gender: String
+        let age: Int
+        let contractStartDate: String
+        let contractEndDate: String
+        let phone: String
+        
+        init(tenantName: String, gender: String, age: Int, start: String, end: String, phone: String) {
+            self.tenantName = tenantName
+            self.gender = gender
+            self.age = age
+            self.contractStartDate = start
+            self.contractEndDate = end
+            self.phone = phone
+        }
         
         func diffIdentifier() -> NSObjectProtocol {
             return self

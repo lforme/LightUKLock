@@ -96,6 +96,7 @@
 		9C24AC462383EBB1005EBF95 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC452383EBB1005EBF95 /* MyViewController.swift */; };
 		9C24AC482383EBE5005EBF95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC472383EBE5005EBF95 /* HomeViewController.swift */; };
 		9C24AC4A2383F344005EBF95 /* CustomizedTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC492383F344005EBF95 /* CustomizedTabbarItem.swift */; };
+		9C282D6B246E7319008CC165 /* MyBillModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C282D6A246E7319008CC165 /* MyBillModel.swift */; };
 		9C323BCA245676CA00214256 /* BillContractSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C323BC9245676CA00214256 /* BillContractSection.swift */; };
 		9C323BCC24567F9700214256 /* BillReportDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C323BCB24567F9700214256 /* BillReportDetailController.swift */; };
 		9C323BCE2456BEE900214256 /* BookKeepingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C323BCD2456BEE900214256 /* BookKeepingController.swift */; };
@@ -280,6 +281,7 @@
 		9CF01D9B23BDAD72007578F3 /* LockModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC382383E00C005EBF95 /* LockModels.swift */; };
 		9CF01DA023BDCC76007578F3 /* WidgetUnlockRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF01D9E23BDCC76007578F3 /* WidgetUnlockRecordCell.swift */; };
 		9CF01DA123BDCC76007578F3 /* WidgetUnlockRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CF01D9F23BDCC76007578F3 /* WidgetUnlockRecordCell.xib */; };
+		9CFB47CB2472823C0080BCB6 /* CollectionAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFB47CA2472823C0080BCB6 /* CollectionAccountModel.swift */; };
 		9CFDE1FA2384EA2A0062522E /* opendoor.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CFDE1F82384EA2A0062522E /* opendoor.json */; };
 		9CFDE1FC238513D40062522E /* bluetooth.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CFDE1FB238513D40062522E /* bluetooth.json */; };
 		9CFDE1FF23851E310062522E /* NetworkingEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDE1FE23851E310062522E /* NetworkingEnvironment.swift */; };
@@ -413,6 +415,7 @@
 		9C24AC452383EBB1005EBF95 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		9C24AC472383EBE5005EBF95 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9C24AC492383F344005EBF95 /* CustomizedTabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedTabbarItem.swift; sourceTree = "<group>"; };
+		9C282D6A246E7319008CC165 /* MyBillModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBillModel.swift; sourceTree = "<group>"; };
 		9C323BC9245676CA00214256 /* BillContractSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillContractSection.swift; sourceTree = "<group>"; };
 		9C323BCB24567F9700214256 /* BillReportDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillReportDetailController.swift; sourceTree = "<group>"; };
 		9C323BCD2456BEE900214256 /* BookKeepingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookKeepingController.swift; sourceTree = "<group>"; };
@@ -595,6 +598,7 @@
 		9CF01D9823BDAC2A007578F3 /* WidgetNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetNetwork.swift; sourceTree = "<group>"; };
 		9CF01D9E23BDCC76007578F3 /* WidgetUnlockRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetUnlockRecordCell.swift; sourceTree = "<group>"; };
 		9CF01D9F23BDCC76007578F3 /* WidgetUnlockRecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WidgetUnlockRecordCell.xib; sourceTree = "<group>"; };
+		9CFB47CA2472823C0080BCB6 /* CollectionAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionAccountModel.swift; sourceTree = "<group>"; };
 		9CFDE1F82384EA2A0062522E /* opendoor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = opendoor.json; sourceTree = "<group>"; };
 		9CFDE1FB238513D40062522E /* bluetooth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bluetooth.json; sourceTree = "<group>"; };
 		9CFDE1FE23851E310062522E /* NetworkingEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingEnvironment.swift; sourceTree = "<group>"; };
@@ -888,6 +892,8 @@
 				9CB09C752468F5B500F3891D /* AssetFlowModel.swift */,
 				9CB09C77246930E100F3891D /* AssetContractModel.swift */,
 				9C11E6E8246D300E008E0A60 /* BillLiquidationModel.swift */,
+				9C282D6A246E7319008CC165 /* MyBillModel.swift */,
+				9CFB47CA2472823C0080BCB6 /* CollectionAccountModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1524,6 +1530,7 @@
 				7B92D0D32457C67800F195A9 /* IDCardView.swift in Sources */,
 				9C3F93EB2455AAB10040005D /* BillFlowReportSection.swift in Sources */,
 				9C24AC3B2383E736005EBF95 /* ViewLoader.swift in Sources */,
+				9C282D6B246E7319008CC165 /* MyBillModel.swift in Sources */,
 				9CFDE21423853C170062522E /* NetworkMetaDb.swift in Sources */,
 				9C54719F239517F000432ACA /* PositionViewModel.swift in Sources */,
 				9C452F0A2394C38800144827 /* HomeSettringController.swift in Sources */,
@@ -1662,6 +1669,7 @@
 				9C1B87C42397693100216ADA /* LockStartScanningController.swift in Sources */,
 				9C7AFF20239618040075442D /* SearchPlotViewModel.swift in Sources */,
 				9C218FA023FA765B009600F7 /* HouseViewController.swift in Sources */,
+				9CFB47CB2472823C0080BCB6 /* CollectionAccountModel.swift in Sources */,
 				9C54719B239507DE00432ACA /* LSLWebViewController.swift in Sources */,
 				9C24AC252383C9CB005EBF95 /* UIView+Extension.swift in Sources */,
 				9C8FFD5D2447EEBF00527EA0 /* UIImageView+Extension.swift in Sources */,

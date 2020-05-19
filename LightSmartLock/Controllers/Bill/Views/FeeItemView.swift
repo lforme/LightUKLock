@@ -10,6 +10,10 @@ import UIKit
 
 class FeeItemView: UIView {
 
+    @IBOutlet weak var cotegoryName: UILabel!
+    @IBOutlet weak var amount: UILabel!
+    @IBOutlet weak var date: UILabel!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()

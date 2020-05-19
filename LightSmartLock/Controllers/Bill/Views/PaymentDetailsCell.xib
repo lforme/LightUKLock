@@ -96,7 +96,7 @@
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcY-68-Zs9">
                                 <rect key="frame" x="16" y="234" width="410" height="1"/>
-                                <color key="backgroundColor" red="0.98038941619999997" green="0.9803741574" blue="0.98039311169999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.87842881679999996" green="0.87841504810000004" blue="0.87843221429999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="DoV-i6-7N1"/>
                                 </constraints>
@@ -123,6 +123,12 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="426" height="235"/>
+            <connections>
+                <outlet property="flowNumber" destination="8Od-PR-bQa" id="aRS-LP-3fL"/>
+                <outlet property="payMoney" destination="2Io-ic-3bN" id="ble-oB-R9h"/>
+                <outlet property="payTime" destination="cyY-PT-NEF" id="PEG-Zl-ZJ8"/>
+                <outlet property="payWay" destination="ybX-OF-S0u" id="CJa-bo-4yF"/>
+            </connections>
             <point key="canvasLocation" x="168.11594202898553" y="161.04910714285714"/>
         </collectionViewCell>
     </objects>

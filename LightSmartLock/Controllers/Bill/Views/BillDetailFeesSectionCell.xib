@@ -54,6 +54,11 @@
                 <constraint firstItem="DTc-Cs-l38" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="zDp-JL-FFl"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="date" destination="GwQ-dZ-ziA" id="iaj-bG-lEe"/>
+                <outlet property="name" destination="Rsr-61-ms4" id="0P7-94-HFW"/>
+                <outlet property="price" destination="HD3-sd-OrQ" id="TaS-4X-q27"/>
+            </connections>
             <point key="canvasLocation" x="133" y="139"/>
         </collectionViewCell>
     </objects>

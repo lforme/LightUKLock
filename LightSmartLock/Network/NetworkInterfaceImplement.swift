@@ -177,7 +177,8 @@ extension BusinessInterface: TargetType {
              .reportReportItems,
              .costCategory,
              .tenantContractInfo,
-             .checkTerminationTenantContract:
+             .checkTerminationTenantContract,
+             .billInfoDetail:
             return .get
             
         case .deleteAssetHouse,
@@ -185,7 +186,8 @@ extension BusinessInterface: TargetType {
              .deleteCard,
              .deleteFinger,
              .undoTempPassword,
-             .deleteBillInfo:
+             .deleteBillInfo,
+             .deleteReceivingAcount:
             return .delete
             
         case .editUser,
@@ -283,6 +285,18 @@ extension BusinessInterface: TargetType {
             return "/base_bill_info/\(billId)"
         case .editBillInfoClear:
             return "/base_bill_info/clearing"
+        case .billLandlordList:
+            return "/base_bill_info/landlord"
+        case let .billInfoDetail(billId):
+            return "/base_bill_info/\(billId)"
+        case .billInfoConfirm:
+            return "/base_bill_info/confirm"
+        case .receivingAccountList:
+            return "/receiving_account_info/list"
+        case .addReceivingAccount:
+             return "/receiving_account_info/receiving_account"
+        case let .deleteReceivingAcount(id):
+            return "/receiving_account_info/\(id)"
         }
     }
     
@@ -410,6 +424,19 @@ extension BusinessInterface: TargetType {
             return ["assetId": assetId, "contractId": contractId, "startDate": startDate, "endDate": endDate]
             
         case let .editBillInfoClear(parameter):
+            return parameter.toJSON()
+            
+        case let .billLandlordList(assetId, billStatus, pageIndex, pageSize):
+            var dict = ["assetId": assetId, "currentPage": pageIndex, "pageSize": pageSize] as [String : Any]
+            if let status = billStatus {
+                dict.updateValue(status, forKey: "billStatus")
+            }
+            return dict
+            
+        case let .billInfoConfirm(accountType, amount, billId, payTime, receivingAccountId):
+            return ["accountType": accountType, "amount": amount, "billId": billId, "payTime": payTime, "receivingAccountId": receivingAccountId]
+        
+        case let .addReceivingAccount(parameter):
             return parameter.toJSON()
             
         default:

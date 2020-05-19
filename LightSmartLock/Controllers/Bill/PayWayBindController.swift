@@ -27,6 +27,10 @@ class PayWayBindController: UITableViewController {
     var canEditing: Bool = false
     var payWay: PayWay = .wechat
     
+    deinit {
+        print(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

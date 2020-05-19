@@ -51,6 +51,9 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="344" height="230"/>
+            <connections>
+                <outlet property="price" destination="rSU-Co-mIG" id="Pm4-sD-480"/>
+            </connections>
             <point key="canvasLocation" x="138" y="165"/>
         </collectionViewCell>
     </objects>

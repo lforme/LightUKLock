@@ -10,9 +10,10 @@ import UIKit
 
 class BillDetailFeesFootView: UICollectionViewCell {
     
+    @IBOutlet weak var price: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         self.roundCorners([.layerMinXMaxYCorner, .layerMaxXMaxYCorner], radius: 7)
     }
     

@@ -78,7 +78,7 @@
                                         <rect key="frame" x="0.0" y="207" width="299" height="30"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ofa-z7-WcP">
-                                                <rect key="frame" x="131" y="0.0" width="168" height="30"/>
+                                                <rect key="frame" x="43" y="0.0" width="256" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tO9-t1-kIw">
                                                         <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
@@ -101,8 +101,29 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1S-aR-vuT">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O2J-f7-lgp">
                                                         <rect key="frame" x="88" y="0.0" width="80" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="80" id="vk0-Ra-9M9"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                        <state key="normal" title="催租">
+                                                            <color key="titleColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1S-aR-vuT">
+                                                        <rect key="frame" x="176" y="0.0" width="80" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="80" id="8gu-bu-sx4"/>
                                                         </constraints>
@@ -151,6 +172,12 @@
             <color key="backgroundColor" name="tableViewBackground"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="amount" destination="5oR-2b-L61" id="CO5-Ha-uqs"/>
+                <outlet property="assetName" destination="Kj7-nc-0ZF" id="vDd-36-8FS"/>
+                <outlet property="confirmButton" destination="v1S-aR-vuT" id="kSY-X8-qGb"/>
+                <outlet property="latestDate" destination="k7S-gi-WYp" id="TOL-GT-3cp"/>
+                <outlet property="rushRentButton" destination="O2J-f7-lgp" id="Uvn-8k-Jd9"/>
+                <outlet property="sendButton" destination="tO9-t1-kIw" id="q3y-hf-g5m"/>
                 <outlet property="stackView" destination="tLr-4W-oRK" id="HvJ-1X-zt0"/>
             </connections>
             <point key="canvasLocation" x="144.20289855072465" y="143.63839285714286"/>

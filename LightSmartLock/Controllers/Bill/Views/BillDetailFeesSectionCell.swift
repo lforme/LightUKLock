@@ -10,6 +10,10 @@ import UIKit
 
 class BillDetailFeesSectionCell: UICollectionViewCell {
     
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var price: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

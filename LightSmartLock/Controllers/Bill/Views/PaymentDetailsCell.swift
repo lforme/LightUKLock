@@ -10,6 +10,11 @@ import UIKit
 
 class PaymentDetailsCell: UICollectionViewCell {
 
+    @IBOutlet weak var payTime: UILabel!
+    @IBOutlet weak var flowNumber: UILabel!
+    @IBOutlet weak var payWay: UILabel!
+    @IBOutlet weak var payMoney: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -11,7 +11,7 @@ import IGListKit
 
 final class BillDetailFeesSection: ListSectionController {
     
-    private var data: Data?
+    private var data: Data!
     
     override init() {
         super.init()
@@ -20,7 +20,7 @@ final class BillDetailFeesSection: ListSectionController {
     }
     
     override func numberOfItems() -> Int {
-        return 3
+        return data.list.count
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
@@ -34,6 +34,13 @@ final class BillDetailFeesSection: ListSectionController {
         if index == 0 {
             cell.roundCorners([.layerMaxXMinYCorner, .layerMinXMinYCorner], radius: 7)
         }
+        let cellData = data.list[index]
+        cell.name.text = cellData.costCategoryName
+        let start = cellData.cycleStartDate ?? "正在加载..."
+        let end = cellData.cycleEndDate ?? "正在加载..."
+        cell.date.text = "\(start) 至 \(end)"
+        let money = cellData.amount ?? 0.00
+        cell.price.text = "￥ \(money)"
         
         return cell
     }
@@ -55,6 +62,8 @@ extension BillDetailFeesSection: ListSupplementaryViewSource {
             guard let footerView = collectionContext?.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, for: self, nibName: "BillDetailFeesFootView", bundle: nil, at: index) as? BillDetailFeesFootView else {
                 fatalError()
             }
+            
+            footerView.price.text = "￥ \(data.totalMoney)"
             return footerView
             
         default:
@@ -76,6 +85,14 @@ extension BillDetailFeesSection: ListSupplementaryViewSource {
 extension BillDetailFeesSection {
     
     final class Data: NSObject, ListDiffable {
+        
+        let totalMoney: Double
+        let list: [BillInfoDetail.BillItemList]
+        
+        init(totalMoney: Double, list: [BillInfoDetail.BillItemList]) {
+            self.totalMoney = totalMoney
+            self.list = list
+        }
         
         func diffIdentifier() -> NSObjectProtocol {
             return self
