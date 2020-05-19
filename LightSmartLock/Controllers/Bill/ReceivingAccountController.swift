@@ -18,6 +18,8 @@ class ReceivingAccountController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var datasource = [CollectionAccountModel]()
     
+    private var didSelectedBlock: ((CollectionAccountModel) -> Void)?
+    
     deinit {
         print(self)
     }
@@ -69,7 +71,7 @@ class ReceivingAccountController: UIViewController {
                 
             case .weixin:
                 let paywayBindVC: PayWayBindController = ViewLoader.Storyboard.controller(from: "Bill")
-                paywayBindVC.canEditing = true
+                paywayBindVC.canEditing = false
                 paywayBindVC.payWay = .wechat
                 self.navigationController?.pushViewController(paywayBindVC, animated: true)
                 
@@ -96,6 +98,10 @@ extension ReceivingAccountController {
                 PKHUD.sharedHUD.rx.showError(error)
         }).disposed(by: rx.disposeBag)
     }
+    
+    func selectedHandle(_ block: ((CollectionAccountModel) -> Void)?) {
+        self.didSelectedBlock = block
+    }
 }
 
 extension ReceivingAccountController: UITableViewDataSource, UITableViewDelegate {
@@ -117,12 +123,35 @@ extension ReceivingAccountController: UITableViewDataSource, UITableViewDelegate
         case .some(1):
             cell.accountTypeLabel.text = "银行卡账号"
             cell.icon.setImage(UIImage(named: "bankcard_icon"), for: UIControl.State())
+            cell.editButton.rx.tap.subscribe(onNext: {[weak self] (_) in
+                let paywayBindVC: BankCardBindController = ViewLoader.Storyboard.controller(from: "Bill")
+                paywayBindVC.canEditing = true
+                paywayBindVC.originModel = data
+                self?.navigationController?.pushViewController(paywayBindVC, animated: true)
+            }).disposed(by: cell.disposeBag)
+            
         case .some(2):
             cell.accountTypeLabel.text = "微信账号"
             cell.icon.setImage(UIImage(named: "wechat_icon"), for: UIControl.State())
+            cell.editButton.rx.tap.subscribe(onNext: {[weak self] (_) in
+                let paywayBindVC: PayWayBindController = ViewLoader.Storyboard.controller(from: "Bill")
+                paywayBindVC.canEditing = true
+                paywayBindVC.payWay = .wechat
+                paywayBindVC.originModel = data
+                self?.navigationController?.pushViewController(paywayBindVC, animated: true)
+            }).disposed(by: cell.disposeBag)
+            
         case .some(3):
             cell.accountTypeLabel.text = "支付宝账号"
             cell.icon.setImage(UIImage(named: "alipay_icon"), for: UIControl.State())
+            cell.editButton.rx.tap.subscribe(onNext: {[weak self] (_) in
+                let paywayBindVC: PayWayBindController = ViewLoader.Storyboard.controller(from: "Bill")
+                paywayBindVC.canEditing = true
+                paywayBindVC.payWay = .ali
+                paywayBindVC.originModel = data
+                self?.navigationController?.pushViewController(paywayBindVC, animated: true)
+            }).disposed(by: cell.disposeBag)
+            
         case .some(4):
             cell.accountTypeLabel.text = "其他账号"
             cell.icon.setImage(nil, for: UIControl.State())
@@ -135,29 +164,7 @@ extension ReceivingAccountController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let data = datasource[indexPath.row]
-        guard let acctountType = data.accountType else { return }
-        
-        switch acctountType {
-        case 1:
-            let paywayBindVC: PayWayBindController = ViewLoader.Storyboard.controller(from: "Bill")
-            paywayBindVC.canEditing = true
-            paywayBindVC.payWay = .ali
-            self.navigationController?.pushViewController(paywayBindVC, animated: true)
-            
-        case 2:
-            let paywayBindVC: PayWayBindController = ViewLoader.Storyboard.controller(from: "Bill")
-            paywayBindVC.canEditing = true
-            paywayBindVC.payWay = .wechat
-            self.navigationController?.pushViewController(paywayBindVC, animated: true)
-            
-        case 3:
-            let paywayBindVC: BankCardBindController = ViewLoader.Storyboard.controller(from: "Bill")
-            paywayBindVC.canEditing = true
-            paywayBindVC.originModel = data
-            self.navigationController?.pushViewController(paywayBindVC, animated: true)
-            
-        default:
-            break
-        }
+        self.didSelectedBlock?(data)
+        self.navigationController?.popViewController(animated: true)
     }
 }

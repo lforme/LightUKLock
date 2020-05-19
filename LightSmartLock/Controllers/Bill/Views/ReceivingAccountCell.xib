@@ -39,15 +39,20 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit_icon_bill" translatesAutoresizingMaskIntoConstraints="NO" id="tbd-w8-W10">
-                        <rect key="frame" x="280" y="16" width="24" height="24"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="xxx.xxx.xxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgg-Pu-nXH">
                         <rect key="frame" x="48" y="46.5" width="76" height="17"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                         <color key="textColor" name="textPrimary"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzC-SO-pOT">
+                        <rect key="frame" x="264" y="12" width="40" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="TCb-ll-KMT"/>
+                            <constraint firstAttribute="height" constant="32" id="aCm-8u-bpa"/>
+                        </constraints>
+                        <state key="normal" image="edit_icon_bill"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ec1-HJ-Lt8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="6D7-aZ-ibP"/>
@@ -55,11 +60,11 @@
                     <constraint firstItem="ec1-HJ-Lt8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Knd-Uv-uc9"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lgg-Pu-nXH" secondAttribute="trailing" constant="16" id="Lcc-hy-tJN"/>
                     <constraint firstItem="lgg-Pu-nXH" firstAttribute="leading" secondItem="Mkc-lQ-VFv" secondAttribute="leading" id="QaU-Bg-vkt"/>
+                    <constraint firstAttribute="trailing" secondItem="uzC-SO-pOT" secondAttribute="trailing" constant="16" id="aEB-ih-Ngl"/>
                     <constraint firstItem="lgg-Pu-nXH" firstAttribute="top" secondItem="Mkc-lQ-VFv" secondAttribute="bottom" constant="10" id="cii-kz-zsK"/>
                     <constraint firstItem="aih-nZ-Zez" firstAttribute="leading" secondItem="Mkc-lQ-VFv" secondAttribute="trailing" constant="8" id="gOT-rL-a5J"/>
-                    <constraint firstItem="tbd-w8-W10" firstAttribute="centerY" secondItem="ec1-HJ-Lt8" secondAttribute="centerY" id="gPP-Mq-r9E"/>
+                    <constraint firstItem="uzC-SO-pOT" firstAttribute="centerY" secondItem="Mkc-lQ-VFv" secondAttribute="centerY" id="ksa-YM-X1O"/>
                     <constraint firstItem="Mkc-lQ-VFv" firstAttribute="centerY" secondItem="ec1-HJ-Lt8" secondAttribute="centerY" id="nZB-6Q-Uwy"/>
-                    <constraint firstAttribute="trailing" secondItem="tbd-w8-W10" secondAttribute="trailing" constant="16" id="yQ6-5L-ARv"/>
                     <constraint firstItem="Mkc-lQ-VFv" firstAttribute="leading" secondItem="ec1-HJ-Lt8" secondAttribute="trailing" constant="8" id="zgK-aM-3Q3"/>
                 </constraints>
             </tableViewCellContentView>
@@ -69,6 +74,7 @@
                 <outlet property="accountName" destination="lgg-Pu-nXH" id="Onx-0g-lNw"/>
                 <outlet property="accountTypeLabel" destination="Mkc-lQ-VFv" id="mVC-Km-Zzi"/>
                 <outlet property="defaultLabel" destination="aih-nZ-Zez" id="QnK-nM-88l"/>
+                <outlet property="editButton" destination="uzC-SO-pOT" id="WSY-yE-O8l"/>
                 <outlet property="icon" destination="ec1-HJ-Lt8" id="5Bu-5e-Hvc"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="105.80357142857143"/>

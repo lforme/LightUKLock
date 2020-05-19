@@ -59,6 +59,7 @@ struct BillInfoDetail: HandyJSON {
     
     struct BillItemList: HandyJSON {
         var amount: Double?
+        var costCategoryId: String?
         var costCategoryName: String?
         var cycleStartDate: String?
         var cycleEndDate: String?

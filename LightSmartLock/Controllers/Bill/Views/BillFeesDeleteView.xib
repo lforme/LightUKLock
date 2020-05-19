@@ -120,10 +120,7 @@
                             <rect key="frame" x="390" y="105" width="8" height="15"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hE-f0-L3q">
-                            <rect key="frame" x="222" y="98" width="160" height="29"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="160" id="ced-GT-Ry3"/>
-                            </constraints>
+                            <rect key="frame" x="75" y="98" width="307" height="29"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                             <state key="normal" title="请选择">
                                 <color key="titleColor" name="textDescription"/>
@@ -150,6 +147,7 @@
                         <constraint firstAttribute="height" constant="148" id="KwV-Ac-uKP"/>
                         <constraint firstItem="l4w-mb-daD" firstAttribute="leading" secondItem="vDq-D1-gd4" secondAttribute="trailing" constant="8" id="Lj3-V9-UOf"/>
                         <constraint firstAttribute="trailing" secondItem="l4w-mb-daD" secondAttribute="trailing" constant="16" id="Pc1-gm-eAy"/>
+                        <constraint firstItem="6hE-f0-L3q" firstAttribute="leading" secondItem="wxe-OL-rro" secondAttribute="trailing" constant="20" id="QV6-th-CSI"/>
                         <constraint firstItem="Ua5-OG-enl" firstAttribute="leading" secondItem="QSw-Ah-jqp" secondAttribute="trailing" constant="8" id="RJB-TI-her"/>
                         <constraint firstItem="wbu-Tv-uIu" firstAttribute="leading" secondItem="sqY-4h-gUr" secondAttribute="leading" constant="16" id="RUZ-xb-vh8"/>
                         <constraint firstItem="BHL-Fj-L1q" firstAttribute="top" secondItem="4xP-hg-uN0" secondAttribute="bottom" constant="14" id="Uiw-Z6-BjD"/>
@@ -179,6 +177,12 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="cycleButton" destination="6hE-f0-L3q" id="1n6-Gq-cnD"/>
+                <outlet property="deleteButton" destination="4Yy-wr-5he" id="0ad-ch-wd6"/>
+                <outlet property="feeButton" destination="vDq-D1-gd4" id="77e-c4-fIq"/>
+                <outlet property="feeField" destination="QSw-Ah-jqp" id="Blz-je-53b"/>
+            </connections>
             <point key="canvasLocation" x="133" y="102"/>
         </view>
     </objects>

@@ -36,6 +36,7 @@ class BankCardBindController: UITableViewController {
         
         title = "绑定银行卡"
         setupUI()
+        setupNavigationRightItem()
         bind()
     }
     
@@ -45,6 +46,9 @@ class BankCardBindController: UITableViewController {
             obModel.accept(oldModel)
             let isDefault = oldModel.isDefault ?? false
             defaultSwitch.isOn = isDefault
+            accountField.text = oldModel.account
+            bankNameField.text = oldModel.userName
+            bankNumberField.text = oldModel.bankName
         }
         
         let oldValue = self.obModel.value
@@ -134,6 +138,23 @@ class BankCardBindController: UITableViewController {
             let deleteButton = createdRightNavigationItem(title: "删除", image: nil)
             guard let id = originModel?.id else { return }
             
+            let deleteAction = Action<(), Bool> { (_) -> Observable<Bool> in
+                
+                return BusinessAPI.requestMapBool(.deleteReceivingAcount(id: id))
+            }
+            
+            deleteButton.rx.bind(to: deleteAction, input: ())
+            
+            deleteAction.errors.subscribe(onNext: { (error) in
+                PKHUD.sharedHUD.rx.showError(error)
+            }).disposed(by: rx.disposeBag)
+            
+            deleteAction.elements.subscribe(onNext: {[weak self] (success) in
+                if success {
+                    NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.accountWay)
+                    self?.navigationController?.popViewController(animated: true)
+                }
+            }).disposed(by: rx.disposeBag)
         }
     }
     

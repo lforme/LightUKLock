@@ -297,6 +297,8 @@ extension BusinessInterface: TargetType {
              return "/receiving_account_info/receiving_account"
         case let .deleteReceivingAcount(id):
             return "/receiving_account_info/\(id)"
+        case .addBillInfo:
+            return "/base_bill_info/"
         }
     }
     
@@ -437,6 +439,9 @@ extension BusinessInterface: TargetType {
             return ["accountType": accountType, "amount": amount, "billId": billId, "payTime": payTime, "receivingAccountId": receivingAccountId]
         
         case let .addReceivingAccount(parameter):
+            return parameter.toJSON()
+            
+        case let .addBillInfo(parameter):
             return parameter.toJSON()
             
         default:

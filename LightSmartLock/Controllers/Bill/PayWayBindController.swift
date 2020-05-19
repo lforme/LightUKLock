@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+import Action
+import PKHUD
 
 class PayWayBindController: UITableViewController {
-
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var accountLabel: UILabel!
@@ -18,6 +22,9 @@ class PayWayBindController: UITableViewController {
     @IBOutlet weak var pickQrButton: UIButton!
     @IBOutlet weak var defaultSwitch: UISwitch!
     @IBOutlet weak var saveButton: UIButton!
+    
+    var originModel: CollectionAccountModel?
+    let obModel = BehaviorRelay<CollectionAccountModel>(value: CollectionAccountModel())
     
     enum PayWay {
         case wechat
@@ -33,7 +40,7 @@ class PayWayBindController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupUI()
         bind()
         setupNavigationRightItem()
@@ -50,6 +57,8 @@ class PayWayBindController: UITableViewController {
     }
     
     func bind() {
+        let oldValue = self.obModel.value
+        
         switch payWay {
         case .ali:
             title = "绑定支付宝支付"
@@ -58,6 +67,7 @@ class PayWayBindController: UITableViewController {
             accountLabel.text = "支付宝账号"
             accountTextField.placeholder = "请输入支付宝账号"
             qrLabel.text = "支付宝收款码"
+            oldValue.accountType = 3
         case .wechat:
             title = "绑定微信支付"
             nameLabel.text = "微信昵称"
@@ -65,7 +75,90 @@ class PayWayBindController: UITableViewController {
             accountLabel.text = "微信账号"
             accountTextField.placeholder = "请输入微信账号"
             qrLabel.text = "微信收款码"
+            oldValue.accountType = 2
         }
+        
+        if let oldModel = originModel {
+            nameTextField.text = oldModel.userName
+            accountTextField.text = oldModel.account
+            pickQrButton.setUrl(oldModel.paymentCodeUrl)
+            defaultSwitch.isOn = oldModel.isDefault ?? false
+        }
+        
+        nameTextField.rx.text.orEmpty.changed
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .subscribe(onNext: {[unowned self] (value) in
+                let temp = self.obModel.value
+                temp.userName = value
+                self.obModel.accept(temp)
+            }).disposed(by: rx.disposeBag)
+        
+        accountTextField.rx.text.orEmpty.changed
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .subscribe(onNext: {[unowned self] (value) in
+                let temp = self.obModel.value
+                temp.account = value
+                self.obModel.accept(temp)
+            }).disposed(by: rx.disposeBag)
+        
+        defaultSwitch.rx.value.subscribe(onNext: {[unowned self] (isOn) in
+            let temp = self.obModel.value
+            temp.isDefault = isOn
+            self.obModel.accept(temp)
+        }).disposed(by: rx.disposeBag)
+        
+        pickQrButton.rx.tap.flatMapLatest { (_) -> Observable<UIImage> in
+            
+            return ImagePicker.present(maxImageCount: 1).map { $0.first ?? UIImage() }
+        }.flatMapLatest {[weak self] (image) -> Observable<String?> in
+            self?.pickQrButton.setImage(image, for: UIControl.State())
+            
+            return BusinessAPI.requestMapAny(.uploadImage(image, description: "支付二维码")).map { (res) -> String? in
+                let json = res as? [String: Any]
+                let headPicUrl = json?["data"] as? String
+                return headPicUrl
+            }
+        }.subscribe(onNext: {[weak self] (imageUrl) in
+            guard let this = self else { return }
+            let temp = this.obModel.value
+            temp.paymentCodeUrl = imageUrl
+            this.obModel.accept(temp)
+            }, onError: { (error) in
+                PKHUD.sharedHUD.rx.showError(error)
+        }).disposed(by: rx.disposeBag)
+        
+        let saveAction = Action<(), Bool> {[weak self] (_) -> Observable<Bool> in
+            guard let this = self else {
+                return .error(AppError.reason("发生未知错误"))
+            }
+            
+            let model = this.obModel.value
+            if model.account.isNilOrEmpty {
+                return .error(AppError.reason("请填账号"))
+            } else if model.userName.isNilOrEmpty {
+                return .error(AppError.reason("请填昵称"))
+            } else if model.paymentCodeUrl.isNilOrEmpty {
+                return .error(AppError.reason("请选择付款二维码"))
+            } else {
+                
+                return BusinessAPI.requestMapBool(.addReceivingAccount(parameter: model))
+            }
+        }
+        
+        saveButton.rx.bind(to: saveAction, input: ())
+        
+        saveAction.errors.subscribe(onNext: { (error) in
+            PKHUD.sharedHUD.rx.showActionError(error)
+        }).disposed(by: rx.disposeBag)
+        
+        saveAction.elements.subscribe(onNext: {[weak self] (success) in
+            if success {
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.accountWay)
+                self?.navigationController?.popViewController(animated: true)
+            }
+        }).disposed(by: rx.disposeBag)
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

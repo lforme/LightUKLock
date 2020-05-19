@@ -1,9 +1,9 @@
 //
-//  DatePickerController.swift
-//  IntelligentUOKO
+//  DateCyclePickerController.swift
+//  LightSmartLock
 //
-//  Created by mugua on 2019/8/16.
-//  Copyright © 2019 mugua. All rights reserved.
+//  Created by mugua on 2020/5/19.
+//  Copyright © 2020 mugua. All rights reserved.
 //
 
 import UIKit
@@ -12,28 +12,29 @@ import RxSwift
 import Action
 import Then
 
-class DatePickerController: UIViewController {
+class DateCyclePickerController: UIViewController {
     
+    @IBOutlet weak var dismissButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
-    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var startDateView: UIDatePicker!
+    @IBOutlet weak var endDateView: UIDatePicker!
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var dismissBackgourndView: UIButton!
     
-    let formatter = DateFormatter()
+    fileprivate let formatter = DateFormatter()
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        loadViewIfNeeded()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        loadViewIfNeeded()
+    }
     
     deinit {
         print(self)
-    }
-    
-    convenience init(dateFormatString: String, mode: UIDatePicker.Mode = UIDatePicker.Mode.date, locale: Locale?) {
-        self.init()
-        loadViewIfNeeded()
-        titleLabel.text = formatter.string(from: Date())
-        datePicker.locale = locale
-        formatter.dateFormat = dateFormatString
-        datePicker.datePickerMode = mode
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,42 +64,47 @@ class DatePickerController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        containerView.clipsToBounds = true
-        containerView.layer.cornerRadius = 7
+        formatter.dateFormat = "yyyy-MM-dd"
+        startDateView.locale = Locale(identifier: "zh_CN")
+        endDateView.locale = Locale(identifier: "zh_CN")
+        containerView.setCircular(radius: 7)
     }
-    
 }
 
-
-extension Reactive where Base: DatePickerController {
+extension Reactive where Base: DateCyclePickerController {
     
-    static func present(with dateFormatString: String, locale: Locale = Locale(identifier: "zh_CN"), mode: UIDatePicker.Mode?, maxDate: Date?, miniDate: Date?) -> Observable<String> {
+    static func present() -> Observable<(String, String)> {
         
-        return Observable<String>.create({ (observer) -> Disposable in
+        return Observable<(String, String)>.create { (observer) -> Disposable in
             
-            let pickerVC = DatePickerController(dateFormatString: dateFormatString, mode: mode ?? .date, locale: locale).then { (vc) in
-                
+            let pickerVC = DateCyclePickerController().then { (vc) in
                 vc.modalPresentationStyle = .overCurrentContext
                 vc.modalTransitionStyle = .crossDissolve
-                
-                vc.datePicker.maximumDate = maxDate
-                vc.datePicker.minimumDate = miniDate
                 
                 let dismissAction = CocoaAction {
                     observer.onCompleted()
                     return .empty()
                 }
+                
                 vc.cancelButton.rx.action = dismissAction
-                vc.dismissBackgourndView.rx.action = dismissAction
+                vc.dismissButton.rx.action = dismissAction
                 
                 vc.confirmButton.rx.action = CocoaAction { [unowned vc] in
+                    var startDate = Date().toFormat("yyyy-MM-dd")
+                    var endDate = Date().toFormat("yyyy-MM-dd")
                     
-                    vc.datePicker.rx.value.subscribe(onNext: { (date) in
+                    vc.startDateView.rx.value.subscribe(onNext: { (date) in
                         let dateString = vc.formatter.string(from: date)
-                        observer.onNext(dateString)
-                        observer.onCompleted()
+                        startDate = dateString
                     }).disposed(by: vc.rx.disposeBag)
+                    
+                    vc.endDateView.rx.value.subscribe(onNext: { (date) in
+                        let dateString = vc.formatter.string(from: date)
+                        endDate = dateString
+                    }).disposed(by: vc.rx.disposeBag)
+                    
+                    observer.onNext((startDate, endDate))
+                    observer.onCompleted()
                     return .empty()
                 }
             }
@@ -112,6 +118,6 @@ extension Reactive where Base: DatePickerController {
             return Disposables.create {
                 pickerVC.dismiss(animated: true, completion: nil)
             }
-        })
+        }
     }
 }

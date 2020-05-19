@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class ReceivingAccountCell: UITableViewCell {
 
@@ -14,6 +16,13 @@ class ReceivingAccountCell: UITableViewCell {
     @IBOutlet weak var defaultLabel: UILabel!
     @IBOutlet weak var accountName: UILabel!
     @IBOutlet weak var accountTypeLabel: UILabel!
+    @IBOutlet weak var editButton: UIButton!
+    
+    private(set) var disposeBag = DisposeBag()
+    
+    override func prepareForReuse() {
+        disposeBag = DisposeBag()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

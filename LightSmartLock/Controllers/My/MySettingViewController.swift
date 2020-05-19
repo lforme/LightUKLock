@@ -97,8 +97,6 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
     }
 }
 
-extension MySettingViewController: TZImagePickerControllerDelegate {}
-
 extension MySettingViewController {
     
     func logoutAction() {
