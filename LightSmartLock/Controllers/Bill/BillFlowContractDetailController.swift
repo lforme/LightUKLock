@@ -34,11 +34,13 @@ class BillFlowContractDetailController: UITableViewController {
     @IBOutlet weak var leaseBackButton: UIButton!
     @IBOutlet weak var leaseRenewButton: UIButton!
     
-    var contractId = "4672476535362420739"
+    var contractId = ""
     
     private var assetId = ""
     private var startTime = ""
     private var endTime = ""
+    private var fetchModel: AssetContractDetailModel?
+    
     deinit {
         print(self)
     }
@@ -53,6 +55,7 @@ class BillFlowContractDetailController: UITableViewController {
     
     func bind() {
         BusinessAPI.requestMapJSON(.tenantContractInfo(contractId: self.contractId), classType: AssetContractDetailModel.self).subscribe(onNext: {[weak self] (model) in
+            self?.fetchModel = model
             self?.assetId = model.assetId ?? ""
             self?.startTime = model.startDate ?? ""
             self?.endTime = model.endDate ?? ""
@@ -120,6 +123,13 @@ class BillFlowContractDetailController: UITableViewController {
                     }
                 }).disposed(by: this.rx.disposeBag)
             }
+        }).disposed(by: rx.disposeBag)
+        
+        leaseRenewButton.rx.tap.subscribe(onNext: {[unowned self] (_) in
+            let leaseRenewVC: BillFlowLeaseRenewController = ViewLoader.Storyboard.controller(from: "Bill")
+            leaseRenewVC.contractId = self.contractId
+            leaseRenewVC.originModel = self.fetchModel
+            self.navigationController?.pushViewController(leaseRenewVC, animated: true)
         }).disposed(by: rx.disposeBag)
     }
     

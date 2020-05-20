@@ -18,15 +18,10 @@ class BillFlowController: UIViewController {
     @IBOutlet weak var reportButton: UIButton!
     @IBOutlet weak var flowButton: UIButton!
     @IBOutlet weak var contractButton: UIButton!
-    
     @IBOutlet weak var balanceLabel: UILabel!
-    
     @IBOutlet weak var incomeAmountLabel: UILabel!
-    
     @IBOutlet weak var incomeCountLabel: UILabel!
-    
     @IBOutlet weak var expenseAmountLabel: UILabel!
-    
     @IBOutlet weak var expenseCountLabel: UILabel!
     
     @IBOutlet weak var collectionView: ListCollectionView! = {
@@ -157,8 +152,8 @@ extension BillFlowController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is BookKeepingController {
             let bookKeepingVC = segue.destination as! BookKeepingController
-            bookKeepingVC.assetId = "4672365253421433859"
-            bookKeepingVC.contractId = "4673814997878439939"
+            bookKeepingVC.assetId = vm.assetId
+            bookKeepingVC.contractId = ""
         }
     }
 }

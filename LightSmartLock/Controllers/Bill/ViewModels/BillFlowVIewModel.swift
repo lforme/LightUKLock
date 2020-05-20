@@ -52,7 +52,7 @@ final class BillFlowViewModel {
                     return .just([])
                 })
                     .map { (models) -> [BillContractSection.Data] in
-                        models.compactMap { BillContractSection.Data.init(id: $0?.assetId ?? "", phone: $0?.tenantPhone ?? "", name: $0?.tenantName ?? "", house: $0?.houseName ?? "", start: $0?.startDate ?? "", end: $0?.endDate ?? "") }
+                        models.compactMap { BillContractSection.Data(id: $0?.id ?? "", phone: $0?.tenantPhone ?? "", name: $0?.tenantName ?? "", house: $0?.houseName ?? "", start: $0?.startDate ?? "", end: $0?.endDate ?? "") }
                 }
             case .flow:
                 var i = -1

@@ -16,6 +16,7 @@ struct AssetContractModel: HandyJSON {
     var houseName: String?
     var startDate: String?
     var endDate: String?
+    var id: String?
 }
 
 struct AssetContractDetailModel: HandyJSON {

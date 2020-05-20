@@ -47,6 +47,7 @@ final class BillContractSection: ListSectionController {
     
     override func didSelectItem(at index: Int) {
         let contractDetailVC: BillFlowContractDetailController = ViewLoader.Storyboard.controller(from: "Bill")
+        contractDetailVC.contractId = data?.id ?? ""
         self.viewController?.navigationController?.pushViewController(contractDetailVC, animated: true)
     }
 }

@@ -418,10 +418,10 @@ extension BusinessInterface: TargetType {
         case let .reportReportItems(assetId, costId):
             return ["assetId": assetId, "costCategoryId": costId]
             
-        case let .baseTurnoverInfo(assetId, contractId, payTime, itemList):
+        case let .baseTurnoverInfo(assetId, _, payTime, itemList):
             let array = itemList.toJSON().compactMap { $0 }
             
-            return ["assetId": assetId, "contractId": contractId, "payTime": payTime, "turnoverItemDTOList": array]
+            return ["assetId": assetId, "payTime": payTime, "turnoverItemDTOList": array]
             
         case let .terminationContract(billId, accountType, clearDate):
             return ["accountType": accountType, "billId": billId, "clearDate": clearDate]
