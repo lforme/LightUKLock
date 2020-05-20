@@ -14,14 +14,14 @@ extension UIImageView {
     
     func setUrl(_ string: String?) {
         
-        guard let str = string else {
-            print("url不合法")
+        guard let str = string, str.isNotEmpty else {
+            self.image = nil
             return
         }
         
         
         guard let urlString = (ServerHost.shared.environment.host + str).encodeUrl() else {
-            print("url不合法")
+            self.image = nil
             return
         }
         

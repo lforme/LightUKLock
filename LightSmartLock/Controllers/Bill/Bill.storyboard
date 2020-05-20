@@ -100,7 +100,6 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bCT-t8-P5F">
                                                     <rect key="frame" x="2" y="0.0" width="32" height="32"/>
-                                                    <color key="backgroundColor" name="textPlaceholder"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="32" id="l3c-mc-346"/>
                                                         <constraint firstAttribute="height" constant="32" id="xRX-Bf-ODI"/>
@@ -421,7 +420,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                 <state key="normal" title="请选择">
-                                                    <color key="titleColor" name="textDescription"/>
+                                                    <color key="titleColor" name="textOpaque78"/>
                                                 </state>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qb8-rK-pu4">
@@ -458,12 +457,12 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xWE-CW-fwc">
                                                 <rect key="frame" x="75" y="57.5" width="300.5" height="18.5"/>
-                                                <color key="textColor" name="textPrimary"/>
+                                                <color key="textColor" name="textOpaque78"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                        <color key="value" name="textPlaceholder"/>
+                                                        <color key="value" name="textOpaque78"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
@@ -486,7 +485,7 @@
                                                 <rect key="frame" x="75" y="98" width="307" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                 <state key="normal" title="请选择">
-                                                    <color key="titleColor" name="textDescription"/>
+                                                    <color key="titleColor" name="textOpaque78"/>
                                                 </state>
                                             </button>
                                         </subviews>
@@ -547,7 +546,7 @@
                                                 <state key="normal" image="config_add"/>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" name="viewBackground"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="L0G-Hg-uE7" secondAttribute="trailing" constant="16" id="2Dg-Wi-Tgf"/>
                                             <constraint firstAttribute="height" constant="44" id="Kb5-9w-D7g"/>
@@ -575,7 +574,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                 <state key="normal" title="请选择">
-                                                    <color key="titleColor" name="textDescription"/>
+                                                    <color key="titleColor" name="textOpaque78"/>
                                                 </state>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J4i-sL-diT">
@@ -606,12 +605,12 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DIg-wl-m4K">
                                                 <rect key="frame" x="347" y="57.5" width="43" height="18.5"/>
-                                                <color key="textColor" name="textPrimary"/>
+                                                <color key="textColor" name="textOpaque78"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                        <color key="value" name="textPlaceholder"/>
+                                                        <color key="value" name="textOpaque78"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
@@ -637,7 +636,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                 <state key="normal" title="请选择">
-                                                    <color key="titleColor" name="textDescription"/>
+                                                    <color key="titleColor" name="textOpaque78"/>
                                                 </state>
                                             </button>
                                         </subviews>
@@ -677,7 +676,7 @@
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bp6-C2-3gr">
                                                 <rect key="frame" x="8" y="8" width="398" height="72"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" name="viewBackground"/>
                                                 <color key="textColor" name="textOpaque78"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2068,15 +2067,15 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="kyd-G4-DWp">
-                                                    <rect key="frame" x="285" y="25" width="113" height="30"/>
+                                                    <rect key="frame" x="317" y="24" width="81" height="32"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMU-67-L2L">
-                                                            <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                                                            <state key="normal" title="Button"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="32"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eej-LV-gai">
-                                                            <rect key="frame" x="67" y="0.0" width="46" height="30"/>
-                                                            <state key="normal" title="Button"/>
+                                                            <rect key="frame" x="51" y="0.0" width="30" height="32"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -2499,9 +2498,6 @@
                                                                     <real key="value" value="1"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
-                                                            <connections>
-                                                                <segue destination="ZHB-yi-rJQ" kind="show" id="yHJ-hd-qYB"/>
-                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -2984,7 +2980,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="BillFlowLeaseRenewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZHB-yi-rJQ" customClass="BillFlowLeaseRenewController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wmz-WG-LCj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="tableViewBackground"/>
                         <sections>
@@ -3107,17 +3103,18 @@
                                                     <color key="textColor" name="textPrimary"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000元/月" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSc-Hn-7H0">
-                                                    <rect key="frame" x="309.5" y="13.5" width="65.5" height="17"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQ2-PG-mwL" customClass="DataSelectionButton" customModule="门锁助手个人版" customModuleProvider="target">
+                                                    <rect key="frame" x="340" y="7.5" width="43" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" name="textPrimary"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <state key="normal" title="请选择">
+                                                        <color key="titleColor" name="textPrimary"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="hQ2-PG-mwL" secondAttribute="trailing" id="8IN-wK-Mgt"/>
                                                 <constraint firstItem="Vyt-rT-m1T" firstAttribute="leading" secondItem="SwH-uN-ydR" secondAttribute="leading" constant="18" id="HOu-eC-bn7"/>
-                                                <constraint firstAttribute="trailing" secondItem="MSc-Hn-7H0" secondAttribute="trailing" constant="8" id="Khw-tP-p8c"/>
-                                                <constraint firstItem="MSc-Hn-7H0" firstAttribute="centerY" secondItem="SwH-uN-ydR" secondAttribute="centerY" id="PuH-cq-Knt"/>
+                                                <constraint firstItem="hQ2-PG-mwL" firstAttribute="centerY" secondItem="SwH-uN-ydR" secondAttribute="centerY" id="cpV-9S-LdA"/>
                                                 <constraint firstItem="Vyt-rT-m1T" firstAttribute="centerY" secondItem="SwH-uN-ydR" secondAttribute="centerY" id="d44-d8-7Gs"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -3136,18 +3133,19 @@
                                                     <color key="textColor" name="textPrimary"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="按租金" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCq-Mm-gtg">
-                                                    <rect key="frame" x="332" y="13.5" width="43" height="17"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qb3-mn-nCj" customClass="DataSelectionButton" customModule="门锁助手个人版" customModuleProvider="target">
+                                                    <rect key="frame" x="340" y="7.5" width="43" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" name="textPrimary"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <state key="normal" title="请选择">
+                                                        <color key="titleColor" name="textPrimary"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="tUZ-ts-gQd" firstAttribute="centerY" secondItem="v1h-1n-SLO" secondAttribute="centerY" id="BA0-kV-3KA"/>
-                                                <constraint firstAttribute="trailing" secondItem="uCq-Mm-gtg" secondAttribute="trailing" constant="8" id="N2i-gy-G5T"/>
+                                                <constraint firstItem="qb3-mn-nCj" firstAttribute="centerY" secondItem="v1h-1n-SLO" secondAttribute="centerY" id="kwh-Vy-WKb"/>
                                                 <constraint firstItem="tUZ-ts-gQd" firstAttribute="leading" secondItem="v1h-1n-SLO" secondAttribute="leading" constant="18" id="sY5-YP-Xa8"/>
-                                                <constraint firstItem="uCq-Mm-gtg" firstAttribute="centerY" secondItem="v1h-1n-SLO" secondAttribute="centerY" id="zde-rb-dpM"/>
+                                                <constraint firstAttribute="trailing" secondItem="qb3-mn-nCj" secondAttribute="trailing" id="zsA-O1-EHm"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="viewBackground"/>
@@ -3211,18 +3209,19 @@
                                                     <color key="textColor" name="textPrimary"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一年" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gjf-KH-0jQ">
-                                                    <rect key="frame" x="346" y="13.5" width="29" height="17"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ivc-fA-nZy" customClass="DataSelectionButton" customModule="门锁助手个人版" customModuleProvider="target">
+                                                    <rect key="frame" x="340" y="7.5" width="43" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" name="textPrimary"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <state key="normal" title="请选择">
+                                                        <color key="titleColor" name="textPrimary"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Ivc-fA-nZy" secondAttribute="trailing" id="020-Rs-YKk"/>
+                                                <constraint firstItem="Ivc-fA-nZy" firstAttribute="centerY" secondItem="J02-1i-mEX" secondAttribute="centerY" id="3Us-md-724"/>
                                                 <constraint firstItem="zSI-Zt-YbU" firstAttribute="centerY" secondItem="J02-1i-mEX" secondAttribute="centerY" id="3gs-Ie-Zsh"/>
                                                 <constraint firstItem="zSI-Zt-YbU" firstAttribute="leading" secondItem="J02-1i-mEX" secondAttribute="leading" constant="18" id="6sO-cq-Lmu"/>
-                                                <constraint firstItem="Gjf-KH-0jQ" firstAttribute="centerY" secondItem="J02-1i-mEX" secondAttribute="centerY" id="RKo-6e-Qhf"/>
-                                                <constraint firstAttribute="trailing" secondItem="Gjf-KH-0jQ" secondAttribute="trailing" constant="8" id="iwz-Kf-VH8"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="viewBackground"/>
@@ -3265,8 +3264,8 @@
                                                     <color key="textColor" name="textPrimary"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000元/月" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Id5-hP-VXL">
-                                                    <rect key="frame" x="332.5" y="13.5" width="65.5" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Id5-hP-VXL">
+                                                    <rect key="frame" x="398" y="22" width="0.0" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" name="textPrimary"/>
                                                     <nil key="highlightedColor"/>
@@ -3294,8 +3293,8 @@
                                                     <color key="textColor" name="textPrimary"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020-11-23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYm-tq-2UK">
-                                                    <rect key="frame" x="321" y="13.5" width="77" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYm-tq-2UK">
+                                                    <rect key="frame" x="398" y="22" width="0.0" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" name="textPrimary"/>
                                                     <nil key="highlightedColor"/>
@@ -3364,6 +3363,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="bT1-o4-BZV"/>
+                    <connections>
+                        <outlet property="addAndSubPicker" destination="hQ2-PG-mwL" id="EFM-Dg-ca3"/>
+                        <outlet property="adjustWayButton" destination="qb3-mn-nCj" id="gka-Z3-pWr"/>
+                        <outlet property="afterEndLabel" destination="aYm-tq-2UK" id="cxu-vc-zwE"/>
+                        <outlet property="afterRentLabel" destination="utn-3N-q8Y" id="uYb-eK-eVH"/>
+                        <outlet property="durationButton" destination="Ivc-fA-nZy" id="AK7-ZK-fBz"/>
+                        <outlet property="endLabel" destination="s9k-XQ-vV6" id="Cjo-2s-H97"/>
+                        <outlet property="rentLabel" destination="YYr-t1-g2B" id="y9r-Ov-XPw"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CWf-5K-eF0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

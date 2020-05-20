@@ -81,5 +81,7 @@ enum BusinessInterface {
     case addReceivingAccount(parameter: CollectionAccountModel) // 添加收款账号
     case deleteReceivingAcount(id: String) // 删除收款账号
     case addBillInfo(parameter: CreateBillController.Parameter) // 发起账单
+    case addCostCategory(name: String) // 添加用户费用类型
+    case contractRenew(contractId: String, endDate: String, increaseType: Int, ratio: Double, rentalChangeType: Int) // 续租 1:按金额 2：按比例  加租: 1 减租: -1
 
 }

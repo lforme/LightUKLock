@@ -81,13 +81,11 @@ extension UIButton {
     
     func setUrl(_ string: String?) {
         
-        guard let str = string else {
-            print("url不合法")
+        guard let str = string, str.isNotEmpty else {
             return
         }
         
         guard let urlString = (ServerHost.shared.environment.host + str).encodeUrl() else {
-            print("url不合法")
             return
         }
         

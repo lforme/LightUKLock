@@ -9,6 +9,8 @@
 import UIKit
 import AlignedCollectionViewFlowLayout
 import PKHUD
+import RxSwift
+import RxCocoa
 
 class SelectorFeesCell: UICollectionViewCell {
     
@@ -42,6 +44,9 @@ class SelectorFeesController: UICollectionViewController {
     func bind() {
         BusinessAPI.requestMapJSONArray(.costCategory, classType: FeesKindModel.self, useCache: true).subscribe(onNext: {[weak self] (list) in
             self?.dataSrouce = list.compactMap { $0 }
+            var addModel = FeesKindModel()
+            addModel.name = "添加"
+            self?.dataSrouce.append(addModel)
             self?.collectionView.reloadData()
             }, onError: { (error) in
                 PKHUD.sharedHUD.rx.showError(error)
@@ -67,14 +72,38 @@ class SelectorFeesController: UICollectionViewController {
         
         let data = dataSrouce[indexPath.item]
         cell.name.text = data.name
-        cell.iconView.setUrl(data.icon)
+        
+        if indexPath.item == dataSrouce.count - 1{
+            cell.iconView.image = UIImage(named: "custom_fee_add")
+            cell.name.textColor = ColorClassification.primary.value
+            cell.iconView.backgroundColor = .clear
+        } else {
+            cell.name.textColor = ColorClassification.textPrimary.value
+            cell.iconView.backgroundColor = ColorClassification.textPlaceholder.value
+            cell.iconView.setUrl(data.icon)
+        }
+        
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let data = dataSrouce[indexPath.item]
-        self.didSelected?(data.name ?? "", data.categoryCode ?? "")
-        self.navigationController?.popViewController(animated: true)
+        if indexPath.item != dataSrouce.count - 1 {
+            let data = dataSrouce[indexPath.item]
+            self.didSelected?(data.name ?? "", data.id ?? "")
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            
+            SingleInputController.rx.present(wiht: "添加自定义费用类型", saveTitle: "保存", placeholder: "请输入").flatMapLatest { (text) -> Observable<Bool> in
+                
+                return BusinessAPI.requestMapBool(.addCostCategory(name: text))
+            }.subscribe(onNext: {[weak self] (success) in
+                if success {
+                    self?.bind()
+                }
+                }, onError: { (error) in
+                    PKHUD.sharedHUD.rx.showError(error)
+            }).disposed(by: rx.disposeBag)
+        }
     }
     
 }

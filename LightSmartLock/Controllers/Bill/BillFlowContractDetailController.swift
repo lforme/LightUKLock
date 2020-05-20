@@ -70,15 +70,8 @@ class BillFlowContractDetailController: UITableViewController {
             self?.isSeparate.text = model.isSeparate ?? false ? "分开收取" : "不分开收取"
             self?.remark.text = model.remark
             
-            if let idCardA = model.tenantInfo?.idCardFront {
-                let str = ServerHost.shared.environment.host + idCardA
-                self?.idCardFront.kf.setImage(with: URL(string: str), for: UIControl.State())
-            }
-            
-            if let idCardB = model.tenantInfo?.idCardReverse {
-                let str = ServerHost.shared.environment.host + idCardB
-                self?.idCardFront.kf.setImage(with: URL(string: str), for: UIControl.State())
-            }
+            self?.idCardFront.setUrl(model.tenantInfo?.idCardFront)
+            self?.idCardBack.setUrl(model.tenantInfo?.idCardReverse)
             
             if let roommateList = model.fellowInfoList {
                 roommateList.forEach { (item) in

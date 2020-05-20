@@ -299,6 +299,10 @@ extension BusinessInterface: TargetType {
             return "/receiving_account_info/\(id)"
         case .addBillInfo:
             return "/base_bill_info/"
+        case .addCostCategory:
+            return "/cost_category/"
+        case .contractRenew:
+            return "/tenant_contract_info/renew"
         }
     }
     
@@ -443,6 +447,12 @@ extension BusinessInterface: TargetType {
             
         case let .addBillInfo(parameter):
             return parameter.toJSON()
+            
+        case let .addCostCategory(name):
+            return ["name": name]
+            
+        case let .contractRenew(contractId, endDate, increaseType, ratio, rentalChangeType):
+            return ["contractId": contractId, "endDate": endDate, "increaseType": increaseType, "ratio": ratio, "rentalChangeType": rentalChangeType]
             
         default:
             return nil

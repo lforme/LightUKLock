@@ -80,7 +80,7 @@ class BookKeepingController: UITableViewController {
     }
     
     func setupNavigationRightItem() {
-        let saveButton = createdRightNavigationItem(title: "保存", font: nil, image: nil, rightEdge: 8, color: ColorClassification.primary.value)
+        let saveButton = createdRightNavigationItem(title: "保存", font: nil, image: nil, rightEdge: 8, color: ColorClassification.navigationItem.value)
         saveButton.addTarget(self, action: #selector(saveButtonTap), for: .touchUpInside)
     }
     
@@ -196,6 +196,8 @@ class BookKeepingController: UITableViewController {
                     .disposed(by: cell.disposeBag)
                 if let price = bindModel.convertToAddFlowParameter().amount {
                     cell.priceTextField.text = price
+                } else {
+                    cell.priceTextField.text = nil
                 }
                 
                 cell.feesButton.rx.tap.subscribe(onNext: {[weak self] (_) in

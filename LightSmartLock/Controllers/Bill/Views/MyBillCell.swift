@@ -24,6 +24,11 @@ class MyBillCell: UITableViewCell {
     private(set) var disposeBag = DisposeBag()
     
     override func prepareForReuse() {
+        stackView.arrangedSubviews.forEach {
+            self.stackView.removeArrangedSubview($0)
+        }
+        stackView.arrangedSubviews.forEach { $0.removeFromSuperview()
+        }
         disposeBag = DisposeBag()
     }
     

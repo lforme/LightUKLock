@@ -113,6 +113,11 @@ extension NetworkMetaDb {
     @discardableResult
     func value(forKey key: String) -> Data? {
         
+        pthread_rwlock_trywrlock(&lock)
+        defer {
+            pthread_rwlock_unlock(&lock)
+        }
+        
         var result: Data?
         queue.sync(flags: .barrier) {
             let query = self.table.select(self.table[*])
@@ -140,16 +145,14 @@ extension NetworkMetaDb {
     @discardableResult
     func deleteExpiredData() -> Bool {
         var result = -1
-        
-        queue.sync(flags: .barrier) {
-            let expired = self.table.select(self.table[*])
-                .filter(self.accessTime > self.expirationTime)
-            do {
-                result = try self.checkDb().run(expired.delete())
-            } catch {
-                print("delete expiredData failed: \(error)")
-                result = -1
-            }
+        let expired = self.table.select(self.table[*])
+            .filter(self.accessTime > self.expirationTime)
+        do {
+            result = try self.checkDb().run(expired.delete())
+        } catch {
+            
+            print("delete expiredData failed: \(error)")
+            result = -1
         }
         return result > 0
     }
@@ -167,7 +170,7 @@ extension NetworkMetaDb {
                 result = try self.checkDb().run(value.delete())
                 
             } catch {
-                print("delete expiredData failed: \(error)")
+                print("delete failed: \(error)")
                 result = -1
             }
         }
@@ -176,13 +179,16 @@ extension NetworkMetaDb {
     
     @discardableResult
     func deleteAll() -> Bool {
-        
+        pthread_rwlock_trywrlock(&lock)
+        defer {
+            pthread_rwlock_unlock(&lock)
+        }
         var result = -1
         queue.sync(flags: .barrier) {
             do {
                 result = try self.checkDb().run(self.table.delete())
             } catch {
-                print("delete expiredData failed: \(error)")
+                print("delete failed: \(error)")
                 result = -1
             }
         }

@@ -55,7 +55,7 @@ final class RxMoyaProvider<Target>: MoyaProvider<Target> where Target: TargetTyp
         var mutablePlugins = plugins
         
         mutablePlugins += [NetworkLoggerPlugin(configuration: .init(formatter: .init(responseData: RxMoyaProvider<Target>.JSONResponseDataFormatter),
-        logOptions: .verbose))]
+                                                                    logOptions: .verbose))]
         
         super.init(endpointClosure: endpointClosure, requestClosure: requestClosure, stubClosure: stubClosure, callbackQueue: nil, session: manager, plugins: mutablePlugins, trackInflights: trackInflights)
         
@@ -142,7 +142,7 @@ private extension RxMoyaProvider {
                     return Observable.error(AppError.reason("请求过于频繁"))
                 } else if res.statusCode == 500 {
                     return Observable.error(AppError.reason("服务器报500啦啦啦"))
-                } else {
+                } else if res.statusCode == 200 {
                     
                     // 写入缓存
                     if let interface = token as? BusinessInterface {
@@ -157,7 +157,8 @@ private extension RxMoyaProvider {
                         self.diskCache.save(value: res.data, forKey: md5)
                         print("⏰=> 本地缓存写入时间: [\(self.dateFormatter.string(from: Date()))]\n\("🧤=> 本地缓存写入成功 🐸🐸🐸")\n\("💡=> 缓存Key: \(md5)")")
                     }
-                    
+                    return Observable.just(res)
+                } else {
                     return Observable.just(res)
                 }
         }.observeOn(MainScheduler.instance)
