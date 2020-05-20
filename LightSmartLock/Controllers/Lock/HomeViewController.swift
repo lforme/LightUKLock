@@ -227,8 +227,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             leasedCell.propertyDidSelected {[weak self] in
                 // 跳转资产页面
                 print("tap")
+                guard let assetId = self?.currentScene.value?.ladderAssetHouseId else { return }
                 let vc: AssetDetailViewController = ViewLoader.Storyboard.controller(from: "AssetDetail")
-                vc.assetId = self?.currentScene.value?.ladderAssetHouseId ?? ""
+                vc.assetId = assetId
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
             
