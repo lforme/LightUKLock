@@ -27,6 +27,7 @@ class TenantContractInfo: HandyJSON {
     var isRelatedRental: Int?
     var isRemind: Int?
     var isSeparate: Int?
+    var receivingAccountId: String?
     var remark: String?
     var rentCollectRate: Int?
     var rentCollectType: Int?
@@ -267,14 +268,11 @@ class AddTenantViewController: AssetBaseViewController {
         let receiveAccountVC: ReceivingAccountController = ViewLoader.Storyboard.controller(from: "Bill")
         receiveAccountVC.selectedHandle { [weak self] (account) in
             
+            self?.tenantContractInfo.receivingAccountId = account.id
+            sender.setTitle(account.account, for: .normal)
+            
         }
         navigationController?.pushViewController(receiveAccountVC, animated: true)
-        
-//        receiveAccountVC.didSelected = {[weak self] (name, id) in
-//            sender.setTitle(name, for: .normal)
-//            self?.other.costCategoryId = id
-//            self?.other.costCategoryName = name
-//        }
     }
     
 
