@@ -14,8 +14,10 @@ class LeasedCell: UITableViewCell {
     
     @IBOutlet weak var unlocker: UILabel!
     @IBOutlet weak var unlockTime: UILabel!
-    
+    @IBOutlet weak var assetAddress: UILabel!
+    @IBOutlet weak var assetName: UILabel!
     @IBOutlet weak var tenantContainer: UIControl!
+    
     private(set) var recordBlack: (() -> Void)?
     private(set) var propertyBlock: (() -> Void)?
     private(set) var disposeBag = DisposeBag()

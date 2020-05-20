@@ -54,7 +54,7 @@ class DatePickerController: UIViewController {
         
         let containerHeight = containerView.frame.height
         
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 8, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
             
             self.containerView.frame = CGRect(x: 0, y: self.view.bounds.height, width: self.view.bounds.width, height: containerHeight)
             
@@ -93,12 +93,16 @@ extension Reactive where Base: DatePickerController {
                 vc.dismissBackgourndView.rx.action = dismissAction
                 
                 vc.confirmButton.rx.action = CocoaAction { [unowned vc] in
+                    var pickDate = Date().toFormat(dateFormatString)
                     
                     vc.datePicker.rx.value.subscribe(onNext: { (date) in
                         let dateString = vc.formatter.string(from: date)
-                        observer.onNext(dateString)
+                        pickDate = dateString
                         observer.onCompleted()
                     }).disposed(by: vc.rx.disposeBag)
+                    
+                    observer.onNext(pickDate)
+                    observer.onCompleted()
                     return .empty()
                 }
             }

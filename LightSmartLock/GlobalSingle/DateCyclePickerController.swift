@@ -55,7 +55,7 @@ class DateCyclePickerController: UIViewController {
         
         let containerHeight = containerView.frame.height
         
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 8, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
             
             self.containerView.frame = CGRect(x: 0, y: self.view.bounds.height, width: self.view.bounds.width, height: containerHeight)
             

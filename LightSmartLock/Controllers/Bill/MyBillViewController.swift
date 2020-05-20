@@ -12,8 +12,12 @@ import RxSwift
 import PKHUD
 import MJRefresh
 
-class MyBillViewController: UIViewController {
+class MyBillViewController: UIViewController, NavigationSettingStyle {
     
+    var backgroundColor: UIColor? {
+        return ColorClassification.navigationBackground.value
+    }
+   
     @IBOutlet weak var allButton: UIButton!
     @IBOutlet weak var collectionButton: UIButton!
     @IBOutlet weak var paidButton: UIButton!
@@ -46,6 +50,8 @@ class MyBillViewController: UIViewController {
         createBillButton.rx.tap.subscribe(onNext: {[unowned self] (_) in
             
             let createBillVC: CreateBillController = ViewLoader.Storyboard.controller(from: "Bill")
+            createBillVC.assetId = self.assetId
+            createBillVC.contractId = self.contractId
             self.navigationController?.pushViewController(createBillVC, animated: true)
             
         }).disposed(by: rx.disposeBag)

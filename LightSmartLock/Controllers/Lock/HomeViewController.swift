@@ -212,6 +212,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return controlCell
         case 1:
             let leasedCell = tableView.dequeueReusableCell(withIdentifier: "LeasedCell") as! LeasedCell
+            leasedCell.assetName.text = LSLUser.current().scene?.buildingName ?? "正在加载..."
+            leasedCell.assetAddress.text = LSLUser.current().scene?.buildingAdress ?? "正在加载..."
             
             leasedCell.recordDidSelected {[weak self] in
                 guard let lockId = LSLUser.current().scene?.ladderLockId else {

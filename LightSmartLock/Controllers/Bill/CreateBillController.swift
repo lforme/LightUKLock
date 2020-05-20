@@ -13,7 +13,11 @@ import Action
 import PKHUD
 import HandyJSON
 
-class CreateBillController: UIViewController {
+class CreateBillController: UIViewController, NavigationSettingStyle {
+
+    var backgroundColor: UIColor? {
+        return ColorClassification.navigationBackground.value
+    }
     
     var assetId: String = ""
     var contractId: String = ""

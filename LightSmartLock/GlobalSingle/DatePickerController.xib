@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,10 +26,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fn9-fX-sKf">
-                    <rect key="frame" x="8" y="574" width="398" height="280"/>
+                    <rect key="frame" x="0.0" y="582" width="414" height="280"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cSM-kp-piu">
-                            <rect key="frame" x="0.0" y="0.0" width="398" height="45"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEo-89-bWO">
                                     <rect key="frame" x="16" y="8" width="30" height="29"/>
@@ -39,13 +39,13 @@
                                     </state>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="null" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXI-nJ-sPH">
-                                    <rect key="frame" x="187.5" y="14.5" width="23" height="16"/>
+                                    <rect key="frame" x="195.5" y="14.5" width="23" height="16"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                     <color key="textColor" red="0.5607843137254902" green="0.55686274509803924" blue="0.58039215686274503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEX-gW-S12">
-                                    <rect key="frame" x="352" y="8" width="30" height="29"/>
+                                    <rect key="frame" x="368" y="8" width="30" height="29"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                     <state key="normal" title="确定">
                                         <color key="titleColor" name="primary"/>
@@ -64,7 +64,7 @@
                             </constraints>
                         </view>
                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="76m-hw-eY9">
-                            <rect key="frame" x="0.0" y="45" width="398" height="235"/>
+                            <rect key="frame" x="0.0" y="45" width="414" height="235"/>
                         </datePicker>
                     </subviews>
                     <color key="backgroundColor" name="viewBackground"/>
@@ -80,17 +80,17 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywd-KH-wg3">
-                    <rect key="frame" x="0.0" y="44" width="414" height="530"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="538"/>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="fn9-fX-sKf" secondAttribute="bottom" constant="8" id="8l2-zU-8af"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="fn9-fX-sKf" secondAttribute="bottom" id="8l2-zU-8af"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ywd-KH-wg3" secondAttribute="trailing" id="Iwv-dl-LHO"/>
                 <constraint firstItem="ywd-KH-wg3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="TSH-3t-s0X"/>
                 <constraint firstItem="fn9-fX-sKf" firstAttribute="top" secondItem="ywd-KH-wg3" secondAttribute="bottom" id="hpk-K4-fGc"/>
-                <constraint firstItem="fn9-fX-sKf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="ou0-eq-BAE"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fn9-fX-sKf" secondAttribute="trailing" constant="8" id="xqn-GU-beC"/>
+                <constraint firstItem="fn9-fX-sKf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ou0-eq-BAE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fn9-fX-sKf" secondAttribute="trailing" id="xqn-GU-beC"/>
                 <constraint firstItem="ywd-KH-wg3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xxF-6i-kou"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
