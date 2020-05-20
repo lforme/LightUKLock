@@ -98,7 +98,6 @@ extension Reactive where Base: DatePickerController {
                     vc.datePicker.rx.value.subscribe(onNext: { (date) in
                         let dateString = vc.formatter.string(from: date)
                         pickDate = dateString
-                        observer.onCompleted()
                     }).disposed(by: vc.rx.disposeBag)
                     
                     observer.onNext(pickDate)

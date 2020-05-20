@@ -113,6 +113,7 @@ class AssetDetailViewController: AssetBaseViewController {
             .notification(.gotoAssetDetail)
             .subscribe(onNext: {[unowned self] (_) in
                 self.navigationController?.popToViewController(self, animated: true)
+                self.bindRx()
             })
             .disposed(by: rx.disposeBag)
         
