@@ -22,6 +22,8 @@
 		7B7EB4C92452D24B002DC436 /* AddTenant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B7EB4C82452D24B002DC436 /* AddTenant.storyboard */; };
 		7B82FEB9246BE7FD0066ED24 /* InviteBindingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B82FEB8246BE7FD0066ED24 /* InviteBindingViewController.swift */; };
 		7B845E912472815F00620814 /* AssetBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B845E902472815F00620814 /* AssetBaseViewController.swift */; };
+		7B845E932475087C00620814 /* BillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B845E922475087C00620814 /* BillView.swift */; };
+		7B845E952475088A00620814 /* BillView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B845E942475088A00620814 /* BillView.xib */; };
 		7B92D0CA2456CBF600F195A9 /* DataPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92D0C82456CBF500F195A9 /* DataPickerViewController.swift */; };
 		7B92D0CB2456CBF600F195A9 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92D0C92456CBF500F195A9 /* DatePickerViewController.swift */; };
 		7B92D0CD2456CC6900F195A9 /* DateSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92D0CC2456CC6900F195A9 /* DateSelectionButton.swift */; };
@@ -343,6 +345,8 @@
 		7B7EB4C82452D24B002DC436 /* AddTenant.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddTenant.storyboard; sourceTree = "<group>"; };
 		7B82FEB8246BE7FD0066ED24 /* InviteBindingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteBindingViewController.swift; sourceTree = "<group>"; };
 		7B845E902472815F00620814 /* AssetBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetBaseViewController.swift; sourceTree = "<group>"; };
+		7B845E922475087C00620814 /* BillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillView.swift; sourceTree = "<group>"; };
+		7B845E942475088A00620814 /* BillView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BillView.xib; sourceTree = "<group>"; };
 		7B92D0C82456CBF500F195A9 /* DataPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPickerViewController.swift; sourceTree = "<group>"; };
 		7B92D0C92456CBF500F195A9 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		7B92D0CC2456CC6900F195A9 /* DateSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionButton.swift; sourceTree = "<group>"; };
@@ -711,6 +715,8 @@
 				7B92D0CE2456CC7900F195A9 /* DataSelectionButton.swift */,
 				7B92D0D02457C66700F195A9 /* IDCardView.xib */,
 				7B92D0D22457C67800F195A9 /* IDCardView.swift */,
+				7B845E922475087C00620814 /* BillView.swift */,
+				7B845E942475088A00620814 /* BillView.xib */,
 				7BC62241246E829C00E24366 /* Resources */,
 			);
 			path = View;
@@ -1392,6 +1398,7 @@
 				9C524025238E0E5500308AC4 /* warning.json in Resources */,
 				9C218FA623FA8CC9009600F7 /* LeasedCell.xib in Resources */,
 				9C3F93E824559C930040005D /* BillContractCell.xib in Resources */,
+				7B845E952475088A00620814 /* BillView.xib in Resources */,
 				9C218F9A23FA764A009600F7 /* Calendar.storyboard in Resources */,
 				9CBD8F4523A2103D00886519 /* TempPasswordLogView.xib in Resources */,
 				7BB2FEAC24557AB800D835BA /* TenantFellowInfoView.xib in Resources */,
@@ -1711,6 +1718,7 @@
 				9C5471992395047200432ACA /* LockInfoController.swift in Sources */,
 				9CB09C7A2469520600F3891D /* BookKeepingViewModel.swift in Sources */,
 				9C24AC4A2383F344005EBF95 /* CustomizedTabbarItem.swift in Sources */,
+				7B845E932475087C00620814 /* BillView.swift in Sources */,
 				9C11E6E9246D300E008E0A60 /* BillLiquidationModel.swift in Sources */,
 				9CFDE2052385219F0062522E /* RxMoyaProvider.swift in Sources */,
 				9CB09C78246930E100F3891D /* AssetContractModel.swift in Sources */,

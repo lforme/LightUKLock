@@ -34,8 +34,19 @@ class TenantContractCell: UITableViewCell {
             startDateLabel.text = model?.tenantContractDTO?.startDate
             endDateLabel.text = model?.tenantContractDTO?.endDate
             
-            empytBillContainer.isHidden = !(model?.billDTO ?? []).isEmpty
-                        
+            let bills = model?.billDTO ?? []
+            if bills.isEmpty {
+                empytBillContainer.isHidden = false
+                billViewContainer.isHidden = true
+            } else {
+                empytBillContainer.isHidden = true
+                billViewContainer.isHidden = false
+                
+                bills.forEach { [weak self](model) in
+                    self?.billViewContainer.addArrangedSubview(BillView.loadFromNib(with: model))
+                }
+
+            }
         }
     }
     
@@ -78,6 +89,9 @@ class TenantContractCell: UITableViewCell {
     @IBOutlet weak var gradientProgressView: GradientProgressBar!
     
     @IBOutlet weak var empytBillContainer: UIView!
+    
+    @IBOutlet weak var billViewContainer: UIStackView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
