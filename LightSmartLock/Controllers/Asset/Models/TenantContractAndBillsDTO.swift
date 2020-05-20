@@ -10,25 +10,7 @@ import Foundation
 import HandyJSON
 
 struct TenantContractAndBillsDTO: HandyJSON {
-    struct BillDTO: HandyJSON {
-        var amount: Double?
-        var assetId: String?
-        var assetName: String? 
-        struct BillItemDTOList: HandyJSON {
-            var amount: Double?
-            var costCategoryId: String?
-            var costCategoryName: String?
-            var cycleEndDate: Date?
-            var cycleStartDate: Date?
-            var id: String?
-        }
-        var billItemDTOList: [BillItemDTOList]?
-        var billStatus: Int?
-        var deadlineDate: Date?
-        var deadlineDays: Int?
-        var id: String?
-    }
-    var billDTO: [BillDTO]?
+    var billDTO: [MyBillModel]?
     var tenantContractDTO: TenantContractDTO?
 
 }

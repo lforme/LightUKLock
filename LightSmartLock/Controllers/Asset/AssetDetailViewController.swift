@@ -173,9 +173,10 @@ class AssetDetailViewController: AssetBaseViewController {
             
             
             let items = BusinessAPI2.requestMapJSONArray(.getAssetContracts(assetId: assetId), classType: TenantContractAndBillsDTO.self)
+                .asDriver(onErrorJustReturn: [])
             
             items
-                .bind(to: tableView.rx.items(cellIdentifier: "TenantContractCell", cellType: TenantContractCell.self)) {[weak self] (row, element, cell) in
+                .drive(tableView.rx.items(cellIdentifier: "TenantContractCell", cellType: TenantContractCell.self)) {[weak self] (row, element, cell) in
                     cell.model = element
                     cell.nav = self?.navigationController
             }
