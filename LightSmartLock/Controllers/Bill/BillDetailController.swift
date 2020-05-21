@@ -10,7 +10,11 @@ import UIKit
 import IGListKit
 import PKHUD
 
-class BillDetailController: UIViewController {
+class BillDetailController: UIViewController, NavigationSettingStyle {
+    
+    var backgroundColor: UIColor? {
+        return ColorClassification.primary.value
+    }
     
     var billId: String?
     

@@ -88,7 +88,8 @@ final class BillDetailButtonSection: ListSectionController {
                 if MFMessageComposeViewController.canSendText() {
                     let messageVC = MFMessageComposeViewController()
                     messageVC.body = sendStr
-                    messageVC.messageComposeDelegate = this.viewController as? MFMessageComposeViewControllerDelegate
+                    let vc = this.viewController as! BillDetailController
+                    messageVC.messageComposeDelegate = vc
                     this.viewController?.present(messageVC, animated: true, completion: nil)
                 }
                 
@@ -111,7 +112,8 @@ final class BillDetailButtonSection: ListSectionController {
                 if MFMessageComposeViewController.canSendText() {
                     let messageVC = MFMessageComposeViewController()
                     messageVC.body = sendStr
-                    messageVC.messageComposeDelegate = this.viewController as? MFMessageComposeViewControllerDelegate
+                    let vc = this.viewController as! BillDetailController
+                    messageVC.messageComposeDelegate = vc
                     this.viewController?.present(messageVC, animated: true, completion: nil)
                 }
                 
@@ -153,7 +155,7 @@ extension BillDetailButtonSection {
 }
 
 
-extension BillFlowController: MFMessageComposeViewControllerDelegate {
+extension BillDetailController: MFMessageComposeViewControllerDelegate {
     
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         switch (result) {

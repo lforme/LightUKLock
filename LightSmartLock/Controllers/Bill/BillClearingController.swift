@@ -116,7 +116,7 @@ class BillClearingController: UIViewController {
             param.billClearingItemDTOList = items
             BusinessAPI.requestMapBool(.editBillInfoClear(parameter: param)).subscribe(onNext: {[weak self] (success) in
                 if success {
-                    
+                    self?.navigationController?.popViewController(animated: true)
                 }
             }, onError: { (error) in
                 PKHUD.sharedHUD.rx.showError(error)

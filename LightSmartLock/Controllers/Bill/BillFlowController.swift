@@ -10,7 +10,11 @@ import UIKit
 import IGListKit
 import PKHUD
 
-class BillFlowController: UIViewController {
+class BillFlowController: UIViewController, NavigationSettingStyle {
+    
+    var backgroundColor: UIColor? {
+        return ColorClassification.primary.value
+    }
     
     @IBOutlet weak var bookkeepingButton: UIButton!
     @IBOutlet weak var collectionViewBottomOffset: NSLayoutConstraint!

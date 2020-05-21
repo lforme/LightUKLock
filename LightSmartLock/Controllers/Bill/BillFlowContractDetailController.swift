@@ -13,7 +13,11 @@ import Action
 import RxSwift
 import RxCocoa
 
-class BillFlowContractDetailController: UITableViewController {
+class BillFlowContractDetailController: UITableViewController, NavigationSettingStyle {
+    
+    var backgroundColor: UIColor? {
+        return ColorClassification.primary.value
+    }
     
     @IBOutlet weak var houseName: UILabel!
     @IBOutlet weak var tenantName: UILabel!
