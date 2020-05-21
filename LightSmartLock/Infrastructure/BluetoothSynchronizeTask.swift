@@ -59,7 +59,7 @@ final class BluetoothSynchronizeTask: UKBluetoothManagerDelegate {
             this.writeToBluethooth.execute(s)
         }).disposed(by: disposeBag)
         
-        writeToBluethooth.elements.subscribe(onNext: {[weak self] (reslut) in
+        writeToBluethooth.elements.subscribe(onNext: { (reslut) in
 //            guard let this = self else { return }
 //            if reslut.1 {
 //                this.fetchTask(param: reslut.0).subscribe().disposed(by: this.disposeBag)
