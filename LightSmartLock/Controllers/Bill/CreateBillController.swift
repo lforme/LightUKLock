@@ -171,7 +171,7 @@ class CreateBillController: UIViewController, NavigationSettingStyle {
         var pass = true
         let parameter = Parameter()
         parameter.assetId = self.assetId
-        parameter.contractId = self.assetId
+        parameter.contractId = self.contractId
         parameter.deadlineDate = self.obDeadLineDate.value
         parameter.receivingUser = self.obReceivingUser.value
         parameter.receivingAccountId = self.obReceivingUserId.value

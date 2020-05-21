@@ -105,7 +105,7 @@ class TenantContractCell: UITableViewCell {
         let vc: MyBillViewController = ViewLoader.Storyboard.controller(from: "Bill")
 
         vc.assetId = model?.tenantContractDTO?.assetId ?? ""
-        vc.contractId = model?.tenantContractDTO?.contractNumber ?? ""
+        vc.contractId = model?.tenantContractDTO?.id ?? ""
         nav?.pushViewController(vc, animated: true)
     }
     

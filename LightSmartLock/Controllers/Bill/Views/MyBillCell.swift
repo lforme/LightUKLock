@@ -10,9 +10,10 @@ import UIKit
 import SnapKit
 import RxCocoa
 import RxSwift
+import MessageUI
 
 class MyBillCell: UITableViewCell {
-
+    
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var assetName: UILabel!
     @IBOutlet weak var latestDate: UILabel!
@@ -21,7 +22,9 @@ class MyBillCell: UITableViewCell {
     @IBOutlet weak var rushRentButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
     
+    weak var controller: MyBillViewController?
     private(set) var disposeBag = DisposeBag()
+    var data: MyBillModel?
     
     override func prepareForReuse() {
         stackView.arrangedSubviews.forEach {
@@ -34,9 +37,69 @@ class MyBillCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        sendButton.rx.tap.flatMapLatest {[weak self] (_) -> Observable<Int> in
+            guard let vc = self?.controller else {
+                return .error(AppError.reason("发生未知错误"))
+            }
+            return vc.showActionSheet(title: "选择发送方式", message: nil, buttonTitles: ["短信", "取消"], highlightedButtonIndex: nil)
+        }.subscribe(onNext: {[weak self] (buttonIndex) in
+            guard let this = self else { return }
+            let deadLineDate = this.data?.deadlineDays ?? 0
+            let total = this.data?.amount ?? 0
+            let value = this.data?.billItemDTOList?.compactMap { $0 }.map {
+                "\($0.costCategoryName ?? ""), ￥\($0.amount ?? 0), 周期:\($0.cycleStartDate ?? "") 至 \($0.cycleEndDate) \n"
+            }
+            guard let v = value else { return }
+            
+            let sendStr = """
+            [账单信息]
+            费用明细
+            - - - - - - -
+            \(v.joined())
+            - - - - - - -
+            距最晚付款日:\(deadLineDate)天
+            合计金额：￥\(total)
+            """
+            switch buttonIndex {
+            case 0:
+                if MFMessageComposeViewController.canSendText() {
+                    let messageVC = MFMessageComposeViewController()
+                    messageVC.body = sendStr
+                    messageVC.messageComposeDelegate = this.controller
+                    this.controller?.present(messageVC, animated: true, completion: nil)
+                }
+                
+            default :break
+            }
+            print(sendStr)
+        }).disposed(by: disposeBag)
+        
+        rushRentButton.rx.tap.flatMapLatest {[weak self] (_) -> Observable<Int> in
+            guard let vc = self?.controller else {
+                return .error(AppError.reason("发生未知错误"))
+            }
+            return vc.showActionSheet(title: "选择发送方式", message: nil, buttonTitles: ["短信", "取消"], highlightedButtonIndex: 0)
+        }.subscribe(onNext: {[weak self] (buttonIndex) in
+            guard let this = self else { return }
+            let money = this.data?.amount ?? 0.0
+            let sendStr = "尊敬的租客，您近期有一笔账单已逾期，金额：\(money)元，请您尽快缴纳，谢谢"
+            switch buttonIndex {
+            case 0:
+                if MFMessageComposeViewController.canSendText() {
+                    let messageVC = MFMessageComposeViewController()
+                    messageVC.body = sendStr
+                    messageVC.messageComposeDelegate = this.controller
+                    this.controller?.present(messageVC, animated: true, completion: nil)
+                }
+                
+            default :break
+            }
+        }).disposed(by: disposeBag)
     }
-
+    
     func bind(_ data: MyBillModel) {
+        self.data = data
         assetName.text = data.assetName
         let days = data.deadlineDays ?? 0
         latestDate.text = "距最晚付款日\(days)天"
@@ -60,14 +123,45 @@ class MyBillCell: UITableViewCell {
         }
         
         if let status = data.billStatus {
-            if status == 0 {
-                confirmButton.isHidden = true
+            if status == -1 {
                 rushRentButton.isHidden = false
-            } else if status == 999 {
-                rushRentButton.isHidden = true
+                confirmButton.isHidden = true
+                sendButton.isHidden = false
+            } else if status == 0 || status == 1 {
                 confirmButton.isHidden = false
+                rushRentButton.isHidden = true
+                sendButton.isHidden = false
+            } else if status == 999 {
+                sendButton.isHidden = false
+                rushRentButton.isHidden = true
+                confirmButton.isHidden = true
+            } else {
+                rushRentButton.isHidden = true
+                confirmButton.isHidden = true
             }
         }
         self.layoutIfNeeded()
+    }
+}
+
+
+extension MyBillViewController: MFMessageComposeViewControllerDelegate {
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        switch (result) {
+        case .cancelled:
+            print("Message was cancelled")
+            dismiss(animated: true, completion: nil)
+        case .failed:
+            print("Message failed")
+            dismiss(animated: true, completion: nil)
+        case .sent:
+            print("Message was sent")
+            dismiss(animated: true, completion: nil)
+        default:
+            break
+        }
+        
+        controller.dismiss(animated: true, completion: nil)
     }
 }

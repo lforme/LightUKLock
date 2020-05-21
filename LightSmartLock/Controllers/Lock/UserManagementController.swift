@@ -110,17 +110,15 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataSource.count
     }
-  
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserManagementCell", for: indexPath) as! UserManagementCell
         let data = dataSource[indexPath.row]
         
         cell.nickname.text = data.nickname
         cell.role.text = data.roleType?.description
-        if let pic = data.avatar?.encodeUrl() {
-            cell.avatar.kf.setImage(with: URL(string: pic), placeholder: UIImage(named: "user_default"))
-        }
-//        cell.synchronizedStart(data.userCode.isNilOrEmpty)
+        cell.avatar.setUrl(data.avatar)
+        //        cell.synchronizedStart(data.userCode.isNilOrEmpty)
         return cell
     }
     

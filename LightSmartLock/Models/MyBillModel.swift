@@ -82,7 +82,7 @@ struct BillInfoDetail: HandyJSON {
     var contractStartDate: String?
     var gender: String?
     var age: Int?
-    
+    var deadlineDays: Int?
     var billItemDTOList: [BillItemList]?
     var billPaymentLogDTOList: [BillPaymentItemList]?
 }

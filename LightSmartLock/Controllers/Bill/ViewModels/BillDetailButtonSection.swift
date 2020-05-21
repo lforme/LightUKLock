@@ -8,6 +8,9 @@
 
 import Foundation
 import IGListKit
+import RxCocoa
+import RxSwift
+import MessageUI
 
 final class BillDetailButtonSection: ListSectionController {
     
@@ -31,12 +34,21 @@ final class BillDetailButtonSection: ListSectionController {
             fatalError()
         }
         
-        if data.billStatus == 0 {
-            cell.confirmButton.isHidden = true
+        if data.billStatus == -1 {
             cell.rushRentButton.isHidden = false
-        } else if data.billStatus == 999 {
-            cell.rushRentButton.isHidden = true
+            cell.confirmButton.isHidden = true
+            cell.sendButton.isHidden = false
+        } else if data.billStatus == 0 || data.billStatus == 1 {
             cell.confirmButton.isHidden = false
+            cell.rushRentButton.isHidden = true
+            cell.sendButton.isHidden = false
+        } else if data.billStatus == 999 {
+            cell.sendButton.isHidden = false
+            cell.rushRentButton.isHidden = true
+            cell.confirmButton.isHidden = true
+        } else {
+            cell.rushRentButton.isHidden = true
+            cell.confirmButton.isHidden = true
         }
         
         cell.confirmButton.rx.tap.subscribe(onNext: {[weak self] (_) in
@@ -45,6 +57,66 @@ final class BillDetailButtonSection: ListSectionController {
             confirmVC.totalMoney = this.data.totalMoney
             confirmVC.billId = this.data.billId
             this.viewController?.navigationController?.pushViewController(confirmVC, animated: true)
+        }).disposed(by: cell.disposeBag)
+        
+        
+        cell.sendButton.rx.tap.flatMapLatest {[weak self] (_) -> Observable<Int> in
+            guard let vc = self?.viewController else {
+                return .error(AppError.reason("发生未知错误"))
+            }
+            return vc.showActionSheet(title: "选择发送方式", message: nil, buttonTitles: ["短信", "取消"], highlightedButtonIndex: nil)
+        }.subscribe(onNext: {[weak self] (buttonIndex) in
+            guard let this = self else { return }
+            let deadLineDays = this.data.model?.deadlineDays ?? 0
+            let total = this.data?.model?.amountPayable ?? 0
+            let value = this.data?.model?.billItemDTOList?.compactMap { $0 }.map {
+                "\($0.costCategoryName ?? ""), ￥\($0.amount ?? 0), 周期:\($0.cycleStartDate ?? "") 至 \($0.cycleEndDate) \n"
+            }
+            guard let v = value else { return }
+            
+            let sendStr = """
+            [账单信息]
+            费用明细
+            - - - - - - -
+            \(v.joined())
+            - - - - - - -
+            距最晚付款日:\(deadLineDays)天
+            合计金额：￥\(total)
+            """
+            switch buttonIndex {
+            case 0:
+                if MFMessageComposeViewController.canSendText() {
+                    let messageVC = MFMessageComposeViewController()
+                    messageVC.body = sendStr
+                    messageVC.messageComposeDelegate = this.viewController as? MFMessageComposeViewControllerDelegate
+                    this.viewController?.present(messageVC, animated: true, completion: nil)
+                }
+                
+            default :break
+            }
+            print(sendStr)
+        }).disposed(by: cell.disposeBag)
+        
+        cell.rushRentButton.rx.tap.flatMapLatest {[weak self] (_) -> Observable<Int> in
+            guard let vc = self?.viewController else {
+                return .error(AppError.reason("发生未知错误"))
+            }
+            return vc.showActionSheet(title: "选择发送方式", message: nil, buttonTitles: ["短信", "取消"], highlightedButtonIndex: 0)
+        }.subscribe(onNext: {[weak self] (buttonIndex) in
+            guard let this = self else { return }
+            let money = this.data?.model?.amountPayable ?? 0.0
+            let sendStr = "尊敬的租客，您近期有一笔账单已逾期，金额：\(money)元，请您尽快缴纳，谢谢"
+            switch buttonIndex {
+            case 0:
+                if MFMessageComposeViewController.canSendText() {
+                    let messageVC = MFMessageComposeViewController()
+                    messageVC.body = sendStr
+                    messageVC.messageComposeDelegate = this.viewController as? MFMessageComposeViewControllerDelegate
+                    this.viewController?.present(messageVC, animated: true, completion: nil)
+                }
+                
+            default :break
+            }
         }).disposed(by: cell.disposeBag)
         
         return cell
@@ -62,6 +134,7 @@ extension BillDetailButtonSection {
         let billStatus: Int
         let billId: String
         let totalMoney: Double
+        var model: BillInfoDetail?
         
         init(status: Int, billId: String, totalMoney: Double) {
             self.billStatus = status
@@ -79,3 +152,24 @@ extension BillDetailButtonSection {
     }
 }
 
+
+extension BillFlowController: MFMessageComposeViewControllerDelegate {
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        switch (result) {
+        case .cancelled:
+            print("Message was cancelled")
+            dismiss(animated: true, completion: nil)
+        case .failed:
+            print("Message failed")
+            dismiss(animated: true, completion: nil)
+        case .sent:
+            print("Message was sent")
+            dismiss(animated: true, completion: nil)
+        default:
+            break
+        }
+        
+        controller.dismiss(animated: true, completion: nil)
+    }
+}

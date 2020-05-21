@@ -141,6 +141,7 @@ extension MyBillViewController: UITableViewDataSource, UITableViewDelegate {
             confirmVC.totalMoney = data.amount ?? 0.00
             self?.navigationController?.pushViewController(confirmVC, animated: true)
         }).disposed(by: cell.disposeBag)
+        cell.controller = self
         return cell
     }
     
@@ -163,7 +164,7 @@ extension MyBillViewController {
     func bind() {
         Observable.combineLatest(obBillStatus, obIndex).flatMapLatest { (status, index) -> Observable<[MyBillModel]> in
             
-            return BusinessAPI.requestMapJSONArray(.billLandlordList(assetId: self.assetId, billStatus: status, pageIndex: index, pageSize: 15), classType: MyBillModel.self, useCache: true, isPaginating: true).map { $0.compactMap { $0 } }
+            return BusinessAPI.requestMapJSONArray(.billLandlordList(assetId: self.assetId, contractId: self.contractId, billStatus: status, pageIndex: index, pageSize: 15), classType: MyBillModel.self, useCache: true, isPaginating: true).map { $0.compactMap { $0 } }
         }.subscribe(onNext: {[weak self] (list) in
             self?.tableView.mj_footer?.endRefreshing()
             self?.tableView.mj_header?.endRefreshing()
@@ -185,3 +186,5 @@ extension MyBillViewController {
         }).disposed(by: rx.disposeBag)
     }
 }
+
+

@@ -432,8 +432,8 @@ extension BusinessInterface: TargetType {
         case let .editBillInfoClear(parameter):
             return parameter.toJSON()
             
-        case let .billLandlordList(assetId, billStatus, pageIndex, pageSize):
-            var dict = ["assetId": assetId, "currentPage": pageIndex, "pageSize": pageSize] as [String : Any]
+        case let .billLandlordList(assetId, contractId, billStatus, pageIndex, pageSize):
+            var dict = ["assetId": assetId, "currentPage": pageIndex, "pageSize": pageSize, "contractId": contractId] as [String : Any]
             if let status = billStatus {
                 dict.updateValue(status, forKey: "billStatus")
             }
