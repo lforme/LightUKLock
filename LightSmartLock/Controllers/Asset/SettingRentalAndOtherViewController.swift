@@ -68,6 +68,8 @@ class SettingRentalAndOtherViewController: AssetBaseViewController {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
+        tableView.emptyDataSetSource = self
+        
         costCollectBtn.title = "请选择"
         let nums = Array(1...30).map { $0.description }
         let units = ["日/次", "月/次", "年/次"]

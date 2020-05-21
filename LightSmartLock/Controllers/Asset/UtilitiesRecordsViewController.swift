@@ -117,6 +117,7 @@ class UtilitiesRecordsViewController: AssetBaseViewController {
             }
         }
         tableView.tableFooterView = UIView()
+        tableView.emptyDataSetSource = self
         
         listRelay
             .bind(to: tableView.rx.items(cellIdentifier: "UtilitiesRecordsCell", cellType: UtilitiesRecordsCell.self)) { (row, element, cell) in
