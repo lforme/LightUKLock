@@ -119,6 +119,9 @@ extension BaseNavigationController {
     }
     
     fileprivate func setNavigationStyle(_ style: NavigationSettingStyle) {
+        
+        navigationBar.prefersLargeTitles = style.isLargeTitle
+        
         if let bgColor = style.backgroundColor {
             if #available(iOS 13.0, *) {
                 navBarAppearance.backgroundColor = bgColor

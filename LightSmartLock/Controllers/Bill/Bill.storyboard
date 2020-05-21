@@ -2930,7 +2930,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" name="viewBackground"/>
+                                        <color key="backgroundColor" name="tableViewBackground"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="jfj-n3-TRY" secondAttribute="trailing" constant="16" id="26S-Xf-Tt8"/>
                                             <constraint firstAttribute="height" constant="56" id="7JA-wM-3m2"/>
