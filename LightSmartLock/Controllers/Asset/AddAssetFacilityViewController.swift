@@ -140,7 +140,8 @@ class AddAssetFacilityViewController: AssetBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        constansCollectionView.emptyDataSetSource = self
+        customCollectionView.emptyDataSetSource = self
         
         let constantsFlowLayout = constansCollectionView?.collectionViewLayout as? AlignedCollectionViewFlowLayout
         constantsFlowLayout?.horizontalAlignment = .left

@@ -77,6 +77,8 @@ class AssetDetailViewController: AssetBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
+        tableView.emptyDataSetSource = self
         
         moreButton.rx
             .tap
@@ -136,51 +138,48 @@ class AssetDetailViewController: AssetBaseViewController {
         expenseAmountLabel.text = nil
         expenseCountLabel.text = nil
         
-        tableView.tableFooterView = UIView()
-        
-        
         
     }
     
     
     func bindRx() {
         disposeBag = DisposeBag()
-            
-            let getAssetHouseDetail = BusinessAPI.requestMapJSON(.getAssetHouseDetail(id: assetId), classType: PositionModel.self)
-            
-            getAssetHouseDetail.subscribe(onNext: { [weak self](detail) in
-                self?.currentAsset.accept(detail)
-                self?.buildingNameLabel.text = detail.buildingName
-                self?.buildingAdressLabel.text = detail.address
-                self?.houseStructLabel.text = "\(detail.houseStruct ?? "") | \(detail.area?.description ?? "")㎡"
-            })
-                .disposed(by: disposeBag)
-            
-            
-            
-            let statistics = BusinessAPI2.requestMapJSON(.getStatistics(assetId: assetId), classType: TurnoverStatisticsDTO.self)
-            
-            statistics.subscribe(onNext: { [weak self](model) in
-                self?.currentStatistics.accept(model)
-                self?.balanceLabel.text = model.balance?.twoPoint
-                self?.incomeAmountLabel.text = model.incomeAmount?.yuanSymbol
-                self?.incomeCountLabel.text = "共\(model.incomeCount?.description ?? "")笔"
-                self?.expenseAmountLabel.text = model.expenseAmount?.yuanSymbol
-                self?.expenseCountLabel.text = "共\(model.expenseCount?.description ?? "")笔"
-                
-            })
-                .disposed(by: disposeBag)
-            
-            
-            let items = BusinessAPI2.requestMapJSONArray(.getAssetContracts(assetId: assetId), classType: TenantContractAndBillsDTO.self)
-                .asDriver(onErrorJustReturn: [])
-            
-            items
-                .drive(tableView.rx.items(cellIdentifier: "TenantContractCell", cellType: TenantContractCell.self)) {[weak self] (row, element, cell) in
-                    cell.model = element
-                    cell.nav = self?.navigationController
-            }
+        
+        let getAssetHouseDetail = BusinessAPI.requestMapJSON(.getAssetHouseDetail(id: assetId), classType: PositionModel.self)
+        
+        getAssetHouseDetail.subscribe(onNext: { [weak self](detail) in
+            self?.currentAsset.accept(detail)
+            self?.buildingNameLabel.text = detail.buildingName
+            self?.buildingAdressLabel.text = detail.address
+            self?.houseStructLabel.text = "\(detail.houseStruct ?? "") | \(detail.area?.description ?? "")㎡"
+        })
             .disposed(by: disposeBag)
+        
+        
+        
+        let statistics = BusinessAPI2.requestMapJSON(.getStatistics(assetId: assetId), classType: TurnoverStatisticsDTO.self)
+        
+        statistics.subscribe(onNext: { [weak self](model) in
+            self?.currentStatistics.accept(model)
+            self?.balanceLabel.text = model.balance?.twoPoint
+            self?.incomeAmountLabel.text = model.incomeAmount?.yuanSymbol
+            self?.incomeCountLabel.text = "共\(model.incomeCount?.description ?? "")笔"
+            self?.expenseAmountLabel.text = model.expenseAmount?.yuanSymbol
+            self?.expenseCountLabel.text = "共\(model.expenseCount?.description ?? "")笔"
+            
+        })
+            .disposed(by: disposeBag)
+        
+        
+        let items = BusinessAPI2.requestMapJSONArray(.getAssetContracts(assetId: assetId), classType: TenantContractAndBillsDTO.self)
+            .asDriver(onErrorJustReturn: [])
+        
+        items
+            .drive(tableView.rx.items(cellIdentifier: "TenantContractCell", cellType: TenantContractCell.self)) {[weak self] (row, element, cell) in
+                cell.model = element
+                cell.nav = self?.navigationController
+        }
+        .disposed(by: disposeBag)
     }
     
     

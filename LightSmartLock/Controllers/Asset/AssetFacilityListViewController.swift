@@ -76,7 +76,7 @@ class AssetFacilityListViewController: AssetBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        
+        tableView.emptyDataSetSource = self
         
         BusinessAPI2.requestMapJSONArray(.getFacilities(assetId: assetId), classType: LadderAssetFacilityVO.self)
             .map { $0.compactMap { $0 }}
