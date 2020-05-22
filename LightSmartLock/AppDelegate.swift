@@ -7,50 +7,60 @@
 //
 
 import UIKit
-import IQKeyboardManager
-import PKHUD
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    enum AppDelegateFactory {
+        
+        static func makeDefault() -> AppDelegateType {
+            return CompositeAppDelegate(appDelegates: [
+                PushNotificationsAppDelegate(),
+                AppearanceAppDelegate()
+                ]
+            )
+        }
+    }
+    
+    private let appDelegate = AppDelegateFactory.makeDefault()
+    
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        _ = appDelegate.application?(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Test
         ServerHost.shared.environment = .dev
         
-        setupKeyborad()
-        setupHUD()
         return true
     }
-
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        appDelegate.application?(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        appDelegate.applicationDidBecomeActive?(application)
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        appDelegate.applicationDidEnterBackground?(application)
+    }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        
+        NotificationCenter.default
+            .post(name: .siriOpenDoor, object: nil)
+        
+        return appDelegate.application?(application, continue: userActivity, restorationHandler: restorationHandler) ?? true
+    }
 }
 
 extension AppDelegate {
     
     static func changeStatusBarStyle(_ style: UIStatusBarStyle) {
         NotificationCenter.default.post(name: .statuBarDidChange, object: style)
-    }
-    
-    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        NotificationCenter.default
-            .post(name: .siriOpenDoor, object: nil)
-        return true
-    }
-}
-
-extension AppDelegate {
-    
-    func setupKeyborad() {
-        IQKeyboardManager.shared().isEnabled = true
-        IQKeyboardManager.shared().shouldResignOnTouchOutside = true
-        IQKeyboardManager.shared().shouldShowToolbarPlaceholder = false
-        IQKeyboardManager.shared().isEnableAutoToolbar = false
-    }
-    
-    func setupHUD() {
-        HUD.dimsBackground = false
-        HUD.allowsInteraction = true
     }
 }

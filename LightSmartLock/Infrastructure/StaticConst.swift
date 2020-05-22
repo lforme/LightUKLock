@@ -36,6 +36,7 @@ extension NSNotification.Name {
 
 struct PlatformKey {
     static let gouda = "caed09caa3daeca4a11a9eb671294d65"
+    static let jpushAppKey = "491b7c3b5a3b231de8cc38c0"
 }
 
 enum ShareUserDefaultsKey: String, CaseIterable {

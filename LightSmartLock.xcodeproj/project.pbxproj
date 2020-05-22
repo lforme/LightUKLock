@@ -236,6 +236,9 @@
 		9CABF4BC246550B30001AAE3 /* ConfirmArrivalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF4BB246550B30001AAE3 /* ConfirmArrivalController.swift */; };
 		9CABF4BE246563A80001AAE3 /* AssetReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF4BD246563A80001AAE3 /* AssetReportModel.swift */; };
 		9CABF4C0246564A50001AAE3 /* BillFlowVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF4BF246564A50001AAE3 /* BillFlowVIewModel.swift */; };
+		9CAF7F10247778E9001D218C /* CompositeAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAF7F0F247778E9001D218C /* CompositeAppDelegate.swift */; };
+		9CAF7F1224777C6F001D218C /* PushNotificationsAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAF7F1124777C6F001D218C /* PushNotificationsAppDelegate.swift */; };
+		9CAF7F1424778075001D218C /* AppearanceAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAF7F1324778075001D218C /* AppearanceAppDelegate.swift */; };
 		9CB09C762468F5B500F3891D /* AssetFlowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB09C752468F5B500F3891D /* AssetFlowModel.swift */; };
 		9CB09C78246930E100F3891D /* AssetContractModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB09C77246930E100F3891D /* AssetContractModel.swift */; };
 		9CB09C7A2469520600F3891D /* BookKeepingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB09C792469520600F3891D /* BookKeepingViewModel.swift */; };
@@ -560,6 +563,10 @@
 		9CABF4BB246550B30001AAE3 /* ConfirmArrivalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmArrivalController.swift; sourceTree = "<group>"; };
 		9CABF4BD246563A80001AAE3 /* AssetReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetReportModel.swift; sourceTree = "<group>"; };
 		9CABF4BF246564A50001AAE3 /* BillFlowVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillFlowVIewModel.swift; sourceTree = "<group>"; };
+		9CAF7F0B2477657E001D218C /* LightSmartLock-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LightSmartLock-Bridging-Header.h"; sourceTree = "<group>"; };
+		9CAF7F0F247778E9001D218C /* CompositeAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeAppDelegate.swift; sourceTree = "<group>"; };
+		9CAF7F1124777C6F001D218C /* PushNotificationsAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsAppDelegate.swift; sourceTree = "<group>"; };
+		9CAF7F1324778075001D218C /* AppearanceAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceAppDelegate.swift; sourceTree = "<group>"; };
 		9CB09C752468F5B500F3891D /* AssetFlowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetFlowModel.swift; sourceTree = "<group>"; };
 		9CB09C77246930E100F3891D /* AssetContractModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetContractModel.swift; sourceTree = "<group>"; };
 		9CB09C792469520600F3891D /* BookKeepingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookKeepingViewModel.swift; sourceTree = "<group>"; };
@@ -841,6 +848,9 @@
 				9C7AFF21239631930075442D /* UKRefreshStatus.swift */,
 				9C47DB82239A39070019EAA0 /* ListViewModeling.swift */,
 				9CBD8F5C23A24DA800886519 /* BluetoothSynchronizeTask.swift */,
+				9CAF7F0F247778E9001D218C /* CompositeAppDelegate.swift */,
+				9CAF7F1124777C6F001D218C /* PushNotificationsAppDelegate.swift */,
+				9CAF7F1324778075001D218C /* AppearanceAppDelegate.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -1117,6 +1127,7 @@
 				9CDD272A2382801E006A9B97 /* Assets.xcassets */,
 				9CDD272C2382801E006A9B97 /* LaunchScreen.storyboard */,
 				9CDD272F2382801E006A9B97 /* Info.plist */,
+				9CAF7F0B2477657E001D218C /* LightSmartLock-Bridging-Header.h */,
 			);
 			path = LightSmartLock;
 			sourceTree = "<group>";
@@ -1333,6 +1344,7 @@
 				TargetAttributes = {
 					9CDD271D2382801D006A9B97 = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1140;
 					};
 					9CF01D7223BD8E01007578F3 = {
 						CreatedOnToolsVersion = 11.3;
@@ -1509,6 +1521,7 @@
 				9CBD8F4323A20FD500886519 /* TempPasswordLogView.swift in Sources */,
 				9CABF4B7246544130001AAE3 /* BillDetailButtonCell.swift in Sources */,
 				9C3726C62390B2DD00450757 /* ChangePasswordController.swift in Sources */,
+				9CAF7F10247778E9001D218C /* CompositeAppDelegate.swift in Sources */,
 				7B7EB4C324528E52002DC436 /* UtilitiesRecordsViewController.swift in Sources */,
 				9CB4B34B239DE8C3001197AB /* DigitalPasswordModel.swift in Sources */,
 				9CABF4902464FD9E0001AAE3 /* BillDetailController.swift in Sources */,
@@ -1563,6 +1576,7 @@
 				9C3726CE2390D29900450757 /* ChangePhoneController.swift in Sources */,
 				9C24AC332383D91B005EBF95 /* AccessTokenModel.swift in Sources */,
 				9C7AFF22239631930075442D /* UKRefreshStatus.swift in Sources */,
+				9CAF7F1224777C6F001D218C /* PushNotificationsAppDelegate.swift in Sources */,
 				9CB09C7C2469659B00F3891D /* SelectorFeesController.swift in Sources */,
 				9C4297782386A64C004CB999 /* RegistrationRecoveryService.swift in Sources */,
 				9C03B0F9239F87B60001E849 /* AddFingerViewModel.swift in Sources */,
@@ -1581,6 +1595,7 @@
 				9C44905D24626B7800A859CC /* LiquidationViewController.swift in Sources */,
 				9C7705A1238FE358008E1552 /* SingleInputController.swift in Sources */,
 				9CBD8F4C23A21E7D00886519 /* PasswordChangeStatusCell.swift in Sources */,
+				9CAF7F1424778075001D218C /* AppearanceAppDelegate.swift in Sources */,
 				9CBD8F5923A2496700886519 /* SharePasswordSignleController.swift in Sources */,
 				7B7EB4BD24516ECB002DC436 /* AddAssetFacilityViewController.swift in Sources */,
 				9C0B86E92473B94300864DE6 /* DateCyclePickerController.swift in Sources */,
@@ -1901,6 +1916,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "LightSmartLock/门锁助手极速版.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 11;
@@ -1914,6 +1930,8 @@
 				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock;
 				PRODUCT_NAME = "门锁助手个人版";
+				SWIFT_OBJC_BRIDGING_HEADER = "LightSmartLock/LightSmartLock-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1925,6 +1943,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "LightSmartLock/门锁助手极速版.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 11;
@@ -1938,6 +1957,7 @@
 				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock;
 				PRODUCT_NAME = "门锁助手个人版";
+				SWIFT_OBJC_BRIDGING_HEADER = "LightSmartLock/LightSmartLock-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

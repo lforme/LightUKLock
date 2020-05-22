@@ -23,6 +23,9 @@ PODS:
   - IGListKit (4.0.0):
     - IGListDiffKit (= 4.0.0)
   - IQKeyboardManager (6.5.5)
+  - JCore (2.2.5)
+  - JPush (3.2.4-noidfa):
+    - JCore (< 3.0.0, >= 2.0.0)
   - Kingfisher (5.13.4):
     - Kingfisher/Core (= 5.13.4)
   - Kingfisher/Core (5.13.4)
@@ -87,6 +90,7 @@ DEPENDENCIES:
   - HandyJSON
   - IGListKit
   - IQKeyboardManager
+  - JPush (= 3.2.4-noidfa)
   - Kingfisher
   - lottie-ios
   - LTMorphingLabel
@@ -127,6 +131,8 @@ SPEC REPOS:
     - IGListDiffKit
     - IGListKit
     - IQKeyboardManager
+    - JCore
+    - JPush
     - Kingfisher
     - LightweightObservable
     - lottie-ios
@@ -171,6 +177,8 @@ SPEC CHECKSUMS:
   IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
   IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
   IQKeyboardManager: 3a8b9e603f8b0eeaf5f096a1f2b2cfcf121992ef
+  JCore: d75c0306dc99875d323d23e5a063b3a3ef22335a
+  JPush: 2ff11d3013b360bc1b7da16741027e88f12fe3e6
   Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
   LightweightObservable: 52abe2a01c8273921b1f66cd66526eb3328ca35a
   lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
@@ -198,6 +206,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 99f03b64145a8c92c55b9b1b931410967d9be4cb
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: dde712d724fe149b29eb3544e3959ca78e2e40ad
+PODFILE CHECKSUM: c1846982661b0034fd16bef02f1b8c51d80a3c80
 
 COCOAPODS: 1.9.1

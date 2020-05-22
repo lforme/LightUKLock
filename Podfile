@@ -53,6 +53,9 @@ target 'LightSmartLock' do
   # 动画
   pod 'lottie-ios'
   
+  # 推送
+  pod 'JPush', '3.2.4-noidfa'
+  
 end
 
 target 'LSLWidget' do
