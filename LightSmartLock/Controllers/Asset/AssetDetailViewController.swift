@@ -35,10 +35,10 @@ class AssetDetailViewController: AssetBaseViewController {
     }()
     
     lazy var popView: UIView = {
-        let view = UIStackView(arrangedSubviews: [self.inviteBindingBtn, self.deleteBtn])
+        let view = UIStackView(arrangedSubviews: [self.inviteBindingBtn])
         view.axis = .vertical
         view.distribution = .fillEqually
-        view.frame = CGRect(x: 0, y: 0, width: 80, height: 64)
+        view.frame = CGRect(x: 0, y: 0, width: 80, height: 32)
         return view
     }()
     

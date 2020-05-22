@@ -12,6 +12,7 @@ import RxCocoa
 import HandyJSON
 import PKHUD
 import RxRelay
+import MessageUI
 
 class LadderAssetFacilityVO: HandyJSON {
     
@@ -119,6 +120,31 @@ class AssetFacilityListViewController: AssetBaseViewController {
         })
             .disposed(by: rx.disposeBag)
         
+        sendButton.rx.tap.flatMapLatest {[weak self] (_) -> Observable<Int> in
+            guard let vc = self else {
+                return .error(AppError.reason("发生未知错误"))
+            }
+            return vc.showActionSheet(title: "选择发送方式", message: nil, buttonTitles: ["短信", "取消"], highlightedButtonIndex: 0)
+        }.subscribe(onNext: {[weak self] (buttonIndex) in
+            guard let self = self else { return }
+            let models = self.items.value
+            let strs = models.enumerated().map { (index, model) in
+                return "\n\(index + 1).\(model.facilityName ?? "-")，\(model.remark ?? "-")"
+            }
+            let sendStr = "【房源配置信息】\(strs.joined())"
+            switch buttonIndex {
+            case 0:
+                if MFMessageComposeViewController.canSendText() {
+                    let messageVC = MFMessageComposeViewController()
+                    messageVC.body = sendStr
+                    messageVC.messageComposeDelegate = self
+                    self.present(messageVC, animated: true, completion: nil)
+                }
+                
+            default :break
+            }
+        }).disposed(by: rx.disposeBag)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -133,4 +159,26 @@ class AssetFacilityListViewController: AssetBaseViewController {
     }
     
     
+}
+
+
+extension AssetFacilityListViewController: MFMessageComposeViewControllerDelegate {
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        switch (result) {
+        case .cancelled:
+            print("Message was cancelled")
+            dismiss(animated: true, completion: nil)
+        case .failed:
+            print("Message failed")
+            dismiss(animated: true, completion: nil)
+        case .sent:
+            print("Message was sent")
+            dismiss(animated: true, completion: nil)
+        default:
+            break
+        }
+        
+        controller.dismiss(animated: true, completion: nil)
+    }
 }

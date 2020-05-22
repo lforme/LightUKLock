@@ -10,7 +10,7 @@ import Foundation
 import HandyJSON
 
 struct TenantContractAndBillsDTO: HandyJSON {
-    var billDTO: [MyBillModel]?
+    var billDTO: MyBillModel?
     var tenantContractDTO: TenantContractDTO?
 
 }
