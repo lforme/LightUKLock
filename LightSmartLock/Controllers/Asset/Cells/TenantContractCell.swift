@@ -21,6 +21,9 @@ class TenantContractCell: UITableViewCell {
     
     var model: TenantContractAndBillsDTO? {
         didSet {
+            
+            billViewContainer.arrangedSubviews.forEach { $0.removeFromSuperview() }
+
             let houseName = model?.tenantContractDTO?.houseName ?? ""
             let tenantName = model?.tenantContractDTO?.tenantName ?? ""
             nameLabel.text = "\(houseName) \(tenantName)"
@@ -34,18 +37,13 @@ class TenantContractCell: UITableViewCell {
             startDateLabel.text = model?.tenantContractDTO?.startDate
             endDateLabel.text = model?.tenantContractDTO?.endDate
             
-            let bills = model?.billDTO ?? []
-            if bills.isEmpty {
-                empytBillContainer.isHidden = false
-                billViewContainer.isHidden = true
-            } else {
+            if let bill = model?.billDTO, !(bill.billItemDTOList ?? []).isEmpty {
                 empytBillContainer.isHidden = true
                 billViewContainer.isHidden = false
-                
-                bills.forEach { [weak self](model) in
-                    self?.billViewContainer.addArrangedSubview(BillView.loadFromNib(with: model))
-                }
-
+                billViewContainer.addArrangedSubview(BillView.loadFromNib(with: bill))
+            } else {
+                empytBillContainer.isHidden = false
+                billViewContainer.isHidden = true
             }
         }
     }
