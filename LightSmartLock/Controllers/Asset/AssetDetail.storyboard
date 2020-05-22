@@ -349,14 +349,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TenantContractCell" id="2uk-Gr-qNx" customClass="TenantContractCell" customModule="门锁助手个人版" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="471.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="472.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2uk-Gr-qNx" id="Oye-0J-OfA">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="471.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="472.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="biO-qD-0Om">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="471.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="472.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8il-kq-28g">
                                                             <rect key="frame" x="16" y="0.0" width="382" height="56"/>
@@ -494,7 +494,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kJZ-qb-opH">
-                                                            <rect key="frame" x="0.0" y="188" width="414" height="283.5"/>
+                                                            <rect key="frame" x="0.0" y="188" width="414" height="284.5"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5CT-y2-oiY">
                                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
@@ -522,7 +522,7 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Xn4-S4-Klf">
-                                                                    <rect key="frame" x="0.0" y="80" width="414" height="203.5"/>
+                                                                    <rect key="frame" x="0.0" y="80" width="414" height="204.5"/>
                                                                 </stackView>
                                                             </subviews>
                                                         </stackView>
@@ -572,8 +572,8 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="j4m-6B-npe">
                                         <rect key="frame" x="16" y="5" width="382" height="46"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8p-xI-Gns">
-                                                <rect key="frame" x="0.0" y="0.0" width="181" height="46"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8p-xI-Gns">
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="46"/>
                                                 <color key="backgroundColor" name="primary"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="发布房源">
@@ -586,7 +586,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LaP-7c-VyV">
-                                                <rect key="frame" x="201" y="0.0" width="181" height="46"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="46"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" name="primary"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
