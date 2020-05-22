@@ -31,6 +31,11 @@ class LSLUser: NSObject {
     
     func logout() {
         
+        JPUSHService.deleteAlias({ (code, alias, seq) in
+            print("极光注册别名:\(String(describing: alias))")
+        }, seq: 1)
+        JPUSHService.resetBadge()
+        
         if let t = token?.accessToken {
             AuthAPI.requestMapBool(.logout(token: t)).subscribe().disposed(by: rx.disposeBag)
         }

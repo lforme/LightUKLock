@@ -23,6 +23,13 @@ final class PushNotificationsAppDelegate: AppDelegateType, JPUSHRegisterDelegate
             #else
             JPUSHService.setup(withOption: launchOptions, appKey: PlatformKey.jpushAppKey, channel: "iOS", apsForProduction: true)
             #endif
+            
+            if let userId = LSLUser.current().user?.id {
+                print(userId)
+                JPUSHService.setAlias(userId, completion: { (code, alias, seq) in
+                    print("极光注册别名:\(String(describing: alias))")
+                }, seq: 1)
+            }
         }
         return true
     }
