@@ -107,4 +107,11 @@ class TenantContractCell: UITableViewCell {
         nav?.pushViewController(vc, animated: true)
     }
     
+    
+    @IBAction func contractDetail(_ sender: Any) {
+        let contractDetailVC: BillFlowContractDetailController = ViewLoader.Storyboard.controller(from: "Bill")
+        contractDetailVC.contractId = model?.tenantContractDTO?.id ?? ""
+        nav?.pushViewController(contractDetailVC, animated: true)
+    }
+    
 }
