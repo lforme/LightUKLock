@@ -169,9 +169,9 @@ class AddTenantViewController: AssetBaseViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         if let startDate = formatter.date(from: startDateStr), let months = self.selectedDateRangeMonth,
-            let endDate = Calendar.current.date(byAdding: .month, value: months, to: startDate) {
-            
-            let endDateStr = formatter.string(from: endDate)
+            let endDate = Calendar.current.date(byAdding: .month, value: months, to: startDate),
+            let trueEndDate = Calendar.current.date(byAdding: .day, value: -1, to: endDate) {
+            let endDateStr = formatter.string(from: trueEndDate)
             endDateBtn.selectedDateStr = endDateStr
         }
         
