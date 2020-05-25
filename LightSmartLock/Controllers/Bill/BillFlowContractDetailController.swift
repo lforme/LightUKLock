@@ -44,6 +44,7 @@ class BillFlowContractDetailController: UITableViewController, NavigationSetting
     private var startTime = ""
     private var endTime = ""
     private var fetchModel: AssetContractDetailModel?
+    private var billId: String?
     
     deinit {
         print(self)
@@ -101,7 +102,14 @@ class BillFlowContractDetailController: UITableViewController, NavigationSetting
         }).disposed(by: rx.disposeBag)
         
         let leaseBackAction = Action<Void, Bool> {[unowned self] (_) -> Observable<Bool> in
-            return BusinessAPI.requestMapBool(.checkTerminationTenantContract(contractId: self.contractId))
+            return BusinessAPI.requestMapAny(.checkTerminationTenantContract(contractId: self.contractId)).flatMapLatest { (json) -> Observable<Bool> in
+                let json = json as? [String: Any]
+                if let result = json?["data"] as? Bool {
+                    return .just(result)
+                } else {
+                    return .error(AppError.reason("发生未知错误"))
+                }
+            }
         }
         
         leaseBackButton.rx.bind(to: leaseBackAction, input: ())
@@ -114,11 +122,16 @@ class BillFlowContractDetailController: UITableViewController, NavigationSetting
             guard let this = self else { return }
             if pass {
                 let liquidationVC: LiquidationViewController = ViewLoader.Storyboard.controller(from: "Bill")
+                liquidationVC.contractId = self?.contractId ?? ""
+                liquidationVC.billId = self?.billId
                 this.navigationController?.pushViewController(liquidationVC, animated: true)
             } else {
                 this.showAlert(title: "退租失败", message: "点前有何有部分账单未清算", buttonTitles: ["取消", "去结清"], highlightedButtonIndex: 1).subscribe(onNext: { (index) in
                     if index == 1 {
                         let clearVC: BillClearingController = ViewLoader.Storyboard.controller(from: "Bill")
+                        clearVC.handleCompetition {[weak self] (billId) in
+                            self?.billId = billId
+                        }
                         clearVC.assetId = this.assetId
                         clearVC.contractId = this.contractId
                         clearVC.startTime = this.startTime

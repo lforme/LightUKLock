@@ -16,6 +16,7 @@ class AnimationHeaderView: UITableViewCell {
     private(set) var disposeBag = DisposeBag()
     @IBOutlet weak var lockImageView: UIImageView!
     @IBOutlet weak var unlockButton: UIButton!
+    @IBOutlet weak var powerLabel: UILabel!
     
     override func prepareForReuse() {
         disposeBag = DisposeBag()
@@ -38,6 +39,8 @@ class AnimationHeaderView: UITableViewCell {
         print(open)
         if power < 0.20 {
             lockImageView.image = UIImage(named: "lock_icon_power_low")
+            let powerValue = power * 100
+            powerLabel.text = "\(powerValue) %"
         } else {
             lockImageView.image = UIImage(named: "lock_icon_power_normal")
         }

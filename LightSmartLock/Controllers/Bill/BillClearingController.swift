@@ -34,6 +34,8 @@ class BillClearingController: UIViewController {
     
     private let canEditing = BehaviorRelay<Bool>(value: false)
     
+    private var callBackBillId: ((String) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,8 +46,13 @@ class BillClearingController: UIViewController {
         
     }
     
+    func handleCompetition(_ block: @escaping (String) -> Void) {
+        self.callBackBillId = block
+    }
+    
     func bind() {
         BusinessAPI.requestMapJSON(.billInfoClearing(assetId: self.assetId, contractId: self.contractId, startDate: self.startTime, endDate: self.endTime), classType: BillLiquidationModel.self).subscribe(onNext: {[weak self] (model) in
+            self?.callBackBillId?(model.id ?? "")
             self?.originalModel = model
             self?.billId = model.billId
             let money = model.payableAmount ?? 0.00
@@ -104,7 +111,7 @@ class BillClearingController: UIViewController {
     }
     
     func setupNavigationItems() {
-        let rightItemButton = createdRightNavigationItem(title: "···", font: UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.medium), image: nil, rightEdge: 8, color: ColorClassification.textPrimary.value)
+        let rightItemButton = createdRightNavigationItem(title: "编辑", font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.medium), image: nil, rightEdge: 8, color: ColorClassification.navigationItem.value)
         
         rightItemButton.addTarget(self, action: #selector(rightNavigationTap(_:)), for: .touchUpInside)
         
@@ -128,7 +135,7 @@ class BillClearingController: UIViewController {
     
     @objc func rightNavigationTap(_ btn: UIButton) {
         
-        self.showActionSheet(title: nil, message: nil, buttonTitles: ["编辑", "删除"], highlightedButtonIndex: nil).subscribe(onNext: {[weak self] (index) in
+        self.showActionSheet(title: nil, message: nil, buttonTitles: ["编辑", "删除", "取消"], highlightedButtonIndex: 2).subscribe(onNext: {[weak self] (index) in
             guard let this = self else { return }
             if index == 0 {
                 btn.isSelected = !btn.isSelected

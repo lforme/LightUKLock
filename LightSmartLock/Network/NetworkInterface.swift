@@ -70,7 +70,7 @@ enum BusinessInterface {
     case costCategory // 获取用户的费用类型集合
     case tenantContractInfo(contractId: String) // 获取合租合同详情
     case checkTerminationTenantContract(contractId: String) // 判断是否可以退租
-    case terminationContract(billId: String, accountType: Int, clearDate: String) // 退租 清算方式 1：银行转账 2：微信账号 3：支付宝账号 4：POS机 999：其他账号
+    case terminationContract(contractId: String, billId: String?, accountType: Int, clearDate: String) // 退租 清算方式 1：银行转账 2：微信账号 3：支付宝账号 4：POS机 999：其他账号
     case billInfoClearing(assetId: String, contractId: String, startDate: String, endDate: String) //获取清算账单明细
     case deleteBillInfo(billId: String) // 删除账单
     case editBillInfoClear(parameter: BillLiquidationModel) // 编辑清算账单明细

@@ -116,7 +116,7 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
         let data = dataSource[indexPath.row]
         
         cell.nickname.text = data.nickname
-        cell.role.text = data.roleType?.description
+        cell.role.text = data.kinsfolkTag
         cell.avatar.setUrl(data.avatar)
         //        cell.synchronizedStart(data.userCode.isNilOrEmpty)
         return cell
@@ -150,6 +150,7 @@ class UserManagementCell: UITableViewCell {
         super.awakeFromNib()
         synLabel.isHidden = true
         sysIcon.isHidden = true
+        avatar.setCircular(radius: avatar.bounds.height / 2)
     }
     
     func synchronizedStart(_ start: Bool) {
