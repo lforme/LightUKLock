@@ -20,8 +20,8 @@ class LiquidationViewController: UIViewController {
     
     private let liquidationWays = ["银行转账": 1, "微信账号": 2, "支付宝账号": 3, "POS机": 4, "其他": 999]
     
-    var billId = "4673021929191374851"
-    
+    var billId: String?
+    var contractId = ""
     deinit {
         print(self)
     }
@@ -45,7 +45,7 @@ class LiquidationViewController: UIViewController {
             } else if self.liquidationWayLabel.text.isNilOrEmpty {
                 return .error(AppError.reason("请选择清算方式"))
             } else {
-                return BusinessAPI.requestMapBool(.terminationContract(billId: self.billId, accountType: self.liquidationWays[self.liquidationWayLabel.text!]!, clearDate: self.dateLabel.text!))
+                return BusinessAPI.requestMapBool(.terminationContract(contractId: self.contractId, billId: self.billId, accountType: self.liquidationWays[self.liquidationWayLabel.text!]!, clearDate: self.dateLabel.text!))
             }
         }
         

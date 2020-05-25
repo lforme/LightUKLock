@@ -76,7 +76,7 @@ final class BillFlowViewModel {
                         return .just([])
                     })
                     .map { (models) -> [BillFlowReportSection.Data] in
-                        models.compactMap { BillFlowReportSection.Data(id: $0?.costCategoryId ?? "", name: $0?.costCategoryName, count: $0?.count ?? 0, paidCount: $0?.paidCount ?? 0, totalAmount: $0?.totalAmount ?? 0) }
+                        models.compactMap { BillFlowReportSection.Data(id: $0?.costCategoryId ?? "", name: $0?.costCategoryName, count: $0?.totalCount ?? 0, paidCount: $0?.paidCount ?? 0, totalAmount: $0?.totalAmount ?? 0) }
                 }
             }
         }.bind(to: _collectionViewDataSource).disposed(by: disposeBag)

@@ -38,6 +38,7 @@ final class MySettingViewModel {
             return .error(AppError.reason("获取本地用户失败"))
         }
         userInfo.userName = name
+        userInfo.nickname = name
         return BusinessAPI.requestMapBool(.editUser(parameter: userInfo)).map { _ in userInfo }
     }
     

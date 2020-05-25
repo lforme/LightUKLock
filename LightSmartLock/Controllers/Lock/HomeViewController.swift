@@ -35,6 +35,10 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     //    private let synchronizeTaks = BluetoothSynchronizeTask()
     private let currentScene = BehaviorRelay<SceneListModel?>.init(value: nil)
     
+    deinit {
+        print(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -207,8 +211,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let controlCell = tableView.dequeueReusableCell(withIdentifier: "HomeControlCell") as! HomeControlCell
             controlCell.userButton.addTarget(self, action: #selector(self.gotoUserManagementVC), for: .touchUpInside)
             controlCell.keyButton.addTarget(self, action: #selector(self.gotoPasswordManagementVC), for: .touchUpInside)
-            controlCell.messageButton.addTarget(self, action: #selector(self.gotoCardManagementVC), for: .touchUpInside)
-            controlCell.propertyButton.addTarget(self, action: #selector(self.gotoFingerManagementVC), for: .touchUpInside)
+            controlCell.messageButton.addTarget(self, action: #selector(self.gotoFingerManagementVC), for: .touchUpInside)
+            controlCell.propertyButton.addTarget(self, action: #selector(self.gotoCardManagementVC), for: .touchUpInside)
             return controlCell
         case 1:
             let leasedCell = tableView.dequeueReusableCell(withIdentifier: "LeasedCell") as! LeasedCell

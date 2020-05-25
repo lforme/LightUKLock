@@ -276,7 +276,7 @@ extension BusinessInterface: TargetType {
         case let .tenantContractInfo(contractId):
             return "/tenant_contract_info/\(contractId)"
         case let .checkTerminationTenantContract(contractId):
-            return "/tenant_contract_info/termination/check/\(contractId)"
+            return "/base_bill_info/check_clear/\(contractId)"
         case .terminationContract:
             return "/tenant_contract_info/termination"
         case .billInfoClearing:
@@ -423,8 +423,12 @@ extension BusinessInterface: TargetType {
             
             return ["assetId": assetId, "payTime": payTime, "turnoverItemDTOList": array]
             
-        case let .terminationContract(billId, accountType, clearDate):
-            return ["accountType": accountType, "billId": billId, "clearDate": clearDate]
+        case let .terminationContract(contractId, billId, accountType, clearDate):
+            var dict = ["accountType": accountType, "contractId": contractId, "clearDate": clearDate] as [String : Any]
+            if let tempBillId = billId {
+                dict.updateValue(tempBillId, forKey: "billId")
+            }
+            return dict
             
         case let .billInfoClearing(assetId, contractId, startDate, endDate):
             return ["assetId": assetId, "contractId": contractId, "startDate": startDate, "endDate": endDate]
