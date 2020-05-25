@@ -90,7 +90,7 @@ class SettingRentalAndOtherViewController: AssetBaseViewController {
         saveBtn.rx.tap
             .asObservable()
             .flatMap { [unowned self] _ -> Observable<TenantContractInfo> in
-                self.tenantContractInfo.isSeparate = self.seperateSW.isOn ? 1 : 0
+                self.tenantContractInfo.isRelatedRental = self.seperateSW.isOn ? 0 : 1
                 guard let ratio = self.costCollectBtn.result?.first?.value.toInt(),
                     let type = self.costCollectBtn.result?.last.value?.row else {
                         HUD.flash(.label("请选择其他费用周期"))

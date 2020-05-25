@@ -26,7 +26,6 @@ class TenantContractInfo: HandyJSON {
     var isIncrease: Int?
     var isRelatedRental: Int?
     var isRemind: Int?
-    var isSeparate: Int?
     var receivingAccountId: String?
     var remark: String?
     var rentCollectRate: Int?
