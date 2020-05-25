@@ -60,9 +60,14 @@ class AddUserController: UITableViewController {
             .distinctUntilChanged()
             .bind(to: vm.nickname).disposed(by: rx.disposeBag)
         
-        phonTextField.rx.text.orEmpty.changed
+        let phoneShare = phonTextField.rx.text.orEmpty.changed
             .distinctUntilChanged()
-            .bind(to: vm.phone).disposed(by: rx.disposeBag)
+        phoneShare.bind(to: vm.phone).disposed(by: rx.disposeBag)
+        phoneShare.map { $0.count > 11 }.subscribe(onNext: { (exceed) in
+            if exceed {
+                HUD.flash(.label("请输入正确手机号"), delay: 2)
+            }
+        }).disposed(by: rx.disposeBag)
         
         
         vm.displayModel.subscribe(onNext: {[weak self] (display) in
@@ -74,7 +79,7 @@ class AddUserController: UITableViewController {
                 self?.tagLabel.textColor = ColorClassification.textDescription.value
             }
             
-            if let pwd = display.bluetoothPwd {
+            if let pwd = display.numberPwd {
                 self?.passwordLabel.text = pwd
             }
             
