@@ -87,6 +87,26 @@ class SettingRentalAndOtherViewController: AssetBaseViewController {
         }
         .disposed(by: rx.disposeBag)
         
+        seperateSW.rx.isOn
+            .startWith(false)
+            .do(onNext: { [weak self](isOn) in
+                if !isOn {
+                    // (component: Int, row: Int, value: String)
+                    //                    self.tenantContractInfo.rentCollectRate = rentCollectTypeBtn.result?.first?.value.toInt()
+                    //                      if let row = rentCollectTypeBtn.result?.last?.row {
+                    //                          self.tenantContractInfo.rentCollectType = row + 1
+                    //                      }
+                    
+                    let rentCollectRate = self?.tenantContractInfo.rentCollectRate?.description ?? ""
+                    let rentCollectTypeRow = (self?.tenantContractInfo.rentCollectType ?? 0) - 1
+                    
+                    self?.costCollectBtn.result = [(0, 0, rentCollectRate), (1, rentCollectTypeRow, units[rentCollectTypeRow])]
+                }
+            })
+            .bind(to: costCollectBtn.rx.isEnabled)
+            .disposed(by: rx.disposeBag)
+        
+        
         saveBtn.rx.tap
             .asObservable()
             .flatMap { [unowned self] _ -> Observable<TenantContractInfo> in
