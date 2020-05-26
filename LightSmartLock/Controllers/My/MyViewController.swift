@@ -157,5 +157,8 @@ extension MyViewController: UITableViewDataSource, UITableViewDelegate {
         LSLUser.current().scene = scene
         let lockVC: HomeViewController = ViewLoader.Storyboard.controller(from: "Home")
         navigationController?.pushViewController(lockVC, animated: true)
+        if let visiableRows = tableView.indexPathsForVisibleRows {
+            tableView.reloadRows(at: visiableRows, with: .automatic)
+        }
     }
 }

@@ -58,8 +58,8 @@ class MyListCell: UITableViewCell {
     }
     
     func bind(_ data: SceneListModel) {
-        name.text = data.buildingName ?? "未设置名称"
-        address.text = data.buildingAdress ?? "未设置名称"
+        name.text = data.buildingName ?? "-"
+        address.text = data.buildingAdress ?? "-"
         if let lockInfo = data.lockType {
             message.text = "已安装门锁, 门锁类型: \(lockInfo)"
         }

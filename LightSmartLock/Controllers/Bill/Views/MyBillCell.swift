@@ -125,7 +125,7 @@ class MyBillCell: UITableViewCell {
         if let status = data.billStatus {
             if status == -1 {
                 rushRentButton.isHidden = false
-                confirmButton.isHidden = true
+                confirmButton.isHidden = false
                 sendButton.isHidden = false
             } else if status == 0 || status == 1 {
                 confirmButton.isHidden = false
@@ -137,7 +137,7 @@ class MyBillCell: UITableViewCell {
                 confirmButton.isHidden = true
             } else {
                 rushRentButton.isHidden = true
-                confirmButton.isHidden = true
+                confirmButton.isHidden = false
             }
         }
         self.layoutIfNeeded()
