@@ -29,7 +29,7 @@ final class PositionViewModel {
     
     var id: String?
     
-    private let obPositionModel = BehaviorSubject<PositionModel?>(value: nil)
+    let obPositionModel = BehaviorSubject<PositionModel?>(value: nil)
     private let obButtonType = BehaviorRelay<ButtonType>(value: .save)
     private let obVillageName = BehaviorRelay<String?>(value: nil)
     let obArea = BehaviorRelay<String?>(value: nil)

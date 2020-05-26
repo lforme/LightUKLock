@@ -52,12 +52,12 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
     }
     
     func bind() {
+        
+        self.vm.obPositionModel.map { String($0?.area ?? 0) }.bind(to: self.areaTextfield.rx.text).disposed(by: rx.disposeBag)
+        
         self.vm.defaultPositionModel.subscribe(onNext: {[weak self] (defaultModel) in
-            self?.plotName.text = defaultModel?.buildingName
-            if let area = defaultModel?.area?.description {
-                self?.areaTextfield.text = area
-            }
             
+            self?.plotName.text = defaultModel?.buildingName
             self?.houseType.text = defaultModel?.houseStruct
             
             var building = ""
@@ -84,6 +84,7 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
     
     func setupUI() {
         tableView.tableFooterView = UIView()
+        areaTextfield.clearsOnBeginEditing = true
     }
     
     func setupNavigationRightItem() {
