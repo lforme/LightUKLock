@@ -119,6 +119,7 @@ class UserDetailController: UITableViewController, NavigationSettingStyle {
                 }.subscribe(onNext: { (success) in
                     if success {
                         HUD.flash(.label("修改昵称成功"), delay: 2)
+                        NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addUser)
                     } else {
                         HUD.flash(.label("修改失败, 请稍后再试"), delay: 2)
                     }

@@ -596,7 +596,7 @@
 		9CBD8F5823A2496700886519 /* SharePasswordSignleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePasswordSignleController.swift; sourceTree = "<group>"; };
 		9CBD8F5A23A24A9900886519 /* SharePwdSingleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePwdSingleViewModel.swift; sourceTree = "<group>"; };
 		9CBD8F5C23A24DA800886519 /* BluetoothSynchronizeTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothSynchronizeTask.swift; sourceTree = "<group>"; };
-		9CDD271E2382801D006A9B97 /* 门锁助手个人版.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "门锁助手个人版.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CDD271E2382801D006A9B97 /* 寓用管家.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "寓用管家.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CDD27212382801D006A9B97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CDD27282382801D006A9B97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9CDD272A2382801E006A9B97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1101,7 +1101,7 @@
 		9CDD271F2382801D006A9B97 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9CDD271E2382801D006A9B97 /* 门锁助手个人版.app */,
+				9CDD271E2382801D006A9B97 /* 寓用管家.app */,
 				9CF01D7323BD8E01007578F3 /* 门锁助手.appex */,
 			);
 			name = Products;
@@ -1311,7 +1311,7 @@
 			);
 			name = LightSmartLock;
 			productName = LightSmartLock;
-			productReference = 9CDD271E2382801D006A9B97 /* 门锁助手个人版.app */;
+			productReference = 9CDD271E2382801D006A9B97 /* 寓用管家.app */;
 			productType = "com.apple.product-type.application";
 		};
 		9CF01D7223BD8E01007578F3 /* LSLWidget */ = {
@@ -1929,7 +1929,7 @@
 				);
 				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock;
-				PRODUCT_NAME = "门锁助手个人版";
+				PRODUCT_NAME = "寓用管家";
 				SWIFT_OBJC_BRIDGING_HEADER = "LightSmartLock/LightSmartLock-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1956,7 +1956,7 @@
 				);
 				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock;
-				PRODUCT_NAME = "门锁助手个人版";
+				PRODUCT_NAME = "寓用管家";
 				SWIFT_OBJC_BRIDGING_HEADER = "LightSmartLock/LightSmartLock-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

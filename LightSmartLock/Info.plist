@@ -34,24 +34,24 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>Microphone Usage Description</key>
-	<string>门锁助手需要使用麦克风设置Siri捷径</string>
+	<string>寓用管家需要使用麦克风设置Siri捷径</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>门锁助手需要使用蓝牙来开门</string>
+	<string>寓用管家需要使用蓝牙来开门</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>门锁助手需要使用蓝牙来开门</string>
+	<string>寓用管家需要使用蓝牙来开门</string>
 	<key>NSCameraUsageDescription</key>
-	<string>门锁助手需要使用相机, 为您更换头像</string>
+	<string>寓用管家需要使用相机, 为您更换头像</string>
 	<key>NSFaceIDUsageDescription</key>
-	<string>门锁助手需要使用FaceID来验证用户身份</string>
+	<string>寓用管家需要使用FaceID来验证用户身份</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>门锁助手需要获取您当前坐标, 检索周围小区</string>
+	<string>寓用管家需要获取您当前坐标, 检索周围小区</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>门锁助手需要使用相册资源, 为您更换头像</string>
+	<string>寓用管家需要使用相册资源, 为您更换头像</string>
 	<key>NSUserActivityTypes</key>
 	<string>com.oldwhy.QuickSmartLock.sirisortcut.opendoor</string>
 	<key>UILaunchStoryboardName</key>
