@@ -16,7 +16,7 @@ import MJRefresh
 class MyViewController: UIViewController, NavigationSettingStyle {
     
     var backgroundColor: UIColor? {
-        return UIColor.clear
+        return ColorClassification.primary.value
     }
     
     var tableView: UITableView = {
@@ -33,19 +33,11 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         self.tableView.frame = view.frame
     }
     
-    //    override func viewDidAppear(_ animated: Bool) {
-    //        super.viewDidAppear(animated)
-    //        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
-    //            self?.tableView.mj_header?.beginRefreshing()
-    //        }
-    //    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
         setupNavigation()
-        observerTableViewDidScroll()
         setupTableviewRefresh()
         bind()
         observerSceneChanged()
@@ -114,17 +106,6 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         
         self.interactiveNavigationBarHidden = true
         AppDelegate.changeStatusBarStyle(.lightContent)
-    }
-    
-    func observerTableViewDidScroll() {
-        tableView.rx.didScroll.subscribe(onNext: {[weak self] (_) in
-            guard let this = self else { return }
-            if this.tableView.contentOffset.y > 160 {
-                this.navigationController?.navigationBar.topItem?.titleView?.isHidden = false
-            } else {
-                this.navigationController?.navigationBar.topItem?.titleView?.isHidden = true
-            }
-        }).disposed(by: rx.disposeBag)
     }
     
     @objc func gotoMySettingVC() {
