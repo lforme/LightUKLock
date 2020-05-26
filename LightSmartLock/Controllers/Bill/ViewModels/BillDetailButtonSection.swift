@@ -36,7 +36,7 @@ final class BillDetailButtonSection: ListSectionController {
         
         if data.billStatus == -1 {
             cell.rushRentButton.isHidden = false
-            cell.confirmButton.isHidden = true
+            cell.confirmButton.isHidden = false
             cell.sendButton.isHidden = false
         } else if data.billStatus == 0 || data.billStatus == 1 {
             cell.confirmButton.isHidden = false
@@ -48,7 +48,7 @@ final class BillDetailButtonSection: ListSectionController {
             cell.confirmButton.isHidden = true
         } else {
             cell.rushRentButton.isHidden = true
-            cell.confirmButton.isHidden = true
+            cell.confirmButton.isHidden = false
         }
         
         cell.confirmButton.rx.tap.subscribe(onNext: {[weak self] (_) in

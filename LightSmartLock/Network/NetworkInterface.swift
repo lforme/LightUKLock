@@ -83,5 +83,6 @@ enum BusinessInterface {
     case addBillInfo(parameter: CreateBillController.Parameter) // 发起账单
     case addCostCategory(name: String) // 添加用户费用类型
     case contractRenew(contractId: String, endDate: String, increaseType: Int, ratio: Double, rentalChangeType: Int) // 续租 1:按金额 2：按比例  加租: 1 减租: -1
+    case editOtherUser(userId: String, userInfo: HandyJSON) // 修改非当前登录用户
 
 }

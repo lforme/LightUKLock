@@ -36,7 +36,7 @@ final class UserDetailViewModel: BluetoothViewModel {
     func changeUserName(_ name: String) -> Observable<Bool> {
         userModel.nickname = name
         let param = userModel.ConvertToModifyNickname()
-        return BusinessAPI.requestMapBool(.editUser(parameter: param))
+        return BusinessAPI.requestMapBool(.editOtherUser(userId: userModel.id ?? "", userInfo: param))
     }
     
     func deleteUser(way: DeleteWay) -> Observable<Bool> {

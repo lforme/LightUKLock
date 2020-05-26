@@ -18,6 +18,7 @@ final class AppearanceAppDelegate: AppDelegateType {
             self.setupKeyborad()
         }
         self.setupHUD()
+        
         return true
     }
     

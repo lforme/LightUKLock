@@ -32,6 +32,7 @@ final class NetworkDiskStorage {
         
         db = NetworkMetaDb(path: p)
         removeExpiredValues()
+        
     }
     
     
@@ -51,11 +52,9 @@ final class NetworkDiskStorage {
     
     private func removeExpiredValues() {
         if !autoCleanTrash { return }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
-            DispatchQueue.global(qos: .background).async {[weak self] in
-                self?.db.deleteExpiredData()
-            }
-            self.removeExpiredValues()
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 60) {[weak self] in
+            self?.db.deleteExpiredData()
+            self?.removeExpiredValues()
         }
     }
 }

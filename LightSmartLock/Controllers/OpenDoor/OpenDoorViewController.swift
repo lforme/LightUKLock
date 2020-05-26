@@ -49,15 +49,18 @@ class OpenDoorViewController: UIViewController {
             }
         }).disposed(by: rx.disposeBag)
         
-        shareConnected.throttle(.seconds(1), latest: true, scheduler: MainScheduler.instance).flatMapLatest {[weak self] (isConnected) -> Observable<Bool> in
-            guard let this = self else {
-                return .error(AppError.reason("解锁失败"))
-            }
-            if isConnected {
-                return this.vm.openDoor()
-            } else {
-                return .just(false)
-            }
+        shareConnected
+            .delaySubscription(.seconds(2), scheduler: MainScheduler.instance)
+            .throttle(.seconds(1), latest: true, scheduler: MainScheduler.instance)
+            .flatMapLatest {[weak self] (isConnected) -> Observable<Bool> in
+                guard let this = self else {
+                    return .error(AppError.reason("解锁失败"))
+                }
+                if isConnected {
+                    return this.vm.openDoor()
+                } else {
+                    return .just(false)
+                }
         }.flatMapLatest {[weak self] (openDoorSuccess) -> Observable<Bool> in
             guard let this = self else {
                 return .error(AppError.reason("解锁失败"))
@@ -68,13 +71,13 @@ class OpenDoorViewController: UIViewController {
                 return .just(false)
             }
         }.subscribe(onNext: {[weak self] (finished) in
+            
             if finished {
-                print("successful open")
                 self?.loadOpendoorAnimationJson()
             }
-        }, onError: {[weak self] (error) in
-            PKHUD.sharedHUD.rx.showError(error)
-            self?.dismiss(animated: true, completion: nil)
+            }, onError: {[weak self] (error) in
+                PKHUD.sharedHUD.rx.showError(error)
+                self?.dismiss(animated: true, completion: nil)
         }).disposed(by: rx.disposeBag)
     }
     

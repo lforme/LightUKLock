@@ -193,7 +193,8 @@ extension BusinessInterface: TargetType {
         case .editUser,
              .editCardOrFingerName,
              .setAlarmFingerprint,
-             .editBillInfoClear:
+             .editBillInfoClear,
+             .editOtherUser:
             return .put
             
         default:
@@ -303,6 +304,8 @@ extension BusinessInterface: TargetType {
             return "/cost_category/"
         case .contractRenew:
             return "/tenant_contract_info/renew"
+        case let .editOtherUser(userId, _):
+            return "/user/\(userId)"
         }
     }
     
@@ -457,6 +460,9 @@ extension BusinessInterface: TargetType {
             
         case let .contractRenew(contractId, endDate, increaseType, ratio, rentalChangeType):
             return ["contractId": contractId, "endDate": endDate, "increaseType": increaseType, "ratio": ratio, "rentalChangeType": rentalChangeType]
+        
+        case let .editOtherUser(_, userInfo):
+            return userInfo.toJSON()
             
         default:
             return nil
