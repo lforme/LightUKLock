@@ -69,6 +69,11 @@ class AssetDetailViewController: AssetBaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var billContainer: UIView!
+    
+    @IBOutlet weak var bottomContainer: ButtonContainerView!
+    
+    
     let currentAsset = BehaviorRelay<PositionModel?>.init(value: nil)
     let currentStatistics = BehaviorRelay<TurnoverStatisticsDTO?>.init(value: nil)
     var assetId: String!
@@ -175,6 +180,12 @@ class AssetDetailViewController: AssetBaseViewController {
             .asDriver(onErrorJustReturn: [])
         
         items
+            .do(onNext: { [weak self](datas) in
+                self?.billContainer.isHidden = datas.isEmpty
+                self?.tableView.isHidden = datas.isEmpty
+                self?.bottomContainer.isHidden = datas.isEmpty
+                
+            })
             .drive(tableView.rx.items(cellIdentifier: "TenantContractCell", cellType: TenantContractCell.self)) {[weak self] (row, element, cell) in
                 cell.model = element
                 cell.nav = self?.navigationController
