@@ -50,6 +50,8 @@ class AssetDetailViewController: AssetBaseViewController {
     
     @IBOutlet weak var moreButton: UIButton!
     
+    @IBOutlet weak var editAssetButton: UIButton!
+    
     @IBOutlet weak var buildingNameLabel: UILabel!
     
     @IBOutlet weak var buildingAdressLabel: UILabel!
@@ -69,14 +71,17 @@ class AssetDetailViewController: AssetBaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var biillView: UIView!
     @IBOutlet weak var billContainer: UIView!
     
     @IBOutlet weak var bottomContainer: ButtonContainerView!
     
+    @IBOutlet weak var backgroundHeightCons: NSLayoutConstraint!
     
     let currentAsset = BehaviorRelay<PositionModel?>.init(value: nil)
     let currentStatistics = BehaviorRelay<TurnoverStatisticsDTO?>.init(value: nil)
     var assetId: String!
+    var roleType: Int!
     
     var disposeBag = DisposeBag()
     
@@ -143,6 +148,12 @@ class AssetDetailViewController: AssetBaseViewController {
         expenseAmountLabel.text = nil
         expenseCountLabel.text = nil
         
+        if roleType != 1 {
+            moreButton.isHidden = true
+            editAssetButton.isHidden = true
+            biillView.isHidden = true
+            backgroundHeightCons.constant = 100
+        }
         
     }
     
@@ -176,15 +187,22 @@ class AssetDetailViewController: AssetBaseViewController {
             .disposed(by: disposeBag)
         
         
-        let items = BusinessAPI2.requestMapJSONArray(.getAssetContracts(assetId: assetId), classType: TenantContractAndBillsDTO.self)
+        var items = BusinessAPI2.requestMapJSONArray(.getAssetContracts(assetId: assetId), classType: TenantContractAndBillsDTO.self)
             .asDriver(onErrorJustReturn: [])
+        if roleType != 1 {
+            items = BusinessAPI2.requestMapJSONArray(.getAssetContract(assetId: assetId, year: "2020"), classType: TenantContractAndBillsDTO.self)
+            .asDriver(onErrorJustReturn: [])
+        }
         
         items
             .do(onNext: { [weak self](datas) in
                 self?.billContainer.isHidden = datas.isEmpty
                 self?.tableView.isHidden = datas.isEmpty
-                self?.bottomContainer.isHidden = datas.isEmpty
-                
+                if self?.roleType != 1 {
+                    self?.bottomContainer.isHidden = true
+                } else {
+                    self?.bottomContainer.isHidden = datas.isEmpty
+                }
             })
             .drive(tableView.rx.items(cellIdentifier: "TenantContractCell", cellType: TenantContractCell.self)) {[weak self] (row, element, cell) in
                 cell.model = element

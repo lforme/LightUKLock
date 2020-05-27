@@ -231,9 +231,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             leasedCell.propertyDidSelected {[weak self] in
                 // 跳转资产页面
                 print("tap")
-                guard let assetId = self?.currentScene.value?.ladderAssetHouseId else { return }
+                guard let assetId = self?.currentScene.value?.ladderAssetHouseId,
+                    let roleType = self?.currentScene.value?.roleType else { return }
                 let vc: AssetDetailViewController = ViewLoader.Storyboard.controller(from: "AssetDetail")
                 vc.assetId = assetId
+                vc.roleType = roleType
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
             
