@@ -38,7 +38,7 @@ struct SceneListModel: HandyJSON {
     var ladderAssetHouseId: String?
     var ladderLockId: String?
     var lockType: String?
-    var roleType: Int!
+    var roleType: RoleModel!
     var unReadMsg: Int!
     var lockUserAccount: String?
 }

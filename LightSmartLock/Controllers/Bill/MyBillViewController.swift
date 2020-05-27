@@ -17,7 +17,8 @@ class MyBillViewController: UIViewController, NavigationSettingStyle {
     var backgroundColor: UIColor? {
         return ColorClassification.navigationBackground.value
     }
-   
+    
+    @IBOutlet weak var topSegmentViewHeight: NSLayoutConstraint!
     @IBOutlet weak var allButton: UIButton!
     @IBOutlet weak var collectionButton: UIButton!
     @IBOutlet weak var paidButton: UIButton!
@@ -97,6 +98,11 @@ class MyBillViewController: UIViewController, NavigationSettingStyle {
         tableView.separatorStyle = .none
         tableView.emptyDataSetSource = self
         
+        if LSLUser.current().scene?.roleType == .some(.superAdmin) {
+            topSegmentViewHeight.constant = 44.0
+        } else {
+            topSegmentViewHeight.constant = 0.0
+        }
     }
     
     @IBAction func allButtonTap(_ sender: UIButton) {

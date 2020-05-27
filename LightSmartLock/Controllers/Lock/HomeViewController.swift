@@ -235,7 +235,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                     let roleType = self?.currentScene.value?.roleType else { return }
                 let vc: AssetDetailViewController = ViewLoader.Storyboard.controller(from: "AssetDetail")
                 vc.assetId = assetId
-                vc.roleType = roleType
+                vc.roleType = roleType.rawValue
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
             
