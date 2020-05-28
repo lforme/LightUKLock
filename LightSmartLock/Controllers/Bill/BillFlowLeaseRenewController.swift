@@ -15,6 +15,7 @@ import PKHUD
 
 class BillFlowLeaseRenewController: UITableViewController {
     
+    @IBOutlet weak var currentRentLabel: UILabel!
     @IBOutlet weak var rentLabel: UILabel!
     @IBOutlet weak var endLabel: UILabel!
     @IBOutlet weak var addAndSubPicker: DataSelectionButton!
@@ -50,9 +51,11 @@ class BillFlowLeaseRenewController: UITableViewController {
         adjustWayButton.items = adjustWayArray
         durationButton.items = durationArray
         
-        let payMethod = originModel?.payMethod ?? "加载..."
-        let rental = originModel?.rental ?? "加载..."
+        let payMethod = originModel?.payMethod ?? "-"
+        let rental = originModel?.rental ?? "-"
+        let currentRental = originModel?.lastRental ?? "-"
         rentLabel.text = "\(rental) (\(payMethod))"
+        currentRentLabel.text = "\(currentRental) (\(payMethod))"
         endLabel.text = originModel?.endDate
         
         addAndSubPicker.didUpdated = {[weak self] (arg) in

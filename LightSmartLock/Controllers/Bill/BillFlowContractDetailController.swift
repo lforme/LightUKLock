@@ -37,6 +37,7 @@ class BillFlowContractDetailController: UITableViewController, NavigationSetting
     @IBOutlet weak var remark: UILabel!
     @IBOutlet weak var leaseBackButton: UIButton!
     @IBOutlet weak var leaseRenewButton: UIButton!
+    @IBOutlet weak var currentRental: UILabel!
     
     var contractId = ""
     
@@ -77,7 +78,7 @@ class BillFlowContractDetailController: UITableViewController, NavigationSetting
             self?.isRemind.text = model.isRemind ?? false ? "提醒" : "不提醒"
             self?.isSeparate.text = model.isSeparate ?? false ? "分开收取" : "不分开收取"
             self?.remark.text = model.remark
-            
+            self?.currentRental.text = model.lastRental
             self?.idCardFront.setUrl(model.tenantInfo?.idCardFront)
             self?.idCardBack.setUrl(model.tenantInfo?.idCardReverse)
             
