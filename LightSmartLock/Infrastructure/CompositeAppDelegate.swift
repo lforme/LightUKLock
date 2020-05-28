@@ -25,6 +25,14 @@ class CompositeAppDelegate: AppDelegateType {
         return true
     }
     
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        appDelegates.forEach { _ = $0.applicationDidBecomeActive?(application) }
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        appDelegates.forEach { _ = $0.applicationDidBecomeActive?(application) }
+    }
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
         appDelegates.forEach { _ = $0.application?(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken) }

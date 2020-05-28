@@ -11,12 +11,10 @@ import UIKit
 
 extension UIImage {
     
-    
     func compressed(quality: CGFloat = 0.5) -> UIImage? {
         guard let data = compressedData(quality: quality) else { return nil }
         return UIImage(data: data)
     }
-    
     
     func compressedData(quality: CGFloat = 0.5) -> Data? {
         return jpegData(compressionQuality: quality)
