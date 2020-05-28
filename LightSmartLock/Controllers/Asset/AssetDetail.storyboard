@@ -361,19 +361,19 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TenantContractCell" id="2uk-Gr-qNx" customClass="TenantContractCell" customModule="寓用管家" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="492"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="493"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2uk-Gr-qNx" id="Oye-0J-OfA">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="492"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="493"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="biO-qD-0Om">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="492"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="493"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8il-kq-28g">
                                                             <rect key="frame" x="16" y="0.0" width="382" height="56"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="6ky-RT-hMB">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="female" translatesAutoresizingMaskIntoConstraints="NO" id="6ky-RT-hMB">
                                                                     <rect key="frame" x="0.0" y="16" width="24" height="24"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="1102A 张波" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzd-Qq-tK6">
@@ -517,7 +517,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kJZ-qb-opH">
-                                                            <rect key="frame" x="0.0" y="188" width="414" height="304"/>
+                                                            <rect key="frame" x="0.0" y="188" width="414" height="305"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5CT-y2-oiY">
                                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
@@ -545,7 +545,7 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Xn4-S4-Klf">
-                                                                    <rect key="frame" x="0.0" y="80" width="414" height="224"/>
+                                                                    <rect key="frame" x="0.0" y="80" width="414" height="225"/>
                                                                 </stackView>
                                                             </subviews>
                                                         </stackView>
@@ -580,6 +580,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="avatarImageView" destination="6ky-RT-hMB" id="Ttb-f3-lOD"/>
                                             <outlet property="billViewContainer" destination="Xn4-S4-Klf" id="Duo-o2-dhC"/>
                                             <outlet property="detailBtn" destination="ETb-Ai-rsL" id="g57-zD-CXw"/>
                                             <outlet property="empytBillContainer" destination="5CT-y2-oiY" id="uWI-r8-xlo"/>
@@ -676,7 +677,7 @@
                         <outlet property="balanceLabel" destination="SvM-Tu-c8G" id="KLa-q6-Fwq"/>
                         <outlet property="biillView" destination="1Qf-f6-IiC" id="bvH-GZ-Wm6"/>
                         <outlet property="billContainer" destination="zat-ok-gGo" id="mDT-sc-cad"/>
-                        <outlet property="bottomContainer" destination="OFq-7X-geu" id="ZEj-c2-XrC"/>
+                        <outlet property="bottomContainerCons" destination="zuw-ab-8Wd" id="xQh-tW-sPc"/>
                         <outlet property="buildingAdressLabel" destination="x8b-2c-VIC" id="mLt-U0-OvC"/>
                         <outlet property="buildingNameLabel" destination="Oux-Ud-3gd" id="2Vq-Yf-TdB"/>
                         <outlet property="editAssetButton" destination="7ES-aY-SvS" id="0sV-8f-Va5"/>
@@ -2752,13 +2753,13 @@
         <image name="add" width="40" height="40"/>
         <image name="arrow" width="7" height="11"/>
         <image name="auth" width="16" height="16"/>
-        <image name="avatar" width="24" height="24"/>
         <image name="calendar" width="24" height="24"/>
         <image name="close" width="24" height="24"/>
         <image name="config" width="16" height="16"/>
         <image name="config_add" width="24" height="24"/>
         <image name="config_remove" width="24" height="24"/>
         <image name="empty_bill" width="24" height="24"/>
+        <image name="female" width="24" height="24"/>
         <image name="location" width="16" height="16"/>
         <image name="more" width="18" height="4"/>
         <image name="rent" width="48" height="48"/>
