@@ -190,7 +190,7 @@ class AssetDetailViewController: AssetBaseViewController {
         var items = BusinessAPI2.requestMapJSONArray(.getAssetContracts(assetId: assetId), classType: TenantContractAndBillsDTO.self)
             .asDriver(onErrorJustReturn: [])
         if roleType != 1 {
-            items = BusinessAPI2.requestMapJSONArray(.getAssetContract(assetId: assetId, year: "2020"), classType: TenantContractAndBillsDTO.self)
+            items = BusinessAPI2.requestMapJSONArray(.getTenantContracts(assetId: assetId), classType: TenantContractAndBillsDTO.self)
             .asDriver(onErrorJustReturn: [])
         }
         
