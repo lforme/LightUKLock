@@ -73,8 +73,8 @@ class AssetDetailViewController: AssetBaseViewController {
     
     @IBOutlet weak var biillView: UIView!
     @IBOutlet weak var billContainer: UIView!
-    
-    @IBOutlet weak var bottomContainer: ButtonContainerView!
+        
+    @IBOutlet weak var bottomContainerCons: NSLayoutConstraint!
     
     @IBOutlet weak var backgroundHeightCons: NSLayoutConstraint!
     
@@ -152,6 +152,7 @@ class AssetDetailViewController: AssetBaseViewController {
             moreButton.isHidden = true
             editAssetButton.isHidden = true
             biillView.isHidden = true
+            bottomContainerCons.constant = 0
             backgroundHeightCons.constant = 100
         }
         
@@ -199,9 +200,9 @@ class AssetDetailViewController: AssetBaseViewController {
                 self?.billContainer.isHidden = datas.isEmpty
                 self?.tableView.isHidden = datas.isEmpty
                 if self?.roleType != 1 {
-                    self?.bottomContainer.isHidden = true
+                    self?.bottomContainerCons.constant = 0
                 } else {
-                    self?.bottomContainer.isHidden = datas.isEmpty
+                    self?.bottomContainerCons.constant = datas.isEmpty ? 0 : 56
                 }
             })
             .drive(tableView.rx.items(cellIdentifier: "TenantContractCell", cellType: TenantContractCell.self)) {[weak self] (row, element, cell) in
