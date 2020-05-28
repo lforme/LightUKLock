@@ -25,7 +25,13 @@ class TenantContractCell: UITableViewCell {
             billViewContainer.arrangedSubviews.forEach { $0.removeFromSuperview() }
 
             let houseName = model?.tenantContractDTO?.houseName ?? ""
-            let tenantName = model?.tenantContractDTO?.tenantName ?? ""
+            var tenantName = model?.tenantContractDTO?.tenantName ?? ""
+            if model?.roleType != 1 {
+                tenantName = ""
+                avatarImageView.image = #imageLiteral(resourceName: "tenant")
+            } else {
+                avatarImageView.image = model?.tenantContractDTO?.gender == "女" ? #imageLiteral(resourceName: "female") : #imageLiteral(resourceName: "male")
+            }
             nameLabel.text = "\(houseName) \(tenantName)"
             
             let rental = model?.tenantContractDTO?.rental?.description ?? ""
@@ -71,6 +77,8 @@ class TenantContractCell: UITableViewCell {
         }
         
     }
+    
+    @IBOutlet weak var avatarImageView: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
     

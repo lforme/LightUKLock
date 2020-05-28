@@ -12,5 +12,5 @@ import HandyJSON
 struct TenantContractAndBillsDTO: HandyJSON {
     var billDTO: MyBillModel?
     var tenantContractDTO: TenantContractDTO?
-
+    var roleType: Int?
 }

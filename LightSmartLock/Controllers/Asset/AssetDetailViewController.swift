@@ -205,7 +205,9 @@ class AssetDetailViewController: AssetBaseViewController {
                 }
             })
             .drive(tableView.rx.items(cellIdentifier: "TenantContractCell", cellType: TenantContractCell.self)) {[weak self] (row, element, cell) in
-                cell.model = element
+                var ele = element
+                ele?.roleType = self?.roleType
+                cell.model = ele
                 cell.nav = self?.navigationController
         }
         .disposed(by: disposeBag)
