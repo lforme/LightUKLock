@@ -49,4 +49,5 @@ struct AssetContractDetailModel: HandyJSON {
     var isSeparate: Bool?
     var remark: String?
     var assetId: String?
+    var lastRental: String?
 }

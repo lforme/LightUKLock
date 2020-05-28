@@ -26,7 +26,7 @@ enum NetworkingEnvironment: Int, CustomStringConvertible, CaseIterable {
         case .dev:
             return "http://test.uokohome.com:19999"
         case .production:
-            return "http://appapi.jinriwulian.com/"
+            return "https://ladder.uokohome.com:19999"
         }
     }
     
