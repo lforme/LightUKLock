@@ -21,7 +21,7 @@ class MyBillCell: UITableViewCell {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var rushRentButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
-    
+    @IBOutlet weak var bgView: UIView!
     weak var controller: MyBillViewController?
     private(set) var disposeBag = DisposeBag()
     var data: MyBillModel?
@@ -37,6 +37,8 @@ class MyBillCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        bgView.setCircular(radius: 7)
         
         sendButton.rx.tap.flatMapLatest {[weak self] (_) -> Observable<Int> in
             guard let vc = self?.controller else {
@@ -102,7 +104,13 @@ class MyBillCell: UITableViewCell {
         self.data = data
         assetName.text = data.assetName
         let days = data.deadlineDays ?? 0
-        latestDate.text = "距最晚付款日\(days)天"
+        if days < 0 {
+            latestDate.text = "已逾期\(days)天"
+            latestDate.textColor = #colorLiteral(red: 0.8156862745, green: 0.007843137255, blue: 0.1058823529, alpha: 1)
+        } else {
+            latestDate.text = "距最晚付款日\(days)天"
+            latestDate.textColor = ColorClassification.textDescription.value
+        }
         let money = data.amount ?? 0.00
         amount.text = "￥\(money)"
         
@@ -140,6 +148,13 @@ class MyBillCell: UITableViewCell {
                 confirmButton.isHidden = false
             }
         }
+        
+        if LSLUser.current().scene?.roleType == .some(.member) || LSLUser.current().scene?.roleType == .some(.admin) {
+            self.confirmButton.isHidden = false
+            self.sendButton.isHidden = true
+            self.rushRentButton.isHidden = true
+        }
+        
         self.layoutIfNeeded()
     }
 }

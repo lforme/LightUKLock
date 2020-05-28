@@ -174,6 +174,7 @@
             <connections>
                 <outlet property="amount" destination="5oR-2b-L61" id="CO5-Ha-uqs"/>
                 <outlet property="assetName" destination="Kj7-nc-0ZF" id="vDd-36-8FS"/>
+                <outlet property="bgView" destination="ODG-9H-hqv" id="47A-I0-Ja8"/>
                 <outlet property="confirmButton" destination="v1S-aR-vuT" id="kSY-X8-qGb"/>
                 <outlet property="latestDate" destination="k7S-gi-WYp" id="TOL-GT-3cp"/>
                 <outlet property="rushRentButton" destination="O2J-f7-lgp" id="Uvn-8k-Jd9"/>
