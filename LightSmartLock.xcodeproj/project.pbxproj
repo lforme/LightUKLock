@@ -57,6 +57,7 @@
 		9C0B86E92473B94300864DE6 /* DateCyclePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0B86E72473B94300864DE6 /* DateCyclePickerController.swift */; };
 		9C0B86EA2473B94300864DE6 /* DateCyclePickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0B86E82473B94300864DE6 /* DateCyclePickerController.xib */; };
 		9C11E6E9246D300E008E0A60 /* BillLiquidationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C11E6E8246D300E008E0A60 /* BillLiquidationModel.swift */; };
+		9C130DB3247FAE0800853084 /* LSLCopyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C130DB2247FAE0800853084 /* LSLCopyLabel.swift */; };
 		9C1A4BC4238D0A1A00626DB4 /* AnimationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC2238D0A1A00626DB4 /* AnimationHeaderView.swift */; };
 		9C1A4BC5238D0A1A00626DB4 /* AnimationHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC3238D0A1A00626DB4 /* AnimationHeaderView.xib */; };
 		9C1A4BC8238D2E7C00626DB4 /* HomeControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A4BC6238D2E7C00626DB4 /* HomeControlCell.swift */; };
@@ -384,6 +385,7 @@
 		9C0B86E72473B94300864DE6 /* DateCyclePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCyclePickerController.swift; sourceTree = "<group>"; };
 		9C0B86E82473B94300864DE6 /* DateCyclePickerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateCyclePickerController.xib; sourceTree = "<group>"; };
 		9C11E6E8246D300E008E0A60 /* BillLiquidationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillLiquidationModel.swift; sourceTree = "<group>"; };
+		9C130DB2247FAE0800853084 /* LSLCopyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLCopyLabel.swift; sourceTree = "<group>"; };
 		9C1A4BC2238D0A1A00626DB4 /* AnimationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHeaderView.swift; sourceTree = "<group>"; };
 		9C1A4BC3238D0A1A00626DB4 /* AnimationHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimationHeaderView.xib; sourceTree = "<group>"; };
 		9C1A4BC6238D2E7C00626DB4 /* HomeControlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeControlCell.swift; sourceTree = "<group>"; };
@@ -994,6 +996,7 @@
 				9CABF4B024653CC50001AAE3 /* PaymentDetailsCell.xib */,
 				9CABF4B5246544130001AAE3 /* BillDetailButtonCell.swift */,
 				9CABF4B6246544130001AAE3 /* BillDetailButtonCell.xib */,
+				9C130DB2247FAE0800853084 /* LSLCopyLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1726,6 +1729,7 @@
 				9C452F082394AA2E00144827 /* CenterMessageModel.swift in Sources */,
 				9CBD8F5D23A24DA800886519 /* BluetoothSynchronizeTask.swift in Sources */,
 				7B7EB4C724529AE6002DC436 /* AddUtilitiesRecordViewController.swift in Sources */,
+				9C130DB3247FAE0800853084 /* LSLCopyLabel.swift in Sources */,
 				9CABF498246506A00001AAE3 /* BillDetailFeesSection.swift in Sources */,
 				9C7AFF2623964A950075442D /* SetBuildingNumberController.swift in Sources */,
 				9C752FD223879546000FEA73 /* RegisPwdViewModel.swift in Sources */,

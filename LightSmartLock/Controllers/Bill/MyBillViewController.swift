@@ -18,6 +18,7 @@ class MyBillViewController: UIViewController, NavigationSettingStyle {
         return ColorClassification.navigationBackground.value
     }
     
+    @IBOutlet weak var topContainerView: UIView!
     @IBOutlet weak var topSegmentViewHeight: NSLayoutConstraint!
     @IBOutlet weak var allButton: UIButton!
     @IBOutlet weak var collectionButton: UIButton!
@@ -100,8 +101,11 @@ class MyBillViewController: UIViewController, NavigationSettingStyle {
         
         if LSLUser.current().scene?.roleType == .some(.superAdmin) {
             topSegmentViewHeight.constant = 44.0
+            topContainerView.alpha = 1
+            
         } else {
             topSegmentViewHeight.constant = 0.0
+            topContainerView.alpha = 0.0
         }
     }
     

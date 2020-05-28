@@ -165,4 +165,41 @@ class BillFlowContractDetailController: UITableViewController, NavigationSetting
         view.tintColor = ColorClassification.tableViewBackground.value
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        // 跳转收款账号详情
+        if indexPath.section == 4 {
+            guard let accountModel = self.fetchModel?.receivingAccountInfoDTO else {
+                HUD.flash(.label("没有添加付款方式"), delay: 2)
+                return
+            }
+            
+            switch accountModel.accountType {
+            case 1:
+                let paywayBindVC: BankCardBindController = ViewLoader.Storyboard.controller(from: "Bill")
+                paywayBindVC.canEditing = false
+                paywayBindVC.isDisplayMode = true
+                paywayBindVC.originModel = accountModel
+                navigationController?.pushViewController(paywayBindVC, animated: true)
+            case 2:
+                let paywayBindVC: PayWayBindController = ViewLoader.Storyboard.controller(from: "Bill")
+                paywayBindVC.canEditing = false
+                paywayBindVC.isDisplayMode = true
+                paywayBindVC.payWay = .wechat
+                paywayBindVC.originModel = accountModel
+                navigationController?.pushViewController(paywayBindVC, animated: true)
+            case 3:
+                let paywayBindVC: PayWayBindController = ViewLoader.Storyboard.controller(from: "Bill")
+                paywayBindVC.canEditing = false
+                paywayBindVC.isDisplayMode = true
+                paywayBindVC.payWay = .ali
+                paywayBindVC.originModel = accountModel
+                navigationController?.pushViewController(paywayBindVC, animated: true)
+            default:
+                break
+            }
+            
+        }
+    }
 }

@@ -50,4 +50,5 @@ struct AssetContractDetailModel: HandyJSON {
     var remark: String?
     var assetId: String?
     var lastRental: String?
+    var receivingAccountInfoDTO: CollectionAccountModel?
 }

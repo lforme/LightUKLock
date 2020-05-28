@@ -212,7 +212,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入微信账号" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97j-y5-Vhk">
-                                                    <rect key="frame" x="102.5" y="13" width="295.5" height="18.5"/>
+                                                    <rect key="frame" x="298" y="13" width="100" height="18.5"/>
                                                     <color key="textColor" name="textPrimary"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -222,12 +222,24 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCW-5k-rMc">
+                                                    <rect key="frame" x="264" y="7.5" width="30" height="29"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                    <state key="normal" title="复制">
+                                                        <color key="titleColor" name="primary"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="copyButtonTap:" destination="csv-U7-faz" eventType="touchUpInside" id="YVt-Wp-QU9"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="mCQ-i4-0RB" firstAttribute="leading" secondItem="8ga-Bc-z2R" secondAttribute="leading" constant="16" id="2PA-uG-bWS"/>
+                                                <constraint firstItem="BCW-5k-rMc" firstAttribute="centerY" secondItem="8ga-Bc-z2R" secondAttribute="centerY" id="5zX-YT-oUx"/>
                                                 <constraint firstItem="MoO-88-RpP" firstAttribute="top" secondItem="mCQ-i4-0RB" secondAttribute="top" id="8U5-ru-Zdf"/>
                                                 <constraint firstAttribute="trailing" secondItem="97j-y5-Vhk" secondAttribute="trailing" constant="16" id="Ec3-3k-ycy"/>
-                                                <constraint firstItem="97j-y5-Vhk" firstAttribute="leading" secondItem="MoO-88-RpP" secondAttribute="trailing" constant="20" id="M0Y-wO-btP"/>
+                                                <constraint firstItem="BCW-5k-rMc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MoO-88-RpP" secondAttribute="trailing" constant="20" id="HxP-d2-enq"/>
+                                                <constraint firstItem="97j-y5-Vhk" firstAttribute="leading" secondItem="BCW-5k-rMc" secondAttribute="trailing" constant="4" id="JQN-Qd-gTU"/>
                                                 <constraint firstItem="mCQ-i4-0RB" firstAttribute="centerY" secondItem="8ga-Bc-z2R" secondAttribute="centerY" id="cym-25-Ml1"/>
                                                 <constraint firstItem="MoO-88-RpP" firstAttribute="leading" secondItem="mCQ-i4-0RB" secondAttribute="trailing" constant="4" id="nLQ-BM-Ov4"/>
                                                 <constraint firstItem="97j-y5-Vhk" firstAttribute="centerY" secondItem="8ga-Bc-z2R" secondAttribute="centerY" id="t5c-eX-6fK"/>
@@ -372,6 +384,7 @@
                     <connections>
                         <outlet property="accountLabel" destination="mCQ-i4-0RB" id="Pgc-wA-2zZ"/>
                         <outlet property="accountTextField" destination="97j-y5-Vhk" id="GvV-cy-spQ"/>
+                        <outlet property="copyButton" destination="BCW-5k-rMc" id="a3T-AU-SP2"/>
                         <outlet property="defaultSwitch" destination="czk-LX-Ypi" id="sRY-zc-vGv"/>
                         <outlet property="nameLabel" destination="OSV-oA-Jfj" id="cqE-d5-ZtJ"/>
                         <outlet property="nameTextField" destination="o44-Jz-beb" id="wPT-OW-2og"/>
@@ -908,6 +921,7 @@
                         <outlet property="paidButton" destination="JTS-8M-w7G" id="GTh-Lg-FVy"/>
                         <outlet property="rentOwedButton" destination="hOh-98-1Ia" id="Uw8-MU-QIK"/>
                         <outlet property="tableView" destination="Atw-Im-dsv" id="TLa-qX-D1p"/>
+                        <outlet property="topContainerView" destination="f9h-j3-JOy" id="1t4-gV-J7l"/>
                         <outlet property="topSegmentViewHeight" destination="adI-CJ-pZg" id="DNG-hb-OVR"/>
                     </connections>
                 </viewController>
@@ -1385,7 +1399,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="填写银行卡号" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IZC-as-jzj">
-                                                    <rect key="frame" x="102.5" y="13" width="295.5" height="18.5"/>
+                                                    <rect key="frame" x="312" y="13" width="86" height="18.5"/>
                                                     <color key="textColor" name="textPrimary"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -1395,12 +1409,24 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Wh-xe-BsD">
+                                                    <rect key="frame" x="278" y="7.5" width="30" height="29"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                    <state key="normal" title="复制">
+                                                        <color key="titleColor" name="primary"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="copyButtonTap:" destination="oKb-bj-j3t" eventType="touchUpInside" id="Dp1-Ws-iz2"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="5Wh-xe-BsD" firstAttribute="centerY" secondItem="CBh-Rc-aTO" secondAttribute="centerY" id="03H-BJ-a24"/>
+                                                <constraint firstItem="5Wh-xe-BsD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1Kt-1F-twP" secondAttribute="trailing" constant="20" id="2Mx-nN-JS1"/>
                                                 <constraint firstItem="1Kt-1F-twP" firstAttribute="leading" secondItem="MeR-8g-D0r" secondAttribute="trailing" constant="4" id="2qT-DS-wgc"/>
-                                                <constraint firstItem="IZC-as-jzj" firstAttribute="leading" secondItem="1Kt-1F-twP" secondAttribute="trailing" constant="20" id="3CK-R5-x72"/>
                                                 <constraint firstItem="MeR-8g-D0r" firstAttribute="centerY" secondItem="CBh-Rc-aTO" secondAttribute="centerY" id="4fj-Cf-Ghu"/>
                                                 <constraint firstAttribute="trailing" secondItem="IZC-as-jzj" secondAttribute="trailing" constant="16" id="5KH-jA-7ZT"/>
+                                                <constraint firstItem="IZC-as-jzj" firstAttribute="leading" secondItem="5Wh-xe-BsD" secondAttribute="trailing" constant="4" id="67c-hV-Zgj"/>
                                                 <constraint firstItem="1Kt-1F-twP" firstAttribute="top" secondItem="MeR-8g-D0r" secondAttribute="top" id="83n-wI-Fih"/>
                                                 <constraint firstItem="MeR-8g-D0r" firstAttribute="leading" secondItem="CBh-Rc-aTO" secondAttribute="leading" constant="16" id="WPm-96-9xh"/>
                                                 <constraint firstItem="IZC-as-jzj" firstAttribute="centerY" secondItem="CBh-Rc-aTO" secondAttribute="centerY" id="vY6-it-tCg"/>
@@ -1565,6 +1591,7 @@
                         <outlet property="accountField" destination="GNd-7S-fJC" id="FV8-cC-io1"/>
                         <outlet property="bankNameField" destination="kqf-0z-vqR" id="VGY-Ne-upI"/>
                         <outlet property="bankNumberField" destination="IZC-as-jzj" id="xCl-BO-Z6w"/>
+                        <outlet property="copyButton" destination="5Wh-xe-BsD" id="Dej-B8-S0I"/>
                         <outlet property="defaultSwitch" destination="RWM-iv-PsR" id="lC7-ZA-EGx"/>
                         <outlet property="saveButton" destination="ckF-oe-fFB" id="mcu-D3-BDb"/>
                         <outlet property="subranchField" destination="OCt-gy-gf8" id="2le-n4-m1j"/>
@@ -2376,12 +2403,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection id="pqX-E3-MVu">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="Sbp-yX-rBU">
-                                        <rect key="frame" x="0.0" y="1028.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="972.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sbp-yX-rBU" id="Qsw-20-aDN">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -2411,10 +2434,35 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="pqX-E3-MVu">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="r75-Q0-T8m">
+                                        <rect key="frame" x="0.0" y="1072" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r75-Q0-T8m" id="eTA-Mb-T1s">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收款账号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ash-qm-EG7">
+                                                    <rect key="frame" x="16" y="13.5" width="57.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" name="textPrimary"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" name="viewBackground"/>
+                                            <constraints>
+                                                <constraint firstItem="Ash-qm-EG7" firstAttribute="centerY" secondItem="eTA-Mb-T1s" secondAttribute="centerY" id="Jpr-N5-IHl"/>
+                                                <constraint firstItem="Ash-qm-EG7" firstAttribute="leading" secondItem="eTA-Mb-T1s" secondAttribute="leading" constant="16" id="gBi-HS-5e1"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection footerTitle="" id="A4Q-t7-cqf">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="y4A-dv-tOJ">
-                                        <rect key="frame" x="0.0" y="1128" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="1171.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y4A-dv-tOJ" id="ZON-Wl-hui">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -2435,7 +2483,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="O9i-Kj-gaF">
-                                        <rect key="frame" x="0.0" y="1171.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="1215" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O9i-Kj-gaF" id="qIS-El-J4n">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -2462,7 +2510,7 @@
                             <tableViewSection id="BTo-1y-Qo8">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="80" id="EvQ-fj-B4y">
-                                        <rect key="frame" x="0.0" y="1271" width="414" height="80"/>
+                                        <rect key="frame" x="0.0" y="1314.5" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EvQ-fj-B4y" id="dMa-gA-9OD">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>

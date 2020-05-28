@@ -15,6 +15,7 @@ import PKHUD
 class BankCardBindController: UITableViewController {
     
     var canEditing: Bool = false
+    var isDisplayMode: Bool = false
     
     var originModel: CollectionAccountModel?
     
@@ -24,6 +25,7 @@ class BankCardBindController: UITableViewController {
     @IBOutlet weak var subranchField: UITextField!
     @IBOutlet weak var defaultSwitch: UISwitch!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var copyButton: UIButton!
     
     let obModel = BehaviorRelay<CollectionAccountModel>(value: CollectionAccountModel())
     
@@ -35,9 +37,10 @@ class BankCardBindController: UITableViewController {
         super.viewDidLoad()
         
         title = "绑定银行卡"
-        setupUI()
+        
         setupNavigationRightItem()
         bind()
+        setupUI()
     }
     
     func bind() {
@@ -131,11 +134,20 @@ class BankCardBindController: UITableViewController {
     
     func setupUI() {
         tableView.tableFooterView = UIView()
+        if isDisplayMode {
+            saveButton.isHidden = true
+            accountField.isEnabled = false
+            bankNameField.isEnabled = false
+            bankNumberField.isEnabled = false
+            subranchField.isEnabled = false
+            defaultSwitch.isEnabled = false
+            copyButton.isHidden = false
+        }
     }
     
     func setupNavigationRightItem() {
         if canEditing {
-            let deleteButton = createdRightNavigationItem(title: "删除", image: nil)
+            let deleteButton = createdRightNavigationItem(title: "删除", font: nil, image: nil, rightEdge: 0, color: UIColor.white)
             guard let id = originModel?.id else { return }
             
             let deleteAction = Action<(), Bool> { (_) -> Observable<Bool> in
@@ -167,5 +179,13 @@ class BankCardBindController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = ColorClassification.tableViewBackground.value
+    }
+    
+    @IBAction func copyButtonTap(_ sender: UIButton) {
+        guard let copyString = bankNumberField.text else {
+            return
+        }
+        UIPasteboard.general.string = copyString
+        HUD.flash(.label("复制成功"), delay: 2)
     }
 }

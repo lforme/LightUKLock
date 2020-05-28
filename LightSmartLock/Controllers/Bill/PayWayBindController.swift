@@ -22,6 +22,7 @@ class PayWayBindController: UITableViewController {
     @IBOutlet weak var pickQrButton: UIButton!
     @IBOutlet weak var defaultSwitch: UISwitch!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var copyButton: UIButton!
     
     var originModel: CollectionAccountModel?
     let obModel = BehaviorRelay<CollectionAccountModel>(value: CollectionAccountModel())
@@ -32,6 +33,7 @@ class PayWayBindController: UITableViewController {
     }
     
     var canEditing: Bool = false
+    var isDisplayMode: Bool = false
     var payWay: PayWay = .wechat
     
     deinit {
@@ -48,11 +50,20 @@ class PayWayBindController: UITableViewController {
     
     func setupUI() {
         tableView.tableFooterView = UIView()
+        pickQrButton.imageView?.contentMode = .scaleAspectFit
+        
+        if isDisplayMode {
+            saveButton.isHidden = true
+            defaultSwitch.isUserInteractionEnabled = false
+            nameTextField.isEnabled = false
+            accountTextField.isEnabled = false
+            copyButton.isHidden = false
+        }
     }
     
     func setupNavigationRightItem() {
         if canEditing {
-            createdRightNavigationItem(title: "删除", image: nil)
+            createdRightNavigationItem(title: "删除", font: nil, image: nil, rightEdge: 0, color: UIColor.white)
         }
     }
     
@@ -109,26 +120,6 @@ class PayWayBindController: UITableViewController {
             self.obModel.accept(temp)
         }).disposed(by: rx.disposeBag)
         
-        pickQrButton.rx.tap.flatMapLatest { (_) -> Observable<UIImage> in
-            
-            return ImagePicker.present(maxImageCount: 1).map { $0.first ?? UIImage() }
-        }.flatMapLatest {[weak self] (image) -> Observable<String?> in
-            self?.pickQrButton.setImage(image, for: UIControl.State())
-            
-            return BusinessAPI.requestMapAny(.uploadImage(image, description: "支付二维码")).map { (res) -> String? in
-                let json = res as? [String: Any]
-                let headPicUrl = json?["data"] as? String
-                return headPicUrl
-            }
-        }.subscribe(onNext: {[weak self] (imageUrl) in
-            guard let this = self else { return }
-            let temp = this.obModel.value
-            temp.paymentCodeUrl = imageUrl
-            this.obModel.accept(temp)
-            }, onError: { (error) in
-                PKHUD.sharedHUD.rx.showError(error)
-        }).disposed(by: rx.disposeBag)
-        
         let saveAction = Action<(), Bool> {[weak self] (_) -> Observable<Bool> in
             guard let this = self else {
                 return .error(AppError.reason("发生未知错误"))
@@ -159,6 +150,43 @@ class PayWayBindController: UITableViewController {
                 self?.navigationController?.popViewController(animated: true)
             }
         }).disposed(by: rx.disposeBag)
+        
+        // 显示模式
+        if isDisplayMode {
+            pickQrButton.rx.tap.flatMapLatest {[unowned self] in
+                self.showActionSheet(title: "保存到相册", message: nil, buttonTitles: ["保存", "取消"], highlightedButtonIndex: 1)
+            }.subscribe(onNext: {[weak self] (buttonIndex) in
+                if buttonIndex == 0 {
+                    guard let saveImage = self?.pickQrButton.imageView?.image else {
+                        return
+                    }
+                    
+                    UIImageWriteToSavedPhotosAlbum(saveImage, self, #selector(self?.image(_:didFinishSavingWithError:contextInfo:)), nil)
+                }
+            }).disposed(by: rx.disposeBag)
+        } else {
+            // 非显示模式
+            pickQrButton.rx.tap.flatMapLatest { (_) -> Observable<UIImage> in
+                
+                return ImagePicker.present(maxImageCount: 1).map { $0.first ?? UIImage() }
+            }.flatMapLatest {[weak self] (image) -> Observable<String?> in
+                self?.pickQrButton.setImage(image, for: UIControl.State())
+                
+                return BusinessAPI.requestMapAny(.uploadImage(image, description: "支付二维码")).map { (res) -> String? in
+                    let json = res as? [String: Any]
+                    let headPicUrl = json?["data"] as? String
+                    return headPicUrl
+                }
+            }.subscribe(onNext: {[weak self] (imageUrl) in
+                guard let this = self else { return }
+                let temp = this.obModel.value
+                temp.paymentCodeUrl = imageUrl
+                this.obModel.accept(temp)
+                }, onError: { (error) in
+                    PKHUD.sharedHUD.rx.showError(error)
+            }).disposed(by: rx.disposeBag)
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -170,5 +198,24 @@ class PayWayBindController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = ColorClassification.tableViewBackground.value
+    }
+    
+    @IBAction func copyButtonTap(_ sender: UIButton) {
+        guard let copyString = accountTextField.text else {
+            return
+        }
+        UIPasteboard.general.string = copyString
+        HUD.flash(.label("复制成功"), delay: 2)
+    }
+}
+
+extension PayWayBindController {
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if error == nil {
+            HUD.flash(.label("保存成功"), delay: 2)
+        } else {
+            PKHUD.sharedHUD.rx.showError(error)
+        }
     }
 }
