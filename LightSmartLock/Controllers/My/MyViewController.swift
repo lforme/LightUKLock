@@ -143,7 +143,7 @@ extension MyViewController: UITableViewDataSource, UITableViewDelegate {
         header.addButton.addTarget(self, action: #selector(self.gotoSelectedLockVC), for: .touchUpInside)
         
         let shareInfo = LSLUser.current().obUserInfo.share(replay: 1, scope: .forever)
-        shareInfo.map { $0?.userName }.bind(to: header.nick.rx.text).disposed(by: header.disposeBag)
+        shareInfo.map { $0?.nickname }.bind(to: header.nick.rx.text).disposed(by: header.disposeBag)
         shareInfo.map { $0?.phone }.bind(to: header.phone.rx.text).disposed(by: header.disposeBag)
         shareInfo.map { $0?.avatar }.subscribe(onNext: { (urlString) in
             header.avatar?.setUrl(urlString)
