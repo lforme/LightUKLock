@@ -10,6 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 import PKHUD
+import MessageUI
 import MJRefresh
 
 class MyBillViewController: UIViewController, NavigationSettingStyle {
@@ -151,7 +152,68 @@ extension MyBillViewController: UITableViewDataSource, UITableViewDelegate {
             confirmVC.totalMoney = data.amount ?? 0.00
             self?.navigationController?.pushViewController(confirmVC, animated: true)
         }).disposed(by: cell.disposeBag)
-        cell.controller = self
+        
+        
+        cell.sendButton.rx.tap.flatMapLatest {[weak self] (_) -> Observable<Int> in
+            guard let vc = self else {
+                return .error(AppError.reason("发生未知错误"))
+            }
+            return vc.showActionSheet(title: "选择发送方式", message: nil, buttonTitles: ["短信", "取消"], highlightedButtonIndex: nil)
+        }.subscribe(onNext: {[weak self] (buttonIndex) in
+            guard let this = self else { return }
+            let deadLineDate = data.deadlineDays ?? 0
+            let total = data.amount ?? 0
+            let value = data.billItemDTOList?.compactMap { $0 }.map {
+                "\($0.costCategoryName ?? ""), ￥\($0.amount ?? 0), 周期:\($0.cycleStartDate ?? "") 至 \($0.cycleEndDate) \n"
+            }
+            guard let v = value else { return }
+            
+            let sendStr = """
+            [账单信息]
+            费用明细
+            - - - - - - -
+            \(v.joined())
+            - - - - - - -
+            距最晚付款日:\(deadLineDate)天
+            合计金额：￥\(total)
+            """
+            switch buttonIndex {
+            case 0:
+                if MFMessageComposeViewController.canSendText() {
+                    let messageVC = MFMessageComposeViewController()
+                    messageVC.body = sendStr
+                    messageVC.messageComposeDelegate = this
+                    this.present(messageVC, animated: true, completion: nil)
+                }
+                
+            default :break
+            }
+            print(sendStr)
+        }).disposed(by: cell.disposeBag)
+        
+        
+        cell.rushRentButton.rx.tap.flatMapLatest {[weak self] (_) -> Observable<Int> in
+            guard let vc = self else {
+                return .error(AppError.reason("发生未知错误"))
+            }
+            return vc.showActionSheet(title: "选择发送方式", message: nil, buttonTitles: ["短信", "取消"], highlightedButtonIndex: 0)
+        }.subscribe(onNext: {[weak self] (buttonIndex) in
+            guard let this = self else { return }
+            let money = data.amount ?? 0.0
+            let sendStr = "尊敬的租客，您近期有一笔账单已逾期，金额：\(money)元，请您尽快缴纳，谢谢"
+            switch buttonIndex {
+            case 0:
+                if MFMessageComposeViewController.canSendText() {
+                    let messageVC = MFMessageComposeViewController()
+                    messageVC.body = sendStr
+                    messageVC.messageComposeDelegate = this
+                    this.present(messageVC, animated: true, completion: nil)
+                }
+                
+            default :break
+            }
+        }).disposed(by: cell.disposeBag)
+        
         return cell
     }
     

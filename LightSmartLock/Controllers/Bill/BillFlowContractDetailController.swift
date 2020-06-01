@@ -66,7 +66,7 @@ class BillFlowContractDetailController: UITableViewController, NavigationSetting
             self?.startTime = model.startDate ?? ""
             self?.endTime = model.endDate ?? ""
             self?.houseName.text = model.houseName
-            self?.tenantName.text = model.tenantName
+            self?.tenantName.text = model.tenantInfo?.userName
             self?.tenantPhone.text = model.tenantInfo?.phone
             self?.tenantIdCard.text = model.tenantInfo?.idCard
             self?.startDate.text = model.startDate

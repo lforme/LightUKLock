@@ -43,6 +43,10 @@ final class BillFlowViewModel {
         
         buttonSelected.map { $0 == .flow }.bind(to: _showBottomButton).disposed(by: disposeBag)
         
+        refreshData()
+    }
+    
+    func refreshData() {
         Observable.combineLatest(year, buttonSelected).flatMapLatest {[unowned self] (year, type) -> Observable<[ListDiffable]> in
             
             switch type {
@@ -80,6 +84,5 @@ final class BillFlowViewModel {
                 }
             }
         }.bind(to: _collectionViewDataSource).disposed(by: disposeBag)
-        
     }
 }

@@ -847,7 +847,7 @@ extension BluetoothPapa {
         }
         let resultStr = d.toHexString()
         var isSuccess: Bool
-        let s = resultStr[10..<12]
+        let s = resultStr[14..<16]
         let number = resultStr[12..<14]
         if s == "00" {
             isSuccess = true

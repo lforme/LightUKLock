@@ -16,7 +16,7 @@ class ConfirmArrivalController: UITableViewController {
     
     var billId = ""
     var totalMoney: Double = 0.00
-    let obDate = BehaviorRelay<String>(value: Date().toFormat("yyyy-MM-dd"))
+    let obDate = BehaviorRelay<String>(value: Date().toFormat("yyyy-MM-dd hh:mm:ss"))
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var accountWayLabel: UILabel!

@@ -13,6 +13,7 @@ final class BillFlowReportSection: ListSectionController {
     
     private var data: Data?
     var assetId: String?
+    var year: String!
     
     override init() {
         super.init()
@@ -42,6 +43,7 @@ final class BillFlowReportSection: ListSectionController {
         reportDetailVC.costName = data?.costCategoryName
         reportDetailVC.assetId = assetId
         reportDetailVC.costCategoryId = data?.costCategoryId
+        reportDetailVC.year = year
         self.viewController?.navigationController?.pushViewController(reportDetailVC, animated: true)
     }
     

@@ -943,14 +943,29 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="G2D-ec-WA6">
                                         <rect key="frame" x="16" y="16" width="366" height="96"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结余" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9F0-Y5-K3i">
-                                                <rect key="frame" x="0.0" y="0.0" width="366" height="17"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" name="textPrimary"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="xEL-CM-kJD">
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="20"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结余" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9F0-Y5-K3i">
+                                                        <rect key="frame" x="0.0" y="0.0" width="29" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="textColor" name="textPrimary"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVY-Ao-qKh">
+                                                        <rect key="frame" x="246" y="0.0" width="120" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="120" id="knv-NJ-J8F"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <state key="normal" title="2020" image="bill_calendar_icon">
+                                                            <color key="titleColor" name="textOpaque78"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="4.555.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cuc-R8-LOt">
-                                                <rect key="frame" x="0.0" y="21" width="366" height="33"/>
+                                                <rect key="frame" x="0.0" y="24" width="366" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <color key="textColor" red="1" green="0.67843137249999996" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1166,6 +1181,7 @@
                         <outlet property="incomeAmountLabel" destination="Aou-nW-dTV" id="vp7-cS-OVL"/>
                         <outlet property="incomeCountLabel" destination="KIe-PA-SKe" id="kAD-Eu-ccG"/>
                         <outlet property="reportButton" destination="At9-Cx-ARt" id="wfb-8B-lRP"/>
+                        <outlet property="yearButton" destination="VVY-Ao-qKh" id="dNF-lc-vOZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cf-hW-PSq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3477,6 +3493,7 @@
     </scenes>
     <resources>
         <image name="add_flow_icon" width="24" height="24"/>
+        <image name="bill_calendar_icon" width="20" height="20"/>
         <image name="config_add" width="24" height="24"/>
         <image name="phone_call_icon" width="32" height="32"/>
         <image name="right_arrow" width="8" height="15"/>

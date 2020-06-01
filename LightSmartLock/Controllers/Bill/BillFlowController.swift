@@ -9,6 +9,8 @@
 import UIKit
 import IGListKit
 import PKHUD
+import RxCocoa
+import RxSwift
 
 class BillFlowController: UIViewController, NavigationSettingStyle {
     
@@ -27,6 +29,7 @@ class BillFlowController: UIViewController, NavigationSettingStyle {
     @IBOutlet weak var incomeCountLabel: UILabel!
     @IBOutlet weak var expenseAmountLabel: UILabel!
     @IBOutlet weak var expenseCountLabel: UILabel!
+    @IBOutlet weak var yearButton: UIButton!
     
     @IBOutlet weak var collectionView: ListCollectionView! = {
         let layout = ListCollectionViewLayout(stickyHeaders: false, scrollDirection: .vertical, topContentInset: 0, stretchToEdge: true)
@@ -53,6 +56,20 @@ class BillFlowController: UIViewController, NavigationSettingStyle {
         title = "账单流水"
         setupUI()
         bind()
+        setupObserver()
+    }
+    
+    func setupObserver() {
+        NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
+            guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
+            switch refreshType {
+            case .makeNote:
+                self?.vm.refreshData()
+            case .billFlow:
+                self?.adapter.reloadData(completion: nil)
+            default: break
+            }
+        }).disposed(by: rx.disposeBag)
     }
     
     func bind() {
@@ -94,14 +111,15 @@ class BillFlowController: UIViewController, NavigationSettingStyle {
             self?.adapter.reloadData(completion: nil)
         }).disposed(by: rx.disposeBag)
         
-        NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
-            guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
-            switch refreshType {
-            case .billFlow:
-                self?.adapter.reloadData(completion: nil)
-            default: break
-            }
-        }).disposed(by: rx.disposeBag)
+        yearButton.rx.tap.flatMapLatest { (_) -> Observable<String> in
+            
+            let years = Array(2018...Date().year).map { $0.description }
+            
+            return DataPickerController.rx.present(with: "选择日期", items: [years]).map { $0.first?.value ?? "" }
+        }.bind(to: vm.year).disposed(by: rx.disposeBag)
+        
+        vm.year.bind(to: yearButton.titleLabel!.rx.text).disposed(by: rx.disposeBag)
+        
     }
     
     func setupUI() {
@@ -118,6 +136,8 @@ class BillFlowController: UIViewController, NavigationSettingStyle {
         incomeCountLabel.text = "共\(statistics.incomeCount?.description ?? "")笔"
         expenseAmountLabel.text = statistics.expenseAmount?.yuanSymbol
         expenseCountLabel.text = "共\(statistics.expenseCount?.description ?? "")笔"
+        
+        yearButton.set(image: UIImage(named: "bill_calendar_icon"), title: Date().toFormat("yyyy"), titlePosition: UIButton.Position.right, additionalSpacing: 4, state: UIControl.State())
     }
 }
 
@@ -132,6 +152,7 @@ extension BillFlowController: ListAdapterDataSource {
         if object is BillFlowReportSection.Data {
             let section = BillFlowReportSection()
             section.assetId = self.vm.assetId
+            section.year = self.vm.year.value
             return section
         }
         

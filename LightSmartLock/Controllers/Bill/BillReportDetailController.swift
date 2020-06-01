@@ -25,6 +25,7 @@ class BillReportDetailController: UITableViewController {
     var assetId: String?
     var costCategoryId: String?
     var costName: String?
+    var year: String!
     var dataSource = [ReportFeesModel]()
     
     deinit {
@@ -45,7 +46,7 @@ class BillReportDetailController: UITableViewController {
             HUD.flash(.label("无法获取资产信息"), delay: 2)
             return
         }
-        BusinessAPI.requestMapJSONArray(BusinessInterface.reportReportItems(assetId: assetId, costId: costId), classType: ReportFeesModel.self, useCache: true).subscribe(onNext: {[weak self] (list) in
+        BusinessAPI.requestMapJSONArray(.reportReportItems(assetId: assetId, costId: costId, year: year), classType: ReportFeesModel.self, useCache: true).subscribe(onNext: {[weak self] (list) in
             self?.dataSource = list.compactMap({ $0 })
             self?.tableView.reloadSections(.init(integer: 0), with: .automatic)
             self?.tableView.reloadEmptyDataSet()

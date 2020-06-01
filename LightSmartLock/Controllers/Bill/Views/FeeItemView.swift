@@ -9,27 +9,33 @@
 import UIKit
 
 class FeeItemView: UIView {
-
+    
     @IBOutlet weak var cotegoryName: UILabel!
     @IBOutlet weak var amount: UILabel!
     @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var icon: UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
+//        commonInit()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        commonInit()
+//        commonInit()
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         commonInit()
     }
     
     private func commonInit() {
-     
+        self.layoutIfNeeded()
+        if LSLUser.current().scene?.roleType == .some(.member) || LSLUser.current().scene?.roleType == .some(.admin) {
+            icon.image = UIImage(named: "yuan_huang_icon")
+        } else {
+            icon.image = UIImage(named: "yuan_icon")
+        }
     }
 }

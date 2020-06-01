@@ -93,6 +93,7 @@ class BookKeepingController: UITableViewController {
                 if success {
                     HUD.flash(.label("成功"), delay: 2)
                     self?.navigationController?.popViewController(animated: true)
+                    NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.makeNote)
                 } else {
                     HUD.flash(.label("失败"), delay: 2)
                 }

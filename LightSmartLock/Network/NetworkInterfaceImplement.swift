@@ -416,8 +416,8 @@ extension BusinessInterface: TargetType {
         case let .tenantContractInfoAssetContract(assetId, year):
             return ["assetId": assetId, "year": year]
             
-        case let .reportReportItems(assetId, costId):
-            return ["assetId": assetId, "costCategoryId": costId]
+        case let .reportReportItems(assetId, costId, year):
+            return ["assetId": assetId, "costCategoryId": costId, "year": year]
             
         case let .baseTurnoverInfo(assetId, _, payTime, itemList):
             let array = itemList.toJSON().compactMap { $0 }
