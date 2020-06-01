@@ -16,7 +16,7 @@ import RxCocoa
 class BillFlowContractDetailController: UITableViewController, NavigationSettingStyle {
     
     var backgroundColor: UIColor? {
-        return ColorClassification.primary.value
+        return ColorClassification.navigationBackground.value
     }
     
     @IBOutlet weak var houseName: UILabel!
@@ -56,7 +56,6 @@ class BillFlowContractDetailController: UITableViewController, NavigationSetting
         title = "合同详情"
         setupUI()
         bind()
-        
     }
     
     func bind() {
@@ -127,7 +126,7 @@ class BillFlowContractDetailController: UITableViewController, NavigationSetting
                 liquidationVC.billId = self?.billId
                 this.navigationController?.pushViewController(liquidationVC, animated: true)
             } else {
-                this.showAlert(title: "退租失败", message: "点前有何有部分账单未清算", buttonTitles: ["取消", "去结清"], highlightedButtonIndex: 1).subscribe(onNext: { (index) in
+                this.showAlert(title: "退租失败", message: "当前有部分账单未清算", buttonTitles: ["取消", "去结清"], highlightedButtonIndex: 1).subscribe(onNext: { (index) in
                     if index == 1 {
                         let clearVC: BillClearingController = ViewLoader.Storyboard.controller(from: "Bill")
                         clearVC.handleCompetition {[weak self] (billId) in
@@ -155,6 +154,8 @@ class BillFlowContractDetailController: UITableViewController, NavigationSetting
         view.backgroundColor = ColorClassification.tableViewBackground.value
         tableView.tableFooterView = UIView()
         tableView.estimatedRowHeight = 100
+        idCardBack.imageView?.contentMode = .scaleAspectFit
+        idCardFront.imageView?.contentMode = .scaleAspectFit
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

@@ -15,7 +15,7 @@ import RxSwift
 class BillFlowController: UIViewController, NavigationSettingStyle {
     
     var backgroundColor: UIColor? {
-        return ColorClassification.primary.value
+        return ColorClassification.navigationBackground.value
     }
     
     @IBOutlet weak var bookkeepingButton: UIButton!

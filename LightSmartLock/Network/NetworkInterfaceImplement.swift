@@ -94,7 +94,7 @@ extension AuthenticationInterface: TargetType {
         case let .refreshToken(token):
             return "/login/refresh_token/\(token)"
         case let .logout(token):
-            return "/login/logtou/\(token)"
+            return "/login/logout/\(token)"
         }
     }
     

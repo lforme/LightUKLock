@@ -36,7 +36,7 @@ class BillFlowLeaseRenewController: UITableViewController {
     
     let isIncrease = BehaviorRelay<Bool>(value: false)
     let isProportion = BehaviorRelay<Bool>(value: false)
-    let money = BehaviorRelay<String?>(value: nil)
+    let money = BehaviorRelay<String?>(value: "0")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,10 +111,11 @@ class BillFlowLeaseRenewController: UITableViewController {
             let value = arg[1].row + 1
             
             if timeUnit == 0 {
-                let afterDays = Date() + value.years
+                
+                let afterDays = (self.originModel?.endDate?.toDate())! + value.years
                 self.afterEndLabel.text = afterDays.toFormat("yyyy-MM-dd")
             } else {
-                let afterDays = Date() + value.months
+                let afterDays = (self.originModel?.endDate?.toDate())! + value.months
                 self.afterEndLabel.text = afterDays.toFormat("yyyy-MM-dd")
             }
         }
@@ -152,9 +153,10 @@ class BillFlowLeaseRenewController: UITableViewController {
                 if success {
                     HUD.flash(.label("成功"), delay: 2)
                     guard let tagerVC = self?.navigationController?.children.filter({ (vc) -> Bool in
-                        return vc is BillFlowController
+                        return vc is AssetDetailViewController
                     }).last else { return }
                     self?.navigationController?.popToViewController(tagerVC, animated: true)
+                    NotificationCenter.default.post(name: .refreshAssetDetail, object: nil)
                 }
                 }, onError: { (error) in
                     PKHUD.sharedHUD.rx.showError(error)

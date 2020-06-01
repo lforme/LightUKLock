@@ -16,7 +16,7 @@ import MJRefresh
 class MyViewController: UIViewController, NavigationSettingStyle {
     
     var backgroundColor: UIColor? {
-        return ColorClassification.primary.value
+        return ColorClassification.navigationBackground.value
     }
     
     var tableView: UITableView = {

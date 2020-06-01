@@ -13,7 +13,7 @@ import PKHUD
 class BillDetailController: UIViewController, NavigationSettingStyle {
     
     var backgroundColor: UIColor? {
-        return ColorClassification.primary.value
+        return ColorClassification.navigationBackground.value
     }
     
     var billId: String?

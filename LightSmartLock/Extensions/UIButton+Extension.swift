@@ -85,10 +85,17 @@ extension UIButton {
             return
         }
         
-        guard let urlString = (ServerHost.shared.environment.host + str).encodeUrl() else {
-            return
+        if str.hasPrefix("https") {
+            guard let urlString = str.encodeUrl() else {
+                return
+            }
+            self.kf.setImage(with: URL(string: urlString), for: UIControl.State())
+        } else {
+            guard let urlString = (ServerHost.shared.environment.host + str).encodeUrl() else {
+                return
+            }
+            self.kf.setImage(with: URL(string: urlString), for: UIControl.State())
         }
         
-        self.kf.setImage(with: URL(string: urlString), for: UIControl.State())
     }
 }

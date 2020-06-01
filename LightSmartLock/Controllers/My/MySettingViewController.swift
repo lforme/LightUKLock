@@ -26,7 +26,7 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
     }
     
     var backgroundColor: UIColor? {
-        return ColorClassification.primary.value
+        return ColorClassification.navigationBackground.value
     }
     
     @IBOutlet weak var versionLabel: UILabel!
