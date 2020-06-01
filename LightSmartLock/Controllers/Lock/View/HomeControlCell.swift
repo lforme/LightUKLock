@@ -31,7 +31,8 @@ class HomeControlCell: UITableViewCell {
         [propertyButton, messageButton, userButton, keyButton].forEach { (btn) in
             btn?.layer.setValue(true, forKey: "continuousCorners")
             btn?.layer.cornerRadius = 3
+            btn?.layer.borderWidth = 1
+            btn?.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.2)
         }
     }
-    
 }

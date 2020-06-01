@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FeeItemView" customModule="门锁助手个人版" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FeeItemView" customModule="寓用管家" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="440" height="83"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -37,7 +37,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <color key="backgroundColor" name="viewBackground"/>
             <constraints>
                 <constraint firstItem="NVr-82-Acl" firstAttribute="leading" secondItem="7di-3V-VUw" secondAttribute="trailing" constant="8" id="1ut-uF-03S"/>
                 <constraint firstItem="Z2m-Rv-74y" firstAttribute="leading" secondItem="NVr-82-Acl" secondAttribute="leading" id="Bs3-Qs-hL1"/>
@@ -67,6 +67,9 @@
         </namedColor>
         <namedColor name="textPrimary">
             <color red="0.039000000804662704" green="0.12200000137090683" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="viewBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

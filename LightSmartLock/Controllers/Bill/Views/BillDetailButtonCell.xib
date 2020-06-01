@@ -84,7 +84,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="viewBackground"/>
                         <constraints>
                             <constraint firstItem="t4F-8H-Z9e" firstAttribute="leading" secondItem="MJA-Hp-36R" secondAttribute="leading" constant="8" id="BJ9-nX-gUv"/>
                             <constraint firstAttribute="trailing" secondItem="t4F-8H-Z9e" secondAttribute="trailing" constant="8" id="KXg-a2-ofd"/>
@@ -111,6 +111,9 @@
     <resources>
         <namedColor name="primary">
             <color red="0.32499998807907104" green="0.58399999141693115" blue="0.91399997472763062" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="viewBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

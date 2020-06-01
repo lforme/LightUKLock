@@ -52,18 +52,19 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         noLockView.alpha = 0
         self.view.addSubview(tableView)
         tableView.snp.makeConstraints { (maker) in
-            maker.edges.equalToSuperview()
+            maker.top.left.right.equalToSuperview()
+            maker.bottom.equalTo(self.additionalSafeAreaInsets.bottom)
         }
+    
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = ColorClassification.primary.value
+        tableView.backgroundColor = ColorClassification.blueAndBlack.value
         view.backgroundColor = ColorClassification.viewBackground.value
         AppDelegate.changeStatusBarStyle(.lightContent)
     }
     
     func setupRightNavigationItems() {
-        
         
         lockSettingButton.setImage(UIImage(named: "home_lock_setting_item"), for: UIControl.State())
         lockSettingButton.frame.size = CGSize(width: 32, height: 32)

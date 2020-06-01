@@ -23,6 +23,7 @@ enum ColorClassification {
     case lightBackground
     case primary
     case hudColor
+    case blueAndBlack
     
     var value: UIColor {
         switch self {
@@ -197,7 +198,20 @@ enum ColorClassification {
             } else {
                 return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.12)
             }
-            
+         
+        case .blueAndBlack:
+            if #available(iOS 13.0, *) {
+                let color = UIColor { (collection) -> UIColor in
+                    if collection.userInterfaceStyle == .dark {
+                        return #colorLiteral(red: 0.2, green: 0.2039215686, blue: 0.2078431373, alpha: 1)
+                    } else {
+                        return #colorLiteral(red: 0.3254901961, green: 0.5843137255, blue: 0.9137254902, alpha: 1)
+                    }
+                }
+                return color
+            } else {
+                return #colorLiteral(red: 0.3254901961, green: 0.5843137255, blue: 0.9137254902, alpha: 1)
+            }
         }
     }
 }

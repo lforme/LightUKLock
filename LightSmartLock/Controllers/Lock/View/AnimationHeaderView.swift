@@ -25,7 +25,7 @@ class AnimationHeaderView: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
-        self.contentView.backgroundColor = ColorClassification.primary.value
+        self.contentView.backgroundColor = ColorClassification.blueAndBlack.value
     }
     
     func bind(openStatus: Bool?, onlineStatus: Bool?, power: Double?) {

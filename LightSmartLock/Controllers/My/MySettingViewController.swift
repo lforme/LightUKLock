@@ -99,7 +99,7 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
 extension MySettingViewController {
     
     func logoutAction() {
-        showActionSheet(title: "确定要退出吗?", message: nil, buttonTitles: ["去意已决", "再玩会儿"], highlightedButtonIndex: 1) { (index) in
+        showActionSheet(title: "确定要退出吗?", message: nil, buttonTitles: ["退出", "取消"], highlightedButtonIndex: 1) { (index) in
             if index == 0 {
                 LSLUser.current().logout()
             }
