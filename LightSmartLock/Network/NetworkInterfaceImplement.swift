@@ -183,8 +183,6 @@ extension BusinessInterface: TargetType {
             
         case .deleteAssetHouse,
              .forceDeleteLock,
-             .deleteCard,
-             .deleteFinger,
              .undoTempPassword,
              .deleteBillInfo,
              .deleteReceivingAcount:
@@ -243,11 +241,11 @@ extension BusinessInterface: TargetType {
         case let .editCardOrFingerName(id, _):
             return "/ladder_card_figura/pwd/name/\(id)"
         case let .deleteCard(id, _):
-            return "/ladder_card_figura/pwd/card/\(id)"
+            return "/ladder_card_figura/pwd/card/delete/\(id)"
         case let .addFinger(lockId, _, _, _):
             return "/ladder_card_figura/pwd/finger_print/\(lockId)"
         case let .deleteFinger(id, _):
-            return "/ladder_card_figura/pwd/finger_print/\(id)"
+            return "/ladder_card_figura/pwd/finger_print/delete/\(id)"
         case let .setAlarmFingerprint(id, _, _):
             return "/ladder_card_figura/pwd/finger_print/\(id)"
         case .addAndModifyDigitalPassword:

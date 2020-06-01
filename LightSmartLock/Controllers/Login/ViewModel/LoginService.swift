@@ -42,16 +42,15 @@ final class LoginValidationService {
             return .just(.empty)
         }
         
-        if phone.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) != nil {
-            return .just(.failed(error: AppError.reason("手机号只能输入数字")))
-        }
-        
-        if phone.count != minimumPhoneCount {
-            return .just(.failed(error: AppError.reason("手机号码必须是11位")))
-        }
-        
+//        if phone.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) != nil {
+//            return .just(.failed(error: AppError.reason("手机号只能输入数字")))
+//        }
+//
+//        if phone.count != minimumPhoneCount {
+//            return .just(.failed(error: AppError.reason("手机号码必须是11位")))
+//        }
+//
         return .just(.success)
     }
-    
 
 }

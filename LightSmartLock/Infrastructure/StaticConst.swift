@@ -23,6 +23,7 @@ enum NotificationRefreshType {
     case tempPassword
     case billFlow
     case accountWay
+    case openDoor
 }
 
 extension NSNotification.Name {

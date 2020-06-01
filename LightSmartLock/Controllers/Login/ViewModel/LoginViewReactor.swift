@@ -57,8 +57,9 @@ final class LoginViewReactor: Reactor {
             return .just(.setShowPassword(show))
             
         case .login:
+            let p = self.currentState.phone.replacingOccurrences(of: " ", with: "")
             
-            let getUser = AuthAPI.requestMapJSON(.login(userName: self.currentState.phone, password: self.currentState.password), classType: AccessTokenModel.self).flatMapLatest { token -> Observable<UserModel> in
+            let getUser = AuthAPI.requestMapJSON(.login(userName: p, password: self.currentState.password), classType: AccessTokenModel.self).flatMapLatest { token -> Observable<UserModel> in
                 
                 LSLUser.current().token = token
                 LSLUser.current().refreshToken = token

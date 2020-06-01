@@ -41,7 +41,7 @@ class OpenDoorViewController: UIViewController {
         
         let shareConnected = vm.startConnected.share(replay: 1, scope: .forever)
         
-        shareConnected.subscribe(onNext: { (connect) in
+        shareConnected.delay(.seconds(1), scheduler: MainScheduler.instance).subscribe(onNext: { (connect) in
             if connect {
                 BluetoothPapa.shareInstance.handshake { (data) in
                     print(data ?? "握手失败")
@@ -116,6 +116,7 @@ class OpenDoorViewController: UIViewController {
         animationView.play {[weak self] (finish) in
             if finish {
                 self?.dismiss(animated: true, completion: nil)
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.openDoor)
             }
         }
     }

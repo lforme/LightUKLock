@@ -144,6 +144,8 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
             switch refreshType {
             case .deleteLock, .deleteScene:
                 self?.hasLock(has: false)
+            case .openDoor:
+                self?.bind()
             default: break
             }
         }).disposed(by: rx.disposeBag)
