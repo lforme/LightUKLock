@@ -27,6 +27,7 @@ class FingerDetailController: UITableViewController {
     var vm: FingerDetailViewModel!
     
     deinit {
+        HUD.hide()
         print("\(self) deinit")
     }
     

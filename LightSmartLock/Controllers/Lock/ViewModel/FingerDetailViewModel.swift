@@ -49,7 +49,7 @@ final class FingerDetailViewModel: BluetoothViewModel {
     }
     
     func deleteFinger() -> Observable<Bool> {
-        
+        HUD.show(.progress)
         guard let userCode = LSLUser.current().scene?.lockUserAccount else {
             return .error(AppError.reason("无法从服务器获取用户编号, 请稍后再试"))
         }
@@ -64,7 +64,7 @@ final class FingerDetailViewModel: BluetoothViewModel {
                 BluetoothPapa.shareInstance.deleteFinger(userNumber: userCode, pwdNumber: self.fingerNum) {[unowned self] (_) in
                     
                     BusinessAPI.requestMapBool(.deleteFinger(id: self.fingerId, operationType: 1)).subscribe().disposed(by: self.disposeBag)
-                    
+                    HUD.hide()
                     observer.onNext(true)
                     observer.onCompleted()
                 }

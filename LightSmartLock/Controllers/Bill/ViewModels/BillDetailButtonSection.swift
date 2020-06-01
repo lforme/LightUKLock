@@ -51,6 +51,10 @@ final class BillDetailButtonSection: ListSectionController {
             cell.confirmButton.isHidden = false
         }
         
+        if LSLUser.current().scene?.roleType == .some(.member) || LSLUser.current().scene?.roleType == .some(.admin) {
+            cell.confirmButton.isHidden = true
+        }
+        
         cell.confirmButton.rx.tap.subscribe(onNext: {[weak self] (_) in
             guard let this = self else { return }
             let confirmVC: ConfirmArrivalController = ViewLoader.Storyboard.controller(from: "Bill")
