@@ -58,10 +58,14 @@ class ConfirmArrivalController: UITableViewController {
         confirmAction.elements.subscribe(onNext: {[weak self] (success) in
             if success {
                 NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.accountWay)
-                self?.navigationController?.popViewController(animated: true)
+                guard let tagerVC = self?.navigationController?.children.filter({ (vc) -> Bool in
+                    return vc is MyBillViewController
+                }).last else { return }
+                self?.navigationController?.popToViewController(tagerVC, animated: true)
             }
         }).disposed(by: rx.disposeBag)
         
+        moneyLabel.text = "￥ \(totalMoney)"
     }
     
     func setupUI() {

@@ -38,17 +38,27 @@ final class BillDetailSectionOne: ListSectionController {
         cell.addressAndTenant.text = data.assetName
         cell.billNumber.text = "账单编号: \(data.billNumber)"
     
+        switch data.billStatus {
+        case 0:
+            cell.statusLabel.text = "待支付"
+        case 999:
+            cell.statusLabel.text = "已付款"
+        case 1:
+            cell.statusLabel.text = "部分支付"
+        case -1:
+            cell.statusLabel.text = "已欠租"
+            cell.statusLabel.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        default:
+            break
+        }
+        
         return cell
     }
     
     override func didUpdate(to object: Any) {
         data = object as? Data
     }
-    
-    override func didSelectItem(at index: Int) {
-        let contractDetailVC: BillFlowContractDetailController = ViewLoader.Storyboard.controller(from: "Bill")
-        self.viewController?.navigationController?.pushViewController(contractDetailVC, animated: true)
-    }
+   
 }
 
 extension BillDetailSectionOne {
@@ -59,12 +69,14 @@ extension BillDetailSectionOne {
         let amountPaid: Double
         let assetName: String
         let billNumber: String
+        let billStatus: Int
         
-        init(amountPayable: Double, amountPaid: Double, assetName: String, billNumber: String) {
+        init(amountPayable: Double, amountPaid: Double, assetName: String, billNumber: String, billStatus: Int) {
             self.amountPayable = amountPayable
             self.amountPaid = amountPaid
             self.assetName = assetName
             self.billNumber = billNumber
+            self.billStatus = billStatus
         }
         
         func diffIdentifier() -> NSObjectProtocol {

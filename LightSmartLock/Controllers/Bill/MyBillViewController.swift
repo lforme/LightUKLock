@@ -65,6 +65,7 @@ class MyBillViewController: UIViewController, NavigationSettingStyle {
             guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
             switch refreshType {
             case .accountWay:
+                
                 self?.allButton.sendActions(for: .touchUpInside)
             default: break
             }

@@ -30,6 +30,24 @@ final class BillDetailTenantSection: ListSectionController {
         guard let cell = collectionContext?.dequeueReusableCell(withNibName: "BillDetailTenantCell", bundle: nil, for: self, at: index) as? BillDetailTenantCell else {
             fatalError()
         }
+        cell.tenantName.text = data.tenantName
+        cell.dateLabel.text = "租期:\(data.contractStartDate)至\(data.contractEndDate)"
+        
+        let phoneNumber = data.phone
+        cell.callButton.rx.tap.subscribe(onNext: {[] (_) in
+            if phoneNumber.isEmpty {
+                return
+            }
+            if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
+                let application:UIApplication = UIApplication.shared
+                if (application.canOpenURL(phoneCallURL)) {
+                    application.open(phoneCallURL, options: [:], completionHandler: nil)
+                }
+            }
+        }).disposed(by: cell.rx.disposeBag)
+        
+        cell.callButton.isHidden = true
+        
         return cell
     }
     

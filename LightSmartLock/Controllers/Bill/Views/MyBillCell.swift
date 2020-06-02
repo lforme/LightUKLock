@@ -67,6 +67,12 @@ class MyBillCell: UITableViewCell {
                 let startDate = item.cycleStartDate ?? "开始"
                 let endDate = item.cycleEndDate ?? "结束"
                 v.date.text = "\(startDate) 至 \(endDate)"
+                
+                if data.billType == 1 {
+                    v.icon.image = UIImage(named: "yuan_icon")
+                } else {
+                    v.icon.image = UIImage(named: "yuan_huang_icon")
+                }
             }
         }
         

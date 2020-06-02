@@ -42,6 +42,15 @@ final class BillDetailFeesSection: ListSectionController {
         let money = cellData.amount ?? 0.00
         cell.price.text = "￥ \(money)"
         
+        switch data.billType {
+        case 1:
+            cell.icon.image = UIImage(named: "yuan_icon")
+        case -1:
+            cell.icon.image = UIImage(named: "yuan_huang_icon")
+        default:
+            break
+        }
+        
         return cell
     }
     
@@ -88,10 +97,11 @@ extension BillDetailFeesSection {
         
         let totalMoney: Double
         let list: [BillInfoDetail.BillItemList]
-        
-        init(totalMoney: Double, list: [BillInfoDetail.BillItemList]) {
+        let billType: Int?
+        init(totalMoney: Double, list: [BillInfoDetail.BillItemList], billType: Int?) {
             self.totalMoney = totalMoney
             self.list = list
+            self.billType = billType
         }
         
         func diffIdentifier() -> NSObjectProtocol {

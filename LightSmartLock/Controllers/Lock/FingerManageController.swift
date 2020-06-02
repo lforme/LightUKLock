@@ -39,6 +39,11 @@ class FingerManageController: UITableViewController, NavigationSettingStyle {
     let vm = FingerManageViewModel()
     var dataSource: [OpenLockInfoModel.Finger] = []
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        vm.refresh()
+    }
+    
     deinit {
         print("\(self) deinit")
     }
@@ -50,24 +55,7 @@ class FingerManageController: UITableViewController, NavigationSettingStyle {
         self.clearsSelectionOnViewWillAppear = true
         setupUI()
         setupNavigationRightItem()
-        setupTableviewRefresh()
         bind()
-        observerNotification()
-    }
-    
-    func observerNotification() {
-        NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
-            guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
-            switch refreshType {
-            case .addFinger:
-                self?.vm.refresh()
-            default: break
-            }
-        }).disposed(by: rx.disposeBag)
-    }
-    
-    func setupTableviewRefresh() {
-        vm.refresh()
     }
     
     func bind() {

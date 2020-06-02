@@ -74,7 +74,6 @@ class FingerDetailController: UITableViewController {
             if success {
                 HUD.flash(.label("成功"), delay: 2)
                 self?.navigationController?.popViewController(animated: true)
-                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addFinger)
             } else {
                 HUD.flash(.label("失败"), delay: 2)
             }
@@ -127,7 +126,7 @@ class FingerDetailController: UITableViewController {
                 } else {
                     HUD.flash(.label("修改失败"), delay: 2)
                 }
-                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addFinger)
+    
                 self?.navigationController?.popViewController(animated: true)
                 
                 }, onError: {[weak self] (error) in
@@ -144,7 +143,7 @@ class FingerDetailController: UITableViewController {
             share.delay(.seconds(1), scheduler: MainScheduler.instance).flatMapLatest {[unowned self] _ in self.vm.deleteFinger() }.subscribe(onNext: {[weak self] (success) in
                 if success {
                     HUD.flash(.label("删除成功"), delay: 2)
-                    NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addFinger)
+                    
                     self?.navigationController?.popViewController(animated: true)
                 } else {
                     HUD.flash(.label("删除失败"), delay: 2)

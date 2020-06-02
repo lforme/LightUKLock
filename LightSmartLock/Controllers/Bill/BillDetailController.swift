@@ -99,13 +99,13 @@ extension BillDetailController {
         BusinessAPI.requestMapJSON(.billInfoDetail(billId: id), classType: BillInfoDetail.self).subscribe(onNext: {[weak self] (model) in
             self?.model = model
             
-            let A = BillDetailSectionOne.Data(amountPayable: model.amountPaid ?? 0.00, amountPaid: model.amountPaid ?? 0.00, assetName: model.assetName ?? "正在加载...", billNumber: model.billNumber ?? "正在加载")
+            let A = BillDetailSectionOne.Data(amountPayable: model.amountPaid ?? 0.00, amountPaid: model.amountPaid ?? 0.00, assetName: model.assetName ?? "正在加载...", billNumber: model.billNumber ?? "正在加载", billStatus: model.billStatus ?? 0)
             self?.dataSource.append(A)
             
-            let B = BillDetailFeesSection.Data(totalMoney: model.amountPayable ?? 0.00, list: model.billItemDTOList ?? [])
+            let B = BillDetailFeesSection.Data(totalMoney: model.amountPayable ?? 0.00, list: model.billItemDTOList ?? [], billType: model.billType)
             self?.dataSource.append(B)
             
-            let C = BillDetailTenantSection.Data(tenantName: model.tenantName ?? "正在加载...", gender: model.gender ?? "正在加载...", age: model.age ?? 0, start: model.contractStartDate ?? "正在加载...", end: model.contractEndDate ?? "正在加载...", phone: "1589827362")
+            let C = BillDetailTenantSection.Data(tenantName: model.tenantName ?? "-", gender: model.gender ?? "-", age: model.age ?? 0, start: model.contractStartDate ?? "-", end: model.contractEndDate ?? "-", phone: "")
             self?.dataSource.append(C)
             
             let E = BillDetailPaymentSection.Data(list: model.billPaymentLogDTOList ?? [])

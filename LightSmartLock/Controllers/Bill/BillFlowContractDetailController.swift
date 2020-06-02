@@ -83,8 +83,8 @@ class BillFlowContractDetailController: UITableViewController, NavigationSetting
             
             if let roommateList = model.fellowInfoList {
                 roommateList.forEach { (item) in
-                    let name = item.userName ?? "正在加载"
-                    let phone = item.phone ?? "正在加载"
+                    let name = item.userName ?? "-"
+                    let phone = item.phone ?? "-"
                     let label = UILabel()
                     label.sizeToFit()
                     label.font = UIFont.systemFont(ofSize: 14, weight: .regular)

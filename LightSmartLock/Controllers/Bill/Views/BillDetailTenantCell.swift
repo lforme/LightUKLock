@@ -10,6 +10,10 @@ import UIKit
 
 class BillDetailTenantCell: UICollectionViewCell {
 
+    @IBOutlet weak var tenantName: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var callButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
