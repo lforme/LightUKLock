@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +12,7 @@
         <!--My Setting View Controller-->
         <scene sceneID="atA-lj-ikY">
             <objects>
-                <tableViewController storyboardIdentifier="MySettingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="INt-3U-AJ4" customClass="MySettingViewController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MySettingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="INt-3U-AJ4" customClass="MySettingViewController" customModule="寓用管家" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lga-hp-ni6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -241,7 +241,7 @@
         <!--My View Controller-->
         <scene sceneID="vaj-Qj-AVh">
             <objects>
-                <viewController storyboardIdentifier="MyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kle-dG-uh4" customClass="MyViewController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kle-dG-uh4" customClass="MyViewController" customModule="寓用管家" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K8t-mg-Gg8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -256,7 +256,7 @@
         <!--Change Phone Controller-->
         <scene sceneID="kCL-9M-w81">
             <objects>
-                <tableViewController storyboardIdentifier="ChangePhoneController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AbO-ys-qOt" customClass="ChangePhoneController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ChangePhoneController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AbO-ys-qOt" customClass="ChangePhoneController" customModule="寓用管家" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="YmR-zZ-S8Q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -288,14 +288,14 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signin_phone_icon" translatesAutoresizingMaskIntoConstraints="NO" id="E1m-ct-sZj">
-                                                                    <rect key="frame" x="16" y="10" width="20" height="36"/>
+                                                                    <rect key="frame" x="16" y="19" width="10" height="18"/>
                                                                 </imageView>
                                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5oN-Ly-AJh">
-                                                                    <rect key="frame" x="44" y="0.0" width="222" height="56"/>
+                                                                    <rect key="frame" x="34" y="0.0" width="232" height="56"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                 </textField>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nan-1F-elH" customClass="CountdownButton" customModule="门锁助手个人版" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nan-1F-elH" customClass="CountdownButton" customModule="寓用管家" customModuleProvider="target">
                                                                     <rect key="frame" x="274" y="12" width="100" height="32"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="32" id="43f-sX-eKA"/>
@@ -325,7 +325,7 @@
                                                             <rect key="frame" x="0.0" y="64" width="382" height="56"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_verification_code" translatesAutoresizingMaskIntoConstraints="NO" id="8Wy-8v-FGT">
-                                                                    <rect key="frame" x="16" y="13" width="12" height="30"/>
+                                                                    <rect key="frame" x="16" y="20.5" width="12" height="15"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="12" id="qYW-nc-DFq"/>
                                                                     </constraints>
@@ -406,7 +406,7 @@
         <!--Change Password Controller-->
         <scene sceneID="kG0-Ep-363">
             <objects>
-                <tableViewController storyboardIdentifier="ChangePasswordController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oQ0-b3-vPn" customClass="ChangePasswordController" customModule="门锁助手个人版" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ChangePasswordController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oQ0-b3-vPn" customClass="ChangePasswordController" customModule="寓用管家" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jmK-YS-Exw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -425,10 +425,10 @@
                                                     <rect key="frame" x="16" y="80" width="382" height="56"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signin_passwords" translatesAutoresizingMaskIntoConstraints="NO" id="zIA-ah-xJn">
-                                                            <rect key="frame" x="16" y="11" width="24" height="34"/>
+                                                            <rect key="frame" x="16" y="19.5" width="12" height="17"/>
                                                         </imageView>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UFx-KP-tFO">
-                                                            <rect key="frame" x="48" y="0.0" width="278" height="56"/>
+                                                            <rect key="frame" x="36" y="0.0" width="290" height="56"/>
                                                             <color key="textColor" red="0.023529411760000001" green="0.10980392160000001" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -468,10 +468,10 @@
                                                     <rect key="frame" x="16" y="144" width="382" height="56"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signin_passwords" translatesAutoresizingMaskIntoConstraints="NO" id="Mwa-dc-wRe">
-                                                            <rect key="frame" x="16" y="11" width="24" height="34"/>
+                                                            <rect key="frame" x="16" y="19.5" width="12" height="17"/>
                                                         </imageView>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请再次输入密码" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="p3g-Jy-f9Q">
-                                                            <rect key="frame" x="48" y="0.0" width="278" height="56"/>
+                                                            <rect key="frame" x="36" y="0.0" width="290" height="56"/>
                                                             <color key="textColor" red="0.023529411760000001" green="0.10980392160000001" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>

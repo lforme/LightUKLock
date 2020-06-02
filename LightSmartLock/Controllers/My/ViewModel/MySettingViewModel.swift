@@ -30,7 +30,7 @@ final class MySettingViewModel {
             return .error(AppError.reason("获取本地用户失败"))
         }
         userInfo.loginPassword = password
-        return .empty()
+        return BusinessAPI.requestMapBool(.editUser(parameter: userInfo)).map { _ in userInfo }
     }
     
     func changeNickname(_ name: String) -> Observable<UserModel> {

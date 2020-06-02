@@ -152,7 +152,7 @@ extension MySettingViewController {
             guard let this = self else {
                 return .empty()
             }
-            return this.vm.changePassword(newPassword.md5())
+            return this.vm.changePassword(newPassword)
         }.subscribe(onNext: { (user) in
             HUD.flash(.label("密码修改成功"), delay: 2)
             LSLUser.current().user = user
