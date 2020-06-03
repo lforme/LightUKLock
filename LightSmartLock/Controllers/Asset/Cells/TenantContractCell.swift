@@ -70,7 +70,7 @@ class TenantContractCell: UITableViewCell {
         let comps2 = Calendar.current.dateComponents([.day], from: startDate, to: Date())
         
         if let days1 = comps1.day, let days2 = comps2.day {
-            tipLabel.text = "还剩\(days1 - days2 - 1)天"
+            tipLabel.text = "还剩\(days1 - days2)天"
             let percent = CGFloat(days2) / CGFloat(days1)
             tipConstraint.constant = gradientProgressView.bounds.width * percent
             gradientProgressView.progress = Float(percent)

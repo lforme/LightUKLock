@@ -55,7 +55,7 @@ class SettingRentalRecordViewController: AssetBaseViewController {
         
         for (index, record) in records.enumerated() {
             let view = ContractRentalRecordView.loadFromNib()
-            view.config(with: record, baseAmount: 1000, index: index) { [weak self] in
+            view.config(with: record, baseAmount: rentalCollect.1, index: index) { [weak self] in
                 self?.records.remove(at: index)
             }
             if index == 0 {
