@@ -23,12 +23,12 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mu0-lO-03e">
                     <rect key="frame" x="365.5" y="12" width="14.5" height="26"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" name="textOpaque78"/>
+                    <color key="textColor" name="textDescription"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1nc-Ov-81e">
-                    <rect key="frame" x="18" y="48" width="380" height="1"/>
-                    <color key="backgroundColor" red="0.87842881679999996" green="0.87841504810000004" blue="0.87843221429999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <rect key="frame" x="18" y="49" width="396" height="1"/>
+                    <color key="backgroundColor" name="textPlaceholder"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="oMP-w2-euY"/>
                     </constraints>
@@ -38,7 +38,7 @@
                 </imageView>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="McM-cr-pTd">
                     <rect key="frame" x="318.5" y="16" width="43" height="18.5"/>
-                    <color key="textColor" name="textPrimary"/>
+                    <color key="textColor" name="textDescription"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
@@ -51,10 +51,10 @@
                 <constraint firstItem="mu0-lO-03e" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="QN8-Ka-oNF"/>
                 <constraint firstItem="DsS-LL-NQd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="18" id="V1o-s3-IGP"/>
                 <constraint firstItem="ptZ-84-An3" firstAttribute="leading" secondItem="mu0-lO-03e" secondAttribute="trailing" constant="10" id="X4y-rb-RcL"/>
-                <constraint firstAttribute="trailing" secondItem="1nc-Ov-81e" secondAttribute="trailing" constant="16" id="enl-ij-fGz"/>
+                <constraint firstAttribute="trailing" secondItem="1nc-Ov-81e" secondAttribute="trailing" id="enl-ij-fGz"/>
                 <constraint firstItem="1nc-Ov-81e" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="18" id="etJ-KM-NWh"/>
                 <constraint firstAttribute="bottom" secondItem="DsS-LL-NQd" secondAttribute="bottom" constant="12" id="gqE-lm-zpZ"/>
-                <constraint firstAttribute="bottom" secondItem="1nc-Ov-81e" secondAttribute="bottom" constant="1" id="i4t-w8-PPb"/>
+                <constraint firstAttribute="bottom" secondItem="1nc-Ov-81e" secondAttribute="bottom" id="i4t-w8-PPb"/>
                 <constraint firstItem="mu0-lO-03e" firstAttribute="leading" secondItem="McM-cr-pTd" secondAttribute="trailing" constant="4" id="vLn-hZ-tJP"/>
                 <constraint firstItem="DsS-LL-NQd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="vyo-xw-4qf"/>
                 <constraint firstAttribute="trailing" secondItem="ptZ-84-An3" secondAttribute="trailing" constant="16" id="zwg-eL-UMY"/>
@@ -71,11 +71,14 @@
     </objects>
     <resources>
         <image name="right_arrow" width="8" height="15"/>
+        <namedColor name="textDescription">
+            <color red="0.65100002288818359" green="0.68199998140335083" blue="0.7369999885559082" alpha="0.81999999284744263" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="textOpaque78">
             <color red="0.039000000804662704" green="0.12200000137090683" blue="0.2669999897480011" alpha="0.77999997138977051" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="textPrimary">
-            <color red="0.039000000804662704" green="0.12200000137090683" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="textPlaceholder">
+            <color red="0.65100002288818359" green="0.68199998140335083" blue="0.7369999885559082" alpha="0.68000000715255737" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="viewBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -43,6 +43,7 @@ class DigitalPwdDetailController: UITableViewController, NavigationSettingStyle 
             case let .changeDigitalPwd(newPassword):
                 let cell = self?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? DigitalPasswordCell
                 cell?.passwordLabel.text = newPassword
+                self?.displayModel?.password = newPassword
             default: break
             }
             

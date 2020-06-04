@@ -58,7 +58,13 @@ class LiquidationViewController: UIViewController {
         confirmAction.elements.subscribe(onNext: {[weak self] (success) in
             if success {
                 HUD.flash(.label("退租成功"), delay: 2)
-                self?.navigationController?.popViewController(animated: true)
+                
+                guard let tagerVC = self?.navigationController?.children.filter({ (vc) -> Bool in
+                    return vc is BillFlowContractDetailController
+                }).last else { return }
+                
+                self?.navigationController?.popToViewController(tagerVC, animated: true)
+    
             } else {
                 HUD.flash(.label("退租失败"), delay: 2)
             }

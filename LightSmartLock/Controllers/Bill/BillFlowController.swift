@@ -115,7 +115,7 @@ class BillFlowController: UIViewController, NavigationSettingStyle {
             
             let years = Array(2018...Date().year).map { $0.description }
             
-            return DataPickerController.rx.present(with: "选择日期", items: [years]).map { $0.first?.value ?? "" }
+            return DataPickerController.rx.present(with: "选择日期", items: [years]).map { $0.first?.value ?? Date().year.description }
         }.bind(to: vm.year).disposed(by: rx.disposeBag)
         
         vm.year.bind(to: yearButton.titleLabel!.rx.text).disposed(by: rx.disposeBag)

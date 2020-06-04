@@ -70,8 +70,11 @@ class BillClearingController: UIViewController {
                 self?.submitArray.forEach { (bindModel) in
                     
                     let itemView: BillDescriptionCell = ViewLoader.Xib.view()
+                    itemView.textField.keyboardType = .numberPad
+                    itemView.editingIcon.isHidden = true
+                    itemView.textField.isEnabled = false
                     itemView.nameLabel.text = bindModel.costName
-                    itemView.valueLabel.text = String(bindModel.amount.value ?? "")
+                    itemView.textField.text = String(bindModel.amount.value ?? "")
                     itemView.textField.rx.text.orEmpty.changed
                         .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
                         .distinctUntilChanged().bind(to: bindModel.amount)
@@ -93,13 +96,17 @@ class BillClearingController: UIViewController {
                 this.dynamicContainer.arrangedSubviews.forEach { (v) in
                     let cell = v as? BillDescriptionCell
                     cell?.editingIcon.isHidden = false
-                    cell?.textField.isUserInteractionEnabled = true
+                    cell?.textField.isEnabled = true
+                    cell?.textField.textColor = ColorClassification.textPrimary.value
+                    cell?.valueLabel.textColor = ColorClassification.textPrimary.value
                 }
             } else {
                 this.dynamicContainer.arrangedSubviews.forEach { (v) in
                     let cell = v as? BillDescriptionCell
                     cell?.editingIcon.isHidden = true
-                    cell?.textField.isUserInteractionEnabled = false
+                    cell?.textField.isEnabled = false
+                    cell?.textField.textColor = ColorClassification.textDescription.value
+                    cell?.valueLabel.textColor = ColorClassification.textDescription.value
                 }
             }
         }).disposed(by: rx.disposeBag)
@@ -123,10 +130,13 @@ class BillClearingController: UIViewController {
             param.billClearingItemDTOList = items
             BusinessAPI.requestMapBool(.editBillInfoClear(parameter: param)).subscribe(onNext: {[weak self] (success) in
                 if success {
-                    self?.navigationController?.popViewController(animated: true)
+                    let liquidationVC: LiquidationViewController = ViewLoader.Storyboard.controller(from: "Bill")
+                    liquidationVC.billId = self?.billId
+                    liquidationVC.contractId = self?.contractId ?? ""
+                    self?.navigationController?.pushViewController(liquidationVC, animated: true)
                 }
-            }, onError: { (error) in
-                PKHUD.sharedHUD.rx.showError(error)
+                }, onError: { (error) in
+                    PKHUD.sharedHUD.rx.showError(error)
             }).disposed(by: rx.disposeBag)
         } else {
             HUD.flash(.label("清算失败"), delay: 2)
@@ -139,8 +149,8 @@ class BillClearingController: UIViewController {
             guard let this = self else { return }
             if index == 0 {
                 btn.isSelected = !btn.isSelected
-                this.canEditing.accept(!btn.isSelected)
-            } else {
+                this.canEditing.accept(btn.isSelected)
+            } else if index == 1 {
                 guard let id = this.billId else {
                     HUD.flash(.label("没有账单Id,无法删除"), delay: 2)
                     return
@@ -150,7 +160,7 @@ class BillClearingController: UIViewController {
                         self?.navigationController?.popViewController(animated: true)
                     }
                 }).disposed(by: this.rx.disposeBag)
-            }
+            } else {}
         }).disposed(by: rx.disposeBag)
     }
 }
