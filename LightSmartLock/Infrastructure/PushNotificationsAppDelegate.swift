@@ -14,23 +14,22 @@ final class PushNotificationsAppDelegate: AppDelegateType, JPUSHRegisterDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let jpEntity = JPUSHRegisterEntity()
-            jpEntity.types = Int(UInt8(JPAuthorizationOptions.alert.rawValue) | UInt8(JPAuthorizationOptions.badge.rawValue) | UInt8(JPAuthorizationOptions.sound.rawValue))
-            JPUSHService.register(forRemoteNotificationConfig: jpEntity, delegate: self)
-            #if DEBUG
-            JPUSHService.setup(withOption: launchOptions, appKey: PlatformKey.jpushAppKey, channel: "iOS", apsForProduction: false)
-            #else
-            JPUSHService.setup(withOption: launchOptions, appKey: PlatformKey.jpushAppKey, channel: "iOS", apsForProduction: true)
-            #endif
-            
-            if let userId = LSLUser.current().user?.id {
-                print(userId)
-                JPUSHService.setAlias(userId, completion: { (code, alias, seq) in
-                    print("极光注册别名:\(String(describing: alias))")
-                }, seq: 1)
-            }
+        let jpEntity = JPUSHRegisterEntity()
+        jpEntity.types = Int(UInt8(JPAuthorizationOptions.alert.rawValue) | UInt8(JPAuthorizationOptions.badge.rawValue) | UInt8(JPAuthorizationOptions.sound.rawValue))
+        JPUSHService.register(forRemoteNotificationConfig: jpEntity, delegate: self)
+        #if DEBUG
+        JPUSHService.setup(withOption: launchOptions, appKey: PlatformKey.jpushAppKey, channel: "iOS", apsForProduction: false)
+        #else
+        JPUSHService.setup(withOption: launchOptions, appKey: PlatformKey.jpushAppKey, channel: "iOS", apsForProduction: true)
+        #endif
+        
+        if let userId = LSLUser.current().user?.id {
+            print(userId)
+            JPUSHService.setAlias(userId, completion: { (code, alias, seq) in
+                print("极光注册别名:\(String(describing: alias))")
+            }, seq: 1)
         }
+        
         return true
     }
     

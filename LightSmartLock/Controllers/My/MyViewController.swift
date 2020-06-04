@@ -41,7 +41,6 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         setupTableviewRefresh()
         bind()
         observerSceneChanged()
-        
     }
     
     func observerSceneChanged() {
@@ -114,9 +113,29 @@ class MyViewController: UIViewController, NavigationSettingStyle {
     }
     
     @objc func gotoSelectedLockVC() {
-        let selectVC: SelectLockTypeController = ViewLoader.Storyboard.controller(from: "InitialLock")
-        selectVC.kind = .newAdd
-        self.navigationController?.pushViewController(selectVC, animated: true)
+        
+        guard let phone = LSLUser.current().user?.phone else {
+            HUD.flash(.label("发生未知错误, 无法获取电话号码"), delay: 2)
+            return
+        }
+        
+        BusinessAPI.requestMapJSONArray(.hardwareBindList(channels: "00", pageSize: 100, pageIndex: 1, phoneNo: phone), classType: BindLockListModel.self, useCache: false, isPaginating: true)
+            .map { $0.compactMap { $0 } }
+            .subscribe(onNext: {[weak self] (bindLockList) in
+                
+                if bindLockList.count != 0 {
+                    let bindLockListVC: BindLockListController = ViewLoader.Storyboard.controller(from: "InitialLock")
+                    bindLockListVC.dataSource = bindLockList
+                    self?.navigationController?.pushViewController(bindLockListVC, animated: true)
+                } else {
+                    let selectVC: SelectLockTypeController = ViewLoader.Storyboard.controller(from: "InitialLock")
+                    selectVC.kind = .newAdd
+                    self?.navigationController?.pushViewController(selectVC, animated: true)
+                }
+                
+            }, onError: { (error) in
+                PKHUD.sharedHUD.rx.showError(error)
+            }).disposed(by: rx.disposeBag)
     }
 }
 

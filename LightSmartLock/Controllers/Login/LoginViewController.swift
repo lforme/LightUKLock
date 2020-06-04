@@ -44,12 +44,16 @@ class LoginViewController: UITableViewController, StoryboardView {
     
     func bind(reactor: LoginViewReactor) {
         
-        let phone = phoneTextField.rx.text.orEmpty.changed
-            .throttle(.microseconds(500), scheduler: MainScheduler.instance)
+        let phone = phoneTextField.rx
+            .text
+            .orEmpty
+            .changed
             .distinctUntilChanged()
         
-        let pwd = pwdTextField.rx.text.orEmpty.changed
-            .throttle(.microseconds(500), scheduler: MainScheduler.instance)
+        let pwd = pwdTextField.rx
+            .text
+            .orEmpty
+            .changed
             .distinctUntilChanged()
         
         Observable.combineLatest(phone, pwd).map(Reactor.Action.phonePasswordChanged)

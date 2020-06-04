@@ -84,5 +84,6 @@ enum BusinessInterface {
     case addCostCategory(name: String) // 添加用户费用类型
     case contractRenew(contractId: String, endDate: String, increaseType: Int, ratio: Double, rentalChangeType: Int) // 续租 1:按金额 2：按比例  加租: 1 减租: -1
     case editOtherUser(userId: String, userInfo: HandyJSON) // 修改非当前登录用户
-
+    case hardwareBindList(channels: String, pageSize: Int, pageIndex: Int, phoneNo: String) // 获取用户已绑定列表
+    case hardwareBind(id: String, phone: String) // 绑定门锁
 }

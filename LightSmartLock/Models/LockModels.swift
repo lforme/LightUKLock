@@ -39,3 +39,22 @@ struct LockModel: HandyJSON {
     var ladderLockId: String?
     var lockNum: String?
 }
+
+class BindLockListModel: HandyJSON {
+    
+    var id: String?
+    var address: String?
+    var snCode: String?
+    
+    required init() {}
+    
+    func mapping(mapper: HelpingMapper) {
+        mapper <<<
+            self.id <-- "hardwareLockConfigDTO.id"
+        mapper <<<
+            self.address <-- "hardwareLockConfigDTO.installAddress"
+        mapper <<<
+            self.snCode <-- "hardwareLockConfigDTO.snCode"
+        
+    }
+}

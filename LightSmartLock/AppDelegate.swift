@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = appDelegate.application?(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Test
-        ServerHost.shared.environment = .production
+        ServerHost.shared.environment = .dev
         
         return true
     }

@@ -165,6 +165,9 @@
 		9C4D10BD2463F1F1005D0C6F /* ReceivingAccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C4D10BB2463F1F1005D0C6F /* ReceivingAccountCell.xib */; };
 		9C4D10BF2464095E005D0C6F /* PayWayBindController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4D10BE2464095E005D0C6F /* PayWayBindController.swift */; };
 		9C4D10C124641219005D0C6F /* BankCardBindController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4D10C024641219005D0C6F /* BankCardBindController.swift */; };
+		9C510F732488CA9D00971798 /* BindLockListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C510F722488CA9D00971798 /* BindLockListController.swift */; };
+		9C510F772488DE7600971798 /* BindLockListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C510F752488DE7600971798 /* BindLockListCell.swift */; };
+		9C510F782488DE7600971798 /* BindLockListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C510F762488DE7600971798 /* BindLockListCell.xib */; };
 		9C524023238E0E3F00308AC4 /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C524022238E0E3F00308AC4 /* error.json */; };
 		9C524025238E0E5500308AC4 /* warning.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C524024238E0E5500308AC4 /* warning.json */; };
 		9C524028238E12E300308AC4 /* UIApplicationProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C524027238E12E300308AC4 /* UIApplicationProxy.swift */; };
@@ -493,6 +496,9 @@
 		9C4D10BB2463F1F1005D0C6F /* ReceivingAccountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceivingAccountCell.xib; sourceTree = "<group>"; };
 		9C4D10BE2464095E005D0C6F /* PayWayBindController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWayBindController.swift; sourceTree = "<group>"; };
 		9C4D10C024641219005D0C6F /* BankCardBindController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardBindController.swift; sourceTree = "<group>"; };
+		9C510F722488CA9D00971798 /* BindLockListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindLockListController.swift; sourceTree = "<group>"; };
+		9C510F752488DE7600971798 /* BindLockListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindLockListCell.swift; sourceTree = "<group>"; };
+		9C510F762488DE7600971798 /* BindLockListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BindLockListCell.xib; sourceTree = "<group>"; };
 		9C524022238E0E3F00308AC4 /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
 		9C524024238E0E5500308AC4 /* warning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = warning.json; sourceTree = "<group>"; };
 		9C524027238E12E300308AC4 /* UIApplicationProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationProxy.swift; sourceTree = "<group>"; };
@@ -771,6 +777,7 @@
 		9C1B87C02397677300216ADA /* InitialLock */ = {
 			isa = PBXGroup;
 			children = (
+				9C510F742488DDE600971798 /* Views */,
 				9C1B87C523976FF600216ADA /* ViewModel */,
 				9C1B87CC23979B7200216ADA /* SelectLockTypeController.swift */,
 				9C1B87C32397693100216ADA /* LockStartScanningController.swift */,
@@ -778,6 +785,7 @@
 				9C03B0F4239F83D00001E849 /* AddFingerController.swift */,
 				9C03B0FA239F88860001E849 /* AddFingerFinishController.swift */,
 				9C5A967723A07D4E002A2B06 /* AddCardController.swift */,
+				9C510F722488CA9D00971798 /* BindLockListController.swift */,
 				9C1B87C1239767A100216ADA /* InitialLock.storyboard */,
 			);
 			path = InitialLock;
@@ -1027,6 +1035,15 @@
 				9C752FD123879546000FEA73 /* RegisPwdViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C510F742488DDE600971798 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9C510F752488DE7600971798 /* BindLockListCell.swift */,
+				9C510F762488DE7600971798 /* BindLockListCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		9C524026238E12AF00308AC4 /* InvokedProxy */ = {
@@ -1391,6 +1408,7 @@
 				9CFDE1FA2384EA2A0062522E /* opendoor.json in Resources */,
 				7B92D0D12457C66700F195A9 /* IDCardView.xib in Resources */,
 				9CABF496246501A40001AAE3 /* BillDetailSectionOneCell.xib in Resources */,
+				9C510F782488DE7600971798 /* BindLockListCell.xib in Resources */,
 				9C770597238FA351008E1552 /* MyListCell.xib in Resources */,
 				9C4490772462CA6E00A859CC /* BillFeesDeleteView.xib in Resources */,
 				9C44906924628E6300A859CC /* FeeItemView.xib in Resources */,
@@ -1597,6 +1615,7 @@
 				7BB2FEAA245565F100D835BA /* AddTenantViewController.swift in Sources */,
 				9C44905D24626B7800A859CC /* LiquidationViewController.swift in Sources */,
 				9C7705A1238FE358008E1552 /* SingleInputController.swift in Sources */,
+				9C510F732488CA9D00971798 /* BindLockListController.swift in Sources */,
 				9CBD8F4C23A21E7D00886519 /* PasswordChangeStatusCell.swift in Sources */,
 				9CAF7F1424778075001D218C /* AppearanceAppDelegate.swift in Sources */,
 				9CBD8F5923A2496700886519 /* SharePasswordSignleController.swift in Sources */,
@@ -1690,6 +1709,7 @@
 				9C24AC1423838C80005EBF95 /* BaseNavigationController.swift in Sources */,
 				7B92D0CB2456CBF600F195A9 /* DatePickerViewController.swift in Sources */,
 				9C44905F246270EA00A859CC /* MyBillViewController.swift in Sources */,
+				9C510F772488DE7600971798 /* BindLockListCell.swift in Sources */,
 				9CBD8F5123A2376C00886519 /* SharePasswordMultipleController.swift in Sources */,
 				9C24AC292383CB92005EBF95 /* UITextField+Extension.swift in Sources */,
 				9C5A968223A09A73002A2B06 /* CardDetailViewModel.swift in Sources */,
