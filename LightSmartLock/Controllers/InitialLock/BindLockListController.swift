@@ -77,39 +77,16 @@ class BindLockListController: UIViewController, NavigationSettingStyle {
         
         nextButton.rx
             .tap
-            .flatMapLatest {[weak self] (_) -> Observable<Bool> in
+            .subscribe(onNext: {[weak self] (_) in
                 
-                guard let id = self?.selectedModel.value?.id, let phone = LSLUser.current().user?.phone else {
-                    HUD.flash(.label("请选择门锁"), delay: 2)
-                    return .empty()
-                }
-                
-                return BusinessAPI.requestMapBool(.hardwareBind(id: id, phone: phone))
-        }.flatMapLatest({[weak self] (success) -> Observable<Bool> in
-            if success {
+                let editAssetVC: BindingOrEditAssetViewController = ViewLoader.Storyboard.controller(from: "AssetDetail")
                 var position = PositionModel()
                 position.address = self?.selectedModel.value?.address
-                position.snCode = self?.selectedModel.value?.snCode
+                position.snCode =
+                    self?.selectedModel.value?.snCode
+                editAssetVC.asset = position
+                self?.navigationController?.pushViewController(editAssetVC, animated: true)
                 
-                return BusinessAPI.requestMapBool(.editAssetHouse(parameter: position))
-            } else {
-                return .empty()
-            }
-        })
-            .subscribe(onNext: {[weak self] (success) in
-                if success {
-                    let editAssetVC: BindingOrEditAssetViewController = ViewLoader.Storyboard.controller(from: "AssetDetail")
-                    var position = PositionModel()
-                    position.address = self?.selectedModel.value?.address
-                    position.snCode =
-                        self?.selectedModel.value?.snCode
-                    editAssetVC.asset = position
-                    self?.navigationController?.pushViewController(editAssetVC, animated: true)
-                } else {
-                    HUD.flash(.label("绑定失败"), delay: 2)
-                }
-                }, onError: { (error) in
-                    PKHUD.sharedHUD.rx.showError(error)
             }).disposed(by: rx.disposeBag)
     }
 }

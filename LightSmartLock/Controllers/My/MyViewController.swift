@@ -119,7 +119,7 @@ class MyViewController: UIViewController, NavigationSettingStyle {
             return
         }
         
-        BusinessAPI.requestMapJSONArray(.hardwareBindList(channels: "00", pageSize: 100, pageIndex: 1, phoneNo: phone), classType: BindLockListModel.self, useCache: false, isPaginating: true)
+        BusinessAPI.requestMapJSONArray(.hardwareBindList(channels: "01", pageSize: 100, pageIndex: 1, phoneNo: phone), classType: BindLockListModel.self, useCache: false, isPaginating: true)
             .map { $0.compactMap { $0 } }
             .subscribe(onNext: {[weak self] (bindLockList) in
                 
@@ -133,8 +133,11 @@ class MyViewController: UIViewController, NavigationSettingStyle {
                     self?.navigationController?.pushViewController(selectVC, animated: true)
                 }
                 
-            }, onError: { (error) in
+            }, onError: {[weak self] (error) in
                 PKHUD.sharedHUD.rx.showError(error)
+                let selectVC: SelectLockTypeController = ViewLoader.Storyboard.controller(from: "InitialLock")
+                selectVC.kind = .newAdd
+                self?.navigationController?.pushViewController(selectVC, animated: true)
             }).disposed(by: rx.disposeBag)
     }
 }

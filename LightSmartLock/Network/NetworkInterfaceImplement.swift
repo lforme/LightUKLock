@@ -192,8 +192,7 @@ extension BusinessInterface: TargetType {
              .editCardOrFingerName,
              .setAlarmFingerprint,
              .editBillInfoClear,
-             .editOtherUser,
-             .hardwareBind:
+             .editOtherUser:
             return .put
             
         default:
@@ -307,8 +306,6 @@ extension BusinessInterface: TargetType {
             return "/user/\(userId)"
         case .hardwareBindList:
             return "/hardware_bind/list"
-        case .hardwareBind:
-            return "/hardware_bind/"
         }
     }
     
@@ -469,9 +466,6 @@ extension BusinessInterface: TargetType {
             
         case let .hardwareBindList(channels, pageSize, pageIndex, phoneNo):
             return ["channels": channels, "limit": pageSize, "page": pageIndex, "phoneNo": phoneNo]
-            
-        case let .hardwareBind(id, phone):
-            return ["id": id, "updateBy": phone]
             
         default:
             return nil
