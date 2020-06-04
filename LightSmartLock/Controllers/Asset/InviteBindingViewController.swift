@@ -8,6 +8,7 @@
 
 import UIKit
 import EFQRCode
+import PKHUD
 
 class InviteBindingViewController: AssetBaseViewController {
     
@@ -31,11 +32,27 @@ class InviteBindingViewController: AssetBaseViewController {
     
     
     @IBAction func saveAction(_ sender: Any) {
+        if let saveImage = QRCodeImageView.image {
+            UIImageWriteToSavedPhotosAlbum(saveImage, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+        }
+        
     }
     
     @IBAction func sendAction(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if let saveImage = QRCodeImageView.image {
+            let vc = UIActivityViewController(activityItems: [saveImage], applicationActivities: nil)
+            self.present(vc, animated: true, completion: nil)
+        }
     }
-    
+}
+
+extension InviteBindingViewController {
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if error == nil {
+            HUD.flash(.label("保存成功"), delay: 2)
+        } else {
+            PKHUD.sharedHUD.rx.showError(error)
+        }
+    }
     
 }
