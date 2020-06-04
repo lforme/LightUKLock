@@ -2736,7 +2736,7 @@
                                                         <color key="textColor" name="textOpaque78"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="RI7-AX-DAw">
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="RI7-AX-DAw">
                                                         <rect key="frame" x="390" y="15.5" width="8" height="15"/>
                                                     </imageView>
                                                 </subviews>
@@ -2770,7 +2770,7 @@
                                                         <color key="textColor" name="textOpaque78"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="wW1-XY-JWU">
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="wW1-XY-JWU">
                                                         <rect key="frame" x="390" y="15.5" width="8" height="15"/>
                                                     </imageView>
                                                 </subviews>
@@ -2833,9 +2833,6 @@
                                                         <real key="value" value="23"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <segue destination="noF-zm-zhM" kind="show" id="2eZ-ta-xIY"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -2894,11 +2891,11 @@
             <objects>
                 <viewController storyboardIdentifier="LiquidationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="noF-zm-zhM" customClass="LiquidationViewController" customModule="寓用管家" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2dW-uP-TQq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mb2-l4-DdS">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="snQ-Yx-dHO">
                                         <rect key="frame" x="0.0" y="8" width="414" height="128"/>
@@ -2992,7 +2989,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYB-9D-gQc">
-                                        <rect key="frame" x="0.0" y="752" width="414" height="56"/>
+                                        <rect key="frame" x="0.0" y="762" width="414" height="56"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfj-n3-TRY">
                                                 <rect key="frame" x="16" y="5" width="382" height="46"/>
