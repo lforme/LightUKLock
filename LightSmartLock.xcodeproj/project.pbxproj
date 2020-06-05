@@ -217,6 +217,7 @@
 		9C7AFF24239636640075442D /* NSMutableAttributedString+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF23239636640075442D /* NSMutableAttributedString+Extention.swift */; };
 		9C7AFF2623964A950075442D /* SetBuildingNumberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF2523964A950075442D /* SetBuildingNumberController.swift */; };
 		9C8FFD5D2447EEBF00527EA0 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FFD5C2447EEBF00527EA0 /* UIImageView+Extension.swift */; };
+		9CAA70E02489D9DE00A252E4 /* PrivacyAndUseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAA70DF2489D9DE00A252E4 /* PrivacyAndUseController.swift */; };
 		9CABF4902464FD9E0001AAE3 /* BillDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF48F2464FD9E0001AAE3 /* BillDetailController.swift */; };
 		9CABF492246501040001AAE3 /* BillDetailSectionOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF491246501040001AAE3 /* BillDetailSectionOne.swift */; };
 		9CABF495246501A40001AAE3 /* BillDetailSectionOneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF493246501A40001AAE3 /* BillDetailSectionOneCell.swift */; };
@@ -548,6 +549,7 @@
 		9C7AFF23239636640075442D /* NSMutableAttributedString+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extention.swift"; sourceTree = "<group>"; };
 		9C7AFF2523964A950075442D /* SetBuildingNumberController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetBuildingNumberController.swift; sourceTree = "<group>"; };
 		9C8FFD5C2447EEBF00527EA0 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		9CAA70DF2489D9DE00A252E4 /* PrivacyAndUseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyAndUseController.swift; sourceTree = "<group>"; };
 		9CABF48F2464FD9E0001AAE3 /* BillDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailController.swift; sourceTree = "<group>"; };
 		9CABF491246501040001AAE3 /* BillDetailSectionOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailSectionOne.swift; sourceTree = "<group>"; };
 		9CABF493246501A40001AAE3 /* BillDetailSectionOneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailSectionOneCell.swift; sourceTree = "<group>"; };
@@ -1177,6 +1179,7 @@
 				9C77059B238FBFC6008E1552 /* MySettingViewController.swift */,
 				9C3726C52390B2DD00450757 /* ChangePasswordController.swift */,
 				9C3726CD2390D29900450757 /* ChangePhoneController.swift */,
+				9CAA70DF2489D9DE00A252E4 /* PrivacyAndUseController.swift */,
 				9C24AC432383EB96005EBF95 /* My.storyboard */,
 			);
 			path = My;
@@ -1650,6 +1653,7 @@
 				9CABF4A1246508A10001AAE3 /* BillDetailFeesFootView.swift in Sources */,
 				9C47DB83239A39070019EAA0 /* ListViewModeling.swift in Sources */,
 				9CABF4B124653CC50001AAE3 /* PaymentDetailsCell.swift in Sources */,
+				9CAA70E02489D9DE00A252E4 /* PrivacyAndUseController.swift in Sources */,
 				9C7AFF1A239600830075442D /* SearchPlotController.swift in Sources */,
 				9C24AC372383DE6E005EBF95 /* SceneModels.swift in Sources */,
 				7BC0B53B246401F800B38CA8 /* TenantContractCell.swift in Sources */,

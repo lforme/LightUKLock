@@ -306,6 +306,8 @@ extension BusinessInterface: TargetType {
             return "/user/\(userId)"
         case .hardwareBindList:
             return "/hardware_bind/list"
+        case .messageList:
+            return "/message/list"
         }
     }
     
@@ -466,6 +468,9 @@ extension BusinessInterface: TargetType {
             
         case let .hardwareBindList(channels, pageSize, pageIndex, phoneNo):
             return ["channels": channels, "limit": pageSize, "page": pageIndex, "phoneNo": phoneNo]
+        
+        case let .messageList(assetId, smsType, pageIndex, pageSize):
+            return ["assetId": assetId, "smsType": smsType, "currentPage": pageIndex, "pageSize": pageSize]
             
         default:
             return nil

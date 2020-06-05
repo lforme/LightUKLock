@@ -65,7 +65,8 @@ class HomeSettingController: UITableViewController, NavigationSettingStyle {
             navigationController?.pushViewController(positionVC, animated: true)
             
         case .privacyPolicy:
-            let privacyPolicyVC = LSLWebViewController(navigationTitile: "隐私政策", webUrl: ServerHost.shared.environment.host + "policy_of_privacy.html")
+            let url = ServerHost.shared.environment.host + "/share/policies_of_privacy.html"
+            let privacyPolicyVC =  LSLWebViewController(navigationTitile: "使用条款", webUrl: url)
             navigationController?.pushViewController(privacyPolicyVC, animated: true)
         }
     }

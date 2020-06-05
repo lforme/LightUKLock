@@ -27,4 +27,5 @@ struct PositionModel: HandyJSON {
     var isHasLock: Bool!
     var lockId: String?
     var snCode: String?
+    var configId: String?
 }

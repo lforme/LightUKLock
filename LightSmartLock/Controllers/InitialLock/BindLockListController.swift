@@ -84,6 +84,7 @@ class BindLockListController: UIViewController, NavigationSettingStyle {
                 position.address = self?.selectedModel.value?.address
                 position.snCode =
                     self?.selectedModel.value?.snCode
+                position.configId = self?.selectedModel.value?.id
                 editAssetVC.asset = position
                 self?.navigationController?.pushViewController(editAssetVC, animated: true)
                 

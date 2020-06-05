@@ -17,12 +17,15 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
     
     enum CellType: Int {
         case avatar = 0
-        case nickname
-        case password
-        case phone
-        case siri
-        case version
-        case logout
+        case nickname = 1
+        case password = 2
+        case phone = 3
+        case siri = 4
+        case collectionAccount = 5
+        case version = 6
+        case privacyAndUse = 10
+        case logout = 11
+        
     }
     
     var backgroundColor: UIColor? {
@@ -68,10 +71,22 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
         
     }
     
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = ColorClassification.tableViewBackground.value
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return 8
+        } else {
+            return CGFloat.leastNormalMagnitude
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let type = CellType(rawValue: indexPath.row) else { return }
+        guard let type = CellType(rawValue: indexPath.row + indexPath.section * 10) else { return }
         switch type {
         case .avatar:
             uploadAvatarAction()
@@ -90,6 +105,12 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
             
         case .siri:
             setupSiriShortcuts()
+            
+        case .privacyAndUse:
+            gotoPrivacyAndUse()
+            
+        case .collectionAccount:
+            gotoCollectionAccount()
             
         default: break
         }
@@ -212,6 +233,16 @@ extension MySettingViewController {
         } else {
             HUD.flash(.label("iOS系统版本过低\n无法使用Siri开门"), delay: 2)
         }
+    }
+    
+    func gotoCollectionAccount() {
+        let collectionAccountVC: ReceivingAccountController = ViewLoader.Storyboard.controller(from: "Bill")
+        navigationController?.pushViewController(collectionAccountVC, animated: true)
+    }
+    
+    func gotoPrivacyAndUse() {
+        let privacyAndUseVC: PrivacyAndUseController = ViewLoader.Storyboard.controller(from: "My")
+        navigationController?.pushViewController(privacyAndUseVC, animated: true)
     }
 }
 

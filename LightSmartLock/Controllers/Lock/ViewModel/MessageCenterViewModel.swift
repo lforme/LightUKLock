@@ -14,15 +14,15 @@ import RxSwift
 final class MessageCenterReactor: Reactor {
     
     enum Action {
-        case refreshBegin
-        case loadMoreBegin
-        case changeMessageType(Int)
+        case refreshBegin(Int?)
+        case loadMoreBegin(Int?)
+        case changeMessageType(Int?)
     }
     
     struct State {
         var pageIndex: Int
-        var IsNomoreData: Bool
-        var requestFinish: Bool
+        var isNoMoreData: Bool
+        var isFinished: Bool
         var messageType: Int
         var messageList: [CenterMessageModel]
     }
@@ -31,59 +31,83 @@ final class MessageCenterReactor: Reactor {
         case setRefreshPageIndex(Int)
         case setLoadMorePageIndex(Int)
         case setRequestFinished(Bool)
-        case setNomoreData(Bool)
+        case setNoMoreData(Bool)
         case setMessageType(Int)
         case setLoadMoreResult([CenterMessageModel])
         case setRefreshResult([CenterMessageModel])
     }
     
     let initialState: State
+    let assetId: String
     
-    init() {
-        self.initialState = State(pageIndex: 1, IsNomoreData: false, requestFinish: true, messageType: 1, messageList: [])
+    init(assetId: String) {
+        self.assetId = assetId
+        self.initialState = State(pageIndex: 1, isNoMoreData: false, isFinished: true, messageType: 1, messageList: [])
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         
         switch action {
-        case .refreshBegin:
-            if !self.currentState.requestFinish {
+        case let .refreshBegin(page):
+            guard let index = page else {
+                return .empty()
+            }
+            let share = requset(pageIndex: index, type: self.currentState.messageType)
+            
+            let pageIndex = Observable.just(Mutation.setRefreshPageIndex(index))
+            
+            let finished = share.map { _ in
+                Mutation.setRequestFinished(true)
+            }
+            
+            let list = share.map { items in
+                Mutation.setRefreshResult(items)
+            }
+            
+            return Observable.concat([finished, pageIndex, list])
+            
+        case let .loadMoreBegin(page):
+          
+            guard let index = page else {
                 return .empty()
             }
             
-//            let request = BusinessAPI.requestMapJSONArray(.getLockNotice(noticeType: [-1], noticeLevel: [-1], pageIndex: 1, pageSize: 15), classType: CenterMessageModel.self, useCache: true).map { $0.compactMap{ $0 } }.share(replay: 1, scope: .forever)
+            let share = requset(pageIndex: self.currentState.pageIndex, type: self.currentState.messageType)
             
-//            ,
-//            request.map(Mutation.setRefreshResult),
-//            request.map { _ in Mutation.setRequestFinished(true)
-            
-            return Observable.concat([
-                .just(.setRefreshPageIndex(1)),
-                .just(.setNomoreData(false))])
-            
-        case .loadMoreBegin:
-            if !self.currentState.requestFinish {
-                return .empty()
+            let finished = share.map { _ in
+                Mutation.setRequestFinished(true)
             }
             
-//            let request = BusinessAPI.requestMapJSONArray(.getLockNotice(noticeType: [-1], noticeLevel: [-1], pageIndex: self.currentState.pageIndex + 1, pageSize: 15), classType: CenterMessageModel.self, useCache: true).map { $0.compactMap{ $0 } }.share(replay: 1, scope: .forever)
-//            ,
-//            request.map { _ in Mutation.setRequestFinished(true) },
-//            request.map({ (list) -> Mutation in
-//                if list.count == 0 {
-//                    return Mutation.setNomoreData(true)
-//                } else {
-//                    return Mutation.setNomoreData(false)
-//                }
-//            }),
-//            request.map(Mutation.setLoadMoreResult)
+            let noMore = share.map { items in
+                Mutation.setNoMoreData(items.count == 0)
+            }
+            
+            let list = share.map { items in
+                Mutation.setLoadMoreResult(items)
+            }
+            
+            let pageIndex = Observable.just(Mutation.setLoadMorePageIndex(index))
             
             return Observable.concat([
-                .just(.setLoadMorePageIndex(1))
+                finished, noMore, list, pageIndex
             ])
             
-        case .changeMessageType:
-            return .empty()
+        case let .changeMessageType(type):
+            guard let t = type else {
+                return .empty()
+            }
+            
+            let share = requset(pageIndex: currentState.pageIndex, type: t)
+            
+            let finished = share.map { _ in
+                Mutation.setRequestFinished(true)
+            }
+            
+            let list = share.map { items in
+                Mutation.setRefreshResult(items)
+            }
+            
+            return Observable.concat([finished, list])
             
         }
     }
@@ -93,14 +117,14 @@ final class MessageCenterReactor: Reactor {
         
         switch mutation {
         case let .setRequestFinished(finished):
-            state.requestFinish = finished
+            state.isFinished = finished
             
-        case let .setNomoreData(noMore):
-            state.IsNomoreData = noMore
+        case let .setNoMoreData(noMore):
+            state.isNoMoreData = noMore
             
         case let .setLoadMorePageIndex(index):
             state.pageIndex += index
-            print(state.pageIndex)
+            
         case let .setRefreshPageIndex(index):
             state.pageIndex = index
             
@@ -115,5 +139,12 @@ final class MessageCenterReactor: Reactor {
         }
         
         return state
+    }
+    
+    func requset(pageIndex: Int, type: Int) -> Observable<[CenterMessageModel]> {
+        
+        return BusinessAPI.requestMapJSONArray(.messageList(assetId: assetId, smsType: type, pageIndex: pageIndex, pageSize: 15), classType: CenterMessageModel.self, useCache: true, isPaginating: true)
+            .map { $0.compactMap{ $0 } }
+            .share(replay: 1, scope: .forever)
     }
 }
