@@ -23,7 +23,7 @@ class PrivacyAndUseController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "使用条款和隐私政策"
+        title = "服务协议和隐私政策"
         setupUI()
     }
 
