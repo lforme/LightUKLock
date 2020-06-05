@@ -293,7 +293,7 @@ extension BusinessInterface: TargetType {
         case .receivingAccountList:
             return "/receiving_account_info/list"
         case .addReceivingAccount:
-             return "/receiving_account_info/receiving_account"
+            return "/receiving_account_info/receiving_account"
         case let .deleteReceivingAcount(id):
             return "/receiving_account_info/\(id)"
         case .addBillInfo:
@@ -308,6 +308,8 @@ extension BusinessInterface: TargetType {
             return "/hardware_bind/list"
         case .messageList:
             return "/message/list"
+        case .changePassword:
+            return "/user/password"
         }
     }
     
@@ -343,7 +345,7 @@ extension BusinessInterface: TargetType {
             }
             
             return .requestParameters(parameters: requestParameters, encoding: encoding)
-        
+            
         default:
             if self.method == .get {
                 encoding = URLEncoding.default
@@ -356,7 +358,7 @@ extension BusinessInterface: TargetType {
     var parameters: [String: Any]? {
         
         switch self {
-       
+            
         case let .editAssetHouse(parameter):
             return parameter.toJSON()
             
@@ -404,7 +406,7 @@ extension BusinessInterface: TargetType {
             
         case let .getTempPasswordList(_, pageIndex, pageSize):
             return ["currentPage": pageIndex, "pageSize": pageSize ?? 15]
-         
+            
         case let .addTempPassword(_, parameter):
             return parameter.toJSON()
             
@@ -450,7 +452,7 @@ extension BusinessInterface: TargetType {
             
         case let .billInfoConfirm(accountType, amount, billId, payTime, receivingAccountId):
             return ["accountType": accountType, "amount": amount, "billId": billId, "payTime": payTime, "receivingAccountId": receivingAccountId]
-        
+            
         case let .addReceivingAccount(parameter):
             return parameter.toJSON()
             
@@ -462,16 +464,18 @@ extension BusinessInterface: TargetType {
             
         case let .contractRenew(contractId, endDate, increaseType, ratio, rentalChangeType):
             return ["contractId": contractId, "endDate": endDate, "increaseType": increaseType, "ratio": ratio, "rentalChangeType": rentalChangeType]
-        
+            
         case let .editOtherUser(_, userInfo):
             return userInfo.toJSON()
             
         case let .hardwareBindList(channels, pageSize, pageIndex, phoneNo):
             return ["channels": channels, "limit": pageSize, "page": pageIndex, "phoneNo": phoneNo]
-        
+            
         case let .messageList(assetId, smsType, pageIndex, pageSize):
             return ["assetId": assetId, "smsType": smsType, "currentPage": pageIndex, "pageSize": pageSize]
             
+        case let .changePassword(oldPwd, newPwd):
+            return ["oldPassword": oldPwd, "password": newPwd]
         default:
             return nil
         }

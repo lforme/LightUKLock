@@ -38,11 +38,11 @@ class PrivacyAndUseController: UITableViewController {
         switch SelectType(rawValue: indexPath.row) {
         case .privacy:
             let url = ServerHost.shared.environment.host + "/share/policies_of_privacy.html"
-            let privacyPolicyVC =  LSLWebViewController(navigationTitile: "使用条款", webUrl: url)
+            let privacyPolicyVC =  LSLWebViewController(navigationTitile: "隐私政策", webUrl: url)
             navigationController?.pushViewController(privacyPolicyVC, animated: true)
         case .use:
             let url = ServerHost.shared.environment.host + "/share/terms_of_service.html"
-            let privacyPolicyVC =  LSLWebViewController(navigationTitile: "使用条款", webUrl: url)
+            let privacyPolicyVC =  LSLWebViewController(navigationTitile: "服务协议", webUrl: url)
             navigationController?.pushViewController(privacyPolicyVC, animated: true)
         default:
             break

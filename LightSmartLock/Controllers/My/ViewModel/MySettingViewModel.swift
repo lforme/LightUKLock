@@ -25,12 +25,8 @@ final class MySettingViewModel {
         return BusinessAPI.requestMapBool(.editUser(parameter: userInfo)).map { _ in userInfo }
     }
     
-    func changePassword(_ password: String) -> Observable<UserModel> {
-        guard var userInfo = LSLUser.current().user else {
-            return .error(AppError.reason("获取本地用户失败"))
-        }
-        userInfo.loginPassword = password
-        return BusinessAPI.requestMapBool(.editUser(parameter: userInfo)).map { _ in userInfo }
+    func changePassword(oldPassword: String, newPassword: String) -> Observable<Bool> {
+        return BusinessAPI.requestMapBool(.changePassword(oldPwd: oldPassword, newPwd: newPassword))
     }
     
     func changeNickname(_ name: String) -> Observable<UserModel> {

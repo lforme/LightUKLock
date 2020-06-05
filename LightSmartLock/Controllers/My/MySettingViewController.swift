@@ -61,7 +61,7 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
     
     func bind() {
         let shareInfo = LSLUser.current().obUserInfo.share(replay: 1, scope: .forever)
-        shareInfo.map { $0?.userName }.bind(to: nameValue.rx.text).disposed(by: rx.disposeBag)
+        shareInfo.map { $0?.nickname }.bind(to: nameValue.rx.text).disposed(by: rx.disposeBag)
         shareInfo.map { $0?.avatar }.subscribe(onNext: {[weak self] (str) in
             self?.avatar.setUrl(str)
         }).disposed(by: rx.disposeBag)
@@ -157,7 +157,7 @@ extension MySettingViewController {
     
     func changePasswordAction() {
         
-        vm.verify().flatMapLatest {[weak self] (support, verify) -> Observable<String> in
+        vm.verify().flatMapLatest {[weak self] (support, verify) -> Observable<(String, String)> in
             guard let this = self else {
                 return .empty()
             }
@@ -169,14 +169,18 @@ extension MySettingViewController {
                 return .empty()
             }
             return .empty()
-        }.flatMapLatest {[weak self] (newPassword) -> Observable<UserModel> in
+        }.flatMapLatest {[weak self] (arg) -> Observable<Bool> in
             guard let this = self else {
                 return .empty()
             }
-            return this.vm.changePassword(newPassword)
-        }.subscribe(onNext: { (user) in
-            HUD.flash(.label("密码修改成功"), delay: 2)
-            LSLUser.current().user = user
+            return this.vm.changePassword(oldPassword: arg.0, newPassword: arg.1)
+        }.subscribe(onNext: { (success) in
+            if success {
+                HUD.flash(.label("密码修改成功"), delay: 2)
+            }else {
+                HUD.flash(.label("密码修改失败"), delay: 2)
+            }
+            
         }, onError: { (error) in
             PKHUD.sharedHUD.rx.showError(error)
         }).disposed(by: rx.disposeBag)

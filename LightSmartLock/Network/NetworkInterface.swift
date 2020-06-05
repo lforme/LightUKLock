@@ -86,4 +86,5 @@ enum BusinessInterface {
     case editOtherUser(userId: String, userInfo: HandyJSON) // 修改非当前登录用户
     case hardwareBindList(channels: String, pageSize: Int, pageIndex: Int, phoneNo: String) // 获取用户已绑定列表
     case messageList(assetId: String, smsType: Int, pageIndex: Int, pageSize: Int) // 消息中心
+    case changePassword(oldPwd: String, newPwd: String)
 }

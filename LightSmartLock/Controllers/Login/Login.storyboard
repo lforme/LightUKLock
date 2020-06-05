@@ -208,22 +208,16 @@
                                                     <color key="textColor" name="textPrimary"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S m a r t H o m e" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZS-Li-gFf">
-                                                    <rect key="frame" x="16" y="97" width="94.5" height="14.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZS-Li-gFf">
+                                                    <rect key="frame" x="16" y="97" width="0.0" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" name="textDescription"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V e r s i o n" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glg-it-jnu">
-                                                    <rect key="frame" x="114.5" y="97" width="63.5" height="14.5"/>
+                                                    <rect key="frame" x="20" y="90" width="63.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" name="textDescription"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="个人版" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIh-aA-awL">
-                                                    <rect key="frame" x="121.5" y="69.5" width="43" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                                    <color key="textColor" name="textPrimary"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -233,8 +227,6 @@
                                                 <constraint firstItem="sZS-Li-gFf" firstAttribute="leading" secondItem="eh2-1l-lNr" secondAttribute="leading" id="6ZZ-u4-T6U"/>
                                                 <constraint firstItem="glg-it-jnu" firstAttribute="centerY" secondItem="sZS-Li-gFf" secondAttribute="centerY" id="CtX-YH-fjC"/>
                                                 <constraint firstItem="eh2-1l-lNr" firstAttribute="leading" secondItem="k1D-pV-7pa" secondAttribute="leading" constant="16" id="YEz-C2-JbR"/>
-                                                <constraint firstItem="SIh-aA-awL" firstAttribute="leading" secondItem="eh2-1l-lNr" secondAttribute="trailing" constant="8" id="apF-Px-X2g"/>
-                                                <constraint firstItem="SIh-aA-awL" firstAttribute="firstBaseline" secondItem="eh2-1l-lNr" secondAttribute="firstBaseline" id="xts-d4-kzs"/>
                                                 <constraint firstItem="sZS-Li-gFf" firstAttribute="top" secondItem="eh2-1l-lNr" secondAttribute="bottom" constant="8" id="zyd-xE-xTE"/>
                                             </constraints>
                                         </tableViewCellContentView>

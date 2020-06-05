@@ -16,6 +16,9 @@ class LockInfoController: UITableViewController {
     @IBOutlet weak var firmwareLabel: UILabel!
     @IBOutlet weak var bluetooth: UILabel!
     @IBOutlet weak var finger: UILabel!
+    @IBOutlet weak var imsl: UILabel!
+    @IBOutlet weak var imei: UILabel!
+    @IBOutlet weak var serialNumber: UILabel!
     
     deinit {
         print("\(self) deinit")
@@ -33,8 +36,11 @@ class LockInfoController: UITableViewController {
         modeLabel.text = LSLUser.current().lockInfo?.lockType
         NBLabel.text = LSLUser.current().lockInfo?.nbVersion
         firmwareLabel.text = LSLUser.current().lockInfo?.firmwareVersion
-        bluetooth.text = LSLUser.current().lockInfo?.bluetoothName
+        bluetooth.text = LSLUser.current().lockInfo?.bluetoothVersion
         finger.text = LSLUser.current().lockInfo?.fingerVersion
+        imei.text = LSLUser.current().lockInfo?.imei
+        imsl.text = LSLUser.current().lockInfo?.imsi
+        serialNumber.text = LSLUser.current().lockInfo?.serialNumber ?? "-"
     }
     
     func setupUI() {

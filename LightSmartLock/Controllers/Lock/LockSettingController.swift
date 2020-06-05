@@ -19,7 +19,6 @@ class LockSettingController: UITableViewController {
         case firmwareUpdate
     }
     
-    @IBOutlet weak var networkSwitch: UISwitch!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var forceDeleteButton: UIButton!
     
@@ -32,7 +31,7 @@ class LockSettingController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "门锁设置"
+        title = "设备设置"
         self.clearsSelectionOnViewWillAppear = true
         setupUI()
         bind()

@@ -18,7 +18,6 @@ class HomeSettingController: UITableViewController, NavigationSettingStyle {
         case lockSetting = 0
         case lockInfo
         case position
-        case privacyPolicy = 10
     }
     
     deinit {
@@ -28,7 +27,7 @@ class HomeSettingController: UITableViewController, NavigationSettingStyle {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "设置"
+        self.title = "门锁设置"
         self.clearsSelectionOnViewWillAppear = true
         setupUI()
     }
@@ -63,11 +62,6 @@ class HomeSettingController: UITableViewController, NavigationSettingStyle {
             let positionVC: PositioEditingController = ViewLoader.Storyboard.controller(from: "Home")
             positionVC.id = LSLUser.current().scene?.ladderAssetHouseId
             navigationController?.pushViewController(positionVC, animated: true)
-            
-        case .privacyPolicy:
-            let url = ServerHost.shared.environment.host + "/share/policies_of_privacy.html"
-            let privacyPolicyVC =  LSLWebViewController(navigationTitile: "使用条款", webUrl: url)
-            navigationController?.pushViewController(privacyPolicyVC, animated: true)
         }
     }
 }

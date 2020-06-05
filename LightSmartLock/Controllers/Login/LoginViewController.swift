@@ -138,6 +138,11 @@ class LoginViewController: UITableViewController, StoryboardView {
         cell2.backgroundColor = ColorClassification.viewBackground.value
         
         versionLabel.text = ServerHost.shared.environment.description
+        if ServerHost.shared.environment == .dev {
+            versionLabel.text = ServerHost.shared.environment.description
+        } else {
+            versionLabel.text = nil
+        }
         
     }
     
