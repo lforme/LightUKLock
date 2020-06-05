@@ -39,7 +39,14 @@ class LoginViewController: UITableViewController, StoryboardView {
         super.viewDidLoad()
         setupUI()
         self.reactor = Reactor()
-        phoneTextField.delegate = self
+        setupTitleLabelGesture()
+    }
+    
+    func setupTitleLabelGesture() {
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeEnvironment))
+        tapGesture.numberOfTapsRequired = 10
+        titleLabel.addGestureRecognizer(tapGesture)
     }
     
     func bind(reactor: LoginViewReactor) {
@@ -105,6 +112,9 @@ class LoginViewController: UITableViewController, StoryboardView {
     }
     
     func setupUI() {
+        
+        phoneTextField.delegate = self
+        
         interactiveNavigationBarHidden = true
         
         tableView.backgroundColor = ColorClassification.viewBackground.value
@@ -176,5 +186,31 @@ extension LoginViewController: UITextFieldDelegate {
             }
         }
         return result
+    }
+}
+
+extension LoginViewController {
+    
+    @objc func changeEnvironment() {
+        self.showAlert(title: "开发模式", message: "切换开发环境", buttonTitles: ["开发环境", "线上环境", "取消"], highlightedButtonIndex: 2)
+            .subscribe(onNext: { (index) in
+                switch index {
+                case 0:
+                    ServerHost.shared.environment = .dev
+                    LSLUser.current().logout()
+                    HUD.flash(.label("已经切换到开发环境\nAPP即将关闭"), delay: 2, completion: { (_) in
+                        exit(1)
+                    })
+                case 1:
+                    ServerHost.shared.environment = .production
+                    LSLUser.current().logout()
+                    HUD.flash(.label("已经切换到线上环境\nAPP即将关闭"), delay: 2, completion: { (_) in
+                        exit(1)
+                    })
+                case 2:
+                    break
+                default: break
+                }
+            }).disposed(by: rx.disposeBag)
     }
 }
