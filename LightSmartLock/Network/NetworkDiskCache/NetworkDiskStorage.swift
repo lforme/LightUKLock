@@ -46,8 +46,8 @@ final class NetworkDiskStorage {
     }
     
     @discardableResult
-    func deleteValueBy(_ userId: String?) -> Bool {
-        return db.deleteValueBy(userId)
+    func deleteAll() -> Bool {
+        return db.deleteAll()
     }
     
     private func removeExpiredValues() {

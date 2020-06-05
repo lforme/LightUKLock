@@ -49,9 +49,9 @@ final class PositionViewModel {
         
         let getAssetHouseDetail = BusinessAPI.requestMapJSON(.getAssetHouseDetail(id: self.id ?? ""), classType: PositionModel.self).share(replay: 1, scope: .forever).catchErrorJustReturn(PositionModel())
         
-        Observable.combineLatest(obVillageName.asObservable(), obArea.asObservable(), obHouseType.asObservable(), obTowards.asObservable(), obDoorplate, obUnit.asObservable(), obCity.asObservable(), obRegion.asObservable()).subscribe(onNext: {[weak self] (_) in
-            self?.obButtonType.accept(.save)
-        }).disposed(by: disposeBag)
+        //        Observable.combineLatest(obVillageName.asObservable(), obArea.asObservable(), obHouseType.asObservable(), obTowards.asObservable(), obDoorplate, obUnit.asObservable(), obCity.asObservable(), obRegion.asObservable()).subscribe(onNext: {[weak self] (_) in
+        //            self?.obButtonType.accept(.save)
+        //        }).disposed(by: disposeBag)
         
         getAssetHouseDetail.bind(to: obPositionModel).disposed(by: disposeBag)
         
@@ -65,9 +65,9 @@ final class PositionViewModel {
             self?._obPositionModel.accept(param)
         }).disposed(by: disposeBag)
         
-        getAssetHouseDetail.subscribe(onCompleted: {[weak self] in
-            self?.obButtonType.accept(.delete)
-        }).disposed(by: disposeBag)
+        //        getAssetHouseDetail.subscribe(onCompleted: {[weak self] in
+        //            self?.obButtonType.accept(.delete)
+        //        }).disposed(by: disposeBag)
     }
     
     func setupPosition(_ village: String?, city: String?, region: String?) {

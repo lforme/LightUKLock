@@ -17,6 +17,8 @@ class MyInfoHeader: UITableViewCell {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
     
+    var avatarGestureTap: UITapGestureRecognizer!
+    
     private(set) var disposeBag = DisposeBag()
     
     override func prepareForReuse() {
@@ -31,5 +33,7 @@ class MyInfoHeader: UITableViewCell {
         avatar.clipsToBounds = true
         avatar.layer.cornerRadius = avatar.bounds.height / 2
     
+        avatarGestureTap = UITapGestureRecognizer(target: nil, action: nil)
+        avatar.addGestureRecognizer(avatarGestureTap)
     }
 }

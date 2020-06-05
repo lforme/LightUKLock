@@ -60,8 +60,10 @@ class LiquidationViewController: UIViewController {
                 HUD.flash(.label("退租成功"), delay: 2)
                 
                 guard let tagerVC = self?.navigationController?.children.filter({ (vc) -> Bool in
-                    return vc is BillFlowContractDetailController
+                    return vc is AssetDetailViewController
                 }).last else { return }
+                
+                NotificationCenter.default.post(name: .refreshAssetDetail, object: nil)
                 
                 self?.navigationController?.popToViewController(tagerVC, animated: true)
     

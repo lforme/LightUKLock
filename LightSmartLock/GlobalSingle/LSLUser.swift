@@ -41,7 +41,7 @@ class LSLUser: NSObject {
         }
         
         let diskCache = NetworkDiskStorage(autoCleanTrash: true, path: "network")
-        let deleteDb = diskCache.deleteValueBy(user?.accountID)
+        let deleteDb = diskCache.deleteAll()
         print("数据库网络缓存文件删除:\(deleteDb ? "成功" : "失败")")
         
         Keys.allCases.forEach {

@@ -28,11 +28,11 @@ class MyListCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-//        if selected {
-//            indicator.backgroundColor = ColorClassification.primary.value
-//        } else {
-//            indicator.backgroundColor = ColorClassification.viewBackground.value
-//        }
+        //        if selected {
+        //            indicator.backgroundColor = ColorClassification.primary.value
+        //        } else {
+        //            indicator.backgroundColor = ColorClassification.viewBackground.value
+        //        }
     }
     
     override func awakeFromNib() {
@@ -60,10 +60,12 @@ class MyListCell: UITableViewCell {
     func bind(_ data: SceneListModel) {
         name.text = data.buildingName ?? "-"
         address.text = data.buildingAdress ?? "-"
+        
         if let lockInfo = data.lockType {
             message.text = "已安装门锁, 门锁类型: \(lockInfo)"
+        } else {
+            message.text = "未绑定门锁"
         }
-        
         
         guard let currentId = LSLUser.current().scene?.ladderAssetHouseId, let id = data.ladderAssetHouseId else {
             return

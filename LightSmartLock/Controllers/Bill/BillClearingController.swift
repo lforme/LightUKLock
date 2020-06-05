@@ -41,7 +41,7 @@ class BillClearingController: UIViewController {
         
         title = "清算账单"
         setupUI()
-        setupNavigationItems()
+       // setupNavigationItems() 暂时不要了
         bind()
         
     }
@@ -121,7 +121,6 @@ class BillClearingController: UIViewController {
         let rightItemButton = createdRightNavigationItem(title: "编辑", font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.medium), image: nil, rightEdge: 8, color: ColorClassification.navigationItem.value)
         
         rightItemButton.addTarget(self, action: #selector(rightNavigationTap(_:)), for: .touchUpInside)
-        
     }
     
     @objc func leaseBackButtonTap(_ btn: UIButton) {

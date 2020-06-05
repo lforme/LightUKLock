@@ -28,9 +28,9 @@ final class LoadingPlugin: PluginType {
     
     func didReceive(_ result: Result<Moya.Response, MoyaError>, target: TargetType) {
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            HUD.hide(afterDelay: 1)
+            HUD.hide()
         }
         
     }

@@ -163,6 +163,7 @@ extension MyViewController: UITableViewDataSource, UITableViewDelegate {
         let header = tableView.dequeueReusableCell(withIdentifier: "MyInfoHeader") as! MyInfoHeader
         header.settingButton.addTarget(self, action: #selector(self.gotoMySettingVC), for: .touchUpInside)
         header.addButton.addTarget(self, action: #selector(self.gotoSelectedLockVC), for: .touchUpInside)
+        header.avatarGestureTap.addTarget(self, action: #selector(self.gotoMySettingVC))
         
         let shareInfo = LSLUser.current().obUserInfo.share(replay: 1, scope: .forever)
         shareInfo.map { $0?.nickname }.bind(to: header.nick.rx.text).disposed(by: header.disposeBag)

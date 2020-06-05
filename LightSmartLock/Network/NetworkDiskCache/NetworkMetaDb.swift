@@ -165,7 +165,9 @@ extension NetworkMetaDb {
         }
         var result = -1
         queue.async {[unowned self] in
-            let value = self.table.filter(self.accountId == userId)
+            let value = self.table.select(self.table[*])
+            .filter(self.accountId == userId)
+            //self.table.filter(self.accountId == userId)
             do {
                 result = try self.checkDb().run(value.delete())
                 

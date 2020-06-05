@@ -79,6 +79,11 @@ class BindLockListController: UIViewController, NavigationSettingStyle {
             .tap
             .subscribe(onNext: {[weak self] (_) in
                 
+                if self?.selectedModel.value == nil {
+                    HUD.flash(.label("请先选择门锁"), delay: 2)
+                    return
+                }
+                
                 let editAssetVC: BindingOrEditAssetViewController = ViewLoader.Storyboard.controller(from: "AssetDetail")
                 var position = PositionModel()
                 position.address = self?.selectedModel.value?.address

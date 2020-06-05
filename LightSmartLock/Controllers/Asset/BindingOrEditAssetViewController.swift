@@ -42,6 +42,13 @@ class BindingOrEditAssetViewController: AssetBaseViewController {
         areaTF.text = asset.area?.description
         houseStructBtn.setTitle(asset.houseStruct ?? "请选择", for: .normal)
         
+        buildingNoTF.rx
+            .text
+            .orEmpty
+            .changed.subscribe(onNext: {[weak self] (buildingNumber) in
+                self?.asset.houseNum = buildingNumber
+        }).disposed(by: rx.disposeBag)
+        
         saveBtn.rx.tap
             .flatMap { [unowned self]_ -> Observable<PositionModel> in
                 
@@ -74,7 +81,8 @@ class BindingOrEditAssetViewController: AssetBaseViewController {
                 if let status = response["status"] as? Int, status == 200 {
                     HUD.flash(.label("操作成功"), onView: nil, delay: 0.5) { _ in
                         NotificationCenter.default.post(name: .refreshAssetDetail, object: nil)
-                        self?.navigationController?.popViewController(animated: true)
+                        NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.updateScene)
+                        self?.navigationController?.popToRootViewController(animated: true)
                     }
                 } else {
                     HUD.flash(.label("操作失败"))

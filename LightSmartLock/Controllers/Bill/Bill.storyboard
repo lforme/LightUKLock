@@ -2458,7 +2458,7 @@
                                         <rect key="frame" x="0.0" y="1072" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r75-Q0-T8m" id="eTA-Mb-T1s">
-                                            <rect key="frame" x="0.0" y="0.0" width="395" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收款账号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ash-qm-EG7">
@@ -2817,7 +2817,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="apU-a3-v4b">
-                                        <rect key="frame" x="20" y="314" width="374" height="56"/>
+                                        <rect key="frame" x="20" y="326" width="374" height="56"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RA0-0q-2qr">
                                                 <rect key="frame" x="0.0" y="5" width="374" height="46"/>
@@ -2851,7 +2851,7 @@
                                     <constraint firstItem="Ces-lE-tr3" firstAttribute="leading" secondItem="bE6-mB-Ald" secondAttribute="leading" constant="8" id="OX9-9X-mlU"/>
                                     <constraint firstItem="rsg-4n-ZyZ" firstAttribute="top" secondItem="Ces-lE-tr3" secondAttribute="bottom" constant="8" id="Pnj-2S-5uX"/>
                                     <constraint firstItem="Ces-lE-tr3" firstAttribute="centerX" secondItem="GEp-6S-H8I" secondAttribute="centerX" id="QKS-qW-RSh"/>
-                                    <constraint firstItem="apU-a3-v4b" firstAttribute="top" secondItem="5kK-os-Nfj" secondAttribute="bottom" constant="8" symbolic="YES" id="TtS-6N-wi3"/>
+                                    <constraint firstItem="apU-a3-v4b" firstAttribute="top" secondItem="5kK-os-Nfj" secondAttribute="bottom" constant="20" id="TtS-6N-wi3"/>
                                     <constraint firstItem="5kK-os-Nfj" firstAttribute="top" secondItem="rsg-4n-ZyZ" secondAttribute="bottom" constant="8" id="ZCa-cL-KhY"/>
                                     <constraint firstItem="5kK-os-Nfj" firstAttribute="leading" secondItem="7vH-3r-F54" secondAttribute="leading" id="aDn-eu-4gN"/>
                                     <constraint firstItem="apU-a3-v4b" firstAttribute="leading" secondItem="7vH-3r-F54" secondAttribute="leading" constant="20" id="eet-yY-3cv"/>
