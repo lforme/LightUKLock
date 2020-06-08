@@ -86,9 +86,9 @@ public class BluetoothPapa: NSObject {
     fileprivate func commonInit() {
         bluetoothManager = CBCentralManager(delegate: self, queue: centralQueue)
         if let blueName = LSLUser.current().lockInfo?.bluetoothName {
-            filterBluetoothNames = [blueName, "UOKO", "UOKO_BLE"]
+            filterBluetoothNames = [blueName, "UOKO", "UOKO_BLE", "KD_LOCK"]
         } else {
-            filterBluetoothNames = ["UOKO", "UOKO_BLE"]
+            filterBluetoothNames = ["UOKO", "UOKO_BLE", "KD_LOCK"]
         }
     }
     

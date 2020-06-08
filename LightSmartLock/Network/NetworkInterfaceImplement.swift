@@ -178,7 +178,8 @@ extension BusinessInterface: TargetType {
              .costCategory,
              .tenantContractInfo,
              .checkTerminationTenantContract,
-             .billInfoDetail:
+             .billInfoDetail,
+             .lockTypeList:
             return .get
             
         case .deleteAssetHouse,
@@ -310,6 +311,8 @@ extension BusinessInterface: TargetType {
             return "/message/list"
         case .changePassword:
             return "/user/password"
+        case .lockTypeList:
+            return "/hardware_lock_config/lockType"
         }
     }
     
@@ -476,6 +479,10 @@ extension BusinessInterface: TargetType {
             
         case let .changePassword(oldPwd, newPwd):
             return ["oldPassword": oldPwd, "password": newPwd]
+            
+        case let .lockTypeList(channels):
+            return ["channels": channels]
+            
         default:
             return nil
         }

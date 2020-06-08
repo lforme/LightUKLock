@@ -58,3 +58,9 @@ class BindLockListModel: HandyJSON {
         
     }
 }
+
+struct LockTypeModel: HandyJSON {
+    var tyeUrl: String?
+    var typeId: String?
+    var typeName: String?
+}
