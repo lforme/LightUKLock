@@ -55,4 +55,12 @@ class AddTenantSuccessViewController: AssetBaseViewController {
         NotificationCenter.default.post(name: .gotoAssetDetail, object: nil)
     }
     
+    @IBAction func shareAction(_ sender: Any) {
+        if let saveImage = QRCodeImageView.image {
+            ShareTool.share(platform: .weixin, contentText: nil, url: nil, title: nil, images: [saveImage]) { (success) in
+                print("分享: \(success)")
+                
+            }
+        }
+    }
 }

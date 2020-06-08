@@ -40,9 +40,15 @@ class InviteBindingViewController: AssetBaseViewController {
     
     @IBAction func sendAction(_ sender: Any) {
         if let saveImage = QRCodeImageView.image {
-            let vc = UIActivityViewController(activityItems: [saveImage], applicationActivities: nil)
-            self.present(vc, animated: true, completion: nil)
+            //            let vc = UIActivityViewController(activityItems: [saveImage], applicationActivities: nil)
+            //            self.present(vc, animated: true, completion: nil)
+            ShareTool.share(platform: .weixin, contentText: nil, url: nil, title: nil, images: [saveImage]) { (success) in
+                print("分享: \(success)")
+                
+            }
         }
+        
+        
     }
 }
 

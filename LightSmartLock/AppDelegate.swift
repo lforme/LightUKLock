@@ -48,7 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        
+        if userActivity.webpageURL?.absoluteString.contains("share2dlink") == true {
+            return appDelegate.application?(application, continue: userActivity, restorationHandler: restorationHandler) ?? true
+        }
         NotificationCenter.default
             .post(name: .siriOpenDoor, object: nil)
         
