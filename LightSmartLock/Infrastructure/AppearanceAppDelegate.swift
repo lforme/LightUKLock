@@ -17,7 +17,7 @@ final class AppearanceAppDelegate: AppDelegateType {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.setupKeyborad()
         }
-        self.setupHUD()
+        setupHUD()
         
         return true
     }

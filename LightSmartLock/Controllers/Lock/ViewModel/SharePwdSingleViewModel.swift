@@ -42,12 +42,26 @@ final class SharePwdSingleViewModel {
                     param.type = 1
                     return BusinessAPI.requestMapJSON(.addTempPassword(lockId: self.lockId, parameter: param), classType: ShareBodyModel.self)
                 }
+                
             case .qq:
-                return .empty()
+                
+                param.startTime = Date().toFormat("yyyy-MM-dd HH:mm:ss")
+                param.endTime = Date().toFormat("yyyy-MM-dd 23:59:59")
+                param.remark = self.bindMark.value
+                param.sendType = self.bindShareType.value
+                param.type = 1
+                return BusinessAPI.requestMapJSON(.addTempPassword(lockId: self.lockId, parameter: param), classType: ShareBodyModel.self)
+                
             case .weixin:
-                return .empty()
+                
+                param.startTime = Date().toFormat("yyyy-MM-dd HH:mm:ss")
+                param.endTime = Date().toFormat("yyyy-MM-dd 23:59:59")
+                param.remark = self.bindMark.value
+                param.sendType = self.bindShareType.value
+                param.type = 1
+                return BusinessAPI.requestMapJSON(.addTempPassword(lockId: self.lockId, parameter: param), classType: ShareBodyModel.self)
+                
             }
         })
     }
-
 }

@@ -1152,18 +1152,42 @@
                                                     <color key="textColor" name="textPrimary"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pRX-s2-1I5">
-                                                    <rect key="frame" x="20" y="54" width="60" height="30"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="pRX-s2-1I5">
+                                                    <rect key="frame" x="20" y="54" width="196" height="30"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daD-rZ-5nG">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daD-rZ-5nG">
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
                                                             <color key="backgroundColor" red="0.92569929360000003" green="0.92919051649999995" blue="0.94117921589999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="92t-i9-PMJ"/>
                                                                 <constraint firstAttribute="width" constant="60" id="Wak-eP-YJQ"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                             <state key="normal" title="短信">
+                                                                <color key="titleColor" name="textPrimary"/>
+                                                            </state>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gnp-d2-iyb">
+                                                            <rect key="frame" x="68" y="0.0" width="60" height="30"/>
+                                                            <color key="backgroundColor" red="0.92569929360000003" green="0.92919051649999995" blue="0.94117921589999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="1H4-r5-o4J"/>
+                                                                <constraint firstAttribute="width" constant="60" id="U86-mk-laN"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                            <state key="normal" title="微信">
+                                                                <color key="titleColor" name="textPrimary"/>
+                                                            </state>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAe-0G-PCH">
+                                                            <rect key="frame" x="136" y="0.0" width="60" height="30"/>
+                                                            <color key="backgroundColor" red="0.92569929360000003" green="0.92919051649999995" blue="0.94117921589999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="60" id="TFC-Nu-GWv"/>
+                                                                <constraint firstAttribute="height" constant="30" id="Z5C-cY-AMx"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                            <state key="normal" title="QQ">
                                                                 <color key="titleColor" name="textPrimary"/>
                                                             </state>
                                                         </button>
@@ -1271,7 +1295,10 @@
                     <connections>
                         <outlet property="MarkTextField" destination="xQf-eR-dcI" id="tGv-tu-O3j"/>
                         <outlet property="messageButton" destination="daD-rZ-5nG" id="GhR-79-jzC"/>
+                        <outlet property="phoneCell" destination="Nw7-k3-DPd" id="Oq4-Yo-RZX"/>
                         <outlet property="phoneTextField" destination="eCK-Fy-TkE" id="sJZ-5D-Go2"/>
+                        <outlet property="qqButton" destination="FAe-0G-PCH" id="dfq-Az-3bJ"/>
+                        <outlet property="wechatButton" destination="Gnp-d2-iyb" id="b72-e5-3Bn"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFj-wG-k2b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1376,20 +1403,59 @@
                                                     <color key="textColor" name="textPrimary"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4oh-KS-yld">
-                                                    <rect key="frame" x="20" y="54" width="60" height="30"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4oh-KS-yld">
+                                                    <rect key="frame" x="20" y="54" width="196" height="30"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bib-k7-tH1">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bib-k7-tH1">
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
                                                             <color key="backgroundColor" red="0.92569929360000003" green="0.92919051649999995" blue="0.94117921589999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="KSi-yk-wsb"/>
                                                                 <constraint firstAttribute="width" constant="60" id="vk0-oV-rs2"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                             <state key="normal" title="短信">
                                                                 <color key="titleColor" name="textPrimary"/>
                                                             </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="7"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57h-hH-W8L">
+                                                            <rect key="frame" x="68" y="0.0" width="60" height="30"/>
+                                                            <color key="backgroundColor" red="0.92569929360000003" green="0.92919051649999995" blue="0.94117921589999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="60" id="RsJ-wd-BZI"/>
+                                                                <constraint firstAttribute="height" constant="30" id="uUd-Fa-5mH"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                            <state key="normal" title="微信">
+                                                                <color key="titleColor" name="textPrimary"/>
+                                                            </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="7"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SzR-kg-mBs">
+                                                            <rect key="frame" x="136" y="0.0" width="60" height="30"/>
+                                                            <color key="backgroundColor" red="0.92569929360000003" green="0.92919051649999995" blue="0.94117921589999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="60" id="0wi-1N-Mfg"/>
+                                                                <constraint firstAttribute="height" constant="30" id="cAd-1E-NeV"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                            <state key="normal" title="QQ">
+                                                                <color key="titleColor" name="textPrimary"/>
+                                                            </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="7"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -1496,8 +1562,11 @@
                         <outlet property="MarkTextField" destination="5iN-Mp-qVJ" id="Iev-Mh-kkc"/>
                         <outlet property="endTime" destination="dOQ-4h-DmD" id="7TL-NY-sox"/>
                         <outlet property="messageButton" destination="Bib-k7-tH1" id="1Kn-DN-wjK"/>
+                        <outlet property="phoneCell" destination="iUT-NE-MKC" id="3s4-nf-57e"/>
                         <outlet property="phoneTextField" destination="I4x-CB-4UC" id="Rmr-LZ-Zyy"/>
+                        <outlet property="qqButton" destination="SzR-kg-mBs" id="ou5-fh-lsY"/>
                         <outlet property="startTime" destination="cSb-zd-CMv" id="7Sm-Cu-4lD"/>
+                        <outlet property="wechatButton" destination="57h-hH-W8L" id="aH4-he-OmW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DNB-6v-7g6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

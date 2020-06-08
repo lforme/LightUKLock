@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         static func makeDefault() -> AppDelegateType {
             return CompositeAppDelegate(appDelegates: [
                 PushNotificationsAppDelegate(),
-                AppearanceAppDelegate()
+                AppearanceAppDelegate(),
+                ShareSDKAppDelegate()
                 ]
             )
         }

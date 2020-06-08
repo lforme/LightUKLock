@@ -56,6 +56,10 @@ target 'LightSmartLock' do
   # 推送
   pod 'JPush', '3.2.4-noidfa'
   
+  # 分享
+  pod 'mob_sharesdk/ShareSDKPlatforms/WeChat_Lite'
+  pod 'mob_sharesdk/ShareSDKPlatforms/QQ_Lite'
+  
 end
 
 target 'LSLWidget' do

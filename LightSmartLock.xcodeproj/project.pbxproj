@@ -278,6 +278,8 @@
 		9CDD272E2382801E006A9B97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD272C2382801E006A9B97 /* LaunchScreen.storyboard */; };
 		9CDD274423829363006A9B97 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD274323829363006A9B97 /* RootViewController.swift */; };
 		9CEC3F9424580056002ADA39 /* BillFlowLeaseRenewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC3F9324580056002ADA39 /* BillFlowLeaseRenewController.swift */; };
+		9CEFAE7D248E13D8005403E8 /* ShareSDKAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEFAE7C248E13D8005403E8 /* ShareSDKAppDelegate.swift */; };
+		9CEFAE7F248E2C3C005403E8 /* ShareTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEFAE7E248E2C3C005403E8 /* ShareTool.swift */; };
 		9CF01D7423BD8E01007578F3 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF01D4923BD8681007578F3 /* NotificationCenter.framework */; };
 		9CF01D7723BD8E01007578F3 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF01D7623BD8E01007578F3 /* TodayViewController.swift */; };
 		9CF01D7A23BD8E01007578F3 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF01D7823BD8E01007578F3 /* MainInterface.storyboard */; };
@@ -614,6 +616,8 @@
 		9CDD272F2382801E006A9B97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CDD274323829363006A9B97 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		9CEC3F9324580056002ADA39 /* BillFlowLeaseRenewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillFlowLeaseRenewController.swift; sourceTree = "<group>"; };
+		9CEFAE7C248E13D8005403E8 /* ShareSDKAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSDKAppDelegate.swift; sourceTree = "<group>"; };
+		9CEFAE7E248E2C3C005403E8 /* ShareTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTool.swift; sourceTree = "<group>"; };
 		9CF01D4923BD8681007578F3 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		9CF01D7323BD8E01007578F3 /* 门锁助手.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "门锁助手.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF01D7623BD8E01007578F3 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -863,6 +867,7 @@
 				9CAF7F0F247778E9001D218C /* CompositeAppDelegate.swift */,
 				9CAF7F1124777C6F001D218C /* PushNotificationsAppDelegate.swift */,
 				9CAF7F1324778075001D218C /* AppearanceAppDelegate.swift */,
+				9CEFAE7C248E13D8005403E8 /* ShareSDKAppDelegate.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -940,6 +945,7 @@
 			children = (
 				9C24AC2F2383D89A005EBF95 /* LocalArchiver.swift */,
 				9C24AC3A2383E736005EBF95 /* ViewLoader.swift */,
+				9CEFAE7E248E2C3C005403E8 /* ShareTool.swift */,
 			);
 			path = ToolBox;
 			sourceTree = "<group>";
@@ -1326,6 +1332,7 @@
 				9CDD271C2382801D006A9B97 /* Resources */,
 				9CF01D5523BD8681007578F3 /* Embed App Extensions */,
 				ABFDD727832FA9CB6020503F /* [CP] Embed Pods Frameworks */,
+				7EA851BCC074C60895990D23 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1493,6 +1500,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7EA851BCC074C60895990D23 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LightSmartLock/Pods-LightSmartLock-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		ABFDD727832FA9CB6020503F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1596,6 +1620,7 @@
 				9CFDE20123851EE80062522E /* NetworkInterface.swift in Sources */,
 				9CABF4A8246515F30001AAE3 /* BillDetailTenantSection.swift in Sources */,
 				9CFDE20323851F660062522E /* NetworkInterfaceImplement.swift in Sources */,
+				9CEFAE7D248E13D8005403E8 /* ShareSDKAppDelegate.swift in Sources */,
 				9C24AC462383EBB1005EBF95 /* MyViewController.swift in Sources */,
 				9C3726CE2390D29900450757 /* ChangePhoneController.swift in Sources */,
 				9C24AC332383D91B005EBF95 /* AccessTokenModel.swift in Sources */,
@@ -1702,6 +1727,7 @@
 				9CBAF5FB24592BF700197450 /* BillClearingController.swift in Sources */,
 				9CB4B34F239E31FC001197AB /* ChangeDigitalPwdController.swift in Sources */,
 				9C524034238E64C000308AC4 /* RecordUnlockController.swift in Sources */,
+				9CEFAE7F248E2C3C005403E8 /* ShareTool.swift in Sources */,
 				9C7AFF1D239603F00075442D /* SearchPlotCell.swift in Sources */,
 				9C7AFF24239636640075442D /* NSMutableAttributedString+Extention.swift in Sources */,
 				7B4B9E342462C22B00F6C18C /* TenantContractAndBillsDTO.swift in Sources */,

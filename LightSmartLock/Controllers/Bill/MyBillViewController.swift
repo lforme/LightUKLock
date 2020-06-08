@@ -159,7 +159,7 @@ extension MyBillViewController: UITableViewDataSource, UITableViewDelegate {
             guard let vc = self else {
                 return .error(AppError.reason("发生未知错误"))
             }
-            return vc.showActionSheet(title: "选择发送方式", message: nil, buttonTitles: ["短信", "取消"], highlightedButtonIndex: nil)
+            return vc.showActionSheet(title: "选择发送方式", message: nil, buttonTitles: ["短信", "微信", "取消"], highlightedButtonIndex: nil)
         }.subscribe(onNext: {[weak self] (buttonIndex) in
             guard let this = self else { return }
             let deadLineDate = data.deadlineDays ?? 0
@@ -187,6 +187,11 @@ extension MyBillViewController: UITableViewDataSource, UITableViewDelegate {
                     this.present(messageVC, animated: true, completion: nil)
                 }
                 
+            case 1:
+                ShareTool.share(platform: .weixin, contentText: sendStr, url: nil, title: "账单明细") { (success) in
+                    print("分享: \(success)")
+                }
+                
             default :break
             }
             print(sendStr)
@@ -197,7 +202,7 @@ extension MyBillViewController: UITableViewDataSource, UITableViewDelegate {
             guard let vc = self else {
                 return .error(AppError.reason("发生未知错误"))
             }
-            return vc.showActionSheet(title: "选择发送方式", message: nil, buttonTitles: ["短信", "取消"], highlightedButtonIndex: 0)
+            return vc.showActionSheet(title: "选择发送方式", message: nil, buttonTitles: ["短信", "微信", "取消"], highlightedButtonIndex: 0)
         }.subscribe(onNext: {[weak self] (buttonIndex) in
             guard let this = self else { return }
             let money = data.amount ?? 0.0
@@ -209,6 +214,11 @@ extension MyBillViewController: UITableViewDataSource, UITableViewDelegate {
                     messageVC.body = sendStr
                     messageVC.messageComposeDelegate = this
                     this.present(messageVC, animated: true, completion: nil)
+                }
+                
+            case 1:
+                ShareTool.share(platform: .weixin, contentText: sendStr, url: nil, title: "逾期") { (success) in
+                    print("分享: \(success)")
                 }
                 
             default :break

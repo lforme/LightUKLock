@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>MOBAppKey</key>
+	<string>2f948f23b4b98</string>
+	<key>MOBAppSecret</key>
+	<string>049f241534782e3e6bd2d5cd3322d438</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -25,7 +29,27 @@
 			<string>MyApp</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>LightSmartLock</string>
+				<string>com.oldwhy.QuickSmartLock</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>weixin</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wxa3043eaf33286039</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>QQ06129F52</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>tencent101883730</string>
 			</array>
 		</dict>
 	</array>

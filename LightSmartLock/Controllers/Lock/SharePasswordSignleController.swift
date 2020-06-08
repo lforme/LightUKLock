@@ -16,6 +16,9 @@ class SharePasswordSignleController: UITableViewController {
     @IBOutlet weak var messageButton: UIButton!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var MarkTextField: UITextField!
+    @IBOutlet weak var wechatButton: UIButton!
+    @IBOutlet weak var phoneCell: UITableViewCell!
+    @IBOutlet weak var qqButton: UIButton!
     
     var shareButton: UIButton!
     var vm: SharePwdSingleViewModel!
@@ -46,12 +49,29 @@ class SharePasswordSignleController: UITableViewController {
             switch type {
             case .message:
                 self?.messageButton.isSelected = true
-            case .qq: break
-            case .weixin: break
+                self?.wechatButton.isSelected = false
+                self?.qqButton.isSelected = false
+                self?.phoneCell.isHidden = false
+                
+            case .qq:
+                self?.messageButton.isSelected = false
+                self?.wechatButton.isSelected = false
+                self?.qqButton.isSelected = true
+                self?.phoneCell.isHidden = true
+                
+            case .weixin:
+                self?.messageButton.isSelected = false
+                self?.wechatButton.isSelected = true
+                self?.qqButton.isSelected = false
+                self?.phoneCell.isHidden = true
             }
         }).disposed(by: rx.disposeBag)
         
         messageButton.rx.tap.map { _ in TempPasswordShareWayType.message }.bind(to: vm.bindShareType).disposed(by: rx.disposeBag)
+        
+        wechatButton.rx.tap.map { _ in TempPasswordShareWayType.weixin }.bind(to: vm.bindShareType).disposed(by: rx.disposeBag)
+        
+        qqButton.rx.tap.map { _ in TempPasswordShareWayType.qq }.bind(to: vm.bindShareType).disposed(by: rx.disposeBag)
         
         phoneTextField.rx.text.orEmpty.changed
             .distinctUntilChanged()
@@ -67,8 +87,26 @@ class SharePasswordSignleController: UITableViewController {
         }).disposed(by: rx.disposeBag)
         
         vm.shareAction.elements.subscribe(onNext: {[weak self] (shareBody) in
-            print(shareBody)
-            HUD.flash(.label("分享成功"), delay: 2)
+            switch self?.vm.bindShareType.value {
+            case .message:
+                HUD.flash(.label("分享成功"), delay: 2)
+                
+            case .weixin:
+                ShareTool.share(platform: .weixin, contentText: shareBody.content, url: ServerHost.shared.environment.host + (shareBody.url ?? ""), title: shareBody.title) { (success) in
+                    if success {
+                        HUD.flash(.label("分享成功"), delay: 2)
+                    }
+                }
+                
+            case .qq:
+                ShareTool.share(platform: .qq, contentText: shareBody.content, url: ServerHost.shared.environment.host + (shareBody.url ?? ""), title: shareBody.title) { (success) in
+                    if success {
+                        HUD.flash(.label("分享成功"), delay: 2)
+                    }
+                }
+            default: break
+            }
+            
             self?.navigationController?.popViewController(animated: true)
             NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.tempPassword)
         }).disposed(by: rx.disposeBag)
@@ -80,9 +118,13 @@ class SharePasswordSignleController: UITableViewController {
     
     func setupUI() {
         tableView.tableFooterView = UIView()
-        messageButton.setCircular(radius: 3)
-        messageButton.setBackgroundImage(UIImage(color: ColorClassification.primary.value, size: messageButton.bounds.size), for: .selected)
-        messageButton.isSelected = true
+        [messageButton, wechatButton, qqButton].forEach { (btn) in
+            btn?.setCircular(radius: 7)
+            btn?.clipsToBounds = true
+            btn?.setBackgroundImage(UIImage(color: ColorClassification.primary.value, size: btn!.bounds.size), for: .selected)
+            btn?.isSelected = true
+            btn?.setTitleColor(.white, for: .selected)
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

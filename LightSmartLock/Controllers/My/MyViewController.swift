@@ -133,11 +133,11 @@ class MyViewController: UIViewController, NavigationSettingStyle {
                     self?.navigationController?.pushViewController(selectVC, animated: true)
                 }
                 
-            }, onError: {[weak self] (error) in
-                PKHUD.sharedHUD.rx.showError(error)
-                let selectVC: SelectLockTypeController = ViewLoader.Storyboard.controller(from: "InitialLock")
-                selectVC.kind = .newAdd
-                self?.navigationController?.pushViewController(selectVC, animated: true)
+                }, onError: {[weak self] (error) in
+                    PKHUD.sharedHUD.rx.showError(error)
+                    let selectVC: SelectLockTypeController = ViewLoader.Storyboard.controller(from: "InitialLock")
+                    selectVC.kind = .newAdd
+                    self?.navigationController?.pushViewController(selectVC, animated: true)
             }).disposed(by: rx.disposeBag)
     }
 }
@@ -176,6 +176,7 @@ extension MyViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let scene = dataSource[indexPath.row]
         LSLUser.current().scene = scene
         let lockVC: HomeViewController = ViewLoader.Storyboard.controller(from: "Home")

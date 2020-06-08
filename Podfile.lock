@@ -33,6 +33,15 @@ PODS:
   - lottie-ios (3.1.6)
   - LTMorphingLabel (0.7.0)
   - MJRefresh (3.4.1)
+  - mob_sharesdk/ShareSDK (4.3.8):
+    - MOBFoundation (>= 3.2.9)
+  - mob_sharesdk/ShareSDKPlatforms/QQ_Lite (4.3.8):
+    - mob_sharesdk/ShareSDK
+    - MOBFoundation (>= 3.2.9)
+  - mob_sharesdk/ShareSDKPlatforms/WeChat_Lite (4.3.8):
+    - mob_sharesdk/ShareSDK
+    - MOBFoundation (>= 3.2.9)
+  - MOBFoundation (3.2.17)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
   - Moya/RxSwift (14.0.0):
@@ -95,6 +104,8 @@ DEPENDENCIES:
   - lottie-ios
   - LTMorphingLabel
   - MJRefresh
+  - mob_sharesdk/ShareSDKPlatforms/QQ_Lite
+  - mob_sharesdk/ShareSDKPlatforms/WeChat_Lite
   - Moya/RxSwift
   - "NSObject+Rx"
   - PKHUD
@@ -138,6 +149,8 @@ SPEC REPOS:
     - lottie-ios
     - LTMorphingLabel
     - MJRefresh
+    - mob_sharesdk
+    - MOBFoundation
     - Moya
     - "NSObject+Rx"
     - PKHUD
@@ -184,6 +197,8 @@ SPEC CHECKSUMS:
   lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
   LTMorphingLabel: 22147fb1ec2b0306537ccc348b36ea8617179b03
   MJRefresh: 3153c59a363159092c08b2177ec3a7d09f90bfaf
+  mob_sharesdk: 7689cb066326e50d99c9fb552d5d608ae3b63025
+  MOBFoundation: 37e2c100051fd710976b1f8d00643d28f31fcaca
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
@@ -206,6 +221,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 99f03b64145a8c92c55b9b1b931410967d9be4cb
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: c1846982661b0034fd16bef02f1b8c51d80a3c80
+PODFILE CHECKSUM: 9185cb14a0fe3dfedf0f67462ebbd36f98f6f8ef
 
 COCOAPODS: 1.9.1

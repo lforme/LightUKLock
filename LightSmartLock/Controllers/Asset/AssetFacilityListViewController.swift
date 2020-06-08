@@ -141,6 +141,11 @@ class AssetFacilityListViewController: AssetBaseViewController {
                     self.present(messageVC, animated: true, completion: nil)
                 }
                 
+            case 1:
+                ShareTool.share(platform: .weixin, contentText: sendStr, url: nil, title: "【房源配置信息】") { (success) in
+                    print("分享: \(success)")
+                }
+                
             default :break
             }
         }).disposed(by: rx.disposeBag)

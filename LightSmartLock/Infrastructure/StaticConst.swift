@@ -39,6 +39,13 @@ extension NSNotification.Name {
 struct PlatformKey {
     static let gouda = "caed09caa3daeca4a11a9eb671294d65"
     static let jpushAppKey = "491b7c3b5a3b231de8cc38c0"
+    static let qqAppId = "101883730"
+    static let qqAppKey = "ca99adc8b70ea8e97de8abc76f204907"
+    static let wechatId = "wxa3043eaf33286039"
+    static let wechatSecret = "b2cd55a6bdc5f9fd90973ce6c0232cd3"
+    
+    static let wechaUniversalLink = "https://m1cok.share2dlink.com/"
+    static let qqUniversalLink = "https://m1cok.share2dlink.com/qq_conn/101883730"
 }
 
 enum ShareUserDefaultsKey: String, CaseIterable {

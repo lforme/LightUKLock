@@ -76,9 +76,32 @@ final class SharePwdMultipleViewModel {
                     return BusinessAPI.requestMapJSON(.addTempPassword(lockId: self.lockId, parameter: param), classType: ShareBodyModel.self)
                 }
             case .qq:
-                return .empty()
+                if self.bindStartTime.value.isNilOrEmpty || self.bindEndTime.value.isNilOrEmpty {
+                    return .error(AppError.reason("请检比填参数完整性"))
+                } else {
+                    param.sendPhone = self.bindPhone.value
+                    param.startTime = self.bindStartTime.value
+                    param.endTime = self.bindEndTime.value
+                    param.remark = self.bindMark.value
+                    param.sendType = self.bindShareType.value
+                    param.type = 2
+                    
+                    return BusinessAPI.requestMapJSON(.addTempPassword(lockId: self.lockId, parameter: param), classType: ShareBodyModel.self)
+                }
+                
             case .weixin:
-                return .empty()
+                if self.bindStartTime.value.isNilOrEmpty || self.bindEndTime.value.isNilOrEmpty {
+                    return .error(AppError.reason("请检比填参数完整性"))
+                } else {
+                    param.sendPhone = self.bindPhone.value
+                    param.startTime = self.bindStartTime.value
+                    param.endTime = self.bindEndTime.value
+                    param.remark = self.bindMark.value
+                    param.sendType = self.bindShareType.value
+                    param.type = 2
+                    
+                    return BusinessAPI.requestMapJSON(.addTempPassword(lockId: self.lockId, parameter: param), classType: ShareBodyModel.self)
+                }
             }
         })
     }
