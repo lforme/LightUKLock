@@ -17,7 +17,7 @@ struct ShareTool {
     }
     
     static func share(platform: Platform, contentText: String?,
-                      url: String?, title: String?, images: [UIImage?] = [UIImage(named: "lunch_screen_logo")], shareResult: @escaping (Bool) -> Void) {
+                      url: String?, title: String?, images: [UIImage?] = [nil], shareResult: @escaping (Bool) -> Void) {
         
         let shareParams = NSMutableDictionary()
         shareParams.ssdkSetupShareParams(byText: contentText ?? "", images: images, url: URL(string: url ?? ""), title: title ?? "", type: SSDKContentType.auto)

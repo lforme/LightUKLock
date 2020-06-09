@@ -124,7 +124,7 @@ class AssetFacilityListViewController: AssetBaseViewController {
             guard let vc = self else {
                 return .error(AppError.reason("发生未知错误"))
             }
-            return vc.showActionSheet(title: "选择发送方式", message: nil, buttonTitles: ["短信", "取消"], highlightedButtonIndex: 0)
+            return vc.showActionSheet(title: "选择发送方式", message: nil, buttonTitles: ["短信", "微信", "取消"], highlightedButtonIndex: 0)
         }.subscribe(onNext: {[weak self] (buttonIndex) in
             guard let self = self else { return }
             let models = self.items.value
