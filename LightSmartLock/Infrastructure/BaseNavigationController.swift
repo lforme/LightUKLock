@@ -8,7 +8,9 @@
 
 import UIKit
 
-class BaseNavigationController: UINavigationController {
+class BaseNavigationController: UINavigationController, UINavigationControllerDelegate {
+    
+    lazy var _navigationDelegate = MyVCNavigationControllerDelegate()
     
     var clearBackTitle: Bool = true
     
@@ -83,6 +85,8 @@ class BaseNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         commonInit()
+        
+        self.delegate = _navigationDelegate
     }
     
 }

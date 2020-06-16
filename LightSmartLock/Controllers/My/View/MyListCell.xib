@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="MyListCell" customModule="门锁助手个人版" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="MyListCell" customModule="寓用管家" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="136"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -18,15 +18,8 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jn3-Oi-i9f">
-                        <rect key="frame" x="16" y="0.0" width="288" height="128"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="136"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jLX-Qm-Q9G">
-                                <rect key="frame" x="0.0" y="0.0" width="4" height="128"/>
-                                <color key="backgroundColor" red="0.95152777430000002" green="0.69104874130000005" blue="0.25081163639999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="4" id="MeJ-Vp-RPh"/>
-                                </constraints>
-                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_house" translatesAutoresizingMaskIntoConstraints="NO" id="obP-Kn-TcT">
                                 <rect key="frame" x="20" y="16" width="24" height="24"/>
                                 <constraints>
@@ -37,68 +30,65 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmh-Jq-4iz">
                                 <rect key="frame" x="52" y="18.5" width="43.5" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                <color key="textColor" red="0.023529411760000001" green="0.10980392160000001" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_noti" translatesAutoresizingMaskIntoConstraints="NO" id="wXS-UU-veQ">
-                                <rect key="frame" x="242" y="18" width="20" height="20"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5J-Pr-avG">
-                                <rect key="frame" x="52" y="46" width="210" height="14.5"/>
+                                <rect key="frame" x="52" y="46" width="47.5" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                                <color key="textColor" red="0.65602803229999995" green="0.68141484259999996" blue="0.73334187269999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未绑定门锁" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQ4-ZL-caD">
-                                <rect key="frame" x="52" y="84.5" width="210" height="14.5"/>
+                                <rect key="frame" x="239.5" y="52" width="61.5" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                                <color key="textColor" red="0.65602803229999995" green="0.68141484259999996" blue="0.73334187269999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ruh-x3-a2g">
+                                <rect key="frame" x="244" y="12" width="60" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="Cyi-EQ-Ow8"/>
+                                    <constraint firstAttribute="width" constant="60" id="Tfo-IR-22O"/>
+                                </constraints>
+                                <state key="normal" image="my_lock_not_bind"/>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="N5J-Pr-avG" secondAttribute="trailing" constant="26" id="0mb-bx-qoy"/>
-                            <constraint firstItem="jLX-Qm-Q9G" firstAttribute="top" secondItem="jn3-Oi-i9f" secondAttribute="top" id="39L-5K-grS"/>
-                            <constraint firstAttribute="trailing" secondItem="wXS-UU-veQ" secondAttribute="trailing" constant="26" id="IaE-UL-4Oo"/>
-                            <constraint firstAttribute="bottom" secondItem="jLX-Qm-Q9G" secondAttribute="bottom" id="Jh3-0f-eFc"/>
-                            <constraint firstItem="wXS-UU-veQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rmh-Jq-4iz" secondAttribute="trailing" constant="16" id="Md2-3k-OBV"/>
+                            <constraint firstItem="MQ4-ZL-caD" firstAttribute="centerX" secondItem="ruh-x3-a2g" secondAttribute="centerX" constant="-4" id="4iC-eR-qwe"/>
+                            <constraint firstItem="ruh-x3-a2g" firstAttribute="centerY" secondItem="obP-Kn-TcT" secondAttribute="centerY" id="BCL-RM-MsS"/>
+                            <constraint firstItem="N5J-Pr-avG" firstAttribute="leading" secondItem="rmh-Jq-4iz" secondAttribute="leading" id="F8S-9N-q9N"/>
                             <constraint firstItem="obP-Kn-TcT" firstAttribute="top" secondItem="jn3-Oi-i9f" secondAttribute="top" constant="16" id="N99-5W-Tcd"/>
-                            <constraint firstItem="jLX-Qm-Q9G" firstAttribute="leading" secondItem="jn3-Oi-i9f" secondAttribute="leading" id="OEz-9h-PFG"/>
                             <constraint firstItem="N5J-Pr-avG" firstAttribute="top" secondItem="rmh-Jq-4iz" secondAttribute="bottom" constant="8" id="VcD-W9-UET"/>
-                            <constraint firstItem="obP-Kn-TcT" firstAttribute="leading" secondItem="jLX-Qm-Q9G" secondAttribute="trailing" constant="16" id="Zkg-XX-oJo"/>
-                            <constraint firstItem="MQ4-ZL-caD" firstAttribute="top" secondItem="N5J-Pr-avG" secondAttribute="bottom" constant="24" id="g6E-RK-dd2"/>
-                            <constraint firstItem="wXS-UU-veQ" firstAttribute="centerY" secondItem="obP-Kn-TcT" secondAttribute="centerY" id="kYn-tE-lwU"/>
-                            <constraint firstAttribute="trailing" secondItem="MQ4-ZL-caD" secondAttribute="trailing" constant="26" id="o8B-u9-FHe"/>
-                            <constraint firstItem="MQ4-ZL-caD" firstAttribute="leading" secondItem="jLX-Qm-Q9G" secondAttribute="trailing" constant="48" id="qq0-L5-mp2"/>
+                            <constraint firstItem="obP-Kn-TcT" firstAttribute="leading" secondItem="jn3-Oi-i9f" secondAttribute="leading" constant="20" id="YK9-WI-YPR"/>
+                            <constraint firstAttribute="trailing" secondItem="ruh-x3-a2g" secondAttribute="trailing" constant="16" id="aTc-Ba-eEs"/>
+                            <constraint firstItem="MQ4-ZL-caD" firstAttribute="top" secondItem="ruh-x3-a2g" secondAttribute="bottom" constant="8" id="dnY-aL-FI9"/>
                             <constraint firstItem="rmh-Jq-4iz" firstAttribute="centerY" secondItem="obP-Kn-TcT" secondAttribute="centerY" id="rkQ-M3-qPb"/>
                             <constraint firstItem="rmh-Jq-4iz" firstAttribute="leading" secondItem="obP-Kn-TcT" secondAttribute="trailing" constant="8" id="vLf-aL-YRw"/>
-                            <constraint firstItem="N5J-Pr-avG" firstAttribute="leading" secondItem="jLX-Qm-Q9G" secondAttribute="trailing" constant="48" id="vjP-Ko-35m"/>
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.96078163390000004" green="0.96076661350000003" blue="0.96078532930000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 <constraints>
-                    <constraint firstItem="jn3-Oi-i9f" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="C4K-n8-Nnn"/>
+                    <constraint firstItem="jn3-Oi-i9f" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="C4K-n8-Nnn"/>
                     <constraint firstItem="jn3-Oi-i9f" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Ztb-01-Xrf"/>
-                    <constraint firstAttribute="trailing" secondItem="jn3-Oi-i9f" secondAttribute="trailing" constant="16" id="p0Z-N1-lO8"/>
-                    <constraint firstAttribute="bottom" secondItem="jn3-Oi-i9f" secondAttribute="bottom" constant="8" id="rrj-DO-ZW1"/>
+                    <constraint firstAttribute="trailing" secondItem="jn3-Oi-i9f" secondAttribute="trailing" id="p0Z-N1-lO8"/>
+                    <constraint firstAttribute="bottom" secondItem="jn3-Oi-i9f" secondAttribute="bottom" id="rrj-DO-ZW1"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="address" destination="N5J-Pr-avG" id="BEt-dI-rWw"/>
                 <outlet property="bgView" destination="jn3-Oi-i9f" id="4eU-z5-bDe"/>
-                <outlet property="indicator" destination="jLX-Qm-Q9G" id="ZX9-5T-hQu"/>
+                <outlet property="bindLockButton" destination="ruh-x3-a2g" id="vq7-E9-qIj"/>
                 <outlet property="message" destination="MQ4-ZL-caD" id="AxP-ZV-mtO"/>
                 <outlet property="name" destination="rmh-Jq-4iz" id="LqX-bC-avy"/>
-                <outlet property="notiView" destination="wXS-UU-veQ" id="dcU-eb-mHf"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="126.5625"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="my_house" width="24" height="24"/>
-        <image name="my_noti" width="20" height="20"/>
+        <image name="my_house" width="16" height="16"/>
+        <image name="my_lock_not_bind" width="24" height="24"/>
     </resources>
 </document>

@@ -22,6 +22,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     @IBOutlet weak var noLockView: UIView!
     let notiButton = UIButton(type: .custom)
     let lockSettingButton = UIButton(type: .custom)
+    var sceneButton: UIButton!
     
     let vm: HomeViewModeling = HomeViewModel()
     
@@ -34,6 +35,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     
     //    private let synchronizeTaks = BluetoothSynchronizeTask()
     private let currentScene = BehaviorRelay<SceneListModel?>.init(value: nil)
+    
     
     deinit {
         print(self)
@@ -62,6 +64,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         tableView.backgroundColor = ColorClassification.blueAndBlack.value
         view.backgroundColor = ColorClassification.viewBackground.value
         AppDelegate.changeStatusBarStyle(.lightContent)
+        
     }
     
     func setupRightNavigationItems() {
@@ -79,7 +82,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         notiButton.addTarget(self, action: #selector(self.gotoMessageCenterVC), for: .touchUpInside)
         let notiItem = UIBarButtonItem(customView: notiButton)
         
-        let sceneButton = UIButton(type: .custom)
+        sceneButton = UIButton(type: .custom)
         sceneButton.contentHorizontalAlignment = .right
         sceneButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         sceneButton.setImage(UIImage(named: "home_scene_icon"), for: UIControl.State())
@@ -91,10 +94,10 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         LSLUser.current().obScene.subscribe(onNext: { [weak self](scene) in
             self?.currentScene.accept(scene)
             if let name = scene?.buildingName {
-                sceneButton.setTitle(
+                self?.sceneButton.setTitle(
                     "  \(name)", for: UIControl.State())
             } else {
-                sceneButton.setTitle(
+                self?.sceneButton.setTitle(
                     "  暂无数据", for: UIControl.State())
             }
             
@@ -203,7 +206,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let animationCell = tableView.dequeueReusableCell(withIdentifier: "AnimationHeaderView") as! AnimationHeaderView
-            
+       
             animationCell.unlockButton.rx.tap.subscribe(onNext: {[weak self] (_) in
                 let openDoorVC: OpenDoorViewController = ViewLoader.Xib.controller()
                 self?.present(openDoorVC, animated: true, completion: nil)

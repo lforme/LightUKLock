@@ -39,7 +39,6 @@ target 'LightSmartLock' do
   pod 'Kingfisher'
   pod 'ChameleonFramework'
   pod 'PKHUD'
-  pod 'ESTabBarController-swift'
   pod 'LTMorphingLabel'
   pod 'CBPinEntryView'
   pod 'Popover'
@@ -49,6 +48,7 @@ target 'LightSmartLock' do
   pod 'AloeStackView'
   pod 'EFQRCode'
   pod 'GradientProgressBar'
+  pod 'Floaty', '~> 4.2.0'
   
   # 动画
   pod 'lottie-ios'

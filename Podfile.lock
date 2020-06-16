@@ -15,7 +15,7 @@ PODS:
   - EFQRCode (5.1.6):
     - EFQRCode/Core (= 5.1.6)
   - EFQRCode/Core (5.1.6)
-  - ESTabBarController-swift (2.8.0)
+  - Floaty (4.2.0)
   - GradientProgressBar (2.0.3):
     - LightweightObservable (~> 2.0)
   - HandyJSON (5.0.1)
@@ -94,7 +94,7 @@ DEPENDENCIES:
   - CryptoSwift
   - DZNEmptyDataSet
   - EFQRCode
-  - ESTabBarController-swift
+  - Floaty (~> 4.2.0)
   - GradientProgressBar
   - HandyJSON
   - IGListKit
@@ -136,7 +136,7 @@ SPEC REPOS:
     - Differentiator
     - DZNEmptyDataSet
     - EFQRCode
-    - ESTabBarController-swift
+    - Floaty
     - GradientProgressBar
     - HandyJSON
     - IGListDiffKit
@@ -184,7 +184,7 @@ SPEC CHECKSUMS:
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   EFQRCode: a7ea2e517912f5bf6ba258b631327a83cd8084a5
-  ESTabBarController-swift: 05593a6ad64700b03c0eb60ff625916370aa4136
+  Floaty: e2bd5a0f6f7f70899e26ff2da31081c8bee8d1b0
   GradientProgressBar: f11fb57cffc615a4794da558ce283171a992130a
   HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
   IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
@@ -221,6 +221,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 99f03b64145a8c92c55b9b1b931410967d9be4cb
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: 9185cb14a0fe3dfedf0f67462ebbd36f98f6f8ef
+PODFILE CHECKSUM: 9b67a93eba5c6cc74159701aaa58dbeef9aea0a7
 
 COCOAPODS: 1.9.1

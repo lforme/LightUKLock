@@ -12,8 +12,7 @@ import RxSwift
 class MyListCell: UITableViewCell {
     
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var indicator: UIView!
-    @IBOutlet weak var notiView: UIImageView!
+    @IBOutlet weak var bindLockButton: UIButton!
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var bgView: UIView!
@@ -24,57 +23,23 @@ class MyListCell: UITableViewCell {
         disposeBag = DisposeBag()
     }
     
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        //        if selected {
-        //            indicator.backgroundColor = ColorClassification.primary.value
-        //        } else {
-        //            indicator.backgroundColor = ColorClassification.viewBackground.value
-        //        }
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        name.textColor = ColorClassification.textPrimary.value
-        address.textColor = ColorClassification.textDescription.value
-        message.textColor = ColorClassification.textDescription.value
-        bgView.backgroundColor = ColorClassification.viewBackground.value
-        self.contentView.backgroundColor = ColorClassification.tableViewBackground.value
-        
-        bgView.setCircularShadow(radius: 7, color: ColorClassification.textPlaceholder.value)
-        indicator.setCircular(radius: 3)
-        
-        if #available(iOS 12.0, *) {
-            if self.traitCollection.userInterfaceStyle == .dark {
-                bgView.layer.shadowColor = UIColor.clear.cgColor
-                bgView.layer.cornerRadius = 7
-                bgView.layer.borderWidth = 0.5
-                bgView.layer.borderColor = #colorLiteral(red: 0.2705882353, green: 0.2745098039, blue: 0.2784313725, alpha: 1).cgColor
-            }
-        } else {}
+        self.clipsToBounds = true
+        self.roundCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner], radius: 12)
     }
     
     func bind(_ data: SceneListModel) {
         name.text = data.buildingName ?? "-"
         address.text = data.buildingAdress ?? "-"
         
-        if let lockInfo = data.lockType {
-            message.text = "已安装门锁, 门锁类型: \(lockInfo)"
+        if let lockInfo = data.lockType, lockInfo.isNotEmpty {
+            message.text = "已绑定门锁"
+            bindLockButton.setImage(UIImage(named: "my_lock_is_bind"), for: UIControl.State())
         } else {
             message.text = "未绑定门锁"
-        }
-        
-        guard let currentId = LSLUser.current().scene?.ladderAssetHouseId, let id = data.ladderAssetHouseId else {
-            return
-        }
-        
-        if currentId == id {
-            indicator.backgroundColor = ColorClassification.primary.value
-        } else {
-            indicator.backgroundColor = ColorClassification.viewBackground.value
+            bindLockButton.setImage(UIImage(named: "my_lock_not_bind"), for: UIControl.State())
         }
     }
 }

@@ -19,19 +19,16 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         return ColorClassification.navigationBackground.value
     }
     
-    var tableView: UITableView = {
-        let tv = UITableView(frame: .zero, style: .plain)
-        return tv
-    }()
+    @IBOutlet weak var avatarView: UIImageView!
+    @IBOutlet weak var nickNameLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var clickCell: UITableViewCell?
     
     let vm = MyViewModel()
     
     var dataSource: [SceneListModel] = []
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        self.tableView.frame = view.frame
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +49,6 @@ class MyViewController: UIViewController, NavigationSettingStyle {
                 self?.tableView.mj_header?.beginRefreshing()
             default: break
             }
-            
         }).disposed(by: rx.disposeBag)
         
         NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
@@ -77,6 +73,21 @@ class MyViewController: UIViewController, NavigationSettingStyle {
             self?.dataSource = list
         }).disposed(by: rx.disposeBag)
         
+        let shareInfo = LSLUser.current().obUserInfo.share(replay: 1, scope: .forever)
+        shareInfo.map { $0?.nickname }.bind(to: nickNameLabel.rx.text).disposed(by: rx.disposeBag)
+        shareInfo.map {
+            guard var phone = $0?.phone else {
+                return ""
+            }
+            let start = phone.index(phone.startIndex, offsetBy: 3)
+            let end = phone.index(phone.startIndex, offsetBy: 3 + 4)
+            phone.replaceSubrange(start..<end, with: "****")
+            return phone
+        }.bind(to: phoneLabel.rx.text).disposed(by: rx.disposeBag)
+        shareInfo.map { $0?.avatar }.subscribe(onNext: {[weak self] (urlString) in
+            self?.avatarView.setUrl(urlString)
+        }).disposed(by: rx.disposeBag)
+        
     }
     
     func setupTableviewRefresh() {
@@ -87,18 +98,18 @@ class MyViewController: UIViewController, NavigationSettingStyle {
     }
     
     func setupUI() {
-        self.view.backgroundColor = ColorClassification.viewBackground.value
-        self.tableView.backgroundColor = ColorClassification.tableViewBackground.value
+        self.view.layer.contents = UIImage(named: "personal_center_bg")?.cgImage
+        self.avatarView.setCircular(radius: avatarView.bounds.height / 2)
+        
+        let avatarGestureTap = UITapGestureRecognizer(target: self, action: #selector(gotoMySettingVC))
+        self.avatarView.addGestureRecognizer(avatarGestureTap)
+        
         self.tableView.tableFooterView = UIView(frame: .zero)
         self.tableView.separatorStyle = .none
-        self.tableView.register(UINib(nibName: "MyInfoHeader", bundle: nil), forCellReuseIdentifier: "MyInfoHeader")
         self.tableView.register(UINib(nibName: "MyListCell", bundle: nil), forCellReuseIdentifier: "MyListCell")
-        self.tableView.sectionHeaderHeight = 300
         self.tableView.rowHeight = 136
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.contentInsetAdjustmentBehavior = .never
-        self.view.addSubview(tableView)
     }
     
     func setupNavigation() {
@@ -114,38 +125,25 @@ class MyViewController: UIViewController, NavigationSettingStyle {
     
     @objc func gotoSelectedLockVC() {
         
-        guard let phone = LSLUser.current().user?.phone else {
-            HUD.flash(.label("发生未知错误, 无法获取电话号码"), delay: 2)
-            return
-        }
-        
-        BusinessAPI.requestMapJSONArray(.hardwareBindList(channels: "01", pageSize: 100, pageIndex: 1, phoneNo: phone), classType: BindLockListModel.self, useCache: false, isPaginating: true)
-            .map { $0.compactMap { $0 } }
-            .subscribe(onNext: {[weak self] (bindLockList) in
-                
-                if bindLockList.count != 0 {
-                    let bindLockListVC: BindLockListController = ViewLoader.Storyboard.controller(from: "InitialLock")
-                    bindLockListVC.dataSource = bindLockList
-                    self?.navigationController?.pushViewController(bindLockListVC, animated: true)
-                } else {
-                    let selectVC: SelectLockTypeController = ViewLoader.Storyboard.controller(from: "InitialLock")
-                    selectVC.kind = .newAdd
-                    self?.navigationController?.pushViewController(selectVC, animated: true)
-                }
-                
-                }, onError: {[weak self] (error) in
-                    PKHUD.sharedHUD.rx.showError(error)
-                    let selectVC: SelectLockTypeController = ViewLoader.Storyboard.controller(from: "InitialLock")
-                    selectVC.kind = .newAdd
-                    self?.navigationController?.pushViewController(selectVC, animated: true)
-            }).disposed(by: rx.disposeBag)
+        vm.configuredList.subscribe(onNext: {[weak self] (bindLockList) in
+            
+            if bindLockList.count != 0 {
+                let bindLockListVC: BindLockListController = ViewLoader.Storyboard.controller(from: "InitialLock")
+                bindLockListVC.dataSource = bindLockList
+                self?.navigationController?.pushViewController(bindLockListVC, animated: true)
+            } else {
+                let selectVC: SelectLockTypeController = ViewLoader.Storyboard.controller(from: "InitialLock")
+                selectVC.kind = .newAdd
+                self?.navigationController?.pushViewController(selectVC, animated: true)
+            }
+        }).disposed(by: rx.disposeBag)
     }
 }
 
 extension MyViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return vm.cellRowHeight(indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -156,26 +154,14 @@ extension MyViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyListCell", for: indexPath) as! MyListCell
         let data = dataSource[indexPath.row]
         cell.bind(data)
+        cell.backgroundColor = vm.cellBackgroundColor(indexPath.row)
         return cell
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableCell(withIdentifier: "MyInfoHeader") as! MyInfoHeader
-        header.settingButton.addTarget(self, action: #selector(self.gotoMySettingVC), for: .touchUpInside)
-        header.addButton.addTarget(self, action: #selector(self.gotoSelectedLockVC), for: .touchUpInside)
-        header.avatarGestureTap.addTarget(self, action: #selector(self.gotoMySettingVC))
-        
-        let shareInfo = LSLUser.current().obUserInfo.share(replay: 1, scope: .forever)
-        shareInfo.map { $0?.nickname }.bind(to: header.nick.rx.text).disposed(by: header.disposeBag)
-        shareInfo.map { $0?.phone }.bind(to: header.phone.rx.text).disposed(by: header.disposeBag)
-        shareInfo.map { $0?.avatar }.subscribe(onNext: { (urlString) in
-            header.avatar?.setUrl(urlString)
-        }).disposed(by: header.disposeBag)
-        
-        return header
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        clickCell = cell
         
         let scene = dataSource[indexPath.row]
         LSLUser.current().scene = scene

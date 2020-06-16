@@ -5,18 +5,18 @@
       "scale" : "1x"
     },
     {
+      "filename" : "zc@2x.png",
       "idiom" : "universal",
-      "filename" : "icon／user_asstes@2x.png",
       "scale" : "2x"
     },
     {
+      "filename" : "zc@3x.png",
       "idiom" : "universal",
-      "filename" : "icon／user_asstes@3x.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

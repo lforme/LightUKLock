@@ -101,7 +101,6 @@
 		9C24AC442383EB96005EBF95 /* My.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C24AC432383EB96005EBF95 /* My.storyboard */; };
 		9C24AC462383EBB1005EBF95 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC452383EBB1005EBF95 /* MyViewController.swift */; };
 		9C24AC482383EBE5005EBF95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC472383EBE5005EBF95 /* HomeViewController.swift */; };
-		9C24AC4A2383F344005EBF95 /* CustomizedTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC492383F344005EBF95 /* CustomizedTabbarItem.swift */; };
 		9C282D6B246E7319008CC165 /* MyBillModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C282D6A246E7319008CC165 /* MyBillModel.swift */; };
 		9C323BCA245676CA00214256 /* BillContractSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C323BC9245676CA00214256 /* BillContractSection.swift */; };
 		9C323BCC24567F9700214256 /* BillReportDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C323BCB24567F9700214256 /* BillReportDetailController.swift */; };
@@ -197,8 +196,6 @@
 		9C752FD223879546000FEA73 /* RegisPwdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C752FD123879546000FEA73 /* RegisPwdViewModel.swift */; };
 		9C752FD42388080A000FEA73 /* NoLockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C752FD32388080A000FEA73 /* NoLockViewController.swift */; };
 		9C76099E2452DBAA0042C88D /* Bill.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C76099D2452DBAA0042C88D /* Bill.storyboard */; };
-		9C770592238FA11A008E1552 /* MyInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C770590238FA11A008E1552 /* MyInfoHeader.swift */; };
-		9C770593238FA11A008E1552 /* MyInfoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C770591238FA11A008E1552 /* MyInfoHeader.xib */; };
 		9C770596238FA351008E1552 /* MyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C770594238FA351008E1552 /* MyListCell.swift */; };
 		9C770597238FA351008E1552 /* MyListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C770595238FA351008E1552 /* MyListCell.xib */; };
 		9C77059A238FACC7008E1552 /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C770599238FACC7008E1552 /* MyViewModel.swift */; };
@@ -279,6 +276,9 @@
 		9CDD274423829363006A9B97 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD274323829363006A9B97 /* RootViewController.swift */; };
 		9CE6C0D9249880B2003DA523 /* NetworkDiskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE6C0D7249880B2003DA523 /* NetworkDiskStorage.swift */; };
 		9CE6C0DA249880B2003DA523 /* NetworkMetaDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE6C0D8249880B2003DA523 /* NetworkMetaDb.swift */; };
+		9CE6C0DC2498C725003DA523 /* MyViewControllerExpandAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE6C0DB2498C725003DA523 /* MyViewControllerExpandAnimation.swift */; };
+		9CE6C0DE2498CB70003DA523 /* MyViewControllerShrinkAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE6C0DD2498CB70003DA523 /* MyViewControllerShrinkAnimation.swift */; };
+		9CE6C0E02498CDA7003DA523 /* MyVCNavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE6C0DF2498CDA7003DA523 /* MyVCNavigationControllerDelegate.swift */; };
 		9CEC3F9424580056002ADA39 /* BillFlowLeaseRenewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC3F9324580056002ADA39 /* BillFlowLeaseRenewController.swift */; };
 		9CEFAE7D248E13D8005403E8 /* ShareSDKAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEFAE7C248E13D8005403E8 /* ShareSDKAppDelegate.swift */; };
 		9CEFAE7F248E2C3C005403E8 /* ShareTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEFAE7E248E2C3C005403E8 /* ShareTool.swift */; };
@@ -435,7 +435,6 @@
 		9C24AC432383EB96005EBF95 /* My.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = My.storyboard; sourceTree = "<group>"; };
 		9C24AC452383EBB1005EBF95 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		9C24AC472383EBE5005EBF95 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		9C24AC492383F344005EBF95 /* CustomizedTabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedTabbarItem.swift; sourceTree = "<group>"; };
 		9C282D6A246E7319008CC165 /* MyBillModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBillModel.swift; sourceTree = "<group>"; };
 		9C323BC9245676CA00214256 /* BillContractSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillContractSection.swift; sourceTree = "<group>"; };
 		9C323BCB24567F9700214256 /* BillReportDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillReportDetailController.swift; sourceTree = "<group>"; };
@@ -531,8 +530,6 @@
 		9C752FD123879546000FEA73 /* RegisPwdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisPwdViewModel.swift; sourceTree = "<group>"; };
 		9C752FD32388080A000FEA73 /* NoLockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoLockViewController.swift; sourceTree = "<group>"; };
 		9C76099D2452DBAA0042C88D /* Bill.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bill.storyboard; sourceTree = "<group>"; };
-		9C770590238FA11A008E1552 /* MyInfoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoHeader.swift; sourceTree = "<group>"; };
-		9C770591238FA11A008E1552 /* MyInfoHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyInfoHeader.xib; sourceTree = "<group>"; };
 		9C770594238FA351008E1552 /* MyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListCell.swift; sourceTree = "<group>"; };
 		9C770595238FA351008E1552 /* MyListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyListCell.xib; sourceTree = "<group>"; };
 		9C770599238FACC7008E1552 /* MyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
@@ -617,6 +614,9 @@
 		9CDD274323829363006A9B97 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		9CE6C0D7249880B2003DA523 /* NetworkDiskStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDiskStorage.swift; sourceTree = "<group>"; };
 		9CE6C0D8249880B2003DA523 /* NetworkMetaDb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMetaDb.swift; sourceTree = "<group>"; };
+		9CE6C0DB2498C725003DA523 /* MyViewControllerExpandAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewControllerExpandAnimation.swift; sourceTree = "<group>"; };
+		9CE6C0DD2498CB70003DA523 /* MyViewControllerShrinkAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewControllerShrinkAnimation.swift; sourceTree = "<group>"; };
+		9CE6C0DF2498CDA7003DA523 /* MyVCNavigationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVCNavigationControllerDelegate.swift; sourceTree = "<group>"; };
 		9CEC3F9324580056002ADA39 /* BillFlowLeaseRenewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillFlowLeaseRenewController.swift; sourceTree = "<group>"; };
 		9CEFAE7C248E13D8005403E8 /* ShareSDKAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSDKAppDelegate.swift; sourceTree = "<group>"; };
 		9CEFAE7E248E2C3C005403E8 /* ShareTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTool.swift; sourceTree = "<group>"; };
@@ -859,7 +859,6 @@
 				9C24AC1523838CD1005EBF95 /* NavigationSettingStyle.swift */,
 				9C24AC1E2383A2C7005EBF95 /* ColorClassification.swift */,
 				9C24AC2A2383CD94005EBF95 /* StaticConst.swift */,
-				9C24AC492383F344005EBF95 /* CustomizedTabbarItem.swift */,
 				9C3726C72390C6AD00450757 /* Empty+UIViewController.swift */,
 				9C7AFF21239631930075442D /* UKRefreshStatus.swift */,
 				9C47DB82239A39070019EAA0 /* ListViewModeling.swift */,
@@ -1098,8 +1097,6 @@
 		9C77058F238FA0FB008E1552 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9C770590238FA11A008E1552 /* MyInfoHeader.swift */,
-				9C770591238FA11A008E1552 /* MyInfoHeader.xib */,
 				9C770594238FA351008E1552 /* MyListCell.swift */,
 				9C770595238FA351008E1552 /* MyListCell.xib */,
 			);
@@ -1111,6 +1108,9 @@
 			children = (
 				9C770599238FACC7008E1552 /* MyViewModel.swift */,
 				9C77059D238FCC79008E1552 /* MySettingViewModel.swift */,
+				9CE6C0DB2498C725003DA523 /* MyViewControllerExpandAnimation.swift */,
+				9CE6C0DD2498CB70003DA523 /* MyViewControllerShrinkAnimation.swift */,
+				9CE6C0DF2498CDA7003DA523 /* MyVCNavigationControllerDelegate.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1412,7 +1412,6 @@
 				9C03B0FD239FB3620001E849 /* addFinger.json in Resources */,
 				9C1A4BC5238D0A1A00626DB4 /* AnimationHeaderView.xib in Resources */,
 				9C1A4BC9238D2E7C00626DB4 /* HomeControlCell.xib in Resources */,
-				9C770593238FA11A008E1552 /* MyInfoHeader.xib in Resources */,
 				9CFDE1FC238513D40062522E /* bluetooth.json in Resources */,
 				9CABF4A6246514A60001AAE3 /* BillDetailTenantCell.xib in Resources */,
 				9CFDE1FA2384EA2A0062522E /* opendoor.json in Resources */,
@@ -1572,6 +1571,7 @@
 				9CAF7F10247778E9001D218C /* CompositeAppDelegate.swift in Sources */,
 				7B7EB4C324528E52002DC436 /* UtilitiesRecordsViewController.swift in Sources */,
 				9CB4B34B239DE8C3001197AB /* DigitalPasswordModel.swift in Sources */,
+				9CE6C0DC2498C725003DA523 /* MyViewControllerExpandAnimation.swift in Sources */,
 				9CABF4902464FD9E0001AAE3 /* BillDetailController.swift in Sources */,
 				9C3726E723913C5400450757 /* MessageCenterViewModel.swift in Sources */,
 				9C4490752462CA3800A859CC /* BillFeesDeleteView.swift in Sources */,
@@ -1616,6 +1616,7 @@
 				7BB2FEB4245596C400D835BA /* ContractRentalRecordView.swift in Sources */,
 				9C1A4BC8238D2E7C00626DB4 /* HomeControlCell.swift in Sources */,
 				9C03B0EB239F46510001E849 /* FingerManageController.swift in Sources */,
+				9CE6C0DE2498CB70003DA523 /* MyViewControllerShrinkAnimation.swift in Sources */,
 				9C7AFF162395FC870075442D /* CLLocationManager+Rx.swift in Sources */,
 				9CFDE20123851EE80062522E /* NetworkInterface.swift in Sources */,
 				9CABF4A8246515F30001AAE3 /* BillDetailTenantSection.swift in Sources */,
@@ -1630,6 +1631,7 @@
 				9C4297782386A64C004CB999 /* RegistrationRecoveryService.swift in Sources */,
 				9C03B0F9239F87B60001E849 /* AddFingerViewModel.swift in Sources */,
 				9CBD8F3B23A1E21400886519 /* MultipleTempPasswordController.swift in Sources */,
+				9CE6C0E02498CDA7003DA523 /* MyVCNavigationControllerDelegate.swift in Sources */,
 				9CBD8F4F23A22AC200886519 /* SingleTempPasswordController.swift in Sources */,
 				9C24AC302383D89A005EBF95 /* LocalArchiver.swift in Sources */,
 				9CB09C762468F5B500F3891D /* AssetFlowModel.swift in Sources */,
@@ -1773,7 +1775,6 @@
 				9C03B0F5239F83D00001E849 /* AddFingerController.swift in Sources */,
 				9CABF4BE246563A80001AAE3 /* AssetReportModel.swift in Sources */,
 				9C3726C82390C6AD00450757 /* Empty+UIViewController.swift in Sources */,
-				9C770592238FA11A008E1552 /* MyInfoHeader.swift in Sources */,
 				9C52402D238E163D00308AC4 /* UnlockRecordCell.swift in Sources */,
 				9C4D10BC2463F1F1005D0C6F /* ReceivingAccountCell.swift in Sources */,
 				9C452F082394AA2E00144827 /* CenterMessageModel.swift in Sources */,
@@ -1786,7 +1787,6 @@
 				9C42976F23866088004CB999 /* PKHud+Rx.swift in Sources */,
 				9C5471992395047200432ACA /* LockInfoController.swift in Sources */,
 				9CB09C7A2469520600F3891D /* BookKeepingViewModel.swift in Sources */,
-				9C24AC4A2383F344005EBF95 /* CustomizedTabbarItem.swift in Sources */,
 				7B845E932475087C00620814 /* BillView.swift in Sources */,
 				9C11E6E9246D300E008E0A60 /* BillLiquidationModel.swift in Sources */,
 				9CFDE2052385219F0062522E /* RxMoyaProvider.swift in Sources */,
