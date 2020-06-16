@@ -178,8 +178,7 @@ extension BusinessInterface: TargetType {
              .costCategory,
              .tenantContractInfo,
              .checkTerminationTenantContract,
-             .billInfoDetail,
-             .lockTypeList:
+             .billInfoDetail:
             return .get
             
         case .deleteAssetHouse,

@@ -37,13 +37,18 @@ class LSLUser: NSObject {
         JPUSHService.resetBadge()
         
         if let t = token?.accessToken {
-            AuthAPI.requestMapBool(.logout(token: t)).subscribe().disposed(by: rx.disposeBag)
+            AuthAPI.requestMapBool(.logout(token: t))
+                .delaySubscription(.seconds(2), scheduler: MainScheduler.instance)
+                .subscribe()
+                .disposed(by: rx.disposeBag)
         }
         
-        let diskCache = NetworkDiskStorage(autoCleanTrash: true, path: "network")
-        let deleteDb = diskCache.deleteAll()
-        print("数据库网络缓存文件删除:\(deleteDb ? "成功" : "失败")")
-        
+        if let userId = token?.userId {
+            let diskStorage = NetworkDiskStorage(autoCleanTrash: false, path: "lightSmartLock.network")
+            let deleteDb = diskStorage.deleteDataBy(id: userId)
+            print("数据库网络缓存文件删除:\(deleteDb ? "成功" : "失败")")
+        }
+       
         Keys.allCases.forEach {
             print("已删除Key:\($0.rawValue)")
             LocalArchiver.remove(key: $0.rawValue)

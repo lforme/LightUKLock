@@ -28,6 +28,7 @@ class BindingOrEditAssetViewController: AssetBaseViewController {
     
     @IBOutlet weak var houseStructBtn: UIButton!
     
+    var deleteButton: UIButton!
     
     @IBOutlet weak var saveBtn: UIButton!
     
@@ -47,7 +48,7 @@ class BindingOrEditAssetViewController: AssetBaseViewController {
             .orEmpty
             .changed.subscribe(onNext: {[weak self] (buildingNumber) in
                 self?.asset.houseNum = buildingNumber
-        }).disposed(by: rx.disposeBag)
+            }).disposed(by: rx.disposeBag)
         
         saveBtn.rx.tap
             .flatMap { [unowned self]_ -> Observable<PositionModel> in
@@ -92,6 +93,41 @@ class BindingOrEditAssetViewController: AssetBaseViewController {
             }
         })
             .disposed(by: rx.disposeBag)
+        
+        setupNavigationRightItem()
+    }
+    
+    func setupNavigationRightItem() {
+        deleteButton = self.createdRightNavigationItem(title: "删除资产", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 0, color: .white)
+        deleteButton.contentHorizontalAlignment = .trailing
+        deleteButton.isHidden = asset.id.isNilOrEmpty
+        
+        deleteButton.rx.tap
+            .flatMapLatest {[weak self] (_) -> Observable<Int> in
+                guard let this = self else {
+                    return .empty()
+                }
+                
+                if LSLUser.current().isInstalledLock {
+                    return this.showAlert(title: "提示", message: "删除资产前请先到门锁设置中删除门锁", buttonTitles: ["知道了"], highlightedButtonIndex: 0)
+                } else {
+                    return this.showAlert(title: "提示", message: "确定删除资产吗？删除后不能撤销", buttonTitles: ["删除", "取消"], highlightedButtonIndex: 1)
+                }
+        }.flatMapLatest {[unowned self] (buttonIndex) -> Observable<Bool> in
+            if buttonIndex == 1 {
+                return BusinessAPI.requestMapBool(.deleteAssetHouse(id: self.asset.id!))
+            } else {
+                return .empty()
+            }
+        }.subscribe(onNext: {[unowned self] (success) in
+            if success {
+                HUD.flash(.label("操作成功"), delay: 2)
+                self.navigationController?.popToRootViewController(animated: true)
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.updateScene)
+            }
+            }, onError: { (error) in
+                PKHUD.sharedHUD.rx.showError(error)
+        }).disposed(by: rx.disposeBag)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

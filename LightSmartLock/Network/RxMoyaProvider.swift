@@ -30,7 +30,7 @@ final class RxMoyaProvider<Target>: MoyaProvider<Target> where Target: TargetTyp
         }
     }
     
-    fileprivate let diskCache = NetworkDiskStorage(autoCleanTrash: true, path: "network")
+    fileprivate let diskCache = NetworkDiskStorage(autoCleanTrash: true, path: "lightSmartLock.network")
     
     init(endpointClosure: @escaping EndpointClosure = MoyaProvider.defaultEndpointMapping,
          requestClosure: @escaping RequestClosure = MoyaProvider<Target>.defaultRequestMapping,
@@ -141,7 +141,7 @@ private extension RxMoyaProvider {
                 } else if res.statusCode == 429 {
                     return Observable.error(AppError.reason("请求过于频繁"))
                 } else if res.statusCode == 500 {
-                    return Observable.error(AppError.reason("服务器报500啦啦啦"))
+                    return Observable.error(AppError.reason("服务器出错了"))
                 } else if res.statusCode == 200 {
                     
                     // 写入缓存

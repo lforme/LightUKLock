@@ -277,6 +277,8 @@
 		9CDD27292382801D006A9B97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD27272382801D006A9B97 /* Main.storyboard */; };
 		9CDD272E2382801E006A9B97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD272C2382801E006A9B97 /* LaunchScreen.storyboard */; };
 		9CDD274423829363006A9B97 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD274323829363006A9B97 /* RootViewController.swift */; };
+		9CE6C0D9249880B2003DA523 /* NetworkDiskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE6C0D7249880B2003DA523 /* NetworkDiskStorage.swift */; };
+		9CE6C0DA249880B2003DA523 /* NetworkMetaDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE6C0D8249880B2003DA523 /* NetworkMetaDb.swift */; };
 		9CEC3F9424580056002ADA39 /* BillFlowLeaseRenewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC3F9324580056002ADA39 /* BillFlowLeaseRenewController.swift */; };
 		9CEFAE7D248E13D8005403E8 /* ShareSDKAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEFAE7C248E13D8005403E8 /* ShareSDKAppDelegate.swift */; };
 		9CEFAE7F248E2C3C005403E8 /* ShareTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEFAE7E248E2C3C005403E8 /* ShareTool.swift */; };
@@ -306,8 +308,6 @@
 		9CFDE207238523A80062522E /* LoadingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDE206238523A80062522E /* LoadingPlugin.swift */; };
 		9CFDE20F2385346E0062522E /* AppErrorDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDE20E2385346E0062522E /* AppErrorDomain.swift */; };
 		9CFDE211238537A30062522E /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDE210238537A30062522E /* NetworkAPI.swift */; };
-		9CFDE21423853C170062522E /* NetworkMetaDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDE21323853C170062522E /* NetworkMetaDb.swift */; };
-		9CFDE21623853DE60062522E /* NetworkDiskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDE21523853DE60062522E /* NetworkDiskStorage.swift */; };
 		BCE1DAD52E025E19E9AB6E91 /* Pods_LSLWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F491F2D46130205BF93BEC8 /* Pods_LSLWidget.framework */; };
 /* End PBXBuildFile section */
 
@@ -615,6 +615,8 @@
 		9CDD272D2382801E006A9B97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CDD272F2382801E006A9B97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CDD274323829363006A9B97 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		9CE6C0D7249880B2003DA523 /* NetworkDiskStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDiskStorage.swift; sourceTree = "<group>"; };
+		9CE6C0D8249880B2003DA523 /* NetworkMetaDb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMetaDb.swift; sourceTree = "<group>"; };
 		9CEC3F9324580056002ADA39 /* BillFlowLeaseRenewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillFlowLeaseRenewController.swift; sourceTree = "<group>"; };
 		9CEFAE7C248E13D8005403E8 /* ShareSDKAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSDKAppDelegate.swift; sourceTree = "<group>"; };
 		9CEFAE7E248E2C3C005403E8 /* ShareTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTool.swift; sourceTree = "<group>"; };
@@ -639,8 +641,6 @@
 		9CFDE206238523A80062522E /* LoadingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPlugin.swift; sourceTree = "<group>"; };
 		9CFDE20E2385346E0062522E /* AppErrorDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrorDomain.swift; sourceTree = "<group>"; };
 		9CFDE210238537A30062522E /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
-		9CFDE21323853C170062522E /* NetworkMetaDb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMetaDb.swift; sourceTree = "<group>"; };
-		9CFDE21523853DE60062522E /* NetworkDiskStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDiskStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1313,8 +1313,8 @@
 		9CFDE21223853A330062522E /* NetworkDiskCache */ = {
 			isa = PBXGroup;
 			children = (
-				9CFDE21323853C170062522E /* NetworkMetaDb.swift */,
-				9CFDE21523853DE60062522E /* NetworkDiskStorage.swift */,
+				9CE6C0D7249880B2003DA523 /* NetworkDiskStorage.swift */,
+				9CE6C0D8249880B2003DA523 /* NetworkMetaDb.swift */,
 			);
 			path = NetworkDiskCache;
 			sourceTree = "<group>";
@@ -1588,6 +1588,7 @@
 				9CB4B351239E3AA2001197AB /* DigitalChangePwdViewModel.swift in Sources */,
 				9C3F93E3245599940040005D /* BillFlowCellItemCell.swift in Sources */,
 				9C47DB73239A0A220019EAA0 /* Popups.swift in Sources */,
+				9CE6C0DA249880B2003DA523 /* NetworkMetaDb.swift in Sources */,
 				9C4D10C124641219005D0C6F /* BankCardBindController.swift in Sources */,
 				9C47DB7F239A36560019EAA0 /* UserManagementViewModel.swift in Sources */,
 				9C1B87CD23979B7200216ADA /* SelectLockTypeController.swift in Sources */,
@@ -1609,7 +1610,6 @@
 				9C3F93EB2455AAB10040005D /* BillFlowReportSection.swift in Sources */,
 				9C24AC3B2383E736005EBF95 /* ViewLoader.swift in Sources */,
 				9C282D6B246E7319008CC165 /* MyBillModel.swift in Sources */,
-				9CFDE21423853C170062522E /* NetworkMetaDb.swift in Sources */,
 				9C54719F239517F000432ACA /* PositionViewModel.swift in Sources */,
 				9C452F0A2394C38800144827 /* HomeSettringController.swift in Sources */,
 				9C24AC482383EBE5005EBF95 /* HomeViewController.swift in Sources */,
@@ -1664,7 +1664,6 @@
 				9C323BCC24567F9700214256 /* BillReportDetailController.swift in Sources */,
 				7B7EB4C12451A000002DC436 /* AssetDetailViewController.swift in Sources */,
 				9C77059E238FCC79008E1552 /* MySettingViewModel.swift in Sources */,
-				9CFDE21623853DE60062522E /* NetworkDiskStorage.swift in Sources */,
 				9C5A968623A0DFCC002A2B06 /* AddUserViewModel.swift in Sources */,
 				9C0B86E62473840800864DE6 /* ImagePicker.swift in Sources */,
 				9C24AC3F2383EB55005EBF95 /* OpenDoorViewController.swift in Sources */,
@@ -1722,6 +1721,7 @@
 				7B92D0CF2456CC7900F195A9 /* DataSelectionButton.swift in Sources */,
 				7BC0B53D2464083300B38CA8 /* TurnoverStatisticsDTO.swift in Sources */,
 				9C03B0ED239F49440001E849 /* FingerModel.swift in Sources */,
+				9CE6C0D9249880B2003DA523 /* NetworkDiskStorage.swift in Sources */,
 				9CEC3F9424580056002ADA39 /* BillFlowLeaseRenewController.swift in Sources */,
 				9C47DB7D239A36320019EAA0 /* UserMembersModels.swift in Sources */,
 				9CBAF5FB24592BF700197450 /* BillClearingController.swift in Sources */,

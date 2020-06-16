@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import PKHUD
+import RxSwift
+import RxCocoa
 
 class HomeSettingController: UITableViewController, NavigationSettingStyle {
     
     var backgroundColor: UIColor? {
         return ColorClassification.navigationBackground.value
     }
+    
+    let currentAsset = BehaviorSubject<PositionModel?>(value: nil)
     
     enum SeletType: Int {
         case lockSetting = 0
@@ -30,6 +35,20 @@ class HomeSettingController: UITableViewController, NavigationSettingStyle {
         self.title = "门锁设置"
         self.clearsSelectionOnViewWillAppear = true
         setupUI()
+        bind()
+    }
+    
+    func bind() {
+        if let assetId = LSLUser.current().scene?.ladderAssetHouseId {
+            BusinessAPI
+                .requestMapJSON(.getAssetHouseDetail(id: assetId), classType: PositionModel.self)
+                .bind(to: currentAsset)
+                .disposed(by: rx.disposeBag)
+            
+            currentAsset.subscribe(onError: { (error) in
+                PKHUD.sharedHUD.rx.showError(error)
+            }).disposed(by: rx.disposeBag)
+        }
     }
     
     func setupUI() {
@@ -59,9 +78,12 @@ class HomeSettingController: UITableViewController, NavigationSettingStyle {
             navigationController?.pushViewController(lockInfoVC, animated: true)
             
         case .position:
-            let positionVC: PositioEditingController = ViewLoader.Storyboard.controller(from: "Home")
-            positionVC.id = LSLUser.current().scene?.ladderAssetHouseId
-            navigationController?.pushViewController(positionVC, animated: true)
+            let editAssetVC: BindingOrEditAssetViewController = ViewLoader.Storyboard.controller(from: "AssetDetail")
+            
+            if let asset = try? currentAsset.value() {
+                editAssetVC.asset = asset
+            }
+            navigationController?.pushViewController(editAssetVC, animated: true)
         }
     }
 }

@@ -46,13 +46,14 @@ final class NetworkDiskStorage {
     }
     
     @discardableResult
-    func deleteAll() -> Bool {
-        return db.deleteAll()
+    func deleteDataBy(id: String?) -> Bool {
+        return db.deleteValueBy(id)
     }
     
     private func removeExpiredValues() {
         if !autoCleanTrash { return }
         DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 60) {[weak self] in
+            
             self?.db.deleteExpiredData()
             self?.removeExpiredValues()
         }
