@@ -100,14 +100,7 @@ class LoginViewController: UITableViewController, StoryboardView {
         
         
         reactor.state.map { $0.loginResult }.subscribe(onNext: { (result) in
-            guard let success = result else {
-                return
-            }
-            if success {
-                NotificationCenter.default
-                    .post(name: .loginStateDidChange, object: true)
-            }
-            
+            print(result ?? "")
         }).disposed(by: disposeBag)
     }
     

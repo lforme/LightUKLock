@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ESTabBarController_swift
 import SnapKit
 import RxCocoa
 import RxSwift
@@ -33,26 +32,17 @@ class RootViewController: UIViewController {
         super.viewDidLoad()
         observeStatusBarChanged()
         observerLoginStatus()
-        checkLoginStatus()
         observerSiriOpenDoor()
     }
     
     func observerSiriOpenDoor() {
         NotificationCenter.default.rx.notification(.siriOpenDoor)
-        .takeUntil(rx.deallocated)
-        .observeOn(MainScheduler.instance)
-        .subscribeOn(MainScheduler.instance)
-        .subscribe(onNext: {[weak self] (_) in
-            self?.openDoor()
-        }).disposed(by: rx.disposeBag)
-    }
-    
-    func checkLoginStatus() {
-        if LSLUser.current().isLogin {
-            showHomeTabbar()
-        } else {
-            showLoginVC()
-        }
+            .takeUntil(rx.deallocated)
+            .observeOn(MainScheduler.instance)
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: {[weak self] (_) in
+                self?.openDoor()
+            }).disposed(by: rx.disposeBag)
     }
     
     func showHomeTabbar() {
@@ -62,7 +52,7 @@ class RootViewController: UIViewController {
         
         let my: MyViewController = ViewLoader.Storyboard.controller(from: "My")
         homeNavigationVC = BaseNavigationController(rootViewController: my)
-    
+        
         self.view.addSubview(homeNavigationVC!.view)
         self.addChild(homeNavigationVC!)
         
@@ -96,7 +86,7 @@ class RootViewController: UIViewController {
         if let navigationController = controller as? BaseNavigationController {
             return topViewController(controller: navigationController.visibleViewController)
         }
-        if let tabController = controller as? ESTabBarController {
+        if let tabController = controller as? UITabBarController {
             if let selected = tabController.selectedViewController {
                 return topViewController(controller: selected)
             }
@@ -123,16 +113,18 @@ extension RootViewController {
     }
     
     func observerLoginStatus() {
-        
-        NotificationCenter.default.rx.notification(.loginStateDidChange).takeUntil(rx.deallocated)
-            .subscribeOn(MainScheduler.instance).subscribe(onNext: {[weak self] (objc) in
-                guard let isLogin = objc.object as? Bool else { return }
+        LSLUser.current().obIsLogin
+            .observeOn(MainScheduler.instance)
+            .takeUntil(rx.deallocated)
+            .distinctUntilChanged()
+            .subscribe(onNext: {[weak self] (isLogin) in
                 if isLogin {
                     self?.showHomeTabbar()
                 } else {
                     self?.showLoginVC()
                 }
-            }).disposed(by: rx.disposeBag)
+            })
+            .disposed(by: rx.disposeBag)
     }
 }
 

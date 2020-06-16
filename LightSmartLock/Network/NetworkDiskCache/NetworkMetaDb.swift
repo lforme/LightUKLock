@@ -85,7 +85,7 @@ extension NetworkMetaDb {
                             this.userId <- LSLUser.current().token?.userId
                         )) > 0 {
                             result = true
-                            print("写入成功: \(result)")
+                            print("DB save: \(result)")
                         } else {
                             let rowid = try this.checkDb().run(this.table.insert(
                                 this.key <- key,
@@ -96,7 +96,7 @@ extension NetworkMetaDb {
                             ))
                             
                             result = (rowid > Int64(0)) ? true : false
-                            print("写入成功: \(result)")
+                            print("DB save: \(result)")
                         }
                     }
                 } catch {

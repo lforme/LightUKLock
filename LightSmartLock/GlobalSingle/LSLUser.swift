@@ -13,10 +13,7 @@ import RxCocoa
 
 class LSLUser: NSObject {
     
-    private let lock = NSRecursiveLock()
-    
     private override init() {
-        lock.name = "com.LSLUser.lock"
         super.init()
         
         changeableScene.accept(self.scene)
@@ -53,25 +50,26 @@ class LSLUser: NSObject {
             print("已删除Key:\($0.rawValue)")
             LocalArchiver.remove(key: $0.rawValue)
         }
-        NotificationCenter.default.post(name: .loginStateDidChange, object: false)
+
         UIApplication.shared.applicationIconBadgeNumber = 0
-        
+
         let shareUserDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
         ShareUserDefaultsKey.allCases.forEach {
             shareUserDefault?.removeObject(forKey: $0.rawValue)
             shareUserDefault?.synchronize()
         }
+        
+        changeableUserInfo.accept(nil)
+        changeableToken.accept(nil)
     }
     
     var token: AccessTokenModel? {
         set {
             guard let entity = newValue?.toJSONString() else { return }
-            lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.token.rawValue, value: entity)
             let shareUserDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
             shareUserDefault?.set(entity, forKey: ShareUserDefaultsKey.token.rawValue)
             shareUserDefault?.synchronize()
-            lock.unlock()
         }
         
         get {
@@ -84,9 +82,7 @@ class LSLUser: NSObject {
     var refreshToken: AccessTokenModel? {
         set {
             guard let entity = newValue?.toJSONString() else { return }
-            lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.refreshToekn.rawValue, value: entity)
-            lock.unlock()
         }
         
         get {
@@ -100,12 +96,10 @@ class LSLUser: NSObject {
         set {
             guard let entity = newValue?.toJSONString() else { return }
             changeableUserInfo.accept(newValue)
-            lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.userInfo.rawValue, value: entity)
             let shareUserDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
             shareUserDefault?.set(entity, forKey: ShareUserDefaultsKey.userInfo.rawValue)
             shareUserDefault?.synchronize()
-            lock.unlock()
         }
         
         get {
@@ -120,12 +114,10 @@ class LSLUser: NSObject {
         set {
             print("场景更新")
             changeableScene.accept(newValue)
-            lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.scene.rawValue, value: newValue?.toJSONString())
             let shareUserDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
             shareUserDefault?.set(newValue?.toJSONString(), forKey: ShareUserDefaultsKey.scene.rawValue)
             shareUserDefault?.synchronize()
-            lock.unlock()
         }
         
         get {
@@ -138,9 +130,7 @@ class LSLUser: NSObject {
     var lockInfo: LockModel? {
         set {
             print("门锁信息更新")
-            lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.smartLockInfo.rawValue, value: newValue?.toJSONString())
-            lock.unlock()
         }
         
         get {
@@ -158,8 +148,9 @@ class LSLUser: NSObject {
         return changeableScene.asObservable()
     }
     
-    var isLogin: Bool {
-        return (user != nil) ? true : false
+    var obIsLogin: Observable<Bool> {
+        let hasUserInfo = changeableUserInfo.map { $0 != nil }
+        return hasUserInfo
     }
     
     var isInstalledLock: Bool {
@@ -171,9 +162,7 @@ class LSLUser: NSObject {
     
     var hasSiriShortcuts: Bool {
         set {
-            lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.siriShortcuts.rawValue, value: newValue)
-            lock.unlock()
         }
         
         get {
@@ -184,6 +173,7 @@ class LSLUser: NSObject {
     
     private let changeableUserInfo = BehaviorRelay<UserModel?>(value: nil)
     private let changeableScene = BehaviorRelay<SceneListModel?>(value: nil)
+    private let changeableToken = BehaviorRelay<AccessTokenModel?>(value: nil)
 }
 
 /// 归档的Key

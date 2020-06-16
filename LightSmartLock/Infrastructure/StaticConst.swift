@@ -29,7 +29,6 @@ enum NotificationRefreshType {
 
 extension NSNotification.Name {
     
-    static let loginStateDidChange = NSNotification.Name(rawValue: "loginStateDidChange")
     static let statuBarDidChange = NSNotification.Name(rawValue: "statuBarDidChange")
     static let refreshState = NSNotification.Name(rawValue: "refreshState")
     static let siriOpenDoor = NSNotification.Name(rawValue: "siriOpenDoor")
