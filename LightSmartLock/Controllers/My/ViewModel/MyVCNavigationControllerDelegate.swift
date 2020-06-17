@@ -21,10 +21,9 @@ class MyVCNavigationControllerDelegate: NSObject, UINavigationControllerDelegate
     
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        if operation == .pop, let homeVC = fromVC as? HomeViewController, let _ = toVC as? MyViewController {
+        if operation == .pop, let _ = fromVC as? HomeViewController, let _ = toVC as? MyViewController {
 
-            let thumbView = homeVC.sceneButton
-            self.shrinkAnimator = MyViewControllerShrinkAnimation(thumbView: thumbView)
+            self.shrinkAnimator = MyViewControllerShrinkAnimation()
             
             return self.shrinkAnimator!
         }
