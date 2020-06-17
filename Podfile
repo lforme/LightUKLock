@@ -49,6 +49,7 @@ target 'LightSmartLock' do
   pod 'EFQRCode'
   pod 'GradientProgressBar'
   pod 'Floaty', '~> 4.2.0'
+  pod 'BetterSegmentedControl', '~> 1.3'
   
   # 动画
   pod 'lottie-ios'

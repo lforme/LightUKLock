@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -1803,7 +1803,97 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8f-9j-7oZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="421.73913043478262" y="1341.2946428571429"/>
+            <point key="canvasLocation" x="9" y="1255"/>
+        </scene>
+        <!--Reset Lock Controller-->
+        <scene sceneID="6Zj-5F-Xbh">
+            <objects>
+                <viewController storyboardIdentifier="ResetLockController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KUK-oF-NY7" customClass="ResetLockController" customModule="寓用管家" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lel-cc-H7z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDn-TC-VYZ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IEK-hU-ZB7">
+                                        <rect key="frame" x="20" y="64" width="374" height="42"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="操作步骤:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0G3-FY-LBq">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" name="textDescription"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="操作步骤:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Cp-w7-LGL">
+                                                <rect key="frame" x="0.0" y="25" width="374" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" name="textDescription"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock_Installation_guide" translatesAutoresizingMaskIntoConstraints="NO" id="gth-b6-Zv1">
+                                        <rect key="frame" x="117" y="154" width="180" height="252"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQB-P6-I2H">
+                                        <rect key="frame" x="20" y="506" width="374" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="p5i-V1-gVa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <state key="normal" title="强制删除设备">
+                                            <color key="titleColor" red="1" green="0.36470588235294116" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="24"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="1" green="0.36470588235294116" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="viewBackground"/>
+                                <constraints>
+                                    <constraint firstItem="IEK-hU-ZB7" firstAttribute="top" secondItem="Aqv-7d-q3k" secondAttribute="top" constant="64" id="ALd-Cd-Sue"/>
+                                    <constraint firstItem="gth-b6-Zv1" firstAttribute="centerX" secondItem="Aqv-7d-q3k" secondAttribute="centerX" id="De0-fG-Dk0"/>
+                                    <constraint firstItem="Aqv-7d-q3k" firstAttribute="trailing" secondItem="gQB-P6-I2H" secondAttribute="trailing" constant="20" id="EKV-It-5xh"/>
+                                    <constraint firstItem="gth-b6-Zv1" firstAttribute="top" secondItem="IEK-hU-ZB7" secondAttribute="bottom" constant="48" id="FMi-c4-Dbk"/>
+                                    <constraint firstItem="gQB-P6-I2H" firstAttribute="leading" secondItem="Aqv-7d-q3k" secondAttribute="leading" constant="20" id="NAV-dR-ypn"/>
+                                    <constraint firstItem="IEK-hU-ZB7" firstAttribute="trailing" secondItem="COZ-RC-YCv" secondAttribute="trailing" constant="394" id="ShY-Ld-lPF"/>
+                                    <constraint firstItem="gQB-P6-I2H" firstAttribute="bottom" secondItem="COZ-RC-YCv" secondAttribute="bottom" constant="20" id="UYq-c7-gVv"/>
+                                    <constraint firstItem="Aqv-7d-q3k" firstAttribute="trailing" secondItem="IEK-hU-ZB7" secondAttribute="trailing" constant="20" id="YKo-Wf-x88"/>
+                                    <constraint firstItem="IEK-hU-ZB7" firstAttribute="leading" secondItem="COZ-RC-YCv" secondAttribute="leading" constant="20" id="cf7-hA-vyn"/>
+                                    <constraint firstItem="IEK-hU-ZB7" firstAttribute="top" secondItem="COZ-RC-YCv" secondAttribute="top" constant="64" id="d3K-vY-Y2N"/>
+                                    <constraint firstItem="IEK-hU-ZB7" firstAttribute="leading" secondItem="Aqv-7d-q3k" secondAttribute="leading" constant="20" id="dKK-r4-b8C"/>
+                                    <constraint firstItem="gQB-P6-I2H" firstAttribute="top" secondItem="gth-b6-Zv1" secondAttribute="bottom" constant="100" id="yWy-Cs-YBq"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="COZ-RC-YCv"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="Aqv-7d-q3k"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="tDn-TC-VYZ" firstAttribute="leading" secondItem="xou-7I-649" secondAttribute="leading" id="B6H-iZ-Q2y"/>
+                            <constraint firstItem="tDn-TC-VYZ" firstAttribute="top" secondItem="xou-7I-649" secondAttribute="top" id="Sxu-Vz-Sz7"/>
+                            <constraint firstItem="xou-7I-649" firstAttribute="trailing" secondItem="tDn-TC-VYZ" secondAttribute="trailing" id="ruK-Zo-SuJ"/>
+                            <constraint firstItem="xou-7I-649" firstAttribute="bottom" secondItem="tDn-TC-VYZ" secondAttribute="bottom" id="vkJ-jT-hhR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xou-7I-649"/>
+                    </view>
+                    <connections>
+                        <outlet property="forceDeleteButton" destination="gQB-P6-I2H" id="2t7-O7-s2c"/>
+                        <outlet property="stepLabel" destination="0Cp-w7-LGL" id="UhM-PR-7XY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WK3-DS-pGM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="952.17391304347836" y="1238.1696428571429"/>
         </scene>
         <!--Home Setting Controller-->
         <scene sceneID="kUK-X6-Doz">
@@ -1958,10 +2048,35 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="psm-de-V7h">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="cIz-rp-Jvc">
+                                        <rect key="frame" x="0.0" y="171" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cIz-rp-Jvc" id="von-Px-nSe">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恢复出厂设置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilj-PN-njX">
+                                                    <rect key="frame" x="16" y="13.5" width="86" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" name="textPrimary"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ilj-PN-njX" firstAttribute="leading" secondItem="von-Px-nSe" secondAttribute="leading" constant="16" id="WX5-68-F85"/>
+                                                <constraint firstItem="ilj-PN-njX" firstAttribute="centerY" secondItem="von-Px-nSe" secondAttribute="centerY" id="y0p-z6-IDB"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="viewBackground"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection id="tfY-DZ-USV">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="won-uS-uo6">
-                                        <rect key="frame" x="0.0" y="171" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="270.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="won-uS-uo6" id="PQ3-bH-EYe">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -1971,7 +2086,7 @@
                                                     <rect key="frame" x="16" y="7.5" width="382" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" title="删除门锁">
-                                                        <color key="titleColor" name="textPrimary"/>
+                                                        <color key="titleColor" red="1" green="0.36470588240000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </state>
                                                 </button>
                                             </subviews>
@@ -1980,30 +2095,6 @@
                                                 <constraint firstItem="KsZ-wB-wjQ" firstAttribute="leading" secondItem="PQ3-bH-EYe" secondAttribute="leading" constant="16" id="d2f-V5-juB"/>
                                                 <constraint firstItem="KsZ-wB-wjQ" firstAttribute="centerY" secondItem="PQ3-bH-EYe" secondAttribute="centerY" id="mNz-h7-Z54"/>
                                                 <constraint firstItem="KsZ-wB-wjQ" firstAttribute="centerX" secondItem="PQ3-bH-EYe" secondAttribute="centerX" id="twb-Nf-4w0"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" name="viewBackground"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="wJL-YF-gtB">
-                                        <rect key="frame" x="0.0" y="214.5" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wJL-YF-gtB" id="a4f-Yv-zQE">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AV8-Tc-Yds">
-                                                    <rect key="frame" x="16" y="7.5" width="382" height="29"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <state key="normal" title="强制删除门锁">
-                                                        <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="AV8-Tc-Yds" firstAttribute="leading" secondItem="a4f-Yv-zQE" secondAttribute="leading" constant="16" id="0NG-Gc-H6A"/>
-                                                <constraint firstItem="AV8-Tc-Yds" firstAttribute="centerY" secondItem="a4f-Yv-zQE" secondAttribute="centerY" id="c90-ok-uYE"/>
-                                                <constraint firstAttribute="trailing" secondItem="AV8-Tc-Yds" secondAttribute="trailing" constant="16" id="jaY-um-Hd2"/>
-                                                <constraint firstItem="AV8-Tc-Yds" firstAttribute="centerX" secondItem="a4f-Yv-zQE" secondAttribute="centerX" id="qJR-bP-VOl"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="viewBackground"/>
@@ -2018,7 +2109,6 @@
                     </tableView>
                     <connections>
                         <outlet property="deleteButton" destination="KsZ-wB-wjQ" id="ga1-Gl-hFf"/>
-                        <outlet property="forceDeleteButton" destination="AV8-Tc-Yds" id="YQy-vM-Kc2"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0cz-Rp-K2G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2958,6 +3048,7 @@
         <image name="add_user_contact" width="24" height="24"/>
         <image name="home_lock_radio_normal" width="18" height="18"/>
         <image name="home_lock_sreach" width="14" height="14"/>
+        <image name="lock_Installation_guide" width="180" height="252"/>
         <image name="lock_add_diagram" width="254" height="112"/>
         <image name="lock_setting_sound_bitty" width="11" height="16"/>
         <image name="lock_setting_sound_loud" width="26" height="22"/>

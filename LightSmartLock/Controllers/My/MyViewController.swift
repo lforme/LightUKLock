@@ -12,6 +12,7 @@ import RxSwift
 import PKHUD
 import Kingfisher
 import MJRefresh
+import Floaty
 
 class MyViewController: UIViewController, NavigationSettingStyle {
     
@@ -23,6 +24,7 @@ class MyViewController: UIViewController, NavigationSettingStyle {
     @IBOutlet weak var nickNameLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    lazy var floaty: Floaty = Floaty(frame: .zero)
     
     var clickCell: UITableViewCell?
     
@@ -88,6 +90,29 @@ class MyViewController: UIViewController, NavigationSettingStyle {
             self?.avatarView.setUrl(urlString)
         }).disposed(by: rx.disposeBag)
         
+        let addAssetItem = FloatyItem()
+        addAssetItem.title = "资产"
+        addAssetItem.titleLabel.font = UIFont.systemFont(ofSize: 14)
+        addAssetItem.titleColor = .white
+        addAssetItem.iconImageView.image = UIImage(named: "my_add_asset")
+        addAssetItem.imageSize = CGSize(width: 52, height: 52)
+        floaty.addItem(item: addAssetItem)
+        let addLockItem = FloatyItem()
+        addLockItem.title = "门锁"
+        addLockItem.titleLabel.font = UIFont.systemFont(ofSize: 14)
+        addLockItem.titleColor = .white
+        addLockItem.iconImageView.image = UIImage(named: "my_add_lock")
+        addLockItem.imageSize = CGSize(width: 52, height: 52)
+        floaty.addItem(item: addLockItem)
+        
+       
+        addAssetItem.handler = { _ in
+            
+        }
+        
+        addLockItem.handler = {[weak self] _ in
+            self?.gotoSelectedLockVC()
+        }
     }
     
     func setupTableviewRefresh() {
@@ -110,6 +135,16 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         self.tableView.rowHeight = 136
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        self.view.addSubview(floaty)
+        floaty.snp.makeConstraints { (maker) in
+            maker.right.equalTo(self.view.snp.right).offset(-16)
+            maker.bottom.equalTo(self.view.snp.bottom).offset(-48)
+            maker.width.height.equalTo(48)
+        }
+        floaty.buttonColor = #colorLiteral(red: 1, green: 0.6639282703, blue: 0.245883733, alpha: 1)
+        floaty.plusColor = .white
+        floaty.openAnimationType = .fade
     }
     
     func setupNavigation() {

@@ -16,11 +16,11 @@ class LockSettingController: UITableViewController {
     
     enum SelectType: Int {
         case sound = 0
-        case firmwareUpdate
+        case firmwareUpdate = 1
+        case reset = 10
     }
     
     @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var forceDeleteButton: UIButton!
     
     let vm = LockSettingViewModel()
     
@@ -69,26 +69,6 @@ class LockSettingController: UITableViewController {
                 PKHUD.sharedHUD.rx.showError(error)
         }).disposed(by: rx.disposeBag)
         
-        
-        forceDeleteButton.rx.tap.flatMapLatest {[unowned self] (_) -> Observable<Int> in
-            self.showActionSheet(title: "确定要强制删除门锁吗?", message: "强制删除门锁并不会重置门锁设置, 需要您手动在门锁上恢复出厂设置", buttonTitles: ["强制删除", "取消"], highlightedButtonIndex: 1)
-        }.flatMapLatest {[unowned self] (buttonIndex) -> Observable<Bool> in
-            return self.vm.forceDeleteLock(buttonIndex)
-        }.subscribe(onNext: {[weak self] (success) in
-            if success {
-                self?.navigationController?.popViewController(animated: true)
-                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.deleteLock)
-                var updateValue = LSLUser.current().scene
-                updateValue?.ladderLockId = nil
-                LSLUser.current().scene = updateValue
-                LSLUser.current().lockInfo = nil
-                
-            } else {
-                HUD.flash(.label("删除门锁失败"), delay: 2)
-            }
-            }, onError: { (error) in
-                PKHUD.sharedHUD.rx.showError(error)
-        }).disposed(by: rx.disposeBag)
     }
     
     func setupUI() {
@@ -116,6 +96,11 @@ class LockSettingController: UITableViewController {
             
         case .firmwareUpdate:
             HUD.flash(.label("已是最新版本"), delay: 2)
+            
+        case .reset:
+            let resetVC: ResetLockController = ViewLoader.Storyboard.controller(from: "Home")
+            resetVC.vm = self.vm
+            navigationController?.pushViewController(resetVC, animated: true)
         }
     }
 }

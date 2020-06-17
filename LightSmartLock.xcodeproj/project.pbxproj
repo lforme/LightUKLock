@@ -101,6 +101,7 @@
 		9C24AC442383EB96005EBF95 /* My.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C24AC432383EB96005EBF95 /* My.storyboard */; };
 		9C24AC462383EBB1005EBF95 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC452383EBB1005EBF95 /* MyViewController.swift */; };
 		9C24AC482383EBE5005EBF95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC472383EBE5005EBF95 /* HomeViewController.swift */; };
+		9C27928E2499BD2D008EDA75 /* ResetLockController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C27928D2499BD2D008EDA75 /* ResetLockController.swift */; };
 		9C282D6B246E7319008CC165 /* MyBillModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C282D6A246E7319008CC165 /* MyBillModel.swift */; };
 		9C323BCA245676CA00214256 /* BillContractSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C323BC9245676CA00214256 /* BillContractSection.swift */; };
 		9C323BCC24567F9700214256 /* BillReportDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C323BCB24567F9700214256 /* BillReportDetailController.swift */; };
@@ -435,6 +436,7 @@
 		9C24AC432383EB96005EBF95 /* My.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = My.storyboard; sourceTree = "<group>"; };
 		9C24AC452383EBB1005EBF95 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		9C24AC472383EBE5005EBF95 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9C27928D2499BD2D008EDA75 /* ResetLockController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetLockController.swift; sourceTree = "<group>"; };
 		9C282D6A246E7319008CC165 /* MyBillModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBillModel.swift; sourceTree = "<group>"; };
 		9C323BC9245676CA00214256 /* BillContractSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillContractSection.swift; sourceTree = "<group>"; };
 		9C323BCB24567F9700214256 /* BillReportDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillReportDetailController.swift; sourceTree = "<group>"; };
@@ -1221,6 +1223,7 @@
 				9CBD8F4E23A22AC200886519 /* SingleTempPasswordController.swift */,
 				9CBD8F5023A2376C00886519 /* SharePasswordMultipleController.swift */,
 				9CBD8F5823A2496700886519 /* SharePasswordSignleController.swift */,
+				9C27928D2499BD2D008EDA75 /* ResetLockController.swift */,
 				9C24AC412383EB88005EBF95 /* Home.storyboard */,
 			);
 			path = Lock;
@@ -1664,6 +1667,7 @@
 				9CABF495246501A40001AAE3 /* BillDetailSectionOneCell.swift in Sources */,
 				9CFDE211238537A30062522E /* NetworkAPI.swift in Sources */,
 				9C323BCC24567F9700214256 /* BillReportDetailController.swift in Sources */,
+				9C27928E2499BD2D008EDA75 /* ResetLockController.swift in Sources */,
 				7B7EB4C12451A000002DC436 /* AssetDetailViewController.swift in Sources */,
 				9C77059E238FCC79008E1552 /* MySettingViewModel.swift in Sources */,
 				9C5A968623A0DFCC002A2B06 /* AddUserViewModel.swift in Sources */,
