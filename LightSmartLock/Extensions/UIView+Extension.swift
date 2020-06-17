@@ -12,7 +12,7 @@ import UIKit
 extension UIView {
   
     func setCircular(radius: CGFloat) {
-        self.layer.setValue(true, forKey: "continuousCorners")
+        self.clipsToBounds = true
         self.layer.cornerRadius = radius
     }
     

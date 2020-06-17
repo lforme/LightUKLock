@@ -88,4 +88,5 @@ enum BusinessInterface {
     case messageList(assetId: String, smsType: Int, pageIndex: Int, pageSize: Int) // 消息中心
     case changePassword(oldPwd: String, newPwd: String) // 修改密码
     case lockTypeList(channels: String) // 获取选择门锁列表
+    case stewardList(pageIndex: Int, pageSize: Int?) // 获取管家列表
 }

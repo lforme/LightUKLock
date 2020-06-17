@@ -105,9 +105,8 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         addLockItem.imageSize = CGSize(width: 52, height: 52)
         floaty.addItem(item: addLockItem)
         
-       
-        addAssetItem.handler = { _ in
-            
+        addAssetItem.handler = {[weak self] _ in
+            self?.gotoAssetVC()
         }
         
         addLockItem.handler = {[weak self] _ in
@@ -144,7 +143,7 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         }
         floaty.buttonColor = #colorLiteral(red: 1, green: 0.6639282703, blue: 0.245883733, alpha: 1)
         floaty.plusColor = .white
-        floaty.openAnimationType = .fade
+        floaty.openAnimationType = .slideUp
     }
     
     func setupNavigation() {
@@ -158,7 +157,12 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         self.navigationController?.pushViewController(settingVC, animated: true)
     }
     
-    @objc func gotoSelectedLockVC() {
+    func gotoAssetVC() {
+        let editAssetVC: BindingOrEditAssetViewController = ViewLoader.Storyboard.controller(from: "AssetDetail")
+        navigationController?.pushViewController(editAssetVC, animated: true)
+    }
+    
+    func gotoSelectedLockVC() {
         
         vm.configuredList.subscribe(onNext: {[weak self] (bindLockList) in
             

@@ -11,28 +11,53 @@ import SwiftDate
 import Kingfisher
 
 class UnlockRecordCell: UITableViewCell {
-
+    
     @IBOutlet weak var nickname: UILabel!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var unlockType: UILabel!
     @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var lockWayIcon: UIImageView!
+    @IBOutlet weak var topLine: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
-        
-        self.contentView.backgroundColor = ColorClassification.tableViewBackground.value
-        nickname.textColor = ColorClassification.textPrimary.value
-        time.textColor = ColorClassification.textDescription.value
-        unlockType.textColor = ColorClassification.textDescription.value
-        
-        avatar.clipsToBounds = true
         avatar.layer.cornerRadius = avatar.bounds.width / 2
     }
-
-    func bind(_ data: UnlockRecordModel) {
+    
+    func bind(_ data: UnlockRecordModel, filterType: Int) {
         self.nickname.text = data.userName
-        self.time.text = data.openTime
+        
+        switch filterType {
+        case 1, 2:
+            self.time.text = data.openTime?.toDate()?.toFormat("hh:mm")
+
+        case 3:
+            self.time.text = data.openTime?.toDate()?.toFormat("yy/MM/dd hh:mm")
+    
+        default:
+            break
+        }
+        
+        switch data.openTypeCode {
+        case 1:
+            self.lockWayIcon.image = UIImage(named: "home_lock_way_num")
+            
+        case 2, 201:
+            self.lockWayIcon.image = UIImage(named: "home_lock_way_finger")
+            
+        case 3, 4:
+            self.lockWayIcon.image = UIImage(named: "home_lock_way_card")
+        case 5:
+            self.lockWayIcon.image = UIImage(named: "home_lock_way_temp")
+        case 6:
+            self.lockWayIcon.image = UIImage(named: "home_lock_way_ble")
+            
+        default:
+            break
+        }
+        
         self.unlockType.text = data.openType
     }
 }
+

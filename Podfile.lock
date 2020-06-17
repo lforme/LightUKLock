@@ -5,6 +5,7 @@ PODS:
   - Alamofire (5.1.0)
   - AlignedCollectionViewFlowLayout (1.1.2)
   - AloeStackView (1.2.0)
+  - BetterSegmentedControl (1.3.0)
   - CBPinEntryView (1.7.1)
   - ChameleonFramework (2.1.0):
     - ChameleonFramework/Default (= 2.1.0)
@@ -89,6 +90,7 @@ DEPENDENCIES:
   - Action
   - AlignedCollectionViewFlowLayout
   - AloeStackView
+  - BetterSegmentedControl (~> 1.3)
   - CBPinEntryView
   - ChameleonFramework
   - CryptoSwift
@@ -130,6 +132,7 @@ SPEC REPOS:
     - Alamofire
     - AlignedCollectionViewFlowLayout
     - AloeStackView
+    - BetterSegmentedControl
     - CBPinEntryView
     - ChameleonFramework
     - CryptoSwift
@@ -178,6 +181,7 @@ SPEC CHECKSUMS:
   Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
   AlignedCollectionViewFlowLayout: ee2ef451e741ec08f8e0967d828001e2f051c20a
   AloeStackView: 8a4ce0efa08128dd78d538372f60c76c224034bb
+  BetterSegmentedControl: 85d1b0343a09603b098884d527f550dfc8e6cdd9
   CBPinEntryView: 5a91ba422bd8a38eea587511c92c89b19be78454
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CryptoSwift: 1283821600233bdbeb96d7b389c3288c3bf77211
@@ -221,6 +225,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 99f03b64145a8c92c55b9b1b931410967d9be4cb
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: 9b67a93eba5c6cc74159701aaa58dbeef9aea0a7
+PODFILE CHECKSUM: db508ddb4877c2acfa607843a9188aa731bffd18
 
 COCOAPODS: 1.9.1

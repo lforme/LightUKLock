@@ -178,7 +178,8 @@ extension BusinessInterface: TargetType {
              .costCategory,
              .tenantContractInfo,
              .checkTerminationTenantContract,
-             .billInfoDetail:
+             .billInfoDetail,
+             .stewardList:
             return .get
             
         case .deleteAssetHouse,
@@ -312,6 +313,8 @@ extension BusinessInterface: TargetType {
             return "/user/password"
         case .lockTypeList:
             return "/hardware_lock_config/lockType"
+        case .stewardList:
+             return "/steward/list"
         }
     }
     
@@ -481,6 +484,9 @@ extension BusinessInterface: TargetType {
             
         case let .lockTypeList(channels):
             return ["channels": channels]
+            
+        case let .stewardList(pageIndex, pageSize):
+            return ["currentPage": pageIndex, "pageSize": pageSize ?? 15]
             
         default:
             return nil

@@ -10,11 +10,22 @@ import Foundation
 import HandyJSON
 
 
-struct UnlockRecordModel: HandyJSON {
-    
+struct UnlockRecordModel: HandyJSON, Hashable {
+    var openTypeCode: Int?
     var openTime: String?
     var openType: String?
     var userName: String?
+    
+    static func == (lhs: UnlockRecordModel, rhs: UnlockRecordModel) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.openTime)
+        hasher.combine(self.openType)
+        hasher.combine(self.userName)
+        hasher.combine(self.openTypeCode)
+    }
 }
 
 struct LockModel: HandyJSON {

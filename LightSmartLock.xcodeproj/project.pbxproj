@@ -102,6 +102,11 @@
 		9C24AC462383EBB1005EBF95 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC452383EBB1005EBF95 /* MyViewController.swift */; };
 		9C24AC482383EBE5005EBF95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24AC472383EBE5005EBF95 /* HomeViewController.swift */; };
 		9C27928E2499BD2D008EDA75 /* ResetLockController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C27928D2499BD2D008EDA75 /* ResetLockController.swift */; };
+		9C279290249A170A008EDA75 /* HouseKeeperController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C27928F249A170A008EDA75 /* HouseKeeperController.swift */; };
+		9C279292249A1CB2008EDA75 /* HouseKeeperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C279291249A1CB2008EDA75 /* HouseKeeperModel.swift */; };
+		9C279295249A2019008EDA75 /* HouseKeeperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C279293249A2019008EDA75 /* HouseKeeperCell.swift */; };
+		9C279296249A2019008EDA75 /* HouseKeeperCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C279294249A2019008EDA75 /* HouseKeeperCell.xib */; };
+		9C279298249A248D008EDA75 /* HouseKeeperListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C279297249A248D008EDA75 /* HouseKeeperListController.swift */; };
 		9C282D6B246E7319008CC165 /* MyBillModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C282D6A246E7319008CC165 /* MyBillModel.swift */; };
 		9C323BCA245676CA00214256 /* BillContractSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C323BC9245676CA00214256 /* BillContractSection.swift */; };
 		9C323BCC24567F9700214256 /* BillReportDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C323BCB24567F9700214256 /* BillReportDetailController.swift */; };
@@ -437,6 +442,11 @@
 		9C24AC452383EBB1005EBF95 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		9C24AC472383EBE5005EBF95 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9C27928D2499BD2D008EDA75 /* ResetLockController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetLockController.swift; sourceTree = "<group>"; };
+		9C27928F249A170A008EDA75 /* HouseKeeperController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseKeeperController.swift; sourceTree = "<group>"; };
+		9C279291249A1CB2008EDA75 /* HouseKeeperModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseKeeperModel.swift; sourceTree = "<group>"; };
+		9C279293249A2019008EDA75 /* HouseKeeperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseKeeperCell.swift; sourceTree = "<group>"; };
+		9C279294249A2019008EDA75 /* HouseKeeperCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseKeeperCell.xib; sourceTree = "<group>"; };
+		9C279297249A248D008EDA75 /* HouseKeeperListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseKeeperListController.swift; sourceTree = "<group>"; };
 		9C282D6A246E7319008CC165 /* MyBillModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBillModel.swift; sourceTree = "<group>"; };
 		9C323BC9245676CA00214256 /* BillContractSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillContractSection.swift; sourceTree = "<group>"; };
 		9C323BCB24567F9700214256 /* BillReportDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillReportDetailController.swift; sourceTree = "<group>"; };
@@ -778,6 +788,8 @@
 				9CBD8F4B23A21E7D00886519 /* PasswordChangeStatusCell.xib */,
 				9C218FA323FA8CC9009600F7 /* LeasedCell.swift */,
 				9C218FA423FA8CC9009600F7 /* LeasedCell.xib */,
+				9C279293249A2019008EDA75 /* HouseKeeperCell.swift */,
+				9C279294249A2019008EDA75 /* HouseKeeperCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -937,6 +949,7 @@
 				9C11E6E8246D300E008E0A60 /* BillLiquidationModel.swift */,
 				9C282D6A246E7319008CC165 /* MyBillModel.swift */,
 				9CFB47CA2472823C0080BCB6 /* CollectionAccountModel.swift */,
+				9C279291249A1CB2008EDA75 /* HouseKeeperModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1224,6 +1237,8 @@
 				9CBD8F5023A2376C00886519 /* SharePasswordMultipleController.swift */,
 				9CBD8F5823A2496700886519 /* SharePasswordSignleController.swift */,
 				9C27928D2499BD2D008EDA75 /* ResetLockController.swift */,
+				9C27928F249A170A008EDA75 /* HouseKeeperController.swift */,
+				9C279297249A248D008EDA75 /* HouseKeeperListController.swift */,
 				9C24AC412383EB88005EBF95 /* Home.storyboard */,
 			);
 			path = Lock;
@@ -1411,6 +1426,7 @@
 				9C1B87C2239767A100216ADA /* InitialLock.storyboard in Resources */,
 				9C218FA223FA8495009600F7 /* loading.json in Resources */,
 				9CABF4A2246508A10001AAE3 /* BillDetailFeesFootView.xib in Resources */,
+				9C279296249A2019008EDA75 /* HouseKeeperCell.xib in Resources */,
 				9C7705A2238FE358008E1552 /* SingleInputController.xib in Resources */,
 				9C03B0FD239FB3620001E849 /* addFinger.json in Resources */,
 				9C1A4BC5238D0A1A00626DB4 /* AnimationHeaderView.xib in Resources */,
@@ -1588,6 +1604,7 @@
 				9C4D10B92463F0E4005D0C6F /* ReceivingAccountController.swift in Sources */,
 				9C323BD02456D10F00214256 /* BillFlowContractDetailController.swift in Sources */,
 				9CB4B34D239DF519001197AB /* DigitalPwdDetailController.swift in Sources */,
+				9C279292249A1CB2008EDA75 /* HouseKeeperModel.swift in Sources */,
 				9CB4B351239E3AA2001197AB /* DigitalChangePwdViewModel.swift in Sources */,
 				9C3F93E3245599940040005D /* BillFlowCellItemCell.swift in Sources */,
 				9C47DB73239A0A220019EAA0 /* Popups.swift in Sources */,
@@ -1679,6 +1696,7 @@
 				7B92D0CA2456CBF600F195A9 /* DataPickerViewController.swift in Sources */,
 				9C47DB83239A39070019EAA0 /* ListViewModeling.swift in Sources */,
 				7BCDE4F3246A46CE00334FCF /* AddOtherViewController.swift in Sources */,
+				9C279290249A170A008EDA75 /* HouseKeeperController.swift in Sources */,
 				9CABF4A5246514A60001AAE3 /* BillDetailTenantCell.swift in Sources */,
 				9CABF4A1246508A10001AAE3 /* BillDetailFeesFootView.swift in Sources */,
 				9C47DB83239A39070019EAA0 /* ListViewModeling.swift in Sources */,
@@ -1713,6 +1731,7 @@
 				9C24AC352383DCB0005EBF95 /* UserModel.swift in Sources */,
 				9C77059A238FACC7008E1552 /* MyViewModel.swift in Sources */,
 				9C1A4BC4238D0A1A00626DB4 /* AnimationHeaderView.swift in Sources */,
+				9C279295249A2019008EDA75 /* HouseKeeperCell.swift in Sources */,
 				9C452F102394E9CE00144827 /* LockSettingViewModel.swift in Sources */,
 				9C1C838E23892C83005BB17C /* HomeViewModel.swift in Sources */,
 				9C24AC1923838E56005EBF95 /* UIFont+extension.swift in Sources */,
@@ -1781,6 +1800,7 @@
 				9C3726C82390C6AD00450757 /* Empty+UIViewController.swift in Sources */,
 				9C52402D238E163D00308AC4 /* UnlockRecordCell.swift in Sources */,
 				9C4D10BC2463F1F1005D0C6F /* ReceivingAccountCell.swift in Sources */,
+				9C279298249A248D008EDA75 /* HouseKeeperListController.swift in Sources */,
 				9C452F082394AA2E00144827 /* CenterMessageModel.swift in Sources */,
 				9CBD8F5D23A24DA800886519 /* BluetoothSynchronizeTask.swift in Sources */,
 				7B7EB4C724529AE6002DC436 /* AddUtilitiesRecordViewController.swift in Sources */,

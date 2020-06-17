@@ -57,7 +57,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
             maker.top.left.right.equalToSuperview()
             maker.bottom.equalTo(self.additionalSafeAreaInsets.bottom)
         }
-    
+        
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
@@ -74,13 +74,6 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         lockSettingButton.contentHorizontalAlignment = .left
         lockSettingButton.addTarget(self, action: #selector(self.gotoSettingVC), for: .touchUpInside)
         let settingItem = UIBarButtonItem(customView: lockSettingButton)
-        
-        let notiButton = UIButton(type: .custom)
-        notiButton.setImage(UIImage(named: "home_noti_navi"), for: UIControl.State())
-        notiButton.frame.size = CGSize(width: 32, height: 32)
-        notiButton.contentHorizontalAlignment = .left
-        notiButton.addTarget(self, action: #selector(self.gotoMessageCenterVC), for: .touchUpInside)
-        let notiItem = UIBarButtonItem(customView: notiButton)
         
         sceneButton = UIButton(type: .custom)
         sceneButton.contentHorizontalAlignment = .right
@@ -106,7 +99,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         let sceneItem = UIBarButtonItem(customView: sceneButton)
         
         self.navigationItem.leftBarButtonItems = [sceneItem]
-        self.navigationItem.rightBarButtonItems = [settingItem, notiItem]
+        self.navigationItem.rightBarButtonItems = [settingItem]
     }
     
     func bind() {
@@ -126,7 +119,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
             if home.ladderOpenLockRecordVO?.userName.isNotNilNotEmpty ?? false {
                 tenantCell?.unlocker.text = home.ladderOpenLockRecordVO?.userName
             } else {
-                tenantCell?.unlocker.text = "未知解锁人员"
+                tenantCell?.unlocker.text = "解锁记录"
             }
             tenantCell?.unlockTime.text = home.ladderOpenLockRecordVO?.openTime
             this.tableView.reloadData()
@@ -188,9 +181,10 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         navigationController?.pushViewController(passwordManageVC, animated: true)
     }
     
-    @objc func gotoFingerManagementVC() {
-        let fingerManageVC: FingerManageController = ViewLoader.Storyboard.controller(from: "Home")
-        navigationController?.pushViewController(fingerManageVC, animated: true)
+    @objc func gotoHouseKeeperVC() {
+        let houseKeepperVC: HouseKeeperController = ViewLoader.Storyboard.controller(from: "Home")
+        navigationController?.pushViewController(houseKeepperVC, animated: true)
+        
     }
     
     @objc func gotoCardManagementVC() {
@@ -206,7 +200,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let animationCell = tableView.dequeueReusableCell(withIdentifier: "AnimationHeaderView") as! AnimationHeaderView
-       
+            
             animationCell.unlockButton.rx.tap.subscribe(onNext: {[weak self] (_) in
                 let openDoorVC: OpenDoorViewController = ViewLoader.Xib.controller()
                 self?.present(openDoorVC, animated: true, completion: nil)
@@ -215,15 +209,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return animationCell
         case 2:
             let controlCell = tableView.dequeueReusableCell(withIdentifier: "HomeControlCell") as! HomeControlCell
-            controlCell.userButton.addTarget(self, action: #selector(self.gotoUserManagementVC), for: .touchUpInside)
-            controlCell.keyButton.addTarget(self, action: #selector(self.gotoPasswordManagementVC), for: .touchUpInside)
-            controlCell.messageButton.addTarget(self, action: #selector(self.gotoFingerManagementVC), for: .touchUpInside)
-            controlCell.propertyButton.addTarget(self, action: #selector(self.gotoCardManagementVC), for: .touchUpInside)
+            controlCell.memberButton.addTarget(self, action: #selector(self.gotoUserManagementVC), for: .touchUpInside)
+            controlCell.notiButton.addTarget(self, action: #selector(self.gotoMessageCenterVC), for: .touchUpInside)
+            controlCell.housekeeperButton.addTarget(self, action: #selector(self.gotoHouseKeeperVC), for: .touchUpInside)
+            controlCell.pwdButton.addTarget(self, action: #selector(self.gotoCardManagementVC), for: .touchUpInside)
             return controlCell
         case 1:
             let leasedCell = tableView.dequeueReusableCell(withIdentifier: "LeasedCell") as! LeasedCell
-            leasedCell.assetName.text = LSLUser.current().scene?.buildingName ?? "正在加载..."
-            leasedCell.assetAddress.text = LSLUser.current().scene?.buildingAdress ?? "正在加载..."
+            leasedCell.assetName.text = LSLUser.current().scene?.buildingName ?? "我的资产"
+            leasedCell.assetAddress.text = LSLUser.current().scene?.buildingAdress ?? "资产待绑定"
             
             leasedCell.recordDidSelected {[weak self] in
                 guard let lockId = LSLUser.current().scene?.ladderLockId else {

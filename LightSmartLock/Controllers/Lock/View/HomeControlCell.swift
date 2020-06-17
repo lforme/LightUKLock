@@ -12,12 +12,10 @@ import RxCocoa
 
 class HomeControlCell: UITableViewCell {
     
-    @IBOutlet weak var keyButton: UIButton!
-    @IBOutlet weak var userButton: UIButton!
-    @IBOutlet weak var messageButton: UIButton!
-    @IBOutlet weak var propertyButton: UIButton!
-    
-    
+    @IBOutlet weak var housekeeperButton: UIButton!
+    @IBOutlet weak var notiButton: UIButton!
+    @IBOutlet weak var memberButton: UIButton!
+    @IBOutlet weak var pwdButton: UIButton!
     
     private(set) var disposeBag = DisposeBag()
     
@@ -28,7 +26,7 @@ class HomeControlCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
    
-        [propertyButton, messageButton, userButton, keyButton].forEach { (btn) in
+        [housekeeperButton, notiButton, memberButton, pwdButton].forEach { (btn) in
             btn?.layer.setValue(true, forKey: "continuousCorners")
             btn?.layer.cornerRadius = 3
             btn?.layer.borderWidth = 1

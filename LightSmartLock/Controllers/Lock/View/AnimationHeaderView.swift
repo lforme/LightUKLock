@@ -29,20 +29,21 @@ class AnimationHeaderView: UITableViewCell {
     }
     
     func bind(openStatus: Bool?, onlineStatus: Bool?, power: Double?) {
-        guard let open = openStatus, let online = onlineStatus, let power = power else {
+        guard let online = onlineStatus, let power = power else {
             return
         }
         
         if !online {
             HUD.flash(.label("门锁已离线"), delay: 2)
         }
-        print(open)
+        
         if power < 0.20 {
             lockImageView.image = UIImage(named: "lock_icon_power_low")
             let powerValue = power * 100
             powerLabel.text = "\(powerValue) %"
         } else {
             lockImageView.image = UIImage(named: "lock_icon_power_normal")
+            powerLabel.text = nil
         }
         
     }

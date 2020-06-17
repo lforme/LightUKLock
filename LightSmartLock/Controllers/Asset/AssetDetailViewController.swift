@@ -112,7 +112,7 @@ class AssetDetailViewController: AssetBaseViewController {
                 
                 let alertController = UIAlertController(title: "提示", message: "请先删除资产中的门锁", preferredStyle: .alert)
                 let confirmAction = UIAlertAction(title: "确定", style: .default) { [weak self] _ in
-                    print("test")
+                    print(self ?? "self")
                 }
                 alertController.addAction(confirmAction)
                 let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)

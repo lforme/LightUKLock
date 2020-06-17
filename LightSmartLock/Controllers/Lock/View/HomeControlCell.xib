@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -31,8 +31,8 @@
                                             <constraint firstAttribute="height" constant="76" id="t2w-OP-p3h"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                        <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="用户管理" image="user_manage">
+                                        <inset key="imageEdgeInsets" minX="-14" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="我的管家" image="home_house_keepper">
                                             <color key="titleColor" name="textOpaque78"/>
                                         </state>
                                     </button>
@@ -40,8 +40,8 @@
                                         <rect key="frame" x="161.5" y="0.0" width="157.5" height="76"/>
                                         <color key="backgroundColor" name="viewBackground"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                        <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="门卡管理" image="card_manage">
+                                        <inset key="imageEdgeInsets" minX="-14" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="消息提醒" image="home_noti">
                                             <color key="titleColor" name="textOpaque78"/>
                                         </state>
                                     </button>
@@ -57,8 +57,8 @@
                                             <constraint firstAttribute="height" constant="76" id="CeN-An-wif"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                        <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="密码管理" image="manage_key">
+                                        <inset key="imageEdgeInsets" minX="-14" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="成员管理" image="home_manage_user">
                                             <color key="titleColor" name="textOpaque78"/>
                                         </state>
                                     </button>
@@ -66,8 +66,8 @@
                                         <rect key="frame" x="161.5" y="0.0" width="157.5" height="76"/>
                                         <color key="backgroundColor" name="viewBackground"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                        <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="指纹管理" image="manage_finger">
+                                        <inset key="imageEdgeInsets" minX="-14" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="密码管理" image="home_manger_pwd">
                                             <color key="titleColor" name="textOpaque78"/>
                                         </state>
                                     </button>
@@ -85,19 +85,19 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="keyButton" destination="0da-JD-R1P" id="HcE-1x-SMR"/>
-                <outlet property="messageButton" destination="A1W-OE-B5D" id="Lng-C8-f84"/>
-                <outlet property="propertyButton" destination="FTD-g9-pjc" id="Dkh-EN-9Li"/>
-                <outlet property="userButton" destination="bQG-G6-MPB" id="cU1-dd-LxN"/>
+                <outlet property="housekeeperButton" destination="bQG-G6-MPB" id="52t-iJ-ifl"/>
+                <outlet property="memberButton" destination="0da-JD-R1P" id="Klf-iT-J9c"/>
+                <outlet property="notiButton" destination="FTD-g9-pjc" id="GAa-J4-4kq"/>
+                <outlet property="pwdButton" destination="A1W-OE-B5D" id="kB5-sM-MTD"/>
             </connections>
             <point key="canvasLocation" x="142.75362318840581" y="109.82142857142857"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="card_manage" width="56" height="56"/>
-        <image name="manage_finger" width="56" height="56"/>
-        <image name="manage_key" width="56" height="56"/>
-        <image name="user_manage" width="56" height="56"/>
+        <image name="home_house_keepper" width="32" height="32"/>
+        <image name="home_manage_user" width="32" height="32"/>
+        <image name="home_manger_pwd" width="32" height="32"/>
+        <image name="home_noti" width="32" height="32"/>
         <namedColor name="primary">
             <color red="0.32499998807907104" green="0.58399999141693115" blue="0.91399997472763062" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

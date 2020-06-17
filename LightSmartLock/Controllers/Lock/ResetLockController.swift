@@ -15,6 +15,7 @@ class ResetLockController: UIViewController, NavigationSettingStyle {
     
     @IBOutlet weak var stepLabel: UILabel!
     @IBOutlet weak var forceDeleteButton: UIButton!
+    @IBOutlet weak var notiLabel: UILabel!
     
     var backgroundColor: UIColor? {
         return ColorClassification.navigationBackground.value
@@ -34,6 +35,10 @@ class ResetLockController: UIViewController, NavigationSettingStyle {
         1.打开门锁内面板长按“复位”键，待门锁发出指令后松手。
         2.根据门锁指令操作恢复出厂设置。
         3.等待门锁恢复出厂设置完成后，点击本页强制删除设备按钮。
+        """
+        notiLabel.text = """
+        重要提示：
+        若门锁已恢复出厂设置，请直接点击“强制删除设备”按钮。
         """
         
         forceDeleteButton.rx.tap.flatMapLatest {[unowned self] (_) -> Observable<Int> in
