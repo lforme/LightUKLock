@@ -186,14 +186,16 @@ extension BusinessInterface: TargetType {
              .forceDeleteLock,
              .undoTempPassword,
              .deleteBillInfo,
-             .deleteReceivingAcount:
+             .deleteReceivingAcount,
+             .deleteSteward:
             return .delete
             
         case .editUser,
              .editCardOrFingerName,
              .setAlarmFingerprint,
              .editBillInfoClear,
-             .editOtherUser:
+             .editOtherUser,
+             .editSteward:
             return .put
             
         default:
@@ -315,6 +317,13 @@ extension BusinessInterface: TargetType {
             return "/hardware_lock_config/lockType"
         case .stewardList:
              return "/steward/list"
+        case let .deleteSteward(id):
+            return "/steward/\(id)"
+        case .addSteward:
+            return "/steward"
+        case let .editSteward(steward):
+            return "/steward/\(steward.id!)"
+            
         }
     }
     
@@ -487,6 +496,12 @@ extension BusinessInterface: TargetType {
             
         case let .stewardList(pageIndex, pageSize):
             return ["currentPage": pageIndex, "pageSize": pageSize ?? 15]
+            
+        case let .addSteward(steward):
+            return steward.toJSON()
+            
+        case let .editSteward(steward):
+            return steward.toJSON()
             
         default:
             return nil

@@ -17,7 +17,7 @@ extension UIViewController: DZNEmptyDataSetSource {
     }
     
     public func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let text = "空空如也\n等等在看看吧~"
+        let text = "空空如也"
         let paragraphStyle = NSMutableParagraphStyle()
               paragraphStyle.lineSpacing = 8
         paragraphStyle.alignment = .center

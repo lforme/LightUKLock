@@ -15,6 +15,7 @@ import RxDataSources
 
 class HouseKeeperController: UIViewController, NavigationSettingStyle {
     
+    @IBOutlet weak var fakerContainer: UIStackView!
     @IBOutlet weak var contactContainer: UIView!
     @IBOutlet weak var detailButton: UIButton!
     @IBOutlet weak var contactCollectionView: UICollectionView!
@@ -38,12 +39,14 @@ class HouseKeeperController: UIViewController, NavigationSettingStyle {
         setupUI()
         bind()
         fetchData()
+        setupObserver()
     }
     
     func setupUI() {
         contactContainer.setCircular(radius: 7)
         
         let alignedFlowLayout = AlignedCollectionViewFlowLayout(horizontalAlignment: .left, verticalAlignment: .center)
+        alignedFlowLayout.scrollDirection = .horizontal
         alignedFlowLayout.minimumLineSpacing = 8
         alignedFlowLayout.minimumInteritemSpacing = 8
         alignedFlowLayout.estimatedItemSize = CGSize(width: 80, height: 120)
@@ -53,7 +56,22 @@ class HouseKeeperController: UIViewController, NavigationSettingStyle {
         contactCollectionView.register(UINib(nibName: "HouseKeeperCell", bundle: nil), forCellWithReuseIdentifier: "HouseKeeperCell")
     }
     
+    func setupObserver() {
+        NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
+            guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
+            switch refreshType {
+            case .steward:
+                self?.fetchData()
+            default: break
+            }
+        }).disposed(by: rx.disposeBag)
+    }
+    
     func bind() {
+        
+        let fakeTap = UITapGestureRecognizer.init(target: self, action: #selector(HouseKeeperController.fekeTap))
+        fakerContainer.addGestureRecognizer(fakeTap)
+        
         cvDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, HouseKeeperModel>>.init(configureCell: { (ds, cv, ip, item) -> HouseKeeperCell in
             
             let cell = cv.dequeueReusableCell(withReuseIdentifier: "HouseKeeperCell", for: ip) as! HouseKeeperCell
@@ -96,5 +114,9 @@ class HouseKeeperController: UIViewController, NavigationSettingStyle {
                 self?.listDataSource.accept(list)
             }).disposed(by: rx.disposeBag)
         
+    }
+    
+    @objc func fekeTap() {
+        HUD.flash(.label("请联系你的管家"), delay: 2)
     }
 }

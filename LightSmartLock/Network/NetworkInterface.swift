@@ -89,4 +89,7 @@ enum BusinessInterface {
     case changePassword(oldPwd: String, newPwd: String) // 修改密码
     case lockTypeList(channels: String) // 获取选择门锁列表
     case stewardList(pageIndex: Int, pageSize: Int?) // 获取管家列表
+    case deleteSteward(id: String) // 删除管家
+    case addSteward(steward: HouseKeeperModel) // 新增管家
+    case editSteward(steward: HouseKeeperModel) // 修改管家
 }

@@ -25,6 +25,7 @@ enum NotificationRefreshType {
     case accountWay
     case openDoor
     case makeNote
+    case steward
 }
 
 extension NSNotification.Name {
