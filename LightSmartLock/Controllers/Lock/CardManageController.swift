@@ -57,7 +57,7 @@ class CardManageController: UITableViewController, NavigationSettingStyle {
         NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
             guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
             switch refreshType {
-            case .addCard:
+            case .editCard:
                 self?.vm.refresh()
             default: break
             }

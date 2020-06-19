@@ -56,7 +56,7 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
             guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
             switch refreshType {
-            case .addLock, .deleteLock:
+            case .editLock:
                 self?.tableView.mj_header?.beginRefreshing()
             default: break
             }

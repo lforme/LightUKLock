@@ -48,7 +48,7 @@ class ResetLockController: UIViewController, NavigationSettingStyle {
         }.subscribe(onNext: {[weak self] (success) in
             if success {
                 self?.navigationController?.popToRootViewController(animated: true)
-                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.deleteLock)
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.editLock)
                 var updateValue = LSLUser.current().scene
                 updateValue?.ladderLockId = nil
                 LSLUser.current().scene = updateValue

@@ -39,7 +39,7 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
         NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
             guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
             switch refreshType {
-            case .addUser:
+            case .editMember:
                 self?.tableView.mj_header?.beginRefreshing()
             default: break
             }
@@ -95,12 +95,18 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
     func setupUI() {
         self.clearsSelectionOnViewWillAppear = true
         tableView.tableFooterView = UIView()
-        tableView.rowHeight = 80.0
         tableView.emptyDataSetSource = self
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = ColorClassification.tableViewBackground.value
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 200
+        }
+        return 80
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -112,21 +118,101 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UserManagementAdminCell", for: indexPath) as! UserManagementAdminCell
+            let currentUserId = LSLUser.current().user?.id
+            let data =  dataSource.filter { $0.id == currentUserId }.first
+            cell.bind(data)
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserManagementCell", for: indexPath) as! UserManagementCell
         let data = dataSource[indexPath.row]
         
         cell.nickname.text = data.nickname
         cell.role.text = data.kinsfolkTag
         cell.avatar.setUrl(data.avatar)
-        //        cell.synchronizedStart(data.userCode.isNilOrEmpty)
+        switch data.state {
+        case 0, 2, 3:
+            cell.synchronizedStart(true)
+        default:
+            cell.synchronizedStart(false)
+        }
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let data = dataSource[indexPath.row]
-        let userDetailVC: UserDetailController = ViewLoader.Storyboard.controller(from: "Home")
-        userDetailVC.model = data
-        navigationController?.pushViewController(userDetailVC, animated: true)
+        if indexPath.row != 0 {
+            let data = dataSource[indexPath.row]
+            let userDetailVC: UserDetailController = ViewLoader.Storyboard.controller(from: "Home")
+            userDetailVC.model = data
+            navigationController?.pushViewController(userDetailVC, animated: true)
+        }
+    }
+}
+
+class UserManagementAdminCell: UITableViewCell {
+    
+    @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var role: UILabel!
+    @IBOutlet weak var hasDigital: UIButton!
+    @IBOutlet weak var hasFinger: UIButton!
+    @IBOutlet weak var hasBle: UIButton!
+    @IBOutlet weak var hasCard: UIButton!
+    @IBOutlet weak var hasMemberShip: UIButton!
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    func bind(_ model: UserMemberListModel?) {
+        avatar.setUrl(model?.avatar)
+        name.text = model?.nickname
+        role.text = model?.kinsfolkTag
+        if model?.roleType == .some(.member) {
+            hasMemberShip.isEnabled = false
+        } else {
+            hasMemberShip.isEnabled = true
+        }
+        hasCard.isEnabled = model?.cardModel ?? false
+        hasDigital.isEnabled = model?.codeModel ?? false
+        hasBle.isEnabled = model?.bluetoothModel ?? false
+        hasFinger.isEnabled = model?.fingerprintModel ?? false
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        bgView.setCircularShadow(radius: 7, color: ColorClassification.textPlaceholder.value)
+        avatar.setCircular(radius: avatar.bounds.height / 2)
+        
+        hasDigital.set(image: UIImage(named: "home_user_digital_blue"), title: "数字密码", titlePosition: .bottom, additionalSpacing: 30, state: .normal)
+        hasDigital.set(image: UIImage(named: "home_user_digtal_gray"), title: "数字密码", titlePosition: .bottom, additionalSpacing: 30, state: .disabled)
+        
+        hasFinger.set(image: UIImage(named: "home_user_finger_blue"), title: "指纹密码", titlePosition: .bottom, additionalSpacing: 30, state: .normal)
+        hasFinger.set(image: UIImage(named: "home_user_finger_gray"), title: "指纹密码", titlePosition: .bottom, additionalSpacing: 30, state: .disabled)
+        
+        hasBle.set(image: UIImage(named: "home_user_ble_blue"), title: "蓝牙开锁", titlePosition: .bottom, additionalSpacing: 30, state: .normal)
+        hasBle.set(image: UIImage(named: "home_user_ble_gray"), title: "蓝牙开锁", titlePosition: .bottom, additionalSpacing: 30, state: .disabled)
+        
+        hasCard.set(image: UIImage(named: "home_user_card_blue"), title: "门禁卡", titlePosition: .bottom, additionalSpacing: 30, state: .normal)
+        hasCard.set(image: UIImage(named: "home_user_card_gray"), title: "门禁卡", titlePosition: .bottom, additionalSpacing: 30, state: .disabled)
+        
+        hasMemberShip.set(image: UIImage(named: "home_user_member_blue"), title: "添加用户", titlePosition: .bottom, additionalSpacing: 30, state: .normal)
+        hasMemberShip.set(image: UIImage(named: "home_user_member_gray"), title: "添加用户", titlePosition: .bottom, additionalSpacing: 30, state: .disabled)
+        
+        [hasMemberShip, hasCard, hasBle, hasFinger, hasDigital].forEach { (btn) in
+            btn?.setTitleColor(ColorClassification.primary.value, for: .normal)
+            btn?.setTitleColor(ColorClassification.textDescription.value, for: .disabled)
+        }
     }
 }
 
@@ -151,6 +237,7 @@ class UserManagementCell: UITableViewCell {
         synLabel.isHidden = true
         sysIcon.isHidden = true
         avatar.setCircular(radius: avatar.bounds.height / 2)
+        selectionStyle = .none
     }
     
     func synchronizedStart(_ start: Bool) {

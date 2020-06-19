@@ -93,7 +93,7 @@ class AddUserController: UITableViewController {
         
         vm.saveAtion.elements.subscribe(onNext: {[weak self] (success) in
             if success {
-                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addUser)
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.editMember)
                 HUD.flash(.label("添加成功"), delay: 2)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self?.navigationController?.popViewController(animated: true)

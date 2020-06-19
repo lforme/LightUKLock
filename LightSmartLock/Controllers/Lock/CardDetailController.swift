@@ -74,7 +74,7 @@ class CardDetailController: UITableViewController, NavigationSettingStyle {
             }.subscribe(onNext: {[weak self] (success) in
                 if success {
                     HUD.flash(.label("删除门卡成功"), delay: 2)
-                    NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addCard)
+                    NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.editCard)
                     guard let tagerVC = self?.navigationController?.children.filter({ (vc) -> Bool in
                         return vc is CardManageController
                     }).last else { return }
@@ -90,7 +90,7 @@ class CardDetailController: UITableViewController, NavigationSettingStyle {
                 return self.vm.changeCardName(newName)
             }.subscribe(onNext: {[weak self] (success) in
                 if success {
-                    NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addCard)
+                    NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.editCard)
                     HUD.flash(.label("修改门卡名称成功"), delay: 2)
                 } else {
                     HUD.flash(.label("修改门卡名称失败"), delay: 2)

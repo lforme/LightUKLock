@@ -87,7 +87,7 @@ class AddFingerFinishController: UIViewController {
         }.subscribe(onNext: {[weak self] (success) in
             if success {
                 HUD.flash(.label("添加成功"), delay: 2)
-                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addFinger)
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.editFinger)
             } else {
                 HUD.flash(.label("添加失败"), delay: 2)
             }

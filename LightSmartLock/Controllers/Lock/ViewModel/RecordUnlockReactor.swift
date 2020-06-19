@@ -41,10 +41,11 @@ final class RecordUnlockReactor: Reactor {
     let initialState: State
     
     private let lockId: String
+    private let userId: String
     
-    init(lockId: String) {
+    init(lockId: String, userId: String) {
         self.lockId = lockId
-        
+        self.userId = userId
         self.initialState = State(filterType: 1, pageIndex: 1, requestFinished: true, noMoreData: false, dataList: [])
     }
     
@@ -142,7 +143,7 @@ extension RecordUnlockReactor {
     
     fileprivate func request(pageIndex: Int, filter: Int) -> Observable<[UnlockRecordModel]> {
         
-        return BusinessAPI.requestMapJSONArray(.getUnlockRecords(lockId: lockId, type: filter, pageIndex: pageIndex, pageSize: 15), classType: UnlockRecordModel.self, isPaginating: true)
+        return BusinessAPI.requestMapJSONArray(.getUnlockRecords(lockId: lockId, type: filter, userId: userId, pageIndex: pageIndex, pageSize: 15), classType: UnlockRecordModel.self, isPaginating: true)
             .map { $0.compactMap { $0 } }
             .share(replay: 1, scope: .forever)
             .do(onError: { (error) in

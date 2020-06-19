@@ -30,7 +30,7 @@ final class MyViewModel {
     private var disposeBag: DisposeBag = DisposeBag()
     
     init() {
-     
+        
         checkConfigLockList()
     }
     
@@ -45,14 +45,11 @@ final class MyViewModel {
     
     func refresh() {
         self.disposeBag = DisposeBag()
-        
-        let share = BusinessAPI.requestMapJSONArray(.getHouses, classType: SceneListModel.self, useCache: true)
-            .share(replay: 1, scope: .forever)
+        BusinessAPI.requestMapJSONArray(.getHouses, classType: SceneListModel.self, useCache: true)
             .do(onCompleted: {[weak self] in
                 self?._requestFinished.accept(true)
             })
-        
-        share.map { $0.compactMap { $0 } }
+            .map { $0.compactMap { $0 } }
             .bind(to: _list)
             .disposed(by: self.disposeBag)
     }

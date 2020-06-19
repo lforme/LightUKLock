@@ -306,6 +306,7 @@
 		9CF01DA023BDCC76007578F3 /* WidgetUnlockRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF01D9E23BDCC76007578F3 /* WidgetUnlockRecordCell.swift */; };
 		9CF01DA123BDCC76007578F3 /* WidgetUnlockRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CF01D9F23BDCC76007578F3 /* WidgetUnlockRecordCell.xib */; };
 		9CFB47CB2472823C0080BCB6 /* CollectionAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFB47CA2472823C0080BCB6 /* CollectionAccountModel.swift */; };
+		9CFC1782249CBBFC00F674CB /* PasswordSequenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFC1781249CBBFC00F674CB /* PasswordSequenceController.swift */; };
 		9CFDE1FA2384EA2A0062522E /* opendoor.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CFDE1F82384EA2A0062522E /* opendoor.json */; };
 		9CFDE1FC238513D40062522E /* bluetooth.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CFDE1FB238513D40062522E /* bluetooth.json */; };
 		9CFDE1FF23851E310062522E /* NetworkingEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDE1FE23851E310062522E /* NetworkingEnvironment.swift */; };
@@ -646,6 +647,7 @@
 		9CF01D9E23BDCC76007578F3 /* WidgetUnlockRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetUnlockRecordCell.swift; sourceTree = "<group>"; };
 		9CF01D9F23BDCC76007578F3 /* WidgetUnlockRecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WidgetUnlockRecordCell.xib; sourceTree = "<group>"; };
 		9CFB47CA2472823C0080BCB6 /* CollectionAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionAccountModel.swift; sourceTree = "<group>"; };
+		9CFC1781249CBBFC00F674CB /* PasswordSequenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSequenceController.swift; sourceTree = "<group>"; };
 		9CFDE1F82384EA2A0062522E /* opendoor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = opendoor.json; sourceTree = "<group>"; };
 		9CFDE1FB238513D40062522E /* bluetooth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bluetooth.json; sourceTree = "<group>"; };
 		9CFDE1FE23851E310062522E /* NetworkingEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingEnvironment.swift; sourceTree = "<group>"; };
@@ -1242,6 +1244,7 @@
 				9C27928F249A170A008EDA75 /* HouseKeeperController.swift */,
 				9C279297249A248D008EDA75 /* HouseKeeperListController.swift */,
 				9C3BB6F9249B0D9F008B17F7 /* AddOrEditController.swift */,
+				9CFC1781249CBBFC00F674CB /* PasswordSequenceController.swift */,
 				9C24AC412383EB88005EBF95 /* Home.storyboard */,
 			);
 			path = Lock;
@@ -1753,6 +1756,7 @@
 				9CE6C0D9249880B2003DA523 /* NetworkDiskStorage.swift in Sources */,
 				9CEC3F9424580056002ADA39 /* BillFlowLeaseRenewController.swift in Sources */,
 				9C47DB7D239A36320019EAA0 /* UserMembersModels.swift in Sources */,
+				9CFC1782249CBBFC00F674CB /* PasswordSequenceController.swift in Sources */,
 				9CBAF5FB24592BF700197450 /* BillClearingController.swift in Sources */,
 				9CB4B34F239E31FC001197AB /* ChangeDigitalPwdController.swift in Sources */,
 				9C524034238E64C000308AC4 /* RecordUnlockController.swift in Sources */,

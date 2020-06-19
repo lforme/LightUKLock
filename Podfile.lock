@@ -11,6 +11,7 @@ PODS:
     - ChameleonFramework/Default (= 2.1.0)
   - ChameleonFramework/Default (2.1.0)
   - CryptoSwift (1.3.0)
+  - DeviceKit (2.3.0)
   - Differentiator (4.0.1)
   - DZNEmptyDataSet (1.8.1)
   - EFQRCode (5.1.6):
@@ -94,6 +95,7 @@ DEPENDENCIES:
   - CBPinEntryView
   - ChameleonFramework
   - CryptoSwift
+  - DeviceKit (~> 2.0)
   - DZNEmptyDataSet
   - EFQRCode
   - Floaty (~> 4.2.0)
@@ -136,6 +138,7 @@ SPEC REPOS:
     - CBPinEntryView
     - ChameleonFramework
     - CryptoSwift
+    - DeviceKit
     - Differentiator
     - DZNEmptyDataSet
     - EFQRCode
@@ -185,6 +188,7 @@ SPEC CHECKSUMS:
   CBPinEntryView: 5a91ba422bd8a38eea587511c92c89b19be78454
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CryptoSwift: 1283821600233bdbeb96d7b389c3288c3bf77211
+  DeviceKit: da103891aa928d89f64ea8dd8aca738c5f3d8ac0
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   EFQRCode: a7ea2e517912f5bf6ba258b631327a83cd8084a5
@@ -225,6 +229,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 99f03b64145a8c92c55b9b1b931410967d9be4cb
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: db508ddb4877c2acfa607843a9188aa731bffd18
+PODFILE CHECKSUM: 5215ac3be0e2c07d7b9721b1bbc84de35cdc497c
 
 COCOAPODS: 1.9.1

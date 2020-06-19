@@ -12,6 +12,7 @@ import PKHUD
 import RxSwift
 import RxCocoa
 import Then
+import DeviceKit
 
 class HomeViewController: UIViewController, NavigationSettingStyle {
     
@@ -138,7 +139,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
             guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
             switch refreshType {
-            case .deleteLock, .deleteScene:
+            case .editLock, .deleteScene:
                 self?.hasLock(has: false)
             case .openDoor:
                 self?.bind()
@@ -187,9 +188,9 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         
     }
     
-    @objc func gotoCardManagementVC() {
-        let cardManageVC: CardManageController = ViewLoader.Storyboard.controller(from: "Home")
-        navigationController?.pushViewController(cardManageVC, animated: true)
+    @objc func gotoCardPasswordVC() {
+        let passwordVC: PasswordSequenceController = ViewLoader.Storyboard.controller(from: "Home")
+        navigationController?.pushViewController(passwordVC, animated: true)
     }
 }
 
@@ -212,7 +213,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             controlCell.memberButton.addTarget(self, action: #selector(self.gotoUserManagementVC), for: .touchUpInside)
             controlCell.notiButton.addTarget(self, action: #selector(self.gotoMessageCenterVC), for: .touchUpInside)
             controlCell.housekeeperButton.addTarget(self, action: #selector(self.gotoHouseKeeperVC), for: .touchUpInside)
-            controlCell.pwdButton.addTarget(self, action: #selector(self.gotoCardManagementVC), for: .touchUpInside)
+            controlCell.pwdButton.addTarget(self, action: #selector(self.gotoCardPasswordVC), for: .touchUpInside)
             return controlCell
         case 1:
             let leasedCell = tableView.dequeueReusableCell(withIdentifier: "LeasedCell") as! LeasedCell
@@ -220,11 +221,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             leasedCell.assetAddress.text = LSLUser.current().scene?.buildingAdress ?? "资产待绑定"
             
             leasedCell.recordDidSelected {[weak self] in
-                guard let lockId = LSLUser.current().scene?.ladderLockId else {
+                guard let lockId = LSLUser.current().scene?.ladderLockId, let userId = LSLUser.current().user?.id else {
                     HUD.flash(.label("无法获取user code, 请稍后"), delay: 2)
                     return
                 }
-                let recordVC = RecordUnlockController(lockId: lockId)
+                let recordVC = RecordUnlockController(lockId: lockId, userId: userId)
                 self?.navigationController?.pushViewController(recordVC, animated: true)
             }
             
@@ -258,7 +259,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return 120.0
         case 2:
-            return 200.0
+            let device = Device.current
+            switch device {
+            case .iPhone6, .iPhone7, .iPhone8, .iPhone6s:
+                return 170.0
+            case .iPhone6Plus, .iPhone7Plus, .iPhone8Plus:
+                return 200.0
+            default:
+                return 200.0 * (UIScreen.main.bounds.size.height / 375)
+            }
         default:
             return CGFloat.leastNormalMagnitude
         }

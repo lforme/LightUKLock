@@ -261,7 +261,7 @@ extension BusinessInterface: TargetType {
             return "/ladder_tmp_password/pwd/tmp/record/\(id)"
         case let .addTempPassword(lockId, _):
             return "/ladder_tmp_password/pwd/tmp/\(lockId)"
-        case let .getUnlockRecords(lockId, _, _, _):
+        case let .getUnlockRecords(lockId, _, _, _, _):
             return "/ladder_open_lock_record/records/\(lockId)"
         case .reportAsset:
             return "/report/asset_report"
@@ -424,8 +424,8 @@ extension BusinessInterface: TargetType {
         case let .addTempPassword(_, parameter):
             return parameter.toJSON()
             
-        case let .getUnlockRecords(_, type, pageIndex, pageSize):
-            return ["currentPage": pageIndex, "pageSize": pageSize ?? 15, "type": type]
+        case let .getUnlockRecords(_, type, userId, pageIndex, pageSize):
+            return ["currentPage": pageIndex, "pageSize": pageSize ?? 15, "type": type, "userId": userId]
             
         case let .reportAsset(assetId, year):
             return ["assetId": assetId, "year": year]

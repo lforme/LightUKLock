@@ -26,6 +26,7 @@ target 'LightSmartLock' do
   pod 'CryptoSwift'
   pod 'ReachabilitySwift'
   pod 'SnapKit'
+  pod 'DeviceKit', '~> 2.0'
   
   # UI 组件
   pod 'UITextView+Placeholder'

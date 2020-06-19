@@ -69,7 +69,7 @@ class AddCardController: UIViewController {
             } else {
                 HUD.flash(.label("添加失败"), delay: 2)
             }
-            NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addCard)
+            NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.editCard)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {[weak self] in
                 self?.navigationController?.popViewController(animated: true)

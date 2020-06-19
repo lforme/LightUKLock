@@ -23,6 +23,7 @@ class RecordUnlockController: UIViewController, View {
     var disposeBag: DisposeBag = DisposeBag()
     
     fileprivate var lockId: String!
+    fileprivate var userId: String!
     
     let tableView: UITableView = UITableView(frame: .zero, style: .plain).then {
         $0.tableFooterView = UIView(frame: .zero)
@@ -45,8 +46,9 @@ class RecordUnlockController: UIViewController, View {
                   .indicatorViewInset(4)])
     
     
-    convenience init(lockId: String) {
+    convenience init(lockId: String, userId: String) {
         self.init()
+        self.userId = userId
         self.lockId = lockId
     }
     
@@ -66,7 +68,7 @@ class RecordUnlockController: UIViewController, View {
         
         title = "解锁记录"
         setupUI()
-        self.reactor = Reactor(lockId: lockId)
+        self.reactor = Reactor(lockId: lockId, userId: userId)
     }
     
     func setupUI() {

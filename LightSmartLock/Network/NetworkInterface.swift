@@ -61,7 +61,7 @@ enum BusinessInterface {
     case getTempPasswordLog(id: String) // 获取临时密码记录
     case undoTempPassword(id: String) // 撤销临时密码
     case addTempPassword(lockId: String, parameter: TempPasswordShareParameter) // 添加临时密码
-    case getUnlockRecords(lockId: String, type: Int, pageIndex: Int, pageSize: Int?) // 获取开门记录 1今天 2昨天 3全部
+    case getUnlockRecords(lockId: String, type: Int, userId: String, pageIndex: Int, pageSize: Int?) // 获取开门记录 1今天 2昨天 3全部
     case reportAsset(assetId: String, year: String) // 获取报表列表
     case baseTurnoverInfoList(assetId: String, year: String) // 获取流水列表
     case tenantContractInfoAssetContract(assetId: String, year: String) // 资产合同列表

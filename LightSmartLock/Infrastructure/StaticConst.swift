@@ -12,14 +12,13 @@ import UIKit
 let kLSRem = UIScreen.main.bounds.width / 375
 
 enum NotificationRefreshType {
-    case deleteLock
-    case addLock
+    case editLock
     case deleteScene
     case updateScene
     case changeDigitalPwd(String?)
-    case addUser
-    case addCard
-    case addFinger
+    case editMember
+    case editCard
+    case editFinger
     case tempPassword
     case billFlow
     case accountWay

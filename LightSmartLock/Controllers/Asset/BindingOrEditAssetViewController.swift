@@ -123,7 +123,7 @@ class BindingOrEditAssetViewController: AssetBaseViewController {
             if success {
                 HUD.flash(.label("操作成功"), delay: 2)
                 self.navigationController?.popToRootViewController(animated: true)
-                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.updateScene)
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.deleteScene)
             }
             }, onError: { (error) in
                 PKHUD.sharedHUD.rx.showError(error)
