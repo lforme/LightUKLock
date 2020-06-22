@@ -10,6 +10,7 @@ import UIKit
 import PKHUD
 import RxCocoa
 import RxSwift
+import Action
 
 class AssetPendingListController: UIViewController, NavigationSettingStyle {
     
@@ -27,7 +28,42 @@ class AssetPendingListController: UIViewController, NavigationSettingStyle {
         
         title = "绑定资产"
         setupUI()
+        setupNavigationRightItem()
         fetchData()
+        bind()
+    }
+    
+    func bind() {
+        let action = Action<Void, Bool> {[weak self] (_) -> Observable<Bool> in
+            guard let this = self else {
+                return .empty()
+            }
+            
+            guard let lockId = LSLUser.current().scene?.ladderLockId else {
+                return .empty()
+            }
+            
+            let assetId = this.dataSource.filter { ($0.isBind ?? false) }.first?.ladderAssetHouseId
+            
+            return BusinessAPI.requestMapBool(.assetBindLock(lockId: lockId, assetId: assetId))
+        }
+        
+        confirmButton.rx.bind(to: action, input: ())
+        
+        action.errors
+            .subscribe(onNext: { (actionError) in
+                PKHUD.sharedHUD.rx.showActionError(actionError)
+            })
+            .disposed(by: rx.disposeBag)
+        
+        action.elements
+            .subscribe(onNext: {[weak self] (success) in
+                if success {
+                    NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.updateScene)
+                    self?.navigationController?.popToRootViewController(animated: true)
+                }
+            })
+            .disposed(by: rx.disposeBag)
     }
     
     func setupUI() {
@@ -40,6 +76,16 @@ class AssetPendingListController: UIViewController, NavigationSettingStyle {
         tableView.register(UINib(nibName: "AssetPendingListCell", bundle: nil), forCellReuseIdentifier: "AssetPendingListCell")
     }
     
+    func setupNavigationRightItem() {
+        createdRightNavigationItem(title: "新建资产", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 4, color: .white)
+            .rx
+            .tap
+            .subscribe(onNext: {[weak self] (_) in
+                let editAssetVC: BindingOrEditAssetViewController = ViewLoader.Storyboard.controller(from: "AssetDetail")
+                self?.navigationController?.pushViewController(editAssetVC, animated: true)
+            })
+            .disposed(by: rx.disposeBag)
+    }
     
     func fetchData() {
         if let lockId = LSLUser.current().scene?.ladderLockId {

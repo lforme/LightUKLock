@@ -46,11 +46,14 @@ final class MyViewModel {
     func refresh() {
         self.disposeBag = DisposeBag()
         BusinessAPI.requestMapJSONArray(.getHouses, classType: SceneListModel.self, useCache: true)
-            .do(onCompleted: {[weak self] in
+            .map { $0.compactMap { $0 } }
+            .subscribe(onNext: {[weak self] (list) in
+                self?._list.onNext(list)
+                }, onError: { (error) in
+                    PKHUD.sharedHUD.rx.showError(error)
+            }, onCompleted: {[weak self] in
                 self?._requestFinished.accept(true)
             })
-            .map { $0.compactMap { $0 } }
-            .bind(to: _list)
             .disposed(by: self.disposeBag)
     }
     

@@ -329,6 +329,8 @@ extension BusinessInterface: TargetType {
             return "/ladder_asset_house/houses/\(id)"
         case .findAssetNotBind:
             return "/ladder_asset_house/unbind/houses"
+        case let .assetBindLock(lockId, _):
+            return "/ladder_asset_house/bind/\(lockId)"
         }
     }
     
@@ -508,6 +510,13 @@ extension BusinessInterface: TargetType {
         case let .editSteward(steward):
             return steward.toJSON()
 
+        case let .assetBindLock(_, assetId):
+            if let id = assetId {
+             return ["ladderAssetHouseId": id]
+            } else {
+                return nil
+            }
+            
         default:
             return nil
         }

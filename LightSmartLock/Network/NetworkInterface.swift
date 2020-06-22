@@ -94,5 +94,6 @@ enum BusinessInterface {
     case editSteward(steward: HouseKeeperModel) // 修改管家
     case findAssetByLockId(id: String) // 查询锁下资产
     case findAssetNotBind // 查询所有未绑定资产
+    case assetBindLock(lockId: String, assetId: String?) // 门锁绑定资产
 }
 
