@@ -71,12 +71,22 @@ final class MyViewModel {
         }
     }
     
-    func cellRowHeight(_ row: Int) -> CGFloat {
+    func cellBackgroundLastColor(_ row: Int) -> UIColor {
         switch row {
         case 0:
-            return 320
+            return .clear
+        case 1:
+            return #colorLiteral(red: 0.2509803922, green: 0.5450980392, blue: 0.9215686275, alpha: 1)
+        case 2:
+            return #colorLiteral(red: 0.3215686275, green: 0.5843137255, blue: 0.9254901961, alpha: 1)
+        case 3:
+            return #colorLiteral(red: 0.3960784314, green: 0.631372549, blue: 0.9333333333, alpha: 1)
+        case 4:
+            return #colorLiteral(red: 0.4666666667, green: 0.6705882353, blue: 0.937254902, alpha: 1)
+        case 5:
+            return #colorLiteral(red: 0.5411764706, green: 0.7176470588, blue: 0.9450980392, alpha: 1)
         default:
-            return CGFloat(320 / row)
+            return #colorLiteral(red: 0.2509803922, green: 0.5450980392, blue: 0.9215686275, alpha: 1)
         }
     }
 }

@@ -32,7 +32,6 @@ class PasswordSequenceController: UITableViewController, NavigationSettingStyle 
     var fingerCellDs: RxCollectionViewSectionedReloadDataSource<SectionModel<String, OpenLockInfoModel.Finger>>!
     var cardCellDs: RxCollectionViewSectionedReloadDataSource<SectionModel<String, OpenLockInfoModel.Card>>!
     
-    
     var pwd = "* * * * * *"
     var showPwd: String?
     lazy var disposeBag = DisposeBag()
@@ -163,11 +162,13 @@ class PasswordSequenceController: UITableViewController, NavigationSettingStyle 
                     this.fingerCellDs = RxCollectionViewSectionedReloadDataSource<SectionModel<String, OpenLockInfoModel.Finger>>(configureCell: { (ds, cv, ip, item) -> PasswordSequenceCell in
                         let cell = cv.dequeueReusableCell(withReuseIdentifier: "PasswordSequenceCell", for: ip) as! PasswordSequenceCell
                         cell.name.text = item.name
-                        if ip.item == ds.sectionModels.count {
+                       
+                        if item.isAddButton {
                             cell.icon.image = UIImage(named: "home_pwd_add")
                         } else {
                             cell.icon.image = UIImage(named: "home_pwd_finger_normal")
                         }
+                        
                         return cell
                     })
                     
@@ -190,11 +191,13 @@ class PasswordSequenceController: UITableViewController, NavigationSettingStyle 
                     this.cardCellDs = RxCollectionViewSectionedReloadDataSource<SectionModel<String, OpenLockInfoModel.Card>>(configureCell: { (ds, cv, ip, item) -> PasswordSequenceCell in
                         let cell = cv.dequeueReusableCell(withReuseIdentifier: "PasswordSequenceCell", for: ip) as! PasswordSequenceCell
                         cell.name.text = item.name
-                        if ip.item == ds.sectionModels.count {
+                        
+                        if item.isAddButton {
                             cell.icon.image = UIImage(named: "home_pwd_add")
                         } else {
                             cell.icon.image = UIImage(named: "home_pwd_card_normal")
                         }
+                        
                         return cell
                     })
                     

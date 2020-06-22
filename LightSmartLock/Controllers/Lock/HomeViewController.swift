@@ -217,8 +217,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return controlCell
         case 1:
             let leasedCell = tableView.dequeueReusableCell(withIdentifier: "LeasedCell") as! LeasedCell
-            leasedCell.assetName.text = LSLUser.current().scene?.buildingName ?? "我的资产"
-            leasedCell.assetAddress.text = LSLUser.current().scene?.buildingAdress ?? "资产待绑定"
+            leasedCell.assetName.text = LSLUser.current().scene?.buildingName ?? "未绑定资产"
+            leasedCell.assetAddress.text = LSLUser.current().scene?.buildingAdress ?? ""
             
             leasedCell.recordDidSelected {[weak self] in
                 guard let lockId = LSLUser.current().scene?.ladderLockId, let userId = LSLUser.current().user?.id else {

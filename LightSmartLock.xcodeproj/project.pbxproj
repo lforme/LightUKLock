@@ -263,6 +263,9 @@
 		9CBAF5FF245932C800197450 /* BillDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBAF5FE245932C800197450 /* BillDescriptionCell.xib */; };
 		9CBC229E24A046E800ECC76E /* PasswordSequenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBC229C24A046E800ECC76E /* PasswordSequenceCell.swift */; };
 		9CBC229F24A046E800ECC76E /* PasswordSequenceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBC229D24A046E800ECC76E /* PasswordSequenceCell.xib */; };
+		9CBC22A124A0A25A00ECC76E /* AssetPendingListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBC22A024A0A25A00ECC76E /* AssetPendingListController.swift */; };
+		9CBC22A424A0A6FE00ECC76E /* AssetPendingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBC22A224A0A6FE00ECC76E /* AssetPendingListCell.swift */; };
+		9CBC22A524A0A6FE00ECC76E /* AssetPendingListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBC22A324A0A6FE00ECC76E /* AssetPendingListCell.xib */; };
 		9CBD8F3923A1D67A00886519 /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD8F3823A1D67A00886519 /* UserDetailViewModel.swift */; };
 		9CBD8F3B23A1E21400886519 /* MultipleTempPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD8F3A23A1E21400886519 /* MultipleTempPasswordController.swift */; };
 		9CBD8F3F23A1ECF900886519 /* ShareModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD8F3E23A1ECF900886519 /* ShareModels.swift */; };
@@ -608,6 +611,9 @@
 		9CBAF5FE245932C800197450 /* BillDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BillDescriptionCell.xib; sourceTree = "<group>"; };
 		9CBC229C24A046E800ECC76E /* PasswordSequenceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSequenceCell.swift; sourceTree = "<group>"; };
 		9CBC229D24A046E800ECC76E /* PasswordSequenceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordSequenceCell.xib; sourceTree = "<group>"; };
+		9CBC22A024A0A25A00ECC76E /* AssetPendingListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPendingListController.swift; sourceTree = "<group>"; };
+		9CBC22A224A0A6FE00ECC76E /* AssetPendingListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPendingListCell.swift; sourceTree = "<group>"; };
+		9CBC22A324A0A6FE00ECC76E /* AssetPendingListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetPendingListCell.xib; sourceTree = "<group>"; };
 		9CBD8F3823A1D67A00886519 /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
 		9CBD8F3A23A1E21400886519 /* MultipleTempPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleTempPasswordController.swift; sourceTree = "<group>"; };
 		9CBD8F3E23A1ECF900886519 /* ShareModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareModels.swift; sourceTree = "<group>"; };
@@ -800,6 +806,8 @@
 				9C279294249A2019008EDA75 /* HouseKeeperCell.xib */,
 				9CBC229C24A046E800ECC76E /* PasswordSequenceCell.swift */,
 				9CBC229D24A046E800ECC76E /* PasswordSequenceCell.xib */,
+				9CBC22A224A0A6FE00ECC76E /* AssetPendingListCell.swift */,
+				9CBC22A324A0A6FE00ECC76E /* AssetPendingListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1251,6 +1259,7 @@
 				9C279297249A248D008EDA75 /* HouseKeeperListController.swift */,
 				9C3BB6F9249B0D9F008B17F7 /* AddOrEditController.swift */,
 				9CFC1781249CBBFC00F674CB /* PasswordSequenceController.swift */,
+				9CBC22A024A0A25A00ECC76E /* AssetPendingListController.swift */,
 				9C24AC412383EB88005EBF95 /* Home.storyboard */,
 			);
 			path = Lock;
@@ -1488,6 +1497,7 @@
 				9C47DB79239A0B0E0019EAA0 /* SelectPopupView.xib in Resources */,
 				9C24AC442383EB96005EBF95 /* My.storyboard in Resources */,
 				9CABF4B224653CC50001AAE3 /* PaymentDetailsCell.xib in Resources */,
+				9CBC22A524A0A6FE00ECC76E /* AssetPendingListCell.xib in Resources */,
 				9C4BD28923FD217900652685 /* normal.json in Resources */,
 				9CF01D9723BDA92F007578F3 /* Assets.xcassets in Resources */,
 				9C3726CC2390CE4D00450757 /* normalDarkMode.json in Resources */,
@@ -1631,6 +1641,7 @@
 				7BB2FEB0245595DD00D835BA /* SettingRentalRecordViewController.swift in Sources */,
 				9C452F0E2394E84A00144827 /* BluetoothViewModel.swift in Sources */,
 				9CABF4BC246550B30001AAE3 /* ConfirmArrivalController.swift in Sources */,
+				9CBC22A124A0A25A00ECC76E /* AssetPendingListController.swift in Sources */,
 				9C3F93D72455890F0040005D /* BillFlowController.swift in Sources */,
 				9C03B0F3239F6E8F0001E849 /* FingerDetailViewModel.swift in Sources */,
 				9C5A967C23A082F1002A2B06 /* CardManageViewModel.swift in Sources */,
@@ -1647,6 +1658,7 @@
 				9C54719F239517F000432ACA /* PositionViewModel.swift in Sources */,
 				9C452F0A2394C38800144827 /* HomeSettringController.swift in Sources */,
 				9C24AC482383EBE5005EBF95 /* HomeViewController.swift in Sources */,
+				9CBC22A424A0A6FE00ECC76E /* AssetPendingListCell.swift in Sources */,
 				7BB2FEB4245596C400D835BA /* ContractRentalRecordView.swift in Sources */,
 				9C1A4BC8238D2E7C00626DB4 /* HomeControlCell.swift in Sources */,
 				9C03B0EB239F46510001E849 /* FingerManageController.swift in Sources */,

@@ -75,7 +75,6 @@
                     <constraint firstAttribute="bottom" secondItem="jn3-Oi-i9f" secondAttribute="bottom" id="rrj-DO-ZW1"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="address" destination="N5J-Pr-avG" id="BEt-dI-rWw"/>

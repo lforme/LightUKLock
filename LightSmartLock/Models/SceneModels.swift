@@ -42,3 +42,16 @@ struct SceneListModel: HandyJSON {
     var unReadMsg: Int!
     var lockUserAccount: String?
 }
+
+struct AssetPendingModel: HandyJSON {
+ 
+    var buildingAdress: String?
+    var buildingName: String?
+    var buildingNo: String?
+    var floor: Int?
+    var houseNum: String?
+    var isBind: Bool?
+    var ladderAssetHouseId: String?
+}
+
+

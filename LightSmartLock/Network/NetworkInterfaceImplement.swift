@@ -179,7 +179,9 @@ extension BusinessInterface: TargetType {
              .tenantContractInfo,
              .checkTerminationTenantContract,
              .billInfoDetail,
-             .stewardList:
+             .stewardList,
+             .findAssetByLockId,
+             .findAssetNotBind:
             return .get
             
         case .deleteAssetHouse,
@@ -323,7 +325,10 @@ extension BusinessInterface: TargetType {
             return "/steward"
         case let .editSteward(steward):
             return "/steward/\(steward.id!)"
-            
+        case let .findAssetByLockId(id):
+            return "ladder_asset_house/houses/\(id)"
+        case .findAssetNotBind:
+            return "/ladder_asset_house/unbind/houses"
         }
     }
     
@@ -502,7 +507,7 @@ extension BusinessInterface: TargetType {
             
         case let .editSteward(steward):
             return steward.toJSON()
-            
+
         default:
             return nil
         }

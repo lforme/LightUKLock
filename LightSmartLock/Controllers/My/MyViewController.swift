@@ -131,7 +131,6 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         self.tableView.tableFooterView = UIView(frame: .zero)
         self.tableView.separatorStyle = .none
         self.tableView.register(UINib(nibName: "MyListCell", bundle: nil), forCellReuseIdentifier: "MyListCell")
-        self.tableView.rowHeight = 136
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -144,6 +143,7 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         floaty.buttonColor = #colorLiteral(red: 1, green: 0.6639282703, blue: 0.245883733, alpha: 1)
         floaty.plusColor = .white
         floaty.openAnimationType = .slideUp
+        floaty.itemSpace = 28
     }
     
     func setupNavigation() {
@@ -182,7 +182,7 @@ class MyViewController: UIViewController, NavigationSettingStyle {
 extension MyViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return vm.cellRowHeight(indexPath.row)
+        return CGFloat(320 / dataSource.count)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -193,7 +193,8 @@ extension MyViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyListCell", for: indexPath) as! MyListCell
         let data = dataSource[indexPath.row]
         cell.bind(data)
-        cell.backgroundColor = vm.cellBackgroundColor(indexPath.row)
+        cell.bgView.backgroundColor = vm.cellBackgroundColor(indexPath.row)
+        cell.backgroundColor = vm.cellBackgroundLastColor(indexPath.row)
         return cell
     }
     

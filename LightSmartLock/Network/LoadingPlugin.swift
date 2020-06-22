@@ -15,13 +15,30 @@ final class LoadingPlugin: PluginType {
     
     init() {}
     
+    private lazy var view: UIView = {
+        let animation = Animation.named("loading", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)!
+        let animationView = AnimationView(animation: animation)
+        animationView.frame.size = CGSize(width: 50, height: 50)
+        animationView.animation = animation
+        animationView.loopMode = .loop
+        animationView.play()
+        
+        let view = UIView()
+        view.frame.size = CGSize(width: 50, height: 50)
+        animationView.center = view.center
+        view.addSubview(animationView)
+        view.backgroundColor = ColorClassification.hudColor.value
+        return view
+        
+    }()
+    
     func willSend(_ request: RequestType, target: TargetType) {
         
         DispatchQueue.main.async {[weak self] in
             if !HUD.isVisible {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = true
                 guard let this = self else { return }
-                HUD.show(.customView(view: this.creatAnimationView()))
+                HUD.show(.customView(view: this.view))
             }
         }
     }
@@ -33,20 +50,5 @@ final class LoadingPlugin: PluginType {
             HUD.hide()
         }
         
-    }
-    
-    private func creatAnimationView() -> UIView {
-        let animation = Animation.named("loading", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)!
-        let animationView = AnimationView(animation: animation)
-        animationView.frame.size = CGSize(width: 50, height: 50)
-        animationView.animation = animation
-        animationView.loopMode = .loop
-        animationView.play()
-        let view = UIView()
-        view.frame.size = CGSize(width: 50, height: 50)
-        animationView.center = view.center
-        view.addSubview(animationView)
-        view.backgroundColor = ColorClassification.hudColor.value
-        return view
     }
 }

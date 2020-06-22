@@ -26,20 +26,33 @@ class MyListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.clipsToBounds = true
-        self.roundCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner], radius: 12)
+        self.bgView.clipsToBounds = true
+        self.bgView.roundCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner], radius: 12)
     }
     
     func bind(_ data: SceneListModel) {
         name.text = data.buildingName ?? "-"
         address.text = data.buildingAdress ?? "-"
         
-        if let lockInfo = data.lockType, lockInfo.isNotEmpty {
+        if data.ladderLockId.isNotNilNotEmpty {
             message.text = "已绑定门锁"
+            message.alpha = 1.0
             bindLockButton.setImage(UIImage(named: "my_lock_is_bind"), for: UIControl.State())
         } else {
             message.text = "未绑定门锁"
+            message.alpha = 0.5
             bindLockButton.setImage(UIImage(named: "my_lock_not_bind"), for: UIControl.State())
         }
+        
+        if data.ladderLockId.isNilOrEmpty {
+            let buildingName = data.buildingName ?? "-"
+            name.text = "\(buildingName) (\("待添加门锁"))"
+        }
+        
+        if data.ladderAssetHouseId.isNilOrEmpty {
+            name.text = "待绑定资产"
+            address.text = nil
+        }
+        
     }
 }
