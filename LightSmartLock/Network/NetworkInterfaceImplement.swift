@@ -326,7 +326,7 @@ extension BusinessInterface: TargetType {
         case let .editSteward(steward):
             return "/steward/\(steward.id!)"
         case let .findAssetByLockId(id):
-            return "ladder_asset_house/houses/\(id)"
+            return "/ladder_asset_house/houses/\(id)"
         case .findAssetNotBind:
             return "/ladder_asset_house/unbind/houses"
         }

@@ -43,8 +43,24 @@ struct SceneListModel: HandyJSON {
     var lockUserAccount: String?
 }
 
-struct AssetPendingModel: HandyJSON {
- 
+class AssetPendingModel: HandyJSON, Hashable {
+    
+    static func == (lhs: AssetPendingModel, rhs: AssetPendingModel) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.buildingAdress)
+        hasher.combine(self.buildingName)
+        hasher.combine(self.buildingNo)
+        hasher.combine(self.floor)
+        hasher.combine(self.houseNum)
+        hasher.combine(self.isBind)
+        hasher.combine(self.ladderAssetHouseId)
+    }
+    
+    required init() {}
+    
     var buildingAdress: String?
     var buildingName: String?
     var buildingNo: String?

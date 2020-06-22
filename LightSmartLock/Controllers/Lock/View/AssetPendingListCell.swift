@@ -19,19 +19,15 @@ class AssetPendingListCell: UITableViewCell {
         self.selectionStyle = .none
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        if selected {
-            self.icon.image = UIImage(named: "radio_button_select")
-        } else {
-            self.icon.image = UIImage(named: "radio_button_normal")
-        }
-    }
-    
     func bind(_ data: AssetPendingModel) {
         name.text = data.buildingName
         addiction.text = data.houseNum
+    
+        if data.isBind ?? false {
+           self.icon.image = UIImage(named: "radio_button_select")
+        } else {
+           self.icon.image = UIImage(named: "radio_button_normal")
+        }
     }
     
 }

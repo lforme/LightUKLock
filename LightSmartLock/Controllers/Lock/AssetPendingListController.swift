@@ -74,6 +74,8 @@ extension AssetPendingListController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AssetPendingListCell", for: indexPath) as! AssetPendingListCell
+        let data = dataSource[indexPath.row]
+        cell.bind(data)
         return cell
     }
 }
@@ -82,5 +84,11 @@ extension AssetPendingListController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let model = dataSource[indexPath.row]
+        model.isBind = !(model.isBind ?? false)
+        
+        dataSource.filter { $0 != model }.forEach { $0.isBind = false }
+        
+        tableView.reloadData()
     }
 }
