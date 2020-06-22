@@ -261,6 +261,8 @@
 		9CBAF5FB24592BF700197450 /* BillClearingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBAF5FA24592BF700197450 /* BillClearingController.swift */; };
 		9CBAF5FD2459326E00197450 /* BillDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBAF5FC2459326E00197450 /* BillDescriptionCell.swift */; };
 		9CBAF5FF245932C800197450 /* BillDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBAF5FE245932C800197450 /* BillDescriptionCell.xib */; };
+		9CBC229E24A046E800ECC76E /* PasswordSequenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBC229C24A046E800ECC76E /* PasswordSequenceCell.swift */; };
+		9CBC229F24A046E800ECC76E /* PasswordSequenceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBC229D24A046E800ECC76E /* PasswordSequenceCell.xib */; };
 		9CBD8F3923A1D67A00886519 /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD8F3823A1D67A00886519 /* UserDetailViewModel.swift */; };
 		9CBD8F3B23A1E21400886519 /* MultipleTempPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD8F3A23A1E21400886519 /* MultipleTempPasswordController.swift */; };
 		9CBD8F3F23A1ECF900886519 /* ShareModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD8F3E23A1ECF900886519 /* ShareModels.swift */; };
@@ -604,6 +606,8 @@
 		9CBAF5FA24592BF700197450 /* BillClearingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillClearingController.swift; sourceTree = "<group>"; };
 		9CBAF5FC2459326E00197450 /* BillDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDescriptionCell.swift; sourceTree = "<group>"; };
 		9CBAF5FE245932C800197450 /* BillDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BillDescriptionCell.xib; sourceTree = "<group>"; };
+		9CBC229C24A046E800ECC76E /* PasswordSequenceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSequenceCell.swift; sourceTree = "<group>"; };
+		9CBC229D24A046E800ECC76E /* PasswordSequenceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordSequenceCell.xib; sourceTree = "<group>"; };
 		9CBD8F3823A1D67A00886519 /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
 		9CBD8F3A23A1E21400886519 /* MultipleTempPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleTempPasswordController.swift; sourceTree = "<group>"; };
 		9CBD8F3E23A1ECF900886519 /* ShareModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareModels.swift; sourceTree = "<group>"; };
@@ -794,6 +798,8 @@
 				9C218FA423FA8CC9009600F7 /* LeasedCell.xib */,
 				9C279293249A2019008EDA75 /* HouseKeeperCell.swift */,
 				9C279294249A2019008EDA75 /* HouseKeeperCell.xib */,
+				9CBC229C24A046E800ECC76E /* PasswordSequenceCell.swift */,
+				9CBC229D24A046E800ECC76E /* PasswordSequenceCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1446,6 +1452,7 @@
 				9C770597238FA351008E1552 /* MyListCell.xib in Resources */,
 				9C4490772462CA6E00A859CC /* BillFeesDeleteView.xib in Resources */,
 				9C44906924628E6300A859CC /* FeeItemView.xib in Resources */,
+				9CBC229F24A046E800ECC76E /* PasswordSequenceCell.xib in Resources */,
 				9C24AC402383EB55005EBF95 /* OpenDoorViewController.xib in Resources */,
 				9C76099E2452DBAA0042C88D /* Bill.storyboard in Resources */,
 				9C3F93DC24558D050040005D /* BillReportCell.xib in Resources */,
@@ -1686,6 +1693,7 @@
 				9CBD8F5723A23E4700886519 /* SharePwdMultipleViewModel.swift in Sources */,
 				9C3726E32391164700450757 /* OpenDoorViewModel.swift in Sources */,
 				9C3F93ED2455ACF90040005D /* BillFlowSection.swift in Sources */,
+				9CBC229E24A046E800ECC76E /* PasswordSequenceCell.swift in Sources */,
 				9C218F9B23FA764A009600F7 /* CalendarViewController.swift in Sources */,
 				7BB029BF246E7C4600879F0A /* BindingOrEditAssetViewController.swift in Sources */,
 				9CABF495246501A40001AAE3 /* BillDetailSectionOneCell.swift in Sources */,

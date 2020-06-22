@@ -210,11 +210,11 @@ extension RxMoyaProvider {
             return useCacheWhenErrorOccurred(token).flatMapLatest({ (response) -> Observable<E> in
                 
                 guard let json = try? response.mapJSON() else {
-                    return .error(AppError.reason("服务器出错啦"))
+                    return .error(AppError.reason("服务器出错了"))
                 }
                 
                 guard let dic = json as? [String: Any], let status = dic["status"] as? Int else {
-                    return .error(AppError.reason("服务器出错啦"))
+                    return .error(AppError.reason("服务器出错了"))
                 }
                 
                 if status == 200 {
@@ -234,11 +234,11 @@ extension RxMoyaProvider {
         return _request(token).flatMap({ (response) -> Observable<E> in
             
             guard let json = try? response.mapJSON() else {
-                return .error(AppError.reason("服务器出错啦"))
+                return .error(AppError.reason("服务器出错了"))
             }
             
             guard let dic = json as? [String: Any], let status = dic["status"] as? Int else {
-                return .error(AppError.reason("服务器出错啦"))
+                return .error(AppError.reason("服务器出错了"))
             }
             
             if status == 200 {
@@ -262,11 +262,11 @@ extension RxMoyaProvider {
             return useCacheWhenErrorOccurred(token).flatMapLatest({ (response) -> Observable<[E?]> in
                 
                 guard let json = try? response.mapJSON() else {
-                    return .error(AppError.reason("服务器出错啦"))
+                    return .error(AppError.reason("服务器出错了"))
                 }
                 
                 guard let dic = json as? [String: Any], let code = dic["status"] as? Int else {
-                    return .error(AppError.reason("服务器出错啦"))
+                    return .error(AppError.reason("服务器出错了"))
                 }
                 
                 if code == 200 {
@@ -276,14 +276,14 @@ extension RxMoyaProvider {
                         if let objects = [E].deserialize(from: value) {
                             return Observable.just(objects)
                         } else {
-                            return .error(AppError.reason("服务器出错啦"))
+                            return .error(AppError.reason("服务器出错了"))
                         }
                     } else {
                         let value = dic["data"] as? [[String: Any]]
                         if let objects = [E].deserialize(from: value) {
                             return Observable.just(objects)
                         } else {
-                            return .error(AppError.reason("服务器出错啦"))
+                            return .error(AppError.reason("服务器出错了"))
                         }
                     }
                 } else {
@@ -296,11 +296,11 @@ extension RxMoyaProvider {
         return _request(token).flatMap({ (response) -> Observable<[E?]> in
             
             guard let json = try? response.mapJSON() else {
-                return .error(AppError.reason("服务器出错啦"))
+                return .error(AppError.reason("服务器出错了"))
             }
             
             guard let dic = json as? [String: Any], let code = dic["status"] as? Int else {
-                return .error(AppError.reason("服务器出错啦"))
+                return .error(AppError.reason("服务器出错了"))
             }
             
             if code == 200 {
@@ -310,14 +310,14 @@ extension RxMoyaProvider {
                     if let objects = [E].deserialize(from: value) {
                         return Observable.just(objects)
                     } else {
-                        return .error(AppError.reason("服务器出错啦"))
+                        return .error(AppError.reason("服务器出错了"))
                     }
                 } else {
                     let value = dic["data"] as? [[String: Any]]
                     if let objects = [E].deserialize(from: value) {
                         return Observable.just(objects)
                     } else {
-                        return .error(AppError.reason("服务器出错啦"))
+                        return .error(AppError.reason("服务器出错了"))
                     }
                 }
             } else {

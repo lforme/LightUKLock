@@ -190,6 +190,7 @@ class UserManagementAdminCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         
         bgView.setCircularShadow(radius: 7, color: ColorClassification.textPlaceholder.value)
         avatar.setCircular(radius: avatar.bounds.height / 2)

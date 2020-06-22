@@ -18,6 +18,7 @@ struct OpenLockInfoModel: HandyJSON {
         var keyNum: String?
         var name: String?
         var status: Int!
+        var isAddButton: Bool = false
     }
     
     struct Finger: HandyJSON {
@@ -27,6 +28,7 @@ struct OpenLockInfoModel: HandyJSON {
         var name: String?
         var status: Int!
         var phone: String?
+        var isAddButton: Bool = false
     }
     
     struct LadderNumberPasswordRecordVOList: HandyJSON {
