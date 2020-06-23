@@ -7,18 +7,23 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class NoLockViewController: UIViewController {
-
+    
     @IBOutlet weak var mustRead: UILabel!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var containerA: UIView!
     @IBOutlet weak var dotView: UIView!
     
+    let configuredList = BehaviorRelay<[BindLockListModel]>(value: [])
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupUI()
+        checkConfigLockList()
     }
     
     func setupUI() {
@@ -32,8 +37,26 @@ class NoLockViewController: UIViewController {
     
     @objc func gotoSelectedLockVC() {
         
-        let selectVC: SelectLockTypeController = ViewLoader.Storyboard.controller(from: "InitialLock")
-        selectVC.kind = .edited
-        self.navigationController?.pushViewController(selectVC, animated: true)
+        configuredList.subscribe(onNext: {[weak self] (bindLockList) in
+            
+            if bindLockList.count != 0 {
+                let bindLockListVC: BindLockListController = ViewLoader.Storyboard.controller(from: "InitialLock")
+                bindLockListVC.dataSource = bindLockList
+                self?.navigationController?.pushViewController(bindLockListVC, animated: true)
+            } else {
+                let selectVC: SelectLockTypeController = ViewLoader.Storyboard.controller(from: "InitialLock")
+                selectVC.kind = .newAdd
+                self?.navigationController?.pushViewController(selectVC, animated: true)
+            }
+        }).disposed(by: rx.disposeBag)
+    }
+    
+    func checkConfigLockList() {
+        if let phone = LSLUser.current().user?.phone {
+            BusinessAPI.requestMapJSONArray(.hardwareBindList(channels: "01", pageSize: 100, pageIndex: 1, phoneNo: phone), classType: BindLockListModel.self, useCache: false, isPaginating: true)
+                .map { $0.compactMap { $0 } }.catchErrorJustReturn([])
+                .bind(to: configuredList)
+                .disposed(by: rx.disposeBag)
+        }
     }
 }

@@ -81,18 +81,9 @@ class HomeSettingController: UITableViewController, NavigationSettingStyle {
         switch type {
         case .asset:
             
-            if LSLUser.current().scene?.ladderAssetHouseId.isNilOrEmpty ?? false {
-                let pendingVC: AssetPendingListController = ViewLoader.Storyboard.controller(from: "Home")
-                navigationController?.pushViewController(pendingVC, animated: true)
-            } else {
-                let editAssetVC: BindingOrEditAssetViewController = ViewLoader.Storyboard.controller(from: "AssetDetail")
-                
-                if let asset = try? currentAsset.value() {
-                    editAssetVC.asset = asset
-                }
-                navigationController?.pushViewController(editAssetVC, animated: true)
-            }
-            
+            let pendingVC: AssetPendingListController = ViewLoader.Storyboard.controller(from: "Home")
+            navigationController?.pushViewController(pendingVC, animated: true)
+        
         case .lockSetting:
             
             let lockSettingVC: LockSettingController = ViewLoader.Storyboard.controller(from: "Home")

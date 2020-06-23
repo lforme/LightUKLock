@@ -331,6 +331,8 @@ extension BusinessInterface: TargetType {
             return "/ladder_asset_house/unbind/houses"
         case let .assetBindLock(lockId, _):
             return "/ladder_asset_house/bind/\(lockId)"
+        case .snBindLock:
+            return "/ladder_lock/lock/bind"
         }
     }
     
@@ -516,6 +518,9 @@ extension BusinessInterface: TargetType {
             } else {
                 return nil
             }
+            
+        case let .snBindLock(assetId, snCode):
+            return ["ladderAssetHouseId": assetId, "snCode": snCode]
             
         default:
             return nil

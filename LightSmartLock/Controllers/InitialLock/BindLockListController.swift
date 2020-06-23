@@ -74,25 +74,25 @@ class BindLockListController: UIViewController, NavigationSettingStyle {
             .bind(to: selectedModel)
             .disposed(by: rx.disposeBag)
         
-        
         nextButton.rx
             .tap
-            .subscribe(onNext: {[weak self] (_) in
-                
-                if self?.selectedModel.value == nil {
-                    HUD.flash(.label("请先选择门锁"), delay: 2)
-                    return
+            .flatMapLatest {[weak self] (_) -> Observable<Bool> in
+                guard let assetId = LSLUser.current().scene?.ladderAssetHouseId, let snCode = self?.selectedModel.value?.snCode else {
+                    
+                    HUD.flash(.label("请选择要绑定门锁"), delay: 2)
+                    return .empty()
                 }
                 
-                let editAssetVC: BindingOrEditAssetViewController = ViewLoader.Storyboard.controller(from: "AssetDetail")
-                var position = PositionModel()
-                position.address = self?.selectedModel.value?.address
-                position.snCode =
-                    self?.selectedModel.value?.snCode
-                position.configId = self?.selectedModel.value?.id
-                editAssetVC.asset = position
-                self?.navigationController?.pushViewController(editAssetVC, animated: true)
-                
-            }).disposed(by: rx.disposeBag)
+                return BusinessAPI.requestMapBool(.snBindLock(assetId: assetId, snCode: snCode))
+        }.subscribe(onNext: {[weak self] (success) in
+            if success {
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.updateScene)
+                self?.navigationController?.popToRootViewController(animated: true)
+            }
+            }, onError: { (error) in
+                PKHUD.sharedHUD.rx.showError(error)
+        })
+            .disposed(by: rx.disposeBag)
+        
     }
 }

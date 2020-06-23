@@ -99,19 +99,16 @@ class LockSettingPasswordController: UIViewController, NavigationSettingStyle {
             switch step {
             case let .uploadInfoToServer(id):
                 
-                let positionVC: PositioEditingController = ViewLoader.Storyboard.controller(from: "Home")
-        
-                switch self?.kind {
-                case .edited:
-                    positionVC.id = LSLUser.current().scene?.ladderAssetHouseId
-                case .newAdd:
-                    positionVC.id = id
-                default:
-                    break
+                BluetoothPapa.shareInstance.reboot { (_) in
+                    // 写入门锁
                 }
-                self?.navigationController?.pushViewController(positionVC, animated: true)
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.editLock)
+                let pendingVC: AssetPendingListController = ViewLoader.Storyboard.controller(from: "Home")
+                pendingVC.lockId = id
+                self?.navigationController?.pushViewController(pendingVC, animated: true)
+                
             default: break
-            
+                
             }
             }, onError: {[weak self] (error) in
                 HUD.flash(.label("门锁配置失败, 门锁已恢复出厂设置"), delay: 2)

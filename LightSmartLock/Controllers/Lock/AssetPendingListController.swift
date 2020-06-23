@@ -23,6 +23,10 @@ class AssetPendingListController: UIViewController, NavigationSettingStyle {
         ColorClassification.navigationBackground.value
     }
     
+    var lockId: String? = LSLUser.current().scene?.ladderLockId
+    
+    lazy var disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +35,19 @@ class AssetPendingListController: UIViewController, NavigationSettingStyle {
         setupNavigationRightItem()
         fetchData()
         bind()
+        setupObserver()
+    }
+    
+    func setupObserver() {
+        NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
+            guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
+            
+            switch refreshType {
+            case .deleteScene, .updateScene:
+                self?.fetchData()
+            default: break
+            }
+        }).disposed(by: rx.disposeBag)
     }
     
     func bind() {
@@ -88,8 +105,9 @@ class AssetPendingListController: UIViewController, NavigationSettingStyle {
     }
     
     func fetchData() {
-        if let lockId = LSLUser.current().scene?.ladderLockId {
-            BusinessAPI.requestMapJSONArray(.findAssetByLockId(id: lockId), classType: AssetPendingModel.self)
+        self.disposeBag = DisposeBag()
+        if let id = lockId {
+            BusinessAPI.requestMapJSONArray(.findAssetByLockId(id: id), classType: AssetPendingModel.self)
                 .map { $0.compactMap { $0 } }
                 .subscribe(onNext: {[weak self] (list) in
                     self?.dataSource = list
@@ -97,7 +115,7 @@ class AssetPendingListController: UIViewController, NavigationSettingStyle {
                     }, onError: { (error) in
                         PKHUD.sharedHUD.rx.showError(error)
                 })
-                .disposed(by: rx.disposeBag)
+                .disposed(by: self.disposeBag)
         } else {
             BusinessAPI.requestMapJSONArray(.findAssetNotBind, classType: AssetPendingModel.self)
                 .map { $0.compactMap { $0 } }
@@ -107,7 +125,7 @@ class AssetPendingListController: UIViewController, NavigationSettingStyle {
                     }, onError: { (error) in
                         PKHUD.sharedHUD.rx.showError(error)
                 })
-                .disposed(by: rx.disposeBag)
+                .disposed(by: self.disposeBag)
         }
     }
 }
@@ -133,7 +151,9 @@ extension AssetPendingListController: UITableViewDelegate {
         let model = dataSource[indexPath.row]
         model.isBind = !(model.isBind ?? false)
         
-        dataSource.filter { $0 != model }.forEach { $0.isBind = false }
+        dataSource
+            .filter { $0 != model }
+            .forEach { $0.isBind = false }
         
         tableView.reloadData()
     }
