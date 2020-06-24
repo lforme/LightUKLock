@@ -48,7 +48,8 @@ final class MyViewModel {
         BusinessAPI.requestMapJSONArray(.getHouses, classType: SceneListModel.self, useCache: true)
             .map { $0.compactMap { $0 } }
             .subscribe(onNext: {[weak self] (list) in
-                self?._list.onNext(list)
+                let filterArray = list.filter { $0.isTop }
+                self?._list.onNext(filterArray)
                 }, onError: { (error) in
                     PKHUD.sharedHUD.rx.showError(error)
             }, onCompleted: {[weak self] in

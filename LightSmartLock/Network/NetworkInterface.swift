@@ -96,5 +96,6 @@ enum BusinessInterface {
     case findAssetNotBind // 查询所有未绑定资产
     case assetBindLock(lockId: String, assetId: String?) // 门锁绑定资产
     case snBindLock(assetId: String, snCode: String) // 根据SN绑定门锁
+    case topAsset(list: [SceneListModel]) // 资产置顶
 }
 

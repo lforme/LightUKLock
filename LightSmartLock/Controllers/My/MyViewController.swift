@@ -40,6 +40,12 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         setupTableviewRefresh()
         bind()
         observerSceneChanged()
+        
+    }
+    
+    @IBAction func moreAseetTap(_ sender: UIButton) {
+        let moreAssetVC: MoreAssetController = ViewLoader.Storyboard.controller(from: "My")
+        self.navigationController?.pushViewController(moreAssetVC, animated: true)
     }
     
     func observerSceneChanged() {

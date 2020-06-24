@@ -282,6 +282,9 @@
 		9CBD8F5923A2496700886519 /* SharePasswordSignleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD8F5823A2496700886519 /* SharePasswordSignleController.swift */; };
 		9CBD8F5B23A24A9900886519 /* SharePwdSingleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD8F5A23A24A9900886519 /* SharePwdSingleViewModel.swift */; };
 		9CBD8F5D23A24DA800886519 /* BluetoothSynchronizeTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD8F5C23A24DA800886519 /* BluetoothSynchronizeTask.swift */; };
+		9CD7787F24A2E50A007DE940 /* MoreAssetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD7787E24A2E50A007DE940 /* MoreAssetController.swift */; };
+		9CD7788224A2F524007DE940 /* MoreAssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD7788024A2F524007DE940 /* MoreAssetCell.swift */; };
+		9CD7788324A2F524007DE940 /* MoreAssetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CD7788124A2F524007DE940 /* MoreAssetCell.xib */; };
 		9CDD27222382801D006A9B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD27212382801D006A9B97 /* AppDelegate.swift */; };
 		9CDD27292382801D006A9B97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD27272382801D006A9B97 /* Main.storyboard */; };
 		9CDD272E2382801E006A9B97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD272C2382801E006A9B97 /* LaunchScreen.storyboard */; };
@@ -630,6 +633,9 @@
 		9CBD8F5823A2496700886519 /* SharePasswordSignleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePasswordSignleController.swift; sourceTree = "<group>"; };
 		9CBD8F5A23A24A9900886519 /* SharePwdSingleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePwdSingleViewModel.swift; sourceTree = "<group>"; };
 		9CBD8F5C23A24DA800886519 /* BluetoothSynchronizeTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothSynchronizeTask.swift; sourceTree = "<group>"; };
+		9CD7787E24A2E50A007DE940 /* MoreAssetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreAssetController.swift; sourceTree = "<group>"; };
+		9CD7788024A2F524007DE940 /* MoreAssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreAssetCell.swift; sourceTree = "<group>"; };
+		9CD7788124A2F524007DE940 /* MoreAssetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreAssetCell.xib; sourceTree = "<group>"; };
 		9CDD271E2382801D006A9B97 /* 寓用管家.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "寓用管家.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CDD27212382801D006A9B97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CDD27282382801D006A9B97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1132,6 +1138,8 @@
 			children = (
 				9C770594238FA351008E1552 /* MyListCell.swift */,
 				9C770595238FA351008E1552 /* MyListCell.xib */,
+				9CD7788024A2F524007DE940 /* MoreAssetCell.swift */,
+				9CD7788124A2F524007DE940 /* MoreAssetCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1219,6 +1227,7 @@
 				9C3726C52390B2DD00450757 /* ChangePasswordController.swift */,
 				9C3726CD2390D29900450757 /* ChangePhoneController.swift */,
 				9CAA70DF2489D9DE00A252E4 /* PrivacyAndUseController.swift */,
+				9CD7787E24A2E50A007DE940 /* MoreAssetController.swift */,
 				9C24AC432383EB96005EBF95 /* My.storyboard */,
 			);
 			path = My;
@@ -1465,6 +1474,7 @@
 				9C24AC402383EB55005EBF95 /* OpenDoorViewController.xib in Resources */,
 				9C76099E2452DBAA0042C88D /* Bill.storyboard in Resources */,
 				9C3F93DC24558D050040005D /* BillReportCell.xib in Resources */,
+				9CD7788324A2F524007DE940 /* MoreAssetCell.xib in Resources */,
 				9C24AC212383C1C6005EBF95 /* Login.storyboard in Resources */,
 				9C52402E238E163D00308AC4 /* UnlockRecordCell.xib in Resources */,
 				7BC62243246E829C00E24366 /* zh_city.json in Resources */,
@@ -1639,6 +1649,7 @@
 				9C24AC2B2383CD94005EBF95 /* StaticConst.swift in Sources */,
 				9C752FCD238774A9000FEA73 /* RegisterForgetController.swift in Sources */,
 				7BB2FEB0245595DD00D835BA /* SettingRentalRecordViewController.swift in Sources */,
+				9CD7787F24A2E50A007DE940 /* MoreAssetController.swift in Sources */,
 				9C452F0E2394E84A00144827 /* BluetoothViewModel.swift in Sources */,
 				9CABF4BC246550B30001AAE3 /* ConfirmArrivalController.swift in Sources */,
 				9CBC22A124A0A25A00ECC76E /* AssetPendingListController.swift in Sources */,
@@ -1676,6 +1687,7 @@
 				9CB09C7C2469659B00F3891D /* SelectorFeesController.swift in Sources */,
 				9C4297782386A64C004CB999 /* RegistrationRecoveryService.swift in Sources */,
 				9C03B0F9239F87B60001E849 /* AddFingerViewModel.swift in Sources */,
+				9CD7788224A2F524007DE940 /* MoreAssetCell.swift in Sources */,
 				9CBD8F3B23A1E21400886519 /* MultipleTempPasswordController.swift in Sources */,
 				9CE6C0E02498CDA7003DA523 /* MyVCNavigationControllerDelegate.swift in Sources */,
 				9CBD8F4F23A22AC200886519 /* SingleTempPasswordController.swift in Sources */,

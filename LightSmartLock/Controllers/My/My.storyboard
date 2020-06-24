@@ -402,14 +402,26 @@
                                     <constraint firstAttribute="height" constant="320" id="NEN-Ox-Ckv"/>
                                 </constraints>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mRg-wf-l8e">
+                                <rect key="frame" x="364" y="56" width="30" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="14"/>
+                                <state key="normal" title="更多">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="moreAseetTap:" destination="Kle-dG-uh4" eventType="touchUpInside" id="3PQ-wv-gem"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="x6A-5y-erd" firstAttribute="centerX" secondItem="dMR-D2-x5S" secondAttribute="centerX" id="61G-zC-5np"/>
                             <constraint firstItem="VxZ-6o-BkW" firstAttribute="top" secondItem="dMR-D2-x5S" secondAttribute="top" constant="80" id="Dlm-QK-Bxw"/>
+                            <constraint firstItem="mRg-wf-l8e" firstAttribute="top" secondItem="dMR-D2-x5S" secondAttribute="top" constant="12" id="FQv-hm-7wZ"/>
                             <constraint firstItem="x6A-5y-erd" firstAttribute="top" secondItem="VxZ-6o-BkW" secondAttribute="bottom" constant="20" id="K2o-Ka-H2H"/>
                             <constraint firstItem="dMR-D2-x5S" firstAttribute="trailing" secondItem="gaa-zq-x9V" secondAttribute="trailing" id="LMZ-gQ-cQH"/>
                             <constraint firstAttribute="bottom" secondItem="gaa-zq-x9V" secondAttribute="bottom" id="RrG-54-L3f"/>
+                            <constraint firstItem="dMR-D2-x5S" firstAttribute="trailing" secondItem="mRg-wf-l8e" secondAttribute="trailing" constant="20" id="Sbi-IC-Ni2"/>
                             <constraint firstItem="VxZ-6o-BkW" firstAttribute="centerX" secondItem="dMR-D2-x5S" secondAttribute="centerX" id="WPt-ek-h5A"/>
                             <constraint firstItem="gaa-zq-x9V" firstAttribute="leading" secondItem="dMR-D2-x5S" secondAttribute="leading" id="o1X-4h-g58"/>
                         </constraints>
@@ -575,6 +587,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hpV-az-NU3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-581" y="552"/>
+        </scene>
+        <!--More Asset Controller-->
+        <scene sceneID="pex-Bm-VKT">
+            <objects>
+                <viewController storyboardIdentifier="MoreAssetController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3me-10-8pT" customClass="MoreAssetController" customModule="寓用管家" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="A2x-jw-KYf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaC-G6-SxT">
+                                <rect key="frame" x="16" y="794" width="382" height="48"/>
+                                <color key="backgroundColor" name="primary"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="XdV-PZ-SER"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <state key="normal" title="确定">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WGr-Uo-3No">
+                                <rect key="frame" x="0.0" y="44" width="414" height="742"/>
+                                <color key="backgroundColor" name="tableViewBackground"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" name="tableViewBackground"/>
+                        <constraints>
+                            <constraint firstItem="UbO-nm-eYG" firstAttribute="bottom" secondItem="gaC-G6-SxT" secondAttribute="bottom" constant="20" id="7Yi-9G-7OE"/>
+                            <constraint firstItem="gaC-G6-SxT" firstAttribute="top" secondItem="WGr-Uo-3No" secondAttribute="bottom" constant="8" id="9VC-sg-jhb"/>
+                            <constraint firstItem="UbO-nm-eYG" firstAttribute="trailing" secondItem="WGr-Uo-3No" secondAttribute="trailing" id="9s5-Sr-HG4"/>
+                            <constraint firstItem="gaC-G6-SxT" firstAttribute="leading" secondItem="UbO-nm-eYG" secondAttribute="leading" constant="16" id="Ioq-Pa-JtY"/>
+                            <constraint firstItem="UbO-nm-eYG" firstAttribute="trailing" secondItem="gaC-G6-SxT" secondAttribute="trailing" constant="16" id="Xv5-5k-LDK"/>
+                            <constraint firstItem="WGr-Uo-3No" firstAttribute="leading" secondItem="UbO-nm-eYG" secondAttribute="leading" id="avx-D1-RWO"/>
+                            <constraint firstItem="WGr-Uo-3No" firstAttribute="top" secondItem="UbO-nm-eYG" secondAttribute="top" id="oE9-Fi-9Iy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UbO-nm-eYG"/>
+                    </view>
+                    <connections>
+                        <outlet property="confirmButton" destination="gaC-G6-SxT" id="sdR-zf-IV5"/>
+                        <outlet property="tableView" destination="WGr-Uo-3No" id="WSK-zs-cO3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NlZ-re-296" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="227" y="567"/>
         </scene>
         <!--Change Password Controller-->
         <scene sceneID="kG0-Ep-363">

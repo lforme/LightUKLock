@@ -333,6 +333,8 @@ extension BusinessInterface: TargetType {
             return "/ladder_asset_house/bind/\(lockId)"
         case .snBindLock:
             return "/ladder_lock/lock/bind"
+        case .topAsset:
+            return "/ladder_asset_house/houses/top"
         }
     }
     
@@ -368,6 +370,9 @@ extension BusinessInterface: TargetType {
             }
             
             return .requestParameters(parameters: requestParameters, encoding: encoding)
+            
+        case .topAsset:
+            return .requestParameters(parameters: requestParameters, encoding: JsonArrayEncoding.default)
             
         default:
             if self.method == .get {
@@ -521,6 +526,10 @@ extension BusinessInterface: TargetType {
             
         case let .snBindLock(assetId, snCode):
             return ["ladderAssetHouseId": assetId, "snCode": snCode]
+          
+        case let .topAsset(list):
+            let array = list.compactMap { $0.toJSON() }
+            return ["jsonArray": array]
             
         default:
             return nil
