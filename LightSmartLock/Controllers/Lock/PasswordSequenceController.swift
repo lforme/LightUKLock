@@ -116,7 +116,16 @@ class PasswordSequenceController: UITableViewController, NavigationSettingStyle 
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 2 || indexPath.row == 0 {
+        
+        if indexPath.row == 0 {
+            let vm = PasswordManagementViewModel()
+            let digitalPwdVC: DigitalPwdDetailController = ViewLoader.Storyboard.controller(from: "Home")
+            digitalPwdVC.vm = vm
+            vm.refresh()
+            navigationController?.pushViewController(digitalPwdVC, animated: true)
+        }
+        
+        if indexPath.row == 2 {
             let pwdVC: PasswordManagementController = ViewLoader.Storyboard.controller(from: "Home")
             navigationController?.pushViewController(pwdVC, animated: true)
         }
@@ -162,7 +171,7 @@ class PasswordSequenceController: UITableViewController, NavigationSettingStyle 
                     this.fingerCellDs = RxCollectionViewSectionedReloadDataSource<SectionModel<String, OpenLockInfoModel.Finger>>(configureCell: { (ds, cv, ip, item) -> PasswordSequenceCell in
                         let cell = cv.dequeueReusableCell(withReuseIdentifier: "PasswordSequenceCell", for: ip) as! PasswordSequenceCell
                         cell.name.text = item.name
-                       
+                        
                         if item.isAddButton {
                             cell.icon.image = UIImage(named: "home_pwd_add")
                         } else {

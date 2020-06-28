@@ -21,7 +21,10 @@ final class PasswordManagementViewModel {
     
     private let _info = BehaviorSubject<OpenLockInfoModel.LadderNumberPasswordVO?>(value: nil)
     
+    
+    
     func refresh() {
+        
         guard let lockId = LSLUser.current().lockInfo?.ladderLockId else {
             HUD.flash(.label("无法获取门锁编号"), delay: 2)
             return

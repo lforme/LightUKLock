@@ -23,6 +23,8 @@ class UserDetailController: UITableViewController, NavigationSettingStyle {
         return ColorClassification.navigationBackground.value
     }
     
+    @IBOutlet weak var oneSectionCell: UITableViewCell!
+    @IBOutlet weak var oneSectionLabel: UILabel!
     @IBOutlet weak var nickname: UILabel!
     @IBOutlet weak var role: UILabel!
     @IBOutlet weak var phone: UILabel!
@@ -41,6 +43,16 @@ class UserDetailController: UITableViewController, NavigationSettingStyle {
         print("\(self) deinit")
     }
     
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if model.lockUserAccount.isNilOrEmpty {
+            nickname.textColor = ColorClassification.textDescription.value
+            role.textColor = ColorClassification.textDescription.value
+            oneSectionLabel.textColor = ColorClassification.textDescription.value
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,7 +62,7 @@ class UserDetailController: UITableViewController, NavigationSettingStyle {
     }
     
     func setupUI() {
-        self.clearsSelectionOnViewWillAppear = true
+        
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         
@@ -91,14 +103,25 @@ class UserDetailController: UITableViewController, NavigationSettingStyle {
         } else {
             hasMember.isEnabled = true
         }
-        hasCard.isEnabled = model.cardModel
-        hasDigital.isEnabled = model.codeModel
-        hasBle.isEnabled = model.bluetoothModel
-        hasFinger.isEnabled = model.fingerprintModel
-        
+        if model.lockUserAccount.isNotNilNotEmpty {
+            hasCard.isEnabled = model.cardModel
+            hasDigital.isEnabled = model.codeModel
+            hasBle.isEnabled = model.bluetoothModel
+            hasFinger.isEnabled = model.fingerprintModel
+            
+        } else {
+            hasCard.isEnabled = false
+            hasDigital.isEnabled = false
+            hasBle.isEnabled = false
+            hasFinger.isEnabled = false
+            hasMember.isEnabled = false
+            oneSectionCell.accessoryType = .none
+            oneSectionLabel.text = "未激活"
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         guard let model = self.model else { return }
         guard let type = SelectType(rawValue: indexPath.row + indexPath.section * 10) else {
             return
@@ -109,6 +132,11 @@ class UserDetailController: UITableViewController, NavigationSettingStyle {
             guard let lockId = LSLUser.current().scene?.ladderLockId else {
                 return
             }
+            
+            if model.lockUserAccount.isNilOrEmpty {
+                return
+            }
+            
             let recordVC = RecordUnlockController(lockId: lockId, userId: model.id ?? "")
             self.navigationController?.pushViewController(recordVC, animated: true)
             
@@ -137,8 +165,8 @@ class UserDetailController: UITableViewController, NavigationSettingStyle {
                     NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.editMember)
                     self?.navigationController?.popViewController(animated: true)
                 }
-            }, onError: { (error) in
-                PKHUD.sharedHUD.rx.showError(error)
+                }, onError: { (error) in
+                    PKHUD.sharedHUD.rx.showError(error)
             }).disposed(by: rx.disposeBag)
         }
     }
@@ -149,5 +177,9 @@ class UserDetailController: UITableViewController, NavigationSettingStyle {
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = ColorClassification.tableViewBackground.value
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return self.model.lockUserAccount.isNilOrEmpty ? 2 : 4
     }
 }
