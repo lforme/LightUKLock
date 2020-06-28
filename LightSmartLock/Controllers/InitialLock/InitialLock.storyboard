@@ -325,8 +325,8 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock_Installation_guide" translatesAutoresizingMaskIntoConstraints="NO" id="aYk-RX-FeJ">
-                                <rect key="frame" x="97" y="219.5" width="180" height="252"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="initial_card_guide" translatesAutoresizingMaskIntoConstraints="NO" id="aYk-RX-FeJ">
+                                <rect key="frame" x="73" y="219.5" width="228" height="228"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lpk-aA-5EW">
                                 <rect key="frame" x="80" y="754" width="254" height="48"/>
@@ -488,7 +488,7 @@
     </scenes>
     <resources>
         <image name="finger_add_guide" width="252" height="252"/>
-        <image name="lock_Installation_guide" width="180" height="252"/>
+        <image name="initial_card_guide" width="228" height="228"/>
         <image name="lock_kf100" width="44" height="92"/>
         <namedColor name="primary">
             <color red="0.32499998807907104" green="0.58399999141693115" blue="0.91399997472763062" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

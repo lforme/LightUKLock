@@ -181,7 +181,7 @@ class UserManagementAdminCell: UITableViewCell {
     func bind(_ model: UserMemberListModel?) {
         avatar.setUrl(model?.avatar)
         name.text = model?.nickname
-        role.text = model?.kinsfolkTag
+        role.text = model?.roleType.description
         if model?.roleType == .some(.member) {
             hasMemberShip.isEnabled = false
         } else {
