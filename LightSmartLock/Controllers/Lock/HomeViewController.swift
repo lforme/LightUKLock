@@ -233,7 +233,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 // 跳转资产页面
                 print("tap")
                 guard let assetId = self?.currentScene.value?.ladderAssetHouseId,
-                    let roleType = self?.currentScene.value?.roleType else { return }
+                    let roleType = self?.currentScene.value?.roleType else {
+                        let pendingVC: AssetPendingListController = ViewLoader.Storyboard.controller(from: "Home")
+                        self?.navigationController?.pushViewController(pendingVC, animated: true)
+                        return
+                }
                 let vc: AssetDetailViewController = ViewLoader.Storyboard.controller(from: "AssetDetail")
                 vc.assetId = assetId
                 vc.roleType = roleType.rawValue

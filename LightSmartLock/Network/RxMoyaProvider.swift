@@ -41,8 +41,8 @@ final class RxMoyaProvider<Target>: MoyaProvider<Target> where Target: TargetTyp
         
         let configuration = URLSessionConfiguration.af.default
         configuration.headers = .default
-        configuration.timeoutIntervalForRequest = 60
-        configuration.timeoutIntervalForResource = 60
+        configuration.timeoutIntervalForRequest = 20
+        configuration.timeoutIntervalForResource = 20
         let manager = Session(configuration: configuration, startRequestsImmediately: false)
         
         self.stubScheduler = stubScheduler

@@ -21,6 +21,7 @@ class MoreAssetController: UIViewController, NavigationSettingStyle {
     @IBOutlet weak var tableView: UITableView!
     
     var navigationRightButton: UIButton!
+    var vm: MyViewModel!
     
     var dataSource: [SceneListModel] = []
     
@@ -43,14 +44,31 @@ class MoreAssetController: UIViewController, NavigationSettingStyle {
                     return .empty()
                 }
                 
-                let array = selectRows.map { (ip) -> SceneListModel in
-                    var sceneModel = SceneListModel()
-                    sceneModel.ladderAssetHouseId = self?.dataSource[ip.row].ladderAssetHouseId
-                    sceneModel.isTop = true
-                    return sceneModel
+                let selectedModels = selectRows.map { (ip) -> IsTopModel in
+                    var isTopModel = IsTopModel()
+                    isTopModel.isTop = true
+                    isTopModel.id = self?.dataSource[ip.row].id
+                    return isTopModel
                 }
                 
+                var array = self?.dataSource.map({ (item) -> IsTopModel in
+                    var isTopModel = IsTopModel()
+                    isTopModel.isTop = false
+                    isTopModel.id = item.id
+                    return isTopModel
+                }) ?? []
+                
+                for vaule in selectedModels {
+                    if let b = array.filter({ $0.id == vaule.id }).first,
+                        let removeIndex = array.firstIndex(where: { b.id == $0.id }) {
+                        array.remove(at: removeIndex)
+                    }
+                }
+                
+                array += selectedModels
+            
                 return BusinessAPI.requestMapBool(.topAsset(list: array))
+                
             }).subscribe(onNext: {[weak self] (success) in
                 if success {
                     NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.updateScene)
@@ -128,11 +146,36 @@ extension MoreAssetController: UITableViewDataSource {
         } else {
             cell.name.text = data.buildingName
         }
+        cell.bindButton.rx.tap.subscribe(onNext: {[weak self] (_) in
+            LSLUser.current().scene = self?.dataSource[indexPath.row]
+            self?.gotoSelectedLockVC()
+        }).disposed(by: cell.disposeBag)
         
-         return cell
+        return cell
+    }
+    
+    func gotoSelectedLockVC() {
+        
+        vm.configuredList.subscribe(onNext: {[weak self] (bindLockList) in
+            
+            if bindLockList.count != 0 {
+                let bindLockListVC: BindLockListController = ViewLoader.Storyboard.controller(from: "InitialLock")
+                bindLockListVC.dataSource = bindLockList
+                self?.navigationController?.pushViewController(bindLockListVC, animated: true)
+            } else {
+                let selectVC: SelectLockTypeController = ViewLoader.Storyboard.controller(from: "InitialLock")
+                selectVC.kind = .newAdd
+                self?.navigationController?.pushViewController(selectVC, animated: true)
+            }
+        }).disposed(by: rx.disposeBag)
     }
 }
 
 extension MoreAssetController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if !tableView.isEditing {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
 }

@@ -7,16 +7,22 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class MoreAssetCell: UITableViewCell {
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var subName: UILabel!
     @IBOutlet weak var bindButton: UIButton!
+    private(set) var disposeBag = DisposeBag()
+    
+    override func prepareForReuse() {
+        disposeBag = DisposeBag()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
     }
-
 }

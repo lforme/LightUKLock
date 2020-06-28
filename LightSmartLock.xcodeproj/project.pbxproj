@@ -1417,7 +1417,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = mugua;
 				TargetAttributes = {
 					9CDD271D2382801D006A9B97 = {
@@ -1738,7 +1738,6 @@
 				9C279290249A170A008EDA75 /* HouseKeeperController.swift in Sources */,
 				9CABF4A5246514A60001AAE3 /* BillDetailTenantCell.swift in Sources */,
 				9CABF4A1246508A10001AAE3 /* BillDetailFeesFootView.swift in Sources */,
-				9C47DB83239A39070019EAA0 /* ListViewModeling.swift in Sources */,
 				9CABF4B124653CC50001AAE3 /* PaymentDetailsCell.swift in Sources */,
 				9CAA70E02489D9DE00A252E4 /* PrivacyAndUseController.swift in Sources */,
 				9C7AFF1A239600830075442D /* SearchPlotController.swift in Sources */,

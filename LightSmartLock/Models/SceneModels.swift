@@ -28,7 +28,7 @@ enum RoleModel: Int, HandyJSONEnum, CustomStringConvertible {
 
 
 struct SceneListModel: HandyJSON {
-    
+
     // 新的
     var buildingAdress: String?
     var buildingName: String?
@@ -41,6 +41,7 @@ struct SceneListModel: HandyJSON {
     var roleType: RoleModel!
     var unReadMsg: Int!
     var lockUserAccount: String?
+    var id: String?
 }
 
 class AssetPendingModel: HandyJSON, Hashable {
@@ -71,3 +72,7 @@ class AssetPendingModel: HandyJSON, Hashable {
 }
 
 
+struct IsTopModel: HandyJSON {
+    var isTop: Bool?
+    var id: String?
+}

@@ -83,7 +83,7 @@ class BindingOrEditAssetViewController: AssetBaseViewController {
                     HUD.flash(.label("操作成功"), onView: nil, delay: 0.5) { _ in
                         NotificationCenter.default.post(name: .refreshAssetDetail, object: nil)
                         NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.updateScene)
-                        self?.navigationController?.popViewController(animated: true)
+                        self?.navigationController?.popToRootViewController(animated: true)
                     }
                 } else {
                     HUD.flash(.label("操作失败"))

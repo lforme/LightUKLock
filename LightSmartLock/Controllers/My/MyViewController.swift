@@ -45,6 +45,7 @@ class MyViewController: UIViewController, NavigationSettingStyle {
     
     @IBAction func moreAseetTap(_ sender: UIButton) {
         let moreAssetVC: MoreAssetController = ViewLoader.Storyboard.controller(from: "My")
+        moreAssetVC.vm = self.vm
         self.navigationController?.pushViewController(moreAssetVC, animated: true)
     }
     

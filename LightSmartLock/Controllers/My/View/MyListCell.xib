@@ -40,7 +40,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未绑定门锁" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQ4-ZL-caD">
-                                <rect key="frame" x="239.5" y="52" width="61.5" height="14.5"/>
+                                <rect key="frame" x="239.5" y="48" width="61.5" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -62,7 +62,7 @@
                             <constraint firstItem="N5J-Pr-avG" firstAttribute="top" secondItem="rmh-Jq-4iz" secondAttribute="bottom" constant="8" id="VcD-W9-UET"/>
                             <constraint firstItem="obP-Kn-TcT" firstAttribute="leading" secondItem="jn3-Oi-i9f" secondAttribute="leading" constant="20" id="YK9-WI-YPR"/>
                             <constraint firstAttribute="trailing" secondItem="ruh-x3-a2g" secondAttribute="trailing" constant="16" id="aTc-Ba-eEs"/>
-                            <constraint firstItem="MQ4-ZL-caD" firstAttribute="top" secondItem="ruh-x3-a2g" secondAttribute="bottom" constant="8" id="dnY-aL-FI9"/>
+                            <constraint firstItem="MQ4-ZL-caD" firstAttribute="top" secondItem="ruh-x3-a2g" secondAttribute="bottom" constant="4" id="dnY-aL-FI9"/>
                             <constraint firstItem="rmh-Jq-4iz" firstAttribute="centerY" secondItem="obP-Kn-TcT" secondAttribute="centerY" id="rkQ-M3-qPb"/>
                             <constraint firstItem="rmh-Jq-4iz" firstAttribute="leading" secondItem="obP-Kn-TcT" secondAttribute="trailing" constant="8" id="vLf-aL-YRw"/>
                         </constraints>
