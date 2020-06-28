@@ -56,7 +56,7 @@ class AssetPendingListController: UIViewController, NavigationSettingStyle {
                 return .empty()
             }
             
-            guard let lockId = LSLUser.current().scene?.ladderLockId else {
+            guard let lockId = self?.lockId else {
                 return .empty()
             }
             
