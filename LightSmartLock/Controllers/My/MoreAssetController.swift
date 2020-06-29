@@ -168,7 +168,7 @@ extension MoreAssetController: UITableViewDataSource {
                 self?.navigationController?.pushViewController(bindLockListVC, animated: true)
             } else {
                 let selectVC: SelectLockTypeController = ViewLoader.Storyboard.controller(from: "InitialLock")
-                selectVC.kind = .newAdd
+                selectVC.kind = .edited
                 self?.navigationController?.pushViewController(selectVC, animated: true)
             }
         }).disposed(by: rx.disposeBag)
