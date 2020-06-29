@@ -262,11 +262,8 @@ public class BluetoothPapa: NSObject {
             return
         }
         
-        if connected {
-            print("Disconnecting...")
-        } else {
-            print("Cancelling connection...")
-        }
+        print("Cancelling connection...")
+        
         print("bluetoothPeripheral.cancelPeripheralConnection(peripheral)")
         bluetoothManager?.cancelPeripheralConnection(bluetoothPeripheral)
         connected = false

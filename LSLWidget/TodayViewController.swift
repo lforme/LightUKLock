@@ -35,7 +35,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         tableView.rowHeight = 50
         tableView.separatorStyle = .none
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {[weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {[weak self] in
             self?.indicatorView.stopAnimating()
         }
     }

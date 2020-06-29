@@ -51,7 +51,7 @@ enum ShareUserDefaultsKey: String, CaseIterable {
     
     case groupId = "group.lightsmartlock.sharedata"
     case token = "group.token"
-    case userInScene = "group.userInScene"
     case scene = "group.scene"
     case userInfo = "group.user"
+    case lockDevice = "group.lockDevice"
 }

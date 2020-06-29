@@ -9,6 +9,7 @@
 import Foundation
 import IQKeyboardManager
 import PKHUD
+import SwiftDate
 
 final class AppearanceAppDelegate: AppDelegateType {
     
@@ -16,6 +17,7 @@ final class AppearanceAppDelegate: AppDelegateType {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.setupKeyborad()
+            self.setupDateTime()
         }
         setupHUD()
         
@@ -32,5 +34,9 @@ final class AppearanceAppDelegate: AppDelegateType {
     private func setupHUD() {
         HUD.dimsBackground = false
         HUD.allowsInteraction = true
+    }
+    
+    private func setupDateTime() {
+        SwiftDate.defaultRegion = Region.current
     }
 }

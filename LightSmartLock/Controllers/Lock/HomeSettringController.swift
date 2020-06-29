@@ -27,6 +27,7 @@ class HomeSettingController: UITableViewController, NavigationSettingStyle {
     
     @IBOutlet weak var assetValueLabel: UILabel!
     @IBOutlet weak var lockValueLabel: UILabel!
+    @IBOutlet weak var oneSectionDesLabel: UILabel!
     
     deinit {
         print("\(self) deinit")
@@ -59,6 +60,12 @@ class HomeSettingController: UITableViewController, NavigationSettingStyle {
             assetValueLabel.text = "仅超级管理员可查看"
             lockValueLabel.text = "仅超级管理员可查看"
         }
+        
+        if LSLUser.current().scene?.ladderLockId == nil && LSLUser.current().scene?.ladderAssetHouseId != nil  {
+            oneSectionDesLabel.text = "资产信息"
+        } else {
+            oneSectionDesLabel.text = "绑定资产"
+        }
     }
     
     func setupUI() {
@@ -81,9 +88,17 @@ class HomeSettingController: UITableViewController, NavigationSettingStyle {
         switch type {
         case .asset:
             
-            let pendingVC: AssetPendingListController = ViewLoader.Storyboard.controller(from: "Home")
-            navigationController?.pushViewController(pendingVC, animated: true)
-        
+            if LSLUser.current().scene?.ladderLockId == nil && LSLUser.current().scene?.ladderAssetHouseId != nil {
+                
+                let editAssetVC: BindingOrEditAssetViewController = ViewLoader.Storyboard.controller(from: "AssetDetail")
+                editAssetVC.assetId = LSLUser.current().scene?.ladderAssetHouseId ?? ""
+                self.navigationController?.pushViewController(editAssetVC, animated: true)
+                
+            } else {
+                let pendingVC: AssetPendingListController = ViewLoader.Storyboard.controller(from: "Home")
+                navigationController?.pushViewController(pendingVC, animated: true)
+            }
+            
         case .lockSetting:
             
             let lockSettingVC: LockSettingController = ViewLoader.Storyboard.controller(from: "Home")

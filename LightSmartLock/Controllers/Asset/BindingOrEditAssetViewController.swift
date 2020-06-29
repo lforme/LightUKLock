@@ -12,6 +12,7 @@ import PKHUD
 
 class BindingOrEditAssetViewController: AssetBaseViewController {
     
+    var assetId: String = ""
     var asset = PositionModel()
     
     @IBOutlet weak var cityBtn: UIButton!
@@ -35,13 +36,8 @@ class BindingOrEditAssetViewController: AssetBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cityBtn.setTitle(asset.cityName ?? "请选择", for: .normal)
-        buildingNameBtn.setTitle(asset.buildingName ?? "请选择", for: .normal)
-        buildingNoTF.text = asset.buildingNo
-        floorTF.text = asset.floor?.description
-        houseNumTF.text = asset.houseNum
-        areaTF.text = asset.area?.description
-        houseStructBtn.setTitle(asset.houseStruct ?? "请选择", for: .normal)
+        displayDefaultValue()
+        fetchData()
         
         buildingNoTF.rx
             .text
@@ -170,5 +166,24 @@ class BindingOrEditAssetViewController: AssetBaseViewController {
         }).disposed(by: rx.disposeBag)
     }
     
+    private func fetchData() {
+        
+        let getAssetHouseDetail = BusinessAPI.requestMapJSON(.getAssetHouseDetail(id: assetId), classType: PositionModel.self)
+        
+        getAssetHouseDetail.subscribe(onNext: { [weak self](detail) in
+            self?.asset = detail
+            self?.displayDefaultValue()
+        })
+            .disposed(by: rx.disposeBag)
+    }
     
+    private func displayDefaultValue() {
+        cityBtn.setTitle(asset.cityName ?? "请选择", for: .normal)
+        buildingNameBtn.setTitle(asset.buildingName ?? "请选择", for: .normal)
+        buildingNoTF.text = asset.buildingNo
+        floorTF.text = asset.floor?.description
+        houseNumTF.text = asset.houseNum
+        areaTF.text = asset.area?.description
+        houseStructBtn.setTitle(asset.houseStruct ?? "请选择", for: .normal)
+    }
 }

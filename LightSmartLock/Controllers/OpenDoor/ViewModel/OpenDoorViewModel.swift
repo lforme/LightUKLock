@@ -79,7 +79,7 @@ final class OpenDoorViewModel {
     }
     
     func uploadUnlockRecord() -> Observable<Bool> {
-        guard let lockId = LSLUser.current().lockInfo?.ladderLockId else {
+        guard let lockId = LSLUser.current().scene?.ladderLockId else {
             return .error(AppError.reason("无法获取门锁Id"))
         }
         let time = Date().toFormat("yyyy-MM-dd HH:mm:ss")

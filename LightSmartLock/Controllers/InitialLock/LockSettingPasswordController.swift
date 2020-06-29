@@ -103,10 +103,15 @@ class LockSettingPasswordController: UIViewController, NavigationSettingStyle {
                     // 写入门锁
                 }
                 NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.editLock)
-                let pendingVC: AssetPendingListController = ViewLoader.Storyboard.controller(from: "Home")
-                pendingVC.lockId = id
-                self?.navigationController?.pushViewController(pendingVC, animated: true)
                 
+                if LSLUser.current().scene?.ladderAssetHouseId != nil {
+                    self?.navigationController?.popToRootViewController(animated: true)
+                } else {
+                    let pendingVC: AssetPendingListController = ViewLoader.Storyboard.controller(from: "Home")
+                                 pendingVC.lockId = id
+                    self?.navigationController?.pushViewController(pendingVC, animated: true)
+                }
+                    
             default: break
                 
             }

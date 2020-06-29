@@ -44,45 +44,15 @@ final class TodayViewModel {
     init(lockId: String) {
         self.lockId = lockId
         _requestExecuting.accept(true)
+    
+        let shareDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
+        let jsonStr = shareDefault?.string(forKey: ShareUserDefaultsKey.lockDevice.rawValue)
         
-        network.request(.getLockInfo(lockId: lockId)) {[weak self] (result) in
-            switch result {
-            case let .success(response):
-                guard let data = try? response.filter(statusCode: 200).mapJSON() else {
-                    self?._currentPower.accept("暂时无法获取电池电量")
-                    return
-                }
-                
-                let json = data as? [String: Any]
-                let value = json?["data"] as? [String: Any]
-                let model = LockModel.deserialize(from: value)
-                if let p = model?.power {
-                    self?._currentPower.accept("剩余电量: \(p)")
-                }
-                
-            case .failure:
-                self?._currentPower.accept("暂时无法获取电池电量")
-                self?._requestExecuting.accept(false)
-            }
-        }
-        
-        network.request(.getUnlockRecords(lockId: lockId)) {[weak self] (result) in
-            switch result {
-            case let .success(response):
-                guard let data = try? response.filter(statusCode: 200).mapJSON() else {
-                    return
-                }
-                let json = data as? [String: Any]
-                let value = json?["data"] as? [String: Any]
-                let jsonArray = value?["rows"] as? [[String: Any]]
-                if let array = [UnlockRecordModel].deserialize(from: jsonArray) {
-                    let a = array.compactMap { $0 }.map { Section(model: "Today解锁记录", items: [$0]) }
-                    self?._dataSource.accept(a)
-                }
-            case .failure:
-                break
-            }
-        }
+        let entiy = LockModel.deserialize(from: jsonStr)
+        let num = (entiy?.powerPercent ?? 0.0) * 100
+        let powerStr = "\(num) %"
+        _currentPower.accept(powerStr)
+      
     }
 }
 

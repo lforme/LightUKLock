@@ -28,6 +28,8 @@ class LSLUser: NSObject {
     
     func logout() {
         
+        BluetoothPapa.shareInstance.cancelPeripheralConnection()
+        
         JPUSHService.deleteAlias({ (code, alias, seq) in
             print("极光注册别名:\(String(describing: alias))")
         }, seq: 1)
@@ -131,6 +133,9 @@ class LSLUser: NSObject {
         set {
             print("门锁信息更新")
             LocalArchiver.save(key: LSLUser.Keys.smartLockInfo.rawValue, value: newValue?.toJSONString())
+            let shareUserDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
+            shareUserDefault?.set(newValue?.toJSONString(), forKey: ShareUserDefaultsKey.lockDevice.rawValue)
+            shareUserDefault?.synchronize()
         }
         
         get {
@@ -185,6 +190,7 @@ extension LSLUser {
         case userInfo = "userInfoModel"
         case smartLockInfo = "smartLockInfo"
         case siriShortcuts = "siriShortcuts"
+        case bluetoothVolume = "bluetoothVolume"
     }
 }
 

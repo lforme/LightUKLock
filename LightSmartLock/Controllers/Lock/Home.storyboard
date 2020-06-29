@@ -2949,7 +2949,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="资产信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJe-Zr-UjP">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="绑定资产" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJe-Zr-UjP">
                                                     <rect key="frame" x="16" y="13.5" width="57.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" name="textPrimary"/>
@@ -3051,6 +3051,7 @@
                     <connections>
                         <outlet property="assetValueLabel" destination="seE-I1-eG1" id="yj0-V8-nKl"/>
                         <outlet property="lockValueLabel" destination="dak-Jh-Pda" id="30O-Ty-kPE"/>
+                        <outlet property="oneSectionDesLabel" destination="gJe-Zr-UjP" id="ZKD-tn-dO7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="25r-Qq-aCq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
