@@ -23,6 +23,11 @@ class ChangePasswordController: UITableViewController {
     @IBOutlet fileprivate weak var eyeButtonOne: UIButton!
     @IBOutlet fileprivate weak var eyeButtonTwo: UIButton!
     
+    
+    deinit {
+        print("deinit \(self)")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

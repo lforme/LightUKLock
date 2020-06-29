@@ -25,6 +25,10 @@ class MoreAssetController: UIViewController, NavigationSettingStyle {
     
     var dataSource: [SceneListModel] = []
     
+    deinit {
+           print("deinit \(self)")
+       }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

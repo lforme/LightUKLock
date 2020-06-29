@@ -27,6 +27,10 @@ class ChangePhoneController: UITableViewController {
     var getCodeAction: Action<String?, Bool>!
     var doneAction: Action<(String?, String?), String>!
     
+    deinit {
+        print("deinit \(self)")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

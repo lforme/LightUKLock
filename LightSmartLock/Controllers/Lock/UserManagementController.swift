@@ -53,10 +53,7 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
     
     func setupNavigationRightItem() {
         createdRightNavigationItem(title: "添加用户", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 4, color: .white).rx.tap.subscribe(onNext: {[weak self] (_) in
-            
-            let addUserVC: AddUserController = ViewLoader.Storyboard.controller(from: "Home")
-            self?.navigationController?.pushViewController(addUserVC, animated: true)
-            
+            self?.addUser()
         }).disposed(by: rx.disposeBag)
     }
     
@@ -129,6 +126,11 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
             let currentUserId = LSLUser.current().user?.id
             let data =  dataSource.filter { $0.id == currentUserId }.first
             cell.bind(data)
+            cell.hasDigital.addTarget(self, action: #selector(gotoDigitalPassword), for: .touchUpInside)
+            cell.hasCard.addTarget(self, action: #selector(gotoCard), for: .touchUpInside)
+            cell.hasBle.addTarget(self, action: #selector(gotoBleOpenTheDoor), for: .touchUpInside)
+            cell.hasFinger.addTarget(self, action: #selector(gotoFingerPassword), for: .touchUpInside)
+            cell.hasMemberShip.addTarget(self, action: #selector(gotoAddUser), for: .touchUpInside)
             return cell
         }
         
@@ -155,6 +157,38 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
             userDetailVC.model = data
             navigationController?.pushViewController(userDetailVC, animated: true)
         }
+    }
+    
+    @objc func gotoDigitalPassword() {
+        let vm = PasswordManagementViewModel()
+        let digitalPwdVC: DigitalPwdDetailController = ViewLoader.Storyboard.controller(from: "Home")
+        digitalPwdVC.vm = vm
+        vm.refresh()
+        navigationController?.pushViewController(digitalPwdVC, animated: true)
+    }
+    
+    @objc func gotoFingerPassword() {
+        let passwordVC: PasswordSequenceController = ViewLoader.Storyboard.controller(from: "Home")
+        navigationController?.pushViewController(passwordVC, animated: true)
+    }
+    
+    @objc func gotoBleOpenTheDoor() {
+        let openDoorVC: OpenDoorViewController = ViewLoader.Xib.controller()
+        self.present(openDoorVC, animated: true, completion: nil)
+    }
+    
+    @objc func gotoCard() {
+        let passwordVC: PasswordSequenceController = ViewLoader.Storyboard.controller(from: "Home")
+        navigationController?.pushViewController(passwordVC, animated: true)
+    }
+    
+    @objc func gotoAddUser() {
+        addUser()
+    }
+    
+    private func addUser() {
+        let addUserVC: AddUserController = ViewLoader.Storyboard.controller(from: "Home")
+        self.navigationController?.pushViewController(addUserVC, animated: true)
     }
 }
 

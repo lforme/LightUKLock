@@ -27,6 +27,10 @@ class AssetPendingListController: UIViewController, NavigationSettingStyle {
     
     lazy var disposeBag = DisposeBag()
     
+    deinit {
+        print("deinit \(self)")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

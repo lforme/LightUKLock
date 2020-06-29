@@ -23,6 +23,10 @@ class ResetLockController: UIViewController, NavigationSettingStyle {
     
     var vm: LockSettingViewModel!
     
+    deinit {
+        print("deinit \(self)")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

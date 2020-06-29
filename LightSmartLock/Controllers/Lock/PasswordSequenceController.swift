@@ -36,6 +36,10 @@ class PasswordSequenceController: UITableViewController, NavigationSettingStyle 
     var showPwd: String?
     lazy var disposeBag = DisposeBag()
     
+    deinit {
+        print("deinit \(self)")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
