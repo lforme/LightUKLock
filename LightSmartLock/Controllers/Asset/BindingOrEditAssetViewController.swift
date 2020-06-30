@@ -59,7 +59,7 @@ class BindingOrEditAssetViewController: AssetBaseViewController {
                     return .empty()
                 }
                 
-                guard let houseNum = self.asset.houseNum, !houseNum.isEmpty else {
+                guard let houseNum = self.houseNumTF.text, houseNum.isNotEmpty else {
                     HUD.flash(.label("请填写房号"))
                     return .empty()
                 }
@@ -110,7 +110,7 @@ class BindingOrEditAssetViewController: AssetBaseViewController {
                     return this.showAlert(title: "提示", message: "确定删除资产吗？删除后不能撤销", buttonTitles: ["删除", "取消"], highlightedButtonIndex: 1)
                 }
         }.flatMapLatest {[unowned self] (buttonIndex) -> Observable<Bool> in
-            if buttonIndex == 1 {
+            if buttonIndex == 0 {
                 return BusinessAPI.requestMapBool(.deleteAssetHouse(id: self.asset.id!))
             } else {
                 return .empty()
@@ -172,6 +172,7 @@ class BindingOrEditAssetViewController: AssetBaseViewController {
         
         getAssetHouseDetail.subscribe(onNext: { [weak self](detail) in
             self?.asset = detail
+            self?.deleteButton.isHidden = detail.id.isNilOrEmpty
             self?.displayDefaultValue()
         })
             .disposed(by: rx.disposeBag)
