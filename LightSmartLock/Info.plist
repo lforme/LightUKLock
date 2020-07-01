@@ -2,24 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>wechat</string>
-		<string>weixin</string>
-		<string>weixinULAPI</string>
-		<string>mqqOpensdkSSoLogin</string>
-		<string>mqqopensdkapiV2</string>
-		<string>mqqopensdkapiV3</string>
-		<string>wtloginmqq2</string>
-		<string>mqq</string>
-		<string>mqqapi</string>
-		<string>timapi</string>
-		<string>mqqopensdkminiapp</string>
-	</array>
-	<key>MOBAppKey</key>
-	<string>2f948f23b4b98</string>
-	<key>MOBAppSecret</key>
-	<string>049f241534782e3e6bd2d5cd3322d438</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -69,8 +51,26 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>wechat</string>
+		<string>weixin</string>
+		<string>weixinULAPI</string>
+		<string>mqqOpensdkSSoLogin</string>
+		<string>mqqopensdkapiV2</string>
+		<string>mqqopensdkapiV3</string>
+		<string>wtloginmqq2</string>
+		<string>mqq</string>
+		<string>mqqapi</string>
+		<string>timapi</string>
+		<string>mqqopensdkminiapp</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MOBAppKey</key>
+	<string>2f948f23b4b98</string>
+	<key>MOBAppSecret</key>
+	<string>049f241534782e3e6bd2d5cd3322d438</string>
 	<key>Microphone Usage Description</key>
 	<string>寓用管家需要使用麦克风设置Siri捷径</string>
 	<key>NSAppTransportSecurity</key>

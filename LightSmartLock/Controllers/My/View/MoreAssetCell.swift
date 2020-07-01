@@ -26,3 +26,4 @@ class MoreAssetCell: UITableViewCell {
         
     }
 }
+

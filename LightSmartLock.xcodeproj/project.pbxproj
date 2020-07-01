@@ -2036,7 +2036,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "LightSmartLock/门锁助手极速版.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = RBJYLDFMF8;
 				INFOPLIST_FILE = LightSmartLock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2044,7 +2044,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock;
 				PRODUCT_NAME = "寓用管家";
 				SWIFT_OBJC_BRIDGING_HEADER = "LightSmartLock/LightSmartLock-Bridging-Header.h";
@@ -2063,7 +2063,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "LightSmartLock/门锁助手极速版.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = RBJYLDFMF8;
 				INFOPLIST_FILE = LightSmartLock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2071,7 +2071,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock;
 				PRODUCT_NAME = "寓用管家";
 				SWIFT_OBJC_BRIDGING_HEADER = "LightSmartLock/LightSmartLock-Bridging-Header.h";
@@ -2086,7 +2086,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "LSLWidget/门锁助手.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = RBJYLDFMF8;
 				INFOPLIST_FILE = LSLWidget/Info.plist;
@@ -2096,7 +2096,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock.LSLWidget;
 				PRODUCT_NAME = "门锁助手";
 				SKIP_INSTALL = YES;
@@ -2111,7 +2111,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "LSLWidget/门锁助手.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = RBJYLDFMF8;
 				INFOPLIST_FILE = LSLWidget/Info.plist;
@@ -2121,7 +2121,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oldwhy.QuickSmartLock.LSLWidget;
 				PRODUCT_NAME = "门锁助手";
 				SKIP_INSTALL = YES;
