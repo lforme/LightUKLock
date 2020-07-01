@@ -49,7 +49,7 @@ class HouseKeeperController: UIViewController, NavigationSettingStyle {
         alignedFlowLayout.scrollDirection = .horizontal
         alignedFlowLayout.minimumLineSpacing = 8
         alignedFlowLayout.minimumInteritemSpacing = 8
-        alignedFlowLayout.estimatedItemSize = CGSize(width: 80, height: 120)
+        alignedFlowLayout.itemSize = CGSize(width: 80, height: 120)
         contactCollectionView.contentInset = UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16)
         contactCollectionView.collectionViewLayout = alignedFlowLayout
         contactCollectionView.emptyDataSetSource = self
@@ -69,10 +69,10 @@ class HouseKeeperController: UIViewController, NavigationSettingStyle {
     
     func bind() {
         
-        let fakeTap = UITapGestureRecognizer.init(target: self, action: #selector(HouseKeeperController.fekeTap))
+        let fakeTap = UITapGestureRecognizer(target: self, action: #selector(HouseKeeperController.fekeTap))
         fakerContainer.addGestureRecognizer(fakeTap)
         
-        cvDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, HouseKeeperModel>>.init(configureCell: { (ds, cv, ip, item) -> HouseKeeperCell in
+        cvDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, HouseKeeperModel>>(configureCell: { (ds, cv, ip, item) -> HouseKeeperCell in
             
             let cell = cv.dequeueReusableCell(withReuseIdentifier: "HouseKeeperCell", for: ip) as! HouseKeeperCell
             cell.name.text = item.username
@@ -110,10 +110,9 @@ class HouseKeeperController: UIViewController, NavigationSettingStyle {
     func fetchData() {
         BusinessAPI.requestMapJSONArray(.stewardList(pageIndex: 1, pageSize: 15), classType: HouseKeeperModel.self, useCache: true, isPaginating: true)
             .map { $0.compactMap { $0 } }
-            .subscribe(onNext: {[weak self] (list) in
-                self?.listDataSource.accept(list)
-            }).disposed(by: rx.disposeBag)
-        
+            .catchErrorJustReturn([])
+            .bind(to: listDataSource)
+            .disposed(by: rx.disposeBag)
     }
     
     @objc func fekeTap() {
