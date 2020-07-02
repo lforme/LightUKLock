@@ -40,7 +40,11 @@ final class LockSettingViewModel: BluetoothViewModel {
             BluetoothPapa.shareInstance.setVoice(volume: volume) { (data) in
                 print(BluetoothPapa.serializeGetVolume(data) ?? "设置声音失败")
             }
+        } else {
+            HUD.flash(.label("未连接到蓝牙门锁"), delay: 2)
         }
+        
+        
     }
     
     func forceDeleteLock(_ buttonIndex: Int) -> Observable<Bool> {
@@ -59,6 +63,7 @@ final class LockSettingViewModel: BluetoothViewModel {
     
     func deleteLock(_ buttonIndex: Int) -> Observable<Bool> {
         if !self.isConnected {
+            HUD.flash(.label("未连接到蓝牙门锁"), delay: 2)
             return .empty()
         }
         guard let id = LSLUser.current().lockInfo?.ladderLockId else {
