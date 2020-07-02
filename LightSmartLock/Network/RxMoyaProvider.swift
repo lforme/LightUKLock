@@ -48,7 +48,7 @@ final class RxMoyaProvider<Target>: MoyaProvider<Target> where Target: TargetTyp
         self.stubScheduler = stubScheduler
         
         dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.locale = Locale.current
         dateFormatter.timeZone = TimeZone.current
         

@@ -39,9 +39,9 @@ class MultipleTempPasswordCell: UITableViewCell {
         
         if let send = data.startTime?.toDate() {
             if send.isToday {
-                sendTime.text = "发送时间:  今天\(send.toString(.custom("hh点mm分")))"
+                sendTime.text = "发送时间:  今天\(send.toString(.custom("HH点mm分")))"
             } else {
-                sendTime.text = "发送时间:  \(send.toString(.custom("MM月dd日 hh点mm分")))"
+                sendTime.text = "发送时间:  \(send.toString(.custom("MM月dd日 HH点mm分")))"
             }
         }
         

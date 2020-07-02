@@ -29,7 +29,7 @@ final class LockSettingViewModel: BluetoothViewModel {
                     print(data ?? "握手失败")
                 }
             } else {
-                HUD.show(.label("正在连接蓝牙"))
+                print("正在连接蓝牙")
             }
         }).disposed(by: disposeBag)
     }

@@ -168,8 +168,14 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     }
     
     @objc func gotoSettingVC() {
-        let settingVC: HomeSettingController = ViewLoader.Storyboard.controller(from: "Home")
-        navigationController?.pushViewController(settingVC, animated: true)
+   
+        if LSLUser.current().scene?.ladderLockId.isNilOrEmpty ?? false {
+            let settingVC: SettingWithoutLockController = ViewLoader.Storyboard.controller(from: "Home")
+            navigationController?.pushViewController(settingVC, animated: true)
+        } else {
+            let settingVC: HomeSettingController = ViewLoader.Storyboard.controller(from: "Home")
+            navigationController?.pushViewController(settingVC, animated: true)
+        }
     }
     
     @objc func gotoUserManagementVC() {
@@ -263,15 +269,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return 120.0
         case 2:
-            let device = Device.current
-            switch device {
-            case .iPhone6, .iPhone7, .iPhone8, .iPhone6s:
-                return 170.0
-            case .iPhone6Plus, .iPhone7Plus, .iPhone8Plus:
-                return 200.0
-            default:
-                return 200.0 * (UIScreen.main.bounds.size.height / 375)
-            }
+            return 200.0
         default:
             return CGFloat.leastNormalMagnitude
         }

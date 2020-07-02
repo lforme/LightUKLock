@@ -156,6 +156,15 @@ class MessageCenterController: UITableViewController, StoryboardView, Navigation
             }, onError: { (error) in
                 PKHUD.sharedHUD.rx.showError(error)
         }).disposed(by: disposeBag)
+        
+        reactor.state.map { $0.messageType }
+            .distinctUntilChanged()
+            .delay(.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe(onNext: {[weak self] (_) in
+                self?.tableView.mj_footer?.resetNoMoreData()
+            })
+            .disposed(by: disposeBag)
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

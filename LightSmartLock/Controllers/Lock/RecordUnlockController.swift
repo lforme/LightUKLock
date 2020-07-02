@@ -29,6 +29,7 @@ class RecordUnlockController: UIViewController, View {
         $0.tableFooterView = UIView(frame: .zero)
         $0.register(UINib(nibName: "UnlockRecordCell", bundle: nil), forCellReuseIdentifier: "UnlockRecordCell")
         $0.rowHeight = 72.0
+        $0.sectionHeaderHeight = 40
         $0.backgroundColor = ColorClassification.tableViewBackground.value
     }
     
@@ -90,6 +91,7 @@ class RecordUnlockController: UIViewController, View {
         
         tableView.separatorStyle = .none
         tableView.emptyDataSetSource = self
+        tableView.rx.setDelegate(self)
     }
     
     
@@ -156,14 +158,50 @@ class RecordUnlockController: UIViewController, View {
             } else {
                 cell.topLine.isHidden = false
             }
-            
             return cell
+            }, titleForHeaderInSection: { (ds, sectionIndex) -> String? in
+                return ds.sectionModels[sectionIndex].identity
         })
         
         reactor
             .state
-            .map { $0.dataList }.map { [SectionModel(model: "解锁记录", items: $0)] }
+            .map { $0.dataList }.map({ (items) -> [SectionModel<String, UnlockRecordModel>] in
+                let partition = Dictionary(grouping: items, by: { $0.openTime?[0..<10] ?? "" } ).sorted(by: { (a, b) -> Bool in
+                    return a.key > b.key
+                })
+                
+                let reslut = partition.map { (key, value) -> SectionModel<String, UnlockRecordModel> in
+                    if key.toDate()?.isToday ?? false {
+                        return SectionModel(model: "今日", items: value)
+                    } else if key.toDate()?.isYesterday ?? false {
+                        return SectionModel(model: "昨日", items: value)
+                    } else {
+                        return SectionModel(model: key, items: value)
+                    }
+                }
+                
+                return reslut
+            })
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.filterType }
+            .distinctUntilChanged()
+            .delay(.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe(onNext: {[weak self] (_) in
+                self?.tableView.mj_footer?.resetNoMoreData()
+            })
+            .disposed(by: disposeBag)
+        
+    }
+}
+
+extension RecordUnlockController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = ColorClassification.tableViewBackground.value
+        let headerView = view as? UITableViewHeaderFooterView
+        headerView?.textLabel?.textColor = ColorClassification.textOpaque78.value
+        headerView?.textLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
     }
 }

@@ -11,7 +11,11 @@ import RxSwift
 import RxCocoa
 import PKHUD
 
-class SoundSettingController: UIViewController {
+class SoundSettingController: UIViewController, NavigationSettingStyle {
+    
+    var backgroundColor: UIColor? {
+        return ColorClassification.navigationBackground.value
+    }
     
     @IBOutlet weak var sliderView: UISlider!
     

@@ -12,6 +12,7 @@ import Kingfisher
 
 class UnlockRecordCell: UITableViewCell {
     
+    @IBOutlet weak var timeLabelWidth: NSLayoutConstraint!
     @IBOutlet weak var nickname: UILabel!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var unlockType: UILabel!
@@ -28,16 +29,7 @@ class UnlockRecordCell: UITableViewCell {
     func bind(_ data: UnlockRecordModel, filterType: Int) {
         self.nickname.text = data.userName
         
-        switch filterType {
-        case 1, 2:
-            self.time.text = data.openTime?.toDate()?.toFormat("hh:mm")
-
-        case 3:
-            self.time.text = data.openTime?.toDate()?.toFormat("yy/MM/dd hh:mm")
-    
-        default:
-            break
-        }
+        self.time.text = data.openTime?.toDate()?.toFormat("HH:mm")
         
         switch data.openTypeCode {
         case 1:
@@ -56,8 +48,8 @@ class UnlockRecordCell: UITableViewCell {
         default:
             break
         }
-        
-        self.unlockType.text = data.openType
+        let openWay = data.openType ?? ""
+        self.unlockType.text = "\(openWay)解锁"
     }
 }
 

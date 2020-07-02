@@ -220,6 +220,7 @@
 		9C7AFF22239631930075442D /* UKRefreshStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF21239631930075442D /* UKRefreshStatus.swift */; };
 		9C7AFF24239636640075442D /* NSMutableAttributedString+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF23239636640075442D /* NSMutableAttributedString+Extention.swift */; };
 		9C7AFF2623964A950075442D /* SetBuildingNumberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF2523964A950075442D /* SetBuildingNumberController.swift */; };
+		9C87D2B924AD87E500669F6E /* SettingWithoutLockController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C87D2B824AD87E500669F6E /* SettingWithoutLockController.swift */; };
 		9C8FFD5D2447EEBF00527EA0 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FFD5C2447EEBF00527EA0 /* UIImageView+Extension.swift */; };
 		9CAA70E02489D9DE00A252E4 /* PrivacyAndUseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAA70DF2489D9DE00A252E4 /* PrivacyAndUseController.swift */; };
 		9CABF4902464FD9E0001AAE3 /* BillDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF48F2464FD9E0001AAE3 /* BillDetailController.swift */; };
@@ -570,6 +571,7 @@
 		9C7AFF21239631930075442D /* UKRefreshStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UKRefreshStatus.swift; sourceTree = "<group>"; };
 		9C7AFF23239636640075442D /* NSMutableAttributedString+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extention.swift"; sourceTree = "<group>"; };
 		9C7AFF2523964A950075442D /* SetBuildingNumberController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetBuildingNumberController.swift; sourceTree = "<group>"; };
+		9C87D2B824AD87E500669F6E /* SettingWithoutLockController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWithoutLockController.swift; sourceTree = "<group>"; };
 		9C8FFD5C2447EEBF00527EA0 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		9CAA70DF2489D9DE00A252E4 /* PrivacyAndUseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyAndUseController.swift; sourceTree = "<group>"; };
 		9CABF48F2464FD9E0001AAE3 /* BillDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailController.swift; sourceTree = "<group>"; };
@@ -1269,6 +1271,7 @@
 				9C3BB6F9249B0D9F008B17F7 /* AddOrEditController.swift */,
 				9CFC1781249CBBFC00F674CB /* PasswordSequenceController.swift */,
 				9CBC22A024A0A25A00ECC76E /* AssetPendingListController.swift */,
+				9C87D2B824AD87E500669F6E /* SettingWithoutLockController.swift */,
 				9C24AC412383EB88005EBF95 /* Home.storyboard */,
 			);
 			path = Lock;
@@ -1678,6 +1681,7 @@
 				9CFDE20123851EE80062522E /* NetworkInterface.swift in Sources */,
 				9CABF4A8246515F30001AAE3 /* BillDetailTenantSection.swift in Sources */,
 				9CFDE20323851F660062522E /* NetworkInterfaceImplement.swift in Sources */,
+				9C87D2B924AD87E500669F6E /* SettingWithoutLockController.swift in Sources */,
 				9CEFAE7D248E13D8005403E8 /* ShareSDKAppDelegate.swift in Sources */,
 				9C24AC462383EBB1005EBF95 /* MyViewController.swift in Sources */,
 				9C3726CE2390D29900450757 /* ChangePhoneController.swift in Sources */,

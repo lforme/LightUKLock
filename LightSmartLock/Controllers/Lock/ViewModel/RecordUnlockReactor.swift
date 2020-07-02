@@ -53,7 +53,7 @@ final class RecordUnlockReactor: Reactor {
         
         switch action {
         case let .filter(type):
-            let share = self.request(pageIndex: self.currentState.pageIndex, filter: type)
+            let share = self.request(pageIndex: 1, filter: type)
             let list = share.map { res in
                 Mutation.setRefreshList(res)
             }

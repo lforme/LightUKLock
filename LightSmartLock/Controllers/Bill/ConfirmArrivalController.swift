@@ -16,7 +16,7 @@ class ConfirmArrivalController: UITableViewController {
     
     var billId = ""
     var totalMoney: Double = 0.00
-    let obDate = BehaviorRelay<String>(value: Date().toFormat("yyyy-MM-dd hh:mm:ss"))
+    let obDate = BehaviorRelay<String>(value: Date().toFormat("yyyy-MM-dd HH:mm:ss"))
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var accountWayLabel: UILabel!
@@ -112,7 +112,7 @@ class ConfirmArrivalController: UITableViewController {
             }
             self.navigationController?.pushViewController(receivingAccountVC, animated: true)
         case 2:
-            DatePickerController.rx.present(with: "yyyy-MM-dd hh:mm:ss", mode: .date, maxDate: nil, miniDate: Date()).bind(to: obDate).disposed(by: rx.disposeBag)
+            DatePickerController.rx.present(with: "yyyy-MM-dd HH:mm:ss", mode: .date, maxDate: nil, miniDate: Date()).bind(to: obDate).disposed(by: rx.disposeBag)
         default:
             break
         }
