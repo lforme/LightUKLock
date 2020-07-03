@@ -24,7 +24,7 @@ final class NetworkMetaDb {
     let userId = Expression<String?>("userId")
     
     private var lock = pthread_rwlock_t()
-    private let queue = DispatchQueue(label: "com.networkMetaDb.rw", qos: .default, attributes: .concurrent, autoreleaseFrequency: .workItem)
+    private let queue = DispatchQueue(label: "com.networkMetaDb.rw", qos: .background, attributes: .concurrent, autoreleaseFrequency: .workItem)
     private let kDatabaseName = "cachedb.sqlite3"
     private let kTableName = "networkcacheLC"
     
