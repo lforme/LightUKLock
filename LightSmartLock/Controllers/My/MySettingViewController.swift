@@ -21,8 +21,9 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
         case password = 2
         case phone = 3
         case siri = 4
-        case collectionAccount = 5
-        case version = 6
+        case verificationLock = 5
+        case collectionAccount = 6
+        case version = 7
         case privacyAndUse = 10
         case logout = 11
         
@@ -37,6 +38,7 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var siriLabel: UILabel!
+    @IBOutlet weak var verificationSwitch: UISwitch!
     
     let vm = MySettingViewModel()
     
@@ -69,6 +71,11 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
         versionLabel.text = ServerHost.shared.environment.description
         siriLabel.text = LSLUser.current().hasSiriShortcuts ? "已设置" : "未设置"
         
+        verificationSwitch.isOn = LSLUser.current().hasVerificationLock
+        
+        verificationSwitch.rx.isOn.subscribe(onNext: { (isOn) in
+            LSLUser.current().hasVerificationLock = isOn
+        }).disposed(by: rx.disposeBag)
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

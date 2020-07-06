@@ -222,6 +222,8 @@
 		9C7AFF2623964A950075442D /* SetBuildingNumberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7AFF2523964A950075442D /* SetBuildingNumberController.swift */; };
 		9C87D2B924AD87E500669F6E /* SettingWithoutLockController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C87D2B824AD87E500669F6E /* SettingWithoutLockController.swift */; };
 		9C8FFD5D2447EEBF00527EA0 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FFD5C2447EEBF00527EA0 /* UIImageView+Extension.swift */; };
+		9CAA229F24B2CA4A0053CC59 /* HistoricalPriceChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAA229E24B2CA4A0053CC59 /* HistoricalPriceChart.swift */; };
+		9CAA22A324B305900053CC59 /* VerficationIDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAA22A224B305900053CC59 /* VerficationIDController.swift */; };
 		9CAA70E02489D9DE00A252E4 /* PrivacyAndUseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAA70DF2489D9DE00A252E4 /* PrivacyAndUseController.swift */; };
 		9CABF4902464FD9E0001AAE3 /* BillDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF48F2464FD9E0001AAE3 /* BillDetailController.swift */; };
 		9CABF492246501040001AAE3 /* BillDetailSectionOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABF491246501040001AAE3 /* BillDetailSectionOne.swift */; };
@@ -573,6 +575,8 @@
 		9C7AFF2523964A950075442D /* SetBuildingNumberController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetBuildingNumberController.swift; sourceTree = "<group>"; };
 		9C87D2B824AD87E500669F6E /* SettingWithoutLockController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWithoutLockController.swift; sourceTree = "<group>"; };
 		9C8FFD5C2447EEBF00527EA0 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		9CAA229E24B2CA4A0053CC59 /* HistoricalPriceChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalPriceChart.swift; sourceTree = "<group>"; };
+		9CAA22A224B305900053CC59 /* VerficationIDController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerficationIDController.swift; sourceTree = "<group>"; };
 		9CAA70DF2489D9DE00A252E4 /* PrivacyAndUseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyAndUseController.swift; sourceTree = "<group>"; };
 		9CABF48F2464FD9E0001AAE3 /* BillDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailController.swift; sourceTree = "<group>"; };
 		9CABF491246501040001AAE3 /* BillDetailSectionOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailSectionOne.swift; sourceTree = "<group>"; };
@@ -1053,6 +1057,7 @@
 				9CABF4B5246544130001AAE3 /* BillDetailButtonCell.swift */,
 				9CABF4B6246544130001AAE3 /* BillDetailButtonCell.xib */,
 				9C130DB2247FAE0800853084 /* LSLCopyLabel.swift */,
+				9CAA229E24B2CA4A0053CC59 /* HistoricalPriceChart.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1294,6 +1299,7 @@
 				9C429763238635C1004CB999 /* ViewModel */,
 				9C24AC222383C206005EBF95 /* LoginViewController.swift */,
 				9C752FCC238774A9000FEA73 /* RegisterForgetController.swift */,
+				9CAA22A224B305900053CC59 /* VerficationIDController.swift */,
 				9C24AC202383C1C6005EBF95 /* Login.storyboard */,
 			);
 			path = Login;
@@ -1650,6 +1656,7 @@
 				9C1B87CD23979B7200216ADA /* SelectLockTypeController.swift in Sources */,
 				9CBD8F5B23A24A9900886519 /* SharePwdSingleViewModel.swift in Sources */,
 				9C24AC2B2383CD94005EBF95 /* StaticConst.swift in Sources */,
+				9CAA229F24B2CA4A0053CC59 /* HistoricalPriceChart.swift in Sources */,
 				9C752FCD238774A9000FEA73 /* RegisterForgetController.swift in Sources */,
 				7BB2FEB0245595DD00D835BA /* SettingRentalRecordViewController.swift in Sources */,
 				9CD7787F24A2E50A007DE940 /* MoreAssetController.swift in Sources */,
@@ -1859,6 +1866,7 @@
 				9CFDE2052385219F0062522E /* RxMoyaProvider.swift in Sources */,
 				9CB09C78246930E100F3891D /* AssetContractModel.swift in Sources */,
 				9CFDE1FF23851E310062522E /* NetworkingEnvironment.swift in Sources */,
+				9CAA22A324B305900053CC59 /* VerficationIDController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

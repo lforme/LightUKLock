@@ -40,7 +40,14 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         setupTableviewRefresh()
         bind()
         observerSceneChanged()
-        
+        verifyID()
+    }
+    
+    func verifyID() {
+        if LSLUser.current().hasVerificationLock {
+            let verficationVC: VerficationIDController = ViewLoader.Storyboard.controller(from: "Login")
+            self.present(verficationVC, animated: true, completion: nil)
+        }
     }
     
     @IBAction func moreAseetTap(_ sender: UIButton) {

@@ -145,6 +145,16 @@ class LSLUser: NSObject {
         }
     }
     
+    var hasVerificationLock: Bool {
+        set {
+            LocalArchiver.save(key: LSLUser.Keys.verificationLock.rawValue, value: newValue)
+        }
+        get {
+            let value = LocalArchiver.load(key: LSLUser.Keys.verificationLock.rawValue) as? Bool
+            return value ?? true
+        }
+    }
+    
     var obUserInfo: Observable<UserModel?> {
         return changeableUserInfo.asObservable()
     }
@@ -191,6 +201,7 @@ extension LSLUser {
         case smartLockInfo = "smartLockInfo"
         case siriShortcuts = "siriShortcuts"
         case bluetoothVolume = "bluetoothVolume"
+        case verificationLock = "verificationLock"
     }
 }
 

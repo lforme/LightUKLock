@@ -51,6 +51,7 @@ target 'LightSmartLock' do
   pod 'GradientProgressBar'
   pod 'Floaty', '~> 4.2.0'
   pod 'BetterSegmentedControl', '~> 1.3'
+  pod 'Charts'
   
   # 动画
   pod 'lottie-ios'

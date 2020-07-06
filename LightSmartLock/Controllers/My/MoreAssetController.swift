@@ -26,8 +26,8 @@ class MoreAssetController: UIViewController, NavigationSettingStyle {
     var dataSource: [SceneListModel] = []
     
     deinit {
-           print("deinit \(self)")
-       }
+        print("deinit \(self)")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +70,7 @@ class MoreAssetController: UIViewController, NavigationSettingStyle {
                 }
                 
                 array += selectedModels
-            
+                
                 return BusinessAPI.requestMapBool(.topAsset(list: array))
                 
             }).subscribe(onNext: {[weak self] (success) in

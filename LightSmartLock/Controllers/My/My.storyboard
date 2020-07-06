@@ -230,8 +230,35 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="viewBackground"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="50" id="mml-PA-EAx">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="MRM-L7-D16">
                                         <rect key="frame" x="0.0" y="278" width="414" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MRM-L7-D16" id="ZDY-kb-4Ya">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="指纹或面容验证" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xqf-aF-CFx">
+                                                    <rect key="frame" x="16" y="16.5" width="100" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                    <color key="textColor" name="textPrimary"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="acb-Ig-ajC">
+                                                    <rect key="frame" x="349" y="9.5" width="51" height="31"/>
+                                                    <color key="onTintColor" name="primary"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="acb-Ig-ajC" secondAttribute="trailing" constant="16" id="215-BY-y2g"/>
+                                                <constraint firstItem="Xqf-aF-CFx" firstAttribute="leading" secondItem="ZDY-kb-4Ya" secondAttribute="leading" constant="16" id="Chs-gc-61Z"/>
+                                                <constraint firstItem="Xqf-aF-CFx" firstAttribute="centerY" secondItem="ZDY-kb-4Ya" secondAttribute="centerY" id="fIN-QI-ZTV"/>
+                                                <constraint firstItem="acb-Ig-ajC" firstAttribute="centerY" secondItem="ZDY-kb-4Ya" secondAttribute="centerY" id="tco-02-Spl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="viewBackground"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="50" id="mml-PA-EAx">
+                                        <rect key="frame" x="0.0" y="328" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mml-PA-EAx" id="Uy4-qp-7wp">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="50"/>
@@ -260,7 +287,7 @@
                                         <color key="backgroundColor" name="viewBackground"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="50" id="TDQ-QU-HGG">
-                                        <rect key="frame" x="0.0" y="328" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="378" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TDQ-QU-HGG" id="M4R-4W-bkA">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -293,7 +320,7 @@
                             <tableViewSection id="LPI-lH-r50">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="50" id="9KM-Ek-NZ9">
-                                        <rect key="frame" x="0.0" y="434" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="484" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9KM-Ek-NZ9" id="pIw-vu-csm">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="50"/>
@@ -322,7 +349,7 @@
                                         <color key="backgroundColor" name="viewBackground"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="2a2-Ih-BM7">
-                                        <rect key="frame" x="0.0" y="484" width="414" height="100"/>
+                                        <rect key="frame" x="0.0" y="534" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2a2-Ih-BM7" id="zVH-t5-ffg">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -356,6 +383,7 @@
                         <outlet property="avatar" destination="5N5-73-7ZN" id="aUg-fJ-MSz"/>
                         <outlet property="nameValue" destination="X45-c9-Pe5" id="HkG-cG-Da2"/>
                         <outlet property="siriLabel" destination="ej5-9b-h0I" id="v6q-0z-9aV"/>
+                        <outlet property="verificationSwitch" destination="acb-Ig-ajC" id="eYh-bI-Ebz"/>
                         <outlet property="versionLabel" destination="dIM-O4-Gnz" id="3ec-6d-cdu"/>
                     </connections>
                 </tableViewController>
