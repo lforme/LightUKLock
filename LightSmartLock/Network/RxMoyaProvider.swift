@@ -14,7 +14,7 @@ import Alamofire
 import HandyJSON
 import PKHUD
 
-fileprivate let lock = DispatchSemaphore(value: 1)
+fileprivate let lock = DispatchSemaphore(value: 0)
 
 final class RxMoyaProvider<Target>: MoyaProvider<Target> where Target: TargetType {
     

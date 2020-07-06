@@ -414,7 +414,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="0t0-Xs-RoA">
-                                <rect key="frame" x="131.5" y="810" width="191" height="32"/>
+                                <rect key="frame" x="131.5" y="790" width="191" height="32"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gsh-qz-t1g">
                                         <rect key="frame" x="0.0" y="1.5" width="58" height="29"/>
@@ -448,7 +448,7 @@
                         <color key="backgroundColor" name="viewBackground"/>
                         <constraints>
                             <constraint firstItem="dvT-GG-4gY" firstAttribute="top" secondItem="8ck-lL-nkL" secondAttribute="top" constant="100" id="LMY-6n-YQD"/>
-                            <constraint firstItem="8ck-lL-nkL" firstAttribute="bottom" secondItem="0t0-Xs-RoA" secondAttribute="bottom" constant="20" id="khQ-5b-Inq"/>
+                            <constraint firstItem="8ck-lL-nkL" firstAttribute="bottom" secondItem="0t0-Xs-RoA" secondAttribute="bottom" constant="40" id="khQ-5b-Inq"/>
                             <constraint firstItem="0t0-Xs-RoA" firstAttribute="centerX" secondItem="8ck-lL-nkL" secondAttribute="centerX" constant="20" id="n6g-FE-7zt"/>
                             <constraint firstItem="dvT-GG-4gY" firstAttribute="centerX" secondItem="8ck-lL-nkL" secondAttribute="centerX" id="t15-zS-Qdc"/>
                         </constraints>
