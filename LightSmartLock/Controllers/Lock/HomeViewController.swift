@@ -77,10 +77,9 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         let settingItem = UIBarButtonItem(customView: lockSettingButton)
         
         sceneButton = UIButton(type: .custom)
-        sceneButton.contentHorizontalAlignment = .right
+        sceneButton.contentHorizontalAlignment = .left
         sceneButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         sceneButton.setImage(UIImage(named: "home_scene_icon"), for: UIControl.State())
-        
         sceneButton.rx.tap.subscribe(onNext: {[weak self] (_) in
             self?.navigationController?.popViewController(animated: true)
         }).disposed(by: rx.disposeBag)
@@ -88,11 +87,15 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
         LSLUser.current().obScene.subscribe(onNext: { [weak self](scene) in
             self?.currentScene.accept(scene)
             if let name = scene?.buildingName {
-                self?.sceneButton.setTitle(
-                    "  \(name)", for: UIControl.State())
+                if name.count > 18 {
+                    self?.sceneButton.setTitle("\(name[0..<15])...", for: UIControl.State())
+                } else {
+                    self?.sceneButton.setTitle(
+                        "\(name)", for: UIControl.State())
+                }
             } else {
                 self?.sceneButton.setTitle(
-                    "  暂无数据", for: UIControl.State())
+                    "暂无数据", for: UIControl.State())
             }
             
         }).disposed(by: rx.disposeBag)
@@ -168,7 +171,7 @@ class HomeViewController: UIViewController, NavigationSettingStyle {
     }
     
     @objc func gotoSettingVC() {
-   
+        
         if LSLUser.current().scene?.ladderLockId.isNilOrEmpty ?? false {
             let settingVC: SettingWithoutLockController = ViewLoader.Storyboard.controller(from: "Home")
             navigationController?.pushViewController(settingVC, animated: true)
@@ -223,8 +226,26 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return controlCell
         case 1:
             let leasedCell = tableView.dequeueReusableCell(withIdentifier: "LeasedCell") as! LeasedCell
-            leasedCell.assetName.text = LSLUser.current().scene?.buildingName ?? "未绑定资产"
-            leasedCell.assetAddress.text = LSLUser.current().scene?.buildingAdress ?? ""
+            
+            if let buildingName = LSLUser.current().scene?.buildingName {
+                if buildingName.count > 15 {
+                    leasedCell.assetName.text = "\(buildingName[0..<10])..."
+                } else {
+                    leasedCell.assetName.text = buildingName
+                }
+            } else {
+                leasedCell.assetName.text = "未绑定资产"
+            }
+            
+            if let address = LSLUser.current().scene?.buildingAdress {
+                if address.count > 15 {
+                    leasedCell.assetAddress.text = "\(address[0..<10])..."
+                } else {
+                    leasedCell.assetAddress.text = address
+                }
+            } else {
+                leasedCell.assetAddress.text = ""
+            }
             
             leasedCell.recordDidSelected {[weak self] in
                 guard let lockId = LSLUser.current().scene?.ladderLockId, let userId = LSLUser.current().user?.id else {
@@ -265,9 +286,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.row {
         case 0:
-            return 340.0
+            switch Device.current {
+            case .iPhone6, .iPhone7, .iPhone8:
+                return 300.0
+            default:
+                return 320.0
+            }
         case 1:
-            return 120.0
+            return 140.0
         case 2:
             return 200.0
         default:

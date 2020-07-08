@@ -20,13 +20,36 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
     let vm = UserManagementViewModel()
     var dataSource: [UserMemberListModel] = []
     
+    lazy var addMemberButton: UIButton = {
+        let btn = UIButton(type: .custom)
+        btn.setImage(UIImage(named: "home_member_add"), for: .normal)
+        btn.sizeToFit()
+        btn.addTarget(self, action: #selector(addUser), for: .touchUpInside)
+        return btn
+    }()
+    
     deinit {
+        addMemberButton.removeFromSuperview()
         print("\(self) deinit")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        tableView.reloadData()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        addMemberButton.snp.makeConstraints { (maker) in
+            maker.bottom.equalToSuperview().offset(-20)
+            maker.right.equalToSuperview().offset(-20)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.view.sendSubviewToBack(addMemberButton)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.view.bringSubviewToFront(addMemberButton)
     }
     
     override func viewDidLoad() {
@@ -36,7 +59,6 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
         setupUI()
         setupTableviewRefresh()
         bind()
-        setupNavigationRightItem()
         observerNotification()
     }
     
@@ -48,12 +70,6 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
                 self?.tableView.mj_header?.beginRefreshing()
             default: break
             }
-        }).disposed(by: rx.disposeBag)
-    }
-    
-    func setupNavigationRightItem() {
-        createdRightNavigationItem(title: "添加用户", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 4, color: .white).rx.tap.subscribe(onNext: {[weak self] (_) in
-            self?.addUser()
         }).disposed(by: rx.disposeBag)
     }
     
@@ -98,6 +114,8 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
         self.clearsSelectionOnViewWillAppear = true
         tableView.tableFooterView = UIView()
         tableView.emptyDataSetSource = self
+        
+        self.navigationController?.view.addSubview(addMemberButton)
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -186,7 +204,7 @@ class UserManagementController: UITableViewController, NavigationSettingStyle {
         addUser()
     }
     
-    private func addUser() {
+    @objc private func addUser() {
         let addUserVC: AddUserController = ViewLoader.Storyboard.controller(from: "Home")
         self.navigationController?.pushViewController(addUserVC, animated: true)
     }

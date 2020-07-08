@@ -35,7 +35,7 @@ class MyListCell: UITableViewCell {
         address.text = data.buildingAdress ?? "-"
         
         if data.ladderLockId.isNotNilNotEmpty {
-            message.text = "已绑定门锁"
+            message.text = data.lockType
             message.alpha = 1.0
             bindLockButton.setImage(UIImage(named: "my_lock_is_bind"), for: UIControl.State())
         } else {

@@ -18,13 +18,14 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
     enum CellType: Int {
         case avatar = 0
         case nickname = 1
-        case password = 2
-        case phone = 3
-        case siri = 4
-        case verificationLock = 5
-        case collectionAccount = 6
-        case version = 7
-        case privacyAndUse = 10
+        case privacySetting = 2
+        case password = 3
+        case phone = 4
+        case siri = 5
+        case notificationsSetting = 6
+        case collectionAccount = 7
+        case version = 8
+        case about = 10
         case logout = 11
         
     }
@@ -38,7 +39,6 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var siriLabel: UILabel!
-    @IBOutlet weak var verificationSwitch: UISwitch!
     
     let vm = MySettingViewModel()
     
@@ -68,14 +68,8 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
             self?.avatar.setUrl(str)
         }).disposed(by: rx.disposeBag)
         
-        versionLabel.text = ServerHost.shared.environment.description
+//        versionLabel.text = ServerHost.shared.environment.description
         siriLabel.text = LSLUser.current().hasSiriShortcuts ? "已设置" : "未设置"
-        
-        verificationSwitch.isOn = LSLUser.current().hasVerificationLock
-        
-        verificationSwitch.rx.isOn.subscribe(onNext: { (isOn) in
-            LSLUser.current().hasVerificationLock = isOn
-        }).disposed(by: rx.disposeBag)
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -113,11 +107,17 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
         case .siri:
             setupSiriShortcuts()
             
-        case .privacyAndUse:
+        case .about:
             gotoPrivacyAndUse()
             
         case .collectionAccount:
             gotoCollectionAccount()
+            
+        case .privacySetting:
+            gotoPrivacySettring()
+            
+        case .notificationsSetting:
+            gotoNotificationsSetting()
             
         default: break
         }
@@ -254,6 +254,16 @@ extension MySettingViewController {
     func gotoPrivacyAndUse() {
         let privacyAndUseVC: PrivacyAndUseController = ViewLoader.Storyboard.controller(from: "My")
         navigationController?.pushViewController(privacyAndUseVC, animated: true)
+    }
+    
+    func gotoPrivacySettring() {
+        let privacySettingVC: PrivacyLockSettingController = ViewLoader.Storyboard.controller(from: "My")
+        navigationController?.pushViewController(privacySettingVC, animated: true)
+    }
+    
+    func gotoNotificationsSetting() {
+        let notificationSettingVC: NotificationsSettingController = ViewLoader.Storyboard.controller(from: "My")
+        navigationController?.pushViewController(notificationSettingVC, animated: true)
     }
 }
 

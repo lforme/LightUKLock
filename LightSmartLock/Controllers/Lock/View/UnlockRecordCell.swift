@@ -50,6 +50,7 @@ class UnlockRecordCell: UITableViewCell {
         }
         let openWay = data.openType ?? ""
         self.unlockType.text = "\(openWay)解锁"
+        self.avatar.setUrl(data.avatar)
     }
 }
 

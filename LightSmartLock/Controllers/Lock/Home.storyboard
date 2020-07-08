@@ -2860,7 +2860,7 @@
                                         <rect key="frame" x="117" y="147" width="180" height="252"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQB-P6-I2H">
-                                        <rect key="frame" x="20" y="499" width="374" height="48"/>
+                                        <rect key="frame" x="20" y="429" width="374" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="p5i-V1-gVa"/>
                                         </constraints>
@@ -2894,7 +2894,7 @@
                                     <constraint firstItem="IEK-hU-ZB7" firstAttribute="leading" secondItem="COZ-RC-YCv" secondAttribute="leading" constant="20" id="cf7-hA-vyn"/>
                                     <constraint firstItem="IEK-hU-ZB7" firstAttribute="top" secondItem="COZ-RC-YCv" secondAttribute="top" constant="32" id="d3K-vY-Y2N"/>
                                     <constraint firstItem="IEK-hU-ZB7" firstAttribute="leading" secondItem="Aqv-7d-q3k" secondAttribute="leading" constant="20" id="dKK-r4-b8C"/>
-                                    <constraint firstItem="gQB-P6-I2H" firstAttribute="top" secondItem="gth-b6-Zv1" secondAttribute="bottom" constant="100" id="yWy-Cs-YBq"/>
+                                    <constraint firstItem="gQB-P6-I2H" firstAttribute="top" secondItem="gth-b6-Zv1" secondAttribute="bottom" constant="30" id="yWy-Cs-YBq"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="COZ-RC-YCv"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="Aqv-7d-q3k"/>

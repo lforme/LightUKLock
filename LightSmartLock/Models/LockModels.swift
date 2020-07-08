@@ -15,6 +15,7 @@ struct UnlockRecordModel: HandyJSON, Hashable {
     var openTime: String?
     var openType: String?
     var userName: String?
+    var avatar: String?
     
     static func == (lhs: UnlockRecordModel, rhs: UnlockRecordModel) -> Bool {
         return lhs.hashValue == rhs.hashValue

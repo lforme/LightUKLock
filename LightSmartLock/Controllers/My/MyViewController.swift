@@ -46,6 +46,7 @@ class MyViewController: UIViewController, NavigationSettingStyle {
     func verifyID() {
         if LSLUser.current().hasVerificationLock {
             let verficationVC: VerficationIDController = ViewLoader.Storyboard.controller(from: "Login")
+            verficationVC.modalPresentationStyle = .fullScreen
             self.present(verficationVC, animated: true, completion: nil)
         }
     }

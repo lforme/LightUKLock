@@ -165,6 +165,9 @@
 		9C47DB7F239A36560019EAA0 /* UserManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C47DB7E239A36560019EAA0 /* UserManagementViewModel.swift */; };
 		9C47DB83239A39070019EAA0 /* ListViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C47DB82239A39070019EAA0 /* ListViewModeling.swift */; };
 		9C47DB85239A526E0019EAA0 /* UserDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C47DB84239A526E0019EAA0 /* UserDetailController.swift */; };
+		9C49B25D24B5CAF8005EF137 /* PrivacyLockSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C49B25C24B5CAF8005EF137 /* PrivacyLockSettingController.swift */; };
+		9C49B25F24B5D259005EF137 /* NotificationsSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C49B25E24B5D259005EF137 /* NotificationsSettingController.swift */; };
+		9C49B26124B5D5D2005EF137 /* AboutUsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C49B26024B5D5D2005EF137 /* AboutUsController.swift */; };
 		9C4BD28923FD217900652685 /* normal.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C4BD28823FD217900652685 /* normal.json */; };
 		9C4D10B92463F0E4005D0C6F /* ReceivingAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4D10B82463F0E4005D0C6F /* ReceivingAccountController.swift */; };
 		9C4D10BC2463F1F1005D0C6F /* ReceivingAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4D10BA2463F1F1005D0C6F /* ReceivingAccountCell.swift */; };
@@ -518,6 +521,9 @@
 		9C47DB7E239A36560019EAA0 /* UserManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagementViewModel.swift; sourceTree = "<group>"; };
 		9C47DB82239A39070019EAA0 /* ListViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModeling.swift; sourceTree = "<group>"; };
 		9C47DB84239A526E0019EAA0 /* UserDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailController.swift; sourceTree = "<group>"; };
+		9C49B25C24B5CAF8005EF137 /* PrivacyLockSettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyLockSettingController.swift; sourceTree = "<group>"; };
+		9C49B25E24B5D259005EF137 /* NotificationsSettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingController.swift; sourceTree = "<group>"; };
+		9C49B26024B5D5D2005EF137 /* AboutUsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsController.swift; sourceTree = "<group>"; };
 		9C4BD28823FD217900652685 /* normal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = normal.json; sourceTree = "<group>"; };
 		9C4D10B82463F0E4005D0C6F /* ReceivingAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivingAccountController.swift; sourceTree = "<group>"; };
 		9C4D10BA2463F1F1005D0C6F /* ReceivingAccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivingAccountCell.swift; sourceTree = "<group>"; };
@@ -1235,6 +1241,9 @@
 				9C3726CD2390D29900450757 /* ChangePhoneController.swift */,
 				9CAA70DF2489D9DE00A252E4 /* PrivacyAndUseController.swift */,
 				9CD7787E24A2E50A007DE940 /* MoreAssetController.swift */,
+				9C49B25C24B5CAF8005EF137 /* PrivacyLockSettingController.swift */,
+				9C49B25E24B5D259005EF137 /* NotificationsSettingController.swift */,
+				9C49B26024B5D5D2005EF137 /* AboutUsController.swift */,
 				9C24AC432383EB96005EBF95 /* My.storyboard */,
 			);
 			path = My;
@@ -1730,6 +1739,7 @@
 				9C3F93ED2455ACF90040005D /* BillFlowSection.swift in Sources */,
 				9CBC229E24A046E800ECC76E /* PasswordSequenceCell.swift in Sources */,
 				9C218F9B23FA764A009600F7 /* CalendarViewController.swift in Sources */,
+				9C49B25F24B5D259005EF137 /* NotificationsSettingController.swift in Sources */,
 				7BB029BF246E7C4600879F0A /* BindingOrEditAssetViewController.swift in Sources */,
 				9CABF495246501A40001AAE3 /* BillDetailSectionOneCell.swift in Sources */,
 				9CFDE211238537A30062522E /* NetworkAPI.swift in Sources */,
@@ -1778,6 +1788,7 @@
 				9C5A968423A0D210002A2B06 /* AddUserController.swift in Sources */,
 				9CBD8F3923A1D67A00886519 /* UserDetailViewModel.swift in Sources */,
 				9C24AC352383DCB0005EBF95 /* UserModel.swift in Sources */,
+				9C49B26124B5D5D2005EF137 /* AboutUsController.swift in Sources */,
 				9C77059A238FACC7008E1552 /* MyViewModel.swift in Sources */,
 				9C1A4BC4238D0A1A00626DB4 /* AnimationHeaderView.swift in Sources */,
 				9C279295249A2019008EDA75 /* HouseKeeperCell.swift in Sources */,
@@ -1813,6 +1824,7 @@
 				9C3726D923910C0100450757 /* NORServiceIdentifiers.swift in Sources */,
 				9C24AC1423838C80005EBF95 /* BaseNavigationController.swift in Sources */,
 				7B92D0CB2456CBF600F195A9 /* DatePickerViewController.swift in Sources */,
+				9C49B25D24B5CAF8005EF137 /* PrivacyLockSettingController.swift in Sources */,
 				9C44905F246270EA00A859CC /* MyBillViewController.swift in Sources */,
 				9C510F772488DE7600971798 /* BindLockListCell.swift in Sources */,
 				9CBD8F5123A2376C00886519 /* SharePasswordMultipleController.swift in Sources */,
