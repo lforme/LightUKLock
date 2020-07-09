@@ -13,7 +13,11 @@ final class NetworkDiskStorage {
     
     var autoCleanTrash: Bool = true
     
-    private let db: NetworkMetaDb
+    let db: NetworkMetaDb
+    
+    deinit {
+        print("deinit \(self)")
+    }
     
     init(autoCleanTrash: Bool? = true, path: String?) {
         
@@ -34,7 +38,6 @@ final class NetworkDiskStorage {
         removeExpiredValues()
         
     }
-    
     
     func save(value: Data, forKey key: String) {
         db.save(value, key: key)

@@ -30,6 +30,10 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
         
     }
     
+    var isLargeTitle: Bool {
+        return false
+    }
+    
     var backgroundColor: UIColor? {
         return ColorClassification.navigationBackground.value
     }
@@ -108,7 +112,7 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
             setupSiriShortcuts()
             
         case .about:
-            gotoPrivacyAndUse()
+            gotoAboutus()
             
         case .collectionAccount:
             gotoCollectionAccount()
@@ -118,7 +122,7 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
             
         case .notificationsSetting:
             gotoNotificationsSetting()
-            
+           
         default: break
         }
     }
@@ -251,11 +255,6 @@ extension MySettingViewController {
         navigationController?.pushViewController(collectionAccountVC, animated: true)
     }
     
-    func gotoPrivacyAndUse() {
-        let privacyAndUseVC: PrivacyAndUseController = ViewLoader.Storyboard.controller(from: "My")
-        navigationController?.pushViewController(privacyAndUseVC, animated: true)
-    }
-    
     func gotoPrivacySettring() {
         let privacySettingVC: PrivacyLockSettingController = ViewLoader.Storyboard.controller(from: "My")
         navigationController?.pushViewController(privacySettingVC, animated: true)
@@ -264,6 +263,11 @@ extension MySettingViewController {
     func gotoNotificationsSetting() {
         let notificationSettingVC: NotificationsSettingController = ViewLoader.Storyboard.controller(from: "My")
         navigationController?.pushViewController(notificationSettingVC, animated: true)
+    }
+    
+    func gotoAboutus() {
+        let aboutusVC: AboutUsController = ViewLoader.Storyboard.controller(from: "My")
+        navigationController?.pushViewController(aboutusVC, animated: true)
     }
 }
 

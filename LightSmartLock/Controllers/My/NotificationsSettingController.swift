@@ -12,6 +12,15 @@ class NotificationsSettingController: UITableViewController, NavigationSettingSt
     
     @IBOutlet weak var messageSwitch: UISwitch!
     @IBOutlet weak var rentSwitch: UISwitch!
+    @IBOutlet weak var daysLabel: UILabel!
+    
+    deinit {
+        print("deinit \(self)")
+    }
+    
+    var isLargeTitle: Bool {
+        return true
+    }
     
     var backgroundColor: UIColor? {
         return ColorClassification.navigationBackground.value
@@ -32,7 +41,11 @@ class NotificationsSettingController: UITableViewController, NavigationSettingSt
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section == 1 && indexPath.row == 1 {
-            
+            let days = Array(1...15).map { "\($0)天" }
+            DataPickerController.rx.present(with: "请选择天数", items: [days])
+                .map { $0.last?.value }
+                .bind(to: daysLabel.rx.text)
+                .disposed(by: rx.disposeBag)
         }
     }
     

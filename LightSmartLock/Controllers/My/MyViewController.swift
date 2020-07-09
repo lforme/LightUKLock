@@ -20,6 +20,10 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         return ColorClassification.navigationBackground.value
     }
     
+    var isLargeTitle: Bool {
+        return false
+    }
+    
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nickNameLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!

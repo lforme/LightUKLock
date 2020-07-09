@@ -13,6 +13,11 @@ import RxCocoa
 class PrivacyLockSettingController: UITableViewController, NavigationSettingStyle {
     
     @IBOutlet weak var verifySwitch: UISwitch!
+    
+    deinit {
+        print("deinit \(self)")
+    }
+    
     var backgroundColor: UIColor? {
         return ColorClassification.navigationBackground.value
     }
