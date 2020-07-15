@@ -14,6 +14,7 @@ import RxSwift
 import MJRefresh
 import SwiftDate
 import Action
+import RxDataSources
 
 class MessageCenterCell: UITableViewCell {
     
@@ -40,8 +41,8 @@ class MessageCenterCell: UITableViewCell {
     
     func bind(_ data: CenterMessageModel) {
         titleLabel.text = data.title
-        content.text = data.content
-        if let time = data.createDate?.toDate()?.toString(.custom("MM / dd  HH:mm")) {
+        content.text = data.message
+        if let time = data.smsCreatetime?.toDate()?.toString(.custom("MM / dd  HH:mm")) {
             timeLabel.text = time
         }
     }
@@ -62,19 +63,23 @@ class MessageCenterCell: UITableViewCell {
     }
 }
 
-class MessageCenterController: UITableViewController, StoryboardView {
+class MessageCenterController: UITableViewController, StoryboardView, NavigationSettingStyle {
     
     typealias Reactor = MessageCenterReactor
     
     var disposeBag: DisposeBag = DisposeBag()
     var dataSource: [CenterMessageModel] = []
     
-    private var filterButton: UIButton!
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.tableView.mj_header?.beginRefreshing()
+    var backgroundColor: UIColor? {
+        return ColorClassification.navigationBackground.value
     }
+    
+    private lazy var segment: UISegmentedControl = {
+        let seg = UISegmentedControl(items: ["资产消息", "门锁消息"])
+        seg.selectedSegmentIndex = 0
+        return seg
+    }()
+    private var filterButton: UIButton!
     
     deinit {
         print("\(self) deinit")
@@ -85,9 +90,13 @@ class MessageCenterController: UITableViewController, StoryboardView {
         
         title = "消息中心"
         setupUI()
-        setupRightNavigationItem()
+        setupNavigationItem()
         
-        self.reactor = Reactor()
+        if let assetId = LSLUser.current().scene?.ladderAssetHouseId {
+            self.reactor = Reactor(assetId: assetId)
+        } else {
+            HUD.flash(.label("发生未知错误, 无法获取资产ID"), delay: 2)
+        }
     }
     
     func setupUI() {
@@ -95,48 +104,48 @@ class MessageCenterController: UITableViewController, StoryboardView {
         tableView.emptyDataSetSource = self
     }
     
-    func setupRightNavigationItem() {
-        self.filterButton = createdRightNavigationItem(title: nil, image: UIImage(named: "message_filter"))
+    func setupNavigationItem() {
+        
+        self.navigationItem.titleView = self.segment
     }
     
     func bind(reactor: MessageCenterReactor) {
         
-        self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {[weak self] in
-            guard let this = self else { return }
+        let refreshBegin = BehaviorRelay<Reactor.Action>(value: .refreshBegin(nil))
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            refreshBegin.accept(.refreshBegin(1))
+        })
+        refreshBegin.bind(to: reactor.action).disposed(by: rx.disposeBag)
+        
+        let pullToLoad = BehaviorRelay<Reactor.Action>(value: .loadMoreBegin(nil))
+        let footer = MJRefreshAutoNormalFooter(refreshingBlock: {
             
-            Observable.just(Reactor.Action.refreshBegin).bind(to: reactor.action).disposed(by: this.disposeBag)
+            pullToLoad.accept(.loadMoreBegin(1))
+            
         })
-        
-        let footer = MJRefreshAutoNormalFooter(refreshingBlock: {[weak self] in
-            guard let this = self else { return }
-            Observable.just(Reactor.Action.loadMoreBegin).delaySubscription(1, scheduler: MainScheduler.instance).bind(to: reactor.action).disposed(by: this.disposeBag)
-        })
-        
         footer.setTitle("", for: .idle)
-        self.tableView.mj_footer = footer
+        tableView.mj_footer = footer
+        pullToLoad.bind(to: reactor.action).disposed(by: rx.disposeBag)
         
-        self.filterButton.rx.tap.flatMapLatest {[weak self] (_) -> Observable<Reactor.Action> in
-            guard let this = self else { return .empty() }
-            return Observable<Reactor.Action>.create { (observer) -> Disposable in
-                this.showActionSheet(title: "选择消息类型", message: nil, buttonTitles: ["门锁消息", "资产消息"], highlightedButtonIndex: 0) { (index) in
-                    observer.onNext(Reactor.Action.changeMessageType(index))
-                    observer.onCompleted()
+        segment.rx.value.map {
+            Reactor.Action.changeMessageType($0)
+        }
+        .bind(to: reactor.action)
+        .disposed(by: rx.disposeBag)
+        
+        reactor.state.map { $0.isNoMoreData }
+            .delay(.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe(onNext: {[weak self] (noMore) in
+                if noMore {
+                    self?.tableView.mj_footer?.endRefreshingWithNoMoreData()
                 }
-                return Disposables.create()
-            }
-        }.bind(to: reactor.action).disposed(by: disposeBag)
-        
-        reactor.state.map { $0.IsNomoreData }.delay(1, scheduler: MainScheduler.instance).subscribe(onNext: {[weak self] (noMore) in
-            if noMore {
-                self?.tableView.mj_footer?.endRefreshingWithNoMoreData()
-            }
-        }).disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
         
         reactor.state.map { $0.pageIndex }.distinctUntilChanged().subscribe(onNext: { (index) in
             print("当前页码\(index)")
         }).disposed(by: disposeBag)
         
-        reactor.state.map { $0.requestFinish }.subscribe(onNext: {[weak self] (_) in
+        reactor.state.map { $0.isFinished }.subscribe(onNext: {[weak self] (_) in
             self?.tableView.mj_header?.endRefreshing()
             self?.tableView.mj_footer?.endRefreshing()
         }).disposed(by: disposeBag)
@@ -147,6 +156,15 @@ class MessageCenterController: UITableViewController, StoryboardView {
             }, onError: { (error) in
                 PKHUD.sharedHUD.rx.showError(error)
         }).disposed(by: disposeBag)
+        
+        reactor.state.map { $0.messageType }
+            .distinctUntilChanged()
+            .delay(.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe(onNext: {[weak self] (_) in
+                self?.tableView.mj_footer?.resetNoMoreData()
+            })
+            .disposed(by: disposeBag)
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

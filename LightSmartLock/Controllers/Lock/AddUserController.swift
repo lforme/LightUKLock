@@ -49,41 +49,43 @@ class AddUserController: UITableViewController {
     }
     
     func setupNavigationRightItem() {
-        self.saveButton = createdRightNavigationItem(title: "保存", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 4, color: ColorClassification.primary.value)
+        self.saveButton = createdRightNavigationItem(title: "保存", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 4, color: .white)
     }
     
     func bind() {
-        guard let sceneId = LSLUser.current().userInScene?.sceneID else {
-            HUD.flash(.label("无法从服务器获取用户场景, 请稍后再试"), delay: 2)
-            return
-        }
-        self.vm = AddUserViewModel(id: sceneId)
+        
+        self.vm = AddUserViewModel()
         
         nicknameTextField.rx.text.orEmpty.changed
             .distinctUntilChanged()
             .bind(to: vm.nickname).disposed(by: rx.disposeBag)
         
-        phonTextField.rx.text.orEmpty.changed
+        let phoneShare = phonTextField.rx.text.orEmpty.changed
             .distinctUntilChanged()
-            .bind(to: vm.phone).disposed(by: rx.disposeBag)
+        phoneShare.bind(to: vm.phone).disposed(by: rx.disposeBag)
+        phoneShare.map { $0.count > 11 }.subscribe(onNext: { (exceed) in
+            if exceed {
+                HUD.flash(.label("请输入正确手机号"), delay: 2)
+            }
+        }).disposed(by: rx.disposeBag)
         
         
         vm.displayModel.subscribe(onNext: {[weak self] (display) in
             
-            if let tag = display.Label {
+            if let tag = display.kinsfolkTag {
                 self?.tagLabel.text = tag
                 self?.tagLabel.textColor = ColorClassification.textPrimary.value
             } else {
                 self?.tagLabel.textColor = ColorClassification.textDescription.value
             }
             
-            if let pwd = display.InitialSecret {
+            if let pwd = display.numberPwd {
                 self?.passwordLabel.text = pwd
             }
             
         }).disposed(by: rx.disposeBag)
         
-        saveButton.rx.bind(to: vm.saveAtion, input: AddUserMemberModel())
+        saveButton.rx.bind(to: vm.saveAtion, input: UserMemberListModel())
         
         vm.saveAtion.errors.subscribe(onNext: { (error) in
             PKHUD.sharedHUD.rx.showActionError(error)
@@ -91,9 +93,10 @@ class AddUserController: UITableViewController {
         
         vm.saveAtion.elements.subscribe(onNext: {[weak self] (success) in
             if success {
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.editMember)
                 HUD.flash(.label("添加成功"), delay: 2)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self?.navigationController?.popToRootViewController(animated: true)
+                    self?.navigationController?.popViewController(animated: true)
                 }
             }
         }).disposed(by: rx.disposeBag)
@@ -176,4 +179,3 @@ class AddUserController: UITableViewController {
     }
 }
 
-extension AddUserController: TZImagePickerControllerDelegate {}

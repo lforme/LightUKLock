@@ -41,21 +41,10 @@ public class BluetoothPapa: NSObject {
     
     fileprivate let lock = NSRecursiveLock()
     
-    private var holdKey: String?
     /// 蓝牙门锁通信加密密匙
     fileprivate var AESkey: String? {
         get {
-            if LSLUser.current().lockInfo?.secretKey == nil {
-                return self.holdKey
-            } else {
-                return LSLUser.current().lockInfo?.secretKey
-            }
-        }
-        set {
-            var lockInfo = LSLUser.current().lockInfo
-            lockInfo?.secretKey = newValue
-            LSLUser.current().lockInfo = lockInfo
-            self.holdKey = newValue
+            return LSLUser.current().lockInfo?.bluetoothPwd
         }
     }
     
@@ -96,15 +85,11 @@ public class BluetoothPapa: NSObject {
     
     fileprivate func commonInit() {
         bluetoothManager = CBCentralManager(delegate: self, queue: centralQueue)
-        if let blueName = LSLUser.current().lockInfo?.bluthName {
-            filterBluetoothNames = [blueName]
+        if let blueName = LSLUser.current().lockInfo?.bluetoothName {
+            filterBluetoothNames = [blueName, "UOKO", "UOKO_BLE", "KD_LOCK"]
         } else {
-            filterBluetoothNames = ["UOKO"]
+            filterBluetoothNames = ["UOKO", "UOKO_BLE", "KD_LOCK"]
         }
-        
-        let array = Array(repeating: 0, count: 16).map { String($0) }.compactMap { $0 }
-        let key = array.joined(separator:"")
-        self.holdKey = key
     }
     
     fileprivate func getConnectedPeripherals() -> [CBPeripheral] {
@@ -229,8 +214,6 @@ public class BluetoothPapa: NSObject {
     @discardableResult
     public func scanForPeripherals(_ enable: Bool) -> Bool {
         
-        cancelPeripheralConnection()
-        
         DispatchQueue.main.async {[weak self] in
             guard let this = self else {
                 return
@@ -268,7 +251,7 @@ public class BluetoothPapa: NSObject {
     
     public func connect(peripheral: PPScannedPeripheral) {
         bluetoothPeripheral = peripheral.peripheral
-        print("Connecting to: \(peripheral.name())...")
+        print(" : \(peripheral.name())...")
         bluetoothManager?.connect(peripheral.peripheral, options: nil)
     }
     
@@ -279,11 +262,8 @@ public class BluetoothPapa: NSObject {
             return
         }
         
-        if connected {
-            print("Disconnecting...")
-        } else {
-            print("Cancelling connection...")
-        }
+        print("Cancelling connection...")
+        
         print("bluetoothPeripheral.cancelPeripheralConnection(peripheral)")
         bluetoothManager?.cancelPeripheralConnection(bluetoothPeripheral)
         connected = false
@@ -298,14 +278,20 @@ public class BluetoothPapa: NSObject {
     ///
     /// - Returns: result
     public func isConnected() -> Bool {
-        return connected
+        if self.bluetoothPeripheral?.state == .some(.connected) && self.connected {
+            return true
+        } else {
+            return false
+        }
     }
     
     /// 删除AESkey
     public func removeAESkey() {
         let array = Array(repeating: 0, count: 16).map { String($0) }.compactMap { $0 }
         let key = array.joined(separator:"")
-        AESkey = key
+        var lockInfo = LSLUser.current().lockInfo
+        lockInfo?.bluetoothPwd = key
+        LSLUser.current().lockInfo = lockInfo
     }
     
     /// 握手
@@ -331,10 +317,12 @@ public class BluetoothPapa: NSObject {
     ///   - call: 返回结果需要用 serialize 解析
     public func set(key: String, call: @escaping BluetoothReceivedCall) {
         receiveCall = call
-        
         let command = "\(messageHeader)160E\(key)"
         encrypt(command: command)
-        self.holdKey = key
+        
+        var lockInfo = LSLUser.current().lockInfo
+        lockInfo?.bluetoothPwd = key
+        LSLUser.current().lockInfo = lockInfo
     }
     
     /// 改变蓝牙广播名
@@ -856,7 +844,7 @@ extension BluetoothPapa {
         }
         let resultStr = d.toHexString()
         var isSuccess: Bool
-        let s = resultStr[10..<12]
+        let s = resultStr[14..<16]
         let number = resultStr[12..<14]
         if s == "00" {
             isSuccess = true
@@ -1081,8 +1069,9 @@ extension BluetoothPapa: CBCentralManagerDelegate {
                 } else {
                     self.peripherals.append(sensor)
                 }
-                print("scan bluethooth name: \(peripheral.name ?? "no name")")
-                
+                if let _ = peripheral.name, !self.connected {
+//                    print("scan bluethooth name: \(name)")
+                }
                 self.peripheralsResult?(self.peripherals)
             } else {
                 sensor = self.peripherals[self.peripherals.firstIndex(of: sensor)!]
@@ -1103,9 +1092,6 @@ extension BluetoothPapa: CBPeripheralDelegate {
                 return
             }
         }
-        
-        delegate?.peripheralNotSupported?()
-        cancelPeripheralConnection()
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
@@ -1176,6 +1162,8 @@ extension BluetoothPapa: CBPeripheralDelegate {
                     self.bufferdData += array
                 }
                 print("Notification received from: \(characteristic.uuid.uuidString), with value: 0x\(bytesReceived)")
+                print(array)
+                
             }
             
         }

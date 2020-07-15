@@ -22,13 +22,26 @@ class LockSettingPasswordController: UIViewController, NavigationSettingStyle {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var individualView: UIView!
     
-    var lockInfo: SmartLockInfoModel!
+    
+    var kind: SelectLockTypeController.AddKind!
+    var lockInfo: LockModel!
     var vm: LockBindViewModel!
     fileprivate var adminPassword: String?
-    fileprivate let privateKey = UUID().uuidString.components(separatedBy: "-").joined().prefix(16).description.lowercased()
+    fileprivate var privateKey: String {
+        func randomString(length: Int) -> String {
+            let letters = "0123456789"
+            return String((0..<length).map{ _ in letters.randomElement()! })
+        }
+        return randomString(length: 16)
+    }
     
     deinit {
         print("\(self) deinit")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        HUD.hide(animated: true)
     }
     
     override func viewDidLoad() {
@@ -60,7 +73,7 @@ class LockSettingPasswordController: UIViewController, NavigationSettingStyle {
         passwordInput.entryTextColour = #colorLiteral(red: 0.02352941176, green: 0.1098039216, blue: 0.2470588235, alpha: 1)
         passwordInput.delegate = self
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {[weak self] in
             self?.passwordInput.becomeFirstResponder()
         }
         
@@ -72,33 +85,36 @@ class LockSettingPasswordController: UIViewController, NavigationSettingStyle {
             return
         }
         HUD.show(.label("正在配置门锁..."))
-        self.vm.setAdiminPassword(pwd).flatMapLatest {[unowned self] (step) -> Observable<LockBindViewModel.Step> in
-            return self.vm.setPrivateKey(self.privateKey).delay(1, scheduler: MainScheduler.instance)
+        self.vm.setPrivateKey(self.privateKey).flatMapLatest {[unowned self] (step) -> Observable<LockBindViewModel.Step> in
+            return self.vm.setAdiminPassword(pwd)
         }.flatMapLatest {[unowned self] (step) -> Observable<LockBindViewModel.Step> in
-            return self.vm.checkVersionInfo().delay(1, scheduler: MainScheduler.instance)
+            return self.vm.checkVersionInfo()
         }.flatMapLatest { (step) -> Observable<LockBindViewModel.Step> in
-            return self.vm.changeBroadcastName().delay(1, scheduler: MainScheduler.instance)
+            return self.vm.changeBroadcastName()
         }.flatMapLatest { (step) -> Observable<LockBindViewModel.Step> in
             return self.vm.uploadToServer()
         }.subscribe(onNext: {[weak self] (step) in
             self?.updateUI()
             HUD.flash(.label(step.description), delay: 2)
             switch step {
-            case let .uploadInfoToServer(sceneId):
+            case let .uploadInfoToServer(id):
                 
-                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.addLock)
-                var updateValue = LSLUser.current().scene
-                if updateValue == nil {
-                    updateValue = SceneListModel()
-                    updateValue?.sceneID = sceneId
-                    updateValue?.IsInstallLock = true
-                    LSLUser.current().scene = updateValue
+                BluetoothPapa.shareInstance.reboot { (_) in
+                    // 写入门锁
                 }
-                let positionVC: PositioEditingController = ViewLoader.Storyboard.controller(from: "Home")
-                self?.navigationController?.pushViewController(positionVC, animated: true)
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.editLock)
+                
+                if LSLUser.current().scene?.ladderAssetHouseId != nil {
+                    self?.navigationController?.popToRootViewController(animated: true)
+                } else {
+                    let pendingVC: AssetPendingListController = ViewLoader.Storyboard.controller(from: "Home")
+                                 pendingVC.lockId = id
+                    self?.navigationController?.pushViewController(pendingVC, animated: true)
+                }
+                    
             default: break
+                
             }
-            
             }, onError: {[weak self] (error) in
                 HUD.flash(.label("门锁配置失败, 门锁已恢复出厂设置"), delay: 2)
                 BluetoothPapa.shareInstance.factoryReset {[weak self] (_) in

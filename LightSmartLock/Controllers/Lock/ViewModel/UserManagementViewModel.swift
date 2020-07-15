@@ -29,19 +29,31 @@ final class UserManagementViewModel: ListViewModeling {
     var disposeBag: DisposeBag = DisposeBag()
     
     func refresh() {
+        
+        guard let lockId = LSLUser.current().lockInfo?.ladderLockId else {
+            HUD.flash(.label("无法获取门锁Id"), delay: 2)
+            return
+        }
+        
         pageIndex = 1
-        BusinessAPI.requestMapJSONArray(.getCustomerMemberList(pageIndex: pageIndex, pageSize: 15), classType: Item.self, useCache: true).map { $0.compactMap { $0 } }
-            .do( onError: {[weak self] (_) in
+        BusinessAPI.requestMapJSONArray(.getUserList(lockId: lockId, pageIndex: pageIndex, pageSize: 15), classType: Item.self, useCache: true, isPaginating: true).map { $0.compactMap { $0 } }.subscribe(onNext: {[weak self] (items) in
+            self?.obList.onNext(items)
+            }, onError: {[weak self] (error) in
+                self?.obList.onError(error)
                 self?.obRefreshStatus.accept(.endHeaderRefresh)
-                }, onCompleted: {[weak self] in
-                    self?.obRefreshStatus.accept(.endHeaderRefresh)
-            })
-            .bind(to: obList).disposed(by: disposeBag)
+            }, onCompleted: {[weak self] in
+                self?.obRefreshStatus.accept(.endHeaderRefresh)
+        }).disposed(by: disposeBag)
     }
     
     func loadMore() {
+        guard let lockId = LSLUser.current().lockInfo?.ladderLockId else {
+            HUD.flash(.label("无法获取门锁Id"), delay: 2)
+            return
+        }
+        
         pageIndex += 1
-        BusinessAPI.requestMapJSONArray(.getCustomerMemberList(pageIndex: pageIndex, pageSize: 15), classType: Item.self, useCache: true).map { $0.compactMap { $0 } }
+        BusinessAPI.requestMapJSONArray(.getUserList(lockId: lockId, pageIndex: pageIndex, pageSize: 15), classType: Item.self, useCache: true, isPaginating: true).map { $0.compactMap { $0 } }
             .subscribe(onNext: {[weak self] (models) in
                 guard let this = self else { return }
                 
@@ -53,9 +65,9 @@ final class UserManagementViewModel: ListViewModeling {
                     this.obRefreshStatus.accept(.noMoreData)
                 }
                 
-            }, onError: {[weak self] (error) in
-                self?.obRefreshStatus.accept(.endFooterRefresh)
-                PKHUD.sharedHUD.rx.showError(error)
+                }, onError: {[weak self] (error) in
+                    self?.obRefreshStatus.accept(.endFooterRefresh)
+                    PKHUD.sharedHUD.rx.showError(error)
             }).disposed(by: disposeBag)
     }
     

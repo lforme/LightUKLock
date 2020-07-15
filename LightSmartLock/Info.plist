@@ -25,33 +25,71 @@
 			<string>MyApp</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>LightSmartLock</string>
+				<string>com.oldwhy.QuickSmartLock</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>weixin</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wxa3043eaf33286039</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>QQ06129F52</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>tencent101883730</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>wechat</string>
+		<string>weixin</string>
+		<string>weixinULAPI</string>
+		<string>mqqOpensdkSSoLogin</string>
+		<string>mqqopensdkapiV2</string>
+		<string>mqqopensdkapiV3</string>
+		<string>wtloginmqq2</string>
+		<string>mqq</string>
+		<string>mqqapi</string>
+		<string>timapi</string>
+		<string>mqqopensdkminiapp</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MOBAppKey</key>
+	<string>2f948f23b4b98</string>
+	<key>MOBAppSecret</key>
+	<string>049f241534782e3e6bd2d5cd3322d438</string>
 	<key>Microphone Usage Description</key>
-	<string>门锁助手需要使用麦克风设置Siri捷径</string>
+	<string>寓用管家需要使用麦克风设置Siri捷径</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>门锁助手需要使用蓝牙来开门</string>
+	<string>寓用管家需要使用蓝牙来开门</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>门锁助手需要使用蓝牙来开门</string>
+	<string>寓用管家需要使用蓝牙来开门</string>
 	<key>NSCameraUsageDescription</key>
-	<string>门锁助手需要使用相机, 为您更换头像</string>
+	<string>寓用管家需要使用相机, 为您更换头像</string>
 	<key>NSFaceIDUsageDescription</key>
-	<string>门锁助手需要使用FaceID来验证用户身份</string>
+	<string>寓用管家需要使用FaceID来验证用户身份</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>门锁助手需要获取您当前坐标, 检索周围小区</string>
+	<string>寓用管家需要获取您当前坐标, 检索周围小区</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>门锁助手需要使用相册资源, 为您更换头像</string>
+	<string>寓用管家需要使用相册资源, 为您更换头像</string>
 	<key>NSUserActivityTypes</key>
 	<string>com.oldwhy.QuickSmartLock.sirisortcut.opendoor</string>
 	<key>UILaunchStoryboardName</key>

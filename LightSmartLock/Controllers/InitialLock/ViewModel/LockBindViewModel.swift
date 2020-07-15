@@ -12,10 +12,11 @@ import RxSwift
 
 final class LockBindViewModel {
     
-    private var lockInfo: SmartLockInfoModel
+    private var lockInfo: LockModel
     
-    init(lockInfo: SmartLockInfoModel) {
+    init(lockInfo: LockModel) {
         self.lockInfo = lockInfo
+        BluetoothPapa.shareInstance.scanForPeripherals(false)
     }
     
     func setPrivateKey(_ key: String) -> Observable<Step> {
@@ -26,9 +27,9 @@ final class LockBindViewModel {
                     return
                 }
                 
-                self?.lockInfo.IMEI = tuple.IMEI
-                self?.lockInfo.IMSI = tuple.IMSI
-                self?.lockInfo.secretKey = key
+                self?.lockInfo.imei = tuple.IMEI
+                self?.lockInfo.imsi = tuple.IMSI
+                self?.lockInfo.bluetoothPwd = key
                 
                 observer.onNext(.setPrivateKey)
                 observer.onCompleted()
@@ -44,7 +45,7 @@ final class LockBindViewModel {
                 if success {
                     observer.onNext(.setAdiminPassword)
                     observer.onCompleted()
-                    self?.lockInfo.InitialSecret = password
+                    self?.lockInfo.adminPwd = password
                 } else {
                     observer.onError(AppError.reason("设置管理员密码失败\n请重新尝试"))
                 }
@@ -61,10 +62,10 @@ final class LockBindViewModel {
                     return observer.onError(AppError.reason("获取门锁信息失败\n请重新尝试"))
                 }
                 
-                self?.lockInfo.NBVersion = nb
-                self?.lockInfo.fingerprintVersion = fv
-                self?.lockInfo.lockVersion = lv
-                self?.lockInfo.bluthVersion = bv
+                self?.lockInfo.nbVersion = nb
+                self?.lockInfo.fingerVersion = fv
+                self?.lockInfo.firmwareVersion = lv
+                self?.lockInfo.bluetoothVersion = bv
                 
                 observer.onNext(.checkVersionInfo)
                 observer.onCompleted()
@@ -81,7 +82,7 @@ final class LockBindViewModel {
                 guard let a = result?.Time, let b = result?.IMEIsuffix else {
                     return observer.onError(AppError.reason("改变广播名称失败\n请重新尝试"))
                 }
-                self?.lockInfo.bluthName = a + b
+                self?.lockInfo.bluetoothName = a + b
                 observer.onNext(.changeBroadcastName)
                 observer.onCompleted()
             }
@@ -90,18 +91,18 @@ final class LockBindViewModel {
     }
     
     func uploadToServer() -> Observable<Step> {
-        return BusinessAPI.requestMapAny(.uploadLockConfigInfo(info: self.lockInfo)).map { (data) -> Step in
+        return BusinessAPI.requestMapAny(.addLock(parameter: self.lockInfo)).map { (data) -> Step in
             let json = data as? [String: Any]
             
-            guard let code = json?["Code"] as? Int else {
+            guard let code = json?["status"] as? Int else {
                 throw AppError.reason("上传失败")
             }
             
-            if code == 0 {
+            if code != 200 {
                 throw AppError.reason("上传失败")
             }
             
-            guard let id = json?["Data"] as? String else {
+            guard let id = json?["data"] as? String else {
                 throw AppError.reason("上传失败")
             }
             return Step.uploadInfoToServer(sceneId: id)

@@ -30,38 +30,45 @@ final class RxMoyaProvider<Target>: MoyaProvider<Target> where Target: TargetTyp
         }
     }
     
-    fileprivate let diskCache = NetworkDiskStorage(autoCleanTrash: true, path: "network")
+    fileprivate let diskCache = NetworkDiskStorage(autoCleanTrash: true, path: "lightSmartLock.network")
     
     init(endpointClosure: @escaping EndpointClosure = MoyaProvider.defaultEndpointMapping,
          requestClosure: @escaping RequestClosure = MoyaProvider<Target>.defaultRequestMapping,
          stubClosure: @escaping StubClosure = MoyaProvider.neverStub,
-         plugins: [PluginType] = [LoadingPlugin(), NetworkLoggerPlugin(verbose: true, responseDataFormatter: { (data) -> (Data) in
-        do {
-            let dataAsJSON = try JSONSerialization.jsonObject(with: data)
-            let prettyData =  try JSONSerialization.data(withJSONObject: dataAsJSON, options: .prettyPrinted)
-            return prettyData
-        } catch {
-            return data
-        }
-        
-    })],
+         plugins: [PluginType] = [LoadingPlugin()],
          stubScheduler: SchedulerType? = nil,
          trackInflights: Bool = false) {
         
-        let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = Manager.defaultHTTPHeaders
-        configuration.timeoutIntervalForRequest = 15
-        configuration.timeoutIntervalForResource = 15
-        let manager = Manager(configuration: configuration)
-        manager.startRequestsImmediately = false
+        let configuration = URLSessionConfiguration.af.default
+        configuration.headers = .default
+        configuration.timeoutIntervalForRequest = 20
+        configuration.timeoutIntervalForResource = 20
+        let manager = Session(configuration: configuration, startRequestsImmediately: false)
+        
         self.stubScheduler = stubScheduler
         
         dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.locale = Locale.current
         dateFormatter.timeZone = TimeZone.current
         
-        super.init(endpointClosure: endpointClosure, requestClosure: requestClosure, stubClosure: stubClosure, callbackQueue: nil, manager: manager, plugins: plugins, trackInflights: trackInflights)
+        var mutablePlugins = plugins
+        
+        mutablePlugins += [NetworkLoggerPlugin(configuration: .init(formatter: .init(responseData: RxMoyaProvider<Target>.JSONResponseDataFormatter),
+                                                                    logOptions: .verbose))]
+        
+        super.init(endpointClosure: endpointClosure, requestClosure: requestClosure, stubClosure: stubClosure, callbackQueue: nil, session: manager, plugins: mutablePlugins, trackInflights: trackInflights)
+        
+    }
+    
+    private static func JSONResponseDataFormatter(_ data: Data) -> String {
+        do {
+            let dataAsJSON = try JSONSerialization.jsonObject(with: data)
+            let prettyData = try JSONSerialization.data(withJSONObject: dataAsJSON, options: .prettyPrinted)
+            return String(data: prettyData, encoding: .utf8) ?? String(data: data, encoding: .utf8) ?? ""
+        } catch {
+            return String(data: data, encoding: .utf8) ?? ""
+        }
     }
 }
 
@@ -96,51 +103,49 @@ private extension RxMoyaProvider {
         
         return self.rx.request(token)
             .asObservable()
-            .throttle(1, scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+            .throttle(.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .flatMapLatest {[unowned self] (res) -> Observable<Response> in
                 
                 if res.statusCode == 401 {
                     return Observable.create({ (observer) -> Disposable in
                         self.authenticationBlock {
-                            // 刷新 Token
+                            // 刷新 Token 不做
+                            NotificationCenter.default.post(name: .tokenExpired, object: nil)
+                            LSLUser.current().logout()
                             
-                            let refreshTokenRequest = AuthAPI.requestMapAny(.refreshUserToken)
-                                .map { (any) -> AccessTokenModel? in
-                                    let json = any as? [String: Any]
-                                    return AccessTokenModel.deserialize(from: json)
-                            }
                             
-                            refreshTokenRequest.do(onError: { (error) in
-                                
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                                    HUD.flash(.label("令牌过期,请重新登录"), delay: 2)
-                                    LSLUser.current().logout()
-                                })
-                                
-                            }).subscribe(onNext: { (t) in
-                                
-                                // 保存最新token
-                                LSLUser.current().refreshToken = t
-                                LSLUser.current().token = t
-                                
-                                self._request(token).subscribe({ (event) in
-                                    observer.on(event)
-                                }).disposed(by: self.rx.disposeBag)
-                                
-                            }).disposed(by: self.rx.disposeBag)
+//                                                     guard let oldToken = LSLUser.current().token?.accessToken else {
+//                                                         return
+//                                                     }
+//
+//                                                     let refreshTokenRequest = AuthAPI.requestMapJSON(.refreshToken(token: oldToken), classType: AccessTokenModel.self)
+//
+//                                                     refreshTokenRequest.do(onError: { (error) in
+//
+//                                                         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+//                                                             HUD.flash(.label("令牌过期,请重新登录"), delay: 2)
+//                                                             LSLUser.current().logout()
+//                                                         })
+//
+//                                                     }).subscribe(onNext: { (t) in
+//
+//                                                         // 保存最新token
+//                                                         LSLUser.current().refreshToken = t
+//                                                         LSLUser.current().token = t
+//
+//                                                         self._request(token).subscribe({ (event) in
+//                                                             observer.on(event)
+//                                                         }).disposed(by: self.rx.disposeBag)
+//
+//                                                     }).disposed(by: self.rx.disposeBag)
                         }
                         return Disposables.create()
                     })
                 } else if res.statusCode == 429 {
                     return Observable.error(AppError.reason("请求过于频繁"))
                 } else if res.statusCode == 500 {
-                    if let json = try? res.mapJSON(), let dict = json as? [String: Any] {
-                        let eMsg = dict["Msg"] as? String
-                        return Observable.error(AppError.reason(eMsg ?? "服务器出错啦"))
-                    } else {
-                        return Observable.error(AppError.reason("服务器出错啦"))
-                    }
-                } else {
+                    return Observable.error(AppError.reason("服务器出错了"))
+                } else if res.statusCode == 200 {
                     
                     // 写入缓存
                     if let interface = token as? BusinessInterface {
@@ -155,7 +160,8 @@ private extension RxMoyaProvider {
                         self.diskCache.save(value: res.data, forKey: md5)
                         print("⏰=> 本地缓存写入时间: [\(self.dateFormatter.string(from: Date()))]\n\("🧤=> 本地缓存写入成功 🐸🐸🐸")\n\("💡=> 缓存Key: \(md5)")")
                     }
-                    
+                    return Observable.just(res)
+                } else {
                     return Observable.just(res)
                 }
         }.observeOn(MainScheduler.instance)
@@ -172,10 +178,11 @@ extension RxMoyaProvider {
             guard let json = try? response.mapJSON(failsOnEmptyData: true), let dict = json as? [String: Any] else {
                 return .error(AppError.reason(response.description))
             }
-            if let code = dict["Code"] as? Int, code == 1 {
+            if let code = dict["status"] as? Int, code == 200 {
                 return .just(true)
             } else {
-                return .just(false)
+                let msg = dict["message"] as? String
+                return .error(AppError.reason(msg ?? ""))
             }
         })
     }
@@ -206,22 +213,22 @@ extension RxMoyaProvider {
             return useCacheWhenErrorOccurred(token).flatMapLatest({ (response) -> Observable<E> in
                 
                 guard let json = try? response.mapJSON() else {
-                    return .error(AppError.reason("服务器出错啦"))
+                    return .error(AppError.reason("服务器出错了"))
                 }
                 
-                guard let dic = json as? [String: Any], let status = dic["Code"] as? Int else {
-                    return .error(AppError.reason("服务器出错啦"))
+                guard let dic = json as? [String: Any], let status = dic["status"] as? Int else {
+                    return .error(AppError.reason("服务器出错了"))
                 }
                 
-                if status == 1  {
-                    let value = dic["Data"] as? [String: Any]
+                if status == 200 {
+                    let value = dic["data"] as? [String: Any]
                     if let object = E.deserialize(from: value) {
                         return Observable.just(object)
                     } else {
                         return Observable.empty()
                     }
                 } else {
-                    let e = dic["Msg"] as? String
+                    let e = dic["message"] as? String
                     return Observable.error(AppError.reason(e ?? ""))
                 }
             })
@@ -230,51 +237,60 @@ extension RxMoyaProvider {
         return _request(token).flatMap({ (response) -> Observable<E> in
             
             guard let json = try? response.mapJSON() else {
-                return .error(AppError.reason("服务器出错啦"))
+                return .error(AppError.reason("服务器出错了"))
             }
             
-            guard let dic = json as? [String: Any], let status = dic["Code"] as? Int else {
-                return .error(AppError.reason("服务器出错啦"))
+            guard let dic = json as? [String: Any], let status = dic["status"] as? Int else {
+                return .error(AppError.reason("服务器出错了"))
             }
             
-            if status == 1 {
-                let value = dic["Data"] as? [String: Any]
+            if status == 200 {
+                let value = dic["data"] as? [String: Any]
                 if let object = E.deserialize(from: value) {
                     return Observable.just(object)
                 } else {
                     return Observable.empty()
                 }
             } else {
-                let e = dic["Msg"] as? String
+                let e = dic["message"] as? String
                 return Observable.error(AppError.reason(e ?? ""))
             }
         })
     }
     
     
-    func requestMapJSONArray<E: HandyJSON>(_ token: Target, classType: E.Type, useCache: Bool = false) -> Observable<[E?]> {
+    func requestMapJSONArray<E: HandyJSON>(_ token: Target, classType: E.Type, useCache: Bool = false, isPaginating: Bool? = false) -> Observable<[E?]> {
         
         if useCache {
             return useCacheWhenErrorOccurred(token).flatMapLatest({ (response) -> Observable<[E?]> in
                 
                 guard let json = try? response.mapJSON() else {
-                    return .error(AppError.reason("服务器出错啦"))
+                    return .error(AppError.reason("服务器出错了"))
                 }
                 
-                guard let dic = json as? [String: Any], let code = dic["Code"] as? Int else {
-                    return .error(AppError.reason("服务器出错啦"))
+                guard let dic = json as? [String: Any], let code = dic["status"] as? Int else {
+                    return .error(AppError.reason("服务器出错了"))
                 }
                 
-                if code == 1 {
-                    let value = dic["Data"] as? [[String: Any]]
-                    
-                    if let objects = [E].deserialize(from: value) {
-                        return Observable.just(objects)
+                if code == 200 {
+                    if isPaginating ?? false {
+                        let res = dic["data"] as? [String: Any]
+                        let value = res?["rows"] as? [[String: Any]]
+                        if let objects = [E].deserialize(from: value) {
+                            return Observable.just(objects)
+                        } else {
+                            return .error(AppError.reason("服务器出错了"))
+                        }
                     } else {
-                        return .error(AppError.reason("服务器出错啦"))
+                        let value = dic["data"] as? [[String: Any]]
+                        if let objects = [E].deserialize(from: value) {
+                            return Observable.just(objects)
+                        } else {
+                            return .error(AppError.reason("服务器出错了"))
+                        }
                     }
                 } else {
-                    let e = dic["Msg"] as? String
+                    let e = dic["message"] as? String
                     return Observable.error(AppError.reason(e ?? ""))
                 }
             })
@@ -283,25 +299,32 @@ extension RxMoyaProvider {
         return _request(token).flatMap({ (response) -> Observable<[E?]> in
             
             guard let json = try? response.mapJSON() else {
-                return .error(AppError.reason("服务器出错啦"))
+                return .error(AppError.reason("服务器出错了"))
             }
             
-            guard let dic = json as? [String: Any], let code = dic["Code"] as? Int else {
-                return .error(AppError.reason("服务器出错啦"))
+            guard let dic = json as? [String: Any], let code = dic["status"] as? Int else {
+                return .error(AppError.reason("服务器出错了"))
             }
             
-            if code == 1 {
-                
-                let value = dic["Data"] as? [[String: Any]]
-                
-                if let objects = [E].deserialize(from: value) {
-                    
-                    return Observable.just(objects)
+            if code == 200 {
+                if isPaginating ?? false {
+                    let res = dic["data"] as? [String: Any]
+                    let value = res?["rows"] as? [[String: Any]]
+                    if let objects = [E].deserialize(from: value) {
+                        return Observable.just(objects)
+                    } else {
+                        return .error(AppError.reason("服务器出错了"))
+                    }
                 } else {
-                    return .error(AppError.reason("服务器出错啦"))
+                    let value = dic["data"] as? [[String: Any]]
+                    if let objects = [E].deserialize(from: value) {
+                        return Observable.just(objects)
+                    } else {
+                        return .error(AppError.reason("服务器出错了"))
+                    }
                 }
             } else {
-                let e = dic["Msg"] as? String
+                let e = dic["message"] as? String
                 return Observable.error(AppError.reason(e ?? ""))
             }
         })

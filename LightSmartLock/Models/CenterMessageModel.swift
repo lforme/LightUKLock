@@ -11,9 +11,15 @@ import HandyJSON
 
 struct CenterMessageModel: HandyJSON {
     
+    var assetId: String?
+    var businessType: Int?
+    var message: String?
+    var smsCreatetime: String?
+    var smsErrmsg: String?
+    var smsMessage: String?
+    var smsModuleId: Int?
+    var smsPhone: String?
+    var smsStatus: Int?
+    var smsType: Int?
     var title: String?
-    var content: String?
-    var noticeType: Int?
-    var createDate: String?
-    var noticeLevel: Int?
 }

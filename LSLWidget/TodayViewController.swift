@@ -19,7 +19,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var tableView: UITableView!
     
     private var tvDatasource: RxTableViewSectionedReloadDataSource<TodayViewModel.Section>!
-    let vm = TodayViewModel()
+    var vm: TodayViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,19 +34,32 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         tableView.register(UINib(nibName: "WidgetUnlockRecordCell", bundle: nil), forCellReuseIdentifier: "WidgetUnlockRecordCell")
         tableView.rowHeight = 50
         tableView.separatorStyle = .none
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {[weak self] in
+            self?.indicatorView.stopAnimating()
+        }
     }
     
     func bind() {
+        let shareDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
+        let sceneStr = shareDefault?.string(forKey: ShareUserDefaultsKey.scene.rawValue)
+        guard let lockId = SceneListModel.deserialize(from: sceneStr)?.ladderLockId else {
+            indicatorView.stopAnimating()
+            return
+        }
+        
+        vm = TodayViewModel(lockId: lockId)
+        
         vm.sceneName.bind(to: sceneNameLabel.rx.text).disposed(by: rx.disposeBag)
         vm.currentPower.bind(to: powerLabel.rx.text).disposed(by: rx.disposeBag)
         vm.requestExecuting.bind(to: indicatorView.rx.isAnimating).disposed(by: rx.disposeBag)
         
         tvDatasource = RxTableViewSectionedReloadDataSource(configureCell: { (ds, tv, ip, item) -> WidgetUnlockRecordCell in
             let cell = tv.dequeueReusableCell(withIdentifier: "WidgetUnlockRecordCell", for: ip) as! WidgetUnlockRecordCell
-            cell.nameLabel.text = item.customerNickName
-            cell.timeLabel.text = item.UnlockTime
-            cell.unlockWayLabel.text = item.KeyType.description
-        
+            cell.nameLabel.text = item.userName
+            cell.timeLabel.text = item.openTime
+            cell.unlockWayLabel.text = item.openType
+            
             return cell
         })
         

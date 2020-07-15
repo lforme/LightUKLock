@@ -39,17 +39,28 @@ class LoginViewController: UITableViewController, StoryboardView {
         super.viewDidLoad()
         setupUI()
         self.reactor = Reactor()
+        setupTitleLabelGesture()
+    }
+    
+    func setupTitleLabelGesture() {
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeEnvironment))
+        tapGesture.numberOfTapsRequired = 10
+        titleLabel.addGestureRecognizer(tapGesture)
     }
     
     func bind(reactor: LoginViewReactor) {
         
-        let phone = phoneTextField.rx.text.orEmpty.changed
-            .throttle(0.3, scheduler: MainScheduler.instance)
+        let phone = phoneTextField.rx
+            .text
+            .orEmpty
+            .changed
             .distinctUntilChanged()
         
-        let pwd = pwdTextField.rx.text.orEmpty.changed
-            .throttle(0.3, scheduler: MainScheduler.instance)
+        let pwd = pwdTextField.rx
+            .text
+            .orEmpty
+            .changed
             .distinctUntilChanged()
         
         Observable.combineLatest(phone, pwd).map(Reactor.Action.phonePasswordChanged)
@@ -88,19 +99,17 @@ class LoginViewController: UITableViewController, StoryboardView {
         }).disposed(by: disposeBag)
         
         
-        reactor.state.map { $0.loginResult }.subscribe(onNext: { (result) in
-            guard let success = result else {
-                return
-            }
-            if success {
-                NotificationCenter.default
-                    .post(name: .loginStateDidChange, object: true)
-            }
-            
-        }).disposed(by: disposeBag)
+        reactor.state.map { $0.loginResult }
+            .distinctUntilChanged()
+            .subscribe(onNext: { (result) in
+                print(result ?? "")
+            }).disposed(by: disposeBag)
     }
     
     func setupUI() {
+        
+        phoneTextField.delegate = self
+        
         interactiveNavigationBarHidden = true
         
         tableView.backgroundColor = ColorClassification.viewBackground.value
@@ -124,6 +133,12 @@ class LoginViewController: UITableViewController, StoryboardView {
         cell2.backgroundColor = ColorClassification.viewBackground.value
         
         versionLabel.text = ServerHost.shared.environment.description
+        if ServerHost.shared.environment == .dev {
+            versionLabel.text = ServerHost.shared.environment.description
+        } else {
+            versionLabel.text = nil
+        }
+        
     }
     
     @IBAction func registerTap(_ sender: UIButton) {
@@ -131,6 +146,7 @@ class LoginViewController: UITableViewController, StoryboardView {
         registerVC.styleType = .register
         registerVC.operateSuccessPhoneCall = {[weak self] (phoneNum) in
             self?.phoneTextField.text = phoneNum
+            self?.phoneTextField.becomeFirstResponder()
         }
         self.navigationController?.pushViewController(registerVC, animated: true)
     }
@@ -146,3 +162,53 @@ class LoginViewController: UITableViewController, StoryboardView {
     
 }
 
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return false }
+        let newString = (text as NSString).replacingCharacters(in: range, with: string)
+        textField.text = formattedNumber(number: newString)
+        return false
+    }
+    
+    func formattedNumber(number: String) -> String {
+        let cleanPhoneNumber = number.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        let mask = "XXX XXXX XXXX"
+        
+        var result = ""
+        var index = cleanPhoneNumber.startIndex
+        for ch in mask where index < cleanPhoneNumber.endIndex {
+            if ch == "X" {
+                result.append(cleanPhoneNumber[index])
+                index = cleanPhoneNumber.index(after: index)
+            } else {
+                result.append(ch)
+            }
+        }
+        return result
+    }
+}
+
+extension LoginViewController {
+    
+    @objc func changeEnvironment() {
+        self.showAlert(title: "开发模式", message: "切换开发环境", buttonTitles: ["开发环境", "线上环境", "取消"], highlightedButtonIndex: 2)
+            .subscribe(onNext: { (index) in
+                switch index {
+                case 0:
+                    ServerHost.shared.environment = .dev
+                    HUD.flash(.label("已经切换到开发环境\nAPP即将关闭"), delay: 2, completion: { (_) in
+                        exit(1)
+                    })
+                case 1:
+                    ServerHost.shared.environment = .production
+                    HUD.flash(.label("已经切换到线上环境\nAPP即将关闭"), delay: 2, completion: { (_) in
+                        exit(1)
+                    })
+                case 2:
+                    break
+                default: break
+                }
+            }).disposed(by: rx.disposeBag)
+    }
+}

@@ -12,10 +12,10 @@ import RxCocoa
 
 class HomeControlCell: UITableViewCell {
     
-    @IBOutlet weak var keyButton: UIButton!
-    @IBOutlet weak var fingerButton: UIButton!
-    @IBOutlet weak var cardButton: UIButton!
-    @IBOutlet weak var userButton: UIButton!
+    @IBOutlet weak var housekeeperButton: UIButton!
+    @IBOutlet weak var notiButton: UIButton!
+    @IBOutlet weak var memberButton: UIButton!
+    @IBOutlet weak var pwdButton: UIButton!
     
     private(set) var disposeBag = DisposeBag()
     
@@ -25,18 +25,12 @@ class HomeControlCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.contentView.backgroundColor = ColorClassification.viewBackground.value
-        
-        keyButton.set(image: UIImage(named: "manage_key"), title: "密码管理", titlePosition: .bottom, additionalSpacing: 20, state: UIControl.State())
-        fingerButton.set(image: UIImage(named: "manage_finger"), title: "指纹管理", titlePosition: .bottom, additionalSpacing: 20, state: UIControl.State())
-        cardButton.set(image: UIImage(named: "card_manage"), title: "门卡管理", titlePosition: .bottom, additionalSpacing: 20, state: UIControl.State())
-        userButton.set(image: UIImage(named: "user_manage"), title: "用户管理", titlePosition: .bottom, additionalSpacing: 20, state: UIControl.State())
-        
-        [keyButton, fingerButton, cardButton, userButton].forEach { (btn) in
-            btn?.setTitleColor(ColorClassification.textDescription.value, for: .normal)
+   
+        [housekeeperButton, notiButton, memberButton, pwdButton].forEach { (btn) in
+            btn?.layer.setValue(true, forKey: "continuousCorners")
+            btn?.layer.cornerRadius = 3
+            btn?.layer.borderWidth = 1
+            btn?.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.2)
         }
     }
-    
-    
 }

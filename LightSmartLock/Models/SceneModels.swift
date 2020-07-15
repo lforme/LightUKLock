@@ -10,7 +10,7 @@ import Foundation
 import HandyJSON
 
 enum RoleModel: Int, HandyJSONEnum, CustomStringConvertible {
-    case superAdmin = 0
+    case superAdmin = 1
     case admin
     case member
     
@@ -26,42 +26,53 @@ enum RoleModel: Int, HandyJSONEnum, CustomStringConvertible {
     }
 }
 
-struct UserInSceneModel: HandyJSON {
+
+struct SceneListModel: HandyJSON {
+
+    // 新的
+    var buildingAdress: String?
+    var buildingName: String?
+    var cityId: String?
+    var cityName: String?
+    var isTop: Bool!
+    var ladderAssetHouseId: String?
+    var ladderLockId: String?
+    var lockType: String?
+    var roleType: RoleModel!
+    var unReadMsg: Int!
+    var lockUserAccount: String?
+    var id: String?
+}
+
+class AssetPendingModel: HandyJSON, Hashable {
     
-    var customerID: String!
-    var accountID: String?
-    var sceneID: String!
-    var customerNickName: String?
-    var phone: String?
-    var initialSecret: String?
-    var keyID: String?
-    var headPic: String?
-    var userCode: String?
-    var Label: String?
-    var relationType: RoleModel! // 0 是管理员
-    var pwdNumber: String? // 新添加字段, 服务器也要添加, 蓝牙添加指纹之后返回的编号
+    static func == (lhs: AssetPendingModel, rhs: AssetPendingModel) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.buildingAdress)
+        hasher.combine(self.buildingName)
+        hasher.combine(self.buildingNo)
+        hasher.combine(self.floor)
+        hasher.combine(self.houseNum)
+        hasher.combine(self.isBind)
+        hasher.combine(self.ladderAssetHouseId)
+    }
+    
+    required init() {}
+    
+    var buildingAdress: String?
+    var buildingName: String?
+    var buildingNo: String?
+    var floor: Int?
+    var houseNum: String?
+    var isBind: Bool?
+    var ladderAssetHouseId: String?
 }
 
 
-struct SceneListModel: HandyJSON {
-    
-    var sceneID: String!
-    var sceneName: String?
-    var address: String?
-    var areaCode: String?
-    var accountName: String?
-    var ownerAccountID: String!
-    var createBy: String?
-    var createDate: String?
-    var modifyBy: String?
-    var modifyDate: String?
-    var isDelete: Bool!
-    var sort: Int?
-    var villageName: String?
-    var devNoticeCount: Int?
-    var IsInstallLock: Bool?
-    var lockType: String?
-    var customerLockID: String?
-    var assetsID: String?
-    
+struct IsTopModel: HandyJSON {
+    var isTop: Bool?
+    var id: String?
 }

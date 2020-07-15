@@ -11,24 +11,21 @@ import HandyJSON
 
 struct PositionModel: HandyJSON {
     
-    var accountID: String!
-    var assetsID: String!
-    var assetsName: String?
-    var villageName: String?
-    var villageAddress: String?
-    var area: String?
-    var houseType: String?
-    var towards: String?
-    var doorplate: String?
-    var city: String?
-    var region: String?
-    var regionCode: String?
-    var createDate: String?
-    var createBy: String?
-    var modifyDate: String?
-    var modifyBy: String?
-    var isDelete: Bool!
-    var sceneID: String?
-    var building: String?
-    var unit: String?
+    // 新字段
+    var address: String?
+    var area: Double?
+    var buildingId: String?
+    var buildingName: String?
+    var buildingNo: String?
+    var cityId: String?
+    var cityName: String?
+    var floor: Int?
+    var houseNum: String?
+    var houseStruct: String?
+    var id: String?
+    var isHasBill: Bool!
+    var isHasLock: Bool!
+    var lockId: String?
+    var snCode: String?
+    var configId: String?
 }

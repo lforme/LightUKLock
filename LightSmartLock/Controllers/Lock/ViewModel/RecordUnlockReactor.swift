@@ -10,78 +10,97 @@ import Foundation
 import ReactorKit
 import RxSwift
 import HandyJSON
+import PKHUD
 
 final class RecordUnlockReactor: Reactor {
     
     enum Action {
-        case refreshChange(Int)
-        case loadMore(Int)
+        case filter(Int)
+        case pullToRefresh(Int?)
+        case pullUpLoading(Int?)
     }
     
     struct State {
+        var filterType: Int
         var pageIndex: Int
-        var loadMoreFinished: Bool
         var requestFinished: Bool
-        var recordList: [UnlockRecordModel]
+        var noMoreData: Bool
+        var dataList: [UnlockRecordModel]
     }
     
     enum Mutation {
-        case setRefreshPageIndex(Int)
-        case setLoadMorePageIndex(Int)
-        case setLoadMoreFinished(Bool)
+        case setFilter(Int)
+        case setPullUpLoading(Int)
+        case setPullToRefresh(Int)
         case setRequestFinished(Bool)
-        case setLoadMoreResult([UnlockRecordModel])
-        case setRefreshResult([UnlockRecordModel])
+        case setNoMoreData(Bool)
+        case setRefreshList([UnlockRecordModel])
+        case setLoadList([UnlockRecordModel])
     }
     
     let initialState: State
     
-    private let userCode: String
+    private let lockId: String
+    private let userId: String
     
-    init(userCode: String) {
-        self.userCode = userCode
-        
-        self.initialState = State(pageIndex: 1, loadMoreFinished: false, requestFinished: true, recordList: [])
+    init(lockId: String, userId: String) {
+        self.lockId = lockId
+        self.userId = userId
+        self.initialState = State(filterType: 1, pageIndex: 1, requestFinished: true, noMoreData: false, dataList: [])
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         
         switch action {
-        case let .loadMore(index):
+        case let .filter(type):
+            let share = self.request(pageIndex: 1, filter: type)
+            let list = share.map { res in
+                Mutation.setRefreshList(res)
+            }
+            return Observable.concat([
+                .just(.setFilter(type)),
+                list
+            ])
             
-            if self.currentState.loadMoreFinished {
-                return .just(.setLoadMoreFinished(true))
+        case let .pullToRefresh(pageIndex):
+            guard let index = pageIndex else {
+                return .empty()
+            }
+            let share = self.request(pageIndex: index, filter: self.currentState.filterType)
+            let pageMutation = Observable.just(Mutation.setPullToRefresh(index))
+            let list = share.map {
+                Mutation.setRefreshList($0)
+            }
+            let isFinished = share.map { _ in
+                Mutation.setRequestFinished(true)
+            }
+            return Observable.concat([
+                pageMutation,
+                isFinished,
+                list
+            ])
+            
+        case let .pullUpLoading(pageIndex):
+            guard let index = pageIndex else {
+                return .empty()
+            }
+            let share = self.request(pageIndex: self.currentState.pageIndex, filter: self.currentState.filterType)
+            
+            let pageMutation = Observable.just(Mutation.setPullUpLoading(index))
+            let list = share.map {
+                Mutation.setLoadList($0)
+            }
+            let isFinished = share.map { _ in Mutation.setRequestFinished(true) }
+            let noMore = share.map  {
+                Mutation.setNoMoreData($0.count == 0)
             }
             
-            let request =  BusinessAPI.requestMapJSONArray(.getUnlockLog(userCodes: [self.userCode], beginTime: nil, endTime: nil, index: self.currentState.pageIndex + 1, pageSize: 15), classType: UnlockRecordModel.self, useCache: true).map { $0.compactMap { $0 } }.share(replay: 1, scope: .forever)
-            
             return Observable.concat([
-                .just(.setLoadMorePageIndex(index)),
-                request.map({ (list) -> Mutation in
-                    if list.count == 0 {
-                        return Mutation.setLoadMoreFinished(true)
-                    } else {
-                        return Mutation.setLoadMoreFinished(false)
-                    }
-                }),
-                request.map({ (list) -> Mutation in
-                    return Mutation.setLoadMoreResult(list)
-                }),
-                request.map{ _ in Mutation.setRequestFinished(true) }
+                pageMutation,
+                isFinished,
+                noMore,
+                list
             ])
-            
-        case let .refreshChange(index):
-            let request = BusinessAPI.requestMapJSONArray(.getUnlockLog(userCodes: [self.userCode], beginTime: nil, endTime: nil, index: index, pageSize: 15), classType: UnlockRecordModel.self, useCache: true).map { $0.compactMap { $0 } }.share(replay: 1, scope: .forever)
-            
-            return Observable.concat([
-                .just(.setRefreshPageIndex(index)),
-                .just(.setLoadMoreFinished(false)),
-                request.map({ (list) -> Mutation in
-                    return .setRefreshResult(list)
-                }),
-                request.map{ _ in Mutation.setRequestFinished(true) }
-            ])
-            
         }
     }
     
@@ -89,29 +108,46 @@ final class RecordUnlockReactor: Reactor {
         var state = state
         
         switch mutation {
-        case let .setLoadMoreFinished(finished):
-            state.requestFinished = true
-            state.loadMoreFinished = finished
+        case let .setFilter(type):
+            state.filterType = type
             
-        case let .setLoadMorePageIndex(index):
-            state.pageIndex += index
+        case let .setPullToRefresh(page):
+            state.pageIndex = page
             
-        case let .setRefreshResult(list):
-            state.requestFinished = true
-            state.recordList = list
-            
-        case let .setLoadMoreResult(list):
-            state.requestFinished = true
-            state.recordList += list
-            
-        case let .setRefreshPageIndex(index):
-            state.pageIndex = index
+        case let .setPullUpLoading(page):
+            state.pageIndex += page
             
         case let .setRequestFinished(finished):
             state.requestFinished = finished
+            
+        case let .setNoMoreData(noMore):
+            state.noMoreData = noMore
+            
+        case let .setRefreshList(list):
+            state.dataList = list
+            
+        case let .setLoadList(list):
+            state.dataList += list
+            let sort = Set(state.dataList).sorted { (a, b) -> Bool in
+                let aa = a.openTime?.toInt() ?? 0
+                let bb = b.openTime?.toInt() ?? -1
+                return aa > bb
+            }
+            state.dataList = sort
         }
-        
-        
         return state
+    }
+}
+
+extension RecordUnlockReactor {
+    
+    fileprivate func request(pageIndex: Int, filter: Int) -> Observable<[UnlockRecordModel]> {
+        
+        return BusinessAPI.requestMapJSONArray(.getUnlockRecords(lockId: lockId, type: filter, userId: userId, pageIndex: pageIndex, pageSize: 15), classType: UnlockRecordModel.self, isPaginating: true)
+            .map { $0.compactMap { $0 } }
+            .share(replay: 1, scope: .forever)
+            .do(onError: { (error) in
+                PKHUD.sharedHUD.rx.showError(error)
+            })
     }
 }

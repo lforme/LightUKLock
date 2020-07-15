@@ -15,7 +15,7 @@ import Action
 
 final class TempPasswordViewModel: ListViewModeling {
     
-    typealias Item = SharePwdListModel
+    typealias Item = TempPasswordListModel
     
     enum PasswordType {
         case single
@@ -26,7 +26,7 @@ final class TempPasswordViewModel: ListViewModeling {
         return _refreshStatus.asObservable()
     }
     
-    var list: Observable<[SharePwdListModel]> {
+    var list: Observable<[TempPasswordListModel]> {
         return _list.asObservable()
     }
     
@@ -36,7 +36,7 @@ final class TempPasswordViewModel: ListViewModeling {
     
     let passwordType: PasswordType
     
-    let _list = BehaviorSubject<[SharePwdListModel]>(value: [])
+    let _list = BehaviorSubject<[TempPasswordListModel]>(value: [])
     let _refreshStatus = BehaviorRelay<UKRefreshStatus>(value: .none)
     
     init(type: PasswordType) {
@@ -45,45 +45,49 @@ final class TempPasswordViewModel: ListViewModeling {
     
     func refresh() {
         pageIndex = 1
-        guard let customerId = LSLUser.current().userInScene?.customerID else {
-            HUD.flash(.label("无法从服务器获取用户id, 请稍后再试"), delay: 2)
+        guard let lockId = LSLUser.current().scene?.ladderLockId else {
+            HUD.flash(.label("无法从服务器获取门锁编号, 请稍后再试"), delay: 2)
             return
         }
         
         switch passwordType {
         case .multiple:
-            BusinessAPI.requestMapJSONArray(.getTempKeyShareList(customerID: customerId, pageIndex: pageIndex, pageSize: 15), classType: SharePwdListModel.self, useCache: true).map { (originalValue) -> [SharePwdListModel] in
-                let mutiplePwds = originalValue.filter { $0?.secretType == .some(.multiple) }.compactMap { $0 }
-                return mutiplePwds
-            }.do( onError: {[weak self] (_) in
-                self?._refreshStatus.accept(.endHeaderRefresh)
+            
+            BusinessAPI.requestMapJSONArray(.getTempPasswordList(lockId: lockId, pageIndex: pageIndex, pageSize: 15), classType: TempPasswordListModel.self, isPaginating: true).subscribe(onNext: {[weak self] (originalValue) in
+                let items = originalValue.filter { $0?.type == .some(.multiple) }.compactMap { $0 }
+                self?._list.onNext(items)
+                }, onError: {[weak self] (error) in
+                    self?._list.onError(error)
+                    self?._refreshStatus.accept(.endHeaderRefresh)
                 }, onCompleted: {[weak self] in
                     self?._refreshStatus.accept(.endHeaderRefresh)
-            }).bind(to: _list).disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
             
         case .single:
-            BusinessAPI.requestMapJSONArray(.getTempKeyShareList(customerID: customerId, pageIndex: pageIndex, pageSize: 15), classType: SharePwdListModel.self, useCache: true).map { (originalValue) -> [SharePwdListModel] in
-                let singlePwds = originalValue.filter { $0?.secretType == .some(.single) }.compactMap { $0 }
-                return singlePwds
-            }.do( onError: {[weak self] (_) in
-                self?._refreshStatus.accept(.endHeaderRefresh)
+            BusinessAPI.requestMapJSONArray(.getTempPasswordList(lockId: lockId, pageIndex: pageIndex, pageSize: 15), classType: TempPasswordListModel.self, isPaginating: true).subscribe(onNext: {[weak self] (originalValue) in
+                let items = originalValue.filter { $0?.type == .some(.single) }.compactMap { $0 }
+                self?._list.onNext(items)
+                }, onError: {[weak self] (error) in
+                    self?._list.onError(error)
+                    self?._refreshStatus.accept(.endHeaderRefresh)
                 }, onCompleted: {[weak self] in
                     self?._refreshStatus.accept(.endHeaderRefresh)
-            }).bind(to: _list).disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
+            
         }
     }
     
     func loadMore() {
         pageIndex += 1
-        guard let customerId = LSLUser.current().userInScene?.customerID else {
-            HUD.flash(.label("无法从服务器获取用户id, 请稍后再试"), delay: 2)
+        guard let lockId = LSLUser.current().scene?.ladderLockId else {
+            HUD.flash(.label("无法从服务器获取门锁编号, 请稍后再试"), delay: 2)
             return
         }
         
         switch passwordType {
         case .multiple:
-            BusinessAPI.requestMapJSONArray(.getTempKeyShareList(customerID: customerId, pageIndex: pageIndex, pageSize: 15), classType: SharePwdListModel.self, useCache: true).map { (originalValue) -> [SharePwdListModel] in
-                let mutiplePwds = originalValue.filter { $0?.secretType == .some(.multiple) }.compactMap { $0 }
+            BusinessAPI.requestMapJSONArray(.getTempPasswordList(lockId: lockId, pageIndex: pageIndex, pageSize: 15), classType: TempPasswordListModel.self).map { (originalValue) -> [TempPasswordListModel] in
+                let mutiplePwds = originalValue.filter { $0?.type == .some(.multiple) }.compactMap { $0 }
                 return mutiplePwds
             }.subscribe(onNext: {[weak self] (models) in
                 guard let this = self else { return }
@@ -100,9 +104,9 @@ final class TempPasswordViewModel: ListViewModeling {
             
             
         case .single:
-            BusinessAPI.requestMapJSONArray(.getTempKeyShareList(customerID: customerId, pageIndex: pageIndex, pageSize: 15), classType: SharePwdListModel.self, useCache: true).map { (originalValue) -> [SharePwdListModel] in
-                let singlePwds = originalValue.filter { $0?.secretType == .some(.single) }.compactMap { $0 }
-                return singlePwds
+            BusinessAPI.requestMapJSONArray(.getTempPasswordList(lockId: lockId, pageIndex: pageIndex, pageSize: 15), classType: TempPasswordListModel.self).map { (originalValue) -> [TempPasswordListModel] in
+                let mutiplePwds = originalValue.filter { $0?.type == .some(.single) }.compactMap { $0 }
+                return mutiplePwds
             }.subscribe(onNext: {[weak self] (models) in
                 guard let this = self else { return }
                 this._refreshStatus.accept(.endFooterRefresh)
@@ -118,19 +122,18 @@ final class TempPasswordViewModel: ListViewModeling {
         }
     }
     
-    func showLogView(_ model: SharePwdListModel) {
-        BusinessAPI.requestMapJSONArray(.getTempKeyShareLog(shareID: model.shareID), classType: SharePwdLogListModel.self, useCache: true).map { $0.compactMap { $0 } }.flatMapLatest { (models) -> Observable<Void> in
+    func showLogView(_ model: Item) {
+        guard let id = model.id else {
+            HUD.flash(.label("无法从服务器获取Id, 请稍后再试"), delay: 2)
+            return
+        }
+        BusinessAPI.requestMapJSON(.getTempPasswordLog(id: id), classType: TempPasswordRecordLog.self).subscribe(onNext: {[weak self] (logs) in
             
-            return Observable<Void>.create {[weak self] (observer) -> Disposable in
-                
-                self?.setupPopLogView(model: model, dataSource: models)
-                observer.onCompleted()
-                return Disposables.create()
-            }
-        }.subscribe().disposed(by: disposeBag)
+            self?.setupPopLogView(model: logs, id: model.id ?? "")
+        }).disposed(by: disposeBag)
     }
     
-    private func setupPopLogView(model: SharePwdListModel, dataSource: [SharePwdLogListModel]) {
+    private func setupPopLogView(model: TempPasswordRecordLog, id: String) {
         var attributes = EKAttributes()
         attributes.name = "临时密码分享记录"
         attributes.windowLevel = .alerts
@@ -179,7 +182,7 @@ final class TempPasswordViewModel: ListViewModeling {
                 view.kind = .single
             }
             
-            view.dataSource = dataSource
+            view.dataSource = model.ladderTmpPasswordStatusVOList ?? []
             view.updateListModel(model)
             
             view.closedButton.rx.tap.subscribe(onNext: { (_) in
@@ -187,7 +190,7 @@ final class TempPasswordViewModel: ListViewModeling {
             }).disposed(by: view.rx.disposeBag)
             
             let undoAction = CocoaAction(workFactory: { (_) -> Observable<Void> in
-                return BusinessAPI.requestMapBool(.retractTempKeyShare(shareID: model.shareID)).flatMapLatest { (_) -> Observable<Void> in
+                return BusinessAPI.requestMapBool(.undoTempPassword(id: id)).flatMapLatest { (_) -> Observable<Void> in
                     return .just(())
                 }
             })

@@ -57,29 +57,24 @@ final class LoginViewReactor: Reactor {
             return .just(.setShowPassword(show))
             
         case .login:
+            let p = self.currentState.phone.replacingOccurrences(of: " ", with: "")
+            
+            let getUser = AuthAPI.requestMapJSON(.login(userName: p, password: self.currentState.password), classType: AccessTokenModel.self).flatMapLatest { token -> Observable<UserModel> in
+                
+                LSLUser.current().token = token
+                LSLUser.current().refreshToken = token
+                
+                return BusinessAPI.requestMapJSON(.user, classType: UserModel.self)
+            }
+            
             return Observable.concat([
                 Observable.just(Mutation.setLoginResult(nil, nil)),
-                AuthAPI.requestMapJSON(.login(userName: self.currentState.phone, password: self.currentState.password), classType: UserModel.self)
-                    .flatMapLatest({ (user) -> Observable<AccessTokenModel?> in
-                        
-                    guard let userName = user.userLoginName, let pwd = user.loginPassword else {
-                        throw AppError.reason("登录失败")
+                getUser.map({ (user) -> Mutation in
+                    if user.id == nil {
+                        return Mutation.setLoginResult(false, AppError.reason("无法获取用户信息"))
                     }
-                    
+                    LSLUser.current().isFirstLogin = true
                     LSLUser.current().user = user
-                    
-                        return AuthAPI.requestMapAny(.userToken(userName: userName, pwd: pwd)).map { (dict) -> AccessTokenModel? in
-                            let json = dict as? [String: Any]
-                            let token = AccessTokenModel.deserialize(from: json)
-                            return token
-                        }
-                        
-                }).map({ (token) -> Mutation in
-                    if token?.access_token == nil {
-                        return Mutation.setLoginResult(false, AppError.reason("无法获取登录令牌"))
-                    }
-                    LSLUser.current().token = token
-                    LSLUser.current().refreshToken = token
                     return Mutation.setLoginResult(true, nil)
                 }).catchError({ (error) -> Observable<Mutation> in
                     if let e = error as? AppError {
@@ -102,7 +97,7 @@ final class LoginViewReactor: Reactor {
             state.password = pwd
             state.loginResult = nil
             state.loginError = nil
-    
+            
         case let .setLoginResult(result, error):
             state.loginError = error
             state.loginResult = result

@@ -78,4 +78,24 @@ extension UIButton {
             contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: spacing / 2)
         }
     }
+    
+    func setUrl(_ string: String?) {
+        
+        guard let str = string, str.isNotEmpty else {
+            return
+        }
+        
+        if str.hasPrefix("https") {
+            guard let urlString = str.encodeUrl() else {
+                return
+            }
+            self.kf.setImage(with: URL(string: urlString), for: UIControl.State())
+        } else {
+            guard let urlString = (ServerHost.shared.environment.host + str).encodeUrl() else {
+                return
+            }
+            self.kf.setImage(with: URL(string: urlString), for: UIControl.State())
+        }
+        
+    }
 }

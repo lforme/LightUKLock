@@ -11,6 +11,7 @@ target 'LightSmartLock' do
   pod 'Action'
   pod 'Moya/RxSwift'
   pod 'NSObject+Rx'
+  pod 'RxOptional'
   
   # 架构
   pod 'ReactorKit'
@@ -25,6 +26,7 @@ target 'LightSmartLock' do
   pod 'CryptoSwift'
   pod 'ReachabilitySwift'
   pod 'SnapKit'
+  pod 'DeviceKit', '~> 2.0'
   
   # UI 组件
   pod 'UITextView+Placeholder'
@@ -38,12 +40,28 @@ target 'LightSmartLock' do
   pod 'Kingfisher'
   pod 'ChameleonFramework'
   pod 'PKHUD'
-  pod 'ESTabBarController-swift'
   pod 'LTMorphingLabel'
   pod 'CBPinEntryView'
+  pod 'Popover'
+  pod 'Reusable'
+  pod "Popover"
+  pod 'IGListKit'
+  pod 'AloeStackView'
+  pod 'EFQRCode'
+  pod 'GradientProgressBar'
+  pod 'Floaty', '~> 4.2.0'
+  pod 'BetterSegmentedControl', '~> 1.3'
+  pod 'Charts'
   
   # 动画
   pod 'lottie-ios'
+  
+  # 推送
+  pod 'JPush', '3.2.4-noidfa'
+  
+  # 分享
+  pod 'mob_sharesdk/ShareSDKPlatforms/WeChat_Lite'
+  pod 'mob_sharesdk/ShareSDKPlatforms/QQ_Lite'
   
 end
 

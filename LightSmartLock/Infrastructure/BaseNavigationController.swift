@@ -8,7 +8,9 @@
 
 import UIKit
 
-class BaseNavigationController: UINavigationController {
+class BaseNavigationController: UINavigationController, UINavigationControllerDelegate {
+    
+    lazy var _navigationDelegate = MyVCNavigationControllerDelegate()
     
     var clearBackTitle: Bool = true
     
@@ -83,6 +85,8 @@ class BaseNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         commonInit()
+        
+        self.delegate = _navigationDelegate
     }
     
 }
@@ -119,6 +123,9 @@ extension BaseNavigationController {
     }
     
     fileprivate func setNavigationStyle(_ style: NavigationSettingStyle) {
+        
+        navigationBar.prefersLargeTitles = style.isLargeTitle
+        
         if let bgColor = style.backgroundColor {
             if #available(iOS 13.0, *) {
                 navBarAppearance.backgroundColor = bgColor
@@ -156,19 +163,23 @@ extension BaseNavigationController {
         if clearBackTitle {
             
             let button = UIButton(type: .custom)
-            let image = UIImage(named: "back_arrow")
+            let image = UIImage(named: "back_arrow")?.withRenderingMode(.alwaysTemplate)
             button.setImage(image, for: UIControl.State())
             button.sizeToFit()
-            button.contentHorizontalAlignment = .center
-            vc.navigationItem.backBarButtonItem = UIBarButtonItem(customView: button)
-            
+            button.contentHorizontalAlignment = .left
+            vc.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+            button.addTarget(self, action: #selector(popToPreviousVC), for: .touchUpInside)
             guard let style = vc as? NavigationSettingStyle, let naviBkColor = style.backgroundColor else {
                 return
             }
             guard let color = UIColor(contrastingBlackOrWhiteColorOn: naviBkColor, isFlat: true) else { return }
-            vc.navigationItem.backBarButtonItem?.tintColor = color
+            button.tintColor = color
             
         }
+    }
+    
+    @objc func popToPreviousVC() {
+        let _ = self.popViewController(animated: true)
     }
 }
 

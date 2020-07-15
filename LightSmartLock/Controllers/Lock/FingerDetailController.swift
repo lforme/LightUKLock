@@ -23,10 +23,11 @@ class FingerDetailController: UITableViewController {
     @IBOutlet weak var emergencyTextField: UITextField!
     var saveButton: UIButton!
     
-    var fingerModel: FingerModel!
+    var fingerModel: OpenLockInfoModel.Finger!
     var vm: FingerDetailViewModel!
     
     deinit {
+        HUD.hide()
         print("\(self) deinit")
     }
     
@@ -41,15 +42,15 @@ class FingerDetailController: UITableViewController {
     
     func bind() {
         
-        fingerLabel.text = fingerModel.mark
-        emergencyTextField.text = fingerModel.remindPhone
-        if fingerModel.keyType == 201 {
+        fingerLabel.text = fingerModel.name
+        emergencyTextField.text = fingerModel.phone
+        if fingerModel.phone.isNotNilNotEmpty {
             forceSwitch.isOn = true
         } else {
             forceSwitch.isOn = false
         }
         
-        guard let id = fingerModel.keyID, let keyNum = fingerModel.keyNum else {
+        guard let id = fingerModel.id, let keyNum = fingerModel.keyNum else {
             HUD.flash(.label("无法从服务器获取指纹编号, 请稍后再试"), delay: 2)
             return
         }
@@ -69,9 +70,10 @@ class FingerDetailController: UITableViewController {
             PKHUD.sharedHUD.rx.showActionError(error)
         }).disposed(by: rx.disposeBag)
         
-        vm.saveAction.elements.subscribe(onNext: { (success) in
+        vm.saveAction.elements.subscribe(onNext: {[weak self] (success) in
             if success {
                 HUD.flash(.label("成功"), delay: 2)
+                self?.navigationController?.popViewController(animated: true)
             } else {
                 HUD.flash(.label("失败"), delay: 2)
             }
@@ -87,7 +89,7 @@ class FingerDetailController: UITableViewController {
     }
     
     func setupNavigationRightItem() {
-        self.saveButton = createdRightNavigationItem(title: "保存", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 4, color: ColorClassification.primary.value)
+        self.saveButton = createdRightNavigationItem(title: "保存", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 4, color: .white)
     }
     
     func setupUI() {
@@ -118,14 +120,19 @@ class FingerDetailController: UITableViewController {
         switch type {
         case .changeName:
             
-            SingleInputController.rx.present(wiht: "设置指纹名称", saveTitle: "保存", placeholder: fingerModel.mark).flatMapLatest (self.vm.setFingerName).subscribe(onNext: { (success) in
+            SingleInputController.rx.present(wiht: "设置指纹名称", saveTitle: "保存", placeholder: fingerModel.name).flatMapLatest (self.vm.setFingerName).subscribe(onNext: {[weak self] (success) in
                 if success {
                     HUD.flash(.label("修改成功"), delay: 2)
                 } else {
                     HUD.flash(.label("修改失败"), delay: 2)
                 }
-            }, onError: { (error) in
-                PKHUD.sharedHUD.rx.showError(error)
+    
+                self?.navigationController?.popViewController(animated: true)
+                
+                }, onError: {[weak self] (error) in
+                    PKHUD.sharedHUD.rx.showError(error)
+                    self?.navigationController?.popViewController(animated: true)
+                    
             }).disposed(by: rx.disposeBag)
             
         case .delete:
@@ -133,15 +140,16 @@ class FingerDetailController: UITableViewController {
             
             share.bind(to: vm.isRemote).disposed(by: rx.disposeBag)
             
-            share.delay(1, scheduler: MainScheduler.instance).flatMapLatest {[unowned self] _ in self.vm.deleteFinger() }.subscribe(onNext: {[weak self] (success) in
+            share.delay(.seconds(1), scheduler: MainScheduler.instance).flatMapLatest {[unowned self] _ in self.vm.deleteFinger() }.subscribe(onNext: {[weak self] (success) in
                 if success {
                     HUD.flash(.label("删除成功"), delay: 2)
+                    
                     self?.navigationController?.popViewController(animated: true)
                 } else {
                     HUD.flash(.label("删除失败"), delay: 2)
                 }
-            }, onError: { (error) in
-                PKHUD.sharedHUD.rx.showError(error)
+                }, onError: { (error) in
+                    PKHUD.sharedHUD.rx.showError(error)
             }).disposed(by: rx.disposeBag)
             
         }

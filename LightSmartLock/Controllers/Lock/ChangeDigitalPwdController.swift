@@ -40,7 +40,7 @@ class ChangeDigitalPwdController: UITableViewController, NavigationSettingStyle 
     }
     
     func setupNavigationRightItem() {
-        saveButton = createdRightNavigationItem(title: "完成", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 12, color: ColorClassification.primary.value)
+        saveButton = createdRightNavigationItem(title: "完成", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 12, color: .white)
     }
     
     func setupUI() {
@@ -68,7 +68,7 @@ class ChangeDigitalPwdController: UITableViewController, NavigationSettingStyle 
             }
         }).disposed(by: rx.disposeBag)
         
-        Popups.showSelect(title: "选择修改方式", indexTitleOne: "现场修改", IndexTitleTwo: "远程修改", contentA: "请在门锁附近(2-3米内)打开手机蓝牙修改，修改完成后密码立即生效", contentB: "请在网络信号通畅的地方修改，远程修改密码需云端同步到门锁，可能会存在信号延迟，请稍后在数字密码中查看密码状态").delaySubscription(1, scheduler: MainScheduler.instance).map { (index) -> DigitalChangePwdViewModel.ModifyType in
+        Popups.showSelect(title: "选择修改方式", indexTitleOne: "现场修改", IndexTitleTwo: "远程修改", contentA: "请在门锁附近(2-3米内)打开手机蓝牙修改，修改完成后密码立即生效", contentB: "请在网络信号通畅的地方修改，远程修改密码需云端同步到门锁，可能会存在信号延迟，请稍后在数字密码中查看密码状态").delaySubscription(.seconds(1), scheduler: MainScheduler.instance).map { (index) -> DigitalChangePwdViewModel.ModifyType in
             return DigitalChangePwdViewModel.ModifyType(rawValue: index)!
         }.bind(to: vm.modifyType).disposed(by: rx.disposeBag)
         

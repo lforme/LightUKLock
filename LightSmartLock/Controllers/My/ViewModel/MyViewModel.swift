@@ -12,21 +12,8 @@ import RxCocoa
 import Action
 import PKHUD
 
-protocol MyViewModeling {
-    
-    var sceneList: Observable<[SceneListModel]> { get }
-    var requestFinished: Observable<Bool> { get }
-    var nomore: Observable<Bool> { get }
 
-    func refresh()
-    func loadMore()
-}
-
-final class MyViewModel: MyViewModeling {
-    
-    var nomore: Observable<Bool> {
-        return self._nomore.asObservable()
-    }
+final class MyViewModel {
     
     var requestFinished: Observable<Bool> {
         return self._requestFinished.asObservable()
@@ -36,38 +23,74 @@ final class MyViewModel: MyViewModeling {
         return self._list.asObservable()
     }
     
-    private let _list = BehaviorRelay<[SceneListModel]>(value: [])
+    let configuredList = BehaviorRelay<[BindLockListModel]>(value: [])
+    
+    private let _list = BehaviorSubject<[SceneListModel]>(value: [])
     private let _requestFinished = BehaviorRelay<Bool>(value: false)
-    private let _nomore = BehaviorRelay<Bool>(value: false)
-    private var pageIndex = 1
-    private let disposeBag: DisposeBag = DisposeBag()
+    private var disposeBag: DisposeBag = DisposeBag()
     
-    init() {}
-    
-    func refresh() {
-        pageIndex = 1
-        BusinessAPI.requestMapJSONArray(.getCustomerSceneList(pageIndex: pageIndex, pageSize: 15, Sort: 1), classType: SceneListModel.self, useCache: true).map  { $0.compactMap { $0 } }.subscribe(onNext: {[weak self] (models) in
-            self?._list.accept(models)
-            self?._requestFinished.accept(true)
-            }, onError: {[weak self] (error) in
-                PKHUD.sharedHUD.rx.showError(error)
-                self?._requestFinished.accept(true)
-        }).disposed(by: disposeBag)
+    init() {
+        
+        checkConfigLockList()
     }
     
-    func loadMore() {
-        pageIndex += 1
-        BusinessAPI.requestMapJSONArray(.getCustomerSceneList(pageIndex: pageIndex, pageSize: 15, Sort: 1), classType: SceneListModel.self, useCache: true).map  { $0.compactMap { $0 } }.subscribe(onNext: {[weak self] (models) in
-            guard let this = self else { return }
-            if models.count != 0 {
-                this._list.accept(this._list.value + models)
-            } else {
-                this._nomore.accept(true)
-            }
-            this._requestFinished.accept(true)
-            }, onError: {[weak self] (error) in
-                PKHUD.sharedHUD.rx.showError(error)
+    func checkConfigLockList() {
+        if let phone = LSLUser.current().user?.phone {
+            BusinessAPI.requestMapJSONArray(.hardwareBindList(channels: "01", pageSize: 100, pageIndex: 1, phoneNo: phone), classType: BindLockListModel.self, useCache: false, isPaginating: true)
+                .map { $0.compactMap { $0 } }.catchErrorJustReturn([])
+                .bind(to: configuredList)
+                .disposed(by: disposeBag)
+        }
+    }
+    
+    func refresh() {
+        self.disposeBag = DisposeBag()
+        BusinessAPI.requestMapJSONArray(.getHouses, classType: SceneListModel.self, useCache: true)
+            .map { $0.compactMap { $0 } }
+            .subscribe(onNext: {[weak self] (list) in
+                let filterArray = list.filter { $0.isTop }
+                self?._list.onNext(filterArray)
+                }, onError: { (error) in
+                    PKHUD.sharedHUD.rx.showError(error)
+            }, onCompleted: {[weak self] in
                 self?._requestFinished.accept(true)
-        }).disposed(by: disposeBag)
+            })
+            .disposed(by: self.disposeBag)
+    }
+    
+    func cellBackgroundColor(_ row: Int) -> UIColor {
+        switch row {
+        case 0:
+            return #colorLiteral(red: 0.2509803922, green: 0.5450980392, blue: 0.9215686275, alpha: 1)
+        case 1:
+            return #colorLiteral(red: 0.3215686275, green: 0.5843137255, blue: 0.9254901961, alpha: 1)
+        case 2:
+            return #colorLiteral(red: 0.3960784314, green: 0.631372549, blue: 0.9333333333, alpha: 1)
+        case 3:
+            return #colorLiteral(red: 0.4666666667, green: 0.6705882353, blue: 0.937254902, alpha: 1)
+        case 4:
+            return #colorLiteral(red: 0.5411764706, green: 0.7176470588, blue: 0.9450980392, alpha: 1)
+        default:
+            return #colorLiteral(red: 0.2509803922, green: 0.5450980392, blue: 0.9215686275, alpha: 1)
+        }
+    }
+    
+    func cellBackgroundLastColor(_ row: Int) -> UIColor {
+        switch row {
+        case 0:
+            return .clear
+        case 1:
+            return #colorLiteral(red: 0.2509803922, green: 0.5450980392, blue: 0.9215686275, alpha: 1)
+        case 2:
+            return #colorLiteral(red: 0.3215686275, green: 0.5843137255, blue: 0.9254901961, alpha: 1)
+        case 3:
+            return #colorLiteral(red: 0.3960784314, green: 0.631372549, blue: 0.9333333333, alpha: 1)
+        case 4:
+            return #colorLiteral(red: 0.4666666667, green: 0.6705882353, blue: 0.937254902, alpha: 1)
+        case 5:
+            return #colorLiteral(red: 0.5411764706, green: 0.7176470588, blue: 0.9450980392, alpha: 1)
+        default:
+            return #colorLiteral(red: 0.2509803922, green: 0.5450980392, blue: 0.9215686275, alpha: 1)
+        }
     }
 }

@@ -15,18 +15,18 @@ enum NetworkingEnvironment: Int, CustomStringConvertible, CaseIterable {
     var description: String {
         switch self {
         case .dev:
-            return "开发环境 v\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "v1.0")"
+            return "v\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "v1.0") d"
         case .production:
-            return "v\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "v1.0")"
+            return "v\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "v1.0") p"
         }
     }
     
     var host: String {
         switch self {
         case .dev:
-            return "http://appapi.jinriwulian.com/"
+            return "http://test.uokohome.com:19999"
         case .production:
-            return "http://appapi.jinriwulian.com/"
+            return "https://ladder.uokohome.com:19999"
         }
     }
     

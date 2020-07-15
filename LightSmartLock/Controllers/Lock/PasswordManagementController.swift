@@ -12,7 +12,6 @@ import SwiftDate
 class PasswordManagementController: UITableViewController, NavigationSettingStyle {
     
     enum SelectType: Int {
-        case longtime = 0
         case multiple
         case temporary
     }
@@ -21,7 +20,6 @@ class PasswordManagementController: UITableViewController, NavigationSettingStyl
         return ColorClassification.navigationBackground.value
     }
     
-    @IBOutlet weak var longPwdDes: UILabel!
     @IBOutlet weak var multiplePwdDes: UILabel!
     @IBOutlet weak var tempPwdDes: UILabel!
     
@@ -38,26 +36,6 @@ class PasswordManagementController: UITableViewController, NavigationSettingStyl
         self.clearsSelectionOnViewWillAppear = true
         
         setupUI()
-        bind()
-    }
-    
-    func bind() {
-        vm.digitalPwdDisplay.subscribe(onNext: {[weak self] (model) in
-            
-            guard var password = model?.keySecret, password.count == 6 else {
-                return
-            }
-            let index = password.index(password.startIndex, offsetBy: 3)
-            password.insert(contentsOf: "--", at: index)
-            password = password.replacingOccurrences(of: "--", with: " ")
-            
-            guard let time = model?.beginTime?.toDate() else {
-                return
-            }
-            let useDay = time.date.getInterval(toDate: Date(), component: .day)
-            self?.longPwdDes.text = "\(password)  密码已使用\(useDay)天"
-            
-            }).disposed(by: rx.disposeBag)
     }
     
     func setupUI() {
@@ -78,10 +56,6 @@ class PasswordManagementController: UITableViewController, NavigationSettingStyl
         }
         
         switch type {
-        case .longtime:
-            let digitalPwdVC: DigitalPwdDetailController = ViewLoader.Storyboard.controller(from: "Home")
-            digitalPwdVC.vm = self.vm
-            navigationController?.pushViewController(digitalPwdVC, animated: true)
             
         case .multiple:
             let multipleTempPwdVC: MultipleTempPasswordController = ViewLoader.Storyboard.controller(from: "Home")
@@ -90,7 +64,7 @@ class PasswordManagementController: UITableViewController, NavigationSettingStyl
         case .temporary:
             let temporayTempPwdVC: SingleTempPasswordController = ViewLoader.Storyboard.controller(from: "Home")
             navigationController?.pushViewController(temporayTempPwdVC, animated: true)
-     
+            
         }
     }
 }

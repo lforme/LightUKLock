@@ -11,30 +11,46 @@ import SwiftDate
 import Kingfisher
 
 class UnlockRecordCell: UITableViewCell {
-
+    
+    @IBOutlet weak var timeLabelWidth: NSLayoutConstraint!
     @IBOutlet weak var nickname: UILabel!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var unlockType: UILabel!
     @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var lockWayIcon: UIImageView!
+    @IBOutlet weak var topLine: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.contentView.backgroundColor = ColorClassification.tableViewBackground.value
-        nickname.textColor = ColorClassification.textPrimary.value
-        time.textColor = ColorClassification.textDescription.value
-        unlockType.textColor = ColorClassification.textDescription.value
-        
-        avatar.clipsToBounds = true
+        self.selectionStyle = .none
         avatar.layer.cornerRadius = avatar.bounds.width / 2
     }
-
-    func bind(_ data: UnlockRecordModel) {
-        self.nickname.text = data.customerNickName
-        self.time.text = data.UnlockTime.toDate()?.toString(.custom("MM / dd  HH:mm"))
-        if let headerPicURL = data.headPic?.encodeUrl() {
-            self.avatar.kf.setImage(with: URL(string: headerPicURL))
+    
+    func bind(_ data: UnlockRecordModel, filterType: Int) {
+        self.nickname.text = data.userName
+        
+        self.time.text = data.openTime?.toDate()?.toFormat("HH:mm")
+        
+        switch data.openTypeCode {
+        case 1:
+            self.lockWayIcon.image = UIImage(named: "home_lock_way_num")
+            
+        case 2, 201:
+            self.lockWayIcon.image = UIImage(named: "home_lock_way_finger")
+            
+        case 3, 4:
+            self.lockWayIcon.image = UIImage(named: "home_lock_way_card")
+        case 5:
+            self.lockWayIcon.image = UIImage(named: "home_lock_way_temp")
+        case 6:
+            self.lockWayIcon.image = UIImage(named: "home_lock_way_ble")
+            
+        default:
+            break
         }
-        self.unlockType.text = data.KeyType.description
+        let openWay = data.openType ?? ""
+        self.unlockType.text = "\(openWay)解锁"
+        self.avatar.setUrl(data.avatar)
     }
 }
+

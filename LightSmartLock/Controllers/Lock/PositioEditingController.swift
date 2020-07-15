@@ -21,7 +21,6 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
         case name = 0
         case area
         case houseType
-        case towards
         case buildingNumber
     }
     
@@ -32,7 +31,8 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
     @IBOutlet weak var buildingNumber: UILabel!
     
     var navigationRightButton: UIButton!
-    let vm: PositionViewModel = PositionViewModel()
+    var vm: PositionViewModel!
+    var id: String?
     
     deinit {
         print("\(self) deinit")
@@ -42,6 +42,9 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
         super.viewDidLoad()
         
         self.title = "安装位置"
+        
+        self.vm = PositionViewModel(id: id)
+        
         setupUI()
         bind()
         setupNavigationRightItem()
@@ -49,26 +52,25 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
     }
     
     func bind() {
+        
+        self.vm.obPositionModel.map { String($0?.area ?? 0) }.bind(to: self.areaTextfield.rx.text).disposed(by: rx.disposeBag)
+        
         self.vm.defaultPositionModel.subscribe(onNext: {[weak self] (defaultModel) in
-            self?.plotName.text = defaultModel?.villageName
-            self?.areaTextfield.text = defaultModel?.area
-            self?.houseType.text = defaultModel?.houseType
-            self?.towardLabel.text = defaultModel?.towards
+            
+            self?.plotName.text = defaultModel?.buildingName
+            self?.houseType.text = defaultModel?.houseStruct
             
             var building = ""
-            if let b = defaultModel?.building, !b.isEmpty {
+            if let b = defaultModel?.buildingNo, !b.isEmpty {
                 building += b
-                building += "栋"
             }
             
-            if let n = defaultModel?.unit, !n.isEmpty {
+            if let n = defaultModel?.houseNum, !n.isEmpty {
                 building += n
-                building += "单元"
             }
             
-            if let p = defaultModel?.doorplate, !p.isEmpty {
+            if let p = defaultModel?.floor?.description, !p.isEmpty {
                 building += p
-                building += "号"
             }
             self?.buildingNumber.text = building
             
@@ -77,15 +79,17 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
         }).disposed(by: rx.disposeBag)
         
         areaTextfield.rx.text.orEmpty.changed.bind(to: vm.obArea).disposed(by: rx.disposeBag)
+        
     }
     
     func setupUI() {
         tableView.tableFooterView = UIView()
+        areaTextfield.clearsOnBeginEditing = true
     }
     
     func setupNavigationRightItem() {
         
-        self.navigationRightButton = self.createdRightNavigationItem(title: "", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 0, color: ColorClassification.primary.value)
+        self.navigationRightButton = self.createdRightNavigationItem(title: "", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 0, color: .white)
         self.navigationRightButton.contentHorizontalAlignment = .trailing
         self.navigationRightButton.addTarget(self, action: #selector(self.doneActionTap), for: .touchUpInside)
         
@@ -130,10 +134,12 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
                 BluetoothPapa.shareInstance.reboot { (_) in
                     // 写入门锁
                 }
+                
                 HUD.flash(.label("操作成功"), delay: 2)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     this.navigationController?.popToRootViewController(animated: true)
                 }
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.editLock)
             }
             }, onError: { (error) in
                 PKHUD.sharedHUD.rx.showError(error)
@@ -179,24 +185,13 @@ class PositioEditingController: UITableViewController, NavigationSettingStyle {
                 self?.vm.setupHouseType(houseType)
             }).disposed(by: rx.disposeBag)
             
-            
-        case .towards:
-            let towards = PositionViewModel.Config.towards
-            DataPickerController.rx.present(with: "选择朝向", items: [towards]).subscribe(onNext: {[weak self] (result) in
-                let towardsStr = result.compactMap({ (r) -> String? in
-                    return r.value
-                }).reduce("", { (next, acc) -> String in
-                    return next + acc
-                })
-                self?.vm.setupTowards(towardsStr)
-            }).disposed(by: rx.disposeBag)
-            
         case .buildingNumber:
             let setBuildingNumberVC: SetBuildingNumberController = ViewLoader.Storyboard.controller(from: "Home")
             setBuildingNumberVC.fetchCallback {[weak self] (building, unit, doorplate) in
                 self?.vm.setupBuildingInfo(building, uniti: unit, doorPlate: doorplate)
             }
             navigationController?.pushViewController(setBuildingNumberVC, animated: true)
+            
         }
     }
     

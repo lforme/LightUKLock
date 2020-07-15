@@ -16,10 +16,10 @@ class LockSettingController: UITableViewController {
     
     enum SelectType: Int {
         case sound = 0
-        case firmwareUpdate
+        case firmwareUpdate = 1
+        case reset = 10
     }
     
-    @IBOutlet weak var networkSwitch: UISwitch!
     @IBOutlet weak var deleteButton: UIButton!
     
     let vm = LockSettingViewModel()
@@ -31,14 +31,14 @@ class LockSettingController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "门锁设置"
+        title = "设备设置"
         self.clearsSelectionOnViewWillAppear = true
         setupUI()
         bind()
     }
     
     func bind() {
-        HUD.show(.label("正在连接蓝牙门锁..."))
+        
         self.vm.startConnected.subscribe(onNext: { (isConnected) in
             if isConnected {
                 HUD.flash(.label("连接成功"), delay: 2)
@@ -55,19 +55,20 @@ class LockSettingController: UITableViewController {
             return this.vm.deleteLock(buttonIndex)
         }.subscribe(onNext: {[weak self] (success) in
             if success {
-                self?.navigationController?.popViewController(animated: true)
-                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.deleteLock)
+                self?.navigationController?.popToRootViewController(animated: true)
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.editLock)
                 var updateValue = LSLUser.current().scene
-                updateValue?.IsInstallLock = false
+                updateValue?.ladderLockId = nil
                 LSLUser.current().scene = updateValue
                 LSLUser.current().lockInfo = nil
                 
             } else {
                 HUD.flash(.label("删除门锁失败"), delay: 2)
             }
-        }, onError: { (error) in
-            PKHUD.sharedHUD.rx.showError(error)
+            }, onError: { (error) in
+                PKHUD.sharedHUD.rx.showError(error)
         }).disposed(by: rx.disposeBag)
+        
     }
     
     func setupUI() {
@@ -79,7 +80,11 @@ class LockSettingController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 8
+        if section == 2 {
+            return 20
+        } else {
+         return 8
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -92,9 +97,14 @@ class LockSettingController: UITableViewController {
             let soundVC: SoundSettingController = ViewLoader.Storyboard.controller(from: "Home")
             soundVC.vm = self.vm
             navigationController?.pushViewController(soundVC, animated: true)
-        
+            
         case .firmwareUpdate:
             HUD.flash(.label("已是最新版本"), delay: 2)
+            
+        case .reset:
+            let resetVC: ResetLockController = ViewLoader.Storyboard.controller(from: "Home")
+            resetVC.vm = self.vm
+            navigationController?.pushViewController(resetVC, animated: true)
         }
     }
 }

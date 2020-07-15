@@ -27,7 +27,9 @@ final class PositionViewModel {
         return Observable.merge(obPositionModel.asObservable(), _obPositionModel.asObservable())
     }
     
-    private let obPositionModel = BehaviorSubject<PositionModel?>(value: nil)
+    var id: String?
+    
+    let obPositionModel = BehaviorSubject<PositionModel?>(value: nil)
     private let obButtonType = BehaviorRelay<ButtonType>(value: .save)
     private let obVillageName = BehaviorRelay<String?>(value: nil)
     let obArea = BehaviorRelay<String?>(value: nil)
@@ -42,29 +44,30 @@ final class PositionViewModel {
     private let _obPositionModel = BehaviorRelay<PositionModel?>(value: nil)
     private var disposeBag = DisposeBag()
     
-    init() {
+    init(id: String?) {
+        self.id = id
         
-        let shareReq = BusinessAPI.requestMapJSON(.getSceneAssets, classType: PositionModel.self, useCache: true).share(replay: 1, scope: .forever)
+        let getAssetHouseDetail = BusinessAPI.requestMapJSON(.getAssetHouseDetail(id: self.id ?? ""), classType: PositionModel.self).share(replay: 1, scope: .forever).catchErrorJustReturn(PositionModel())
         
-        Observable.combineLatest(obVillageName.asObservable(), obArea.asObservable(), obHouseType.asObservable(), obTowards.asObservable(), obDoorplate, obUnit.asObservable(), obCity.asObservable(), obRegion.asObservable()).subscribe(onNext: {[weak self] (_) in
-            self?.obButtonType.accept(.save)
-        }).disposed(by: disposeBag)
+        //        Observable.combineLatest(obVillageName.asObservable(), obArea.asObservable(), obHouseType.asObservable(), obTowards.asObservable(), obDoorplate, obUnit.asObservable(), obCity.asObservable(), obRegion.asObservable()).subscribe(onNext: {[weak self] (_) in
+        //            self?.obButtonType.accept(.save)
+        //        }).disposed(by: disposeBag)
         
-        shareReq.bind(to: obPositionModel).disposed(by: disposeBag)
+        getAssetHouseDetail.bind(to: obPositionModel).disposed(by: disposeBag)
         
-        shareReq.subscribe(onNext: {[weak self] (model) in
+        getAssetHouseDetail.subscribe(onNext: {[weak self] (model) in
             self?._obPositionModel.accept(model)
         }).disposed(by: disposeBag)
         
         obArea.subscribe(onNext: {[weak self] (area) in
             var param = self?._obPositionModel.value
-            param?.area = area
+            param?.area = Double(area ?? "")
             self?._obPositionModel.accept(param)
         }).disposed(by: disposeBag)
         
-        shareReq.subscribe(onCompleted: {[weak self] in
-            self?.obButtonType.accept(.delete)
-        }).disposed(by: disposeBag)
+        //        getAssetHouseDetail.subscribe(onCompleted: {[weak self] in
+        //            self?.obButtonType.accept(.delete)
+        //        }).disposed(by: disposeBag)
     }
     
     func setupPosition(_ village: String?, city: String?, region: String?) {
@@ -72,23 +75,21 @@ final class PositionViewModel {
         obCity.accept(city)
         obRegion.accept(region)
         var model = _obPositionModel.value
-        model?.villageName = village
-        model?.city = city
-        model?.region = region
+        model?.buildingName = village
+        model?.address = region
         _obPositionModel.accept(model)
     }
     
     func setupHouseType(_ type: String?) {
         obHouseType.accept(type)
         var model = _obPositionModel.value
-        model?.houseType = type
+        model?.houseStruct = type
         _obPositionModel.accept(model)
     }
     
     func setupTowards(_ towards: String?) {
         obTowards.accept(towards)
-        var model = _obPositionModel.value
-        model?.towards = towards
+        let model = _obPositionModel.value
         _obPositionModel.accept(model)
     }
     
@@ -98,39 +99,35 @@ final class PositionViewModel {
         obDoorplate.accept(doorPlate)
         
         var model = _obPositionModel.value
-        model?.building = building
-        model?.unit = uniti
-        model?.doorplate = doorPlate
+        model?.buildingNo = building
+        model?.houseNum = uniti
+        //        model?.doorplate = doorPlate
         _obPositionModel.accept(model)
     }
     
     
     func delete() -> Observable<Bool> {
-        guard let id = LSLUser.current().scene?.sceneID else {
+        guard let id = LSLUser.current().scene?.ladderAssetHouseId else {
             return .empty()
         }
-        return BusinessAPI.requestMapBool(.deleteSceneAssetsBySceneId(id)).do(onNext: { (success) in
+        
+        return BusinessAPI.requestMapBool(.deleteAssetHouse(id: id)).do(onNext: { (success) in
             if success {
                 NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.deleteScene)
                 LSLUser.current().scene = nil
             }
+        }, onError: { (error) in
+            PKHUD.sharedHUD.rx.showError(error)
         })
     }
     
     func save() -> Observable<Bool> {
-        guard let param = self._obPositionModel.value else {
+        guard var param = self._obPositionModel.value else {
             return .empty()
         }
-        return BusinessAPI.requestMapJSON(.addOrUpdateSceneAsset(parameter: param), classType: PositionModel.self).flatMapLatest({ (_) -> Observable<[SceneListModel]> in
-            return BusinessAPI.requestMapJSONArray(.getCustomerSceneList(pageIndex: 1, pageSize: 20, Sort: 1), classType: SceneListModel.self, useCache: true).map { $0.compactMap { $0 } }
-        }).do(onNext: { (allScene) in
-            
-            guard let currentSceneId = LSLUser.current().scene?.sceneID else { return }
-            let optionValue = allScene.filter { $0.sceneID == currentSceneId }.last
-            guard let updateValue = optionValue else { return }
-            LSLUser.current().scene = updateValue
-            NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.updateScene)
-        }).map { _ in true }
+        
+        param.id = self.id
+        return BusinessAPI.requestMapBool(.editAssetHouse(parameter: param))
     }
     
 }

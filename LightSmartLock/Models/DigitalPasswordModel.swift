@@ -9,26 +9,44 @@
 import Foundation
 import HandyJSON
 
-struct DigitalPasswordModel: HandyJSON {
-    var keyID: String!
-    var keyNum: String?
-    var keySecret: String?
-    var customerLockID: String?
-    var customerID: String?
-    var keyType: Int!
-    var beginTime: String?
-    var endTime: String?
-    var status: Int!
-    var lockNum: String?
-    var mark: String?
-    var extendKeyID: String?
-    var modifyDate: String?
-}
 
-struct DigitalPasswordLogModel: HandyJSON {
+struct OpenLockInfoModel: HandyJSON {
     
-    var createDate: String!
-    var statusValue: Int!
-    var statusName: String?
-    var content: String?
+    struct Card: HandyJSON {
+        var createTime: String?
+        var id: String?
+        var keyNum: String?
+        var name: String?
+        var status: Int!
+        var isAddButton: Bool = false
+    }
+    
+    struct Finger: HandyJSON {
+        var createTime: String?
+        var id: String?
+        var keyNum: String?
+        var name: String?
+        var status: Int!
+        var phone: String?
+        var isAddButton: Bool = false
+    }
+    
+    struct LadderNumberPasswordRecordVOList: HandyJSON {
+        var status: Int!
+        var statusName: String?
+        var triggerTime: String?
+    }
+    
+    struct LadderNumberPasswordVO: HandyJSON {
+        var id: String?
+        var password: String?
+        var status: Int!
+        var statusName: String?
+        var useDays: Int?
+        var ladderNumberPasswordRecordVOList: [LadderNumberPasswordRecordVOList]?
+    }
+    
+    var ladderCardVOList: [Card]?
+    var ladderFingerPrintVOList: [Finger]?
+    var ladderNumberPasswordVO: LadderNumberPasswordVO?
 }

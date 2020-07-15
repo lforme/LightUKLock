@@ -13,10 +13,7 @@ import RxCocoa
 
 class LSLUser: NSObject {
     
-    private let lock = NSRecursiveLock()
-    
     private override init() {
-        lock.name = "com.LSLUser.lock"
         super.init()
         
         changeableScene.accept(self.scene)
@@ -31,33 +28,50 @@ class LSLUser: NSObject {
     
     func logout() {
         
-        let diskCache = NetworkDiskStorage(autoCleanTrash: true, path: "network")
-        let deleteDb = diskCache.deleteValueBy(user?.accountID)
-        print("数据库网络缓存文件删除:\(deleteDb ? "成功" : "失败")")
+        BluetoothPapa.shareInstance.cancelPeripheralConnection()
         
+        JPUSHService.deleteAlias({ (code, alias, seq) in
+            print("极光注册别名:\(String(describing: alias))")
+        }, seq: 1)
+        JPUSHService.resetBadge()
+        
+        if let t = token?.accessToken {
+            AuthAPI.requestMapBool(.logout(token: t))
+                .delaySubscription(.seconds(2), scheduler: MainScheduler.instance)
+                .subscribe()
+                .disposed(by: rx.disposeBag)
+        }
+        
+        if let userId = token?.userId {
+            let diskStorage = NetworkDiskStorage(autoCleanTrash: false, path: "lightSmartLock.network")
+            let deleteDb = diskStorage.deleteDataBy(id: userId)
+            print("数据库网络缓存文件删除:\(deleteDb ? "成功" : "失败")")
+        }
+       
         Keys.allCases.forEach {
             print("已删除Key:\($0.rawValue)")
             LocalArchiver.remove(key: $0.rawValue)
         }
-        NotificationCenter.default.post(name: .loginStateDidChange, object: false)
+
         UIApplication.shared.applicationIconBadgeNumber = 0
-        
+
         let shareUserDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
         ShareUserDefaultsKey.allCases.forEach {
             shareUserDefault?.removeObject(forKey: $0.rawValue)
             shareUserDefault?.synchronize()
         }
+        
+        changeableUserInfo.accept(nil)
+        changeableToken.accept(nil)
     }
     
     var token: AccessTokenModel? {
         set {
             guard let entity = newValue?.toJSONString() else { return }
-            lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.token.rawValue, value: entity)
             let shareUserDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
             shareUserDefault?.set(entity, forKey: ShareUserDefaultsKey.token.rawValue)
             shareUserDefault?.synchronize()
-            lock.unlock()
         }
         
         get {
@@ -70,9 +84,7 @@ class LSLUser: NSObject {
     var refreshToken: AccessTokenModel? {
         set {
             guard let entity = newValue?.toJSONString() else { return }
-            lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.refreshToekn.rawValue, value: entity)
-            lock.unlock()
         }
         
         get {
@@ -86,12 +98,10 @@ class LSLUser: NSObject {
         set {
             guard let entity = newValue?.toJSONString() else { return }
             changeableUserInfo.accept(newValue)
-            lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.userInfo.rawValue, value: entity)
             let shareUserDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
             shareUserDefault?.set(entity, forKey: ShareUserDefaultsKey.userInfo.rawValue)
             shareUserDefault?.synchronize()
-            lock.unlock()
         }
         
         get {
@@ -101,35 +111,15 @@ class LSLUser: NSObject {
         }
     }
     
-    var userInScene: UserInSceneModel? {
-        set {
-            guard let entity = newValue?.toJSONString() else { return }
-            print("用户场景更新")
-            lock.lock()
-            LocalArchiver.save(key: LSLUser.Keys.userInScene.rawValue, value: entity)
-            let shareUserDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
-            shareUserDefault?.set(entity, forKey: ShareUserDefaultsKey.userInScene.rawValue)
-            shareUserDefault?.synchronize()
-            lock.unlock()
-        }
-        
-        get {
-            let json = LocalArchiver.load(key: LSLUser.Keys.userInScene.rawValue) as? String
-            let value = UserInSceneModel.deserialize(from: json)
-            return value
-        }
-    }
     
     var scene: SceneListModel? {
         set {
             print("场景更新")
             changeableScene.accept(newValue)
-            lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.scene.rawValue, value: newValue?.toJSONString())
             let shareUserDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
             shareUserDefault?.set(newValue?.toJSONString(), forKey: ShareUserDefaultsKey.scene.rawValue)
             shareUserDefault?.synchronize()
-            lock.unlock()
         }
         
         get {
@@ -139,37 +129,42 @@ class LSLUser: NSObject {
         }
     }
     
-    var lockInfo: SmartLockInfoModel? {
+    var lockInfo: LockModel? {
         set {
             print("门锁信息更新")
-            lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.smartLockInfo.rawValue, value: newValue?.toJSONString())
-            lock.unlock()
+            let shareUserDefault = UserDefaults(suiteName: ShareUserDefaultsKey.groupId.rawValue)
+            shareUserDefault?.set(newValue?.toJSONString(), forKey: ShareUserDefaultsKey.lockDevice.rawValue)
+            shareUserDefault?.synchronize()
         }
         
         get {
             let json = LocalArchiver.load(key: LSLUser.Keys.smartLockInfo.rawValue) as? String
-            let value = SmartLockInfoModel.deserialize(from: json)
+            let value = LockModel.deserialize(from: json)
             return value
         }
     }
     
-    var lockIOTInfo: IOTLockInfoModel? {
+    var hasVerificationLock: Bool {
         set {
-            guard let entity = newValue?.toJSONString() else { return }
-            print("IOT门锁信息更新")
-            lock.lock()
-            LocalArchiver.save(key: LSLUser.Keys.lockIOTInfo.rawValue, value: entity)
-            lock.unlock()
+            LocalArchiver.save(key: LSLUser.Keys.verificationLock.rawValue, value: newValue)
         }
-        
         get {
-            let json = LocalArchiver.load(key: LSLUser.Keys.lockIOTInfo.rawValue) as? String
-            let value = IOTLockInfoModel.deserialize(from: json)
-            return value
+            let value = LocalArchiver.load(key: LSLUser.Keys.verificationLock.rawValue) as? Bool
+            return value ?? true
         }
     }
     
+    var isFirstLogin: Bool {
+        set {
+            LocalArchiver.save(key: LSLUser.Keys.isFirstLogin.rawValue, value: newValue)
+        }
+        get {
+            let value = LocalArchiver.load(key: LSLUser.Keys.isFirstLogin.rawValue) as? Bool
+            return value ?? false
+        }
+    }
+        
     var obUserInfo: Observable<UserModel?> {
         return changeableUserInfo.asObservable()
     }
@@ -178,22 +173,21 @@ class LSLUser: NSObject {
         return changeableScene.asObservable()
     }
     
-    var isLogin: Bool {
-        return (user != nil) ? true : false
+    var obIsLogin: Observable<Bool> {
+        let hasUserInfo = changeableUserInfo.map { $0 != nil }
+        return hasUserInfo
     }
     
     var isInstalledLock: Bool {
         guard let sceneModel = self.scene else {
             return false
         }
-        return sceneModel.IsInstallLock ?? false
+        return sceneModel.ladderLockId.isNotNilNotEmpty
     }
     
     var hasSiriShortcuts: Bool {
         set {
-            lock.lock()
             LocalArchiver.save(key: LSLUser.Keys.siriShortcuts.rawValue, value: newValue)
-            lock.unlock()
         }
         
         get {
@@ -204,6 +198,7 @@ class LSLUser: NSObject {
     
     private let changeableUserInfo = BehaviorRelay<UserModel?>(value: nil)
     private let changeableScene = BehaviorRelay<SceneListModel?>(value: nil)
+    private let changeableToken = BehaviorRelay<AccessTokenModel?>(value: nil)
 }
 
 /// 归档的Key
@@ -211,12 +206,13 @@ extension LSLUser {
     enum Keys: String, CaseIterable {
         case refreshToekn = "refreshToeknModel"
         case token = "tokenModel"
-        case userInScene = "userInSceneModel"
         case scene = "currentSceneModel"
         case userInfo = "userInfoModel"
         case smartLockInfo = "smartLockInfo"
-        case lockIOTInfo = "lockIOTInfo"
         case siriShortcuts = "siriShortcuts"
+        case bluetoothVolume = "bluetoothVolume"
+        case verificationLock = "verificationLock"
+        case isFirstLogin = "isFirstLogin"
     }
 }
 

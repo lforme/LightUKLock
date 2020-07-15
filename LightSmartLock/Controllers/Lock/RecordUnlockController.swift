@@ -14,6 +14,7 @@ import PKHUD
 import MJRefresh
 import RxDataSources
 import Then
+import BetterSegmentedControl
 
 class RecordUnlockController: UIViewController, View {
     
@@ -21,18 +22,35 @@ class RecordUnlockController: UIViewController, View {
     
     var disposeBag: DisposeBag = DisposeBag()
     
-    fileprivate var userCode: String!
+    fileprivate var lockId: String!
+    fileprivate var userId: String!
     
     let tableView: UITableView = UITableView(frame: .zero, style: .plain).then {
         $0.tableFooterView = UIView(frame: .zero)
         $0.register(UINib(nibName: "UnlockRecordCell", bundle: nil), forCellReuseIdentifier: "UnlockRecordCell")
-        $0.rowHeight = 64.0
+        $0.rowHeight = 72.0
+        $0.sectionHeaderHeight = 40
         $0.backgroundColor = ColorClassification.tableViewBackground.value
     }
     
-    convenience init(userCode: String) {
+    let control = BetterSegmentedControl(
+        frame: .zero,
+        segments: LabelSegment.segments(withTitles: ["今日", "昨日", "全部"],
+                                        normalFont: UIFont(name: "HelveticaNeue-Light", size: 14.0)!,
+                                        normalTextColor: .white,
+                                        selectedFont: UIFont(name: "HelveticaNeue-Bold", size: 14.0)!,
+                                        selectedTextColor: ColorClassification.primary.value),
+        index: 0,
+        options: [.backgroundColor(ColorClassification.primary.value),
+                  .indicatorViewBackgroundColor(.white),
+                  .cornerRadius(24),
+                  .indicatorViewInset(4)])
+    
+    
+    convenience init(lockId: String, userId: String) {
         self.init()
-        self.userCode = userCode
+        self.userId = userId
+        self.lockId = lockId
     }
     
     var dataSource: RxTableViewSectionedReloadDataSource<SectionModel<String, UnlockRecordModel>>!
@@ -51,60 +69,139 @@ class RecordUnlockController: UIViewController, View {
         
         title = "解锁记录"
         setupUI()
-        self.reactor = Reactor(userCode: userCode)
+        self.reactor = Reactor(lockId: lockId, userId: userId)
     }
     
     func setupUI() {
+        self.view.backgroundColor = ColorClassification.tableViewBackground.value
         self.view.addSubview(tableView)
-        tableView.snp.makeConstraints { (maker) in
-            maker.edges.equalToSuperview()
+        self.view.addSubview(control)
+        
+        control.snp.makeConstraints { (maker) in
+            maker.top.equalTo(self.view.snp.top).offset(20)
+            maker.left.equalTo(self.view.snp.left).offset(20)
+            maker.height.equalTo(48)
+            maker.width.equalTo(180)
         }
+        
+        tableView.snp.makeConstraints { (maker) in
+            maker.left.right.bottom.equalToSuperview()
+            maker.top.equalTo(self.control.snp.bottom).offset(16)
+        }
+        
         tableView.separatorStyle = .none
         tableView.emptyDataSetSource = self
+        tableView.rx.setDelegate(self)
     }
     
     
     func bind(reactor: RecordUnlockReactor) {
         
-        self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {[weak self] in
-            guard let this = self else { return }
-            Observable.just(Reactor.Action.refreshChange(1)).bind(to: reactor.action).disposed(by: this.disposeBag)
+        control.rx.controlEvent(.valueChanged).map {[unowned self] (_) -> Reactor.Action in
+            return Reactor.Action.filter(self.control.index + 1)
+        }
+        .bind(to: reactor.action)
+        .disposed(by: rx.disposeBag)
+        
+        let pullToRefreshAction = BehaviorRelay<Reactor.Action>(value: Reactor.Action.pullToRefresh(nil))
+        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            pullToRefreshAction.accept(Reactor.Action.pullToRefresh(1))
         })
         
-        let footer = MJRefreshAutoNormalFooter(refreshingBlock: {[weak self] in
-            guard let this = self else { return }
-            Observable.just(Reactor.Action.loadMore(1)).delaySubscription(1, scheduler: MainScheduler.instance).bind(to: reactor.action).disposed(by: this.disposeBag)
-        })
+        pullToRefreshAction.asObservable()
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         
+        
+        let pullUpLoadAction = BehaviorRelay<Reactor.Action>(value: Reactor.Action.pullUpLoading(nil))
+        let footer = MJRefreshAutoNormalFooter(refreshingBlock: {
+            pullUpLoadAction.accept(Reactor.Action.pullUpLoading(1))
+        })
         footer.setTitle("", for: .idle)
-        self.tableView.mj_footer = footer
+        tableView.mj_footer = footer
         
-        reactor.state.map { $0.loadMoreFinished }.delay(1, scheduler: MainScheduler.instance).subscribe(onNext: {[weak self] (noMore) in
-            if noMore {
-                self?.tableView.mj_footer?.endRefreshingWithNoMoreData()
-            }
-        }).disposed(by: disposeBag)
+        pullUpLoadAction.asObservable()
+            .delaySubscription(.seconds(1), scheduler: MainScheduler.instance)
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         
-        reactor.state.map { $0.pageIndex }.distinctUntilChanged().subscribe(onNext: { (index) in
-            print("当前页码\(index)")
-        }).disposed(by: disposeBag)
+        reactor
+            .state
+            .map { $0.requestFinished }
+            .delay(.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe(onNext: {[weak self] (end) in
+                if end {
+                    self?.tableView.mj_header?.endRefreshing()
+                    self?.tableView.mj_footer?.endRefreshing()
+                }
+            }).disposed(by: disposeBag)
         
-        reactor.state.map { $0.requestFinished }.subscribe(onNext: {[weak self] (_) in
-            self?.tableView.mj_header?.endRefreshing()
-            self?.tableView.mj_footer?.endRefreshing()
-        }).disposed(by: disposeBag)
+        reactor
+            .state
+            .map { $0.noMoreData }
+            .delay(.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe(onNext: {[weak self] (noMore) in
+                if noMore {
+                    self?.tableView.mj_footer?.endRefreshingWithNoMoreData()
+                }
+            }).disposed(by: disposeBag)
         
         
-        dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, UnlockRecordModel>>(configureCell: { (ds, tv, ip, item) -> UnlockRecordCell in
+        dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, UnlockRecordModel>>(configureCell: {[unowned self] (ds, tv, ip, item) -> UnlockRecordCell in
             let cell = tv.dequeueReusableCell(withIdentifier: "UnlockRecordCell", for: ip) as! UnlockRecordCell
             cell.contentView.backgroundColor = ColorClassification.viewBackground.value
-            cell.bind(item)
+            cell.bind(item, filterType: self.control.index + 1)
+            
+            if ip.row == 0 {
+                cell.topLine.isHidden = true
+            } else {
+                cell.topLine.isHidden = false
+            }
             return cell
+            }, titleForHeaderInSection: { (ds, sectionIndex) -> String? in
+                return ds.sectionModels[sectionIndex].identity
         })
         
-         reactor.state.map { $0.recordList }.map { [SectionModel(model: "解锁记录", items: $0)] }.do(onError: { (error) in
-            PKHUD.sharedHUD.rx.showError(error)
-        }).bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+        reactor
+            .state
+            .map { $0.dataList }.map({ (items) -> [SectionModel<String, UnlockRecordModel>] in
+                let partition = Dictionary(grouping: items, by: { $0.openTime?[0..<10] ?? "" } ).sorted(by: { (a, b) -> Bool in
+                    return a.key > b.key
+                })
+                
+                let reslut = partition.map { (key, value) -> SectionModel<String, UnlockRecordModel> in
+                    if key.toDate()?.isToday ?? false {
+                        return SectionModel(model: "今日", items: value)
+                    } else if key.toDate()?.isYesterday ?? false {
+                        return SectionModel(model: "昨日", items: value)
+                    } else {
+                        return SectionModel(model: key, items: value)
+                    }
+                }
+                
+                return reslut
+            })
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
         
+        reactor.state.map { $0.filterType }
+            .distinctUntilChanged()
+            .delay(.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe(onNext: {[weak self] (_) in
+                self?.tableView.mj_footer?.resetNoMoreData()
+            })
+            .disposed(by: disposeBag)
+        
+    }
+}
+
+extension RecordUnlockController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = ColorClassification.tableViewBackground.value
+        let headerView = view as? UITableViewHeaderFooterView
+        headerView?.textLabel?.textColor = ColorClassification.textOpaque78.value
+        headerView?.textLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
     }
 }

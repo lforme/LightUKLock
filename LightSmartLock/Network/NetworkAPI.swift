@@ -19,5 +19,12 @@ private let BusinessEndpointClosure = { (target: BusinessInterface) -> Endpoint 
     return Endpoint(url: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, task: target.task, httpHeaderFields: target.headers)
 }
 
+private let BusinessEndpointClosure2 = { (target: BusinessInterface2) -> Endpoint in
+    let url = (target.baseURL.absoluteString + target.path).removingPercentEncoding!
+    return Endpoint(url: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, task: target.task, httpHeaderFields: target.headers)
+}
+
 let AuthAPI: RxMoyaProvider = RxMoyaProvider(endpointClosure: authEndpointClosure)
 let BusinessAPI: RxMoyaProvider = RxMoyaProvider(endpointClosure: BusinessEndpointClosure)
+
+let BusinessAPI2: RxMoyaProvider = RxMoyaProvider(endpointClosure: BusinessEndpointClosure2)

@@ -16,7 +16,7 @@ final class LockStartScanViewModel {
     
     var scanAction: Action<Void, Bool>!
     
-    private let timer = Observable<Int>.timer(0, period: 1, scheduler: MainScheduler.instance).share(replay: 1, scope: .forever)
+    private let timer = Observable<Int>.timer(.seconds(1), period: .seconds(1), scheduler: MainScheduler.instance).share(replay: 1, scope: .forever)
     
     var disposeBag = DisposeBag()
     
@@ -39,7 +39,7 @@ final class LockStartScanViewModel {
             }
             
             return Observable.create { (observer) -> Disposable in
-                
+                BluetoothPapa.shareInstance.removeAESkey()
                 BluetoothPapa.shareInstance.scanForPeripherals(true)
                 BluetoothPapa.shareInstance.peripheralsScanResult { (peripherals) in
                     guard let peripheral = peripherals.last else {
@@ -61,6 +61,7 @@ final class LockStartScanViewModel {
                         observer.onNext(true)
                         observer.onCompleted()
                     } else {
+                        BluetoothPapa.shareInstance.scanForPeripherals(false)
                         observer.onError(AppError.reason("没有找到蓝牙门锁"))
                     }
                 }).disposed(by: this.disposeBag)

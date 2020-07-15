@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="BindLockListCell" customModule="寓用管家" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="radio_button_normal" translatesAutoresizingMaskIntoConstraints="NO" id="1Xm-7W-IMe">
+                        <rect key="frame" x="16" y="12" width="20" height="20"/>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hqa-fL-787">
+                        <rect key="frame" x="44" y="12" width="33.5" height="48"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SN码" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kp1-MV-zH0">
+                                <rect key="frame" x="0.0" y="0.0" width="33.5" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" name="textPrimary"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地址" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOP-a5-ezT">
+                                <rect key="frame" x="0.0" y="28" width="33.5" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="textDescription"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="1Xm-7W-IMe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="0qM-1X-yXn"/>
+                    <constraint firstAttribute="bottom" secondItem="hqa-fL-787" secondAttribute="bottom" constant="12" id="8le-xL-c7p"/>
+                    <constraint firstItem="hqa-fL-787" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="T2Q-Z9-bzx"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hqa-fL-787" secondAttribute="trailing" constant="16" id="cgX-FE-VnB"/>
+                    <constraint firstItem="hqa-fL-787" firstAttribute="leading" secondItem="1Xm-7W-IMe" secondAttribute="trailing" constant="8" id="cwb-0c-bbv"/>
+                    <constraint firstItem="1Xm-7W-IMe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="dN1-8G-DsH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" name="viewBackground"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addressLabel" destination="GOP-a5-ezT" id="X8V-qf-K8o"/>
+                <outlet property="icon" destination="1Xm-7W-IMe" id="gZq-Kh-aBt"/>
+                <outlet property="snLabel" destination="kp1-MV-zH0" id="y6V-FX-9qn"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="83.705357142857139"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="radio_button_normal" width="20" height="20"/>
+        <namedColor name="textDescription">
+            <color red="0.65100002288818359" green="0.68199998140335083" blue="0.7369999885559082" alpha="0.81999999284744263" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textPrimary">
+            <color red="0.039000000804662704" green="0.12200000137090683" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="viewBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

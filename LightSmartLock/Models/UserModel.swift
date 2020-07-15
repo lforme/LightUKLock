@@ -12,7 +12,7 @@ import HandyJSON
 struct UserModel: HandyJSON {
     var accountID: String!
     var userName: String?
-    var phone: String!
+    var nickname: String?
     var userLoginName: String?
     var weixinNum: String?
     var cardID: String?
@@ -25,4 +25,15 @@ struct UserModel: HandyJSON {
     var modifyBy: String?
     var modifyDate: String?
     var isDelete: Bool!
+    
+    // 新的
+    var phone: String?
+    var avatar: String?
+    var pressForMoney: Bool!
+    var id: String?
+    var fingerprintModel: Bool!
+    var cardModel: Bool!
+    var state: Int!
+    var lockUserAccount: String?
 }
+

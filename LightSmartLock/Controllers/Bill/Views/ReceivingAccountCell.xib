@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ReceivingAccountCell" customModule="门锁助手个人版" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ec1-HJ-Lt8">
+                        <rect key="frame" x="16" y="16" width="24" height="24"/>
+                        <state key="normal" image="wechat_icon"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信账号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mkc-lQ-VFv">
+                        <rect key="frame" x="48" y="19.5" width="57.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" name="textPrimary"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="默认" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aih-nZ-Zez">
+                        <rect key="frame" x="113.5" y="19" width="32" height="18"/>
+                        <color key="backgroundColor" name="primary"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="HWM-iV-y7v"/>
+                            <constraint firstAttribute="height" constant="18" id="SeB-vI-CCY"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="xxx.xxx.xxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgg-Pu-nXH">
+                        <rect key="frame" x="48" y="46.5" width="76" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <color key="textColor" name="textPrimary"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzC-SO-pOT">
+                        <rect key="frame" x="264" y="12" width="40" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="TCb-ll-KMT"/>
+                            <constraint firstAttribute="height" constant="32" id="aCm-8u-bpa"/>
+                        </constraints>
+                        <state key="normal" image="edit_icon_bill"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ec1-HJ-Lt8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="6D7-aZ-ibP"/>
+                    <constraint firstItem="aih-nZ-Zez" firstAttribute="centerY" secondItem="Mkc-lQ-VFv" secondAttribute="centerY" id="Ete-5U-Tk8"/>
+                    <constraint firstItem="ec1-HJ-Lt8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Knd-Uv-uc9"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lgg-Pu-nXH" secondAttribute="trailing" constant="16" id="Lcc-hy-tJN"/>
+                    <constraint firstItem="lgg-Pu-nXH" firstAttribute="leading" secondItem="Mkc-lQ-VFv" secondAttribute="leading" id="QaU-Bg-vkt"/>
+                    <constraint firstAttribute="trailing" secondItem="uzC-SO-pOT" secondAttribute="trailing" constant="16" id="aEB-ih-Ngl"/>
+                    <constraint firstItem="lgg-Pu-nXH" firstAttribute="top" secondItem="Mkc-lQ-VFv" secondAttribute="bottom" constant="10" id="cii-kz-zsK"/>
+                    <constraint firstItem="aih-nZ-Zez" firstAttribute="leading" secondItem="Mkc-lQ-VFv" secondAttribute="trailing" constant="8" id="gOT-rL-a5J"/>
+                    <constraint firstItem="uzC-SO-pOT" firstAttribute="centerY" secondItem="Mkc-lQ-VFv" secondAttribute="centerY" id="ksa-YM-X1O"/>
+                    <constraint firstItem="Mkc-lQ-VFv" firstAttribute="centerY" secondItem="ec1-HJ-Lt8" secondAttribute="centerY" id="nZB-6Q-Uwy"/>
+                    <constraint firstItem="Mkc-lQ-VFv" firstAttribute="leading" secondItem="ec1-HJ-Lt8" secondAttribute="trailing" constant="8" id="zgK-aM-3Q3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" name="viewBackground"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="accountName" destination="lgg-Pu-nXH" id="Onx-0g-lNw"/>
+                <outlet property="accountTypeLabel" destination="Mkc-lQ-VFv" id="mVC-Km-Zzi"/>
+                <outlet property="defaultLabel" destination="aih-nZ-Zez" id="QnK-nM-88l"/>
+                <outlet property="editButton" destination="uzC-SO-pOT" id="WSY-yE-O8l"/>
+                <outlet property="icon" destination="ec1-HJ-Lt8" id="5Bu-5e-Hvc"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="105.80357142857143"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="edit_icon_bill" width="24" height="24"/>
+        <image name="wechat_icon" width="24" height="24"/>
+        <namedColor name="primary">
+            <color red="0.32499998807907104" green="0.58399999141693115" blue="0.91399997472763062" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textPrimary">
+            <color red="0.039000000804662704" green="0.12200000137090683" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="viewBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

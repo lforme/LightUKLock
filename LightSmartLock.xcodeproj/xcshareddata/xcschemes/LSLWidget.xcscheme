@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1130"
+   LastUpgradeVersion = "1150"
    wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
@@ -30,7 +30,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9CDD271D2382801D006A9B97"
-               BuildableName = "&#x95e8;&#x9501;&#x52a9;&#x624b;&#x6781;&#x901f;&#x7248;.app"
+               BuildableName = "&#x5bd3;&#x7528;&#x7ba1;&#x5bb6;.app"
                BlueprintName = "LightSmartLock"
                ReferencedContainer = "container:LightSmartLock.xcodeproj">
             </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9CDD271D2382801D006A9B97"
-            BuildableName = "&#x95e8;&#x9501;&#x52a9;&#x624b;&#x6781;&#x901f;&#x7248;.app"
+            BuildableName = "&#x5bd3;&#x7528;&#x7ba1;&#x5bb6;.app"
             BlueprintName = "LightSmartLock"
             ReferencedContainer = "container:LightSmartLock.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9CDD271D2382801D006A9B97"
-            BuildableName = "&#x95e8;&#x9501;&#x52a9;&#x624b;&#x6781;&#x901f;&#x7248;.app"
+            BuildableName = "&#x5bd3;&#x7528;&#x7ba1;&#x5bb6;.app"
             BlueprintName = "LightSmartLock"
             ReferencedContainer = "container:LightSmartLock.xcodeproj">
          </BuildableReference>

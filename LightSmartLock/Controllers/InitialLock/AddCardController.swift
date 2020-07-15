@@ -54,7 +54,7 @@ class AddCardController: UIViewController {
             
             return Observable<(String, String)>.create { (observer) -> Disposable in
                 
-                SingleInputController.rx.present(wiht: "设置指纹名称", saveTitle: "保存", placeholder: "请填写指纹名称").subscribe(onNext: { (cardName) in
+                SingleInputController.rx.present(wiht: "设置门卡称", saveTitle: "保存", placeholder: "请填写门卡备注").subscribe(onNext: { (cardName) in
                     observer.onNext((keyNumber, cardName))
                     observer.onCompleted()
                 }).disposed(by: self.rx.disposeBag)
@@ -69,8 +69,10 @@ class AddCardController: UIViewController {
             } else {
                 HUD.flash(.label("添加失败"), delay: 2)
             }
+            NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.editCard)
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {[weak self] in
-                self?.navigationController?.popToRootViewController(animated: true)
+                self?.navigationController?.popViewController(animated: true)
             }
             
         }, onError: { (error) in

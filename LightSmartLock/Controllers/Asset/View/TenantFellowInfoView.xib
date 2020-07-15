@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TenantFellowInfoView" customModule="门锁助手个人版" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="489" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="02d-MC-L5l">
+                    <rect key="frame" x="0.0" y="0.0" width="489" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PX5-9I-BhV">
+                            <rect key="frame" x="0.0" y="10" width="24" height="24"/>
+                            <state key="normal" image="config_remove"/>
+                            <connections>
+                                <action selector="deleteAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="h03-Lu-jRP"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="王林 18587677754" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGX-5V-pTK">
+                            <rect key="frame" x="32" y="13.5" width="122.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" name="textPrimary"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="248" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6i-09-F8I">
+                            <rect key="frame" x="162.5" y="13.5" width="326.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" image="arrow">
+                                <color key="titleColor" name="textPrimary"/>
+                            </state>
+                            <connections>
+                                <action selector="editAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="gYW-Yc-Z5e"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="02d-MC-L5l" secondAttribute="bottom" id="Cm2-Va-S2I"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="02d-MC-L5l" secondAttribute="trailing" id="OI2-4s-3dc"/>
+                <constraint firstItem="02d-MC-L5l" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="PDP-LY-GXX"/>
+                <constraint firstItem="02d-MC-L5l" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bok-Vt-lJk"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="deleteBtn" destination="PX5-9I-BhV" id="Icw-lP-w5S"/>
+                <outlet property="infoLabel" destination="qGX-5V-pTK" id="8Ca-27-BMv"/>
+                <outlet property="statusBtn" destination="q6i-09-F8I" id="Qcc-pl-1Rh"/>
+            </connections>
+            <point key="canvasLocation" x="186.23188405797103" y="-164.39732142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow" width="7" height="11"/>
+        <image name="config_remove" width="24" height="24"/>
+        <namedColor name="textPrimary">
+            <color red="0.039000000804662704" green="0.12200000137090683" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -65,3 +65,53 @@ extension Optional where Wrapped == String {
         return str
     }
 }
+
+extension String {
+    func toDouble() -> Double? {
+        return Double.init(self)
+    }
+    
+    func toInt() -> Int? {
+        return Int.init(self)
+    }
+}
+
+extension Double {
+    var twoPoint: String {
+        return String(format: "%.2f", self)
+    }
+    
+    var yuanSymbol: String {
+        return "¥" + twoPoint
+    }
+}
+
+extension String.StringInterpolation {
+    /// Prints `Optional` values by only interpolating it if the value is set. `nil` is used as a fallback value to provide a clear output.
+    mutating func appendInterpolation<T: CustomStringConvertible>(_ value: T?) {
+        appendInterpolation(value ?? "nil" as CustomStringConvertible)
+        
+    }
+    
+    mutating func appendInterpolation(json JSONData: Data) {
+        guard
+            let JSONObject = try? JSONSerialization.jsonObject(with: JSONData, options: []),
+            let jsonData = try? JSONSerialization.data(withJSONObject: JSONObject, options: .prettyPrinted) else {
+            appendInterpolation("Invalid JSON data")
+            return
+        }
+        appendInterpolation("\n\(String(decoding: jsonData, as: UTF8.self))")
+    }
+    
+    mutating func appendInterpolation(_ request: URLRequest) {
+        appendInterpolation("\(request.url) | \(request.httpMethod) | Headers: \(request.allHTTPHeaderFields)")
+    }
+    
+    mutating func appendInterpolation(HTMLLink link: String) {
+        guard let url = URL(string: link) else {
+            assertionFailure("An invalid URL has been passed.")
+            return
+        }
+        appendInterpolation("<a href=\"\(url.absoluteString)\">\(url.absoluteString)</a>")
+    }
+}

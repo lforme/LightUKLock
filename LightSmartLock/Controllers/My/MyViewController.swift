@@ -12,15 +12,27 @@ import RxSwift
 import PKHUD
 import Kingfisher
 import MJRefresh
+import Floaty
 
 class MyViewController: UIViewController, NavigationSettingStyle {
     
     var backgroundColor: UIColor? {
-        return ColorClassification.tableViewBackground.value
+        return ColorClassification.navigationBackground.value
     }
     
+    var isLargeTitle: Bool {
+        return false
+    }
+    
+    @IBOutlet weak var avatarView: UIImageView!
+    @IBOutlet weak var nickNameLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    let vm: MyViewModeling = MyViewModel()
+    lazy var floaty: Floaty = Floaty(frame: .zero)
+    
+    var clickCell: UITableViewCell?
+    
+    let vm = MyViewModel()
     
     var dataSource: [SceneListModel] = []
     
@@ -28,11 +40,32 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         super.viewDidLoad()
         
         setupUI()
-        setupRightNavigationItem()
-        observerTableViewDidScroll()
+        setupNavigation()
         setupTableviewRefresh()
         bind()
         observerSceneChanged()
+        verifyID()
+    }
+    
+    func verifyID() {
+        
+        //        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        //            LSLUser.current().isFirstLogin = false
+        //        }
+        
+        if LSLUser.current().hasVerificationLock && !LSLUser.current().isFirstLogin {
+            
+            let verficationVC: VerficationIDController = ViewLoader.Storyboard.controller(from: "Login")
+            verficationVC.modalPresentationStyle = .fullScreen
+            self.present(verficationVC, animated: true, completion: nil)
+        }
+        LSLUser.current().isFirstLogin = false
+    }
+    
+    @IBAction func moreAseetTap(_ sender: UIButton) {
+        let moreAssetVC: MoreAssetController = ViewLoader.Storyboard.controller(from: "My")
+        moreAssetVC.vm = self.vm
+        self.navigationController?.pushViewController(moreAssetVC, animated: true)
     }
     
     func observerSceneChanged() {
@@ -44,7 +77,15 @@ class MyViewController: UIViewController, NavigationSettingStyle {
                 self?.tableView.mj_header?.beginRefreshing()
             default: break
             }
-            
+        }).disposed(by: rx.disposeBag)
+        
+        NotificationCenter.default.rx.notification(.refreshState).takeUntil(self.rx.deallocated).subscribe(onNext: {[weak self] (notiObjc) in
+            guard let refreshType = notiObjc.object as? NotificationRefreshType else { return }
+            switch refreshType {
+            case .editLock:
+                self?.tableView.mj_header?.beginRefreshing()
+            default: break
+            }
         }).disposed(by: rx.disposeBag)
     }
     
@@ -52,80 +93,89 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         vm.requestFinished.subscribe(onNext: {[weak self] (finished) in
             if finished {
                 self?.tableView.mj_header?.endRefreshing()
-                self?.tableView.mj_footer?.endRefreshing()
                 self?.tableView.reloadData()
-            }
-        }).disposed(by: rx.disposeBag)
-        
-        vm.nomore.delay(0.5, scheduler: MainScheduler.instance).subscribe(onNext: {[weak self] (nomore) in
-            if nomore {
-                self?.tableView.mj_footer?.endRefreshingWithNoMoreData()
             }
         }).disposed(by: rx.disposeBag)
         
         vm.sceneList.subscribe(onNext: {[weak self] (list) in
             self?.dataSource = list
         }).disposed(by: rx.disposeBag)
+        
+        let shareInfo = LSLUser.current().obUserInfo.share(replay: 1, scope: .forever)
+        shareInfo.map { $0?.nickname }.bind(to: nickNameLabel.rx.text).disposed(by: rx.disposeBag)
+        shareInfo.map {
+            guard var phone = $0?.phone else {
+                return ""
+            }
+            let start = phone.index(phone.startIndex, offsetBy: 3)
+            let end = phone.index(phone.startIndex, offsetBy: 3 + 4)
+            phone.replaceSubrange(start..<end, with: "****")
+            return phone
+        }.bind(to: phoneLabel.rx.text).disposed(by: rx.disposeBag)
+        shareInfo.map { $0?.avatar }.subscribe(onNext: {[weak self] (urlString) in
+            self?.avatarView.setUrl(urlString)
+        }).disposed(by: rx.disposeBag)
+        
+        let addAssetItem = FloatyItem()
+        addAssetItem.title = "资产"
+        addAssetItem.titleLabel.font = UIFont.systemFont(ofSize: 14)
+        addAssetItem.titleColor = .white
+        addAssetItem.iconImageView.image = UIImage(named: "my_add_asset")
+        addAssetItem.imageSize = CGSize(width: 52, height: 52)
+        floaty.addItem(item: addAssetItem)
+        let addLockItem = FloatyItem()
+        addLockItem.title = "门锁"
+        addLockItem.titleLabel.font = UIFont.systemFont(ofSize: 14)
+        addLockItem.titleColor = .white
+        addLockItem.iconImageView.image = UIImage(named: "my_add_lock")
+        addLockItem.imageSize = CGSize(width: 52, height: 52)
+        floaty.addItem(item: addLockItem)
+        
+        addAssetItem.handler = {[weak self] _ in
+            self?.gotoAssetVC()
+        }
+        
+        addLockItem.handler = {[weak self] _ in
+            self?.gotoSelectedLockVC()
+        }
     }
     
     func setupTableviewRefresh() {
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {[weak self] in
             self?.vm.refresh()
         })
-        
-        let footer = MJRefreshAutoNormalFooter(refreshingBlock: {[weak self] in
-            self?.vm.loadMore()
-        })
-        footer.setTitle("", for: .idle)
-        tableView.mj_footer = footer
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
-            self?.tableView.mj_header?.beginRefreshing()
-        }
-        
+        tableView.mj_header?.beginRefreshing()
     }
     
     func setupUI() {
-        self.view.backgroundColor = ColorClassification.viewBackground.value
-        self.tableView.backgroundColor = ColorClassification.tableViewBackground.value
+        self.view.layer.contents = UIImage(named: "personal_center_bg")?.cgImage
+        self.avatarView.setCircular(radius: avatarView.bounds.height / 2)
+        
+        let avatarGestureTap = UITapGestureRecognizer(target: self, action: #selector(gotoMySettingVC))
+        self.avatarView.addGestureRecognizer(avatarGestureTap)
+        
         self.tableView.tableFooterView = UIView(frame: .zero)
         self.tableView.separatorStyle = .none
-        self.tableView.register(UINib(nibName: "MyInfoHeader", bundle: nil), forCellReuseIdentifier: "MyInfoHeader")
         self.tableView.register(UINib(nibName: "MyListCell", bundle: nil), forCellReuseIdentifier: "MyListCell")
-        self.tableView.sectionHeaderHeight = 160
-        self.tableView.rowHeight = 136
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        self.view.addSubview(floaty)
+        floaty.snp.makeConstraints { (maker) in
+            maker.right.equalTo(self.view.snp.right).offset(-16)
+            maker.bottom.equalTo(self.view.snp.bottom).offset(-48)
+            maker.width.height.equalTo(48)
+        }
+        floaty.buttonColor = #colorLiteral(red: 1, green: 0.6639282703, blue: 0.245883733, alpha: 1)
+        floaty.plusColor = .white
+        floaty.openAnimationType = .slideUp
+        floaty.itemSpace = 28
     }
     
-    func setupRightNavigationItem() {
+    func setupNavigation() {
         
-        
-        let settingButton = UIButton(type: .custom)
-        settingButton.setImage(UIImage(named: "my_setting"), for: UIControl.State())
-        settingButton.frame.size = CGSize(width: 32, height: 32)
-        settingButton.contentHorizontalAlignment = .right
-        settingButton.addTarget(self, action: #selector(self.gotoMySettingVC), for: .touchUpInside)
-        let settingItem = UIBarButtonItem(customView: settingButton)
-        
-        let addButton = UIButton(type: .custom)
-        addButton.setImage(UIImage(named: "my_add"), for: UIControl.State())
-        addButton.frame.size = CGSize(width: 32, height: 32)
-        addButton.contentHorizontalAlignment = .left
-        let addItem = UIBarButtonItem(customView: addButton)
-        addButton.addTarget(self, action: #selector(self.gotoSelectedLockVC), for: .touchUpInside)
-        self.navigationItem.rightBarButtonItems = [settingItem, addItem]
-    }
-    
-    func observerTableViewDidScroll() {
-        tableView.rx.didScroll.subscribe(onNext: {[weak self] (_) in
-            guard let this = self else { return }
-            if this.tableView.contentOffset.y > 160 {
-                this.navigationController?.navigationBar.topItem?.titleView?.isHidden = false
-            } else {
-                this.navigationController?.navigationBar.topItem?.titleView?.isHidden = true
-            }
-        }).disposed(by: rx.disposeBag)
+        self.interactiveNavigationBarHidden = true
+        AppDelegate.changeStatusBarStyle(.lightContent)
     }
     
     @objc func gotoMySettingVC() {
@@ -133,16 +183,32 @@ class MyViewController: UIViewController, NavigationSettingStyle {
         self.navigationController?.pushViewController(settingVC, animated: true)
     }
     
-    @objc func gotoSelectedLockVC() {
-        let selectVC: SelectLockTypeController = ViewLoader.Storyboard.controller(from: "InitialLock")
-        self.navigationController?.pushViewController(selectVC, animated: true)
+    func gotoAssetVC() {
+        let editAssetVC: BindingOrEditAssetViewController = ViewLoader.Storyboard.controller(from: "AssetDetail")
+        navigationController?.pushViewController(editAssetVC, animated: true)
+    }
+    
+    func gotoSelectedLockVC() {
+        
+        vm.configuredList.subscribe(onNext: {[weak self] (bindLockList) in
+            
+            if bindLockList.count != 0 {
+                let bindLockListVC: BindLockListController = ViewLoader.Storyboard.controller(from: "InitialLock")
+                bindLockListVC.dataSource = bindLockList
+                self?.navigationController?.pushViewController(bindLockListVC, animated: true)
+            } else {
+                let selectVC: SelectLockTypeController = ViewLoader.Storyboard.controller(from: "InitialLock")
+                selectVC.kind = .newAdd
+                self?.navigationController?.pushViewController(selectVC, animated: true)
+            }
+        }).disposed(by: rx.disposeBag)
     }
 }
 
 extension MyViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(320 / dataSource.count)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -153,30 +219,22 @@ extension MyViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyListCell", for: indexPath) as! MyListCell
         let data = dataSource[indexPath.row]
         cell.bind(data)
+        cell.bgView.backgroundColor = vm.cellBackgroundColor(indexPath.row)
+        cell.backgroundColor = vm.cellBackgroundLastColor(indexPath.row)
         return cell
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableCell(withIdentifier: "MyInfoHeader") as! MyInfoHeader
-        let shareInfo = LSLUser.current().obUserInfo.share(replay: 1, scope: .forever)
-        
-        shareInfo.map { $0?.userName }.bind(to: header.nick.rx.text).disposed(by: header.disposeBag)
-        shareInfo.map { $0?.phone }.bind(to: header.phone.rx.text).disposed(by: header.disposeBag)
-        
-        shareInfo.map { $0?.headPic }.subscribe(onNext: { (urlString) in
-            guard let str = urlString?.encodeUrl() else { return }
-            header.avatar?.kf.setImage(with: URL(string: str))
-        }).disposed(by: header.disposeBag)
-        
-        return header
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        clickCell = cell
+        
         let scene = dataSource[indexPath.row]
         LSLUser.current().scene = scene
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            HUD.flash(.label("首页场景已切换"), delay: 2)
+        let lockVC: HomeViewController = ViewLoader.Storyboard.controller(from: "Home")
+        navigationController?.pushViewController(lockVC, animated: true)
+        if let visiableRows = tableView.indexPathsForVisibleRows {
+            tableView.reloadRows(at: visiableRows, with: .automatic)
         }
-        tableView.reloadData()
     }
 }

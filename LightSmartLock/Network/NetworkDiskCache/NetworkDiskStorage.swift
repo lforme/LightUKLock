@@ -13,7 +13,11 @@ final class NetworkDiskStorage {
     
     var autoCleanTrash: Bool = true
     
-    private let db: NetworkMetaDb
+    let db: NetworkMetaDb
+    
+    deinit {
+        print("deinit \(self)")
+    }
     
     init(autoCleanTrash: Bool? = true, path: String?) {
         
@@ -32,11 +36,11 @@ final class NetworkDiskStorage {
         
         db = NetworkMetaDb(path: p)
         removeExpiredValues()
+        
     }
     
-    @discardableResult
-    func save(value: Data, forKey key: String) -> Bool {
-        return db.save(value, key: key)
+    func save(value: Data, forKey key: String) {
+        db.save(value, key: key)
     }
     
     @discardableResult
@@ -45,17 +49,16 @@ final class NetworkDiskStorage {
     }
     
     @discardableResult
-    func deleteValueBy(_ userId: String?) -> Bool {
-        return db.deleteValueBy(userId)
+    func deleteDataBy(id: String?) -> Bool {
+        return db.deleteValueBy(id)
     }
     
     private func removeExpiredValues() {
         if !autoCleanTrash { return }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
-            DispatchQueue.global(qos: .background).async {[weak self] in
-                self?.db.deleteExpiredData()
-            }
-            self.removeExpiredValues()
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 60) {[weak self] in
+            
+            self?.db.deleteExpiredData()
+            self?.removeExpiredValues()
         }
     }
 }

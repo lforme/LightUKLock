@@ -21,11 +21,16 @@ final class NetworkMetaDb {
     let value = Expression<Data>("value")
     let accessTime = Expression<Date>("accessTime")
     let expirationTime = Expression<Date>("expirationTime")
-    let accountId = Expression<String?>("accountId")
+    let userId = Expression<String?>("userId")
     
-    private let lock = NSRecursiveLock()
+    private var lock = pthread_rwlock_t()
+    private let queue = DispatchQueue(label: "com.networkMetaDb.rw", qos: .background, attributes: .concurrent, autoreleaseFrequency: .workItem)
     private let kDatabaseName = "cachedb.sqlite3"
-    private let kTableName = "networkcache"
+    private let kTableName = "networkcacheLC"
+    
+    deinit {
+        pthread_rwlock_destroy(&lock)
+    }
     
     init(path: String) {
         
@@ -52,7 +57,7 @@ final class NetworkMetaDb {
             t.column(value)
             t.column(accessTime)
             t.column(expirationTime)
-            t.column(accountId)
+            t.column(userId)
         })
     }
     
@@ -66,101 +71,135 @@ final class NetworkMetaDb {
 
 extension NetworkMetaDb {
     
-    @discardableResult
-    func save(_ value: Data, key: String) -> Bool {
-        var result = false
-        do {
-            try db?.transaction {
-                let filterTable = table.filter(self.key == key)
-                if try checkDb().run(filterTable.update(
-                    self.key <- key,
-                    self.value <- value,
-                    self.accessTime <- Date(),
-                    self.accountId <- LSLUser.current().user?.accountID
-                )) > 0 {
-                    result = true
-                } else {
-                    let rowid = try checkDb().run(table.insert(
-                        self.key <- key,
-                        self.value <- value,
-                        self.accessTime <- Date(),
-                        self.expirationTime <- Date() + 7.days,
-                        self.accountId <- LSLUser.current().user?.accountID
-                    ))
-                    
-                    result = (rowid > Int64(0)) ? true : false
+    func save(_ value: Data, key: String) {
+        around {
+            queue.async(flags: .barrier) {[weak self] in
+                guard let this = self else { return }
+                do {
+                    var result = false
+                    try this.db?.transaction {
+                        let filterTable = this.table.filter(this.key == key)
+                        if try this.checkDb().run(filterTable.update(
+                            this.key <- key,
+                            this.value <- value,
+                            this.userId <- LSLUser.current().token?.userId
+                        )) > 0 {
+                            result = true
+                            print("DB save: \(result)")
+                        } else {
+                            let rowid = try this.checkDb().run(this.table.insert(
+                                this.key <- key,
+                                this.value <- value,
+                                this.accessTime <- Date(),
+                                this.expirationTime <- Date() + 7.days,
+                                this.userId <- LSLUser.current().token?.userId
+                            ))
+                            
+                            result = (rowid > Int64(0)) ? true : false
+                            print("DB save: \(result)")
+                        }
+                    }
+                } catch {
+                    print(error.localizedDescription)
                 }
             }
-            return result
             
-        } catch {
-            print(error.localizedDescription)
-            return false
         }
     }
     
     @discardableResult
     func value(forKey key: String) -> Data? {
-        let query = self.table.select(self.table[*])
-            .filter(self.key == key)
-            .filter(self.accountId == LSLUser.current().user?.accountID)
-            .limit(1)
         
-        do {
-            let rows = try checkDb().prepare(query)
-            lock.lock()
-            try db?.run(query.update(self.accessTime <- Date()))
-            lock.unlock()
-            
-            if let row = Array(rows).last {
-                let data = row[self.value]
-                return data
-            } else {
-                return nil
+        around {
+            var result: Data?
+            queue.sync {[weak self] in
+                guard let this = self else { return }
+                let query = this.table.select(this.table[*])
+                    .filter(this.key == key)
+                    .filter(this.userId == LSLUser.current().token?.userId)
+                    .limit(1)
+                
+                do {
+                    let rows = try this.checkDb().prepare(query)
+                    
+                    try this.db?.run(query.update(this.accessTime <- Date()))
+                    
+                    if let row = Array(rows).last {
+                        result = row[this.value]
+                        
+                    } else {
+                    }
+                } catch  {
+                    print(error.localizedDescription)
+                }
             }
-        } catch  {
-            print(error.localizedDescription)
-            return nil
+            return result
         }
     }
     
     @discardableResult
     func deleteExpiredData() -> Bool {
-        let expired = self.table.select(self.table[*])
-            .filter(self.accessTime > self.expirationTime)
-        do {
-            lock.lock()
-            let result = try checkDb().run(expired.delete())
-            lock.unlock()
+        around {
+            var result = -1
+            queue.sync(flags: .barrier) {[weak self] in
+                guard let this = self else { return }
+                let expired = this.table.select(this.table[*])
+                    .filter(this.accessTime > this.expirationTime)
+                do {
+                    result = try this.checkDb().run(expired.delete())
+                } catch {
+                    
+                    print("delete expiredData failed: \(error)")
+                    result = -1
+                }
+            }
             return result > 0
-        } catch {
-            print("delete expiredData failed: \(error)")
-            return false
         }
     }
     
     @discardableResult
     func deleteValueBy(_ userId: String?) -> Bool {
-        let value = self.table.filter(self.accountId == userId)
-        do {
-            lock.lock()
-            let result = try self.checkDb().run(value.delete())
-            lock.unlock()
+        around {
+            var result = -1
+            queue.sync(flags: .barrier) {[weak self] in
+                guard let this = self else { return }
+                let target = this.table.select(this.table[*])
+                    .filter(this.userId == userId)
+                do {
+                    result = try this.checkDb().run(target.delete())
+                    
+                } catch {
+                    print("delete failed: \(error)")
+                    result = -1
+                }
+            }
             return result > 0
-        } catch {
-            print("delete expiredData failed: \(error)")
-            return false
         }
     }
     
     @discardableResult
     func deleteAll() -> Bool {
-        do {
-            let result = try self.checkDb().run(self.table.delete())
+        return around {
+            var result = -1
+            queue.sync(flags: .barrier) {[weak self] in
+                guard let this = self else { return }
+                do {
+                    result = try this.checkDb().run(this.table.delete())
+                } catch {
+                    print("delete failed: \(error)")
+                    result = -1
+                }
+            }
             return result > 0
-        } catch {
-            print("delete expiredData failed: \(error)")
-            return false
         }
+    }
+}
+
+extension NetworkMetaDb {
+    
+    func around<T>(_ closure: () -> T) -> T {
+        pthread_rwlock_trywrlock(&lock)
+        defer { pthread_rwlock_unlock(&lock) }
+        return closure()
     }
 }

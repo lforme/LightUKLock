@@ -33,58 +33,78 @@ class AddFingerFinishController: UIViewController {
     
     func bind() {
         
-        guard let userCode = LSLUser.current().userInScene?.userCode else {
+        guard let userCode = LSLUser.current().scene?.lockUserAccount else {
             HUD.flash(.label("无法从服务器获取用户编号, 请稍后再试"), delay: 2)
+            navigationController?.popViewController(animated: true)
+            return
+        }
+        
+        guard let lockId = LSLUser.current().lockInfo?.ladderLockId  else {
+            HUD.flash(.label("无法从服务器获取门锁编号, 请稍后再试"), delay: 2)
             navigationController?.popViewController(animated: true)
             return
         }
         
         vm.addFinger().do(onNext: {[weak self] (arg) in
             self?.playAnimation(arg.0 ?? 0)
-            guard let pwdNumber = arg.1 else { return }
-            if var localInfo = LSLUser.current().userInScene {
-                localInfo.pwdNumber = pwdNumber
-                LSLUser.current().userInScene = localInfo
-            }
+        }).flatMapLatest {(arg) -> Observable<(Bool, String?)> in
             
-        }).flatMapLatest { (arg) -> Observable<Bool> in
-            print(arg)
             if arg.0 == 4 {
-                return Observable<Bool>.create { (observer) -> Disposable in
+                return Observable<(Bool, String?)>.create { (observer) -> Disposable in
                     BluetoothPapa.shareInstance.conformsFingerAction(userNumber: userCode, pwdNumber: arg.1 ?? "")
-                    observer.onNext(true)
+                    observer.onNext((true, arg.1))
                     observer.onCompleted()
                     return Disposables.create()
-                }.delaySubscription(0.5, scheduler: MainScheduler.instance)
+                }.delaySubscription(.seconds(1), scheduler: MainScheduler.instance)
             } else {
                 return .empty()
             }
             
-        }.flatMapLatest({ (success) -> Observable<String> in
-            if success {
-                return SingleInputController.rx.present(wiht: "设置指纹名称", saveTitle: "保存", placeholder: "请填写指纹名称")
+        }.flatMapLatest({ (arg) -> Observable<(String, String?)> in
+            if arg.0 {
+                return Observable<(String, String?)>.create {[weak self] (observer) -> Disposable in
+                    
+                    guard let this = self else {
+                        return Disposables.create()
+                    }
+                    
+                    SingleInputController.rx.present(wiht: "设置指纹名称", saveTitle: "保存", placeholder: "请填写指纹名称").subscribe(onNext: { (name) in
+                        observer.onNext((name, arg.1))
+                        observer.onCompleted()
+                    }).disposed(by: this.rx.disposeBag)
+                    
+                    return Disposables.create()
+                }
             } else {
                 return .empty()
             }
-        }).flatMapLatest { (name) -> Observable<Bool> in
-                if name.count > 0 {
-                    return BusinessAPI.requestMapBool(.addFingerPrintKey(name: name))
-                } else {
-                    return .empty()
-                }
+        }).flatMapLatest { (arg) -> Observable<Bool> in
+            guard let keyNum = arg.1 else {
+                return .error(AppError.reason("添加指纹失败, 请在门锁上删除已添加的指纹"))
+            }
+            return BusinessAPI.requestMapBool(.addFinger(lockId: lockId, keyNum: keyNum, name: arg.0, phone: nil))
+            
         }.subscribe(onNext: {[weak self] (success) in
             if success {
                 HUD.flash(.label("添加成功"), delay: 2)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {[weak self] in
-                    self?.navigationController?.popToRootViewController(animated: true)
-                }
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.editFinger)
             } else {
                 HUD.flash(.label("添加失败"), delay: 2)
             }
             
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {[weak self] in
+                guard let tagerVC = self?.navigationController?.children.filter({ (vc) -> Bool in
+                    return vc is FingerManageController
+                }).last else { return }
+                self?.navigationController?.popToViewController(tagerVC, animated: true)
+            }
+            
             }, onError: {[weak self] (error) in
                 PKHUD.sharedHUD.rx.showError(error)
-                self?.navigationController?.popToRootViewController(animated: true)
+                guard let tagerVC = self?.navigationController?.children.filter({ (vc) -> Bool in
+                    return vc is FingerManageController
+                }).last else { return }
+                self?.navigationController?.popToViewController(tagerVC, animated: true)
             }, onCompleted: {[weak self] in
                 self?.animationView.play(toProgress: 1)
         }).disposed(by: rx.disposeBag)

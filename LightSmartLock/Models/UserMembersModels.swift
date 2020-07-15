@@ -11,36 +11,37 @@ import HandyJSON
 
 struct UserMemberListModel: HandyJSON {
     
-    var customerID: String!
-    var accountID: String!
-    var sceneID: String!
-    var customerNickName: String?
+    /////////////
+    var avatar: String?
+    var bluetoothModel: Bool!
+    var cardModel: Bool!
+    var codeModel: Bool!
+    var fingerprintModel: Bool!
+    var id: String?
+    var idCard: String?
+    var idCardFront: String?
+    var idCardReverse: String?
+    var kinsfolkTag: String?
+    var lockId: String?
+    var lockUserAccount: String?
+    var nickname: String?
     var phone: String?
-    var keyID: String!
-    var headPic: String?
+    var pressForMoney: Bool!
+    var roleType: RoleModel!
+    var state: Int!
+    var username: String?
+    var operationType: Int! // 1 蓝牙  2远程
+    var bluetoothPwd: String? // 蓝牙密码
+    var numberPwd: String? // 数字密码
     
-    var codeModel: Bool = false
-    var fingerprintModel: Bool = false
-    var cardModel: Bool = false
-    var bluetoothModel: Bool = false
+    struct ModifyNickname: HandyJSON {
+        var id: String?
+        var nickname: String?
+    }
     
-    var userCode: String?
-    var createDate: String!
-    
-    var Label: String?
-    var initialSecret: String?
-    
-    var relationType: RoleModel?
+    func ConvertToModifyNickname() -> ModifyNickname {
+        let model = ModifyNickname(id: self.id, nickname: self.nickname)
+        return model
+    }
 }
 
-struct AddUserMemberModel: HandyJSON {
-    
-    var SceneID: String?
-    var CustomerNickName: String?
-    var Phone: String?
-    var InitialSecret: String?
-    var UserCode: String?
-    var OperationType: Int?
-    var Label: String?
-    var HeadPic: String?
-}

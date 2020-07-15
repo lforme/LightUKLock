@@ -9,91 +9,70 @@
 import Foundation
 import HandyJSON
 
-struct SmartLockInfoModel: HandyJSON {
-    
-    var InitialSecret: String!
-    var UserCode: String!
-    var AccountID: String!
-    var customerLockID: String!
-    var sceneID: String?
-    var lockNum: String!
-    var secretKey: String?
-    var bluthName: String?
-    var MAC: String!
-    var IMEI: String!
-    var lockVersion: String!
-    var NBVersion: String!
-    var bluthVersion: String!
-    var fingerprintVersion: String?
-    var SNCode: String!
-    var IMSI: String!
-    var lockType: String!
-}
 
-struct IOTLockInfoModel: HandyJSON {
+struct UnlockRecordModel: HandyJSON, Hashable {
+    var openTypeCode: Int?
+    var openTime: String?
+    var openType: String?
+    var userName: String?
+    var avatar: String?
     
-    enum LockStateType: Int, HandyJSONEnum {
-        case locked = 0
-        case unlocked = 1
+    static func == (lhs: UnlockRecordModel, rhs: UnlockRecordModel) -> Bool {
+        return lhs.hashValue == rhs.hashValue
     }
     
-    var customerLockID: String?
-    var sceneID: String?
-    var LockNum: String?
-    var LastOpenDoorDate: String?
-    var LastOpenDoorUserCode: String?
-    var LastOpenDoorNikeName: String?
-    var LastOpenDoorCustomerID: String?
-    var CustomerHeadPic: String?
-    var PowerPercent: Float?
-    var DaysInt: Int!
-    var LockState: LockStateType!
-    var NBSignal: String?
-    var OnLineState: Int! // 1 开启 0 关闭
-    
-    func getPower() -> String? {
-        guard let p = PowerPercent else {
-            return nil
-        }
-        return String(format: "%.0f", (p * Float(100))) + "%"
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.openTime)
+        hasher.combine(self.openType)
+        hasher.combine(self.userName)
+        hasher.combine(self.openTypeCode)
     }
 }
 
+struct LockModel: HandyJSON {
+    var bluetoothName: String?
+    var bluetoothPwd: String?
+    var bluetoothVersion: String?
+    var deviceType: String?
+    var fingerVersion: String?
+    var firmwareVersion: String?
+    var imei: String?
+    var imsi: String?
+    var blueMac: String?
+    var ladderAssetHouseId: String?
+    var lockCode: String?
+    var lockType: String?
+    var nbVersion: String?
+    var serialNumber: String?
+    var adminPwd: String?
+    var power: Double?
+    var powerPercent: Double?
+    var signal: String?
+    var ladderLockId: String?
+    var lockNum: String?
+}
 
-struct UnlockRecordModel: HandyJSON {
+class BindLockListModel: HandyJSON {
     
-    enum KeyType: Int, HandyJSONEnum, CustomStringConvertible {
-        case password = 1
-        case finger
-        case ICCard
-        case identifyCard
-        case tempPassword
-        case bluetooth
+    var id: String?
+    var address: String?
+    var snCode: String?
+    
+    required init() {}
+    
+    func mapping(mapper: HelpingMapper) {
+        mapper <<<
+            self.id <-- "hardwareLockConfigDTO.id"
+        mapper <<<
+            self.address <-- "hardwareLockConfigDTO.installAddress"
+        mapper <<<
+            self.snCode <-- "hardwareLockConfigDTO.snCode"
         
-        var description: String {
-            switch self {
-            case .bluetooth:
-                return "蓝牙解锁"
-            case .finger:
-                return "指纹解锁"
-            case .ICCard:
-                return "IC卡解锁"
-            case .identifyCard:
-                return "身份证解锁"
-            case .password:
-                return "密码解锁"
-            case .tempPassword:
-                return "临时密码解锁"
-            }
-        }
     }
-    
-    var LockNum: String?
-    var UserCode: String?
-    var KeyType: KeyType!
-    var KeyID: String?
-    var UnlockTime: String!
-    var CustomerID: String!
-    var headPic: String?
-    var customerNickName: String?
+}
+
+struct LockTypeModel: HandyJSON {
+    var tyeUrl: String?
+    var typeId: String?
+    var typeName: String?
 }

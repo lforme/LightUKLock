@@ -41,7 +41,7 @@ class OpenDoorViewController: UIViewController {
         
         let shareConnected = vm.startConnected.share(replay: 1, scope: .forever)
         
-        shareConnected.subscribe(onNext: { (connect) in
+        shareConnected.delay(.seconds(1), scheduler: MainScheduler.instance).subscribe(onNext: { (connect) in
             if connect {
                 BluetoothPapa.shareInstance.handshake { (data) in
                     print(data ?? "握手失败")
@@ -49,15 +49,18 @@ class OpenDoorViewController: UIViewController {
             }
         }).disposed(by: rx.disposeBag)
         
-        shareConnected.delaySubscription(2, scheduler: MainScheduler.instance).flatMapLatest {[weak self] (isConnected) -> Observable<Bool> in
-            guard let this = self else {
-                return .error(AppError.reason("解锁失败"))
-            }
-            if isConnected {
-                return this.vm.openDoor()
-            } else {
-                return .just(false)
-            }
+        shareConnected
+            .delaySubscription(.seconds(2), scheduler: MainScheduler.instance)
+            .throttle(.seconds(1), latest: true, scheduler: MainScheduler.instance)
+            .flatMapLatest {[weak self] (isConnected) -> Observable<Bool> in
+                guard let this = self else {
+                    return .error(AppError.reason("解锁失败"))
+                }
+                if isConnected {
+                    return this.vm.openDoor()
+                } else {
+                    return .just(false)
+                }
         }.flatMapLatest {[weak self] (openDoorSuccess) -> Observable<Bool> in
             guard let this = self else {
                 return .error(AppError.reason("解锁失败"))
@@ -68,12 +71,13 @@ class OpenDoorViewController: UIViewController {
                 return .just(false)
             }
         }.subscribe(onNext: {[weak self] (finished) in
+            
             if finished {
-               self?.loadOpendoorAnimationJson()
+                self?.loadOpendoorAnimationJson()
             }
-        }, onError: {[weak self] (error) in
-            PKHUD.sharedHUD.rx.showError(error)
-            self?.dismiss(animated: true, completion: nil)
+            }, onError: {[weak self] (error) in
+                PKHUD.sharedHUD.rx.showError(error)
+                self?.dismiss(animated: true, completion: nil)
         }).disposed(by: rx.disposeBag)
     }
     
@@ -112,6 +116,7 @@ class OpenDoorViewController: UIViewController {
         animationView.play {[weak self] (finish) in
             if finish {
                 self?.dismiss(animated: true, completion: nil)
+                NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.openDoor)
             }
         }
     }

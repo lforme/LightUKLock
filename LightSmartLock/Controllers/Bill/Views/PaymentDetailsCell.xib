@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PaymentDetailsCell" customModule="门锁助手个人版" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="426" height="235"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="426" height="235"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dhf-xR-sSO">
+                        <rect key="frame" x="0.0" y="0.0" width="426" height="235"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="FvE-31-l8V">
+                                <rect key="frame" x="16" y="4" width="394" height="226"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="JAp-dS-oNv">
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="50.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHv-rg-TKK">
+                                                <rect key="frame" x="0.0" y="0.0" width="57.5" height="50.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" name="textPrimary"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="xxxxxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyY-PT-NEF">
+                                                <rect key="frame" x="61.5" y="0.0" width="332.5" height="50.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" name="textDescription"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="37S-2k-Ky4">
+                                        <rect key="frame" x="0.0" y="58.5" width="394" height="50.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="流水号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWw-DZ-ODb">
+                                                <rect key="frame" x="0.0" y="0.0" width="43" height="50.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" name="textPrimary"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="xxxxxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Od-PR-bQa">
+                                                <rect key="frame" x="47" y="0.0" width="347" height="50.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" name="textDescription"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="qn7-pH-pns">
+                                        <rect key="frame" x="0.0" y="117" width="394" height="50.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOn-p0-nii">
+                                                <rect key="frame" x="0.0" y="0.0" width="57.5" height="50.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" name="textPrimary"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="xxxxxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybX-OF-S0u">
+                                                <rect key="frame" x="61.5" y="0.0" width="332.5" height="50.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" name="textDescription"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ap5-SK-LYn">
+                                        <rect key="frame" x="0.0" y="175.5" width="394" height="50.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付金额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wbu-CG-TGO">
+                                                <rect key="frame" x="0.0" y="0.0" width="57.5" height="50.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" name="textPrimary"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="xxxxxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Io-ic-3bN">
+                                                <rect key="frame" x="61.5" y="0.0" width="332.5" height="50.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" name="textDescription"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcY-68-Zs9">
+                                <rect key="frame" x="16" y="234" width="410" height="1"/>
+                                <color key="backgroundColor" red="0.87842881679999996" green="0.87841504810000004" blue="0.87843221429999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="DoV-i6-7N1"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zcY-68-Zs9" secondAttribute="trailing" id="5x0-QX-h4w"/>
+                            <constraint firstItem="zcY-68-Zs9" firstAttribute="top" secondItem="FvE-31-l8V" secondAttribute="bottom" constant="4" id="BOj-FH-cvV"/>
+                            <constraint firstAttribute="bottom" secondItem="zcY-68-Zs9" secondAttribute="bottom" id="DEM-hg-NFX"/>
+                            <constraint firstAttribute="trailing" secondItem="FvE-31-l8V" secondAttribute="trailing" constant="16" id="IlS-fN-LHE"/>
+                            <constraint firstItem="zcY-68-Zs9" firstAttribute="leading" secondItem="dhf-xR-sSO" secondAttribute="leading" constant="16" id="aMy-r8-0XI"/>
+                            <constraint firstItem="FvE-31-l8V" firstAttribute="leading" secondItem="dhf-xR-sSO" secondAttribute="leading" constant="16" id="iQ4-gk-hRh"/>
+                            <constraint firstItem="FvE-31-l8V" firstAttribute="top" secondItem="dhf-xR-sSO" secondAttribute="top" constant="4" id="kuZ-iI-gmv"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="dhf-xR-sSO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="OdG-pS-Iu5"/>
+                <constraint firstAttribute="bottom" secondItem="dhf-xR-sSO" secondAttribute="bottom" id="Xsf-Li-Esj"/>
+                <constraint firstAttribute="trailing" secondItem="dhf-xR-sSO" secondAttribute="trailing" id="fLR-pa-haH"/>
+                <constraint firstItem="dhf-xR-sSO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="h1V-Mf-tqa"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="426" height="235"/>
+            <connections>
+                <outlet property="flowNumber" destination="8Od-PR-bQa" id="aRS-LP-3fL"/>
+                <outlet property="payMoney" destination="2Io-ic-3bN" id="ble-oB-R9h"/>
+                <outlet property="payTime" destination="cyY-PT-NEF" id="PEG-Zl-ZJ8"/>
+                <outlet property="payWay" destination="ybX-OF-S0u" id="CJa-bo-4yF"/>
+            </connections>
+            <point key="canvasLocation" x="168.11594202898553" y="161.04910714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="textDescription">
+            <color red="0.65100002288818359" green="0.68199998140335083" blue="0.7369999885559082" alpha="0.81999999284744263" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textPrimary">
+            <color red="0.039000000804662704" green="0.12200000137090683" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

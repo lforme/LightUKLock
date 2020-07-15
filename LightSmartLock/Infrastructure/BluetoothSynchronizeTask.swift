@@ -47,7 +47,7 @@ final class BluetoothSynchronizeTask: UKBluetoothManagerDelegate {
                     }
                 }
                 return Disposables.create()
-            }.delaySubscription(5, scheduler: MainScheduler.instance)
+            }.delaySubscription(.seconds(5), scheduler: MainScheduler.instance)
         })
     }
     
@@ -59,11 +59,11 @@ final class BluetoothSynchronizeTask: UKBluetoothManagerDelegate {
             this.writeToBluethooth.execute(s)
         }).disposed(by: disposeBag)
         
-        writeToBluethooth.elements.subscribe(onNext: {[weak self] (reslut) in
-            guard let this = self else { return }
-            if reslut.1 {
-                this.fetchTask(param: reslut.0).subscribe().disposed(by: this.disposeBag)
-            }
+        writeToBluethooth.elements.subscribe(onNext: { (reslut) in
+//            guard let this = self else { return }
+//            if reslut.1 {
+//                this.fetchTask(param: reslut.0).subscribe().disposed(by: this.disposeBag)
+//            }
             
         }).disposed(by: disposeBag)
         
@@ -81,7 +81,7 @@ final class BluetoothSynchronizeTask: UKBluetoothManagerDelegate {
             let headers: HTTPHeaders = ["Content-Type": "application/json"]
             
             if let p = param {
-                Alamofire.request("http://deviceapi.jinriwulian.com/api/IOTDeviceAPI/APPGet", method: HTTPMethod.get, parameters: ["strMessageData": p, "DevType": "kf110"], encoding: URLEncoding.default, headers: headers).responseJSON {[weak self] (response) in
+                AF.request("http://deviceapi.jinriwulian.com/api/IOTDeviceAPI/APPGet", method: HTTPMethod.get, parameters: ["strMessageData": p, "DevType": "kf110"], encoding: URLEncoding.default, headers: headers).responseJSON {[weak self] (response) in
                     let dict = response.value as? [String: Any]
                     if let taskStr = dict?["Data"] as? String {
                         self?.serverCommand.onNext(taskStr)
@@ -89,12 +89,12 @@ final class BluetoothSynchronizeTask: UKBluetoothManagerDelegate {
                 }
                 
             } else {
-                if let macWithColon = LSLUser.current().lockInfo?.MAC {
+                if let macWithColon = LSLUser.current().lockInfo?.blueMac {
                     let mac = macWithColon.replacingOccurrences(of: ":", with: "")
                     let date = Date().toString(.custom("yyyyMMddHHmm"))
                     let paramBuilder = ["strMessageData": "FF00030108\(mac)00100662640000\(date)", "DevType": "kf110"]
                     
-                    Alamofire.request("http://deviceapi.jinriwulian.com/api/IOTDeviceAPI/APPGet", method: HTTPMethod.get, parameters: paramBuilder, encoding: URLEncoding.default, headers: headers).responseJSON {[weak self] (response) in
+                    AF.request("http://deviceapi.jinriwulian.com/api/IOTDeviceAPI/APPGet", method: HTTPMethod.get, parameters: paramBuilder, encoding: URLEncoding.default, headers: headers).responseJSON {[weak self] (response) in
                         
                         let dict = response.value as? [String: Any]
                         if let taskStr = dict?["Data"] as? String {
@@ -109,7 +109,45 @@ final class BluetoothSynchronizeTask: UKBluetoothManagerDelegate {
             
             return Disposables.create()
         }
+
         
     }
+//
+//    private func fetchTask(param: String?) -> Observable<String> {
+//
+//        return Observable<String>.create { (obs) -> Disposable in
+//            let headers: HTTPHeaders = ["Content-Type": "application/json"]
+//
+//            if let p = param {
+//                Alamofire.request("http://deviceapi.jinriwulian.com/api/IOTDeviceAPI/APPGet", method: HTTPMethod.get, parameters: ["strMessageData": p, "DevType": "kf110"], encoding: URLEncoding.default, headers: headers).responseJSON {[weak self] (response) in
+//                    let dict = response.value as? [String: Any]
+//                    if let taskStr = dict?["Data"] as? String {
+//                        self?.serverCommand.onNext(taskStr)
+//                    }
+//                }
+//
+//            } else {
+//                if let macWithColon = LSLUser.current().lockInfo?.blueMac {
+//                    let mac = macWithColon.replacingOccurrences(of: ":", with: "")
+//                    let date = Date().toString(.custom("yyyyMMddHHmm"))
+//                    let paramBuilder = ["strMessageData": "FF00030108\(mac)00100662640000\(date)", "DevType": "kf110"]
+//
+//                    Alamofire.request("http://deviceapi.jinriwulian.com/api/IOTDeviceAPI/APPGet", method: HTTPMethod.get, parameters: paramBuilder, encoding: URLEncoding.default, headers: headers).responseJSON {[weak self] (response) in
+//
+//                        let dict = response.value as? [String: Any]
+//                        if let taskStr = dict?["Data"] as? String {
+//                            self?.serverCommand.onNext(taskStr)
+//                        }
+//                    }
+//
+//                } else {
+//                    obs.onError(AppError.reason("无法获取蓝牙Mac地址信息"))
+//                }
+//            }
+//
+//            return Disposables.create()
+//        }
+//
+//    }
     
 }

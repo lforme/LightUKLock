@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="BillDetailTenantCell" customModule="寓用管家" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="379" height="171"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="379" height="171"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="租客姓名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqA-L4-3jx">
+                        <rect key="frame" x="16" y="16" width="57.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" name="textPrimary"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="张三" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DqU-HD-4id">
+                        <rect key="frame" x="81.5" y="16" width="29" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" name="textDescription"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合同周期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAS-0W-0co">
+                        <rect key="frame" x="16" y="41" width="57.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" name="textPrimary"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="租期:2019-12-21至2020-02-21" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWK-A9-GTj">
+                        <rect key="frame" x="81.5" y="41" width="200" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" name="textDescription"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XgW-Lz-dNx">
+                        <rect key="frame" x="291.5" y="91.5" width="71.5" height="32"/>
+                        <state key="normal" image="phone_call_icon"/>
+                    </button>
+                </subviews>
+            </view>
+            <color key="backgroundColor" name="viewBackground"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="XgW-Lz-dNx" secondAttribute="trailing" constant="16" id="2fU-qf-pmg"/>
+                <constraint firstItem="jAS-0W-0co" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="Caz-G1-hbH"/>
+                <constraint firstItem="sWK-A9-GTj" firstAttribute="top" secondItem="DqU-HD-4id" secondAttribute="bottom" constant="8" id="Eua-Gi-pIN"/>
+                <constraint firstItem="aqA-L4-3jx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="T7D-Mv-gIU"/>
+                <constraint firstItem="jAS-0W-0co" firstAttribute="top" secondItem="aqA-L4-3jx" secondAttribute="bottom" constant="8" id="U0E-zz-xAN"/>
+                <constraint firstItem="DqU-HD-4id" firstAttribute="centerY" secondItem="aqA-L4-3jx" secondAttribute="centerY" id="Wng-2C-8Yg"/>
+                <constraint firstItem="XgW-Lz-dNx" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="ahR-bh-Zzr"/>
+                <constraint firstItem="aqA-L4-3jx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="ltK-0P-JuG"/>
+                <constraint firstItem="DqU-HD-4id" firstAttribute="leading" secondItem="aqA-L4-3jx" secondAttribute="trailing" constant="8" id="qaD-vk-rbY"/>
+                <constraint firstItem="sWK-A9-GTj" firstAttribute="leading" secondItem="jAS-0W-0co" secondAttribute="trailing" constant="8" id="rKD-Hv-mWy"/>
+                <constraint firstItem="XgW-Lz-dNx" firstAttribute="leading" secondItem="sWK-A9-GTj" secondAttribute="trailing" constant="10" id="vB1-mq-da6"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="379" height="171"/>
+            <connections>
+                <outlet property="callButton" destination="XgW-Lz-dNx" id="0ca-Tf-SJF"/>
+                <outlet property="dateLabel" destination="sWK-A9-GTj" id="TD9-iP-Uk7"/>
+                <outlet property="tenantName" destination="DqU-HD-4id" id="5ZC-LP-w6q"/>
+            </connections>
+            <point key="canvasLocation" x="135.50724637681159" y="171.76339285714286"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="phone_call_icon" width="32" height="32"/>
+        <namedColor name="textDescription">
+            <color red="0.65100002288818359" green="0.68199998140335083" blue="0.7369999885559082" alpha="0.81999999284744263" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textPrimary">
+            <color red="0.039000000804662704" green="0.12200000137090683" blue="0.2669999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="viewBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

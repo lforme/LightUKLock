@@ -44,6 +44,7 @@ class CardDetailController: UITableViewController, NavigationSettingStyle {
     
     func bind() {
         self.vm = CardDetailViewModel(keyNumber: self.keyNumber, keyId: self.keyId)
+        self.cardNameLabel.text = self.cardName
     }
     
     func setupUI() {
@@ -66,28 +67,37 @@ class CardDetailController: UITableViewController, NavigationSettingStyle {
         }
         
         switch type {
-        case .changeName:
+        case .delete:
             Popups.showSelect(title: "请选择删除方式", indexTitleOne: "现场删除", IndexTitleTwo: "远程删除", contentA: "请在门锁附近(2-3米内)打开手机蓝牙删除门卡，删除后立即生效", contentB: "请在门锁附近(2-3米内)打开手机蓝牙删除门卡，删除后立即生效").flatMapLatest {[unowned self] (index) -> Observable<Bool> in
                 let way = CardDetailViewModel.DeleteWay(rawValue: index)
                 return self.vm.deleteCard(way: way!)
             }.subscribe(onNext: {[weak self] (success) in
                 if success {
                     HUD.flash(.label("删除门卡成功"), delay: 2)
-                    self?.navigationController?.popToRootViewController(animated: true)
+                    NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.editCard)
+                    guard let tagerVC = self?.navigationController?.children.filter({ (vc) -> Bool in
+                        return vc is CardManageController
+                    }).last else { return }
+                    self?.navigationController?.popToViewController(tagerVC, animated: true)
+                    
                 }
                 }, onError: { (error) in
                     PKHUD.sharedHUD.rx.showError(error)
             }).disposed(by: rx.disposeBag)
             
-        case .delete:
-            SingleInputController.rx.present(wiht: "设置指纹名称", saveTitle: "保存", placeholder: self.cardName).flatMapLatest {[unowned self] (newName) -> Observable<Bool> in
+        case .changeName:
+            SingleInputController.rx.present(wiht: "修改门卡名称", saveTitle: "保存", placeholder: self.cardName).flatMapLatest {[unowned self] (newName) -> Observable<Bool> in
                 return self.vm.changeCardName(newName)
-            }.subscribe(onNext: { (success) in
+            }.subscribe(onNext: {[weak self] (success) in
                 if success {
+                    NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.editCard)
                     HUD.flash(.label("修改门卡名称成功"), delay: 2)
                 } else {
                     HUD.flash(.label("修改门卡名称失败"), delay: 2)
                 }
+                
+                self?.navigationController?.popViewController(animated: true)
+                
             }, onError: { (error) in
                 PKHUD.sharedHUD.rx.showError(error)
             }).disposed(by: rx.disposeBag)

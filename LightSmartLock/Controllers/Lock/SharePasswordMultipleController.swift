@@ -23,8 +23,11 @@ class SharePasswordMultipleController: UITableViewController {
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var MarkTextField: UITextField!
     @IBOutlet weak var messageButton: UIButton!
+    @IBOutlet weak var wechatButton: UIButton!
+    @IBOutlet weak var qqButton: UIButton!
+    @IBOutlet weak var phoneCell: UITableViewCell!
     
-    let vm = SharePwdMultipleViewModel()
+    var vm: SharePwdMultipleViewModel!
     var shareButton: UIButton!
     
     deinit {
@@ -41,10 +44,18 @@ class SharePasswordMultipleController: UITableViewController {
     }
     
     func setupNavigationRightItem() {
-        self.shareButton = createdRightNavigationItem(title: "分享", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 4, color: ColorClassification.primary.value)
+        self.shareButton = createdRightNavigationItem(title: "分享", font: UIFont.systemFont(ofSize: 14, weight: .medium), image: nil, rightEdge: 4, color: .white)
     }
     
     func bind() {
+        
+        guard let lockId = LSLUser.current().scene?.ladderLockId else {
+            HUD.flash(.label("无法获取门锁编号"), delay: 2)
+            return
+        }
+        
+        self.vm = SharePwdMultipleViewModel(lockId: lockId)
+        
         vm.displayStartTime.bind(to: startTime.rx.text).disposed(by: rx.disposeBag)
         vm.displayEndTime.bind(to: endTime.rx.text).disposed(by: rx.disposeBag)
         
@@ -52,12 +63,44 @@ class SharePasswordMultipleController: UITableViewController {
             switch type {
             case .message:
                 self?.messageButton.isSelected = true
-            case .qq: break
-            case .weixin: break
+                self?.wechatButton.isSelected = false
+                self?.qqButton.isSelected = false
+                self?.phoneCell.isHidden = false
+                
+            case .qq:
+                self?.messageButton.isSelected = false
+                self?.wechatButton.isSelected = false
+                self?.qqButton.isSelected = true
+                self?.phoneCell.isHidden = true
+                
+            case .weixin:
+                self?.messageButton.isSelected = false
+                self?.wechatButton.isSelected = true
+                self?.qqButton.isSelected = false
+                self?.phoneCell.isHidden = true
             }
         }).disposed(by: rx.disposeBag)
         
-        messageButton.rx.tap.map { _ in TempPasswordShareType.message }.bind(to: vm.bindShareType).disposed(by: rx.disposeBag)
+        messageButton.rx
+            .tap
+            .map {_ in
+                return TempPasswordShareWayType.message }
+            .bind(to: vm.bindShareType)
+            .disposed(by: rx.disposeBag)
+        
+        wechatButton.rx
+            .tap
+            .map { _ in
+                return TempPasswordShareWayType.weixin }
+            .bind(to: vm.bindShareType)
+            .disposed(by: rx.disposeBag)
+        
+        qqButton.rx
+            .tap
+            .map { _ in
+                return TempPasswordShareWayType.qq }
+            .bind(to: vm.bindShareType)
+            .disposed(by: rx.disposeBag)
         
         phoneTextField.rx.text.orEmpty.changed
             .distinctUntilChanged()
@@ -73,17 +116,41 @@ class SharePasswordMultipleController: UITableViewController {
         }).disposed(by: rx.disposeBag)
         
         vm.shareAction.elements.subscribe(onNext: {[weak self] (shareBody) in
-            print(shareBody)
-            HUD.flash(.label("分享成功"), delay: 2)
-            self?.navigationController?.popToRootViewController(animated: true)
+            switch self?.vm.bindShareType.value {
+            case .message:
+                HUD.flash(.label("分享成功"), delay: 2)
+                
+            case .weixin:
+                ShareTool.share(platform: .weixin, contentText: shareBody.content, url: ServerHost.shared.environment.host + (shareBody.url ?? ""), title: shareBody.title) { (success) in
+                    if success {
+                        HUD.flash(.label("分享成功"), delay: 2)
+                    }
+                }
+                
+            case .qq:
+                ShareTool.share(platform: .qq, contentText: shareBody.content, url: ServerHost.shared.environment.host + (shareBody.url ?? ""), title: shareBody.title) { (success) in
+                    if success {
+                        HUD.flash(.label("分享成功"), delay: 2)
+                    }
+                }
+            default: break
+            }
+            
+            self?.navigationController?.popViewController(animated: true)
+            NotificationCenter.default.post(name: .refreshState, object: NotificationRefreshType.tempPassword)
         }).disposed(by: rx.disposeBag)
     }
     
     func setupUI() {
         tableView.tableFooterView = UIView()
-        messageButton.setCircular(radius: 3)
-        messageButton.setBackgroundImage(UIImage(color: ColorClassification.primary.value, size: messageButton.bounds.size), for: .selected)
-        messageButton.isSelected = true
+        
+        [messageButton, wechatButton, qqButton].forEach { (btn) in
+            btn?.setCircular(radius: 7)
+            btn?.clipsToBounds = true
+            btn?.setBackgroundImage(UIImage(color: ColorClassification.primary.value, size: btn!.bounds.size), for: .selected)
+            btn?.isSelected = true
+            btn?.setTitleColor(.white, for: .selected)
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

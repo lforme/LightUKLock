@@ -17,16 +17,21 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
     
     enum CellType: Int {
         case avatar = 0
-        case nickname
-        case password
-        case phone
-        case siri
-        case version
-        case logout
+        case nickname = 1
+        case privacySetting = 2
+        case password = 3
+        case phone = 4
+        case siri = 5
+        case notificationsSetting = 6
+        case collectionAccount = 7
+        case version = 8
+        case about = 10
+        case logout = 11
+        
     }
     
     var backgroundColor: UIColor? {
-        return ColorClassification.viewBackground.value
+        return ColorClassification.navigationBackground.value
     }
     
     @IBOutlet weak var versionLabel: UILabel!
@@ -58,21 +63,31 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
     
     func bind() {
         let shareInfo = LSLUser.current().obUserInfo.share(replay: 1, scope: .forever)
-        shareInfo.map { $0?.userName }.bind(to: nameValue.rx.text).disposed(by: rx.disposeBag)
-        shareInfo.map { $0?.headPic }.subscribe(onNext: {[weak self] (str) in
-            guard let urlStr = str?.encodeUrl() else { return }
-            self?.avatar.kf.setImage(with: URL(string: urlStr))
+        shareInfo.map { $0?.nickname }.bind(to: nameValue.rx.text).disposed(by: rx.disposeBag)
+        shareInfo.map { $0?.avatar }.subscribe(onNext: {[weak self] (str) in
+            self?.avatar.setUrl(str)
         }).disposed(by: rx.disposeBag)
         
-        versionLabel.text = ServerHost.shared.environment.description
+//        versionLabel.text = ServerHost.shared.environment.description
         siriLabel.text = LSLUser.current().hasSiriShortcuts ? "已设置" : "未设置"
-        
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = ColorClassification.tableViewBackground.value
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return 8
+        } else {
+            return CGFloat.leastNormalMagnitude
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let type = CellType(rawValue: indexPath.row) else { return }
+        guard let type = CellType(rawValue: indexPath.row + indexPath.section * 10) else { return }
         switch type {
         case .avatar:
             uploadAvatarAction()
@@ -92,17 +107,27 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
         case .siri:
             setupSiriShortcuts()
             
+        case .about:
+            gotoAboutus()
+            
+        case .collectionAccount:
+            gotoCollectionAccount()
+            
+        case .privacySetting:
+            gotoPrivacySettring()
+            
+        case .notificationsSetting:
+            gotoNotificationsSetting()
+           
         default: break
         }
     }
 }
 
-extension MySettingViewController: TZImagePickerControllerDelegate {}
-
 extension MySettingViewController {
     
     func logoutAction() {
-        showActionSheet(title: "确定要退出吗?", message: nil, buttonTitles: ["去意已决", "再玩会儿"], highlightedButtonIndex: 1) { (index) in
+        showActionSheet(title: "确定要退出吗?", message: nil, buttonTitles: ["退出", "取消"], highlightedButtonIndex: 1) { (index) in
             if index == 0 {
                 LSLUser.current().logout()
             }
@@ -139,7 +164,7 @@ extension MySettingViewController {
     
     func changePasswordAction() {
         
-        vm.verify().flatMapLatest {[weak self] (support, verify) -> Observable<String> in
+        vm.verify().flatMapLatest {[weak self] (support, verify) -> Observable<(String, String)> in
             guard let this = self else {
                 return .empty()
             }
@@ -151,14 +176,18 @@ extension MySettingViewController {
                 return .empty()
             }
             return .empty()
-        }.flatMapLatest {[weak self] (newPassword) -> Observable<UserModel> in
+        }.flatMapLatest {[weak self] (arg) -> Observable<Bool> in
             guard let this = self else {
                 return .empty()
             }
-            return this.vm.changePassword(newPassword.md5())
-        }.subscribe(onNext: { (user) in
-            HUD.flash(.label("密码修改成功"), delay: 2)
-            LSLUser.current().user = user
+            return this.vm.changePassword(oldPassword: arg.0, newPassword: arg.1)
+        }.subscribe(onNext: { (success) in
+            if success {
+                HUD.flash(.label("密码修改成功"), delay: 2)
+            }else {
+                HUD.flash(.label("密码修改失败"), delay: 2)
+            }
+            
         }, onError: { (error) in
             PKHUD.sharedHUD.rx.showError(error)
         }).disposed(by: rx.disposeBag)
@@ -215,6 +244,26 @@ extension MySettingViewController {
         } else {
             HUD.flash(.label("iOS系统版本过低\n无法使用Siri开门"), delay: 2)
         }
+    }
+    
+    func gotoCollectionAccount() {
+        let collectionAccountVC: ReceivingAccountController = ViewLoader.Storyboard.controller(from: "Bill")
+        navigationController?.pushViewController(collectionAccountVC, animated: true)
+    }
+    
+    func gotoPrivacySettring() {
+        let privacySettingVC: PrivacyLockSettingController = ViewLoader.Storyboard.controller(from: "My")
+        navigationController?.pushViewController(privacySettingVC, animated: true)
+    }
+    
+    func gotoNotificationsSetting() {
+        let notificationSettingVC: NotificationsSettingController = ViewLoader.Storyboard.controller(from: "My")
+        navigationController?.pushViewController(notificationSettingVC, animated: true)
+    }
+    
+    func gotoAboutus() {
+        let aboutusVC: AboutUsController = ViewLoader.Storyboard.controller(from: "My")
+        navigationController?.pushViewController(aboutusVC, animated: true)
     }
 }
 

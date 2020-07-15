@@ -50,6 +50,7 @@ class RegisterForgetController: UITableViewController, NavigationSettingStyle {
         
         setupUI()
         bind()
+        
     }
     
     func setupUI() {
@@ -88,25 +89,62 @@ class RegisterForgetController: UITableViewController, NavigationSettingStyle {
     func bind() {
         
         phoneTextField.rx.text.orEmpty.changed
-            .throttle(0.3, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
             .distinctUntilChanged().bind(to: vm.phone)
             .disposed(by: rx.disposeBag)
         
         
         codeTextField.rx.text.orEmpty.changed
-            .throttle(0.3, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .bind(to: vm.code)
             .disposed(by: rx.disposeBag)
         
         pwdTextField.rx.text.orEmpty.changed
-            .throttle(0.3, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .bind(to: vm.paassword)
             .disposed(by: rx.disposeBag)
         
-        doneButton.rx.bind(to: vm.regisForgetAction) {[weak self] (_) -> RegisForgetViewModel.Input in
-            return (self?.phoneTextField.text, self?.codeTextField.text, self?.pwdTextField.text)
+        if styleType == .register {
+            
+            doneButton.rx.bind(to: vm.regisAction) {[weak self] (_) -> RegisForgetViewModel.Input in
+                return (self?.phoneTextField.text, self?.codeTextField.text, self?.pwdTextField.text)
+            }
+            
+            vm.regisAction.elements.subscribe(onNext: {[weak self] (isSuccess) in
+                if isSuccess {
+                    HUD.flash(.label("注册成功"), delay: 2)
+                    self?.operateSuccessPhoneCall?(self?.phoneTextField.text)
+                    self?.navigationController?.popViewController(animated: true)
+                } else {
+                    HUD.flash(.label("提交失败, 请稍后再试"), delay: 2)
+                }
+            }).disposed(by: rx.disposeBag)
+            
+            vm.regisAction.errors.subscribe(onNext: { (error) in
+                PKHUD.sharedHUD.rx.showActionError(error)
+            }).disposed(by: rx.disposeBag)
+            
+        } else {
+            
+            doneButton.rx.bind(to: vm.forgetAction) {[weak self] (_) -> RegisForgetViewModel.Input in
+                return (self?.phoneTextField.text, self?.codeTextField.text, self?.pwdTextField.text)
+            }
+            
+            vm.forgetAction.elements.subscribe(onNext: {[weak self] (isSuccess) in
+                if isSuccess {
+                    HUD.flash(.label("修改成功"), delay: 2)
+                    self?.operateSuccessPhoneCall?(self?.phoneTextField.text)
+                    self?.navigationController?.popViewController(animated: true)
+                } else {
+                    HUD.flash(.label("提交失败, 请稍后再试"), delay: 2)
+                }
+            }).disposed(by: rx.disposeBag)
+            
+            vm.forgetAction.errors.subscribe(onNext: { (error) in
+                PKHUD.sharedHUD.rx.showActionError(error)
+            }).disposed(by: rx.disposeBag)
         }
         
         getCodeButton.rx.bind(to: vm.getCodeAction) {[weak self] (btn) -> String? in
@@ -120,20 +158,6 @@ class RegisterForgetController: UITableViewController, NavigationSettingStyle {
         }).disposed(by: rx.disposeBag)
         shareGetCodeErroe.subscribe(onNext: {[weak self] (_) in
             self?.getCodeButton.reset()
-        }).disposed(by: rx.disposeBag)
-        
-        vm.regisForgetAction.elements.subscribe(onNext: {[weak self] (isSuccess) in
-            if isSuccess {
-                HUD.flash(.label("成功"), delay: 2)
-                self?.operateSuccessPhoneCall?(self?.phoneTextField.text)
-                self?.navigationController?.popViewController(animated: true)
-            } else {
-                HUD.flash(.label("提交失败, 请稍后再试"), delay: 2)
-            }
-        }).disposed(by: rx.disposeBag)
-        
-        vm.regisForgetAction.errors.subscribe(onNext: { (error) in
-            PKHUD.sharedHUD.rx.showActionError(error)
         }).disposed(by: rx.disposeBag)
     }
 }

@@ -10,13 +10,14 @@ import Foundation
 import RxSwift
 import RxCocoa
 import PKHUD
+import SwiftDate
 
 final class OpenDoorViewModel {
     
     var startConnected: Observable<Bool> {
         return obConnected.asObserver()
     }
-    private let timer = Observable<Int>.timer(0, period: 1, scheduler: MainScheduler.instance).share(replay: 1, scope: .forever)
+    private let timer = Observable<Int>.timer(.seconds(0), period: .seconds(1), scheduler: MainScheduler.instance).share(replay: 1, scope: .forever)
     private let disposeBag = DisposeBag()
     private let obConnected = BehaviorSubject<Bool>(value: BluetoothPapa.shareInstance.isConnected())
     
@@ -34,7 +35,7 @@ final class OpenDoorViewModel {
         
         BluetoothPapa.shareInstance.scanForPeripherals(true)
         
-        timer.take(15).subscribe(onNext: {[weak self] (_) in
+        timer.take(10).subscribe(onNext: {[weak self] (_) in
             
             if BluetoothPapa.shareInstance.isConnected() {
                 self?.obConnected.onNext(true)
@@ -78,6 +79,11 @@ final class OpenDoorViewModel {
     }
     
     func uploadUnlockRecord() -> Observable<Bool> {
-        return BusinessAPI.requestMapBool(.submitBluthUnlockOperation)
+        guard let lockId = LSLUser.current().scene?.ladderLockId else {
+            return .error(AppError.reason("无法获取门锁Id"))
+        }
+        let time = Date().toFormat("yyyy-MM-dd HH:mm:ss")
+        
+        return BusinessAPI.requestMapBool(.uploadOpenDoorRecord(lockId: lockId, time: time, type: 1))
     }
 }

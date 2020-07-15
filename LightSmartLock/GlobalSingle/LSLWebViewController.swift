@@ -9,12 +9,32 @@
 import UIKit
 import WebKit
 import PKHUD
+import Lottie
 
 class LSLWebViewController: UIViewController {
+    
+    lazy var animation: UIView = {
+        let animation = Animation.named("loading", bundle: Bundle.main, animationCache: LRUAnimationCache.sharedCache)!
+        let animationView = AnimationView(animation: animation)
+        animationView.frame.size = CGSize(width: 50, height: 50)
+        animationView.animation = animation
+        animationView.loopMode = .loop
+        animationView.play()
+        let view = UIView()
+        view.frame.size = CGSize(width: 50, height: 50)
+        animationView.center = view.center
+        view.addSubview(animationView)
+        view.backgroundColor = ColorClassification.hudColor.value
+        return view
+    }()
     
     var navigationTitile: String?
     var webUrl: String?
     var webView: WKWebView!
+    
+    deinit {
+        print("deinit \(self)")
+    }
     
     convenience init(navigationTitile: String?, webUrl: String?) {
         self.init()
@@ -39,7 +59,7 @@ class LSLWebViewController: UIViewController {
         }
         webView.load(URLRequest(url: u))
         webView.navigationDelegate = self
-        HUD.show(.labeledProgress(title: nil, subtitle: nil))
+        HUD.show(.customView(view: animation))
     }
 }
 
