@@ -48,11 +48,18 @@ class MyViewController: UIViewController, NavigationSettingStyle {
     }
     
     func verifyID() {
-        if LSLUser.current().hasVerificationLock {
+        
+        //        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        //            LSLUser.current().isFirstLogin = false
+        //        }
+        
+        if LSLUser.current().hasVerificationLock && !LSLUser.current().isFirstLogin {
+            
             let verficationVC: VerficationIDController = ViewLoader.Storyboard.controller(from: "Login")
             verficationVC.modalPresentationStyle = .fullScreen
             self.present(verficationVC, animated: true, completion: nil)
         }
+        LSLUser.current().isFirstLogin = false
     }
     
     @IBAction func moreAseetTap(_ sender: UIButton) {

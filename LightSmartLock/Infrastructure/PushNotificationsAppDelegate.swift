@@ -12,6 +12,7 @@ import UserNotifications
 
 final class PushNotificationsAppDelegate: AppDelegateType, JPUSHRegisterDelegate {
     
+    @discardableResult
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         let jpEntity = JPUSHRegisterEntity()

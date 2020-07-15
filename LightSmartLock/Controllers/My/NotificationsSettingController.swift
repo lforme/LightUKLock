@@ -18,10 +18,6 @@ class NotificationsSettingController: UITableViewController, NavigationSettingSt
         print("deinit \(self)")
     }
     
-    var isLargeTitle: Bool {
-        return true
-    }
-    
     var backgroundColor: UIColor? {
         return ColorClassification.navigationBackground.value
     }

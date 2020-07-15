@@ -30,10 +30,6 @@ class MySettingViewController: UITableViewController, NavigationSettingStyle {
         
     }
     
-    var isLargeTitle: Bool {
-        return false
-    }
-    
     var backgroundColor: UIColor? {
         return ColorClassification.navigationBackground.value
     }

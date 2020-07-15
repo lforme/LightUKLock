@@ -114,7 +114,6 @@ class CitySelectViewController: AssetBaseViewController {
         "南京","西安","长沙","厦门"
     ]
     
-    
     @IBAction func selectLocationCity(_ sender: UIButton) {
         if let city = selectedCity {
             select(city: city)

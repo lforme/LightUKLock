@@ -130,11 +130,11 @@ class BindingOrEditAssetViewController: AssetBaseViewController {
         if let vc = segue.destination as? CitySelectViewController,
             let btn = sender as? UIButton
         {
-            vc.didSelectCitt = { [weak self]city in
+            vc.didSelectCitt = {[weak self] city in
                 btn.setTitle(city.name, for: .normal)
                 self?.asset.cityId = city.code.description
                 self?.asset.cityName = city.name
-                
+                print(city.code ?? "")
             }
         }
     }

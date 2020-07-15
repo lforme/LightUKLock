@@ -10,6 +10,7 @@ import Foundation
 
 final class ShareSDKAppDelegate: AppDelegateType {
     
+    @discardableResult
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         setupShareSDK()

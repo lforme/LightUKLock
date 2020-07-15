@@ -99,9 +99,11 @@ class LoginViewController: UITableViewController, StoryboardView {
         }).disposed(by: disposeBag)
         
         
-        reactor.state.map { $0.loginResult }.subscribe(onNext: { (result) in
-            print(result ?? "")
-        }).disposed(by: disposeBag)
+        reactor.state.map { $0.loginResult }
+            .distinctUntilChanged()
+            .subscribe(onNext: { (result) in
+                print(result ?? "")
+            }).disposed(by: disposeBag)
     }
     
     func setupUI() {

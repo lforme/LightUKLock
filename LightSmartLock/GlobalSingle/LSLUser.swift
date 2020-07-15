@@ -155,6 +155,16 @@ class LSLUser: NSObject {
         }
     }
     
+    var isFirstLogin: Bool {
+        set {
+            LocalArchiver.save(key: LSLUser.Keys.isFirstLogin.rawValue, value: newValue)
+        }
+        get {
+            let value = LocalArchiver.load(key: LSLUser.Keys.isFirstLogin.rawValue) as? Bool
+            return value ?? false
+        }
+    }
+        
     var obUserInfo: Observable<UserModel?> {
         return changeableUserInfo.asObservable()
     }
@@ -202,6 +212,7 @@ extension LSLUser {
         case siriShortcuts = "siriShortcuts"
         case bluetoothVolume = "bluetoothVolume"
         case verificationLock = "verificationLock"
+        case isFirstLogin = "isFirstLogin"
     }
 }
 

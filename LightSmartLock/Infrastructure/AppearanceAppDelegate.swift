@@ -13,6 +13,7 @@ import SwiftDate
 
 final class AppearanceAppDelegate: AppDelegateType {
     
+    @discardableResult
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {

@@ -14,7 +14,7 @@ import Alamofire
 import HandyJSON
 import PKHUD
 
-fileprivate let lock = DispatchSemaphore(value: 0)
+fileprivate let lock = DispatchSemaphore(value: 1)
 
 final class RxMoyaProvider<Target>: MoyaProvider<Target> where Target: TargetType {
     
@@ -109,32 +109,35 @@ private extension RxMoyaProvider {
                 if res.statusCode == 401 {
                     return Observable.create({ (observer) -> Disposable in
                         self.authenticationBlock {
-                            // 刷新 Token
+                            // 刷新 Token 不做
+                            NotificationCenter.default.post(name: .tokenExpired, object: nil)
+                            LSLUser.current().logout()
                             
-                            guard let oldToken = LSLUser.current().token?.accessToken else {
-                                return
-                            }
                             
-                            let refreshTokenRequest = AuthAPI.requestMapJSON(.refreshToken(token: oldToken), classType: AccessTokenModel.self)
-                            
-                            refreshTokenRequest.do(onError: { (error) in
-                                
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                                    HUD.flash(.label("令牌过期,请重新登录"), delay: 2)
-                                    LSLUser.current().logout()
-                                })
-                                
-                            }).subscribe(onNext: { (t) in
-                                
-                                // 保存最新token
-                                LSLUser.current().refreshToken = t
-                                LSLUser.current().token = t
-                                
-                                self._request(token).subscribe({ (event) in
-                                    observer.on(event)
-                                }).disposed(by: self.rx.disposeBag)
-                                
-                            }).disposed(by: self.rx.disposeBag)
+//                                                     guard let oldToken = LSLUser.current().token?.accessToken else {
+//                                                         return
+//                                                     }
+//
+//                                                     let refreshTokenRequest = AuthAPI.requestMapJSON(.refreshToken(token: oldToken), classType: AccessTokenModel.self)
+//
+//                                                     refreshTokenRequest.do(onError: { (error) in
+//
+//                                                         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+//                                                             HUD.flash(.label("令牌过期,请重新登录"), delay: 2)
+//                                                             LSLUser.current().logout()
+//                                                         })
+//
+//                                                     }).subscribe(onNext: { (t) in
+//
+//                                                         // 保存最新token
+//                                                         LSLUser.current().refreshToken = t
+//                                                         LSLUser.current().token = t
+//
+//                                                         self._request(token).subscribe({ (event) in
+//                                                             observer.on(event)
+//                                                         }).disposed(by: self.rx.disposeBag)
+//
+//                                                     }).disposed(by: self.rx.disposeBag)
                         }
                         return Disposables.create()
                     })

@@ -73,7 +73,7 @@ final class LoginViewReactor: Reactor {
                     if user.id == nil {
                         return Mutation.setLoginResult(false, AppError.reason("无法获取用户信息"))
                     }
-                    
+                    LSLUser.current().isFirstLogin = true
                     LSLUser.current().user = user
                     return Mutation.setLoginResult(true, nil)
                 }).catchError({ (error) -> Observable<Mutation> in

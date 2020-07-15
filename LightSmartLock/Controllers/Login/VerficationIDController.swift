@@ -23,10 +23,19 @@ class VerficationIDController: UIViewController {
         super.viewDidLoad()
         
         bind()
+        setupObserver()
+    }
+    
+    func setupObserver() {
+
+        NotificationCenter.default.rx.notification(.tokenExpired)
+            .subscribe(onNext: {[weak self] (notiObjc) in
+            self?.dismiss(animated: false, completion: nil)
+        }).disposed(by: rx.disposeBag)
     }
     
     func bind() {
-        
+                
         let shareUserInfo = LSLUser.current().obUserInfo.share(replay: 1, scope: .forever)
         
         shareUserInfo
